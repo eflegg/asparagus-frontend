@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Config } from "../config";
+import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import Link from "next/link";
+import ActiveLink from "./ActiveLink";
 
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
@@ -9,7 +10,7 @@ export default function HeaderMenu() {
     async function loadLinks() {
       const response = await fetch(`${Config.apiUrl}/wp-json/menus/v2/header`);
       if (!response.ok) {
-        // oups! something went wrong
+        // oops! something went wrong
         return;
       }
 
@@ -25,7 +26,17 @@ export default function HeaderMenu() {
     <div className="menu--container">
       {links &&
         links.map((link, index) => {
-          return <li key={index}>{link.title}</li>;
+          return (
+            <li key={index}>
+              <ActiveLink
+                activeClassName="navlink--active"
+                href={`/${link.title}`}
+                to={`/${link.url}`}
+              >
+                <a>{link.title}</a>
+              </ActiveLink>
+            </li>
+          );
         })}
     </div>
   );

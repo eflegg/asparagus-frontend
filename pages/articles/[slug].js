@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { getPost, getSlugs } from "../../utils/wordpress";
+import { getArticle, getSlugs } from "../../utils/wordpress";
 
-export default function PostPage({ post }) {
+export default function CategoryPage({ article }) {
   return (
     <div className="container pt-5">
-      <h1 className="text-center pb-5">{post.title.rendered}</h1>
+      <h1 className="text-center pb-5">{article.title.rendered}</h1>
       <div
         className="card-text pb-5"
-        dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+        dangerouslySetInnerHTML={{ __html: article.content.rendered }}
       ></div>
+
       <Link href="/">
         <a className="btn btn-primary">Back to Home</a>
       </Link>
@@ -18,7 +19,7 @@ export default function PostPage({ post }) {
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths() {
-  const paths = await getSlugs("posts");
+  const paths = await getSlugs("categories");
 
   return {
     paths,
@@ -30,11 +31,11 @@ export async function getStaticPaths() {
 
 //access the router, get the id, and get the data for that post
 export async function getStaticProps({ params }) {
-  const post = await getPost(params.slug);
+  const article = await getArticle(params.slug);
 
   return {
     props: {
-      post,
+      article,
     },
     revalidate: 10, // In seconds
   };

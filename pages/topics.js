@@ -2,7 +2,7 @@ import React from "react";
 import { Config } from "../config";
 import fetch from "isomorphic-fetch";
 import Link from "next/link";
-import PageWrapper from "../components/PageWrapper";
+import PageWrapper from "../components/Global/PageWrapper";
 
 export default function Topics({ posts }) {
   console.log("posts: ", posts);
@@ -25,6 +25,9 @@ export default function Topics({ posts }) {
             );
           })}
         </ul>
+        <Link href="/">
+          <a className="btn btn-primary">Back to Home</a>
+        </Link>
       </div>
     </PageWrapper>
   );

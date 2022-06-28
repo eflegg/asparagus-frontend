@@ -15,3 +15,7 @@ a {
   box-sizing: border-box;
   background: peachpuff;
 }
+
+.navlink--active {
+  border: 2px solid orangered;
+}
