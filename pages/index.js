@@ -18,19 +18,21 @@ export default function Home({ categories }) {
       <PageWrapper>
         <main>
           <h2>I am the Home Page</h2>
-          {categories.map((category, index) => {
-            return (
-              <Link
-                key={index}
-                href={"/categories/[slug]"}
-                as={`/categories/${category.slug}`}
-              >
-                <a>
-                  <li>{category.name}</li>
-                </a>
-              </Link>
-            );
-          })}
+          <ul>
+            {categories.map((category, index) => {
+              return (
+                <Link
+                  key={index}
+                  href={"/categories/[slug]"}
+                  as={`/categories/${category.slug}`}
+                >
+                  <a>
+                    <li>{category.name}</li>
+                  </a>
+                </Link>
+              );
+            })}
+          </ul>
         </main>
       </PageWrapper>
     </>

@@ -13,9 +13,13 @@ a {
 
 * {
   box-sizing: border-box;
-  background: salmon;
+  background: peachpuff;
 }
 
 .navlink--active {
   border: 2px solid orangered;
+}
+
+li {
+  list-style: none;
 }

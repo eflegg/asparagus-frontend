@@ -24,20 +24,27 @@ export default function HeaderMenu() {
   console.log("links: ", links);
   return (
     <div className="menu--container">
-      {links &&
-        links.map((link, index) => {
-          return (
-            <li key={index}>
-              <ActiveLink
-                activeClassName="navlink--active"
-                href={`/${link.title}`}
-                to={`/${link.url}`}
-              >
-                <a>{link.title}</a>
-              </ActiveLink>
-            </li>
-          );
-        })}
+      <ul>
+        <li>
+          <ActiveLink activeClassName="navlink--active" href="/" to="/">
+            <a>Home</a>
+          </ActiveLink>
+        </li>
+        {links &&
+          links.map((link, index) => {
+            return (
+              <li key={index}>
+                <ActiveLink
+                  activeClassName="navlink--active"
+                  href={`/${link.title}`}
+                  to={`/${link.url}`}
+                >
+                  <a>{link.title}</a>
+                </ActiveLink>
+              </li>
+            );
+          })}
+      </ul>
     </div>
   );
 }

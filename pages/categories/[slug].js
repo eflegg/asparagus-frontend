@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import { getCategory, getSlugs } from "../../utils/wordpress";
 import { Config } from "../../config";
@@ -7,6 +8,9 @@ import ArticleCard from "../../components/ArticleCard";
 export default function CategoryPage({ category, posts }) {
   console.log("posts: ", posts);
   console.log("category: ", category);
+  console.log("post slug: ", posts[0].slug);
+
+  const ref = React.forwardRef();
   return (
     <div className="container pt-5">
       <h1 className="text-center pb-5">{category.name}</h1>
@@ -18,7 +22,11 @@ export default function CategoryPage({ category, posts }) {
         {posts.map((post, index) => {
           return (
             <li key={index}>
-              <ArticleCard title={post.title.rendered} link={post.slug} />
+              <ArticleCard
+                ref={ref}
+                title={post.title.rendered}
+                slug={post.slug}
+              />
             </li>
           );
         })}

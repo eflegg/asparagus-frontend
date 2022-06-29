@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getArticle, getSlugs } from "../../utils/wordpress";
 
-export default function CategoryPage({ article }) {
+export default function ArticlePage({ article }) {
   return (
     <div className="container pt-5">
       <h1 className="text-center pb-5">{article.title.rendered}</h1>
@@ -19,7 +19,7 @@ export default function CategoryPage({ article }) {
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths() {
-  const paths = await getSlugs("categories");
+  const paths = await getSlugs("articles");
 
   return {
     paths,
