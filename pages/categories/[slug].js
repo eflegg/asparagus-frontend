@@ -6,6 +6,7 @@ import ArticleCard from "../../components/ArticleCard";
 
 export default function CategoryPage({ category, posts }) {
   console.log("posts: ", posts);
+  console.log("category: ", category);
   return (
     <div className="container pt-5">
       <h1 className="text-center pb-5">{category.name}</h1>
@@ -45,7 +46,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
   const categoryPosts = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=13`
+    // `${Config.apiUrl}/wp-json/wp/v2/articles?categories=11`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${category.id}`
   );
   const posts = await categoryPosts.json();
 

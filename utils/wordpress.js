@@ -54,7 +54,7 @@ export async function getArticles() {
 }
 
 export async function getArticle(slug) {
-  const articles = await getarticles();
+  const articles = await getArticles();
   const articleArray = articles.filter((article) => article.slug == slug);
   const article = articleArray.length > 0 ? articleArray[0] : null;
   return article;
