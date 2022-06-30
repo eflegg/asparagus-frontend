@@ -4,6 +4,7 @@ import { getCategory, getSlugs } from "../../utils/wordpress";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
+import PageWrapper from "../../components/Global/PageWrapper";
 
 export default function CategoryPage({ category, posts }) {
   console.log("posts: ", posts);
@@ -12,7 +13,7 @@ export default function CategoryPage({ category, posts }) {
 
   const ref = React.forwardRef();
   return (
-    <div className="container pt-5">
+    <PageWrapper className="container pt-5">
       <h1 className="text-center pb-5">{category.name}</h1>
 
       {/* <div dangerouslySetInnerHtml={{ __html: category.name }} /> */}
@@ -34,7 +35,7 @@ export default function CategoryPage({ category, posts }) {
       <Link href="/">
         <a className="btn btn-primary">Back to Home</a>
       </Link>
-    </div>
+    </PageWrapper>
   );
 }
 

@@ -6,9 +6,11 @@ import ActiveLink from "./ActiveLink";
 
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
+  const [connectLinks, setConnectLinks] = useState([]);
   useEffect(() => {
     async function loadLinks() {
       const response = await fetch(`${Config.apiUrl}/wp-json/menus/v2/header`);
+      const connect = await fetch(`${Config.apiUrl}/wp-json/menus/v2/connect`);
       if (!response.ok) {
         // oops! something went wrong
         return;
@@ -16,6 +18,8 @@ export default function HeaderMenu() {
 
       const links = await response.json();
       setLinks(links);
+      const connectLinks = await connect.json();
+      setConnectLinks(connectLinks);
     }
 
     loadLinks();
@@ -24,6 +28,7 @@ export default function HeaderMenu() {
   console.log("links: ", links);
   return (
     <div className="menu--container">
+      <h3>Header menu</h3>
       <ul>
         <li>
           <ActiveLink activeClassName="navlink--active" href="/" to="/">
@@ -44,6 +49,22 @@ export default function HeaderMenu() {
               </li>
             );
           })}
+      </ul>
+      <h3>Connect Menu</h3>
+      <ul>
+        {connectLinks.map((connectLink, index) => {
+          return (
+            <li key={index}>
+              <ActiveLink
+                activeClassName="navlink--active"
+                href={`/${connectLink.title}`}
+                to={`/${connectLink.url}`}
+              >
+                <a>{connectLink.title}</a>
+              </ActiveLink>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
