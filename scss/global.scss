@@ -1,0 +1,244 @@
+/***  Table of Contents  ***/
+
+// 1. Layout - 7
+// 2. Typography - 50
+// 3. Buttons - 152
+// 4. images - 228
+
+/***  Layout  ***/
+
+@mixin media-query-min($value, $operator: "min-width", $query: "screen") {
+  @media #{$query} and (#{$operator}: #{$value}) {
+    @content;
+  }
+}
+
+@mixin media-query-max($value, $operator: "max-width", $query: "screen") {
+  @media #{$query} and (#{$operator}: #{$value}) {
+    @content;
+  }
+}
+
+/* ##usage##
+      @include media-query-min(500px) {
+      }
+    */
+$xs: 400px;
+$sm: 768px;
+$md: 1000px;
+$lg: 1250px;
+$xl: 1800px;
+
+.layout-container {
+  // overflow: hidden;
+  max-width: 350px;
+  width: 90%;
+  margin: auto;
+  @include media-query-min($xs) {
+    max-width: 498px;
+    width: 80%;
+  }
+  @include media-query-min($sm) {
+    max-width: 800px;
+    width: 80%;
+  }
+  @include media-query-min($md) {
+    max-width: 1000px;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap");
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+html {
+  font-size: 62.5%;
+}
+$headerFont: "Source Serif Pro", serif;
+$bodyFont: "Raleway", sans-serif;
+
+$gusGreen: #339933;
+$soil: #913029;
+$wheat: #faf4ec;
+$teaGreen: #d3e5a0;
+$gusYellow: #f8dd8b;
+$grey: #707070;
+$white: #fff;
+$black: #000;
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background: $white;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $headerFont;
+  margin: 0;
+}
+p {
+  font-family: $bodyFont;
+  font-weight: 400;
+}
+a {
+  text-decoration: none;
+  font-family: $bodyFont;
+}
+p,
+a {
+  letter-spacing: 0.2rem;
+  font-size: 16px;
+  line-height: 150%;
+  color: black;
+  font-weight: 400;
+  // @include media-query-min($sm) {
+  //   font-size: calc(16px + 2 * ((100vw - 320px) / 680));
+  // }
+  // @include media-query-min($md) {
+  //   @include font-size(1.8);
+  //   line-height: 32px;
+  // }
+}
+.paragraph--bold {
+  font-weight: 700;
+}
+h1,
+.h1 {
+  letter-spacing: 0.2rem;
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 110%;
+  color: $gusGreen;
+  @include media-query-min($sm) {
+    font-size: calc(48px + 12 * ((100vw - 320px) / 680));
+  }
+  @include media-query-min($md) {
+    @include font-size(6);
+  }
+}
+h2,
+.h2 {
+  letter-spacing: 0.2rem;
+  font-size: 28px;
+  line-height: 125%;
+  @include media-query-min($sm) {
+    font-size: calc(28px + 12 * ((100vw - 320px) / 680));
+  }
+  @include media-query-min($md) {
+    @include font-size(3.6);
+  }
+}
+h3,
+.h3 {
+  letter-spacing: 0.2rem;
+  color: $soil;
+  font-size: 24px;
+  line-height: 135%;
+  @include media-query-min($sm) {
+    font-size: calc(24px + 4 * ((100vw - 320px) / 680));
+  }
+  @include media-query-min($md) {
+    @include font-size(2.2);
+    line-height: 36px;
+  }
+}
+h4 {
+  letter-spacing: 0.2rem;
+  font-size: 16px;
+  line-height: 150%;
+  color: $soil;
+  font-weight: 400;
+  @include media-query-min($sm) {
+    font-size: calc(16px + 2 * ((100vw - 320px) / 680));
+  }
+  @include media-query-min($md) {
+    @include font-size(1.8);
+    line-height: 32px;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  transition: all 0.25s ease-in;
+  &:hover {
+    background: $gusGreen;
+    transition: all 0.25s ease-in;
+  }
+}
+
+/***  Utilities  ***/
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.d-flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.align-items-center {
+  align-items: center;
+}
+
+.position-absolute {
+  position: absolute;
+}
+.position-relative {
+  position: relative;
+}
+.position-fixed {
+  position: fixed;
+}
+
+/***  Buttons  ***/
+
+.btn {
+  background-color: $soil;
+  border-radius: 15px;
+  padding: 10px 20px;
+  margin: 30px auto;
+  border: 0px;
+  color: white;
+  font-family: $bodyFont;
+  font-size: 16px;
+  a {
+    color: white;
+    font-family: $bodyFont;
+    font-size: 16px;
+  }
+  text-align: center;
+}
+
+/***  Images  ***/
+
+img {
+  max-width: 100%;
+}
+.img--full {
+  width: 100%;
+  margin: 100px 0;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}

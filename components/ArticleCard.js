@@ -1,8 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
+import theme from "../components/Global/Theme";
 const Card = styled.div`
   width: 30%;
-  border: 2px solid mediumseagreen;
+  border: 2px solid ${theme.colours.grey};
 `;
 
 export default function ArticleCard({ title, slug, ref }) {
@@ -11,7 +12,7 @@ export default function ArticleCard({ title, slug, ref }) {
     <Card>
       <Link ref={ref} href={"/articles/[slug]"} as={`/articles/${slug}`}>
         <a>
-          <h1>I am an article card for: {title}</h1>
+          <h1>{title}</h1>
           <p>I will be a repeating square</p>
         </a>
       </Link>
