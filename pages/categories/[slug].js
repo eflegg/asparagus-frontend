@@ -9,12 +9,14 @@ import PageWrapper from "../../components/Global/PageWrapper";
 export default function CategoryPage({ category, posts }) {
   console.log("posts: ", posts);
   console.log("category: ", category);
-  console.log("post slug: ", posts[0].slug);
 
   const ref = React.forwardRef();
   return (
     <PageWrapper className="container pt-5">
-      <h1 className="text-center pb-5">{category.name}</h1>
+      <h1
+        className="text-center"
+        dangerouslySetInnerHTML={{ __html: category.name }}
+      ></h1>
 
       {/* <div dangerouslySetInnerHtml={{ __html: category.name }} /> */}
 

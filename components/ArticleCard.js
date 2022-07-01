@@ -12,7 +12,10 @@ export default function ArticleCard({ title, slug, ref }) {
     <Card>
       <Link ref={ref} href={"/articles/[slug]"} as={`/articles/${slug}`}>
         <a>
-          <h1>{title}</h1>
+          <h3
+            className="card-text pb-5"
+            dangerouslySetInnerHTML={{ __html: title }}
+          ></h3>
           <p>I will be a repeating square</p>
         </a>
       </Link>

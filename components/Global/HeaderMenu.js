@@ -9,6 +9,8 @@ import Link from "next/link";
 
 const MenuContainer = styled.div`
   .nav-link {
+    font-size: 2.4rem;
+    margin: 10px;
     display: flex;
     flex-direction: column;
     border: 2px solid turquoise;
@@ -95,11 +97,15 @@ export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
   const [connectLinks, setConnectLinks] = useState([]);
   const [navActive, setNavActive] = useState(false);
-  const [subNav, setSubnav] = useState(null);
+  const [subnav, setSubnav] = useState(null);
 
   const handleSubnavClick = (menuId) => {
     console.log(`subnav clicked`, menuId);
-    setSubnav(menuId);
+    if (subnav == menuId) {
+      setSubnav(null);
+    } else {
+      setSubnav(menuId);
+    }
   };
 
   useEffect(() => {
@@ -144,23 +150,31 @@ export default function HeaderMenu() {
                     key={index}
                     onClick={() => handleSubnavClick(link.ID)}
                   >
-                    {link.title}
-
-                    <ul>
-                      {link?.child_items?.map((childItem, childIndex) => {
-                        return (
-                          <li key={childIndex}>
-                            <ActiveLink
-                              activeClassName="navlink--active"
-                              href={"/categories/[slug]"}
-                              as={`/categories/${childItem.slug}`}
-                            >
-                              <a>{childItem.title}</a>
-                            </ActiveLink>
-                          </li>
-                        );
-                      })}
-                    </ul>
+                    <span
+                      dangerouslySetInnerHTML={{ __html: link.title }}
+                    ></span>
+                    {link.child_items && subnav == link.ID ? (
+                      <ul className="subnav">
+                        {link?.child_items?.map((childItem, childIndex) => {
+                          return (
+                            <li key={childIndex} className="subnav-link">
+                              <ActiveLink
+                                activeClassName="navlink--active"
+                                href={"/categories/[slug]"}
+                                as={`/categories/${childItem.slug}`}
+                              >
+                                <a
+                                  className="card-text pb-5"
+                                  dangerouslySetInnerHTML={{
+                                    __html: childItem.title,
+                                  }}
+                                ></a>
+                              </ActiveLink>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    ) : null}
                   </li>
                 </>
               );
@@ -192,24 +206,36 @@ export default function HeaderMenu() {
               {links?.items?.map((link, index) => {
                 return (
                   <>
-                    <li key={index} className="nav-link">
-                      {link.title}
-
-                      <ul>
-                        {link?.child_items?.map((childItem, childIndex) => {
-                          return (
-                            <li key={childIndex}>
-                              <ActiveLink
-                                activeClassName="navlink--active"
-                                href={"/categories/[slug]"}
-                                as={`/categories/${childItem.slug}`}
-                              >
-                                <a>{childItem.title}</a>
-                              </ActiveLink>
-                            </li>
-                          );
-                        })}
-                      </ul>
+                    <li
+                      className="nav-link"
+                      key={index}
+                      onClick={() => handleSubnavClick(link.ID)}
+                    >
+                      <span
+                        dangerouslySetInnerHTML={{ __html: link.title }}
+                      ></span>
+                      {link.child_items && subnav == link.ID ? (
+                        <ul className="subnav">
+                          {link?.child_items?.map((childItem, childIndex) => {
+                            return (
+                              <li key={childIndex} className="subnav-link">
+                                <ActiveLink
+                                  activeClassName="navlink--active"
+                                  href={"/categories/[slug]"}
+                                  as={`/categories/${childItem.slug}`}
+                                >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  ></a>
+                                </ActiveLink>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      ) : null}
                     </li>
                   </>
                 );
