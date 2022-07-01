@@ -167,7 +167,9 @@ h4 {
 li {
   list-style: none;
 }
-
+.navlink--active {
+  border: 2px solid orangered;
+}
 button {
   transition: all 0.25s ease-in;
   &:hover {

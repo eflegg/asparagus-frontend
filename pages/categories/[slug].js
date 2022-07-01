@@ -18,7 +18,6 @@ export default function CategoryPage({ category, posts }) {
 
       {/* <div dangerouslySetInnerHtml={{ __html: category.name }} /> */}
 
-      <h2>{category.name} posts</h2>
       <ul>
         {posts.map((post, index) => {
           return (

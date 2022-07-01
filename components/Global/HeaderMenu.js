@@ -1,12 +1,107 @@
 import React, { useEffect, useState } from "react";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
-import Link from "next/link";
 import ActiveLink from "./ActiveLink";
+import { useMediaQuery } from "react-responsive";
+import styled from "styled-components";
+import theme from "./Theme";
+import Link from "next/link";
+
+const MenuContainer = styled.div`
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid turquoise;
+    ul {
+      padding-left: 0;
+    }
+  }
+`;
+const MobileNav = styled.nav`
+  .btn-nav {
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+    height: 50px;
+    width: 50px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+    border: 0px;
+    position: absolute;
+    position: fixed;
+    top: 18px;
+    right: 15px;
+    span {
+      width: 35px;
+      height: 5px;
+      margin-bottom: 1px;
+      border-radius: 3px;
+      margin-top: 5px;
+      background: ${theme.colours.gusGreen};
+      z-index: 2;
+    }
+    .burger-2 {
+      position: relative;
+    }
+    &.nav-close {
+      .burger-1 {
+        position: relative;
+        transform: rotate(-45deg);
+        top: 8px;
+        transition: all 0.15s ease-in-out;
+      }
+      .burger-2 {
+        position: relative;
+        left: 150px;
+        overflow: hidden;
+        transition: all 0.15s ease-in-out;
+      }
+      .burger-3 {
+        position: relative;
+        top: -15px;
+        transform: rotate(45deg);
+        transition: all 0.15s ease-in-out;
+      }
+    }
+    &.nav-open {
+      .burger-1 {
+        transform: rotate(0deg);
+
+        transition: all 0.15s ease-in-out;
+      }
+      .burger-2 {
+        overflow: hidden;
+        transition: all 0.15s ease-in-out;
+      }
+      .burger-3 {
+        transform: rotate(0deg);
+        transition: all 0.15s ease-in-out;
+      }
+    }
+  }
+`;
+
+const DesktopNav = styled.nav`
+  ul {
+    display: flex;
+  }
+`;
 
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
   const [connectLinks, setConnectLinks] = useState([]);
+  const [navActive, setNavActive] = useState(false);
+  const [subNav, setSubnav] = useState(null);
+
+  const handleSubnavClick = (menuId) => {
+    console.log(`subnav clicked`, menuId);
+    setSubnav(menuId);
+  };
+
   useEffect(() => {
     async function loadLinks() {
       const response = await fetch(
@@ -27,36 +122,103 @@ export default function HeaderMenu() {
     loadLinks();
   }, []);
 
+  const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
+
   console.log("links.items: ", links);
   return (
-    <div className="menu--container">
-      <h3>Header menu</h3>
-      <ul>
-        <li>
-          <ActiveLink activeClassName="navlink--active" href="/" to="/">
-            <a>Home</a>
-          </ActiveLink>
-        </li>
-        {links &&
-          links.items.map((link, index) => {
-            return (
-              <li key={index}>
-                {/* <ActiveLink
-                  activeClassName="navlink--active"
-                  href={`/${link.title}`}
-                  to={`/${link.url}`}
-                >
-                  <a>{link.title}</a>
-                </ActiveLink> */}
-                menu item
-                {link.child_items &&
-                  link.child_items.map((childItem, childIndex) => {
-                    return <li key={childIndex}>child menu item</li>;
-                  })}
-              </li>
-            );
-          })}{" "}
-      </ul>
+    <MenuContainer className="menu--container">
+      <Link href="/">
+        <a>
+          <h3>Asparagus Logo</h3>
+        </a>
+      </Link>
+
+      {isDesktop ? (
+        <DesktopNav>
+          <ul>
+            {links?.items?.map((link, index) => {
+              return (
+                <>
+                  <li
+                    className="nav-link"
+                    key={index}
+                    onClick={() => handleSubnavClick(link.ID)}
+                  >
+                    {link.title}
+
+                    <ul>
+                      {link?.child_items?.map((childItem, childIndex) => {
+                        return (
+                          <li key={childIndex}>
+                            <ActiveLink
+                              activeClassName="navlink--active"
+                              href={"/categories/[slug]"}
+                              as={`/categories/${childItem.slug}`}
+                            >
+                              <a>{childItem.title}</a>
+                            </ActiveLink>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </li>
+                </>
+              );
+            })}{" "}
+          </ul>
+        </DesktopNav>
+      ) : (
+        <MobileNav>
+          <button
+            className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
+            onClick={() => {
+              setNavActive(!navActive);
+            }}
+          >
+            <span className="burger-1"></span>
+            <span className="burger-2"></span>
+            <span className="burger-3"></span>
+          </button>
+          <button
+            role="button"
+            aria-controls="navMenu"
+            style={{ display: "none" }}
+            className="accessibility-close"
+          >
+            Close Nav
+          </button>
+          {navActive ? (
+            <ul>
+              {links?.items?.map((link, index) => {
+                return (
+                  <>
+                    <li key={index} className="nav-link">
+                      {link.title}
+
+                      <ul>
+                        {link?.child_items?.map((childItem, childIndex) => {
+                          return (
+                            <li key={childIndex}>
+                              <ActiveLink
+                                activeClassName="navlink--active"
+                                href={"/categories/[slug]"}
+                                as={`/categories/${childItem.slug}`}
+                              >
+                                <a>{childItem.title}</a>
+                              </ActiveLink>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </li>
+                  </>
+                );
+              })}{" "}
+            </ul>
+          ) : null}
+        </MobileNav>
+      )}
+
       <h3>Connect Menu</h3>
       <ul>
         {connectLinks.map((connectLink, index) => {
@@ -73,6 +235,6 @@ export default function HeaderMenu() {
           );
         })}
       </ul>
-    </div>
+    </MenuContainer>
   );
 }
