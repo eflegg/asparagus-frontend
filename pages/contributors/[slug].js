@@ -15,9 +15,9 @@ const ContribImage = styled.div`
   overflow: hidden;
 `;
 
-export default function EventPage({ contributor, posts }) {
+export default function ContributorPage({ contributor, posts }) {
   console.log("contributor id: ", contributor.id);
-  console.log("posts: ", posts[0].acf.writer);
+  console.log("posts: ", posts);
 
   return (
     <div className="container pt-5">
@@ -35,7 +35,13 @@ export default function EventPage({ contributor, posts }) {
       </div>
       <ul>
         {posts.map((post, index) => {
-          return <li key={index}>{post.title.rendered}</li>;
+          return (
+            <>
+              {post.acf.writer == contributor.id ? (
+                <p>{post.title.rendered}</p>
+              ) : null}
+            </>
+          );
         })}
       </ul>
 
@@ -64,7 +70,8 @@ export async function getStaticProps({ params }) {
   const contributor = await getContributor(params.slug);
   const contributorPosts = await fetch(
     // `${Config.apiUrl}/wp-json/wp/v2/articles?writer=${contributor.id}`
-    `${Config.apiUrl}/wp-json/wp/v2/articles?writer=58`
+    // @erin this should work, come back to it
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
   );
 
   const posts = await contributorPosts.json();
