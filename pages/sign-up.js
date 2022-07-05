@@ -4,10 +4,12 @@ import { Config } from "../config";
 import fetch from "isomorphic-fetch";
 import Link from "next/link";
 
-export default function Team() {
+export default function SignUp() {
   return (
     <PageWrapper pageTitle="Sign Up">
-      <h1>Team</h1>
+      <h1>Newsletter Sign Up</h1>
     </PageWrapper>
   );
 }
+
+// query the page with the slug sign-up

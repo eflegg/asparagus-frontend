@@ -12,7 +12,7 @@ export default function CategoryPage({ category, posts }) {
 
   const ref = React.forwardRef();
   return (
-    <PageWrapper className="container pt-5">
+    <PageWrapper pageTitle={category.name} className="container pt-5">
       <h1
         className="text-center"
         dangerouslySetInnerHTML={{ __html: category.name }}

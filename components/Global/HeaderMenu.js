@@ -113,7 +113,9 @@ export default function HeaderMenu() {
       const response = await fetch(
         `${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`
       );
-      const connect = await fetch(`${Config.apiUrl}/wp-json/menus/v2/connect`);
+      const connect = await fetch(
+        `${Config.apiUrl}/wp-json/menus/v1/menus/connect-menu`
+      );
       if (!response.ok) {
         // oops! something went wrong
         return;
@@ -247,13 +249,13 @@ export default function HeaderMenu() {
 
       <h3>Connect Menu</h3>
       <ul>
-        {connectLinks.map((connectLink, index) => {
+        {connectLinks?.items?.map((connectLink, index) => {
           return (
             <li key={index}>
               <ActiveLink
                 activeClassName="navlink--active"
-                href={`/${connectLink.title}`}
-                to={`/${connectLink.url}`}
+                href={`/${connectLink.slug}`}
+                to={`/${connectLink.slug}`}
               >
                 <a>{connectLink.title}</a>
               </ActiveLink>

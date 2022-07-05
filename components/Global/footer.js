@@ -8,7 +8,9 @@ export default function Footer() {
   const [footerLinks, setFooterLinks] = useState([]);
   useEffect(() => {
     async function loadLinks() {
-      const response = await fetch(`${Config.apiUrl}/wp-json/menus/v2/footer`);
+      const response = await fetch(
+        `${Config.apiUrl}/wp-json/menus/v1/menus/footer-menu`
+      );
       if (!response.ok) {
         // oops! something went wrong
         return;
@@ -24,20 +26,19 @@ export default function Footer() {
   console.log("footerLinks: ", footerLinks);
   return (
     <div className="footer--container">
-      {footerLinks &&
-        footerLinks.map((link, index) => {
-          return (
-            <li key={index}>
-              <ActiveLink
-                activeClassName="footerlink--active"
-                href={`/${link.title}`}
-                to={`/${link.url}`}
-              >
-                <a>{link.title}</a>
-              </ActiveLink>
-            </li>
-          );
-        })}
+      {footerLinks?.items?.map((link, index) => {
+        return (
+          <li key={index}>
+            <ActiveLink
+              activeClassName="footerlink--active"
+              href={`/${link.slug}`}
+              to={`/${link.slug}`}
+            >
+              <a>{link.title}</a>
+            </ActiveLink>
+          </li>
+        );
+      })}
     </div>
   );
 }
