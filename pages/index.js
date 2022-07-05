@@ -12,7 +12,7 @@ export default function Home({ categories }) {
       <PageWrapper pageTitle="">
         <main>
           <h2>I am the Home Page</h2>
-          <ul>
+          {/* <ul>
             {categories.map((category, index) => {
               return (
                 <Link
@@ -26,7 +26,7 @@ export default function Home({ categories }) {
                 </Link>
               );
             })}
-          </ul>
+          </ul> */}
         </main>
       </PageWrapper>
     </>

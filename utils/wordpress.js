@@ -62,6 +62,21 @@ export async function getArticle(slug) {
 
 /// Contributors ///
 
+export async function getContributors() {
+  const contributorsRes = await fetch(BASE_URL + "/contributors?_embed");
+  const contributors = await contributorsRes.json();
+  return contributors;
+}
+
+export async function getContributor(slug) {
+  const contributors = await getContributors();
+  const contributorArray = contributors.filter(
+    (contributor) => contributor.slug == slug
+  );
+  const contributor = contributorArray.length > 0 ? contributorArray[0] : null;
+  return contributor;
+}
+
 /// Stockists ///
 
 /// Issues ///
@@ -81,6 +96,11 @@ export async function getSlugs(type) {
       elements = await getCategories();
       break;
     case "articles":
+      elements = await getArticles();
+      break;
+    case "contributors":
+      elements = await getContributors();
+      break;
   }
   const elementsIds = elements.map((element) => {
     return {

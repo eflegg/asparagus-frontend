@@ -1,22 +1,22 @@
 import React from "react";
 import Link from "next/link";
-import { getEvents } from "../utils/wordpress";
+import { getContributors } from "../utils/wordpress";
 
-export default function Topics({ events }) {
-  console.log("events: ", events);
+export default function Topics({ contributors }) {
+  console.log("contributors: ", contributors);
   return (
     <div className="">
       <h1>List of Posts</h1>
       <ul>
-        {events.map((event, index) => {
+        {contributors.map((contributor, index) => {
           return (
             <Link
               key={index}
-              href={"/events/[slug]"}
-              as={`/events/${event.slug}`}
+              href={"/contributors/[slug]"}
+              as={`/contributors/${contributor.slug}`}
             >
               <a>
-                <li>{event.title.rendered}</li>
+                <li>{contributor.title.rendered}</li>
               </a>
             </Link>
           );
@@ -27,11 +27,11 @@ export default function Topics({ events }) {
 }
 
 export async function getStaticProps({ params }) {
-  const events = await getEvents();
+  const contributors = await getContributors();
 
   return {
     props: {
-      events,
+      contributors,
     },
     revalidate: 10, // In seconds
   };
