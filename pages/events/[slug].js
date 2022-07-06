@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getEvent, getSlugs } from "../../utils/wordpress";
 
 export default function EventPage({ event }) {
+  console.log("event: ", event);
   return (
     <div className="container pt-5">
       <h1 className="text-center pb-5">{event.title.rendered}</h1>

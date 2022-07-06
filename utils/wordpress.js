@@ -94,7 +94,7 @@ export async function getGeneralPages() {
 }
 
 export async function getGeneralPage(slug) {
-  const genpages = await getContributors();
+  const genpages = await getGeneralPages();
   const genpagesArray = genpages.filter((genpage) => genpage.slug == slug);
   const genpage = genpagesArray.length > 0 ? genpagesArray[0] : null;
   return genpage;

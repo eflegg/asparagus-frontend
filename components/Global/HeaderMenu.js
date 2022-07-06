@@ -132,7 +132,6 @@ export default function HeaderMenu() {
 
   const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
 
-  console.log("links.items: ", links);
   return (
     <MenuContainer className="menu--container">
       <Link href="/">

@@ -1,15 +1,16 @@
 import Link from "next/link";
-import { getGeneralPage, getSlugs } from "../utils/wordpress";
+import { getGeneralPage, getGeneralPages, getSlugs } from "../utils/wordpress";
 
 export default function GeneralPage({ genpage }) {
   console.log("genpage: ", genpage);
   return (
     <div className="container pt-5">
-      {/* <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
+      <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
       <div
         className="card-text pb-5"
         dangerouslySetInnerHTML={{ __html: genpage.content.rendered }}
-      ></div> */}
+      ></div>
+      <p>{genpage.acf.text_block && genpage.acf.text_block}</p>
       <Link href="/">
         <a className="btn btn-primary">Back to Home</a>
       </Link>
@@ -32,6 +33,7 @@ export async function getStaticPaths() {
 //access the router, get the id, and get the medatada for that post
 
 export async function getStaticProps({ params }) {
+  // const genpages = await getGeneralPages();
   const genpage = await getGeneralPage(params.slug);
 
   return {
