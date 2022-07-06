@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import { getEvents } from "../utils/wordpress";
+import PageWrapper from "../components/Global/PageWrapper";
 
-export default function Topics({ events }) {
+export default function Events({ events }) {
   console.log("events: ", events);
   return (
-    <div className="">
+    <PageWrapper className="">
       <h1>List of Posts</h1>
       <ul>
         {events.map((event, index) => {
@@ -22,7 +23,7 @@ export default function Topics({ events }) {
           );
         })}
       </ul>
-    </div>
+    </PageWrapper>
   );
 }
 

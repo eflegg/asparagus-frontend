@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getContributor, getSlugs } from "../../utils/wordpress";
@@ -5,6 +6,7 @@ import styled from "styled-components";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import theme from "../../components/Global/Theme";
+import ArticleCard from "../../components/ArticleCard";
 
 const ContribImage = styled.div`
   position: relative;
@@ -18,7 +20,7 @@ const ContribImage = styled.div`
 export default function ContributorPage({ contributor, posts }) {
   console.log("contributor id: ", contributor.id);
   console.log("posts: ", posts);
-
+  const ref = React.forwardRef();
   return (
     <div className="container pt-5">
       <h1 className="text-center pb-5">{contributor.title.rendered}</h1>
@@ -37,8 +39,12 @@ export default function ContributorPage({ contributor, posts }) {
         {posts.map((post, index) => {
           return (
             <>
-              {post.acf.writer == contributor.id ? (
-                <p>{post.title.rendered}</p>
+              {post.acf.writer || post.acf.photographer == contributor.id ? (
+                <ArticleCard
+                  ref={ref}
+                  title={post.title.rendered}
+                  slug={post.slug}
+                />
               ) : null}
             </>
           );

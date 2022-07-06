@@ -3,6 +3,15 @@ import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import Link from "next/link";
 import ActiveLink from "./ActiveLink";
+import styled from "styled-components";
+import theme from "./Theme";
+
+const FooterMenuContainer = styled.div`
+  display: flex;
+  .subnav {
+    padding-left: 0;
+  }
+`;
 
 export default function Footer() {
   const [footerLinks, setFooterLinks] = useState([]);
@@ -25,20 +34,38 @@ export default function Footer() {
 
   console.log("footerLinks: ", footerLinks);
   return (
-    <div className="footer--container">
+    <FooterMenuContainer className="footer--container">
       {footerLinks?.items?.map((link, index) => {
         return (
-          <li key={index}>
-            <ActiveLink
-              activeClassName="footerlink--active"
-              href={`/${link.slug}`}
-              to={`/${link.slug}`}
-            >
-              <a>{link.title}</a>
-            </ActiveLink>
-          </li>
+          <>
+            <li className="nav-link" key={index}>
+              <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+              {link.child_items && (
+                <ul className="subnav">
+                  {link?.child_items?.map((childItem, childIndex) => {
+                    return (
+                      <li key={childIndex} className="subnav-link">
+                        <ActiveLink
+                          activeClassName="navlink--active"
+                          href={`/${childItem.slug}`}
+                          as={`/${childItem.slug}`}
+                        >
+                          <a
+                            className="card-text pb-5"
+                            dangerouslySetInnerHTML={{
+                              __html: childItem.title,
+                            }}
+                          ></a>
+                        </ActiveLink>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </li>
+          </>
         );
       })}
-    </div>
+    </FooterMenuContainer>
   );
 }

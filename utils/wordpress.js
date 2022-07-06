@@ -79,9 +79,43 @@ export async function getContributor(slug) {
 
 /// Stockists ///
 
-/// Issues ///
+export async function getStockists() {
+  const stockistsRes = await fetch(BASE_URL + "/stockists?_embed");
+  const stockists = await stockistsRes.json();
+  return stockists;
+}
+
+/// General Pages ///
+
+export async function getGeneralPages() {
+  const genpagesRes = await fetch(BASE_URL + "/general_pages?_embed");
+  const genpages = await genpagesRes.json();
+  return genpages;
+}
+
+export async function getGeneralPage(slug) {
+  const genpages = await getContributors();
+  const genpagesArray = genpages.filter((genpage) => genpage.slug == slug);
+  const genpage = genpagesArray.length > 0 ? genpagesArray[0] : null;
+  return genpage;
+}
 
 /// Gus Tips Newsletter ///
+
+export async function getTips() {
+  const tipsRes = await fetch(BASE_URL + "/asparagus_tips?_embed");
+  const tips = await tipsRes.json();
+  return tips;
+}
+
+export async function getTip(slug) {
+  const tips = await getContributors();
+  const tipsArray = tips.filter((tip) => tip.slug == slug);
+  const tip = tipsArray.length > 0 ? tipsArray[0] : null;
+  return tip;
+}
+
+/// Issues ///
 
 export async function getSlugs(type) {
   let elements = [];
@@ -101,6 +135,14 @@ export async function getSlugs(type) {
     case "contributors":
       elements = await getContributors();
       break;
+    case "stockists":
+      elements = getStockists();
+      break;
+    case "asparagus-tips":
+      elements = await getTips();
+      break;
+    case "general_pages":
+      elements = await getGeneralPages();
   }
   const elementsIds = elements.map((element) => {
     return {

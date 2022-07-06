@@ -1,11 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import { getContributors } from "../utils/wordpress";
+import PageWrapper from "../components/Global/PageWrapper";
+import styled from "styled-components";
+import theme from "./Theme";
 
 export default function Topics({ contributors }) {
   console.log("contributors: ", contributors);
   return (
-    <div className="">
+    <PageWrapper className="">
       <h1>List of Posts</h1>
       <ul>
         {contributors.map((contributor, index) => {
@@ -22,7 +25,7 @@ export default function Topics({ contributors }) {
           );
         })}
       </ul>
-    </div>
+    </PageWrapper>
   );
 }
 
