@@ -32,53 +32,50 @@ export default function Footer() {
     loadLinks();
   }, []);
 
-  console.log("footerLinks: ", footerLinks);
   return (
     <FooterMenuContainer className="footer--container">
       {footerLinks?.items?.map((link, index) => {
         return (
-          <>
-            <li className="nav-link" key={index}>
-              <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
-              {link.child_items && (
-                <ul className="subnav">
-                  {link?.child_items?.map((childItem, childIndex) => {
-                    return (
-                      <li key={childIndex} className="subnav-link">
-                        {childItem.object == "general_pages" ? (
-                          <ActiveLink
-                            activeClassName="navlink--active"
-                            href={`/[slug]}`}
-                            as={`/${childItem.slug}`}
-                          >
-                            <a
-                              className="card-text pb-5"
-                              dangerouslySetInnerHTML={{
-                                __html: childItem.title,
-                              }}
-                            ></a>
-                          </ActiveLink>
-                        ) : (
-                          <ActiveLink
-                            activeClassName="navlink--active"
-                            href={`/${childItem.slug}`}
-                            as={`/${childItem.slug}`}
-                          >
-                            <a
-                              className="card-text pb-5"
-                              dangerouslySetInnerHTML={{
-                                __html: childItem.title,
-                              }}
-                            ></a>
-                          </ActiveLink>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
-            </li>
-          </>
+          <li className="nav-link" key={index}>
+            <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+            {link.child_items && (
+              <ul className="subnav">
+                {link?.child_items?.map((childItem, childIndex) => {
+                  return (
+                    <li key={childIndex} className="subnav-link">
+                      {childItem.object == "general_pages" ? (
+                        <ActiveLink
+                          activeClassName="navlink--active"
+                          href={`/[slug]}`}
+                          as={`/${childItem.slug}`}
+                        >
+                          <a
+                            className="card-text pb-5"
+                            dangerouslySetInnerHTML={{
+                              __html: childItem.title,
+                            }}
+                          ></a>
+                        </ActiveLink>
+                      ) : (
+                        <ActiveLink
+                          activeClassName="navlink--active"
+                          href={`/${childItem.slug}`}
+                          as={`/${childItem.slug}`}
+                        >
+                          <a
+                            className="card-text pb-5"
+                            dangerouslySetInnerHTML={{
+                              __html: childItem.title,
+                            }}
+                          ></a>
+                        </ActiveLink>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </li>
         );
       })}
     </FooterMenuContainer>

@@ -247,21 +247,23 @@ export default function HeaderMenu() {
       )}
 
       <h3>Connect Menu</h3>
-      <ul>
-        {connectLinks?.items?.map((connectLink, index) => {
-          return (
-            <li key={index}>
-              <ActiveLink
-                activeClassName="navlink--active"
-                href={`/${connectLink.slug}`}
-                to={`/${connectLink.slug}`}
-              >
-                <a>{connectLink.title}</a>
-              </ActiveLink>
-            </li>
-          );
-        })}
-      </ul>
+      <nav>
+        <ul>
+          {connectLinks?.items?.map((connectLink, index) => {
+            return (
+              <li key={index}>
+                <ActiveLink
+                  activeClassName="navlink--active"
+                  href={`/${connectLink.slug}`}
+                  to={`/${connectLink.slug}`}
+                >
+                  <a>{connectLink.title}</a>
+                </ActiveLink>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
     </MenuContainer>
   );
 }

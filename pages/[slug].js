@@ -1,20 +1,20 @@
 import Link from "next/link";
-import { getGeneralPage, getGeneralPages, getSlugs } from "../utils/wordpress";
+import { getGeneralPage, getSlugs } from "../utils/wordpress";
+import PageWrapper from "../components/Global/PageWrapper";
 
 export default function GeneralPage({ genpage }) {
-  console.log("genpage: ", genpage);
   return (
-    <div className="container pt-5">
-      <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
-      <div
+    <PageWrapper className="container pt-5">
+      {/* <h1 className="text-center pb-5">{genpage.title.rendered}</h1> */}
+      {/* <div
         className="card-text pb-5"
         dangerouslySetInnerHTML={{ __html: genpage.content.rendered }}
-      ></div>
+      ></div> */}
       <p>{genpage.acf.text_block && genpage.acf.text_block}</p>
       <Link href="/">
         <a className="btn btn-primary">Back to Home</a>
       </Link>
-    </div>
+    </PageWrapper>
   );
 }
 

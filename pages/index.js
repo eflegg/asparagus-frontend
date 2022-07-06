@@ -12,21 +12,8 @@ export default function Home({ categories }) {
       <PageWrapper pageTitle="">
         <main>
           <h2>I am the Home Page</h2>
-          {/* <ul>
-            {categories.map((category, index) => {
-              return (
-                <Link
-                  key={index}
-                  href={"/categories/[slug]"}
-                  as={`/categories/${category.slug}`}
-                >
-                  <a>
-                    <li>{category.name}</li>
-                  </a>
-                </Link>
-              );
-            })}
-          </ul> */}
+          {/* use a case switch statement to render different category sections
+        have option 1, 2, 3 in acf */}
         </main>
       </PageWrapper>
     </>
