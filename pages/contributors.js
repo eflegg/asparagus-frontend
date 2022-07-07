@@ -5,7 +5,7 @@ import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
 import theme from "./Theme";
 
-export default function Topics({ contributors }) {
+export default function Contributors({ contributors }) {
   console.log("contributors: ", contributors);
   return (
     <PageWrapper className="">
