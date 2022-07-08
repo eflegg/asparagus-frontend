@@ -4,6 +4,7 @@ import { getCategory, getSlugs } from "../../utils/wordpress";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
+import AwardWinnerCard from "../../components/AwardWinnerCard";
 import PageWrapper from "../../components/Global/PageWrapper";
 
 export default function CategoryPage({ category, posts }) {
@@ -17,20 +18,35 @@ export default function CategoryPage({ category, posts }) {
         className="text-center"
         dangerouslySetInnerHTML={{ __html: category.name }}
       ></h1>
-
-      <ul>
-        {posts.map((post, index) => {
-          return (
-            <li key={index}>
-              <ArticleCard
-                ref={ref}
-                title={post.title.rendered}
-                slug={post.slug}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      {category.slug == "awards" ? (
+        <ul>
+          {posts.map((post, index) => {
+            return (
+              <li key={index}>
+                <AwardWinnerCard
+                  ref={ref}
+                  title={post.title.rendered}
+                  slug={post.slug}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <ul>
+          {posts.map((post, index) => {
+            return (
+              <li key={index}>
+                <ArticleCard
+                  ref={ref}
+                  title={post.title.rendered}
+                  slug={post.slug}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      )}
       <Link href="/">
         <a className="btn btn-primary">Back to Home</a>
       </Link>
