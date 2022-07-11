@@ -3,13 +3,13 @@ import Link from "next/link";
 import { getContributors } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
-import theme from "./Theme";
+import theme from "../components/Global/Theme";
 
 export default function Contributors({ contributors }) {
   console.log("contributors: ", contributors);
   return (
     <PageWrapper className="">
-      <h1>List of Posts</h1>
+      <h1>List of Contributors</h1>
       <ul>
         {contributors.map((contributor, index) => {
           return (

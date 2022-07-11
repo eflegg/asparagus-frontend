@@ -35,7 +35,7 @@ export default function ContributorPage({ contributor, posts }) {
       <div className="bio">
         <p>{contributor.acf.bio}</p>
       </div>
-      <ul>
+      <ul className="articles--inner">
         {posts.map((post, index) => {
           return (
             <>

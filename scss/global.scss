@@ -47,6 +47,20 @@ $xl: 1800px;
   }
 }
 
+//used everwhere a group of article cards is displayed
+.articles--inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-row-gap: 30px;
+  grid-column-gap: 20px;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  list-style: none;
+}
+
+/***  Type  ***/
+
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap");
 
 @mixin font-size($sizeValue: 1.6) {

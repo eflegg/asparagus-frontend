@@ -6,6 +6,10 @@ import PageWrapper from "../components/Global/PageWrapper";
 import Link from "next/link";
 import ArticleCard from "../components/ArticleCard";
 import AwardWinnerCard from "../components/AwardWinnerCard";
+import styled from "styled-components";
+import theme from "../components/Global/Theme";
+
+const CategoryContainer = styled.section``;
 
 export default function Home({
   page,
@@ -24,78 +28,84 @@ export default function Home({
       {" "}
       <PageWrapper pageTitle="Asparagus Magazine - Home">
         <main>
-          <div className="cat-one--container">
+          <CategoryContainer className="cat-one--container">
             <h2>{page.acf.home_category_one[0].name}</h2>
-            {catOnePosts.map((catOnePost, index) => {
-              return (
-                <>
-                  {page.acf.home_category_one[0].name == "Awards" ? (
-                    <AwardWinnerCard
-                      key={index}
-                      ref={ref}
-                      slug={catOnePost.slug}
-                      title={catOnePost.title.rendered}
-                    />
-                  ) : (
-                    <ArticleCard
-                      key={index}
-                      ref={ref}
-                      slug={catOnePost.slug}
-                      title={catOnePost.title.rendered}
-                    />
-                  )}
-                </>
-              );
-            })}
-          </div>
-          <div className="cat-two--container">
+            <div className="articles--inner">
+              {catOnePosts.map((catOnePost, index) => {
+                return (
+                  <>
+                    {page.acf.home_category_one[0].name == "Awards" ? (
+                      <AwardWinnerCard
+                        key={index}
+                        ref={ref}
+                        slug={catOnePost.slug}
+                        title={catOnePost.title.rendered}
+                      />
+                    ) : (
+                      <ArticleCard
+                        key={index}
+                        ref={ref}
+                        slug={catOnePost.slug}
+                        title={catOnePost.title.rendered}
+                      />
+                    )}
+                  </>
+                );
+              })}
+            </div>
+          </CategoryContainer>
+          <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
-            {catTwoPosts.map((catTwoPost, index) => {
-              return (
-                <>
-                  {page.acf.home_category_two[0].name == "Awards" ? (
-                    <AwardWinnerCard
-                      key={index}
-                      ref={ref}
-                      slug={catTwoPost.slug}
-                      title={catTwoPost.title.rendered}
-                    />
-                  ) : (
-                    <ArticleCard
-                      key={index}
-                      ref={ref}
-                      slug={catTwoPost.slug}
-                      title={catTwoPost.title.rendered}
-                    />
-                  )}
-                </>
-              );
-            })}
-          </div>
-          <div className="cat-three--container">
+            <div className="articles--inner">
+              {catTwoPosts.map((catTwoPost, index) => {
+                return (
+                  <>
+                    {page.acf.home_category_two[0].name == "Awards" ? (
+                      <AwardWinnerCard
+                        key={index}
+                        ref={ref}
+                        slug={catTwoPost.slug}
+                        title={catTwoPost.title.rendered}
+                      />
+                    ) : (
+                      <ArticleCard
+                        key={index}
+                        ref={ref}
+                        slug={catTwoPost.slug}
+                        title={catTwoPost.title.rendered}
+                      />
+                    )}
+                  </>
+                );
+              })}
+            </div>
+          </CategoryContainer>
+          <CategoryContainer className="cat-three--container">
             <h2>{page.acf.home_category_three[0].name}</h2>
-            {catThreePosts.map((catThreePost, index) => {
-              return (
-                <>
-                  {page.acf.home_category_three[0].name == "Awards" ? (
-                    <AwardWinnerCard
-                      key={index}
-                      ref={ref}
-                      slug={catThreePost.slug}
-                      title={catThreePost.title.rendered}
-                    />
-                  ) : (
-                    <ArticleCard
-                      key={index}
-                      ref={ref}
-                      slug={catThreePost.slug}
-                      title={catThreePost.title.rendered}
-                    />
-                  )}
-                </>
-              );
-            })}
-          </div>
+            <div className="articles--inner">
+              {catThreePosts.map((catThreePost, index) => {
+                return (
+                  <>
+                    {page.acf.home_category_three[0].name == "Awards" ? (
+                      <AwardWinnerCard
+                        key={index}
+                        ref={ref}
+                        slug={catThreePost.slug}
+                        title={catThreePost.title.rendered}
+                      />
+                    ) : (
+                      <ArticleCard
+                        key={index}
+                        ref={ref}
+                        slug={catThreePost.slug}
+                        title={catThreePost.title.rendered}
+                      />
+                    )}
+                  </>
+                );
+              })}
+            </div>
+          </CategoryContainer>
         </main>
       </PageWrapper>
     </>
@@ -112,21 +122,21 @@ export async function getStaticProps() {
   //cat one
   const categoryOne = page.acf.home_category_one[0].term_id;
   const postQueryOne = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryOne}`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryOne}&per_page=6`
   );
   const catOnePosts = await postQueryOne.json();
 
   //cat two
   const categoryTwo = page.acf.home_category_two[0].term_id;
   const postQueryTwo = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryTwo}`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryTwo}&per_page=6`
   );
   const catTwoPosts = await postQueryTwo.json();
 
   //cat three
   const categoryThree = page.acf.home_category_three[0].term_id;
   const postQueryThree = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryThree}`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryThree}&per_page=6`
   );
   const catThreePosts = await postQueryThree.json();
 
