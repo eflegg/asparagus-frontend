@@ -8,6 +8,8 @@ import theme from "./Theme";
 import Link from "next/link";
 
 const MenuContainer = styled.div`
+  .subnav {
+  }
   .nav-link {
     font-size: 2.4rem;
     margin: 10px;

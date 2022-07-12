@@ -7,15 +7,7 @@ import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import theme from "../../components/Global/Theme";
 import ArticleCard from "../../components/ArticleCard";
-
-const ContribImage = styled.div`
-  position: relative;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 2px solid slateblue;
-  overflow: hidden;
-`;
+import { ContribImage } from "../../components/Global/styles";
 
 export default function ContributorPage({ contributor, posts }) {
   console.log("contributor id: ", contributor.id);
