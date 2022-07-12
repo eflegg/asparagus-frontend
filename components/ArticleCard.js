@@ -5,11 +5,10 @@ const Card = styled.div`
   border: 2px solid ${theme.colours.grey};
 `;
 
-export default function ArticleCard({ title, slug, ref }) {
-  console.log("article card slug: ");
+export default function ArticleCard({ title, slug }) {
   return (
     <Card>
-      <Link ref={ref} href={"/articles/[slug]"} as={`/articles/${slug}`}>
+      <Link href={"/articles/[slug]"} as={`/articles/${slug}`}>
         <a>
           <h3
             className="card-text pb-5"

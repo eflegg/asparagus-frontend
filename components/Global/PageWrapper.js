@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const OuterContainer = styled.main`
   width: 100%;
-  border: 3px solid mediumseagreen;
 `;
 
 export default function PageWrapper({ children, pageTitle }) {

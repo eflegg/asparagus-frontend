@@ -16,7 +16,7 @@ const Card = styled.li`
   }
 `;
 
-export default function ContributorCard({ name, slug, ref, bio, image }) {
+export default function ContributorCard({ name, slug, bio, image }) {
   console.log("contribu card slug: ");
   return (
     <Card>
@@ -28,11 +28,7 @@ export default function ContributorCard({ name, slug, ref, bio, image }) {
           alt="Contributor photo"
         />
       </ContribImage>
-      <Link
-        ref={ref}
-        href={"/contributors/[slug]"}
-        as={`/contributors/${slug}`}
-      >
+      <Link href={"/contributors/[slug]"} as={`/contributors/${slug}`}>
         <a>
           <div>
             <h3

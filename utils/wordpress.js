@@ -33,7 +33,7 @@ export async function getEvent(slug) {
 /// Categories ///
 
 export async function getCategories() {
-  const categoriesRes = await fetch(BASE_URL + "/categories?_embed");
+  const categoriesRes = await fetch(BASE_URL + "/categories?per_page=100");
   const categories = await categoriesRes.json();
   return categories;
 }

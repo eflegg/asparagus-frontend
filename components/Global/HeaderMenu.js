@@ -150,7 +150,7 @@ export default function HeaderMenu() {
                 <>
                   <li
                     className="nav-link"
-                    key={index}
+                    key={link.ID}
                     onClick={() => handleSubnavClick(link.ID)}
                   >
                     <span
@@ -160,7 +160,7 @@ export default function HeaderMenu() {
                       <ul className="subnav">
                         {link?.child_items?.map((childItem, childIndex) => {
                           return (
-                            <li key={childIndex} className="subnav-link">
+                            <li key={childItem.ID} className="subnav-link">
                               <ActiveLink
                                 activeClassName="navlink--active"
                                 href={"/categories/[slug]"}
@@ -211,7 +211,7 @@ export default function HeaderMenu() {
                   <>
                     <li
                       className="nav-link"
-                      key={index}
+                      key={link.ID}
                       onClick={() => handleSubnavClick(link.ID)}
                     >
                       <span
@@ -221,7 +221,7 @@ export default function HeaderMenu() {
                         <ul className="subnav">
                           {link?.child_items?.map((childItem, childIndex) => {
                             return (
-                              <li key={childIndex} className="subnav-link">
+                              <li key={childItem.id} className="subnav-link">
                                 <ActiveLink
                                   activeClassName="navlink--active"
                                   href={"/categories/[slug]"}
@@ -249,23 +249,23 @@ export default function HeaderMenu() {
       )}
 
       <h3>Connect Menu</h3>
-      <nav>
-        <ul>
-          {connectLinks?.items?.map((connectLink, index) => {
-            return (
-              <li key={index}>
-                <ActiveLink
-                  activeClassName="navlink--active"
-                  href={`/${connectLink.slug}`}
-                  to={`/${connectLink.slug}`}
-                >
-                  <a>{connectLink.title}</a>
-                </ActiveLink>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      {/* <nav> */}
+      <ul>
+        {connectLinks?.items?.map((connectLink, index) => {
+          return (
+            <li key={connectLink.ID}>
+              <ActiveLink
+                activeClassName="navlink--active"
+                href={`/${connectLink.slug}`}
+                to={`/${connectLink.slug}`}
+              >
+                <a>{connectLink.title}</a>
+              </ActiveLink>
+            </li>
+          );
+        })}
+      </ul>
+      {/* </nav> */}
     </MenuContainer>
   );
 }

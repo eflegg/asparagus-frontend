@@ -21,11 +21,10 @@ export default function Home({
   console.log("cat two posts: ", catTwoPosts);
   console.log("cat three posts: ", catThreePosts);
 
-  const ref = React.forwardRef();
+  // const ref = React.forwardRef(null);
 
   return (
     <>
-      {" "}
       <PageWrapper pageTitle="Asparagus Magazine - Home">
         <main>
           <CategoryContainer className="cat-one--container">
@@ -35,19 +34,21 @@ export default function Home({
                 return (
                   <>
                     {page.acf.home_category_one[0].name == "Awards" ? (
-                      <AwardWinnerCard
-                        key={index}
-                        ref={ref}
-                        slug={catOnePost.slug}
-                        title={catOnePost.title.rendered}
-                      />
+                      <React.Fragment key={index}>
+                        <AwardWinnerCard
+                          // ref={ref}
+                          slug={catOnePost.slug}
+                          title={catOnePost.title.rendered}
+                        />
+                      </React.Fragment>
                     ) : (
-                      <ArticleCard
-                        key={index}
-                        ref={ref}
-                        slug={catOnePost.slug}
-                        title={catOnePost.title.rendered}
-                      />
+                      <React.Fragment key={index}>
+                        <ArticleCard
+                          // ref={ref}
+                          slug={catOnePost.slug}
+                          title={catOnePost.title.rendered}
+                        />
+                      </React.Fragment>
                     )}
                   </>
                 );
@@ -61,19 +62,21 @@ export default function Home({
                 return (
                   <>
                     {page.acf.home_category_two[0].name == "Awards" ? (
-                      <AwardWinnerCard
-                        key={index}
-                        ref={ref}
-                        slug={catTwoPost.slug}
-                        title={catTwoPost.title.rendered}
-                      />
+                      <React.Fragment key={index}>
+                        <AwardWinnerCard
+                          // ref={ref}
+                          slug={catTwoPost.slug}
+                          title={catTwoPost.title.rendered}
+                        />
+                      </React.Fragment>
                     ) : (
-                      <ArticleCard
-                        key={index}
-                        ref={ref}
-                        slug={catTwoPost.slug}
-                        title={catTwoPost.title.rendered}
-                      />
+                      <React.Fragment key={index}>
+                        <ArticleCard
+                          // ref={ref}
+                          slug={catTwoPost.slug}
+                          title={catTwoPost.title.rendered}
+                        />
+                      </React.Fragment>
                     )}
                   </>
                 );
@@ -87,19 +90,21 @@ export default function Home({
                 return (
                   <>
                     {page.acf.home_category_three[0].name == "Awards" ? (
-                      <AwardWinnerCard
-                        key={index}
-                        ref={ref}
-                        slug={catThreePost.slug}
-                        title={catThreePost.title.rendered}
-                      />
+                      <React.Fragment key={index}>
+                        <AwardWinnerCard
+                          // ref={ref}
+                          slug={catThreePost.slug}
+                          title={catThreePost.title.rendered}
+                        />
+                      </React.Fragment>
                     ) : (
-                      <ArticleCard
-                        key={index}
-                        ref={ref}
-                        slug={catThreePost.slug}
-                        title={catThreePost.title.rendered}
-                      />
+                      <React.Fragment key={index}>
+                        <ArticleCard
+                          // ref={ref}
+                          slug={catThreePost.slug}
+                          title={catThreePost.title.rendered}
+                        />
+                      </React.Fragment>
                     )}
                   </>
                 );

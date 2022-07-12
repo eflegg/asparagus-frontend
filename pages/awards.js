@@ -11,7 +11,7 @@ import PageWrapper from "../components/Global/PageWrapper";
 export default function Awards({ posts }) {
   console.log("posts: ", posts);
   console.log("award winner? ", posts[0].acf.award_winner);
-  const ref = React.forwardRef();
+  // const ref = React.forwardRef(null);
   return (
     <PageWrapper pageTitle="Awards" className="container pt-5">
       <h3>Award Winners</h3>
@@ -21,7 +21,7 @@ export default function Awards({ posts }) {
             <>
               {post.acf.award_winner == "Yes" ? (
                 <AwardWinnerCard
-                  ref={ref}
+                  // ref={ref}
                   title={post.title.rendered}
                   slug={post.slug}
                 />
@@ -37,7 +37,7 @@ export default function Awards({ posts }) {
             <>
               {post.acf.award_nominee == "Yes" ? (
                 <AwardWinnerCard
-                  ref={ref}
+                  // ref={ref}
                   title={post.title.rendered}
                   slug={post.slug}
                 />

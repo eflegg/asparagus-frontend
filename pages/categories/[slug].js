@@ -11,7 +11,7 @@ export default function CategoryPage({ category, posts }) {
   console.log("posts: ", posts);
   console.log("category: ", category);
 
-  const ref = React.forwardRef();
+  // const ref = React.forwardRef(null);
   return (
     <PageWrapper pageTitle={category.name} className="container pt-5">
       <h1
@@ -24,7 +24,7 @@ export default function CategoryPage({ category, posts }) {
             return (
               <li key={index}>
                 <AwardWinnerCard
-                  ref={ref}
+                  // ref={ref}
                   title={post.title.rendered}
                   slug={post.slug}
                 />
@@ -33,12 +33,12 @@ export default function CategoryPage({ category, posts }) {
           })}
         </ul>
       ) : (
-        <ul>
+        <ul className="articles--inner">
           {posts.map((post, index) => {
             return (
               <li key={index}>
                 <ArticleCard
-                  ref={ref}
+                  // refprop={ref}
                   title={post.title.rendered}
                   slug={post.slug}
                 />
@@ -71,7 +71,7 @@ export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
   const categoryPosts = await fetch(
     // `${Config.apiUrl}/wp-json/wp/v2/articles?categories=11`
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${category.id}`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${category?.id}`
   );
   const posts = await categoryPosts.json();
 

@@ -12,7 +12,7 @@ import { ContribImage } from "../../components/Global/styles";
 export default function ContributorPage({ contributor, posts }) {
   console.log("contributor id: ", contributor.id);
   console.log("posts: ", posts);
-  const ref = React.forwardRef();
+  // const ref = React.forwardRef(null);
   return (
     <div className="container pt-5">
       <h1 className="text-center pb-5">{contributor.title.rendered}</h1>
@@ -33,7 +33,8 @@ export default function ContributorPage({ contributor, posts }) {
             <>
               {post.acf.writer || post.acf.photographer == contributor.id ? (
                 <ArticleCard
-                  ref={ref}
+                  key={index}
+                  refprop={ref}
                   title={post.title.rendered}
                   slug={post.slug}
                 />

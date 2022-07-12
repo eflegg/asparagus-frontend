@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { getContributors } from "../utils/wordpress";
+import { getContributors, getCategories } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
@@ -17,9 +17,11 @@ const ContribContainer = styled.ul`
   list-style: none;
 `;
 
-export default function Contributors({ contributors }) {
+export default function Contributors({ contributors, categories }) {
   console.log("contributors: ", contributors);
-  const ref = React.forwardRef();
+  console.log("categories: ", categories);
+
+  // const ref = React.forwardRef(null);
   return (
     <PageWrapper className="">
       <h1>List of Contributors</h1>
@@ -32,7 +34,7 @@ export default function Contributors({ contributors }) {
               slug={contributor.slug}
               name={contributor.title.rendered}
               bio={contributor.acf.bio}
-              ref={ref}
+              // ref={ref}
             />
           );
         })}
@@ -43,10 +45,12 @@ export default function Contributors({ contributors }) {
 
 export async function getStaticProps({ params }) {
   const contributors = await getContributors();
+  const categories = await getCategories();
 
   return {
     props: {
       contributors,
+      categories,
     },
     revalidate: 10, // In seconds
   };
