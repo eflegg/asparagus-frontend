@@ -16,7 +16,7 @@ const Card = styled.li`
   }
 `;
 
-export default function ContributorCard({ name, slug, bio, image }) {
+export default function ContributorCard({ name, slug, bio, image, title }) {
   console.log("contribu card slug: ");
   return (
     <Card>
@@ -31,10 +31,11 @@ export default function ContributorCard({ name, slug, bio, image }) {
       <Link href={"/contributors/[slug]"} as={`/contributors/${slug}`}>
         <a>
           <div>
-            <h3
-              className="card-text pb-5"
-              dangerouslySetInnerHTML={{ __html: name }}
-            ></h3>
+            <h3>
+              {name}
+              {title ? <span>- {title}</span> : null}
+            </h3>
+
             <p>{bio}</p>
           </div>
           <button className="btn">Contributor Profile</button>

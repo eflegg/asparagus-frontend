@@ -9,7 +9,7 @@ import theme from "../components/Global/Theme";
 export default function PastIssues({ issues }) {
   console.log("issues: ", issues);
 
-  const currentIssue = issues[0].acf.issue_date;
+  const currentIssue = issues[0].title.rendered;
 
   return (
     <PageWrapper pageTitle="Past Issues" className="">
@@ -17,7 +17,7 @@ export default function PastIssues({ issues }) {
         {issues.map((issue, index) => {
           return (
             <React.Fragment key={index}>
-              {issue.acf.issue_date != currentIssue ? (
+              {issue.title.rendered != currentIssue ? (
                 <>
                   <IssueCard
                     title={issue.title.rendered}

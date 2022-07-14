@@ -34,7 +34,6 @@ export default function ContributorPage({ contributor, posts }) {
               {post.acf.writer || post.acf.photographer == contributor.id ? (
                 <ArticleCard
                   key={index}
-                  refprop={ref}
                   title={post.title.rendered}
                   slug={post.slug}
                 />
