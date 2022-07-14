@@ -32,6 +32,8 @@ export default function CategoryPage({ category, posts }) {
             );
           })}
         </ul>
+      ) : category.slug == "past-issues" ? (
+        <h2>past issues cards that link through to single issue.</h2>
       ) : (
         <ul className="articles--inner">
           {posts.map((post, index) => {

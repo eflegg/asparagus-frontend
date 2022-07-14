@@ -161,18 +161,33 @@ export default function HeaderMenu() {
                         {link?.child_items?.map((childItem, childIndex) => {
                           return (
                             <li key={childItem.ID} className="subnav-link">
-                              <ActiveLink
-                                activeClassName="navlink--active"
-                                href={"/categories/[slug]"}
-                                as={`/categories/${childItem.slug}`}
-                              >
-                                <a
-                                  className="card-text pb-5"
-                                  dangerouslySetInnerHTML={{
-                                    __html: childItem.title,
-                                  }}
-                                ></a>
-                              </ActiveLink>
+                              {childItem.object == "page" ? (
+                                <ActiveLink
+                                  activeClassName="navlink--active"
+                                  href={`/${childItem.slug}`}
+                                  as={`/${childItem.slug}`}
+                                >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  ></a>
+                                </ActiveLink>
+                              ) : (
+                                <ActiveLink
+                                  activeClassName="navlink--active"
+                                  href={"/categories/[slug]"}
+                                  as={`/categories/${childItem.slug}`}
+                                >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  ></a>
+                                </ActiveLink>
+                              )}
                             </li>
                           );
                         })}

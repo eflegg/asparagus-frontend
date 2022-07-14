@@ -115,7 +115,35 @@ export async function getTip(slug) {
   return tip;
 }
 
+/// Team ///
+
+export async function getTeamMembers() {
+  const membersRes = await fetch(BASE_URL + "/team_members?_embed");
+  const members = await membersRes.json();
+  return members;
+}
+
+export async function getTeamMember(slug) {
+  const members = await getContributors();
+  const membersArray = members.filter((member) => member.slug == slug);
+  const member = membersArray.length > 0 ? membersArray[0] : null;
+  return member;
+}
+
 /// Issues ///
+
+export async function getIssues() {
+  const issuesRes = await fetch(BASE_URL + "/issues?_embed");
+  const issues = await issuesRes.json();
+  return issues;
+}
+
+export async function getIssue(slug) {
+  const issues = await getContributors();
+  const issuesArray = issues.filter((issue) => issue.slug == slug);
+  const issue = issuesArray.length > 0 ? issuesArray[0] : null;
+  return issue;
+}
 
 export async function getSlugs(type) {
   let elements = [];
@@ -143,6 +171,13 @@ export async function getSlugs(type) {
       break;
     case "general_pages":
       elements = await getGeneralPages();
+      break;
+    case "team-members":
+      elements = await getTeamMembers();
+      break;
+    case "issues":
+      elements = await getIssues();
+      break;
   }
   const elementsIds = elements.map((element) => {
     return {
