@@ -35,7 +35,7 @@ export default function CategoryPage({ category, posts }) {
       ) : category.slug == "past-issues" ? (
         <h2>past issues cards that link through to single issue.</h2>
       ) : (
-        <ul className="articles--inner">
+        <ul className="card--grid">
           {posts.map((post, index) => {
             return (
               <li key={index}>

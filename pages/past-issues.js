@@ -1,19 +1,33 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { getCategories } from "../utils/wordpress";
+import { getIssues } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
+import IssueCard from "../components/IssueCard";
+import styled from "styled-components";
+import theme from "../components/Global/Theme";
 
-export default function PastIssues({ categories }) {
-  console.log("cats: ", categories);
+export default function PastIssues({ issues }) {
+  console.log("issues: ", issues);
+
+  const currentIssue = issues[0].acf.issue_date;
 
   return (
-    <PageWrapper pageTitle="Events" className="">
-      <ul>
-        {categories.map((category, index) => {
+    <PageWrapper pageTitle="Past Issues" className="">
+      <ul className="card--grid">
+        {issues.map((issue, index) => {
           return (
-            <>
-              <p>{category.title}</p>
-            </>
+            <React.Fragment key={index}>
+              {issue.acf.issue_date != currentIssue ? (
+                <>
+                  <IssueCard
+                    title={issue.title.rendered}
+                    slug={issue.slug}
+                    image={issue._embedded["wp:featuredmedia"]["0"].source_url}
+                    coverLine={issue.acf.primary_cover_line}
+                  />
+                </>
+              ) : null}
+            </React.Fragment>
           );
         })}
       </ul>
@@ -22,11 +36,11 @@ export default function PastIssues({ categories }) {
 }
 
 export async function getStaticProps({ params }) {
-  const categories = await getCategories();
+  const issues = await getIssues();
 
   return {
     props: {
-      categories,
+      issues,
     },
     revalidate: 10, // In seconds
   };

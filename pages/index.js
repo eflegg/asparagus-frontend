@@ -29,7 +29,7 @@ export default function Home({
         <main>
           <CategoryContainer className="cat-one--container">
             <h2>{page.acf.home_category_one[0].name}</h2>
-            <div className="articles--inner">
+            <div className="card--grid">
               {catOnePosts.map((catOnePost, index) => {
                 return (
                   <>
@@ -57,7 +57,7 @@ export default function Home({
           </CategoryContainer>
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
-            <div className="articles--inner">
+            <div className="card--grid">
               {catTwoPosts.map((catTwoPost, index) => {
                 return (
                   <>
@@ -85,7 +85,7 @@ export default function Home({
           </CategoryContainer>
           <CategoryContainer className="cat-three--container">
             <h2>{page.acf.home_category_three[0].name}</h2>
-            <div className="articles--inner">
+            <div className="card--grid">
               {catThreePosts.map((catThreePost, index) => {
                 return (
                   <>
