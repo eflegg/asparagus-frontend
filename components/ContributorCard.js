@@ -16,11 +16,18 @@ const Card = styled.li`
   }
 `;
 
-export default function ContributorCard({ name, slug, bio, image, title }) {
-  console.log("contribu card slug: ");
+export default function ContributorCard({
+  name,
+  slug,
+  bio,
+  image,
+  title,
+  team,
+}) {
+  console.log("contrib card slug: ");
   return (
     <Card>
-      <ContribImage>
+      <ContribImage team={team}>
         <Image
           src={image}
           layout="fill"
@@ -28,19 +35,35 @@ export default function ContributorCard({ name, slug, bio, image, title }) {
           alt="Contributor photo"
         />
       </ContribImage>
-      <Link href={"/contributors/[slug]"} as={`/contributors/${slug}`}>
-        <a>
-          <div>
-            <h3>
-              {name}
-              {title ? <span>- {title}</span> : null}
-            </h3>
+      {team ? (
+        <Link href={"/team/[slug]"} as={`/team/${slug}`}>
+          <a>
+            <div>
+              <h3>
+                {name}
+                {title ? <span>- {title}</span> : null}
+              </h3>
 
-            <p>{bio}</p>
-          </div>
-          <button className="btn">Contributor Profile</button>
-        </a>
-      </Link>
+              <p>{bio}</p>
+            </div>
+            <button className="btn">Contributor Profile</button>
+          </a>
+        </Link>
+      ) : (
+        <Link href={"/contributors/[slug]"} as={`/contributors/${slug}`}>
+          <a>
+            <div>
+              <h3>
+                {name}
+                {title ? <span>- {title}</span> : null}
+              </h3>
+
+              <p>{bio}</p>
+            </div>
+            <button className="btn">Contributor Profile</button>
+          </a>
+        </Link>
+      )}
     </Card>
   );
 }

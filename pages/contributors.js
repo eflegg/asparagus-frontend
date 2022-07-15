@@ -17,9 +17,8 @@ const ContribContainer = styled.ul`
   list-style: none;
 `;
 
-export default function Contributors({ contributors, categories }) {
+export default function ContributorsPage({ contributors, categories }) {
   console.log("contributors: ", contributors);
-  console.log("categories: ", categories);
 
   // const ref = React.forwardRef(null);
   return (

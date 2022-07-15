@@ -3,56 +3,53 @@ import theme from "../../components/Global/Theme";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getContributor, getSlugs } from "../../utils/wordpress";
+import { getTeamMember, getSlugs } from "../../utils/wordpress";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
 import { ContribImage } from "../../components/Global/styles";
 
-export default function ContributorPage({ contributor, posts }) {
-  console.log("contributor id: ", contributor.id);
+export default function TeamPage({ teamMember, posts }) {
+  console.log("teamMember id: ", teamMember.id);
   console.log("posts: ", posts);
   // const ref = React.forwardRef(null);
   return (
     <div className="container pt-5">
-      <h1 className="text-center pb-5">{contributor.title.rendered}</h1>
-      <ContribImage className="contrib--image">
+      <h1>i am a single team member page</h1>
+      <h1 className="text-center pb-5">{teamMember.title.rendered}</h1>
+      <ContribImage team={true} className="contrib--image">
         <Image
-          src={contributor._embedded["wp:featuredmedia"]["0"].source_url}
+          src={teamMember._embedded["wp:featuredmedia"]["0"].source_url}
           layout="fill"
           objectFit="cover"
-          alt="Contributor photo"
+          alt="teamMember photo"
         />
       </ContribImage>
-      <p>{contributor.id}</p>
+      <p>{teamMember.id}</p>
       <div className="bio">
-        <p>{contributor.acf.bio}</p>
+        <p>{teamMember.acf.bio}</p>
       </div>
       <ul className="card--grid">
         {posts.map((post, index) => {
           return (
             <>
-              {post.acf.photographer == contributor.id ? (
-                <>
-                  <ArticleCard
-                    key={index}
-                    title={post.title.rendered}
-                    slug={post.slug}
-                    writer={post.acf.writer}
-                    photographer={post.acf.photographer}
-                  />
-                </>
-              ) : null}{" "}
-              {post.acf.writer == contributor.id ? (
-                <>
-                  <ArticleCard
-                    key={index}
-                    title={post.title.rendered}
-                    slug={post.slug}
-                    writer={post.acf.writer}
-                    photographer={post.acf.photographer}
-                  />
-                </>
+              {post.acf.photographer == teamMember.id ? (
+                <ArticleCard
+                  key={index}
+                  title={post.title.rendered}
+                  slug={post.slug}
+                  writer={post.acf.writer}
+                  photographer={post.acf.photographer}
+                />
+              ) : null}
+              {post.acf.writer == teamMember.id ? (
+                <ArticleCard
+                  key={index}
+                  title={post.title.rendered}
+                  slug={post.slug}
+                  writer={post.acf.writer}
+                  photographer={post.acf.photographer}
+                />
               ) : null}
             </>
           );
@@ -68,7 +65,7 @@ export default function ContributorPage({ contributor, posts }) {
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths() {
-  const paths = await getSlugs("contributors");
+  const paths = await getSlugs("team_members");
 
   return {
     paths,
@@ -81,18 +78,18 @@ export async function getStaticPaths() {
 //access the router, get the id, and get the medatada for that post
 
 export async function getStaticProps({ params }) {
-  const contributor = await getContributor(params.slug);
-  const contributorPosts = await fetch(
+  const teamMember = await getTeamMember(params.slug);
+  const teamMemberPosts = await fetch(
     // `${Config.apiUrl}/wp-json/wp/v2/articles?writer=${contributor.id}`
     // @erin this should work, come back to it
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
   );
 
-  const posts = await contributorPosts.json();
+  const posts = await teamMemberPosts.json();
 
   return {
     props: {
-      contributor,
+      teamMember,
       posts,
     },
     revalidate: 10, // In seconds

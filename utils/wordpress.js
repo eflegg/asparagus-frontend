@@ -127,7 +127,7 @@ export async function getTeamMembers() {
 }
 
 export async function getTeamMember(slug) {
-  const members = await getContributors();
+  const members = await getTeamMembers();
   const membersArray = members.filter((member) => member.slug == slug);
   const member = membersArray.length > 0 ? membersArray[0] : null;
   return member;
@@ -142,7 +142,7 @@ export async function getIssues() {
 }
 
 export async function getIssue(slug) {
-  const issues = await getContributors();
+  const issues = await getIssues();
   const issuesArray = issues.filter((issue) => issue.slug == slug);
   const issue = issuesArray.length > 0 ? issuesArray[0] : null;
   return issue;
@@ -175,7 +175,7 @@ export async function getSlugs(type) {
     case "general_pages":
       elements = await getGeneralPages();
       break;
-    case "team-members":
+    case "team_members":
       elements = await getTeamMembers();
       break;
     case "issues":

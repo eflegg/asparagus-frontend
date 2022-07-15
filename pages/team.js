@@ -1,17 +1,14 @@
 import Head from "next/head";
+import theme from "../components/Global/Theme";
 import PageWrapper from "../components/Global/PageWrapper";
-import { Config } from "../config";
-import fetch from "isomorphic-fetch";
-import Link from "next/link";
 import { getTeamMembers } from "../utils/wordpress";
-import { ContribImage } from "../components/Global/styles";
 import ContributorCard from "../components/ContributorCard";
 import React from "react";
+import Link from "next/link";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
 
 const TeamMemberContainer = styled.ul`
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 `;
 
@@ -24,12 +21,18 @@ export default function Team({ teamMembers }) {
           return (
             <React.Fragment key={index}>
               <ContributorCard
+                team
                 image={member._embedded["wp:featuredmedia"]["0"].source_url}
                 slug={member.slug}
                 name={member.title.rendered}
                 bio={member.acf.bio}
                 title={member.acf.title}
               />
+              <p>id: {member.id}</p>
+              <p>title: {member.title.rendered}</p>
+              <Link href={"/team/[slug]"} as={`/team/${member.slug}`}>
+                <a> link</a>
+              </Link>
             </React.Fragment>
           );
         })}

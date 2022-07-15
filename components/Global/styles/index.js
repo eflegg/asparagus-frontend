@@ -3,8 +3,8 @@ import theme from "../Theme";
 
 export const ContribImage = styled.div`
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: ${(props) => (props.team ? "200px" : "100px")};
+  height: ${(props) => (props.team ? "200px" : "100px")};
   border-radius: 50%;
   border: 2px solid slateblue;
   overflow: hidden;
