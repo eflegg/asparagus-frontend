@@ -1,4 +1,5 @@
-const BASE_URL = "http://asparagus.local/wp-json/wp/v2";
+// const BASE_URL = "http://asparagus.local/wp-json/wp/v2";
+const BASE_URL = "https://stage.asparagusmagazine.com/wp-json/wp/v2";
 
 /// Posts ///
 
@@ -19,7 +20,9 @@ export async function getPost(slug) {
 
 export async function getEvents() {
   const eventsRes = await fetch(BASE_URL + "/events?_embed");
-  const events = await eventsRes.json();
+  // const events = await eventsRes.json();
+  const events = await eventsRes.text();
+  console.log("events: ", events);
   return events;
 }
 

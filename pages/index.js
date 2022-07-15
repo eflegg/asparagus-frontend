@@ -121,6 +121,8 @@ export async function getStaticProps() {
   //query the home page to get the acf
   const pageQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages/114`);
   const page = await pageQuery.json();
+  // const page = await pageQuery.text();
+  console.log("page: ", page);
 
   //query posts whose categories match the three acf values
 
