@@ -101,18 +101,13 @@ h4 {
   font-family: $headerFont;
   margin: 0;
 }
-p {
-  font-family: $bodyFont;
-  font-weight: 400;
-}
-a {
-  text-decoration: none;
-  font-family: $bodyFont;
-}
+
 p,
-a {
+a,
+li {
   letter-spacing: 0.2rem;
-  font-size: 16px;
+  font-family: $bodyFont;
+  font-size: 18px;
   line-height: 150%;
   color: black;
   font-weight: 400;
@@ -123,6 +118,11 @@ a {
   //   @include font-size(1.8);
   //   line-height: 32px;
   // }
+}
+a {
+  text-decoration: underline;
+  color: $soil;
+  font-weight: 600;
 }
 .paragraph--bold {
   font-weight: 700;
@@ -181,9 +181,19 @@ h4 {
     line-height: 32px;
   }
 }
-
+a {
+  font-family: $bodyFont;
+  font-size: 18px;
+  line-height: 150%;
+  text-decoration: underline;
+  color: $soil;
+  font-weight: 600;
+}
 li {
   list-style: none;
+  font-family: $bodyFont;
+  font-size: 18px;
+  line-height: 150%;
 }
 .navlink--active {
   border: 2px solid orangered;
@@ -194,6 +204,16 @@ button {
     background: $gusGreen;
     transition: all 0.25s ease-in;
   }
+}
+
+.has-text-align-center {
+  text-align: center;
+}
+.has-text-align-right {
+  text-align: right;
+}
+.has-text-align-left {
+  text-align: left;
 }
 
 /***  Utilities  ***/

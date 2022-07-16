@@ -1,15 +1,25 @@
 import Link from "next/link";
 import { getGeneralPage, getSlugs } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
+import styled from "styled-components";
+import theme from "../components/Global/Theme";
+
+const ContentContainer = styled.div`
+  ul {
+    li {
+      list-style: disc;
+    }
+  }
+`;
 
 export default function GeneralPage({ genpage }) {
   return (
     <PageWrapper className="container pt-5">
-      {/* <h1 className="text-center pb-5">{genpage.title.rendered}</h1> */}
-      {/* <div
-        className="card-text pb-5"
+      <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
+      <ContentContainer
+        className="content-container"
         dangerouslySetInnerHTML={{ __html: genpage.content.rendered }}
-      ></div> */}
+      ></ContentContainer>
       <p>{genpage.acf.text_block && genpage.acf.text_block}</p>
       <Link href="/">
         <a className="btn btn-primary">Back to Home</a>
