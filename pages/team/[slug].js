@@ -38,16 +38,16 @@ export default function TeamPage({ teamMember, posts }) {
                   key={index}
                   title={post.title.rendered}
                   slug={post.slug}
-                  writer={post.acf.writer}
-                  photographer={post.acf.photographer}
+                  writer={post.acf.writer.id}
+                  photographer={post.acf.photographer.id}
                 />
               ) : null}
-              {post.acf.writer == teamMember.id ? (
+              {post.acf.writer.id == teamMember.id ? (
                 <ArticleCard
                   key={index}
                   title={post.title.rendered}
                   slug={post.slug}
-                  writer={post.acf.writer}
+                  writer={post.acf.writer.id}
                   photographer={post.acf.photographer}
                 />
               ) : null}
