@@ -12,6 +12,8 @@ import { ContribImage } from "../../components/Global/styles";
 export default function TeamPage({ teamMember, posts }) {
   console.log("teamMember id: ", teamMember.id);
   console.log("posts: ", posts);
+  console.log("post 1 writer: ", posts[1].acf.writer[0].ID);
+  console.log("post 1 photog: ", posts[1].acf.photographer[0].ID);
   // const ref = React.forwardRef(null);
   return (
     <div className="container pt-5">
@@ -33,23 +35,22 @@ export default function TeamPage({ teamMember, posts }) {
         {posts.map((post, index) => {
           return (
             <>
-              {post.acf.photographer == teamMember.id ? (
+              {post.acf.photographer[0]?.ID == teamMember.id ? (
                 <ArticleCard
                   key={index}
                   title={post.title.rendered}
                   slug={post.slug}
-                  writer={post.acf.writer.id}
-                  photographer={post.acf.photographer.id}
+                  writer={post.acf.writer[0].post_title}
                 />
               ) : null}
-              {post.acf.writer.id == teamMember.id ? (
-                <ArticleCard
-                  key={index}
-                  title={post.title.rendered}
-                  slug={post.slug}
-                  writer={post.acf.writer.id}
-                  photographer={post.acf.photographer}
-                />
+              {post.acf.writer[0]?.ID == teamMember.id ? (
+                <React.Fragment key={index}>
+                  <ArticleCard
+                    title={post.title.rendered}
+                    slug={post.slug}
+                    writer={post.acf.writer[0].post_title}
+                  />
+                </React.Fragment>
               ) : null}
             </>
           );

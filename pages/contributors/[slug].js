@@ -32,25 +32,23 @@ export default function ContributorPage({ contributor, posts }) {
         {posts.map((post, index) => {
           return (
             <>
-              {/* {post.acf.photographer == contributor.id ? (
+              {post.acf.photographer[0]?.ID == contributor.id ? (
                 <>
                   <ArticleCard
                     key={index}
                     title={post.title.rendered}
                     slug={post.slug}
-                    writer={post.acf.writer[0].id}
-                    photographer={post.acf.photographer}
+                    writer={post.acf.writer[0].post_title}
                   />
                 </>
-              ) : null} */}
-              {post.acf.writer[0]?.id == contributor.id ? (
+              ) : null}
+              {post.acf.writer[0]?.ID == contributor.id ? (
                 <>
                   <ArticleCard
                     key={index}
                     title={post.title.rendered}
                     slug={post.slug}
-                    writer={post.acf.writer.id}
-                    photographer={post.acf.photographer}
+                    writer={post.acf.writer[0].post_title}
                   />
                 </>
               ) : null}
