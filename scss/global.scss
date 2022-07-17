@@ -124,6 +124,13 @@ a {
   color: $soil;
   font-weight: 600;
 }
+
+li {
+  list-style: none;
+  font-family: $bodyFont;
+  font-size: 18px;
+  line-height: 150%;
+}
 .paragraph--bold {
   font-weight: 700;
 }
@@ -181,20 +188,17 @@ h4 {
     line-height: 32px;
   }
 }
-a {
-  font-family: $bodyFont;
-  font-size: 18px;
-  line-height: 150%;
-  text-decoration: underline;
-  color: $soil;
-  font-weight: 600;
+.wp-block-quote {
+  p {
+    font-size: 24px;
+    font-weight: 600;
+    color: $gusGreen;
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+  }
 }
-li {
-  list-style: none;
-  font-family: $bodyFont;
-  font-size: 18px;
-  line-height: 150%;
-}
+
 .navlink--active {
   border: 2px solid orangered;
 }

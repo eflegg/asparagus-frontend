@@ -6,45 +6,53 @@ import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
 import AwardWinnerCard from "../../components/AwardWinnerCard";
 import PageWrapper from "../../components/Global/PageWrapper";
+import CategoryFeaturedCard from "../../components/CategoryFeaturedCard";
 
 export default function CategoryPage({ category, posts }) {
   console.log("posts: ", posts);
   console.log("category: ", category);
 
-  // const ref = React.forwardRef(null);
   return (
     <PageWrapper pageTitle={category.name} className="container pt-5">
       <h1
         className="text-center"
         dangerouslySetInnerHTML={{ __html: category.name }}
       ></h1>
+      <CategoryFeaturedCard
+        title={posts[0].title.rendered}
+        slug={posts[0].slug}
+        writer={posts[0].acf.writer[0].post_title}
+      />
       {category.slug == "awards" ? (
         <ul>
           {posts.map((post, index) => {
             return (
               <li key={index}>
                 <AwardWinnerCard
-                  // ref={ref}
                   title={post.title.rendered}
                   slug={post.slug}
+                  writer={post.acf.writer[0].post_title}
                 />
               </li>
             );
           })}
         </ul>
-      ) : category.slug == "past-issues" ? (
-        <h2>past issues cards that link through to single issue.</h2>
       ) : (
         <ul className="card--grid">
           {posts.map((post, index) => {
             return (
-              <li key={index}>
-                <ArticleCard
-                  // refprop={ref}
-                  title={post.title.rendered}
-                  slug={post.slug}
-                />
-              </li>
+              <>
+                {index != 0 && (
+                  <li key={index}>
+                    <ArticleCard
+                      // refprop={ref}
+                      title={post.title.rendered}
+                      slug={post.slug}
+                      writer={post.acf.writer[0].post_title}
+                    />
+                  </li>
+                )}
+              </>
             );
           })}
         </ul>

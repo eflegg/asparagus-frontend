@@ -6,9 +6,12 @@ import theme from "../components/Global/Theme";
 
 const ContentContainer = styled.div`
   ul {
-    li {
-      list-style: disc;
-    }
+  }
+  ol {
+    padding-left: 0;
+  }
+  li {
+    list-style: ;
   }
 `;
 
