@@ -15,6 +15,7 @@ const FooterMenuContainer = styled.div`
 
 export default function Footer() {
   const [footerLinks, setFooterLinks] = useState([]);
+  console.log("footerLinks: ", footerLinks);
   useEffect(() => {
     async function loadLinks() {
       const response = await fetch(
@@ -81,3 +82,22 @@ export default function Footer() {
     </FooterMenuContainer>
   );
 }
+
+// export async function getStaticProps({ params }) {
+//   const response = await fetch(
+//     `${Config.apiUrl}/wp-json/menus/v1/menus/footer-menu`
+//   );
+//   if (!response.ok) {
+//     ("oops! something went wrong");
+//     return;
+//   }
+
+//   const footerLinks = await response.json();
+
+//   return {
+//     props: {
+//       footerLinks,
+//     },
+//     revalidate: 10, // In seconds
+//   };
+// }

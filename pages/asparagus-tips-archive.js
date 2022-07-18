@@ -41,13 +41,13 @@ export default function Tips({ tips }) {
             <>
               {" "}
               {tip.title.rendered == newsletterSelected ? (
-                <>
+                <React.Fragment key={tip.ID}>
                   <h2 className="text-center">{tip.title.rendered}</h2>
                   <div
                     className="newsletter-content"
                     dangerouslySetInnerHTML={{ __html: tip.content.rendered }}
                   ></div>
-                </>
+                </React.Fragment>
               ) : null}
             </>
           );
