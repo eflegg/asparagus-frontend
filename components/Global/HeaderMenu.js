@@ -6,6 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import theme from "./Theme";
 import Link from "next/link";
+import { v4 as uuidv4 } from "uuid";
 
 const MenuContainer = styled.div`
   .subnav {
@@ -158,7 +159,7 @@ export default function HeaderMenu() {
                 <>
                   <li
                     className="nav-link"
-                    key={link.ID}
+                    key={uuidv4()}
                     onClick={() => handleSubnavClick(link.ID)}
                   >
                     <span
@@ -168,7 +169,7 @@ export default function HeaderMenu() {
                       <ul className="subnav">
                         {link?.child_items?.map((childItem, childIndex) => {
                           return (
-                            <li key={childItem.ID} className="subnav-link">
+                            <li key={uuidv4()} className="subnav-link">
                               {childItem.object == "page" ? (
                                 <ActiveLink
                                   activeClassName="navlink--active"
@@ -234,7 +235,7 @@ export default function HeaderMenu() {
                   <>
                     <li
                       className="nav-link"
-                      key={link.ID}
+                      key={uuidv4()}
                       onClick={() => handleSubnavClick(link.ID)}
                     >
                       <span
@@ -244,7 +245,7 @@ export default function HeaderMenu() {
                         <ul className="subnav">
                           {link?.child_items?.map((childItem, childIndex) => {
                             return (
-                              <li key={childItem.id} className="subnav-link">
+                              <li key={uuidv4()} className="subnav-link">
                                 <ActiveLink
                                   activeClassName="navlink--active"
                                   href={"/categories/[slug]"}
@@ -276,7 +277,7 @@ export default function HeaderMenu() {
       <ul>
         {connectLinks?.items?.map((connectLink, index) => {
           return (
-            <li key={connectLink.ID}>
+            <li key={uuidv4()}>
               <ActiveLink
                 activeClassName="navlink--active"
                 href={`/${connectLink.slug}`}

@@ -27,17 +27,17 @@ export default function AdBanner() {
     },
   ];
 
-  const randomAd = useCallback(() => {
+  const randomAd = () => {
     const length = ads.length;
     setAdIndex(Math.floor(Math.random() * length));
-  }, [ads]);
+  };
 
   //
   console.log("random ad index: ", adIndex);
 
   useEffect(() => {
     randomAd();
-  }, [dynamicRoute]);
+  });
 
   //can change this to pull the image from the post type and the name of the advertiser
   return (

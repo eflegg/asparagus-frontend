@@ -5,6 +5,7 @@ import Link from "next/link";
 import ActiveLink from "./ActiveLink";
 import styled from "styled-components";
 import theme from "./Theme";
+import { v4 as uuidv4 } from "uuid";
 
 const FooterMenuContainer = styled.div`
   display: flex;

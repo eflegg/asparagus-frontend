@@ -8,6 +8,7 @@ import ArticleCard from "../components/ArticleCard";
 import AwardWinnerCard from "../components/AwardWinnerCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
+import { v4 as uuidv4 } from "uuid";
 
 const CategoryContainer = styled.section``;
 
@@ -34,7 +35,7 @@ export default function Home({
                 return (
                   <>
                     {page.acf.home_category_one[0].name == "Awards" ? (
-                      <React.Fragment key={index}>
+                      <React.Fragment key={uuidv4()}>
                         <AwardWinnerCard
                           // ref={ref}
                           slug={catOnePost.slug}
@@ -42,7 +43,7 @@ export default function Home({
                         />
                       </React.Fragment>
                     ) : (
-                      <React.Fragment key={index}>
+                      <React.Fragment key={uuidv4()}>
                         <ArticleCard
                           // ref={ref}
                           slug={catOnePost.slug}
@@ -62,7 +63,7 @@ export default function Home({
                 return (
                   <>
                     {page.acf.home_category_two[0].name == "Awards" ? (
-                      <React.Fragment key={index}>
+                      <React.Fragment key={uuidv4()}>
                         <AwardWinnerCard
                           // ref={ref}
                           slug={catTwoPost.slug}
@@ -70,7 +71,7 @@ export default function Home({
                         />
                       </React.Fragment>
                     ) : (
-                      <React.Fragment key={index}>
+                      <React.Fragment key={uuidv4()}>
                         <ArticleCard
                           // ref={ref}
                           slug={catTwoPost.slug}
@@ -90,7 +91,7 @@ export default function Home({
                 return (
                   <>
                     {page.acf.home_category_three[0].name == "Awards" ? (
-                      <React.Fragment key={index}>
+                      <React.Fragment key={uuidv4()}>
                         <AwardWinnerCard
                           // ref={ref}
                           slug={catThreePost.slug}
@@ -98,7 +99,7 @@ export default function Home({
                         />
                       </React.Fragment>
                     ) : (
-                      <React.Fragment key={index}>
+                      <React.Fragment key={uuidv4()}>
                         <ArticleCard
                           // ref={ref}
                           slug={catThreePost.slug}
