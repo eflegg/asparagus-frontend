@@ -11,10 +11,10 @@ import CategoryFeaturedCard from "../../components/CategoryFeaturedCard";
 import ArticleFilter from "../../components/ArticleFilter";
 
 export default function CategoryPage({ category, posts, subcategories }) {
-  console.log("post categories: ", posts[1].categories);
-  console.log("category: ", category);
-  console.log("subcats: ", subcategories);
-  console.log("subcat id:", subcategories[0].id);
+  // console.log("post categories: ", posts[1].categories);
+  // console.log("category: ", category);
+  // console.log("subcats: ", subcategories);
+  // console.log("subcat id:", subcategories[0].id);
 
   const dynamicRoute = useRouter().asPath;
   const [subfilter, setSubfilter] = useState(null);
@@ -88,9 +88,9 @@ export default function CategoryPage({ category, posts, subcategories }) {
       ) : (
         <>
           <CategoryFeaturedCard
-            title={posts[0].title.rendered}
-            slug={posts[0].slug}
-            writer={posts[0].acf.writer[0].post_title}
+            title={posts[0]?.title.rendered}
+            slug={posts[0]?.slug}
+            writer={posts[0]?.acf.writer[0].post_title}
           />
           <ul className="card--grid">
             {posts.map((post, index) => {

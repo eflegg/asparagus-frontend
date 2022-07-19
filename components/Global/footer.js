@@ -15,7 +15,7 @@ const FooterMenuContainer = styled.div`
 
 export default function Footer() {
   const [footerLinks, setFooterLinks] = useState([]);
-  console.log("footerLinks: ", footerLinks);
+
   useEffect(() => {
     async function loadLinks() {
       const response = await fetch(
