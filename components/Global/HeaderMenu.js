@@ -98,6 +98,7 @@ const DesktopNav = styled.nav`
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
   const [connectLinks, setConnectLinks] = useState([]);
+  const [screenWidth, setscreenWidth] = useState(800);
   const [navActive, setNavActive] = useState(false);
   const [subnav, setSubnav] = useState(null);
 
@@ -132,7 +133,14 @@ export default function HeaderMenu() {
     loadLinks();
   }, []);
 
-  const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
+  useEffect(() => {
+    function handleResize() {
+      setscreenWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+  });
+
+  // const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
 
   return (
     <MenuContainer className="menu--container">
@@ -142,7 +150,7 @@ export default function HeaderMenu() {
         </a>
       </Link>
 
-      {isDesktop ? (
+      {screenWidth >= 1000 ? (
         <DesktopNav>
           <ul>
             {links?.items?.map((link, index) => {
