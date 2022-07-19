@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ActiveLink from "./ActiveLink";
@@ -7,6 +7,7 @@ import styled from "styled-components";
 import theme from "./Theme";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
+import Loader from "./Loader";
 
 const MenuContainer = styled.div`
   .subnav {
@@ -99,7 +100,6 @@ const DesktopNav = styled.nav`
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
   const [connectLinks, setConnectLinks] = useState([]);
-  const [screenWidth, setscreenWidth] = useState(800);
   const [navActive, setNavActive] = useState(false);
   const [subnav, setSubnav] = useState(null);
 
@@ -134,101 +134,52 @@ export default function HeaderMenu() {
     loadLinks();
   }, []);
 
-  useEffect(() => {
-    function handleResize() {
-      setscreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", handleResize);
-  });
+  function useWindowSize() {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined,
+    });
 
-  // const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
+    useEffect(() => {
+      // only execute all the code below in client side
+      //nextjs needs this or will throw an error that variable doesn't exist
+      if (typeof window !== "undefined") {
+        // Handler to call on window resize
+        function handleResize() {
+          // Set window width/height to state
+          setWindowSize({
+            width: window.innerWidth,
+            height: window.innerHeight,
+          });
+        }
+
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+
+        // Call handler right away so state gets updated with initial window size
+        handleResize();
+
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
+      }
+    }, []); // Empty array ensures that effect is only run on mount
+    return windowSize;
+  }
+  const size = useWindowSize();
 
   return (
     <MenuContainer className="menu--container">
-      <Link href="/">
-        <a>
-          <h3>Asparagus Logo</h3>
-        </a>
-      </Link>
+      <Suspense fallback={<Loader />}>
+        <Link href="/">
+          <a>
+            <h3>Asparagus Logo</h3>
+          </a>
+        </Link>
 
-      {screenWidth >= 1000 ? (
-        <DesktopNav>
-          <ul>
-            {links?.items?.map((link, index) => {
-              return (
-                <>
-                  <li
-                    className="nav-link"
-                    key={uuidv4()}
-                    onClick={() => handleSubnavClick(link.ID)}
-                  >
-                    <span
-                      dangerouslySetInnerHTML={{ __html: link.title }}
-                    ></span>
-                    {link.child_items && subnav == link.ID ? (
-                      <ul className="subnav">
-                        {link?.child_items?.map((childItem, childIndex) => {
-                          return (
-                            <li key={uuidv4()} className="subnav-link">
-                              {childItem.object == "page" ? (
-                                <ActiveLink
-                                  activeClassName="navlink--active"
-                                  href={`/${childItem.slug}`}
-                                  as={`/${childItem.slug}`}
-                                >
-                                  <a
-                                    className="card-text pb-5"
-                                    dangerouslySetInnerHTML={{
-                                      __html: childItem.title,
-                                    }}
-                                  ></a>
-                                </ActiveLink>
-                              ) : (
-                                <ActiveLink
-                                  activeClassName="navlink--active"
-                                  href={"/categories/[slug]"}
-                                  as={`/categories/${childItem.slug}`}
-                                >
-                                  <a
-                                    className="card-text pb-5"
-                                    dangerouslySetInnerHTML={{
-                                      __html: childItem.title,
-                                    }}
-                                  ></a>
-                                </ActiveLink>
-                              )}
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    ) : null}
-                  </li>
-                </>
-              );
-            })}{" "}
-          </ul>
-        </DesktopNav>
-      ) : (
-        <MobileNav>
-          <button
-            className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
-            onClick={() => {
-              setNavActive(!navActive);
-            }}
-          >
-            <span className="burger-1"></span>
-            <span className="burger-2"></span>
-            <span className="burger-3"></span>
-          </button>
-          <button
-            role="button"
-            aria-controls="navMenu"
-            style={{ display: "none" }}
-            className="accessibility-close"
-          >
-            Close Nav
-          </button>
-          {navActive ? (
+        {size.width >= 1000 ? (
+          <DesktopNav>
             <ul>
               {links?.items?.map((link, index) => {
                 return (
@@ -246,18 +197,33 @@ export default function HeaderMenu() {
                           {link?.child_items?.map((childItem, childIndex) => {
                             return (
                               <li key={uuidv4()} className="subnav-link">
-                                <ActiveLink
-                                  activeClassName="navlink--active"
-                                  href={"/categories/[slug]"}
-                                  as={`/categories/${childItem.slug}`}
-                                >
-                                  <a
-                                    className="card-text pb-5"
-                                    dangerouslySetInnerHTML={{
-                                      __html: childItem.title,
-                                    }}
-                                  ></a>
-                                </ActiveLink>
+                                {childItem.object == "page" ? (
+                                  <ActiveLink
+                                    activeClassName="navlink--active"
+                                    href={`/${childItem.slug}`}
+                                    as={`/${childItem.slug}`}
+                                  >
+                                    <a
+                                      className="card-text pb-5"
+                                      dangerouslySetInnerHTML={{
+                                        __html: childItem.title,
+                                      }}
+                                    ></a>
+                                  </ActiveLink>
+                                ) : (
+                                  <ActiveLink
+                                    activeClassName="navlink--active"
+                                    href={"/categories/[slug]"}
+                                    as={`/categories/${childItem.slug}`}
+                                  >
+                                    <a
+                                      className="card-text pb-5"
+                                      dangerouslySetInnerHTML={{
+                                        __html: childItem.title,
+                                      }}
+                                    ></a>
+                                  </ActiveLink>
+                                )}
                               </li>
                             );
                           })}
@@ -268,28 +234,90 @@ export default function HeaderMenu() {
                 );
               })}{" "}
             </ul>
-          ) : null}
-        </MobileNav>
-      )}
+          </DesktopNav>
+        ) : (
+          <MobileNav>
+            <button
+              className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
+              onClick={() => {
+                setNavActive(!navActive);
+              }}
+            >
+              <span className="burger-1"></span>
+              <span className="burger-2"></span>
+              <span className="burger-3"></span>
+            </button>
+            <button
+              role="button"
+              aria-controls="navMenu"
+              style={{ display: "none" }}
+              className="accessibility-close"
+            >
+              Close Nav
+            </button>
+            {navActive ? (
+              <ul>
+                {links?.items?.map((link, index) => {
+                  return (
+                    <>
+                      <li
+                        className="nav-link"
+                        key={uuidv4()}
+                        onClick={() => handleSubnavClick(link.ID)}
+                      >
+                        <span
+                          dangerouslySetInnerHTML={{ __html: link.title }}
+                        ></span>
+                        {link.child_items && subnav == link.ID ? (
+                          <ul className="subnav">
+                            {link?.child_items?.map((childItem, childIndex) => {
+                              return (
+                                <li key={uuidv4()} className="subnav-link">
+                                  <ActiveLink
+                                    activeClassName="navlink--active"
+                                    href={"/categories/[slug]"}
+                                    as={`/categories/${childItem.slug}`}
+                                  >
+                                    <a
+                                      className="card-text pb-5"
+                                      dangerouslySetInnerHTML={{
+                                        __html: childItem.title,
+                                      }}
+                                    ></a>
+                                  </ActiveLink>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        ) : null}
+                      </li>
+                    </>
+                  );
+                })}{" "}
+              </ul>
+            ) : null}
+          </MobileNav>
+        )}
 
-      <h3>Connect Menu</h3>
-      {/* <nav> */}
-      <ul>
-        {connectLinks?.items?.map((connectLink, index) => {
-          return (
-            <li key={uuidv4()}>
-              <ActiveLink
-                activeClassName="navlink--active"
-                href={`/${connectLink.slug}`}
-                to={`/${connectLink.slug}`}
-              >
-                <a>{connectLink.title}</a>
-              </ActiveLink>
-            </li>
-          );
-        })}
-      </ul>
-      {/* </nav> */}
+        <h3>Connect Menu</h3>
+        {/* <nav> */}
+        <ul>
+          {connectLinks?.items?.map((connectLink, index) => {
+            return (
+              <li key={uuidv4()}>
+                <ActiveLink
+                  activeClassName="navlink--active"
+                  href={`/${connectLink.slug}`}
+                  to={`/${connectLink.slug}`}
+                >
+                  <a>{connectLink.title}</a>
+                </ActiveLink>
+              </li>
+            );
+          })}
+        </ul>
+        {/* </nav> */}
+      </Suspense>
     </MenuContainer>
   );
 }

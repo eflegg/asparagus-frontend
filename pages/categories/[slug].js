@@ -9,6 +9,7 @@ import AwardWinnerCard from "../../components/AwardWinnerCard";
 import PageWrapper from "../../components/Global/PageWrapper";
 import CategoryFeaturedCard from "../../components/CategoryFeaturedCard";
 import ArticleFilter from "../../components/ArticleFilter";
+import { v4 as uuidv4 } from "uuid";
 
 export default function CategoryPage({ category, posts, subcategories }) {
   // console.log("post categories: ", posts[1].categories);
@@ -50,7 +51,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
               return (
                 <>
                   {post.categories && post.categories.includes(subfilter) ? (
-                    <li key={index}>
+                    <li key={uuidv4()}>
                       <ArticleCard
                         title={post.title.rendered}
                         slug={post.slug}
@@ -58,7 +59,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
                       />
                     </li>
                   ) : subfilter == null ? (
-                    <li key={index}>
+                    <li key={uuidv4()}>
                       <ArticleCard
                         title={post.title.rendered}
                         slug={post.slug}
@@ -75,7 +76,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
         <ul className="card--grid">
           {posts.map((post, index) => {
             return (
-              <li key={index}>
+              <li key={uuidv4()}>
                 <AwardWinnerCard
                   title={post.title.rendered}
                   slug={post.slug}
@@ -97,7 +98,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
               return (
                 <>
                   {index != 0 && (
-                    <li key={index}>
+                    <li key={uuidv4()}>
                       <ArticleCard
                         title={post.title.rendered}
                         slug={post.slug}

@@ -38,13 +38,13 @@ export default function Footer() {
     <FooterMenuContainer className="footer--container">
       {footerLinks?.items?.map((link, index) => {
         return (
-          <li className="nav-link" key={index}>
+          <li className="nav-link" key={uuidv4()}>
             <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
             {link.child_items && (
               <ul className="subnav">
                 {link?.child_items?.map((childItem, childIndex) => {
                   return (
-                    <li key={childIndex} className="subnav-link">
+                    <li key={uuidv4()} className="subnav-link">
                       {childItem.object == "general_pages" ? (
                         <ActiveLink
                           activeClassName="navlink--active"
