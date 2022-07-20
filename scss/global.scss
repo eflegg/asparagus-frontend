@@ -34,14 +34,17 @@ $xl: 1800px;
   max-width: 350px;
   width: 90%;
   margin: auto;
+
   @include media-query-min($xs) {
     max-width: 498px;
     width: 80%;
   }
+
   @include media-query-min($sm) {
     max-width: 800px;
     width: 80%;
   }
+
   @include media-query-min($md) {
     max-width: 1000px;
   }
@@ -72,7 +75,7 @@ ul {
 @font-face {
   font-family: 'halcyon-regular';
   src: url('../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff2') format('woff2'),
-       url('../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff') format('woff');
+    url('../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -87,6 +90,7 @@ ul {
 html {
   font-size: 62.5%;
 }
+
 $headerFont: "Source Serif Pro", serif;
 $bodyFont: "Source Serif Pro", serif;
 $accentFont: "halcyon_regular", sans-serif;
@@ -96,7 +100,7 @@ $soil: #913029;
 $wheat: #faf4ec;
 $teaGreen: #d3e5a0;
 $gusYellow: #f8dd8b;
-$grey: #707070; 
+$grey: #707070;
 $white: #fff;
 $black: #000;
 
@@ -118,7 +122,7 @@ h4 {
 
 
 
-.footer--container.span{
+.footer--container.span {
   font-family: $headerFont;
   font-weight: bold;
 }
@@ -149,9 +153,10 @@ li {
   //   line-height: 32px;
   // }
 }
+
 a {
   text-decoration: underline;
-  color: $soil;
+  color: $gusYellow;
   font-weight: 600;
   font-family: $accentFont;
 }
@@ -162,9 +167,11 @@ li {
   font-size: 18px;
   line-height: 150%;
 }
+
 .paragraph--bold {
   font-weight: 700;
 }
+
 h1,
 .h1 {
   letter-spacing: 0.2rem;
@@ -172,49 +179,60 @@ h1,
   font-weight: 900;
   line-height: 110%;
   color: $gusGreen;
+
   @include media-query-min($sm) {
     font-size: calc(48px + 12 * ((100vw - 320px) / 680));
   }
+
   @include media-query-min($md) {
     @include font-size(6);
   }
 }
+
 h2,
 .h2 {
   letter-spacing: 0.2rem;
   font-size: 28px;
   line-height: 125%;
   color: $soil;
+
   @include media-query-min($sm) {
     font-size: calc(28px + 12 * ((100vw - 320px) / 680));
   }
+
   @include media-query-min($md) {
     @include font-size(3.6);
   }
 }
+
 h3,
 .h3 {
   letter-spacing: 0.2rem;
   color: $gusGreen;
   font-size: 24px;
   line-height: 135%;
+
   @include media-query-min($sm) {
     font-size: calc(24px + 4 * ((100vw - 320px) / 680));
   }
+
   @include media-query-min($md) {
     @include font-size(2.2);
     line-height: 36px;
   }
 }
+
 h4 {
   letter-spacing: 0.2rem;
   font-size: 16px;
   line-height: 150%;
   color: $soil;
   font-weight: 400;
+
   @include media-query-min($sm) {
     font-size: calc(16px + 2 * ((100vw - 320px) / 680));
   }
+
   @include media-query-min($md) {
     @include font-size(1.8);
     line-height: 32px;
@@ -239,8 +257,10 @@ li.nav-link {
 .navlink--active {
   border: 2px solid orangered;
 }
+
 button {
   transition: all 0.25s ease-in;
+
   &:hover {
     background: $gusGreen;
     transition: all 0.25s ease-in;
@@ -250,9 +270,11 @@ button {
 .has-text-align-center {
   text-align: center;
 }
+
 .has-text-align-right {
   text-align: right;
 }
+
 .has-text-align-left {
   text-align: left;
 }
@@ -262,21 +284,27 @@ button {
 .text-center {
   text-align: center;
 }
+
 .text-left {
   text-align: left;
 }
+
 .text-right {
   text-align: right;
 }
+
 .d-flex {
   display: flex;
 }
+
 .flex-column {
   flex-direction: column;
 }
+
 .justify-content-center {
   justify-content: center;
 }
+
 .align-items-center {
   align-items: center;
 }
@@ -284,9 +312,11 @@ button {
 .position-absolute {
   position: absolute;
 }
+
 .position-relative {
   position: relative;
 }
+
 .position-fixed {
   position: fixed;
 }
@@ -302,11 +332,13 @@ button {
   color: white;
   font-family: $bodyFont;
   font-size: 16px;
+
   a {
     color: white;
     font-family: $bodyFont;
     font-size: 16px;
   }
+
   text-align: center;
 }
 
@@ -315,9 +347,11 @@ button {
 img {
   max-width: 100%;
 }
+
 .img--full {
   width: 100%;
   margin: 100px 0;
+
   img {
     width: 100%;
     object-fit: cover;
