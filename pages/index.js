@@ -14,10 +14,14 @@ const LeadStory = styled.section`
   position: relative;
   display: flex;
   .lead-image {
-    height: 300px;
+    height: 400px;
     width: 60%;
     position: relative;
     display: block;
+  }
+  .lead--text {
+    width: 40%;
+    text-align: left;
   }
 `;
 
@@ -31,8 +35,8 @@ export default function Home({
   posts,
 }) {
   console.log("homepage ", page);
-  console.log("posts ", posts[0]._embedded["wp:featuredmedia"]["0"].source_url);
-  console.log("lead story id ", page.acf.lead_story[0].ID);
+  console.log("posts ", posts);
+  console.log("lead story id ", page.acf.lead_story[0]);
 
   // const ref = React.forwardRef(null);
 
@@ -52,15 +56,13 @@ export default function Home({
                             post._embedded["wp:featuredmedia"]["0"].source_url
                           }
                           layout="fill"
-                          // width="200px"
-                          // height="250px"
                           objectFit="cover"
                           alt="Lead story image"
                         />
                       </div>
                       <div className="lead--text">
                         <h1>{post.title.rendered}</h1>
-                        <p>by {post.acf.writer[0].post_title}</p>
+                        <p>{post.acf.writer[0].post_title}</p>
                       </div>
                     </>
                   ) : null}
