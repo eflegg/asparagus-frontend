@@ -33,7 +33,7 @@ export default function AdBanner() {
   };
 
   //
-  console.log("random ad index: ", adIndex);
+  // console.log("random ad index: ", adIndex);
 
   useEffect(() => {
     randomAd();

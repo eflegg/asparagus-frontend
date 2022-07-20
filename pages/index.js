@@ -10,6 +10,17 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 
+const LeadStory = styled.section`
+  position: relative;
+  display: flex;
+  .lead-image {
+    height: 300px;
+    width: 60%;
+    position: relative;
+    display: block;
+  }
+`;
+
 const CategoryContainer = styled.section``;
 
 export default function Home({
@@ -17,10 +28,11 @@ export default function Home({
   catOnePosts,
   catTwoPosts,
   catThreePosts,
+  posts,
 }) {
-  console.log("cat one posts: ", catOnePosts);
-  console.log("cat two posts: ", catTwoPosts);
-  console.log("cat three posts: ", catThreePosts);
+  console.log("homepage ", page);
+  console.log("posts ", posts[0]._embedded["wp:featuredmedia"]["0"].source_url);
+  console.log("lead story id ", page.acf.lead_story[0].ID);
 
   // const ref = React.forwardRef(null);
 
@@ -28,6 +40,34 @@ export default function Home({
     <>
       <PageWrapper pageTitle="Asparagus Magazine - Home">
         <main>
+          <LeadStory>
+            {posts.map((post, index) => {
+              return (
+                <>
+                  {post.id == page.acf.lead_story[0].ID ? (
+                    <>
+                      <div className="lead-image">
+                        <Image
+                          src={
+                            post._embedded["wp:featuredmedia"]["0"].source_url
+                          }
+                          layout="fill"
+                          // width="200px"
+                          // height="250px"
+                          objectFit="cover"
+                          alt="Lead story image"
+                        />
+                      </div>
+                      <div className="lead--text">
+                        <h1>{post.title.rendered}</h1>
+                        <p>by {post.acf.writer[0].post_title}</p>
+                      </div>
+                    </>
+                  ) : null}
+                </>
+              );
+            })}
+          </LeadStory>
           <CategoryContainer className="cat-one--container">
             <h2>{page.acf.home_category_one[0].name}</h2>
             <div className="card--grid">
@@ -147,6 +187,10 @@ export async function getStaticProps() {
     `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryThree}&per_page=6`
   );
   const catThreePosts = await postQueryThree.json();
+  const postsQuery = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
+  );
+  const posts = await postsQuery.json();
 
   return {
     props: {
@@ -154,6 +198,7 @@ export async function getStaticProps() {
       catOnePosts: catOnePosts,
       catTwoPosts: catTwoPosts,
       catThreePosts: catThreePosts,
+      posts: posts,
     },
   };
 }

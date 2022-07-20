@@ -143,6 +143,7 @@ export default function HeaderMenu() {
     });
 
     useEffect(() => {
+      //sets the window size when client loads
       // only execute all the code below in client side
       //nextjs needs this or will throw an error that variable doesn't exist
       if (typeof window !== "undefined") {
@@ -167,6 +168,8 @@ export default function HeaderMenu() {
     }, []); // Empty array ensures that effect is only run on mount
     return windowSize;
   }
+
+  //updates when the client loads so you can use it
   const size = useWindowSize();
 
   return (
