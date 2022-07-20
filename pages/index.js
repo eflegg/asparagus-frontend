@@ -14,14 +14,26 @@ const LeadStory = styled.section`
   position: relative;
   display: flex;
   .lead-image {
-    height: 400px;
+    height: 500px;
     width: 60%;
     position: relative;
     display: block;
   }
   .lead--text {
+    padding: 30px;
     width: 40%;
     text-align: left;
+    background: ${theme.colours.wheat};
+    hr {
+      height: 4px;
+      border: 0px;
+      margin: 20px 0px;
+      background-color: ${theme.colours.soil};
+    }
+    .lead-story--excerpt {
+      font-size: 2.4rem;
+      line-height: 4rem;
+    }
   }
 `;
 
@@ -46,10 +58,20 @@ export default function Home({
         <main>
           <LeadStory>
             {posts.map((post, index) => {
+              let initialDate = post.date;
+
+              let formattedDate = new Date(initialDate).toLocaleDateString(
+                "en-US",
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit",
+                }
+              );
               return (
                 <>
                   {post.id == page.acf.lead_story[0].ID ? (
-                    <>
+                    <React.Fragment key={uuidv4()}>
                       <div className="lead-image">
                         <Image
                           src={
@@ -63,8 +85,13 @@ export default function Home({
                       <div className="lead--text">
                         <h1>{post.title.rendered}</h1>
                         <p>{post.acf.writer[0].post_title}</p>
+                        <p>{formattedDate}</p>
+                        <hr />
+                        <p className="text-right lead-story--excerpt">
+                          {post.acf.excerpt}
+                        </p>
                       </div>
-                    </>
+                    </React.Fragment>
                   ) : null}
                 </>
               );
@@ -189,6 +216,8 @@ export async function getStaticProps() {
     `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryThree}&per_page=6`
   );
   const catThreePosts = await postQueryThree.json();
+
+  //all posts
   const postsQuery = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
   );

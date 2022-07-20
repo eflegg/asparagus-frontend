@@ -101,13 +101,16 @@ h4 {
   font-family: $headerFont;
   margin: 0;
 }
+p {
+  margin: 8px 0;
+}
 
 p,
 a,
 li {
   letter-spacing: 0.2rem;
   font-family: $bodyFont;
-  font-size: 18px;
+  font-size: 1.8rem;
   line-height: 150%;
   color: black;
   font-weight: 400;
@@ -128,7 +131,7 @@ a {
 li {
   list-style: none;
   font-family: $bodyFont;
-  font-size: 18px;
+  font-size: 1.8rem;
   line-height: 150%;
 }
 .paragraph--bold {
@@ -137,7 +140,7 @@ li {
 h1,
 .h1 {
   letter-spacing: 0.2rem;
-  font-size: 48px;
+  font-size: 3.6rem;
   font-weight: 900;
   line-height: 110%;
   color: $gusGreen;
@@ -145,7 +148,7 @@ h1,
     font-size: calc(48px + 12 * ((100vw - 320px) / 680));
   }
   @include media-query-min($md) {
-    @include font-size(6);
+    @include font-size(4.8);
   }
 }
 h2,
