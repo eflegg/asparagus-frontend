@@ -65,25 +65,38 @@ ul {
 
 /***  Type  ***/
 
+
+
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap");
+
+@font-face {
+  font-family: 'halcyon-regular';
+  src: url('../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff2') format('woff2'),
+       url('../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @mixin font-size($sizeValue: 1.6) {
   font-size: ($sizeValue * 10) + px;
   font-size: $sizeValue + rem;
 }
 
+
+
 html {
   font-size: 62.5%;
 }
 $headerFont: "Source Serif Pro", serif;
-$bodyFont: "Raleway", sans-serif;
+$bodyFont: "Source Serif Pro", serif;
+$accentFont: "halcyon_regular", sans-serif;
 
 $gusGreen: #339933;
 $soil: #913029;
 $wheat: #faf4ec;
 $teaGreen: #d3e5a0;
 $gusYellow: #f8dd8b;
-$grey: #707070;
+$grey: #707070; 
 $white: #fff;
 $black: #000;
 
@@ -100,6 +113,23 @@ h3,
 h4 {
   font-family: $headerFont;
   margin: 0;
+  padding: 20px;
+}
+
+
+
+.footer--container.span{
+  font-family: $headerFont;
+  font-weight: bold;
+}
+
+span {
+  font-family: $accentFont;
+  color: $gusGreen;
+}
+
+a.card-text {
+  color: black;
 }
 
 p,
@@ -123,11 +153,12 @@ a {
   text-decoration: underline;
   color: $soil;
   font-weight: 600;
+  font-family: $accentFont;
 }
 
 li {
   list-style: none;
-  font-family: $bodyFont;
+  font-family: $accentFont;
   font-size: 18px;
   line-height: 150%;
 }
@@ -153,6 +184,7 @@ h2,
   letter-spacing: 0.2rem;
   font-size: 28px;
   line-height: 125%;
+  color: $soil;
   @include media-query-min($sm) {
     font-size: calc(28px + 12 * ((100vw - 320px) / 680));
   }
@@ -163,7 +195,7 @@ h2,
 h3,
 .h3 {
   letter-spacing: 0.2rem;
-  color: $soil;
+  color: $gusGreen;
   font-size: 24px;
   line-height: 135%;
   @include media-query-min($sm) {
@@ -188,6 +220,11 @@ h4 {
     line-height: 32px;
   }
 }
+
+li.nav-link {
+  font-family: $accentFont;
+}
+
 .wp-block-quote {
   p {
     font-size: 24px;
