@@ -26,8 +26,14 @@ export default function Styleguide(){
     <p className="pullquote">i am a pullquote</p>
     <p className="contributor-name">i am contributor name</p>
     <p className="team-name">i am a team member name</p>
+    <p className="newsletter-header--footer">i am the header for footer news sign up</p>
+    <p className="newsletter-subheader--footer">i am a sub header in news sign up footer</p>
+    <p className="newsletter-header--primary">i am the primary news sign up header</p>
+    <p className="newsletter-subheader--primary">i am the primary news sign up subheader</p>
     <span className="topic-menu">Topic menu</span>
+    <span className="footer-menu">i am a footer menu catagory</span>
     <a className="action-menu">Im an action menu item</a>
+    <a className="footer-link">i am a footer item link</a>
     <button className="btn--primary"> I am a primary button</button>
     </div>
     )
