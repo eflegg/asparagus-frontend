@@ -9,33 +9,7 @@ import AwardWinnerCard from "../components/AwardWinnerCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
-
-const LeadStory = styled.section`
-  position: relative;
-  display: flex;
-  .lead-image {
-    height: 500px;
-    width: 60%;
-    position: relative;
-    display: block;
-  }
-  .lead--text {
-    padding: 30px;
-    width: 40%;
-    text-align: left;
-    background: ${theme.colours.wheat};
-    hr {
-      height: 4px;
-      border: 0px;
-      margin: 20px 0px;
-      background-color: ${theme.colours.soil};
-    }
-    .lead-story--excerpt {
-      font-size: 2.4rem;
-      line-height: 4rem;
-    }
-  }
-`;
+import LeadStoryBlock from "../components/LeadStoryBlock";
 
 const CategoryContainer = styled.section``;
 
@@ -56,7 +30,7 @@ export default function Home({
     <>
       <PageWrapper pageTitle="Asparagus Magazine - Home">
         <main>
-          <LeadStory>
+          <div>
             {posts.map((post, index) => {
               let initialDate = post.date;
 
@@ -71,32 +45,43 @@ export default function Home({
               return (
                 <>
                   {post.id == page.acf.lead_story[0].ID ? (
-                    <React.Fragment key={uuidv4()}>
-                      <div className="lead-image">
-                        <Image
-                          src={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          layout="fill"
-                          objectFit="cover"
-                          alt="Lead story image"
-                        />
-                      </div>
-                      <div className="lead--text">
-                        <h1>{post.title.rendered}</h1>
-                        <p>{post.acf.writer[0].post_title}</p>
-                        <p>{formattedDate}</p>
-                        <hr />
-                        <p className="text-right lead-story--excerpt">
-                          {post.acf.excerpt}
-                        </p>
-                      </div>
-                    </React.Fragment>
-                  ) : null}
+                    <LeadStoryBlock
+                      date={formattedDate}
+                      image={post._embedded["wp:featuredmedia"]["0"].source_url}
+                      title={post.title.rendered}
+                      read={post.acf.time_to_read}
+                      byline={post.acf.writer[0].post_title}
+                      excerpt={post.acf.excerpt}
+                    />
+                  ) : // <React.Fragment key={uuidv4()}>
+                  //
+                  //   <div className="lead-image">
+                  //     <Image
+                  //       src={
+                  //         post._embedded["wp:featuredmedia"]["0"].source_url
+                  //       }
+                  //       layout="fill"
+                  //       objectFit="cover"
+                  //       alt="Contributor photo"
+                  //     />
+                  //   </div>
+                  //   <div className="lead--text">
+                  //     <h1>{post.title.rendered}</h1>
+                  //     <p>{post.acf.writer[0].post_title}</p>
+                  //     <p>
+                  //       {formattedDate} - <span>{post.acf.time_to_read}</span>
+                  //     </p>
+                  //     <hr />
+                  //     <p className="text-right lead-story--excerpt">
+                  //       {post.acf.excerpt}
+                  //     </p>
+                  //   </div>
+                  // </React.Fragment>
+                  null}
                 </>
               );
             })}
-          </LeadStory>
+          </div>
           <CategoryContainer className="cat-one--container">
             <h2>{page.acf.home_category_one[0].name}</h2>
             <div className="card--grid">
