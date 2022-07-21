@@ -46,7 +46,7 @@ export default function ContributorCard({
 
               <p>{bio}</p>
             </div>
-            <button className="btn">Contributor Profile</button>
+            <button className="btn--primary">Contributor Profile</button>
           </a>
         </Link>
       ) : (
@@ -60,7 +60,7 @@ export default function ContributorCard({
 
               <p>{bio}</p>
             </div>
-            <button className="btn">Contributor Profile</button>
+            <button className="btn--primary">Contributor Profile</button>
           </a>
         </Link>
       )}

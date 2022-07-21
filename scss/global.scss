@@ -34,18 +34,23 @@ $xl: 1800px;
   max-width: 350px;
   width: 90%;
   margin: auto;
+
   @include media-query-min($xs) {
     max-width: 498px;
     width: 80%;
   }
+
   @include media-query-min($sm) {
     max-width: 800px;
     width: 80%;
   }
+
   @include media-query-min($md) {
     max-width: 1000px;
   }
 }
+
+
 
 //used everwhere a group of article cards is displayed
 .card--grid {
@@ -65,18 +70,114 @@ ul {
 
 /***  Type  ***/
 
+
+
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap");
+
+@font-face {
+  font-family: 'halcyon-regular';
+  src: url('../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff2') format('woff2'),
+    url('../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'halcyon-semibolditalic';
+  src: url('../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff2') format('woff2'),
+    url('../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'halcyon-thinitalic';
+  src: url('../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff2') format('woff2'),
+    url('../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'halcyon-thin';
+  src: url('../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff2') format('woff2'),
+    url('../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'halcyon-semibold';
+  src: url('../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff2') format('woff2'),
+    url('../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+@font-face {
+  font-family: 'halcyon-medium';
+  src: url('../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff2') format('woff2'),
+    url('../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'halcyon-light';
+  src: url('../fonts/halcyon_light_macroman/halcyon-light-webfont.woff2') format('woff2'),
+    url('../fonts/halcyon_light_macroman/halcyon-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'halcyon-regularitalic';
+  src: url('../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff2') format('woff2'),
+    url('../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'halcyon-bold';
+  src: url('../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff2') format('woff2'),
+    url('../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'halcyon-black';
+  src: url('../fonts/halcyon_black_macroman/halcyon-black-webfont.woff2') format('woff2'),
+    url('../fonts/halcyon_black_macroman/halcyon-black-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 
 @mixin font-size($sizeValue: 1.6) {
   font-size: ($sizeValue * 10) + px;
   font-size: $sizeValue + rem;
 }
 
+
+
 html {
   font-size: 62.5%;
 }
+
 $headerFont: "Source Serif Pro", serif;
-$bodyFont: "Raleway", sans-serif;
+$bodyFont: "Source Serif Pro", serif;
+$accentFont: "halcyon_regular", sans-serif;
 
 $gusGreen: #339933;
 $soil: #913029;
@@ -91,103 +192,518 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background: $white;
+  background: beige;
 }
 
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
   font-family: $headerFont;
   margin: 0;
+  padding: 20px;
 }
 
-p,
-a,
-li {
-  letter-spacing: 0.2rem;
-  font-family: $bodyFont;
-  font-size: 18px;
-  line-height: 150%;
+
+
+
+.footer--container.span {
+  font-family: $headerFont;
+  font-weight: bold;
+}
+
+// span {
+//   font-family: $accentFont;
+//   color: $gusGreen;
+//   padding: 20px;
+// }
+
+a.card-text {
   color: black;
-  font-weight: 400;
-  // @include media-query-min($sm) {
-  //   font-size: calc(16px + 2 * ((100vw - 320px) / 680));
-  // }
-  // @include media-query-min($md) {
-  //   @include font-size(1.8);
-  //   line-height: 32px;
-  // }
 }
-a {
-  text-decoration: underline;
-  color: $soil;
-  font-weight: 600;
-}
+
+// p,
+// a,
+// li {
+//   letter-spacing: 0.2rem;
+//   font-family: $bodyFont;
+//   font-size: 18px;
+//   line-height: 150%;
+//   color: black;
+//   font-weight: 400;
+//   padding: 20px;
+// @include media-query-min($sm) {
+//   font-size: calc(16px + 2 * ((100vw - 320px) / 680));
+// }
+// @include media-query-min($md) {
+//   @include font-size(1.8);
+//   line-height: 32px;
+// }
+// }
+
+
 
 li {
   list-style: none;
-  font-family: $bodyFont;
+  font-family: $accentFont;
   font-size: 18px;
   line-height: 150%;
 }
+
 .paragraph--bold {
   font-weight: 700;
 }
+
 h1,
 .h1 {
   letter-spacing: 0.2rem;
-  font-size: 48px;
+  font-size: 7.6rem;
   font-weight: 900;
   line-height: 110%;
   color: $gusGreen;
+
   @include media-query-min($sm) {
-    font-size: calc(48px + 12 * ((100vw - 320px) / 680));
+    font-size: calc(48px + 28 * ((100vw - 320px) / 680));
   }
+
   @include media-query-min($md) {
-    @include font-size(6);
+    @include font-size(7.6);
   }
 }
+
 h2,
 .h2 {
   letter-spacing: 0.2rem;
-  font-size: 28px;
+  font-size: 5.8rem;
   line-height: 125%;
+  color: white;
+  font-weight: 900;
+
   @include media-query-min($sm) {
-    font-size: calc(28px + 12 * ((100vw - 320px) / 680));
+    font-size: calc(28px + 30 * ((100vw - 320px) / 680));
   }
+
   @include media-query-min($md) {
-    @include font-size(3.6);
+    @include font-size(5.8);
   }
 }
+
 h3,
 .h3 {
   letter-spacing: 0.2rem;
-  color: $soil;
-  font-size: 24px;
+  color: $gusGreen;
+  font-size: 5.2rem;
+  font-weight: 900;
   line-height: 135%;
+
   @include media-query-min($sm) {
-    font-size: calc(24px + 4 * ((100vw - 320px) / 680));
+    font-size: calc(26px + 26 * ((100vw - 320px) / 680));
   }
+
   @include media-query-min($md) {
-    @include font-size(2.2);
+    @include font-size(5.2);
     line-height: 36px;
   }
 }
+
 h4 {
   letter-spacing: 0.2rem;
-  font-size: 16px;
+  font-size: 2.8rem;
   line-height: 150%;
-  color: $soil;
-  font-weight: 400;
+  color: $gusGreen;
+  font-weight: 900;
+
   @include media-query-min($sm) {
-    font-size: calc(16px + 2 * ((100vw - 320px) / 680));
+    font-size: calc(28px + 20 * ((100vw - 320px) / 680));
   }
+
+  @include media-query-min($md) {
+    @include font-size(4.8);
+    line-height: 32px;
+  }
+}
+
+h5 {
+  font-size: 3.4rem;
+  color: $soil;
+  font-weight: 700;
+
+  @include media-query-min($sm) {
+    font-size: calc(18px + 16 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(3.4);
+    line-height: 32px;
+  }
+
+}
+
+h6 {
+  font-family: $accentFont;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $soil;
+
+  @include media-query-min($sm) {
+    font-size: calc(14px + 1 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(1.5);
+    line-height: 32px;
+  }
+
+}
+
+h6.head--article-card {
+  font-family: $headerFont;
+  font-weight: 900;
+  color: $gusGreen;
+  font-size: 2.2rem;
+}
+
+p.body {
+  font-family: $bodyFont;
+  font-size: 2rem;
+  line-height: 3.2rem;
+
+  @include media-query-min($sm) {
+    font-size: calc(17px + 3 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2);
+    line-height: 32px;
+  }
+
+}
+
+p.deck--article-card {
+  font-family: $accentFont;
+  font-size: 1.6rem;
+  line-height: 3.2rem;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(14px + 2 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(1.6);
+    line-height: 32px;
+  }
+
+}
+
+p.deck {
+  font-family: $accentFont;
+  font-size: 2rem;
+  line-height: 3.2rem;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(16px + 4 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2);
+    line-height: 32px;
+  }
+
+}
+
+p.deck--topic-feature {
+  font-family: $accentFont;
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 3.2rem;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(17px + 9 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2.6);
+    line-height: 32px;
+  }
+
+}
+
+p.byline {
+  font-family: $headerFont;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 3.2rem;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(12px + 4 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(1.6);
+    line-height: 32px;
+  }
+
+}
+
+p.byline--article-card {
+  font-family: $headerFont;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 3.2rem;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(14px + 2 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(1.6);
+    line-height: 32px;
+  }
+
+}
+
+p.date--article-card {
+  font-family: $accentFont;
+  font-size: 1.3rem;
+  line-height: 3.2rem;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(12px + 1 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(1.3);
+    line-height: 32px;
+  }
+
+}
+
+p.date--single-article {
+  font-family: $accentFont;
+  font-size: 1.4rem;
+  line-height: 3.2rem;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(11px + 3 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(1.4);
+    line-height: 32px;
+  }
+
+}
+
+p.deck--index-feature {
+  font-family: $headerFont;
+  font-size: 2.4rem;
+  font-weight: 600;
+  font-style: italic;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(18px + 6 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2.4);
+    line-height: 32px;
+  }
+
+}
+
+p.byline--index-feature {
+  font-family: $accentFont;
+  font-size: 2.2rem;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(13px + 9 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2.2);
+    line-height: 32px;
+  }
+
+}
+
+p.pullquote {
+  font-family: $accentFont;
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: $gusGreen;
+  line-height: 3.2rem;
+
+  @include media-query-min($sm) {
+    font-size: calc(18px + 10 * ((100vw - 320px) / 680));
+    line-height: 2rem;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2.8);
+    line-height: 32px;
+  }
+
+}
+
+p.contributor-name {
+  font-family: $headerFont;
+  font-size: 2rem;
+  font-weight: 900;
+  color: $gusGreen;
+}
+
+p.team-name {
+  font-family: $headerFont;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: $gusGreen;
+
+  @include media-query-min($sm) {
+    font-size: calc(16px + 12 * ((100vw - 320px) / 680));
+    line-height: 2rem;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2.8);
+    line-height: 32px;
+  }
+
+}
+
+p.newsletter-header--footer {
+  font-family: $headerFont;
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: $gusGreen;
+
+  @include media-query-min($sm) {
+    font-size: calc(20px + 8 * ((100vw - 320px) / 680));
+    line-height: 2rem;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2.8);
+    line-height: 32px;
+  }
+
+}
+
+p.newsletter-subheader--footer {
+  font-family: $accentFont;
+  font-size: 2rem;
+  color: $soil;
+
+  @include media-query-min($sm) {
+    font-size: calc(13px + 7 * ((100vw - 320px) / 680));
+    line-height: 1.6rem;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2);
+    line-height: 2.4rem;
+  }
+
+}
+
+p.newsletter-header--primary {
+  font-family: $headerFont;
+  font-size: 6.7rem;
+  font-weight: 600;
+  color: $gusGreen;
+
+  @include media-query-min($sm) {
+    font-size: calc(20px + 47 * ((100vw - 320px) / 680));
+    line-height: 2.2rem;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(6.7);
+    line-height: 68px;
+  }
+
+}
+
+p.newsletter-subheader--primary {
+  font-family: $headerFont;
+  font-size: 3.6rem;
+  color: $soil;
+
+  @include media-query-min($sm) {
+    font-size: calc(14px + 22 * ((100vw - 320px) / 680));
+    line-height: 1.6rem;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(3.6);
+    line-height: 68px;
+  }
+
+}
+
+span.topic-menu {
+  font-family: $accentFont;
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: $gusGreen;
+}
+
+span.footer-menu {
+  font-family: $headerFont;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: $gusGreen;
+
+  @include media-query-min($sm) {
+    font-size: calc(16px + 12 * ((100vw - 320px) / 680));
+    line-height: 2rem;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2.8);
+    line-height: 32px;
+  }
+
+}
+
+a.footer-link {
+  font-family: $accentFont;
+  font-size: 1.8rem;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(13px + 5 * ((100vw - 320px) / 680));
+    line-height: 2rem;
+  }
+
   @include media-query-min($md) {
     @include font-size(1.8);
     line-height: 32px;
   }
+
 }
+
+a.action-menu {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: $accentFont;
+  color: $soil;
+}
+
+li.nav-link {
+  font-family: $accentFont;
+}
+
 .wp-block-quote {
   p {
     font-size: 24px;
@@ -202,20 +718,17 @@ h4 {
 .navlink--active {
   border: 2px solid orangered;
 }
-button {
-  transition: all 0.25s ease-in;
-  &:hover {
-    background: $gusGreen;
-    transition: all 0.25s ease-in;
-  }
-}
+
+
 
 .has-text-align-center {
   text-align: center;
 }
+
 .has-text-align-right {
   text-align: right;
 }
+
 .has-text-align-left {
   text-align: left;
 }
@@ -225,21 +738,27 @@ button {
 .text-center {
   text-align: center;
 }
+
 .text-left {
   text-align: left;
 }
+
 .text-right {
   text-align: right;
 }
+
 .d-flex {
   display: flex;
 }
+
 .flex-column {
   flex-direction: column;
 }
+
 .justify-content-center {
   justify-content: center;
 }
+
 .align-items-center {
   align-items: center;
 }
@@ -247,29 +766,42 @@ button {
 .position-absolute {
   position: absolute;
 }
+
 .position-relative {
   position: relative;
 }
+
 .position-fixed {
   position: fixed;
 }
 
 /***  Buttons  ***/
 
-.btn {
+
+.btn--primary {
   background-color: $soil;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px 20px;
   margin: 20px 0;
   border: 0px;
   color: white;
-  font-family: $bodyFont;
+  font-family: $accentFont;
+  font-weight: 600;
   font-size: 16px;
+
+  transition: all 0.25s ease-in;
+
+  &:hover {
+    background: $gusGreen;
+    transition: all 0.25s ease-in;
+  }
+
   a {
     color: white;
     font-family: $bodyFont;
     font-size: 16px;
   }
+
   text-align: center;
 }
 
@@ -278,9 +810,11 @@ button {
 img {
   max-width: 100%;
 }
+
 .img--full {
   width: 100%;
   margin: 100px 0;
+
   img {
     width: 100%;
     object-fit: cover;
