@@ -144,7 +144,7 @@ h1,
   line-height: 110%;
   color: $gusGreen;
   @include media-query-min($sm) {
-    font-size: calc(48px + 12 * ((100vw - 320px) / 680));
+    font-size: calc(36px + 12 * ((100vw - 320px) / 680));
   }
   @include media-query-min($md) {
     @include font-size(4.8);

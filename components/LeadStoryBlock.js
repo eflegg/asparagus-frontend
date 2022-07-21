@@ -40,14 +40,14 @@ const LeadStory = styled.section`
         margin: 20px 0px;
         background-color: ${theme.colours.soil};
     `}
-      .lead-text--inner {
-        display: flex;
-        flex-direction: column-reverse;
-        ${theme.mediaQuery.md`
-    
-    flex-direction: column;
-    `}
-      }
+    }
+    .lead-text--inner {
+      display: flex;
+      flex-direction: column-reverse;
+      ${theme.mediaQuery.md`
+  
+  flex-direction: column;
+  `}
     }
     .lead-story--excerpt {
       font-size: 2.4rem;
