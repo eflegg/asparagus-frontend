@@ -214,11 +214,11 @@ h6 {
   font-weight: bold;
 }
 
-span {
-  font-family: $accentFont;
-  color: $gusGreen;
-  padding: 20px;
-}
+// span {
+//   font-family: $accentFont;
+//   color: $gusGreen;
+//   padding: 20px;
+// }
 
 a.card-text {
   color: black;
@@ -243,12 +243,7 @@ a.card-text {
 // }
 // }
 
-a.action-menu {
-  font-size: 2rem;
-  font-weight: 600;
-  font-family: $accentFont;
-  color: $soil;
-}
+
 
 li {
   list-style: none;
@@ -696,6 +691,13 @@ a.footer-link {
     line-height: 32px;
   }
 
+}
+
+a.action-menu {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: $accentFont;
+  color: $soil;
 }
 
 li.nav-link {
