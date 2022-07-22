@@ -10,24 +10,7 @@ import AwardWinnerCard from "../components/AwardWinnerCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
-
-const LeadStory = styled.section`
-  h1 {
-    font-size: 5.8rem;
-  }
-  position: relative;
-  display: flex;
-  .lead-image {
-    height: 400px;
-    width: 60%;
-    position: relative;
-    display: block;
-  }
-  .lead--text {
-    width: 40%;
-    text-align: left;
-  }
-`;
+import LeadStoryBlock from "../components/LeadStoryBlock";
 
 const CategoryContainer = styled.section``;
 
@@ -48,32 +31,58 @@ export default function Home({
     <>
       <PageWrapper pageTitle="Asparagus Magazine - Home">
         <main>
-          <LeadStory>
+          <div>
             {posts.map((post, index) => {
+              let initialDate = post.date;
+
+              let formattedDate = new Date(initialDate).toLocaleDateString(
+                "en-US",
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit",
+                }
+              );
               return (
                 <>
                   {post.id == page.acf.lead_story[0].ID ? (
-                    <>
-                      <div className="lead-image">
-                        <Image
-                          src={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          layout="fill"
-                          objectFit="cover"
-                          alt="Lead story image"
-                        />
-                      </div>
-                      <div className="lead--text">
-                        <h1>{post.title.rendered}</h1>
-                        <p>{post.acf.writer[0].post_title}</p>
-                      </div>
-                    </>
-                  ) : null}
+                    <LeadStoryBlock
+                      date={formattedDate}
+                      image={post._embedded["wp:featuredmedia"]["0"].source_url}
+                      title={post.title.rendered}
+                      read={post.acf.time_to_read}
+                      byline={post.acf.writer[0].post_title}
+                      excerpt={post.acf.excerpt}
+                    />
+                  ) : // <React.Fragment key={uuidv4()}>
+                  //
+                  //   <div className="lead-image">
+                  //     <Image
+                  //       src={
+                  //         post._embedded["wp:featuredmedia"]["0"].source_url
+                  //       }
+                  //       layout="fill"
+                  //       objectFit="cover"
+                  //       alt="Contributor photo"
+                  //     />
+                  //   </div>
+                  //   <div className="lead--text">
+                  //     <h1>{post.title.rendered}</h1>
+                  //     <p>{post.acf.writer[0].post_title}</p>
+                  //     <p>
+                  //       {formattedDate} - <span>{post.acf.time_to_read}</span>
+                  //     </p>
+                  //     <hr />
+                  //     <p className="text-right lead-story--excerpt">
+                  //       {post.acf.excerpt}
+                  //     </p>
+                  //   </div>
+                  // </React.Fragment>
+                  null}
                 </>
               );
             })}
-          </LeadStory>
+          </div>
           <CategoryContainer className="cat-one--container">
             <h2>{page.acf.home_category_one[0].name}</h2>
             <div className="card--grid">
@@ -196,6 +205,8 @@ export async function getStaticProps() {
     `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryThree}&per_page=6`
   );
   const catThreePosts = await postQueryThree.json();
+
+  //all posts
   const postsQuery = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
   );

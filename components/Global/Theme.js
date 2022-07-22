@@ -30,6 +30,7 @@ export const colours = {
   gusGreen: "#339933",
   soil: " #913029",
   wheat: "#faf4ec",
+  darkWheat: "#f0e7db",
   teaGreen: "#d3e5a0",
   gusYellow: "#f8dd8b",
   grey: "#707070",

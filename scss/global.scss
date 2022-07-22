@@ -50,8 +50,6 @@ $xl: 1800px;
   }
 }
 
-
-
 //used everwhere a group of article cards is displayed
 .card--grid {
   display: grid;
@@ -70,106 +68,92 @@ ul {
 
 /***  Type  ***/
 
-
-
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap");
 
 @font-face {
-  font-family: 'halcyon-regular';
-  src: url('../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff2') format('woff2'),
-    url('../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff') format('woff');
+  font-family: "halcyon-regular";
+  src: url("../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff2") format("woff2"),
+    url("../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'halcyon-semibolditalic';
-  src: url('../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff2') format('woff2'),
-    url('../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff') format('woff');
+  font-family: "halcyon-semibolditalic";
+  src: url("../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff2") format("woff2"),
+    url("../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
-  font-family: 'halcyon-thinitalic';
-  src: url('../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff2') format('woff2'),
-    url('../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff') format('woff');
+  font-family: "halcyon-thinitalic";
+  src: url("../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff2") format("woff2"),
+    url("../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
-  font-family: 'halcyon-thin';
-  src: url('../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff2') format('woff2'),
-    url('../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff') format('woff');
+  font-family: "halcyon-thin";
+  src: url("../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff2") format("woff2"),
+    url("../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
-  font-family: 'halcyon-semibold';
-  src: url('../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff2') format('woff2'),
-    url('../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff') format('woff');
+  font-family: "halcyon-semibold";
+  src: url("../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff2") format("woff2"),
+    url("../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-
-}
-
-
-@font-face {
-  font-family: 'halcyon-medium';
-  src: url('../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff2') format('woff2'),
-    url('../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
 }
 
 @font-face {
-  font-family: 'halcyon-light';
-  src: url('../fonts/halcyon_light_macroman/halcyon-light-webfont.woff2') format('woff2'),
-    url('../fonts/halcyon_light_macroman/halcyon-light-webfont.woff') format('woff');
+  font-family: "halcyon-medium";
+  src: url("../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff2") format("woff2"),
+    url("../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
-  font-family: 'halcyon-regularitalic';
-  src: url('../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff2') format('woff2'),
-    url('../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff') format('woff');
+  font-family: "halcyon-light";
+  src: url("../fonts/halcyon_light_macroman/halcyon-light-webfont.woff2") format("woff2"),
+    url("../fonts/halcyon_light_macroman/halcyon-light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
-  font-family: 'halcyon-bold';
-  src: url('../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff2') format('woff2'),
-    url('../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff') format('woff');
+  font-family: "halcyon-regularitalic";
+  src: url("../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff2") format("woff2"),
+    url("../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
-  font-family: 'halcyon-black';
-  src: url('../fonts/halcyon_black_macroman/halcyon-black-webfont.woff2') format('woff2'),
-    url('../fonts/halcyon_black_macroman/halcyon-black-webfont.woff') format('woff');
+  font-family: "halcyon-bold";
+  src: url("../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff2") format("woff2"),
+    url("../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+}
 
+@font-face {
+  font-family: "halcyon-black";
+  src: url("../fonts/halcyon_black_macroman/halcyon-black-webfont.woff2") format("woff2"),
+    url("../fonts/halcyon_black_macroman/halcyon-black-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @mixin font-size($sizeValue: 1.6) {
   font-size: ($sizeValue * 10) + px;
   font-size: $sizeValue + rem;
 }
-
-
 
 html {
   font-size: 62.5%;
@@ -188,11 +172,10 @@ $grey: #707070;
 $white: #fff;
 $black: #000;
 
-body {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background: beige;
 }
 
 h1,
@@ -206,22 +189,29 @@ h6 {
   padding: 20px;
 }
 
-
-
-
-.footer--container.span {
-  font-family: $headerFont;
-  font-weight: bold;
+p {
+  margin: 8px 0;
 }
 
-// span {
-//   font-family: $accentFont;
-//   color: $gusGreen;
-//   padding: 20px;
-// }
-
-a.card-text {
+p,
+a,
+li {
+  letter-spacing: 0.2rem;
+  font-family: $bodyFont;
+  font-size: 18px;
+  line-height: 150%;
   color: black;
+  font-weight: 400;
+  padding: 20px;
+
+  @include media-query-min($sm) {
+    font-size: calc(16px + 2 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(1.8);
+    line-height: 32px;
+  }
 }
 
 p,
@@ -248,8 +238,8 @@ li {
 
 li {
   list-style: none;
-  font-family: $accentFont;
-  font-size: 18px;
+  font-family: $bodyFont;
+  font-size: 1.8rem;
   line-height: 150%;
 }
 
@@ -260,13 +250,13 @@ li {
 h1,
 .h1 {
   letter-spacing: 0.2rem;
-  font-size: 7.6rem;
+  font-size: 3.6rem;
   font-weight: 900;
   line-height: 150%;
   color: $gusGreen;
 
   @include media-query-min($sm) {
-    font-size: calc(48px + 28 * ((100vw - 320px) / 680));
+    font-size: calc(36px + 40 * ((100vw - 320px) / 680));
   }
 
   @include media-query-min($md) {
@@ -339,7 +329,6 @@ h5 {
     @include font-size(3.4);
     line-height: 150%;
   }
-
 }
 
 h6 {
@@ -356,7 +345,6 @@ h6 {
     @include font-size(1.5);
     line-height: 150%;
   }
-
 }
 
 h6.head--article-card {
@@ -379,7 +367,6 @@ p.body {
     @include font-size(2);
     line-height: 150%;
   }
-
 }
 
 p.deck--article-card {
@@ -396,7 +383,6 @@ p.deck--article-card {
     @include font-size(1.6);
     line-height: 32px;
   }
-
 }
 
 p.deck {
@@ -413,7 +399,6 @@ p.deck {
     @include font-size(2);
     line-height: 32px;
   }
-
 }
 
 p.deck--topic-feature {
@@ -431,7 +416,6 @@ p.deck--topic-feature {
     @include font-size(2.6);
     line-height: 32px;
   }
-
 }
 
 p.byline {
@@ -449,7 +433,6 @@ p.byline {
     @include font-size(1.6);
     line-height: 32px;
   }
-
 }
 
 p.byline--article-card {
@@ -467,7 +450,6 @@ p.byline--article-card {
     @include font-size(1.6);
     line-height: 32px;
   }
-
 }
 
 p.date--article-card {
@@ -484,7 +466,6 @@ p.date--article-card {
     @include font-size(1.3);
     line-height: 32px;
   }
-
 }
 
 p.date--single-article {
@@ -501,7 +482,6 @@ p.date--single-article {
     @include font-size(1.4);
     line-height: 32px;
   }
-
 }
 
 p.deck--index-feature {
@@ -519,7 +499,6 @@ p.deck--index-feature {
     @include font-size(2.4);
     line-height: 32px;
   }
-
 }
 
 p.byline--index-feature {
@@ -535,7 +514,6 @@ p.byline--index-feature {
     @include font-size(2.2);
     line-height: 32px;
   }
-
 }
 
 p.pullquote {
@@ -554,7 +532,6 @@ p.pullquote {
     @include font-size(2.8);
     line-height: 32px;
   }
-
 }
 
 p.contributor-name {
@@ -579,7 +556,6 @@ p.team-name {
     @include font-size(2.8);
     line-height: 32px;
   }
-
 }
 
 p.newsletter-header--footer {
@@ -597,7 +573,6 @@ p.newsletter-header--footer {
     @include font-size(2.8);
     line-height: 32px;
   }
-
 }
 
 p.newsletter-subheader--footer {
@@ -614,7 +589,6 @@ p.newsletter-subheader--footer {
     @include font-size(2);
     line-height: 2.4rem;
   }
-
 }
 
 p.newsletter-header--primary {
@@ -632,7 +606,6 @@ p.newsletter-header--primary {
     @include font-size(6.7);
     line-height: 120%;
   }
-
 }
 
 p.newsletter-subheader--primary {
@@ -649,7 +622,6 @@ p.newsletter-subheader--primary {
     @include font-size(3.6);
     line-height: 120%;
   }
-
 }
 
 span.topic-menu {
@@ -674,7 +646,6 @@ span.footer-menu {
     @include font-size(2.8);
     line-height: 32px;
   }
-
 }
 
 a.footer-link {
@@ -691,7 +662,6 @@ a.footer-link {
     @include font-size(1.8);
     line-height: 32px;
   }
-
 }
 
 a.action-menu {
@@ -719,8 +689,6 @@ li.nav-link {
 .navlink--active {
   border: 2px solid orangered;
 }
-
-
 
 .has-text-align-center {
   text-align: center;
@@ -777,7 +745,6 @@ li.nav-link {
 }
 
 /***  Buttons  ***/
-
 
 .btn--primary {
   background-color: $soil;

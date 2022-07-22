@@ -10,11 +10,20 @@ const Card = styled.div`
 
 // needs categories, reading time, date, image
 
-export default function ArticleCard({ title, slug, writer, photographer }) {
+export default function ArticleCard({
+  title,
+  slug,
+  writer,
+  photographer,
+  excerpt,
+}) {
   return (
     <Card>
       <Link href={"/articles/[slug]"} as={`/articles/${slug}`}>
         <a>
+          <p className="categories">
+            <span></span>
+          </p>
           <h3
             className="card-text pb-5"
             dangerouslySetInnerHTML={{ __html: title }}
@@ -22,6 +31,7 @@ export default function ArticleCard({ title, slug, writer, photographer }) {
           <p className="deck--article-card">I'm the deck</p>
           <p className="writer">{writer}</p>
           <p className="photographer">{photographer}</p>
+          <p className="excerpt">{excerpt}</p>
         </a>
       </Link>
     </Card>
