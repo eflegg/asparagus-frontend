@@ -22,7 +22,7 @@ export default function PageWrapper({ children, pageTitle }) {
         {children}
         <Footer />
       </div>
-      <AdBanner />
+      {/* <AdBanner /> */}
     </OuterContainer>
   );
 }

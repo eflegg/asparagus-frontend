@@ -53,31 +53,7 @@ export default function Home({
                       byline={post.acf.writer[0].post_title}
                       excerpt={post.acf.excerpt}
                     />
-                  ) : // <React.Fragment key={uuidv4()}>
-                  //
-                  //   <div className="lead-image">
-                  //     <Image
-                  //       src={
-                  //         post._embedded["wp:featuredmedia"]["0"].source_url
-                  //       }
-                  //       layout="fill"
-                  //       objectFit="cover"
-                  //       alt="Contributor photo"
-                  //     />
-                  //   </div>
-                  //   <div className="lead--text">
-                  //     <h1>{post.title.rendered}</h1>
-                  //     <p>{post.acf.writer[0].post_title}</p>
-                  //     <p>
-                  //       {formattedDate} - <span>{post.acf.time_to_read}</span>
-                  //     </p>
-                  //     <hr />
-                  //     <p className="text-right lead-story--excerpt">
-                  //       {post.acf.excerpt}
-                  //     </p>
-                  //   </div>
-                  // </React.Fragment>
-                  null}
+                  ) : null}
                 </>
               );
             })}
