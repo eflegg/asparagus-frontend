@@ -224,24 +224,26 @@ a.card-text {
   color: black;
 }
 
-// p,
-// a,
-// li {
-//   letter-spacing: 0.2rem;
-//   font-family: $bodyFont;
-//   font-size: 18px;
-//   line-height: 150%;
-//   color: black;
-//   font-weight: 400;
-//   padding: 20px;
-// @include media-query-min($sm) {
-//   font-size: calc(16px + 2 * ((100vw - 320px) / 680));
-// }
-// @include media-query-min($md) {
-//   @include font-size(1.8);
-//   line-height: 32px;
-// }
-// }
+p,
+a,
+li {
+  letter-spacing: 0.2rem;
+  font-family: $bodyFont;
+  font-size: 18px;
+  line-height: 150%;
+  color: black;
+  font-weight: 400;
+  padding: 20px;
+
+  @include media-query-min($sm) {
+    font-size: calc(16px + 2 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(1.8);
+    line-height: 32px;
+  }
+}
 
 
 
@@ -261,7 +263,7 @@ h1,
   letter-spacing: 0.2rem;
   font-size: 7.6rem;
   font-weight: 900;
-  line-height: 110%;
+  line-height: 150%;
   color: $gusGreen;
 
   @include media-query-min($sm) {
@@ -277,7 +279,7 @@ h2,
 .h2 {
   letter-spacing: 0.2rem;
   font-size: 5.8rem;
-  line-height: 125%;
+  line-height: 155%;
   color: white;
   font-weight: 900;
 
@@ -304,7 +306,7 @@ h3,
 
   @include media-query-min($md) {
     @include font-size(5.2);
-    line-height: 36px;
+    line-height: 135%;
   }
 }
 
@@ -321,7 +323,7 @@ h4 {
 
   @include media-query-min($md) {
     @include font-size(4.8);
-    line-height: 32px;
+    line-height: 150%;
   }
 }
 
@@ -336,7 +338,7 @@ h5 {
 
   @include media-query-min($md) {
     @include font-size(3.4);
-    line-height: 32px;
+    line-height: 150%;
   }
 
 }
@@ -353,7 +355,7 @@ h6 {
 
   @include media-query-min($md) {
     @include font-size(1.5);
-    line-height: 32px;
+    line-height: 150%;
   }
 
 }
@@ -376,7 +378,7 @@ p.body {
 
   @include media-query-min($md) {
     @include font-size(2);
-    line-height: 32px;
+    line-height: 150%;
   }
 
 }
@@ -635,7 +637,7 @@ p.newsletter-header--primary {
 }
 
 p.newsletter-subheader--primary {
-  font-family: $headerFont;
+  font-family: $accentFont;
   font-size: 3.6rem;
   color: $soil;
 
@@ -782,9 +784,9 @@ li.nav-link {
   background-color: $soil;
   border-radius: 10px;
   padding: 10px 20px;
-  margin: 20px 0;
+  margin: 20px;
   border: 0px;
-  color: white;
+  color: $wheat;
   font-family: $accentFont;
   font-weight: 600;
   font-size: 16px;

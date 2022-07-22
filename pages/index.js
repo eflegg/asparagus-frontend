@@ -5,6 +5,7 @@ import fetch from "isomorphic-fetch";
 import PageWrapper from "../components/Global/PageWrapper";
 import Link from "next/link";
 import ArticleCard from "../components/ArticleCard";
+import NewsletterSignup from "../components/NewsletterSignupCard";
 import AwardWinnerCard from "../components/AwardWinnerCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
@@ -98,6 +99,9 @@ export default function Home({
               })}
             </div>
           </CategoryContainer>
+          <NewsletterSignup>
+            
+          </NewsletterSignup>
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
             <div className="card--grid">
