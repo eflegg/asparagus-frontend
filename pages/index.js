@@ -12,6 +12,9 @@ import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 
 const LeadStory = styled.section`
+  h1 {
+    font-size: 5.8rem;
+  }
   position: relative;
   display: flex;
   .lead-image {

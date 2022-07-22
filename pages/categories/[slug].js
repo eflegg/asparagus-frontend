@@ -10,6 +10,14 @@ import PageWrapper from "../../components/Global/PageWrapper";
 import CategoryFeaturedCard from "../../components/CategoryFeaturedCard";
 import ArticleFilter from "../../components/ArticleFilter";
 import { v4 as uuidv4 } from "uuid";
+import styled from "styled-components";
+import theme from "../../components/Global/Theme";
+
+const CategoryH1 = styled.h1`
+  color: ${theme.colours.soil};
+  font-size: 3.4rem;
+  text-align: left;
+`;
 
 export default function CategoryPage({ category, posts, subcategories }) {
   // console.log("post categories: ", posts[1].categories);
@@ -30,10 +38,10 @@ export default function CategoryPage({ category, posts, subcategories }) {
 
   return (
     <PageWrapper pageTitle={category.name} className="container pt-5">
-      <h1
+      <CategoryH1
         className="text-center"
         dangerouslySetInnerHTML={{ __html: category.name }}
-      ></h1>
+      ></CategoryH1>
 
       {/* if the category is either start small or voices, show the subcategory filter
       followed by all the articles in the category. no feature article.
