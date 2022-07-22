@@ -24,12 +24,23 @@ const LeadStory = styled.section`
     padding: 30px;
     width: 100%;
     text-align: left;
-
-    background: ${theme.colours.wheat};
+    position: relative;
+    background: ${theme.colours.darkWheat};
     ${theme.mediaQuery.md`
     width: 40%;
   
     `}
+    h1 {
+      position: absolute;
+      top: 0;
+      transform: translateY(-110%);
+      color: white;
+      ${theme.mediaQuery.md`
+      transform: translateY(0);
+      position: relative;
+      color: ${theme.colours.gusGreen};
+      `}
+    }
     hr {
       display: none;
       ${theme.mediaQuery.md`
