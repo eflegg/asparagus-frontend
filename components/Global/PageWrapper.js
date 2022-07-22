@@ -2,7 +2,7 @@ import HeaderMenu from "./HeaderMenu";
 import Footer from "./footer";
 import Head from "next/head";
 import styled from "styled-components";
-import AdBanner from "../AdBanner";
+import AdBanner from "./AdBanner";
 
 const OuterContainer = styled.main`
   width: 100%;
