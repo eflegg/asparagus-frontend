@@ -27,7 +27,7 @@ export default function Events({ events }) {
         <h3 onClick={() => toggleCurrent()}>Upcoming Events</h3>
       </div>
       <h1>hi</h1>
-      {/* {isCurrent ? (
+      {isCurrent ? (
         <ul>
           {events.map((event, index) => {
             const eventDate = event.acf.date;
@@ -71,7 +71,7 @@ export default function Events({ events }) {
             );
           })}
         </ul>
-      )} */}
+      )}
     </PageWrapper>
   );
 }
