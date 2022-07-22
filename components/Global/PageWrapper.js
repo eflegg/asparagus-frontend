@@ -20,7 +20,7 @@ export default function PageWrapper({ children, pageTitle }) {
       <div className="page-wrapper">
         <HeaderMenu />
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </div>
       <AdBanner />
     </OuterContainer>
