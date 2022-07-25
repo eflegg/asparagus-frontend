@@ -39,7 +39,7 @@ export default function Home({
 }) {
   console.log("homepage ", page);
   console.log("posts ", posts);
-  console.log("lead story id ", page.acf.lead_story[0]);
+  console.log("categories embed: ", posts[0]._embedded["wp:term"]["0"]);
 
   // const ref = React.forwardRef(null);
 
@@ -86,6 +86,7 @@ export default function Home({
                       <ArticleCard
                         title={post.title.rendered}
                         slug={post.slug}
+                        categories={post._embedded["wp:term"]["0"]}
                       />
                     ) : null}
                   </>
@@ -114,6 +115,7 @@ export default function Home({
                           // ref={ref}
                           slug={catOnePost.slug}
                           title={catOnePost.title.rendered}
+                          categories={catOnePost._embedded["wp:term"]["0"]}
                         />
                       </React.Fragment>
                     )}
@@ -143,6 +145,7 @@ export default function Home({
                           // ref={ref}
                           slug={catTwoPost.slug}
                           title={catTwoPost.title.rendered}
+                          categories={catTwoPost._embedded["wp:term"]["0"]}
                         />
                       </React.Fragment>
                     )}
@@ -172,6 +175,7 @@ export default function Home({
                           // ref={ref}
                           slug={catThreePost.slug}
                           title={catThreePost.title.rendered}
+                          categories={catThreePost._embedded["wp:term"]["0"]}
                         />
                       </React.Fragment>
                     )}
@@ -198,21 +202,21 @@ export async function getStaticProps() {
   //cat one
   const categoryOne = page.acf.home_category_one[0].term_id;
   const postQueryOne = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryOne}&per_page=6`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryOne}&_embed&per_page=6`
   );
   const catOnePosts = await postQueryOne.json();
 
   //cat two
   const categoryTwo = page.acf.home_category_two[0].term_id;
   const postQueryTwo = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryTwo}&per_page=6`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryTwo}&_embed&per_page=6`
   );
   const catTwoPosts = await postQueryTwo.json();
 
   //cat three
   const categoryThree = page.acf.home_category_three[0].term_id;
   const postQueryThree = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryThree}&per_page=6`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryThree}&_embed&per_page=6`
   );
   const catThreePosts = await postQueryThree.json();
 

@@ -64,6 +64,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
+                        // categories={post.categories}
                       />
                     </li>
                   ) : subfilter == null ? (
@@ -72,6 +73,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
+                        // categories={post.categories}
                       />
                     </li>
                   ) : null}
@@ -111,6 +113,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
+                        // categories={post.categories}
                       />
                     </li>
                   )}

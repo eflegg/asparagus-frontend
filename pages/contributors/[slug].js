@@ -39,6 +39,7 @@ export default function ContributorPage({ contributor, posts }) {
                     title={post.title.rendered}
                     slug={post.slug}
                     writer={post.acf.writer[0].post_title}
+                    // categories={post.categories}
                   />
                 </>
               ) : null}
@@ -49,6 +50,7 @@ export default function ContributorPage({ contributor, posts }) {
                     title={post.title.rendered}
                     slug={post.slug}
                     writer={post.acf.writer[0].post_title}
+                    // categories={post.categories}
                   />
                 </>
               ) : null}

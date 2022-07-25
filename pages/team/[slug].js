@@ -41,6 +41,7 @@ export default function TeamPage({ teamMember, posts }) {
                   title={post.title.rendered}
                   slug={post.slug}
                   writer={post.acf.writer[0].post_title}
+                  // categories={post.categories}
                 />
               ) : null}
               {post.acf.writer[0]?.ID == teamMember.id ? (
@@ -49,6 +50,7 @@ export default function TeamPage({ teamMember, posts }) {
                     title={post.title.rendered}
                     slug={post.slug}
                     writer={post.acf.writer[0].post_title}
+                    // categories={post.categories}
                   />
                 </React.Fragment>
               ) : null}
