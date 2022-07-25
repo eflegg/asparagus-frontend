@@ -4,11 +4,13 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 
 const LeadStory = styled.section`
+  margin-bottom: 50px;
   position: relative;
   display: flex;
   flex-direction: column;
   ${theme.mediaQuery.md`
   flex-direction: row;
+  margin-bottom: 80px;
   `}
 
   .lead-image {

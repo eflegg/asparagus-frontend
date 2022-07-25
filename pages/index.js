@@ -11,7 +11,24 @@ import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
 
-const CategoryContainer = styled.section``;
+const CategoryContainer = styled.section`
+  margin-bottom: 45px;
+  ${theme.mediaQuery.sm`
+margin-bottom: 80px;
+`}
+  hr {
+    height: 3px;
+    border: 0px;
+    background: ${theme.colours.teaGreen};
+    margin-bottom: 65px;
+  }
+  h2 {
+    color: ${theme.colours.soil};
+    padding-bottom: 0;
+    width: 80%;
+    margin: 0 auto;
+  }
+`;
 
 export default function Home({
   page,
@@ -58,8 +75,27 @@ export default function Home({
               );
             })}
           </div>
+          <CategoryContainer className="new-from--container">
+            <h2>New From Asparagus</h2>
+            <hr />
+            <div className="card--grid">
+              {posts.map((post, index) => {
+                return (
+                  <>
+                    {index <= 5 ? (
+                      <ArticleCard
+                        title={post.title.rendered}
+                        slug={post.slug}
+                      />
+                    ) : null}
+                  </>
+                );
+              })}
+            </div>
+          </CategoryContainer>
           <CategoryContainer className="cat-one--container">
             <h2>{page.acf.home_category_one[0].name}</h2>
+            <hr />
             <div className="card--grid">
               {catOnePosts.map((catOnePost, index) => {
                 return (
@@ -88,6 +124,7 @@ export default function Home({
           </CategoryContainer>
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
+            <hr />
             <div className="card--grid">
               {catTwoPosts.map((catTwoPost, index) => {
                 return (
@@ -116,6 +153,7 @@ export default function Home({
           </CategoryContainer>
           <CategoryContainer className="cat-three--container">
             <h2>{page.acf.home_category_three[0].name}</h2>
+            <hr />
             <div className="card--grid">
               {catThreePosts.map((catThreePost, index) => {
                 return (
