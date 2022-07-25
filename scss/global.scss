@@ -599,7 +599,7 @@ p.newsletter-header--primary {
   line-height: 2rem;
 
   @include media-query-min($xs) {
-    font-size: calc(2rem + 47 * ((100vw - 320px) / 680));
+    font-size: calc(2px + 47 * ((100vw - 320px) / 680));
     line-height: 100%;
   }
 
@@ -615,13 +615,15 @@ p.newsletter-subheader--primary {
   color: $soil;
 
   @include media-query-min($xs) {
-    font-size: calc(1.4 + 22 * ((100vw - 320px) / 680));
+    font-size: calc(14px + 22 * ((100vw - 320px) / 680));
     line-height: 110%;
   }
 
   @include media-query-min($md) {
     @include font-size(3.6);
     line-height: 120%;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 
