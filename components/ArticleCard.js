@@ -6,8 +6,6 @@ import PropTypes from "prop-types";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
-import { getContributors } from "../utils/wordpress";
-
 const Card = styled.div`
   border: 2px solid ${theme.colours.grey};
   padding: 5%;
@@ -66,11 +64,11 @@ export default function ArticleCard({
   bylineID,
   contributors,
 }) {
-  console.log("article card contribs: ", contributors);
   return (
     <Card>
       <Link href={"/articles/[slug]"} as={`/articles/${slug}`}>
         <a>
+          <p>{bylineID}</p>
           <div className="card--image">
             <Image
               src={image && image}
@@ -113,17 +111,6 @@ export default function ArticleCard({
       </Link>
     </Card>
   );
-}
-
-export async function getStaticProps({ params }) {
-  const contributors = await getContributors();
-
-  return {
-    props: {
-      contributors,
-    },
-    revalidate: 10, // In seconds
-  };
 }
 
 ArticleCard.propTypes = {

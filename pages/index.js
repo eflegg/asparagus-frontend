@@ -10,6 +10,7 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
+import { getContributors } from "../utils/wordpress";
 
 const CategoryContainer = styled.section`
   margin-bottom: 45px;
@@ -36,10 +37,9 @@ export default function Home({
   catTwoPosts,
   catThreePosts,
   posts,
+  contributors,
 }) {
-  console.log("contributor id: ", posts[0].acf.writer[0].ID);
-
-  // const ref = React.forwardRef(null);
+  console.log("contributors: ", contributors[0].id);
 
   return (
     <>
@@ -47,6 +47,7 @@ export default function Home({
         <main>
           <div>
             {posts.map((post, index) => {
+              <p>{contributors[0].id}</p>;
               let initialDate = post.date;
               let formattedDate = new Date(initialDate).toLocaleDateString(
                 "en-US",
@@ -86,22 +87,25 @@ export default function Home({
                     day: "2-digit",
                   }
                 );
+                console.log(index);
                 return (
                   <>
                     {index <= 5 ? (
-                      <ArticleCard
-                        title={post.title.rendered}
-                        slug={post.slug}
-                        categories={post._embedded["wp:term"]["0"]}
-                        image={
-                          post._embedded["wp:featuredmedia"]["0"].source_url
-                        }
-                        excerpt={post.acf.excerpt}
-                        byline={post.acf.writer[0].post_title}
-                        read={post.acf.time_to_read}
-                        date={formattedDate}
-                        bylineImage={post.acf.writer[0].ID}
-                      />
+                      <>
+                        <ArticleCard
+                          title={post.title.rendered}
+                          slug={post.slug}
+                          categories={post._embedded["wp:term"]["0"]}
+                          image={
+                            post._embedded["wp:featuredmedia"]["0"].source_url
+                          }
+                          excerpt={post.acf.excerpt}
+                          byline={post.acf.writer[0].post_title}
+                          read={post.acf.time_to_read}
+                          date={formattedDate}
+                          bylineID={post.acf.writer[0].ID}
+                        />
+                      </>
                     ) : null}
                   </>
                 );
@@ -290,6 +294,8 @@ export async function getStaticProps() {
   );
   const catThreePosts = await postQueryThree.json();
 
+  const contributors = await getContributors();
+
   //all posts
   const postsQuery = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
@@ -303,6 +309,7 @@ export async function getStaticProps() {
       catTwoPosts: catTwoPosts,
       catThreePosts: catThreePosts,
       posts: posts,
+      contributors: contributors,
     },
   };
 }
