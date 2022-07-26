@@ -42,6 +42,7 @@ const PhotoStyled = styled.div`
   min-width: 25%;
   border: 3px solid gold;
   object-fit: cover;
+
   flex: none;
   img {
     width: 100%;
