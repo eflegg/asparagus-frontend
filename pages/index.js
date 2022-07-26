@@ -111,9 +111,14 @@ export default function Home({
               })}
             </div>
           </CategoryContainer>
-          <NewsletterSignup image="cherryblossoms.jpg" support title="Sign up for News from The Asparagus Patch" subtitle="Pleasently Infrequent Updates from Asparagus Magazine">
-          
-          </NewsletterSignup>
+          {/* @elizabeth it doesn't have any children so it can be a self-closing tag */}
+          <NewsletterSignup
+            support
+            title="Sign up for news from the Asparagus Path"
+            subtitle="pleasantly infrequent updates"
+            image="cherryblossoms.jpg"
+          />
+
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
             <div className="card--grid">
