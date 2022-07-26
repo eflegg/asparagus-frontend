@@ -24,23 +24,25 @@ const NewsletterBlock = styled.div`
 const TripleStalk = styled.div`
   height: 100%;
   min-width: 25%;
-  ${theme.mediaQuery.md`
+  /* ${theme.mediaQuery.md`
 position: relative;
 left: -40px;
-`}
+`} */
   ${theme.mediaQuery.xs`
   flex-direction: row;
   height: 100%;
   `}
-flex-direction: row;
+  flex-direction: row;
   border: solid purple;
   padding: 2%;
 `;
 
 const PhotoStyled = styled.div`
-  width: 65%;
-  border: solid black;
+  width: 45%;
+  min-width: 25%;
+  border: 3px solid gold;
   object-fit: cover;
+  flex: none;
   img {
     width: 100%;
     height: 100%;
@@ -53,11 +55,11 @@ const SignUp = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 30px;
-  ${theme.mediaQuery.md`
+  padding: 30px;
+  /* ${theme.mediaQuery.md`
 position: relative;
 left: 40px;
-`}
+`} */
   input {
     height: 38px;
     width: 280px;

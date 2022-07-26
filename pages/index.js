@@ -117,6 +117,7 @@ export default function Home({
             title="Sign up for news from the Asparagus Path"
             subtitle="pleasantly infrequent updates"
             image="cherryblossoms.jpg"
+            // image="triplestalk.svg"
           />
 
           <CategoryContainer className="cat-two--container">
