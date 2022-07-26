@@ -37,6 +37,12 @@ padding: 2%;
 const PhotoStyled = styled.div`
 width: 65%;
 border: solid black;
+object-fit: cover;
+img {
+  width: 100%;
+  height: 100;
+  object-fit: cover;
+}
 `;
 
 const SignUp = styled.div`
