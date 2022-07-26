@@ -37,9 +37,7 @@ export default function Home({
   catThreePosts,
   posts,
 }) {
-  console.log("homepage ", page);
-  console.log("posts ", posts);
-  console.log("categories embed: ", posts[0]._embedded["wp:term"]["0"]);
+  console.log("contributor id: ", posts[0].acf.writer[0].ID);
 
   // const ref = React.forwardRef(null);
 
@@ -102,6 +100,7 @@ export default function Home({
                         byline={post.acf.writer[0].post_title}
                         read={post.acf.time_to_read}
                         date={formattedDate}
+                        bylineImage={post.acf.writer[0].ID}
                       />
                     ) : null}
                   </>

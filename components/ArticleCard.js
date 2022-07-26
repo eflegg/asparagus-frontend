@@ -1,9 +1,12 @@
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import PropTypes from "prop-types";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
+
+import { getContributors } from "../utils/wordpress";
 
 const Card = styled.div`
   border: 2px solid ${theme.colours.grey};
@@ -60,7 +63,10 @@ export default function ArticleCard({
   image,
   date,
   read,
+  bylineID,
+  contributors,
 }) {
+  console.log("article card contribs: ", contributors);
   return (
     <Card>
       <Link href={"/articles/[slug]"} as={`/articles/${slug}`}>
@@ -73,6 +79,7 @@ export default function ArticleCard({
               alt="Article lead photo"
             />
           </div>
+
           <div className="categories">
             {categories &&
               categories.map((category, index) => {
@@ -106,6 +113,17 @@ export default function ArticleCard({
       </Link>
     </Card>
   );
+}
+
+export async function getStaticProps({ params }) {
+  const contributors = await getContributors();
+
+  return {
+    props: {
+      contributors,
+    },
+    revalidate: 10, // In seconds
+  };
 }
 
 ArticleCard.propTypes = {
