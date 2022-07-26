@@ -31,6 +31,12 @@ ${theme.mediaQuery.xs`
 flex-direction: row;
 border: solid purple;
 padding: 2%;
+}
+`;
+
+const PhotoStyled = styled.div`
+width: 65%;
+border: solid black;
 `;
 
 const SignUp = styled.div`
@@ -52,23 +58,37 @@ input {
 }
 `;
 
-export default function NewsletterSignup() {
+export default function NewsletterSignup({
+  title,
+  subtitle,
+  image,
+  support,
+}) {
+  console.log('support: ', support);
     return (
       <NewsletterBlock>
         <div className="signupWrapper">
         <SignUp>
-            <p className="newsletter-header--primary">Sign up for News from the Asparagus Patch</p>
-            <p className="newsletter-subheader--primary">Pleasently Infrequent updates from Asparagus Magazine</p>
+            <p className="newsletter-header--primary">{title}</p>
+            <p className="newsletter-subheader--primary">{subtitle}</p>
             <div className="flex-row">
             <input type= "text"/>
             <button className="btn--primary">Sign Up</button>
             </div> 
             </SignUp>
-         <TripleStalk>
-          
-             <img src="triplestalk.svg" alt="asparagus triple stalk logo"></img>
-           
-        </TripleStalk>
+        
+         
+         {support ? (
+          <PhotoStyled>
+          <img src={image} alt="nature image" />
+          </PhotoStyled>
+          ) : ( 
+          <TripleStalk>
+          <img src={image} alt="asparagus logo" />
+          </TripleStalk>   
+                   )
+                    }
+        
         </div>
       
       </NewsletterBlock>

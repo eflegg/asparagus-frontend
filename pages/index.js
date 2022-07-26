@@ -111,8 +111,8 @@ export default function Home({
               })}
             </div>
           </CategoryContainer>
-          <NewsletterSignup>
-            
+          <NewsletterSignup image="cherryblossoms.jpg" support title="Sign up for News from The Asparagus Patch" subtitle="Pleasently Infrequent Updates from Asparagus Magazine">
+          
           </NewsletterSignup>
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
