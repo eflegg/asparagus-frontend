@@ -40,6 +40,7 @@ export default function ContributorPage({ contributor, posts }) {
                     slug={post.slug}
                     writer={post.acf.writer[0].post_title}
                     // categories={post.categories}
+                    image={post._embedded["wp:featuredmedia"]["0"].source_url}
                   />
                 </>
               ) : null}
@@ -51,6 +52,7 @@ export default function ContributorPage({ contributor, posts }) {
                     slug={post.slug}
                     writer={post.acf.writer[0].post_title}
                     // categories={post.categories}
+                    image={post._embedded["wp:featuredmedia"]["0"].source_url}
                   />
                 </>
               ) : null}

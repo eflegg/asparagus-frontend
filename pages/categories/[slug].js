@@ -64,6 +64,9 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
+                        image={
+                          post._embedded["wp:featuredmedia"]["0"].source_url
+                        }
                         // categories={post.categories}
                       />
                     </li>
@@ -74,6 +77,9 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
                         // categories={post.categories}
+                        image={
+                          post._embedded["wp:featuredmedia"]["0"].source_url
+                        }
                       />
                     </li>
                   ) : null}
@@ -114,6 +120,9 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
                         // categories={post.categories}
+                        image={
+                          post._embedded["wp:featuredmedia"]["0"].source_url
+                        }
                       />
                     </li>
                   )}

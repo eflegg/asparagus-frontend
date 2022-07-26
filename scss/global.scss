@@ -206,7 +206,6 @@ h5,
 h6 {
   font-family: $headerFont;
   margin: 0;
-  padding: 20px;
 }
 p {
   margin: 8px 0;
@@ -229,6 +228,9 @@ li {
     @include font-size(1.8);
     line-height: 32px;
   }
+}
+a {
+  text-decoration: none;
 }
 
 li {
@@ -413,7 +415,7 @@ p.deck--topic-feature {
   }
 }
 
-p.byline {
+.byline {
   font-family: $headerFont;
   font-size: 1.6rem;
   font-weight: 700;
@@ -430,7 +432,7 @@ p.byline {
   }
 }
 
-p.byline--article-card {
+.byline--article-card {
   font-family: $headerFont;
   font-size: 1.5rem;
   font-weight: 700;
