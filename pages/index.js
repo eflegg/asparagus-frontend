@@ -114,8 +114,8 @@ export default function Home({
           {/* @elizabeth it doesn't have any children so it can be a self-closing tag */}
           <NewsletterSignup
             support
-            title="Sign up for news from the Asparagus Path"
-            subtitle="pleasantly infrequent updates"
+            title="Sign up for News from the Asparagus Patch"
+            subtitle="pleasantly infrequent updates from asparagus magazine"
             image="cherryblossoms.jpg"
           />
 

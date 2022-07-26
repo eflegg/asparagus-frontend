@@ -33,21 +33,11 @@ left: -40px;
   height: 100%;
   `}
 flex-direction: row;
-  border: solid purple;
+  border: solid yellow;
   padding: 2%;
 `;
 
 const PhotoStyled = styled.div`
-<<<<<<< HEAD
-width: 65%;
-border: solid black;
-object-fit: cover;
-img {
-  width: 100%;
-  height: 100%;
-  // object-fit: cover;
-}
-=======
   width: 65%;
   border: solid black;
   object-fit: cover;
@@ -56,7 +46,6 @@ img {
     height: 100%;
     object-fit: cover;
   }
->>>>>>> 2300df0fe55740951131e27e9956e8489ee3f0bd
 `;
 
 const SignUp = styled.div`
@@ -76,7 +65,12 @@ left: 40px;
     width: 200px;
   `}
   }
+  &.text--support {
+    padding: 40px;
+  }
 `;
+
+
 
 export default function NewsletterSignup({ title, subtitle, image, support }) {
   console.log("support: ", support);
@@ -84,14 +78,16 @@ export default function NewsletterSignup({ title, subtitle, image, support }) {
     <NewsletterBlock>
       {/* @elizabeth this is how you use a prop in a ternary. if support exists, add this class. otherwise do nothing. apply signupWrapper regardless */}
       <div className={`${support ? "wrapper--support" : " "} signupWrapper`}>
-        <SignUp>
-          <p className="newsletter-header--primary">{title}</p>
-          <p className="newsletter-subheader--primary">{subtitle}</p>
-          <div className="flex-row">
-            <input type="text" />
-            <button className="btn--primary">Sign Up</button>
-          </div>
-        </SignUp>
+        
+        <div className={`${support? "text--support" : " "} SignUp`}>
+                    <p className="newsletter-header--primary">{title}</p>
+                    <p className="newsletter-subheader--primary">{subtitle}</p>
+                    <div className="flex-row">
+                      <input type="text" />
+                      <button className="btn--primary">Sign Up</button>
+                    </div>
+            </div>
+        
 
         {support ? (
           <PhotoStyled>
