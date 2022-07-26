@@ -112,7 +112,12 @@ export default function Home({
             </div>
           </CategoryContainer>
           {/* @elizabeth it doesn't have any children so it can be a self-closing tag */}
-          <NewsletterSignup support />
+          <NewsletterSignup
+            support
+            title="Sign up for news from the Asparagus Path"
+            subtitle="pleasantly infrequent updates"
+            image="cherryblossoms.jpg"
+          />
 
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
