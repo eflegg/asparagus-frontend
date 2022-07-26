@@ -14,24 +14,27 @@ const NewsletterBlock = styled.div`
     margin: 0 auto;
     display: flex;
     flex-direction: row;
+    /* this is how you use the & in scss */
+    &.wrapper--support {
+      width: 100%;
+    }
   }
 `;
 
 const TripleStalk = styled.div`
-height: 100%;
-min-width: 25%;
-${theme.mediaQuery.md`
+  height: 100%;
+  min-width: 25%;
+  ${theme.mediaQuery.md`
 position: relative;
 left: -40px;
 `}
-${theme.mediaQuery.xs`
+  ${theme.mediaQuery.xs`
   flex-direction: row;
   height: 100%;
   `}
 flex-direction: row;
-border: solid purple;
-padding: 2%;
-}
+  border: solid purple;
+  padding: 2%;
 `;
 
 const PhotoStyled = styled.div`
@@ -68,7 +71,8 @@ export default function NewsletterSignup({ title, subtitle, image, support }) {
   console.log("support: ", support);
   return (
     <NewsletterBlock>
-      <div className="signupWrapper">
+      {/* @elizabeth this is how you use a prop in a ternary. if support exists, add this class. otherwise do nothing. apply signupWrapper regardless */}
+      <div className={`${support ? "wrapper--support" : " "} signupWrapper`}>
         <SignUp>
           <p className="newsletter-header--primary">{title}</p>
           <p className="newsletter-subheader--primary">{subtitle}</p>
