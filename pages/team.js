@@ -8,7 +8,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const TeamMemberContainer = styled.ul`
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 `;
 
