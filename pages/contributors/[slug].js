@@ -8,59 +8,104 @@ import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
 import { ContribImage } from "../../components/Global/styles";
+import PageWrapper from "../../components/Global/PageWrapper";
+
+const ContribHeader = styled.div`
+  margin: 0 auto;
+  width: 90%;
+  border: 2px solid slateblue;
+  ${theme.mediaQuery.sm`
+width: 80%;
+display: flex;
+`}
+  .contrib--image {
+    position: relative;
+    overflow: hidden;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+  }
+`;
 
 export default function ContributorPage({ contributor, posts }) {
   console.log("contributor id: ", contributor.id);
   console.log("posts: ", posts);
   // const ref = React.forwardRef(null);
   return (
-    <div className="container pt-5">
-      <h1 className="text-center pb-5">{contributor.title.rendered}</h1>
-      <ContribImage className="contrib--image">
-        <Image
-          src={contributor._embedded["wp:featuredmedia"]["0"].source_url}
-          layout="fill"
-          objectFit="cover"
-          alt="Contributor photo"
-        />
-      </ContribImage>
-      <p>{contributor.id}</p>
-      <div className="bio">
-        <p>{contributor.acf.bio}</p>
-      </div>
-      <ul className="card--grid">
-        {posts.map((post, index) => {
-          return (
-            <>
-              {post.acf.photographer[0]?.ID == contributor.id ? (
-                <>
-                  <ArticleCard
-                    key={index}
-                    title={post.title.rendered}
-                    slug={post.slug}
-                    writer={post.acf.writer[0].post_title}
-                  />
-                </>
-              ) : null}
-              {post.acf.writer[0]?.ID == contributor.id ? (
-                <>
-                  <ArticleCard
-                    key={index}
-                    title={post.title.rendered}
-                    slug={post.slug}
-                    writer={post.acf.writer[0].post_title}
-                  />
-                </>
-              ) : null}
-            </>
-          );
-        })}
-      </ul>
+    <PageWrapper pageTitle={contributor.title.rendered}>
+      <div className="container pt-5">
+        <h1 className="text-center pb-5">{contributor.title.rendered}</h1>
+        <hr />
 
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
-    </div>
+        <ContribHeader>
+          <div className="contrib--image">
+            <Image
+              src={contributor._embedded["wp:featuredmedia"]["0"].source_url}
+              layout="fill"
+              objectFit="cover"
+              alt="Contributor photo"
+            />
+          </div>
+          <div className="contrib--details">
+            <div className="bio">
+              <p>{contributor.acf.bio}</p>
+            </div>
+            {contributor.acf.which_social_media_network == "instagram" ? (
+              <div className="icon">
+                <img src="/insta.png" />
+              </div>
+            ) : contributor.acf.which_social_media_network == "twitter" ? (
+              <div className="icon">
+                <img src="/twitter.png" />
+              </div>
+            ) : (
+              <div className="icon">
+                <img src="/insta.png" />
+              </div>
+            )}
+            <a
+              href={`https://www.${contributor.acf.website}`}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <p>{contributor.acf.website}</p>
+            </a>
+          </div>
+        </ContribHeader>
+        <ul className="card--grid">
+          {posts.map((post, index) => {
+            return (
+              <>
+                {post.acf.photographer[0]?.ID == contributor.id ? (
+                  <>
+                    <ArticleCard
+                      key={index}
+                      title={post.title.rendered}
+                      slug={post.slug}
+                      writer={post.acf.writer[0].post_title}
+                    />
+                  </>
+                ) : null}
+                {post.acf.writer[0]?.ID == contributor.id ? (
+                  <>
+                    <ArticleCard
+                      key={index}
+                      title={post.title.rendered}
+                      slug={post.slug}
+                      writer={post.acf.writer[0].post_title}
+                    />
+                  </>
+                ) : null}
+              </>
+            );
+          })}
+        </ul>
+
+        <Link href="/">
+          <a className="btn btn-primary">Back to Home</a>
+        </Link>
+      </div>
+    </PageWrapper>
   );
 }
 

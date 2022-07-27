@@ -181,7 +181,7 @@ html {
 
 $headerFont: "Source Serif Pro", serif;
 $bodyFont: "Source Serif Pro", serif;
-$accentFont: "halcyon_regular", sans-serif;
+$accentFont: "halcyon-regular", sans-serif;
 
 $gusGreen: #339933;
 $soil: #913029;
@@ -206,7 +206,6 @@ h5,
 h6 {
   font-family: $headerFont;
   margin: 0;
-  padding: 20px;
 }
 p {
   margin: 8px 0;
@@ -240,6 +239,12 @@ li {
 
 .paragraph--bold {
   font-weight: 700;
+}
+hr {
+  height: 3px;
+  border: 0px;
+  background: $teaGreen;
+  margin-bottom: 65px;
 }
 
 h1,
@@ -529,14 +534,14 @@ p.pullquote {
   }
 }
 
-p.contributor-name {
+.contributor-name {
   font-family: $headerFont;
   font-size: 2rem;
   font-weight: 900;
   color: $gusGreen;
 }
 
-p.team-name {
+.team-name {
   font-family: $headerFont;
   font-size: 2.8rem;
   font-weight: 900;
@@ -553,7 +558,7 @@ p.team-name {
   }
 }
 
-p.newsletter-header--footer {
+.newsletter-header--footer {
   font-family: $headerFont;
   font-size: 2.8rem;
   font-weight: 600;
@@ -745,7 +750,7 @@ li.nav-link {
   background-color: $soil;
   border-radius: 10px;
   padding: 10px 20px;
-  margin: 20px 0;
+  margin: 15px 0;
   border: 0px;
   color: white;
   font-family: $accentFont;

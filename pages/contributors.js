@@ -15,6 +15,8 @@ const ContribContainer = styled.ul`
   width: 90%;
   margin: 0 auto;
   list-style: none;
+  max-width: 1200px;
+  margin-bottom: 100px;
 `;
 
 export default function ContributorsPage({ contributors, categories }) {
@@ -22,8 +24,9 @@ export default function ContributorsPage({ contributors, categories }) {
 
   // const ref = React.forwardRef(null);
   return (
-    <PageWrapper className="">
-      <h1>List of Contributors</h1>
+    <PageWrapper pageTitle="Contributors" className="">
+      <h1 className="text-center">Contributors</h1>
+      <hr />
       <ContribContainer>
         {contributors.map((contributor, index) => {
           return (
@@ -33,6 +36,8 @@ export default function ContributorsPage({ contributors, categories }) {
               slug={contributor.slug}
               name={contributor.title.rendered}
               bio={contributor.acf.bio}
+              social={contributor.acf.social_media_handle}
+              socialLink={contributor.acf.social_media_link}
               // ref={ref}
             />
           );

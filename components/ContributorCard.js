@@ -5,14 +5,19 @@ import { ContribImage } from "./Global/styles";
 import Image from "next/image";
 
 const Card = styled.li`
+  margin: 0 auto;
+  max-width: 550px;
   display: flex;
-  border: 2px solid rebeccapurple;
   a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border: 2px solid salmon;
+
     justify-content: space-between;
+    text-decoration: none;
+  }
+  p {
+    line-height: 25px;
   }
 `;
 
@@ -23,8 +28,9 @@ export default function ContributorCard({
   image,
   title,
   team,
+  social,
+  socialLink,
 }) {
-  console.log("contrib card slug: ");
   return (
     <Card>
       <ContribImage team={team}>
@@ -39,12 +45,16 @@ export default function ContributorCard({
         <Link href={"/team/[slug]"} as={`/team/${slug}`}>
           <a>
             <div>
-              <h3>
+              <h1>hi</h1>
+              <h3 className="team-name">
                 {name}
                 {title ? <span>- {title}</span> : null}
               </h3>
 
               <p>{bio}</p>
+              <a href={socialLink} rel="noreferrer" target="_blank">
+                <p>{social}</p>
+              </a>
             </div>
             <button className="btn--primary">Contributor Profile</button>
           </a>
@@ -53,12 +63,15 @@ export default function ContributorCard({
         <Link href={"/contributors/[slug]"} as={`/contributors/${slug}`}>
           <a>
             <div>
-              <h3>
+              <h3 className="contributor-name">
                 {name}
                 {title ? <span>- {title}</span> : null}
               </h3>
 
               <p>{bio}</p>
+              <a href={socialLink} rel="noreferrer" target="_blank">
+                <p>{social}</p>
+              </a>
             </div>
             <button className="btn--primary">Contributor Profile</button>
           </a>
