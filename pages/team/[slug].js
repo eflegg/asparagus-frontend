@@ -127,6 +127,8 @@ export default function TeamPage({ teamMember, posts }) {
                     title={post.title.rendered}
                     slug={post.slug}
                     writer={post.acf.writer[0].post_title}
+                    // categories={post.categories}
+                    image={post._embedded["wp:featuredmedia"]["0"].source_url}
                   />
                 ) : null}
                 {post.acf.writer[0]?.ID == teamMember.id ? (
