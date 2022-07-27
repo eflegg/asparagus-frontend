@@ -86,7 +86,7 @@ export default function NewsletterSignup({ title, subtitle, image, support }) {
                       <input type="text" />
                       <button className="btn--primary">Sign Up</button>
                     </div>
-            </div>
+        </div>
         
 
         {support ? (
