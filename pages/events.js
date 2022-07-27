@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { getEvents } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
+import EventCard from "../components/EventCard";
 
 export default function Events({ events }) {
   console.log("events: ", events);

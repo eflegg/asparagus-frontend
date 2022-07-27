@@ -11,6 +11,9 @@ import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
 import { getContributors } from "../utils/wordpress";
+import EventCard from "../components/EventCard";
+import NewsletterSignup from "../components/NewsletterSignupCard";
+import EventBlock from "../components/EventCard";
 
 const CategoryContainer = styled.section`
   margin-bottom: 45px;
@@ -160,6 +163,8 @@ export default function Home({
               })}
             </div>
           </CategoryContainer>
+        <NewsletterSignup/>
+        <EventBlock/>
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
             <hr />
