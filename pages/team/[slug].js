@@ -8,59 +8,142 @@ import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
 import { ContribImage } from "../../components/Global/styles";
+import PageWrapper from "../../components/Global/PageWrapper";
+
+const ContribHeader = styled.div`
+  margin: 0 auto 70px;
+  width: 90%;
+  max-width: 1000px;
+  ${theme.mediaQuery.sm`
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 160px;
+  `}
+  .contrib--image {
+    position: relative;
+    overflow: hidden;
+    margin: 10px auto 20px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    flex: none;
+    ${theme.mediaQuery.sm`
+    margin: initial;
+ margin-right: 20px;
+  `}
+  }
+  .where-to-find {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    ${theme.mediaQuery.sm`
+flex-direction: row;
+justify-content: flex-start;
+  `}
+  }
+  .contrib-website {
+    text-decoration: none;
+    p {
+      font-family: ${theme.type.semibold};
+      font-size: 2rem;
+      line-height: 2.2rem;
+    }
+  }
+  h4 {
+    color: ${theme.colours.soil};
+    font-size: 2.8rem;
+    line-height: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+    ${theme.mediaQuery.sm`
+ text-align: left;
+  `}
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+    margin: 15px 0;
+    ${theme.mediaQuery.sm`
+margin: initial;
+  `}
+  }
+`;
 
 export default function TeamPage({ teamMember, posts }) {
-  console.log("teamMember id: ", teamMember.id);
-  console.log("posts: ", posts);
-  console.log("post 1 writer: ", posts[1].acf.writer[0].ID);
-  console.log("post 1 photog: ", posts[1].acf.photographer[0].ID);
-  // const ref = React.forwardRef(null);
   return (
-    <div className="container pt-5">
-      <h1>i am a single team member page</h1>
-      <h1 className="text-center pb-5">{teamMember.title.rendered}</h1>
-      <ContribImage team={true} className="contrib--image">
-        <Image
-          src={teamMember._embedded["wp:featuredmedia"]["0"].source_url}
-          layout="fill"
-          objectFit="cover"
-          alt="teamMember photo"
-        />
-      </ContribImage>
-
-      <div className="bio">
-        <p>{teamMember.acf.bio}</p>
-      </div>
-      <ul className="card--grid">
-        {posts.map((post, index) => {
-          return (
-            <>
-              {post.acf.photographer[0]?.ID == teamMember.id ? (
-                <ArticleCard
-                  key={index}
-                  title={post.title.rendered}
-                  slug={post.slug}
-                  writer={post.acf.writer[0].post_title}
-                />
-              ) : null}
-              {post.acf.writer[0]?.ID == teamMember.id ? (
-                <React.Fragment key={index}>
+    <PageWrapper>
+      <div className="container pt-5">
+        <h1 className="text-center pb-5">{teamMember.title.rendered}</h1>
+        <hr />
+        <ContribHeader>
+          <div className="contrib--image">
+            <Image
+              src={teamMember._embedded["wp:featuredmedia"]["0"].source_url}
+              layout="fill"
+              objectFit="cover"
+              alt="teamMember photo"
+            />
+          </div>
+          <div className="contrib--details">
+            {teamMember.acf.title && <h4>{teamMember.acf.title}</h4>}
+            <div className="bio">
+              <p>{teamMember.acf.bio}</p>
+            </div>
+            <div className="where-to-find">
+              {teamMember.acf.which_social_media_network == "instagram" ? (
+                <div className="icon">
+                  <img src="/insta.png" />
+                </div>
+              ) : teamMember.acf.which_social_media_network == "twitter" ? (
+                <div className="icon">
+                  <img src="/twitter.png" />
+                </div>
+              ) : (
+                <div className="icon">
+                  <img src="/insta.png" />
+                </div>
+              )}
+              <a
+                className="contrib-website"
+                href={`https://www.${teamMember.acf.website}`}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <p>{teamMember.acf.website}</p>
+              </a>
+            </div>
+          </div>
+        </ContribHeader>
+        <ul className="card--grid">
+          {posts.map((post, index) => {
+            return (
+              <>
+                {post.acf.photographer[0]?.ID == teamMember.id ? (
                   <ArticleCard
+                    key={index}
                     title={post.title.rendered}
                     slug={post.slug}
                     writer={post.acf.writer[0].post_title}
                   />
-                </React.Fragment>
-              ) : null}
-            </>
-          );
-        })}
-      </ul>
-
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
-    </div>
+                ) : null}
+                {post.acf.writer[0]?.ID == teamMember.id ? (
+                  <React.Fragment key={index}>
+                    <ArticleCard
+                      title={post.title.rendered}
+                      slug={post.slug}
+                      writer={post.acf.writer[0].post_title}
+                    />
+                  </React.Fragment>
+                ) : null}
+              </>
+            );
+          })}
+        </ul>
+      </div>
+    </PageWrapper>
   );
 }
 

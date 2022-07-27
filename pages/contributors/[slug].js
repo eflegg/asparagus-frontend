@@ -41,6 +41,7 @@ const ContribHeader = styled.div`
     align-items: center;
     ${theme.mediaQuery.sm`
 flex-direction: row;
+justify-content: flex-start;
   `}
   }
   .contrib-website {
@@ -149,10 +150,6 @@ export default function ContributorPage({ contributor, posts }) {
             );
           })}
         </ul>
-
-        <Link href="/">
-          <a className="btn btn-primary">Back to Home</a>
-        </Link>
       </div>
     </PageWrapper>
   );
