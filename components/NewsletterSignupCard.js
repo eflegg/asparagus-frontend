@@ -49,7 +49,10 @@ const PhotoStyled = styled.div`
 `;
 
 const SignUp = styled.div`
-  border: solid green;
+  border: 3px solid mediumseagreen;
+  &.text--support {
+    border: 3px solid rebeccapurple;
+  }
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,16 +81,14 @@ export default function NewsletterSignup({ title, subtitle, image, support }) {
     <NewsletterBlock>
       {/* @elizabeth this is how you use a prop in a ternary. if support exists, add this class. otherwise do nothing. apply signupWrapper regardless */}
       <div className={`${support ? "wrapper--support" : " "} signupWrapper`}>
-        
-        <div className={`${support? "text--support" : " "} SignUp`}>
-                    <p className="newsletter-header--primary">{title}</p>
-                    <p className="newsletter-subheader--primary">{subtitle}</p>
-                    <div className="flex-row">
-                      <input type="text" />
-                      <button className="btn--primary">Sign Up</button>
-                    </div>
-        </div>
-        
+        <SignUp className={`${support ? "text--support" : " "} `}>
+          <p className="newsletter-header--primary">{title}</p>
+          <p className="newsletter-subheader--primary">{subtitle}</p>
+          <div className="flex-row">
+            <input type="text" />
+            <button className="btn--primary">Sign Up</button>
+          </div>
+        </SignUp>
 
         {support ? (
           <PhotoStyled>
