@@ -18,19 +18,22 @@ margin: 0 auto;
     padding 40px;
     max-width: 68%;
 }
+${theme.mediaQuery.xs`
+ width: 90%;
+  `}
 `;
 
-export default function EventBlock() {
+export default function EventBlock({image, name, date, location, descripton}) {
     return (
         <EventCard>
             <div className="event--image">
-            <img src="cherryblossoms.jpg" alt="picture of cherry blossoms"></img>
+            <img src={image} alt="picture of cherry blossoms"></img>
             </div>
                 <div className="event--info">
-                    <h3 className="event--name"> Event Name</h3>
-                    <p className="event--date">Date</p>
-                    <p className="event--location">Location</p>
-                    <p className="event--description">Description lala lalaDescription lala lalaDescription lala lalaDescription lala lalaDescription lala lalaDescription lala lalaDescription lala lalaDescription lala lalaDescription lala lalaDescription lala lalaDescription lala lalaDescription lala lalaDescription lala lala</p>
+                    <h3 className="event--name">{name}</h3>
+                    <p className="event--date">{date}</p>
+                    <p className="event--location">{location}</p>
+                    <p className="event--description">{descripton}</p>
                     <button className="btn--primary">Learn More</button>
                 </div>
         </EventCard>

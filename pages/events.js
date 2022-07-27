@@ -45,6 +45,7 @@ export default function Events({ events }) {
                       <li>{event.title.rendered}</li>
                       <p>{event.acf.location}</p>
                       <p>{event.acf.date}</p>
+                      <p>{event.acf.descripton}</p>
                       {event.acf.are_there_tickets == "Yes" ? (
                         <p>yes there are ticket</p>
                       ) : (
