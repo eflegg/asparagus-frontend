@@ -13,24 +13,50 @@ import PageWrapper from "../../components/Global/PageWrapper";
 const ContribHeader = styled.div`
   margin: 0 auto;
   width: 90%;
-  border: 2px solid slateblue;
+  max-width: 1000px;
   ${theme.mediaQuery.sm`
-width: 80%;
-display: flex;
-`}
+  width: 75%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 160px;
+  `}
   .contrib--image {
     position: relative;
     overflow: hidden;
     width: 250px;
     height: 250px;
     border-radius: 50%;
+    flex: none;
+    ${theme.mediaQuery.sm`
+ margin-right: 20px;
+  `}
+  }
+  .where-to-find {
+    display: flex;
+    align-items: center;
+  }
+  .contrib-website {
+    text-decoration: none;
+    p {
+      font-family: ${theme.type.semibold};
+      font-size: 2rem;
+      line-height: 2.2rem;
+    }
+  }
+  h4 {
+    color: ${theme.colours.soil};
+    font-size: 2.8rem;
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
   }
 `;
 
 export default function ContributorPage({ contributor, posts }) {
   console.log("contributor id: ", contributor.id);
   console.log("posts: ", posts);
-  // const ref = React.forwardRef(null);
+
   return (
     <PageWrapper pageTitle={contributor.title.rendered}>
       <div className="container pt-5">
@@ -47,29 +73,34 @@ export default function ContributorPage({ contributor, posts }) {
             />
           </div>
           <div className="contrib--details">
+            {contributor.acf.title && <h4>{contributor.acf.title}</h4>}
             <div className="bio">
               <p>{contributor.acf.bio}</p>
             </div>
-            {contributor.acf.which_social_media_network == "instagram" ? (
-              <div className="icon">
-                <img src="/insta.png" />
-              </div>
-            ) : contributor.acf.which_social_media_network == "twitter" ? (
-              <div className="icon">
-                <img src="/twitter.png" />
-              </div>
-            ) : (
-              <div className="icon">
-                <img src="/insta.png" />
-              </div>
-            )}
-            <a
-              href={`https://www.${contributor.acf.website}`}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <p>{contributor.acf.website}</p>
-            </a>
+
+            <div className="where-to-find">
+              {contributor.acf.which_social_media_network == "instagram" ? (
+                <div className="icon">
+                  <img src="/insta.png" />
+                </div>
+              ) : contributor.acf.which_social_media_network == "twitter" ? (
+                <div className="icon">
+                  <img src="/twitter.png" />
+                </div>
+              ) : (
+                <div className="icon">
+                  <img src="/insta.png" />
+                </div>
+              )}
+              <a
+                className="contrib-website"
+                href={`https://www.${contributor.acf.website}`}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <p>{contributor.acf.website}</p>
+              </a>
+            </div>
           </div>
         </ContribHeader>
         <ul className="card--grid">

@@ -3,7 +3,8 @@ import { css } from "styled-components";
 export const type = {
   header: "Source Sans Pro",
   body: "Arial",
-  accent: "",
+  accent: "halcyon-regular",
+  semibold: "halcyon-semibold",
 };
 
 export const breakpoints = {
