@@ -11,29 +11,37 @@ import { ContribImage } from "../../components/Global/styles";
 import PageWrapper from "../../components/Global/PageWrapper";
 
 const ContribHeader = styled.div`
-  margin: 0 auto;
+  margin: 0 auto 70px;
   width: 90%;
   max-width: 1000px;
   ${theme.mediaQuery.sm`
   width: 75%;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 160px;
   `}
   .contrib--image {
     position: relative;
     overflow: hidden;
+    margin: 10px auto 20px;
     width: 250px;
     height: 250px;
     border-radius: 50%;
     flex: none;
     ${theme.mediaQuery.sm`
+    margin: initial;
  margin-right: 20px;
   `}
   }
   .where-to-find {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    ${theme.mediaQuery.sm`
+flex-direction: row;
+  `}
   }
   .contrib-website {
     text-decoration: none;
@@ -46,10 +54,20 @@ const ContribHeader = styled.div`
   h4 {
     color: ${theme.colours.soil};
     font-size: 2.8rem;
+    line-height: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+    ${theme.mediaQuery.sm`
+ text-align: left;
+  `}
   }
   .icon {
     width: 30px;
     height: 30px;
+    margin: 15px 0;
+    ${theme.mediaQuery.sm`
+margin: initial;
+  `}
   }
 `;
 
