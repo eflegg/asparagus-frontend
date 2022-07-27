@@ -181,7 +181,7 @@ html {
 
 $headerFont: "Source Serif Pro", serif;
 $bodyFont: "Source Serif Pro", serif;
-$accentFont: "halcyon_regular", sans-serif;
+$accentFont: "halcyon-regular", sans-serif;
 
 $gusGreen: #339933;
 $soil: #913029;
@@ -206,7 +206,6 @@ h5,
 h6 {
   font-family: $headerFont;
   margin: 0;
-  padding: 20px;
 }
 p {
   margin: 8px 0;
@@ -223,12 +222,15 @@ li {
   font-weight: 400;
   padding: 5px;
   @include media-query-min($sm) {
-    font-size: calc(16px + 2 * ((100vw - 320px) / 680));
+    font-size: calc(16px + 4 * ((100vw - 320px) / 680));
   }
   @include media-query-min($md) {
-    @include font-size(1.8);
+    @include font-size(2);
     line-height: 32px;
   }
+}
+a {
+  text-decoration: none;
 }
 
 li {
@@ -240,6 +242,12 @@ li {
 
 .paragraph--bold {
   font-weight: 700;
+}
+hr {
+  height: 3px;
+  border: 0px;
+  background: $teaGreen;
+  margin-bottom: 65px;
 }
 
 h1,
@@ -349,7 +357,7 @@ h6.head--article-card {
   font-size: 2.2rem;
 }
 
-p.body {
+.body {
   font-family: $bodyFont;
   font-size: 2rem;
   line-height: 3.2rem;
@@ -364,7 +372,7 @@ p.body {
   }
 }
 
-p.deck--article-card {
+.deck--article-card {
   font-family: $accentFont;
   font-size: 1.6rem;
   line-height: 3.2rem;
@@ -380,7 +388,7 @@ p.deck--article-card {
   }
 }
 
-p.deck {
+.deck {
   font-family: $accentFont;
   font-size: 2rem;
   line-height: 3.2rem;
@@ -396,7 +404,7 @@ p.deck {
   }
 }
 
-p.deck--topic-feature {
+.deck--topic-feature {
   font-family: $accentFont;
   font-weight: 600;
   font-size: 2.6rem;
@@ -413,7 +421,7 @@ p.deck--topic-feature {
   }
 }
 
-p.byline {
+.byline {
   font-family: $headerFont;
   font-size: 1.6rem;
   font-weight: 700;
@@ -430,7 +438,7 @@ p.byline {
   }
 }
 
-p.byline--article-card {
+.byline--article-card {
   font-family: $headerFont;
   font-size: 1.5rem;
   font-weight: 700;
@@ -447,7 +455,7 @@ p.byline--article-card {
   }
 }
 
-p.date--article-card {
+.date--article-card {
   font-family: $accentFont;
   font-size: 1.3rem;
   line-height: 3.2rem;
@@ -463,7 +471,7 @@ p.date--article-card {
   }
 }
 
-p.date--single-article {
+.date--single-article {
   font-family: $accentFont;
   font-size: 1.4rem;
   line-height: 3.2rem;
@@ -479,7 +487,7 @@ p.date--single-article {
   }
 }
 
-p.deck--index-feature {
+.deck--index-feature {
   font-family: $headerFont;
   font-size: 2.4rem;
   font-weight: 600;
@@ -496,7 +504,7 @@ p.deck--index-feature {
   }
 }
 
-p.byline--index-feature {
+.byline--index-feature {
   font-family: $accentFont;
   font-size: 2.2rem;
   color: black;
@@ -511,7 +519,7 @@ p.byline--index-feature {
   }
 }
 
-p.pullquote {
+.pullquote {
   font-family: $accentFont;
   font-size: 2.8rem;
   font-weight: 600;
@@ -529,14 +537,14 @@ p.pullquote {
   }
 }
 
-p.contributor-name {
+.contributor-name {
   font-family: $headerFont;
   font-size: 2rem;
   font-weight: 900;
   color: $gusGreen;
 }
 
-p.team-name {
+.team-name {
   font-family: $headerFont;
   font-size: 2.8rem;
   font-weight: 900;
@@ -553,7 +561,7 @@ p.team-name {
   }
 }
 
-p.newsletter-header--footer {
+.newsletter-header--footer {
   font-family: $headerFont;
   font-size: 2.8rem;
   font-weight: 600;
@@ -745,7 +753,7 @@ li.nav-link {
   background-color: $soil;
   border-radius: 10px;
   padding: 10px 20px;
-  margin: 20px 0;
+  margin: 15px 0;
   border: 0px;
   color: white;
   font-family: $accentFont;

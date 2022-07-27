@@ -57,6 +57,9 @@ export default function CurrentIssue({ issues, articles }) {
                   <ArticleCard
                     title={article.title.rendered}
                     slug={article.slug}
+                    image={
+                      article._embedded["wp:featuredmedia"]["0"].source_url
+                    }
                   />
                 </>
               ) : null}
