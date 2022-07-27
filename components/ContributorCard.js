@@ -5,19 +5,45 @@ import { ContribImage } from "./Global/styles";
 import Image from "next/image";
 
 const Card = styled.li`
-  margin: 0 auto;
+  margin: 0 auto 50px;
   max-width: 550px;
   display: flex;
+  align-items: center;
+  flex-direction: ${(props) => (props.team ? "column" : "row")};
+  ${theme.mediaQuery.sm`
+  max-width: 900px;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 100px;
+  `}
   a {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-
+    align-items: center;
     justify-content: space-between;
     text-decoration: none;
+    ${theme.mediaQuery.sm`
+   align-items: flex-start;
+    `}
   }
-  p {
+  /* p {
     line-height: 25px;
+  } */
+  .team--title {
+    font-size: 1.4rem;
+    font-family: ${theme.type.semibold};
+    color: black;
+    display: flex;
+    flex-direction: column;
+    ${theme.mediaQuery.sm`
+    display: inline-block;
+    `}
+  }
+  .long-dash {
+    display: none;
+    ${theme.mediaQuery.sm`
+  display: inline-block;
+  `}
   }
 `;
 
@@ -32,7 +58,7 @@ export default function ContributorCard({
   socialLink,
 }) {
   return (
-    <Card>
+    <Card className="team--card" team={team}>
       <ContribImage team={team}>
         <Image
           src={image}
@@ -45,10 +71,13 @@ export default function ContributorCard({
         <Link href={"/team/[slug]"} as={`/team/${slug}`}>
           <a>
             <div>
-              <h1>hi</h1>
               <h3 className="team-name">
-                {name}
-                {title ? <span>- {title}</span> : null}
+                {name} {""}
+                {title ? (
+                  <span className="team--title">
+                    <span className="long-dash"> &#8212;</span> {title}
+                  </span>
+                ) : null}
               </h3>
 
               <p>{bio}</p>
@@ -63,10 +92,7 @@ export default function ContributorCard({
         <Link href={"/contributors/[slug]"} as={`/contributors/${slug}`}>
           <a>
             <div>
-              <h3 className="contributor-name">
-                {name}
-                {title ? <span>- {title}</span> : null}
-              </h3>
+              <h3 className="contributor-name">{name}</h3>
 
               <p>{bio}</p>
               <a href={socialLink} rel="noreferrer" target="_blank">

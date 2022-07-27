@@ -222,10 +222,10 @@ li {
   font-weight: 400;
   padding: 5px;
   @include media-query-min($sm) {
-    font-size: calc(16px + 2 * ((100vw - 320px) / 680));
+    font-size: calc(16px + 4 * ((100vw - 320px) / 680));
   }
   @include media-query-min($md) {
-    @include font-size(1.8);
+    @include font-size(2);
     line-height: 32px;
   }
 }
@@ -354,7 +354,7 @@ h6.head--article-card {
   font-size: 2.2rem;
 }
 
-p.body {
+.body {
   font-family: $bodyFont;
   font-size: 2rem;
   line-height: 3.2rem;
@@ -369,7 +369,7 @@ p.body {
   }
 }
 
-p.deck--article-card {
+.deck--article-card {
   font-family: $accentFont;
   font-size: 1.6rem;
   line-height: 3.2rem;
@@ -385,7 +385,7 @@ p.deck--article-card {
   }
 }
 
-p.deck {
+.deck {
   font-family: $accentFont;
   font-size: 2rem;
   line-height: 3.2rem;
@@ -401,7 +401,7 @@ p.deck {
   }
 }
 
-p.deck--topic-feature {
+.deck--topic-feature {
   font-family: $accentFont;
   font-weight: 600;
   font-size: 2.6rem;
@@ -418,7 +418,7 @@ p.deck--topic-feature {
   }
 }
 
-p.byline {
+.byline {
   font-family: $headerFont;
   font-size: 1.6rem;
   font-weight: 700;
@@ -435,7 +435,7 @@ p.byline {
   }
 }
 
-p.byline--article-card {
+.byline--article-card {
   font-family: $headerFont;
   font-size: 1.5rem;
   font-weight: 700;
@@ -452,7 +452,7 @@ p.byline--article-card {
   }
 }
 
-p.date--article-card {
+.date--article-card {
   font-family: $accentFont;
   font-size: 1.3rem;
   line-height: 3.2rem;
@@ -468,7 +468,7 @@ p.date--article-card {
   }
 }
 
-p.date--single-article {
+.date--single-article {
   font-family: $accentFont;
   font-size: 1.4rem;
   line-height: 3.2rem;
@@ -484,7 +484,7 @@ p.date--single-article {
   }
 }
 
-p.deck--index-feature {
+.deck--index-feature {
   font-family: $headerFont;
   font-size: 2.4rem;
   font-weight: 600;
@@ -501,7 +501,7 @@ p.deck--index-feature {
   }
 }
 
-p.byline--index-feature {
+.byline--index-feature {
   font-family: $accentFont;
   font-size: 2.2rem;
   color: black;
@@ -516,7 +516,7 @@ p.byline--index-feature {
   }
 }
 
-p.pullquote {
+.pullquote {
   font-family: $accentFont;
   font-size: 2.8rem;
   font-weight: 600;

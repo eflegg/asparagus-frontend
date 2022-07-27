@@ -38,7 +38,6 @@ export default function ContributorsPage({ contributors, categories }) {
               bio={contributor.acf.bio}
               social={contributor.acf.social_media_handle}
               socialLink={contributor.acf.social_media_link}
-              // ref={ref}
             />
           );
         })}

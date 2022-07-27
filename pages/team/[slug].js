@@ -27,7 +27,7 @@ export default function TeamPage({ teamMember, posts }) {
           alt="teamMember photo"
         />
       </ContribImage>
-      <p>{teamMember.id}</p>
+
       <div className="bio">
         <p>{teamMember.acf.bio}</p>
       </div>
