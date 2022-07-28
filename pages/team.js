@@ -24,7 +24,7 @@ export default function Team({ teamMembers }) {
             <React.Fragment key={index}>
               <ContributorCard
                 team
-                image={member._embedded["wp:featuredmedia"]["0"].source_url}
+                image={member.acf.headshot.url}
                 slug={member.slug}
                 name={member.title.rendered}
                 bio={member.acf.bio}

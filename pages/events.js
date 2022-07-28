@@ -9,14 +9,6 @@ export default function Events({ events }) {
 
   const [isCurrent, setIsCurrent] = useState(false);
 
-  // const eventDate = events[0].acf.date;
-  // const stringEventDate = new Date(eventDate).getTime();
-  const stringCurrentDate = new Date().getTime();
-
-  // console.log("event date", eventDate);
-  // console.log("string event date", stringEventDate);
-  // console.log("string todays date", stringCurrentDate);
-
   function toggleCurrent() {
     setIsCurrent(!isCurrent);
   }

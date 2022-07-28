@@ -103,7 +103,6 @@ export default function HeaderMenu() {
   const [subnav, setSubnav] = useState(null);
 
   const handleSubnavClick = (menuId) => {
-    console.log(`subnav clicked`, menuId);
     if (subnav == menuId) {
       setSubnav(null);
     } else {
