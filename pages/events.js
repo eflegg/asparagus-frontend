@@ -8,6 +8,7 @@ export default function Events({ events }) {
   console.log("events: ", events);
 
   const [isCurrent, setIsCurrent] = useState(false);
+  const stringCurrentDate = new Date().getTime();
 
   function toggleCurrent() {
     setIsCurrent(!isCurrent);

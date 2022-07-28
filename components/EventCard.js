@@ -7,13 +7,16 @@ border: solid pink;
 display: flex;
 flex-direction: row;
 width: 75%;
-margin: 0 auto;
-object-fit: cover;
+margin: 26px auto;
 .event--image {
     flex: none;
     border: solid blue;
-    width: 38%;
-    object-fit: cover;
+    width: 40%;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
 .event--info {
     border: solid purple;
