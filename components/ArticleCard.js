@@ -88,6 +88,12 @@ const Card = styled.div`
     border-radius: 50%;
     margin-right: 10px;
   }
+  .card--inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
 `;
 
 // needs categories, reading time, date, image
@@ -106,39 +112,41 @@ export default function ArticleCard({
   return (
     <Card>
       <Link href={"/articles/[slug]"} as={`/articles/${slug}`}>
-        <a>
-          <div className="card--image">
-            <Image
-              src={image && image}
-              layout="fill"
-              objectFit="cover"
-              alt="Article lead photo"
-            />
-          </div>
+        <a className="card--inner">
+          <div>
+            <div className="card--image">
+              <Image
+                src={image && image}
+                layout="fill"
+                objectFit="cover"
+                alt="Article lead photo"
+              />
+            </div>
 
-          <div className="categories">
-            {categories &&
-              categories.map((category, index) => {
-                return (
-                  <>
-                    {index <= 1 ? (
-                      <a
-                        className="category-label"
-                        href={category.slug}
-                        key={uuidv4()}
-                        dangerouslySetInnerHTML={{ __html: category.name }}
-                      ></a>
-                    ) : null}
-                  </>
-                );
-              })}
-          </div>
-          <h3
-            className="head--article-card"
-            dangerouslySetInnerHTML={{ __html: title }}
-          ></h3>
+            <div className="categories">
+              {categories &&
+                categories.map((category, index) => {
+                  return (
+                    <>
+                      {index <= 1 ? (
+                        <a
+                          className="category-label"
+                          href={category.slug}
+                          key={uuidv4()}
+                          dangerouslySetInnerHTML={{ __html: category.name }}
+                        ></a>
+                      ) : null}
+                    </>
+                  );
+                })}
+            </div>
+            <h3
+              className="head--article-card"
+              dangerouslySetInnerHTML={{ __html: title }}
+            ></h3>
 
-          <p className="deck--article-card">{excerpt}</p>
+            <p className="deck--article-card">{excerpt}</p>
+          </div>
           <div className="article-details">
             <div className="byline--image">
               {headshot && (
