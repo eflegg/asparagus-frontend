@@ -9,9 +9,6 @@ import AwardWinnerCard from "../components/AwardWinnerCard";
 import PageWrapper from "../components/Global/PageWrapper";
 
 export default function Awards({ posts }) {
-  console.log("posts: ", posts);
-  console.log("award winner? ", posts[0].acf.award_winner);
-  // const ref = React.forwardRef(null);
   return (
     <PageWrapper pageTitle="Awards" className="container pt-5">
       <h3>Award Winners</h3>
