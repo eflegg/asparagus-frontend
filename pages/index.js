@@ -1,16 +1,13 @@
 import React from "react";
-import Image from "next/image";
 import { Config } from "../config";
 import fetch from "isomorphic-fetch";
 import PageWrapper from "../components/Global/PageWrapper";
-import Link from "next/link";
 import ArticleCard from "../components/ArticleCard";
 import AwardWinnerCard from "../components/AwardWinnerCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
-import { getContributors } from "../utils/wordpress";
 
 const CategoryContainer = styled.section`
   margin-bottom: 45px;

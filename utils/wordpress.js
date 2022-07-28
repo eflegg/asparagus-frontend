@@ -21,8 +21,6 @@ export async function getPost(slug) {
 export async function getEvents() {
   const eventsRes = await fetch(BASE_URL + "/events?_embed");
   const events = await eventsRes.json();
-
-  console.log("events: ", events);
   return events;
 }
 

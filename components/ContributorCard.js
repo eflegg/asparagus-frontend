@@ -24,7 +24,6 @@ export default function ContributorCard({
   title,
   team,
 }) {
-  console.log("contrib card slug: ");
   return (
     <Card>
       <ContribImage team={team}>

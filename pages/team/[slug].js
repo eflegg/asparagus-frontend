@@ -11,9 +11,7 @@ import { ContribImage } from "../../components/Global/styles";
 
 export default function TeamPage({ teamMember, posts }) {
   console.log("teamMember id: ", teamMember.id);
-  console.log("posts: ", posts);
-  console.log("post 1 writer: ", posts[1].acf.writer[0].ID);
-  console.log("post 1 photog: ", posts[1].acf.photographer[0].ID);
+
   // const ref = React.forwardRef(null);
   return (
     <div className="container pt-5">

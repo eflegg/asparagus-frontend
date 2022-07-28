@@ -21,13 +21,6 @@ const CoverContainer = styled.div`
 `;
 
 export default function CurrentIssue({ issues, articles }) {
-  console.log("issues: ", issues);
-  console.log("articles: ", articles);
-
-  const currentIssue = issues[0].id;
-  console.log("current issue: ", currentIssue);
-  console.log("article issue: ", articles[0].acf.appears_in);
-
   return (
     <PageWrapper pageTitle="Current Issue" className="">
       <CoverContainer className="current-issue--cover">

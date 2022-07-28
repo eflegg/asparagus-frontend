@@ -20,11 +20,6 @@ const CategoryH1 = styled.h1`
 `;
 
 export default function CategoryPage({ category, posts, subcategories }) {
-  // console.log("post categories: ", posts[1].categories);
-  // console.log("category: ", category);
-  // console.log("subcats: ", subcategories);
-  // console.log("subcat id:", subcategories[0].id);
-
   const dynamicRoute = useRouter().asPath;
   const [subfilter, setSubfilter] = useState(null);
   const handleClick = (subIndex) => {
