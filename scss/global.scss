@@ -181,7 +181,7 @@ html {
 
 $headerFont: "Source Serif Pro", serif;
 $bodyFont: "Source Serif Pro", serif;
-$accentFont: "halcyon_regular", sans-serif;
+$accentFont: "halcyon-regular", sans-serif;
 
 $gusGreen: #339933;
 $soil: #913029;
@@ -220,7 +220,7 @@ li {
   line-height: 150%;
   color: black;
   font-weight: 400;
-  padding: 5px;
+
   @include media-query-min($sm) {
     font-size: calc(16px + 2 * ((100vw - 320px) / 680));
   }
@@ -344,11 +344,12 @@ h6 {
   }
 }
 
-h6.head--article-card {
+.head--article-card {
   font-family: $headerFont;
   font-weight: 900;
   color: $gusGreen;
   font-size: 2.2rem;
+  line-height: 2.6rem;
 }
 
 p.body {
@@ -366,19 +367,19 @@ p.body {
   }
 }
 
-p.deck--article-card {
+.deck--article-card {
   font-family: $accentFont;
-  font-size: 1.6rem;
-  line-height: 3.2rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
   color: black;
-
+  margin-bottom: 10px;
   @include media-query-min($sm) {
     font-size: calc(14px + 2 * ((100vw - 320px) / 680));
   }
 
   @include media-query-min($md) {
     @include font-size(1.6);
-    line-height: 32px;
+    line-height: 20px;
   }
 }
 
@@ -436,36 +437,22 @@ p.deck--topic-feature {
   font-family: $headerFont;
   font-size: 1.5rem;
   font-weight: 700;
-  line-height: 3.2rem;
+  line-height: 2.1rem;
   color: black;
-
-  @include media-query-min($sm) {
-    font-size: calc(14px + 2 * ((100vw - 320px) / 680));
-  }
-
-  @include media-query-min($md) {
-    @include font-size(1.6);
-    line-height: 32px;
-  }
+  margin: 0;
+  padding: 0;
 }
 
-p.date--article-card {
+.date--article-card {
   font-family: $accentFont;
   font-size: 1.3rem;
-  line-height: 3.2rem;
   color: black;
-
-  @include media-query-min($sm) {
-    font-size: calc(12px + 1 * ((100vw - 320px) / 680));
-  }
-
-  @include media-query-min($md) {
-    @include font-size(1.3);
-    line-height: 32px;
-  }
+  margin: 0;
+  padding: 0;
+  line-height: 1.6rem;
 }
 
-p.date--single-article {
+.date--single-article {
   font-family: $accentFont;
   font-size: 1.4rem;
   line-height: 3.2rem;
@@ -481,7 +468,7 @@ p.date--single-article {
   }
 }
 
-p.deck--index-feature {
+.deck--index-feature {
   font-family: $headerFont;
   font-size: 2.4rem;
   font-weight: 600;
@@ -498,7 +485,7 @@ p.deck--index-feature {
   }
 }
 
-p.byline--index-feature {
+.byline--index-feature {
   font-family: $accentFont;
   font-size: 2.2rem;
   color: black;

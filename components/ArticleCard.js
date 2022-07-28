@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const Card = styled.div`
   border: 2px solid ${theme.colours.grey};
-  padding: 5%;
+  padding: 7%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,14 +17,12 @@ const Card = styled.div`
     height: 160px;
     top: 0;
   }
-  h3 {
-    font-size: 2.2rem;
-  }
 
   .category-label {
     color: ${theme.colours.soil};
     text-transform: uppercase;
     font-size: 1.5rem;
+    line-height: 1.5rem;
     font-family: ${theme.type.halcyonSemibold};
     padding: 0;
     &:first-child {
@@ -42,11 +40,14 @@ const Card = styled.div`
     align-items: center;
   }
   .byline--image {
+    position: relative;
+    overflow: hidden;
     flex: none;
     width: 50px;
     height: 50px;
     background: slateblue;
     border-radius: 50%;
+    margin-right: 10px;
   }
 `;
 
@@ -61,14 +62,12 @@ export default function ArticleCard({
   image,
   date,
   read,
-  bylineID,
-  contributors,
+  headshot,
 }) {
   return (
     <Card>
       <Link href={"/articles/[slug]"} as={`/articles/${slug}`}>
         <a>
-          <p>{bylineID}</p>
           <div className="card--image">
             <Image
               src={image && image}
@@ -95,14 +94,26 @@ export default function ArticleCard({
                 );
               })}
           </div>
-          <h3 className="" dangerouslySetInnerHTML={{ __html: title }}></h3>
+          <h3
+            className="head--article-card"
+            dangerouslySetInnerHTML={{ __html: title }}
+          ></h3>
 
-          <p className="excerpt">{excerpt}</p>
+          <p className="deck--article-card">{excerpt}</p>
           <div className="article-details">
-            <div className="byline--image"></div>
+            <div className="byline--image">
+              {headshot && (
+                <Image
+                  src={headshot}
+                  layout="fill"
+                  objectFit="cover"
+                  alt="Author headshot"
+                />
+              )}
+            </div>
             <div>
               <p className="byline--article-card">{byline}</p>
-              <p>
+              <p className="date--article-card">
                 {date} - <span>{read} min read</span>
               </p>
             </div>

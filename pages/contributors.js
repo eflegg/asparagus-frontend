@@ -28,7 +28,7 @@ export default function ContributorsPage({ contributors, categories }) {
         {contributors.map((contributor, index) => {
           return (
             <ContributorCard
-              image={contributor._embedded["wp:featuredmedia"]["0"].source_url}
+              image={contributor.acf.headshot.url}
               key={index}
               slug={contributor.slug}
               name={contributor.title.rendered}

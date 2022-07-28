@@ -37,17 +37,13 @@ export default function Home({
   catTwoPosts,
   catThreePosts,
   posts,
-  contributors,
 }) {
-  console.log("contributors: ", contributors[0].id);
-
   return (
     <>
       <PageWrapper pageTitle="Asparagus Magazine - Home">
         <main>
           <div>
             {posts.map((post, index) => {
-              <p>{contributors[0].id}</p>;
               let initialDate = post.date;
               let formattedDate = new Date(initialDate).toLocaleDateString(
                 "en-US",
@@ -103,7 +99,7 @@ export default function Home({
                           byline={post.acf.writer[0].post_title}
                           read={post.acf.time_to_read}
                           date={formattedDate}
-                          bylineID={post.acf.writer[0].ID}
+                          headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </>
                     ) : null}
@@ -294,8 +290,6 @@ export async function getStaticProps() {
   );
   const catThreePosts = await postQueryThree.json();
 
-  const contributors = await getContributors();
-
   //all posts
   const postsQuery = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
@@ -309,7 +303,6 @@ export async function getStaticProps() {
       catTwoPosts: catTwoPosts,
       catThreePosts: catThreePosts,
       posts: posts,
-      contributors: contributors,
     },
   };
 }
