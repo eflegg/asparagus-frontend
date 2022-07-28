@@ -1,19 +1,62 @@
 import Link from "next/link";
 import { getEvent, getSlugs } from "../../utils/wordpress";
+import theme from "../../components/Global/Theme";
+import styled from "styled-components";
 
-export default function EventPage({ event }) {
+const SingleEvent = styled.div`
+border: solid blue;
+width: 80%;
+margin: 0 auto;
+.image-container {
+  border: solid black;
+  ${theme.mediaQuery.md`
+  width: 50%;
+  `}
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  ${theme.mediaQuery.md`
+  flex-direction: row;
+  `}
+}
+
+.event-info {
+  border: solid red;
+  padding: 20px;
+  ${theme.mediaQuery.md`
+  width: 50%;
+  `}
+}
+`;
+
+export default function EventPage({ event, image }) {
   console.log("event: ", event);
   return (
-    <div className="container pt-5">
-      <h1 className="text-center pb-5">{event.title.rendered}</h1>
-      <div
-        className="card-text pb-5"
-        dangerouslySetInnerHTML={{ __html: event.content.rendered }}
-      ></div>
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
-    </div>
+   <SingleEvent>
+      <div className="text-center">
+        <h1>{event.title.rendered}</h1>
+        </div>
+       <div className="wrapper">
+        <div className="image-container">
+          <img src={event._embedded["wp:featuredmedia"]["0"].source_url} alt=""/>
+        </div>
+      <div className="event-info">
+          <p className="event--date">{event.acf.date}</p>
+          <p className="event--location">{event.acf.location}</p>
+          <p className="event--description">{event.acf.description}</p>
+          <Link href="/">
+          <a className="btn btn--primary">Get Tickets</a>
+        </Link>
+      </div>
+      </div>  
+    </SingleEvent>
   );
 }
 
