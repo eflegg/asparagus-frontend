@@ -67,7 +67,12 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         image={
                           post._embedded["wp:featuredmedia"]["0"].source_url
                         }
-                        // categories={post.categories}
+                        excerpt={post.acf.excerpt}
+                        byline={post.acf.writer[0].post_title}
+                        read={post.acf.time_to_read}
+                        date={formattedDate}
+                        headshot={post.acf.writer[0].acf.headshot.url}
+                        categories={post._embedded["wp:term"]["0"]}
                       />
                     </li>
                   ) : subfilter == null ? (
@@ -80,6 +85,12 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         image={
                           post._embedded["wp:featuredmedia"]["0"].source_url
                         }
+                        excerpt={post.acf.excerpt}
+                        byline={post.acf.writer[0].post_title}
+                        read={post.acf.time_to_read}
+                        date={formattedDate}
+                        headshot={post.acf.writer[0].acf.headshot.url}
+                        categories={post._embedded["wp:term"]["0"]}
                       />
                     </li>
                   ) : null}
@@ -97,6 +108,12 @@ export default function CategoryPage({ category, posts, subcategories }) {
                   title={post.title.rendered}
                   slug={post.slug}
                   writer={post.acf.writer[0].post_title}
+                  excerpt={post.acf.excerpt}
+                  byline={post.acf.writer[0].post_title}
+                  read={post.acf.time_to_read}
+                  date={formattedDate}
+                  headshot={post.acf.writer[0].acf.headshot.url}
+                  categories={post._embedded["wp:term"]["0"]}
                 />
               </li>
             );
@@ -119,7 +136,12 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
-                        // categories={post.categories}
+                        excerpt={post.acf.excerpt}
+                        byline={post.acf.writer[0].post_title}
+                        read={post.acf.time_to_read}
+                        date={formattedDate}
+                        headshot={post.acf.writer[0].acf.headshot.url}
+                        categories={post._embedded["wp:term"]["0"]}
                         image={
                           post._embedded["wp:featuredmedia"]["0"].source_url
                         }

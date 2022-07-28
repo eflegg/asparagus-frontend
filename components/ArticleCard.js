@@ -7,7 +7,6 @@ import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
 const Card = styled.div`
-  border: 2px solid ${theme.colours.grey};
   padding: 7%;
   display: flex;
   flex-direction: column;

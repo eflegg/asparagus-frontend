@@ -63,6 +63,7 @@ export default function Home({
                       read={post.acf.time_to_read}
                       byline={post.acf.writer[0].post_title}
                       excerpt={post.acf.excerpt}
+                      headshot={post.acf.writer[0].acf.headshot.url}
                     />
                   ) : null}
                 </>
@@ -83,7 +84,7 @@ export default function Home({
                     day: "2-digit",
                   }
                 );
-                console.log(index);
+
                 return (
                   <>
                     {index <= 5 ? (
@@ -148,6 +149,7 @@ export default function Home({
                           }
                           excerpt={catOnePost.acf.excerpt}
                           byline={catOnePost.acf.writer[0].post_title}
+                          headshot={catOnePost.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     )}
@@ -196,6 +198,7 @@ export default function Home({
                           }
                           excerpt={catTwoPost.acf.excerpt}
                           byline={catTwoPost.acf.writer[0].post_title}
+                          headshot={catTwoPost.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     )}
@@ -246,6 +249,7 @@ export default function Home({
                           excerpt={catThreePost.acf.excerpt}
                           writer={catThreePost.acf.writer[0].post_title}
                           byline={catThreePost.acf.writer[0].post_title}
+                          headshot={catThreePost.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     )}
