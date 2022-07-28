@@ -3,11 +3,9 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 
 const NewsletterBlock = styled.div`
-  border: 2px solid ${theme.colours.grey};
-
   align-items: center;
   width: 100%;
-  margin: 0 auto;
+  margin: 45px auto;
   background-color: ${theme.colours.darkWheat};
   .signupWrapper {
     width: 90%;
@@ -33,13 +31,11 @@ left: -40px;
   height: 100%;
   `}
 flex-direction: row;
-  border: solid yellow;
   padding: 2%;
 `;
 
 const PhotoStyled = styled.div`
   width: 65%;
-  border: solid black;
   object-fit: cover;
   img {
     width: 100%;
@@ -49,14 +45,14 @@ const PhotoStyled = styled.div`
 `;
 
 const SignUp = styled.div`
-  border: 3px solid mediumseagreen;
-  &.text--support {
-    border: 3px solid rebeccapurple;
-  }
+  // &.text--support {
+  //   border: 3px solid rebeccapurple;
+  // }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 30px;
+  align-items: flex-start;
+  padding: 40px;
   ${theme.mediaQuery.md`
 position: relative;
 left: 40px;
@@ -66,10 +62,11 @@ left: 40px;
     width: 280px;
     ${theme.mediaQuery.xs`
     width: 200px;
+    margin-right: 20px;
   `}
   }
   &.text--support {
-    padding: 40px;
+    padding: 45px;
   }
 `;
 

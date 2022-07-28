@@ -576,7 +576,7 @@ p.newsletter-header--primary {
   line-height: 2rem;
 
   @include media-query-min($xs) {
-    font-size: calc(2px + 47 * ((100vw - 320px) / 680));
+    font-size: calc(20px + 47 * ((100vw - 320px) / 680));
     line-height: 100%;
   }
 

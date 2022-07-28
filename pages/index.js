@@ -158,10 +158,10 @@ export default function Home({
           </CategoryContainer>
           {/* @elizabeth it doesn't have any children so it can be a self-closing tag */}
           <NewsletterSignup
-            support
+            support={false}
             title="Sign up for News from the Asparagus Patch"
-            subtitle="pleasantly infrequent updates from asparagus magazine"
-            image="cherryblossoms.jpg"
+            subtitle="Pleasantly Infrequent Updates from Asparagus Magazine"
+            image="triplestalk.svg"
           />
 
           <CategoryContainer className="cat-two--container">
