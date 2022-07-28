@@ -8,14 +8,6 @@ export default function Events({ events }) {
 
   const [isCurrent, setIsCurrent] = useState(false);
 
-  // const eventDate = events[0].acf.date;
-  // const stringEventDate = new Date(eventDate).getTime();
-  const stringCurrentDate = new Date().getTime();
-
-  // console.log("event date", eventDate);
-  // console.log("string event date", stringEventDate);
-  // console.log("string todays date", stringCurrentDate);
-
   function toggleCurrent() {
     setIsCurrent(!isCurrent);
   }
@@ -42,6 +34,13 @@ export default function Events({ events }) {
                   >
                     <a>
                       <li>{event.title.rendered}</li>
+                      <p>{event.acf.location}</p>
+                      <p>{event.acf.date}</p>
+                      {event.acf.are_there_tickets == "Yes" ? (
+                        <p>yes there are ticket</p>
+                      ) : (
+                        <p>no tickets </p>
+                      )}
                     </a>
                   </Link>
                 ) : null}

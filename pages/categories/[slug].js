@@ -20,11 +20,6 @@ const CategoryH1 = styled.h1`
 `;
 
 export default function CategoryPage({ category, posts, subcategories }) {
-  // console.log("post categories: ", posts[1].categories);
-  // console.log("category: ", category);
-  // console.log("subcats: ", subcategories);
-  // console.log("subcat id:", subcategories[0].id);
-
   const dynamicRoute = useRouter().asPath;
   const [subfilter, setSubfilter] = useState(null);
   const handleClick = (subIndex) => {
@@ -64,6 +59,15 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
+                        image={
+                          post._embedded["wp:featuredmedia"]["0"].source_url
+                        }
+                        excerpt={post.acf.excerpt}
+                        byline={post.acf.writer[0].post_title}
+                        read={post.acf.time_to_read}
+                        date={formattedDate}
+                        headshot={post.acf.writer[0].acf.headshot.url}
+                        categories={post._embedded["wp:term"]["0"]}
                       />
                     </li>
                   ) : subfilter == null ? (
@@ -72,6 +76,16 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
+                        // categories={post.categories}
+                        image={
+                          post._embedded["wp:featuredmedia"]["0"].source_url
+                        }
+                        excerpt={post.acf.excerpt}
+                        byline={post.acf.writer[0].post_title}
+                        read={post.acf.time_to_read}
+                        date={formattedDate}
+                        headshot={post.acf.writer[0].acf.headshot.url}
+                        categories={post._embedded["wp:term"]["0"]}
                       />
                     </li>
                   ) : null}
@@ -83,12 +97,27 @@ export default function CategoryPage({ category, posts, subcategories }) {
       ) : category.slug == "awards" ? (
         <ul className="card--grid">
           {posts.map((post, index) => {
+            let initialDate = post.date;
+            let formattedDate = new Date(initialDate).toLocaleDateString(
+              "en-US",
+              {
+                year: "numeric",
+                month: "long",
+                day: "2-digit",
+              }
+            );
             return (
               <li key={uuidv4()}>
                 <AwardWinnerCard
                   title={post.title.rendered}
                   slug={post.slug}
                   writer={post.acf.writer[0].post_title}
+                  excerpt={post.acf.excerpt}
+                  byline={post.acf.writer[0].post_title}
+                  read={post.acf.time_to_read}
+                  date={formattedDate}
+                  headshot={post.acf.writer[0].acf.headshot.url}
+                  categories={post._embedded["wp:term"]["0"]}
                 />
               </li>
             );
@@ -97,12 +126,22 @@ export default function CategoryPage({ category, posts, subcategories }) {
       ) : (
         <>
           <CategoryFeaturedCard
+            post={posts[0]}
             title={posts[0]?.title.rendered}
             slug={posts[0]?.slug}
             writer={posts[0]?.acf.writer[0].post_title}
           />
           <ul className="card--grid">
             {posts.map((post, index) => {
+              let initialDate = post.date;
+              let formattedDate = new Date(initialDate).toLocaleDateString(
+                "en-US",
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit",
+                }
+              );
               return (
                 <>
                   {index != 0 && (
@@ -111,6 +150,15 @@ export default function CategoryPage({ category, posts, subcategories }) {
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
+                        excerpt={post.acf.excerpt}
+                        byline={post.acf.writer[0].post_title}
+                        read={post.acf.time_to_read}
+                        date={formattedDate}
+                        headshot={post.acf.writer[0].acf.headshot.url}
+                        categories={post._embedded["wp:term"]["0"]}
+                        image={
+                          post._embedded["wp:featuredmedia"]["0"].source_url
+                        }
                       />
                     </li>
                   )}
@@ -139,13 +187,14 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
 
+  //use this to get only subcategories for cards
   const subcategoryQuery = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}`
   );
   const subcategories = await subcategoryQuery.json();
 
   const categoryPosts = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${category?.id}`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${category?.id}&_embed`
   );
   const posts = await categoryPosts.json();
 

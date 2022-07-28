@@ -17,7 +17,6 @@ const MenuContainer = styled.div`
     margin: 10px;
     display: flex;
     flex-direction: column;
-    border: 2px solid turquoise;
     ul {
       padding-left: 0;
     }
@@ -104,7 +103,6 @@ export default function HeaderMenu() {
   const [subnav, setSubnav] = useState(null);
 
   const handleSubnavClick = (menuId) => {
-    console.log(`subnav clicked`, menuId);
     if (subnav == menuId) {
       setSubnav(null);
     } else {

@@ -20,8 +20,6 @@ export default function Tips({ tips }) {
   const [newsletterSelected, setNewsletterSelected] = useState(
     tips[0].title.rendered
   );
-  console.log("news select: ", newsletterSelected);
-  console.log("tips: ", tips);
 
   return (
     <PageWrapper className="">

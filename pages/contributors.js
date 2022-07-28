@@ -9,12 +9,17 @@ import ContributorCard from "../components/ContributorCard";
 const ContribContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(40rem, 100%), 1fr));
-  grid-row-gap: 100px;
+  grid-row-gap: 50px;
+  ${theme.mediaQuery.sm`
+   grid-row-gap: 100px;
+  `}
   grid-column-gap: 80px;
   justify-content: center;
   width: 90%;
   margin: 0 auto;
   list-style: none;
+  max-width: 1200px;
+  margin-bottom: 100px;
 `;
 
 export default function ContributorsPage({ contributors, categories }) {
@@ -22,18 +27,20 @@ export default function ContributorsPage({ contributors, categories }) {
 
   // const ref = React.forwardRef(null);
   return (
-    <PageWrapper className="">
-      <h1>List of Contributors</h1>
+    <PageWrapper pageTitle="Contributors" className="">
+      <h1 className="text-center">Contributors</h1>
+      <hr />
       <ContribContainer>
         {contributors.map((contributor, index) => {
           return (
             <ContributorCard
-              image={contributor._embedded["wp:featuredmedia"]["0"].source_url}
+              image={contributor.acf.headshot.url}
               key={index}
               slug={contributor.slug}
               name={contributor.title.rendered}
               bio={contributor.acf.bio}
-              // ref={ref}
+              social={contributor.acf.social_media_handle}
+              socialLink={contributor.acf.social_media_link}
             />
           );
         })}

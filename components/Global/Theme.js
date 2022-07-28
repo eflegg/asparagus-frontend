@@ -3,7 +3,8 @@ import { css } from "styled-components";
 export const type = {
   header: "Source Sans Pro",
   body: "Arial",
-  accent: "",
+  accent: "halcyon-regular",
+  semibold: "halcyon-semibold",
 };
 
 export const breakpoints = {
@@ -37,19 +38,6 @@ export const colours = {
   white: "#fff",
   black: "#000",
 };
-// export const lightTheme = {
-//   body: "#E2E2E2",
-//   text: "#363537",
-//   toggleBorder: "#FFF",
-//   gradient: "linear-gradient(#39598A, #79D7ED)",
-// };
-
-// export const darkTheme = {
-//   body: "#363537",
-//   text: "#FAFAFA",
-//   toggleBorder: "#6B8096",
-//   gradient: "linear-gradient(#091236, #1E215D)",
-// };
 
 const theme = {
   mediaQuery,
