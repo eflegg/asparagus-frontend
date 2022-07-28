@@ -5,13 +5,18 @@ import theme from "../components/Global/Theme";
 const EventCard = styled.div`
 border: solid pink;
 display: flex;
+flex-direction: column;
+${theme.mediaQuery.sm`
 flex-direction: row;
+`}
 width: 75%;
 margin: 26px auto;
 .event--image {
     flex: none;
     border: solid blue;
-    width: 40%;
+    ${theme.mediaQuery.sm`
+        width: 40%;
+        `}
     img {
         width: 100%;
         height: 100%;
@@ -21,7 +26,9 @@ margin: 26px auto;
 .event--info {
     border: solid purple;
     padding 40px;
+    ${theme.mediaQuery.sm`
     width: 60%;
+    `}
 }
 ${theme.mediaQuery.xs`
  width: 90%;
