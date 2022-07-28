@@ -1,16 +1,13 @@
 import React from "react";
-import Image from "next/image";
 import { Config } from "../config";
 import fetch from "isomorphic-fetch";
 import PageWrapper from "../components/Global/PageWrapper";
-import Link from "next/link";
 import ArticleCard from "../components/ArticleCard";
 import AwardWinnerCard from "../components/AwardWinnerCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
-import { getContributors } from "../utils/wordpress";
 
 const CategoryContainer = styled.section`
   margin-bottom: 45px;
@@ -37,17 +34,13 @@ export default function Home({
   catTwoPosts,
   catThreePosts,
   posts,
-  contributors,
 }) {
-  console.log("contributors: ", contributors[0].id);
-
   return (
     <>
       <PageWrapper pageTitle="Asparagus Magazine - Home">
         <main>
           <div>
             {posts.map((post, index) => {
-              <p>{contributors[0].id}</p>;
               let initialDate = post.date;
               let formattedDate = new Date(initialDate).toLocaleDateString(
                 "en-US",
@@ -67,6 +60,7 @@ export default function Home({
                       read={post.acf.time_to_read}
                       byline={post.acf.writer[0].post_title}
                       excerpt={post.acf.excerpt}
+                      headshot={post.acf.writer[0].acf.headshot.url}
                     />
                   ) : null}
                 </>
@@ -87,7 +81,7 @@ export default function Home({
                     day: "2-digit",
                   }
                 );
-                console.log(index);
+
                 return (
                   <>
                     {index <= 5 ? (
@@ -103,7 +97,7 @@ export default function Home({
                           byline={post.acf.writer[0].post_title}
                           read={post.acf.time_to_read}
                           date={formattedDate}
-                          bylineID={post.acf.writer[0].ID}
+                          headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </>
                     ) : null}
@@ -152,6 +146,7 @@ export default function Home({
                           }
                           excerpt={catOnePost.acf.excerpt}
                           byline={catOnePost.acf.writer[0].post_title}
+                          headshot={catOnePost.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     )}
@@ -200,6 +195,7 @@ export default function Home({
                           }
                           excerpt={catTwoPost.acf.excerpt}
                           byline={catTwoPost.acf.writer[0].post_title}
+                          headshot={catTwoPost.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     )}
@@ -250,6 +246,7 @@ export default function Home({
                           excerpt={catThreePost.acf.excerpt}
                           writer={catThreePost.acf.writer[0].post_title}
                           byline={catThreePost.acf.writer[0].post_title}
+                          headshot={catThreePost.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     )}
@@ -268,8 +265,6 @@ export async function getStaticProps() {
   //query the home page to get the acf
   const pageQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages/114`);
   const page = await pageQuery.json();
-
-  console.log("page: ", page);
 
   //query posts whose categories match the three acf values
 
@@ -294,8 +289,6 @@ export async function getStaticProps() {
   );
   const catThreePosts = await postQueryThree.json();
 
-  const contributors = await getContributors();
-
   //all posts
   const postsQuery = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
@@ -309,7 +302,6 @@ export async function getStaticProps() {
       catTwoPosts: catTwoPosts,
       catThreePosts: catThreePosts,
       posts: posts,
-      contributors: contributors,
     },
   };
 }
