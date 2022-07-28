@@ -266,8 +266,6 @@ export async function getStaticProps() {
   const pageQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages/114`);
   const page = await pageQuery.json();
 
-  console.log("page: ", page);
-
   //query posts whose categories match the three acf values
 
   //cat one
