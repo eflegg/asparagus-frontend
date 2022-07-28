@@ -8,6 +8,7 @@ display: flex;
 flex-direction: row;
 width: 75%;
 margin: 0 auto;
+object-fit: cover;
 .event--image {
     flex: none;
     border: solid blue;
@@ -28,7 +29,7 @@ export default function EventBlock({image, name, date, location, description}) {
     return (
         <EventCard>
             <div className="event--image">
-            <img src={image}></img>
+            <img src={image} alt=""></img>
             </div>
                 <div className="event--info">
                     <h3 className="event--name">{name}</h3>
