@@ -146,7 +146,7 @@ export const Card = styled.div`
     display: flex;
     align-items: center;
   }
-  .byline--image {
+  /* .byline--image {
     position: relative;
     overflow: hidden;
     flex: none;
@@ -155,7 +155,7 @@ export const Card = styled.div`
     background: slateblue;
     border-radius: 50%;
     margin-right: 10px;
-  }
+  } */
   .card--inner {
     display: flex;
     flex-direction: column;
