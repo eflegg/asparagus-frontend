@@ -62,8 +62,7 @@ const Card = styled.div`
     color: ${theme.colours.soil};
     text-transform: uppercase;
     font-size: 1.5rem;
-    line-height: 1.5rem;
-    font-family: ${theme.type.halcyonSemibold};
+    font-family: ${theme.type.semibold};
     padding: 0;
     &:first-child {
       &::after {

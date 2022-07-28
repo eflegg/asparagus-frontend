@@ -8,63 +8,150 @@ import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
 import { ContribImage } from "../../components/Global/styles";
+import PageWrapper from "../../components/Global/PageWrapper";
+
+const ContribHeader = styled.div`
+  margin: 0 auto 70px;
+  width: 90%;
+  max-width: 1000px;
+  ${theme.mediaQuery.sm`
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 160px;
+  `}
+  .contrib--image {
+    position: relative;
+    overflow: hidden;
+    margin: 10px auto 20px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    flex: none;
+    ${theme.mediaQuery.sm`
+    margin: initial;
+ margin-right: 20px;
+  `}
+  }
+  .where-to-find {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    ${theme.mediaQuery.sm`
+flex-direction: row;
+justify-content: flex-start;
+  `}
+  }
+  .contrib-website {
+    text-decoration: none;
+    p {
+      font-family: ${theme.type.semibold};
+      font-size: 2rem;
+      line-height: 2.2rem;
+    }
+  }
+  h4 {
+    color: ${theme.colours.soil};
+    font-size: 2.8rem;
+    line-height: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+    ${theme.mediaQuery.sm`
+ text-align: left;
+  `}
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+    margin: 15px 0;
+    ${theme.mediaQuery.sm`
+margin: initial;
+  `}
+  }
+`;
 
 export default function ContributorPage({ contributor, posts }) {
   console.log("contributor id: ", contributor.id);
   console.log("posts: ", posts);
-  // const ref = React.forwardRef(null);
-  return (
-    <div className="container pt-5">
-      <h1 className="text-center pb-5">{contributor.title.rendered}</h1>
-      <ContribImage className="contrib--image">
-        <Image
-          src={contributor._embedded["wp:featuredmedia"]["0"].source_url}
-          layout="fill"
-          objectFit="cover"
-          alt="Contributor photo"
-        />
-      </ContribImage>
-      <p>{contributor.id}</p>
-      <div className="bio">
-        <p>{contributor.acf.bio}</p>
-      </div>
-      <ul className="card--grid">
-        {posts.map((post, index) => {
-          return (
-            <>
-              {post.acf.photographer[0]?.ID == contributor.id ? (
-                <>
-                  <ArticleCard
-                    key={index}
-                    title={post.title.rendered}
-                    slug={post.slug}
-                    writer={post.acf.writer[0].post_title}
-                    // categories={post.categories}
-                    image={post._embedded["wp:featuredmedia"]["0"].source_url}
-                  />
-                </>
-              ) : null}
-              {post.acf.writer[0]?.ID == contributor.id ? (
-                <>
-                  <ArticleCard
-                    key={index}
-                    title={post.title.rendered}
-                    slug={post.slug}
-                    writer={post.acf.writer[0].post_title}
-                    // categories={post.categories}
-                    image={post._embedded["wp:featuredmedia"]["0"].source_url}
-                  />
-                </>
-              ) : null}
-            </>
-          );
-        })}
-      </ul>
 
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
-    </div>
+  return (
+    <PageWrapper pageTitle={contributor.title.rendered}>
+      <div className="container pt-5">
+        <h1 className="text-center pb-5">{contributor.title.rendered}</h1>
+        <hr />
+
+        <ContribHeader>
+          <div className="contrib--image">
+            <Image
+              src={contributor._embedded["wp:featuredmedia"]["0"].source_url}
+              layout="fill"
+              objectFit="cover"
+              alt="Contributor photo"
+            />
+          </div>
+          <div className="contrib--details">
+            {contributor.acf.title && <h4>{contributor.acf.title}</h4>}
+            <div className="bio">
+              <p>{contributor.acf.bio}</p>
+            </div>
+
+            <div className="where-to-find">
+              {contributor.acf.which_social_media_network == "instagram" ? (
+                <div className="icon">
+                  <img src="/insta.png" />
+                </div>
+              ) : contributor.acf.which_social_media_network == "twitter" ? (
+                <div className="icon">
+                  <img src="/twitter.png" />
+                </div>
+              ) : (
+                <div className="icon">
+                  <img src="/insta.png" />
+                </div>
+              )}
+              <a
+                className="contrib-website"
+                href={`https://www.${contributor.acf.website}`}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <p>{contributor.acf.website}</p>
+              </a>
+            </div>
+          </div>
+        </ContribHeader>
+        <ul className="card--grid">
+          {posts.map((post, index) => {
+            return (
+              <>
+                {post.acf.photographer[0]?.ID == contributor.id ? (
+                  <>
+                    <ArticleCard
+                      key={index}
+                      title={post.title.rendered}
+                      slug={post.slug}
+                      writer={post.acf.writer[0].post_title}
+                    />
+                  </>
+                ) : null}
+                {post.acf.writer[0]?.ID == contributor.id ? (
+                  <>
+                    <ArticleCard
+                      key={index}
+                      title={post.title.rendered}
+                      slug={post.slug}
+                      writer={post.acf.writer[0].post_title}
+                    />
+                  </>
+                ) : null}
+              </>
+            );
+          })}
+        </ul>
+      </div>
+    </PageWrapper>
   );
 }
 

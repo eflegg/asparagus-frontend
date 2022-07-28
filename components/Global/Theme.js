@@ -1,9 +1,10 @@
 import { css } from "styled-components";
 
 export const type = {
-  header: "Source Serif Pro",
-  body: "Source Serif Pro",
-  halcyonSemibold: "halcyon-semibold",
+  header: "Source Sans Pro",
+  body: "Arial",
+  accent: "halcyon-regular",
+  semibold: "halcyon-semibold",
 };
 
 export const breakpoints = {

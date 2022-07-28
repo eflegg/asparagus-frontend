@@ -17,7 +17,6 @@ const MenuContainer = styled.div`
     margin: 10px;
     display: flex;
     flex-direction: column;
-    border: 2px solid turquoise;
     ul {
       padding-left: 0;
     }
