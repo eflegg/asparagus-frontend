@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Shop() {
   return (
     <PageWrapper pageTitle="Shop">
-      <h1>I'm the Shop</h1>
+      <h1>I am the Shop</h1>
     </PageWrapper>
   );
 }

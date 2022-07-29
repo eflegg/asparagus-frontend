@@ -142,10 +142,10 @@ export const Card = styled.div`
       }
     }
   }
-  .article-details {
+  /* .article-details {
     display: flex;
     align-items: center;
-  }
+  } */
   /* .byline--image {
     position: relative;
     overflow: hidden;
