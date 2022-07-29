@@ -4,6 +4,7 @@ import { getTips } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
+import { v4 as uuidv4 } from "uuid";
 
 const NewsletterContainer = styled.section`
   border: 3px solid salmon;
@@ -29,7 +30,7 @@ export default function Tips({ tips }) {
         onChange={(e) => setNewsletterSelected(e.target.value)}
       >
         {tips.map((tip, index) => {
-          return <option key={index}>{tip.title.rendered}</option>;
+          return <option key={uuidv4()}>{tip.title.rendered}</option>;
         })}
       </select>
       <NewsletterContainer>
