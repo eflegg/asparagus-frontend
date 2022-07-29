@@ -29,7 +29,7 @@ const Card = styled.div`
   }
   .text-container {
     background: ${theme.colours.darkWheat};
-    padding: 15px 35px;
+    padding: 15px 35px 25px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -46,8 +46,13 @@ const Card = styled.div`
       `}
     }
     .excerpt {
-      width: 70%;
+      width: 80%;
       font-family: ${theme.type.semibold};
+      margin-bottom: 30px;
+      ${theme.mediaQuery.md`
+      margin-bottom: 0;
+      width: 70%;
+      `}
     }
   }
 `;
@@ -57,7 +62,6 @@ const Card = styled.div`
 export default function CategoryFeaturedCard({ post }) {
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
-    year: "numeric",
     month: "long",
     day: "2-digit",
   });
@@ -75,9 +79,9 @@ export default function CategoryFeaturedCard({ post }) {
             />
             <h3
               className=""
-              // dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
             >
-              {post.title.rendered}
+              {/* {post.title.rendered} */}
             </h3>
           </div>
           <div className="text-container">

@@ -17,6 +17,8 @@ const CategoryH1 = styled.h1`
   color: ${theme.colours.soil};
   font-size: 3.4rem;
   text-align: left;
+  width: 90%;
+  margin: 0 auto;
 `;
 
 export default function CategoryPage({ category, posts, subcategories }) {
@@ -37,6 +39,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
         className="text-center"
         dangerouslySetInnerHTML={{ __html: category.name }}
       ></CategoryH1>
+      <hr />
 
       {/* if the category is either start small or voices, show the subcategory filter
       followed by all the articles in the category. no feature article.
