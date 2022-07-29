@@ -2,7 +2,7 @@ import HeaderMenu from "./HeaderMenu";
 import Footer from "./footer";
 import Head from "next/head";
 import styled from "styled-components";
-import AdBanner from "../AdBanner";
+import AdBanner from "./AdBanner";
 
 const OuterContainer = styled.main`
   width: 100%;
@@ -22,7 +22,7 @@ export default function PageWrapper({ children, pageTitle }) {
         {children}
         <Footer />
       </div>
-      <AdBanner />
+      {/* <AdBanner /> */}
     </OuterContainer>
   );
 }

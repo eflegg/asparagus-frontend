@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme from "./Theme";
 import { useRouter } from "next/router";
 
 export default function AdBanner() {

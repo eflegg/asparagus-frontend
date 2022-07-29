@@ -20,9 +20,7 @@ export async function getPost(slug) {
 
 export async function getEvents() {
   const eventsRes = await fetch(BASE_URL + "/events?_embed");
-  // const events = await eventsRes.json();
-  const events = await eventsRes.text();
-  console.log("events: ", events);
+  const events = await eventsRes.json();
   return events;
 }
 
@@ -36,7 +34,9 @@ export async function getEvent(slug) {
 /// Categories ///
 
 export async function getCategories() {
-  const categoriesRes = await fetch(BASE_URL + "/categories?per_page=100");
+  const categoriesRes = await fetch(
+    BASE_URL + "/categories?_embed?per_page=100"
+  );
   const categories = await categoriesRes.json();
   return categories;
 }

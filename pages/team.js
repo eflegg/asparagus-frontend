@@ -8,7 +8,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const TeamMemberContainer = styled.ul`
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 `;
 
@@ -16,23 +16,22 @@ export default function Team({ teamMembers }) {
   console.log("team members: ", teamMembers);
   return (
     <PageWrapper pageTitle="Team">
+      <h1 className="text-center">Team</h1>
+      <hr />
       <TeamMemberContainer>
         {teamMembers.map((member, index) => {
           return (
             <React.Fragment key={index}>
               <ContributorCard
                 team
-                image={member._embedded["wp:featuredmedia"]["0"].source_url}
+                image={member.acf.headshot.url}
                 slug={member.slug}
                 name={member.title.rendered}
                 bio={member.acf.bio}
                 title={member.acf.title}
+                social={member.acf.social_media_handle}
+                socialLink={member.acf.social_media_link}
               />
-              <p>id: {member.id}</p>
-              <p>title: {member.title.rendered}</p>
-              <Link href={"/team/[slug]"} as={`/team/${member.slug}`}>
-                <a> link</a>
-              </Link>
             </React.Fragment>
           );
         })}

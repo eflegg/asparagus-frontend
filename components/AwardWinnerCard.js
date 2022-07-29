@@ -2,7 +2,6 @@ import Link from "next/link";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 const Card = styled.div`
-  width: 90%;
   border: 4px solid ${theme.colours.gusGreen};
 `;
 
