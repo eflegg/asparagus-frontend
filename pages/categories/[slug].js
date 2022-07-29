@@ -53,6 +53,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
                   {post.categories && post.categories.includes(subfilter) ? (
                     <li key={uuidv4()}>
                       <ArticleCard
+                        post={post}
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
@@ -61,6 +62,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
                   ) : subfilter == null ? (
                     <li key={uuidv4()}>
                       <ArticleCard
+                        post={post}
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
@@ -73,7 +75,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
           </ul>
         </>
       ) : category.slug == "awards" ? (
-        <ul className="card--grid">
+        <ul className="card--grid single-page">
           {posts.map((post, index) => {
             return (
               <li key={uuidv4()}>
@@ -100,6 +102,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
                   {index != 0 && (
                     <li key={uuidv4()}>
                       <ArticleCard
+                        post={post}
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}

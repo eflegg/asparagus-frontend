@@ -95,6 +95,7 @@ export default function Home({ page, posts }) {
                     {index <= 5 ? (
                       <>
                         <ArticleCard
+                          post={post}
                           title={post.title.rendered}
                           slug={post.slug}
                           categories={post._embedded["wp:term"]["0"]}
@@ -144,6 +145,7 @@ export default function Home({ page, posts }) {
                     ) : post.categories.includes(catOne) ? (
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
+                          post={post}
                           date={formattedDate}
                           read={post.acf.time_to_read}
                           slug={post.slug}
@@ -194,6 +196,7 @@ export default function Home({ page, posts }) {
                     ) : post.categories.includes(catTwo) && index <= 6 ? (
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
+                          post={post}
                           date={formattedDate}
                           read={post.acf.time_to_read}
                           slug={post.slug}
@@ -244,6 +247,7 @@ export default function Home({ page, posts }) {
                     ) : post.categories.includes(catThree) && index <= 5 ? (
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
+                          post={post}
                           date={formattedDate}
                           read={post.acf.time_to_read}
                           slug={post.slug}

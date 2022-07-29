@@ -62,6 +62,9 @@ $xl: 1800px;
   margin: 0 auto;
   list-style: none;
   max-width: 1200px;
+  &.single-page {
+    margin: 100px auto;
+  }
 }
 
 ul {
