@@ -31,12 +31,14 @@ export default function CategoryPage({ category, posts, subcategories }) {
     setSubfilter(null);
   }, [dynamicRoute]);
 
+  console.log("category: ", category);
+  console.log("posts: ", posts);
   return (
-    <PageWrapper pageTitle={category.name} className="container pt-5">
-      <CategoryH1
+    <PageWrapper pageTitle="category name" className="container pt-5">
+      {/* <CategoryH1
         className="text-center"
         dangerouslySetInnerHTML={{ __html: category.name }}
-      ></CategoryH1>
+      ></CategoryH1> */}
 
       {/* if the category is either start small or voices, show the subcategory filter
       followed by all the articles in the category. no feature article.
@@ -45,7 +47,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
 
       all other categories show feature article followed by the rest of the articles
       */}
-      {category.slug == "voices" || category.slug == "start-small" ? (
+      {/* {category.slug == "voices" || category.slug == "start-small" ? (
         <>
           <p>{subfilter}</p>
           <ArticleFilter subcategories={subcategories} onClick={handleClick} />
@@ -126,7 +128,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
       ) : (
         <>
           <CategoryFeaturedCard
-            post={posts[0]}
+            // post={posts[0]}
             title={posts[0]?.title.rendered}
             slug={posts[0]?.slug}
             writer={posts[0]?.acf.writer[0].post_title}
@@ -167,10 +169,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
             })}
           </ul>
         </>
-      )}
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
+      )} */}
     </PageWrapper>
   );
 }
