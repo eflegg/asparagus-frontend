@@ -23,7 +23,7 @@ const MenuContainer = styled.div`
       padding-left: 0;
     }
   }
-  border: 1px solid red; 
+  /* border: 1px solid red;  */
   margin: 30px 57px; 
 `;
 const MobileNav = styled.nav`
@@ -103,26 +103,34 @@ const DesktopNav = styled.nav`
 
 const LogoConnectMenuContainer = styled.div`
   display: flex; 
-  border: 1px solid black; 
-  justify-content: space-evenly; 
-  align-items: center; 
+  flex-direction: column-reverse; 
+  /* border: 1px solid black;  */
+  justify-content: space-around; 
+  ${theme.mediaQuery.md`
+    flex-direction: row;
+    `};
+  .img {
+    flex: 0 0 50%; 
+  }
 `
 const ConnectMenuNav = styled.nav`
   /* display: flex;
   flex-direction: row;  */
-  border: 1px solid black; 
-`
-
-const ConnectMenuList = styled.ul`
-  display: flex;
-  justify-content: space-between; 
-`
-
-const ConnectMenuItem = styled.a`
-  font-size: 2rem; 
-  font-weight: 600; 
-  color: ${theme.colours.soil};
-  font-family: ${theme.type.semibold}; 
+  /* border: 1px solid black;  */
+  flex: 0 0 50%; 
+  width: 100%; 
+  ul {
+    margin: 30px 56px 0px 56px; 
+    display: flex;
+    justify-content: space-around; 
+  }
+  a {
+    font-size: 2rem; 
+    font-weight: 600; 
+    color: ${theme.colours.soil};
+    font-family: ${theme.type.semibold}; 
+  }
+  }
 `
 
 export default function HeaderMenu() {
@@ -205,11 +213,11 @@ export default function HeaderMenu() {
         <LogoConnectMenuContainer>
           <Link href="/">
             <a>
-              <img src="/Asparagus_Nameplate_Color.png" width="518"/>
+              <img src="/Asparagus_Nameplate_Color.png"/>
             </a>
           </Link>
           <ConnectMenuNav>
-            <ConnectMenuList>
+            <ul>
               {connectLinks?.items?.map((connectLink, index) => {
                 return (
                   <li key={uuidv4()}>
@@ -218,12 +226,12 @@ export default function HeaderMenu() {
                       href={`/${connectLink.slug}`}
                       to={`/${connectLink.slug}`}
                     >
-                      <ConnectMenuItem>{connectLink.title}</ConnectMenuItem>
+                      <a>{connectLink.title}</a>
                     </ActiveLink>
                   </li>
                 );
               })}
-            </ConnectMenuList>
+            </ul>
           </ConnectMenuNav>
         </LogoConnectMenuContainer>
 
