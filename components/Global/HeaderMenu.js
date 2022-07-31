@@ -21,6 +21,8 @@ const MenuContainer = styled.div`
       padding-left: 0;
     }
   }
+  border: 1px solid red; 
+  margin: 30px 57px; 
 `;
 const MobileNav = styled.nav`
   .btn-nav {
@@ -95,6 +97,30 @@ const DesktopNav = styled.nav`
     display: flex;
   }
 `;
+
+const LogoConnectMenuContainer = styled.div`
+  display: flex; 
+  border: 1px solid black; 
+  justify-content: space-evenly; 
+  align-items: center; 
+`
+const ConnectMenuNav = styled.nav`
+  /* display: flex;
+  flex-direction: row;  */
+  border: 1px solid black; 
+`
+
+const ConnectMenuList = styled.ul`
+  display: flex;
+  justify-content: space-between; 
+`
+
+const ConnectMenuItem = styled.a`
+  font-size: 20px; 
+  font-weight: 600; 
+  color: ${theme.colours.soil};
+  font-family: ${theme.type.semibold}; 
+`
 
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
@@ -173,11 +199,30 @@ export default function HeaderMenu() {
   return (
     <MenuContainer className="menu--container">
       <Suspense fallback={<Loader />}>
+        <LogoConnectMenuContainer>
         <Link href="/">
           <a>
             <h3>Asparagus Logo</h3>
           </a>
         </Link>
+        <ConnectMenuNav>
+        <ConnectMenuList>
+          {connectLinks?.items?.map((connectLink, index) => {
+            return (
+              <li key={uuidv4()}>
+                <ActiveLink
+                  activeClassName="navlink--active"
+                  href={`/${connectLink.slug}`}
+                  to={`/${connectLink.slug}`}
+                >
+                  <ConnectMenuItem>{connectLink.title}</ConnectMenuItem>
+                </ActiveLink>
+              </li>
+            );
+          })}
+        </ConnectMenuList>
+        </ConnectMenuNav>
+        </LogoConnectMenuContainer>
 
         {size.width >= 1000 ? (
           <DesktopNav>
@@ -300,24 +345,7 @@ export default function HeaderMenu() {
           </MobileNav>
         )}
 
-        <h3>Connect Menu</h3>
-        {/* <nav> */}
-        <ul>
-          {connectLinks?.items?.map((connectLink, index) => {
-            return (
-              <li key={uuidv4()}>
-                <ActiveLink
-                  activeClassName="navlink--active"
-                  href={`/${connectLink.slug}`}
-                  to={`/${connectLink.slug}`}
-                >
-                  <a>{connectLink.title}</a>
-                </ActiveLink>
-              </li>
-            );
-          })}
-        </ul>
-        {/* </nav> */}
+
       </Suspense>
     </MenuContainer>
   );
