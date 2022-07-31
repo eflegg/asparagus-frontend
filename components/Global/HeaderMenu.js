@@ -205,7 +205,7 @@ export default function HeaderMenu() {
         <LogoConnectMenuContainer>
           <Link href="/">
             <a>
-              <h3>Asparagus Logo</h3>
+              <img src="/Asparagus_Nameplate_Color.png" width="518"/>
             </a>
           </Link>
           <ConnectMenuNav>
