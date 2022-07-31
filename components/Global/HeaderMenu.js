@@ -13,7 +13,9 @@ const MenuContainer = styled.div`
   .subnav {
   }
   .nav-link {
+    font-family: ${theme.type.medium};
     font-size: 2.4rem;
+    color: ${theme.colours.gusGreen};
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -95,6 +97,7 @@ const MobileNav = styled.nav`
 const DesktopNav = styled.nav`
   ul {
     display: flex;
+    justify-content: space-between; 
   }
 `;
 
@@ -200,28 +203,28 @@ export default function HeaderMenu() {
     <MenuContainer className="menu--container">
       <Suspense fallback={<Loader />}>
         <LogoConnectMenuContainer>
-        <Link href="/">
-          <a>
-            <h3>Asparagus Logo</h3>
-          </a>
-        </Link>
-        <ConnectMenuNav>
-        <ConnectMenuList>
-          {connectLinks?.items?.map((connectLink, index) => {
-            return (
-              <li key={uuidv4()}>
-                <ActiveLink
-                  activeClassName="navlink--active"
-                  href={`/${connectLink.slug}`}
-                  to={`/${connectLink.slug}`}
-                >
-                  <ConnectMenuItem>{connectLink.title}</ConnectMenuItem>
-                </ActiveLink>
-              </li>
-            );
-          })}
-        </ConnectMenuList>
-        </ConnectMenuNav>
+          <Link href="/">
+            <a>
+              <h3>Asparagus Logo</h3>
+            </a>
+          </Link>
+          <ConnectMenuNav>
+            <ConnectMenuList>
+              {connectLinks?.items?.map((connectLink, index) => {
+                return (
+                  <li key={uuidv4()}>
+                    <ActiveLink
+                      activeClassName="navlink--active"
+                      href={`/${connectLink.slug}`}
+                      to={`/${connectLink.slug}`}
+                    >
+                      <ConnectMenuItem>{connectLink.title}</ConnectMenuItem>
+                    </ActiveLink>
+                  </li>
+                );
+              })}
+            </ConnectMenuList>
+          </ConnectMenuNav>
         </LogoConnectMenuContainer>
 
         {size.width >= 1000 ? (
