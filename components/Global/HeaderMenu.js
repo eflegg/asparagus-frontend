@@ -119,7 +119,7 @@ const ConnectMenuList = styled.ul`
 `
 
 const ConnectMenuItem = styled.a`
-  font-size: 20px; 
+  font-size: 2rem; 
   font-weight: 600; 
   color: ${theme.colours.soil};
   font-family: ${theme.type.semibold}; 
