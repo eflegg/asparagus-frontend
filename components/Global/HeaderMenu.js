@@ -109,9 +109,9 @@ const LogoConnectMenuContainer = styled.div`
   ${theme.mediaQuery.md`
     flex-direction: row;
     `};
-  .img {
+    .img {
     flex: 0 0 50%; 
-  }
+    }
 `
 const ConnectMenuNav = styled.nav`
   /* display: flex;
@@ -123,12 +123,26 @@ const ConnectMenuNav = styled.nav`
     margin: 30px 56px 0px 56px; 
     display: flex;
     justify-content: space-around; 
+    align-items: center; 
+    flex-wrap: nowrap;
+    /* border: none;  */
   }
   a {
     font-size: 2rem; 
     font-weight: 600; 
     color: ${theme.colours.soil};
     font-family: ${theme.type.semibold}; 
+    
+  }
+  li {
+    /* display: flex;  */
+    flex: none; 
+    padding: 3px 30px; 
+  }
+  li:first-of-type {
+    background-color: ${theme.colours.gusYellow};
+    padding: 3px 30px; 
+    border-radius: 5px; 
   }
   }
 `
