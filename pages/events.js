@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { getEvents } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
+import EventCard from "../components/EventCard";
 
 export default function Events({ events }) {
   console.log("events: ", events);
@@ -19,7 +20,7 @@ export default function Events({ events }) {
         <h3 onClick={() => toggleCurrent()}>Past Events</h3>
         <h3 onClick={() => toggleCurrent()}>Upcoming Events</h3>
       </div>
-      <h1>hi</h1>
+      
       {isCurrent ? (
         <ul>
           {events.map((event, index) => {
@@ -27,6 +28,7 @@ export default function Events({ events }) {
             const stringEventDate = new Date(eventDate).getTime();
             return (
               <>
+        
                 {stringEventDate >= stringCurrentDate ? (
                   <Link
                     key={index}
@@ -34,14 +36,7 @@ export default function Events({ events }) {
                     as={`/events/${event.slug}`}
                   >
                     <a>
-                      <li>{event.title.rendered}</li>
-                      <p>{event.acf.location}</p>
-                      <p>{event.acf.date}</p>
-                      {event.acf.are_there_tickets == "Yes" ? (
-                        <p>yes there are ticket</p>
-                      ) : (
-                        <p>no tickets </p>
-                      )}
+                    <EventCard name={event.title.rendered} date={event.acf.date} location={event.acf.location} description={event.acf.description}/>
                     </a>
                   </Link>
                 ) : null}
@@ -63,7 +58,7 @@ export default function Events({ events }) {
                     as={`/events/${event.slug}`}
                   >
                     <a>
-                      <li>{event.title.rendered}</li>
+                    <EventCard image={event._embedded["wp:featuredmedia"]["0"].source_url} name={event.title.rendered} date={event.acf.date} location={event.acf.location} description={event.acf.description}/>
                     </a>
                   </Link>
                 ) : null}

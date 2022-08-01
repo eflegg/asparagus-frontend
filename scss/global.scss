@@ -599,6 +599,40 @@ p.newsletter-subheader--primary {
   }
 }
 
+p.event--date,
+.event--location {
+  font-family: $accentFont;
+  font-size: 1.6rem;
+
+  @include media-query-min($sm) {
+    font-size: calc(16px + 8 * ((100vw - 320px) / 680));
+    line-height: 26px;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2.4);
+    line-height: 36px;
+  }
+
+}
+
+p.event--description {
+  font-family: $bodyFont;
+  font-size: 1.4rem;
+  line-height: 2rem;
+
+  @include media-query-min($sm) {
+    font-size: calc(14px + 6 * ((100vw - 320px) / 680));
+    line-height: 26px;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(20px);
+    line-height: 32px;
+  }
+
+}
+
 span.topic-menu {
   font-family: $accentFont;
   font-size: 3.2rem;
