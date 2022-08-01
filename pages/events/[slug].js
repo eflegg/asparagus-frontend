@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getEvent, getSlugs } from "../../utils/wordpress";
 import theme from "../../components/Global/Theme";
 import styled from "styled-components";
+import PageWrapper from "../../components/Global/PageWrapper";
 
 const SingleEvent = styled.div`
 border: solid blue;
@@ -21,7 +22,7 @@ margin: 0 auto;
 .wrapper {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  // margin-top: 50px;
   ${theme.mediaQuery.md`
   flex-direction: row;
   `}
@@ -43,10 +44,10 @@ margin: 0 auto;
 export default function EventPage({ event, image }) {
   console.log("event: ", event);
   return (
+    <PageWrapper>
+      <h1 className="text-center">{event.title.rendered}</h1>
+      <hr/>
    <SingleEvent>
-      <div className="text-center">
-        <h1>{event.title.rendered}</h1>
-        </div>
        <div className="wrapper">
         <div className="image-container">
           <img src={event._embedded["wp:featuredmedia"]["0"].source_url} alt=""/>
@@ -61,6 +62,7 @@ export default function EventPage({ event, image }) {
       </div>
       </div>  
     </SingleEvent>
+    </PageWrapper>
   );
 }
 
