@@ -48,48 +48,48 @@ export default function CategoryPage({ category, posts, subcategories }) {
         <>
           <p>{subfilter}</p>
           <ArticleFilter subcategories={subcategories} onClick={handleClick} />
-          <ul className="card--grid">
+          <div className="card--grid single-page">
             {posts.map((post, index) => {
               return (
                 <>
                   {post.categories && post.categories.includes(subfilter) ? (
-                    <li key={uuidv4()}>
+                    <React.Fragment key={uuidv4()}>
                       <ArticleCard
                         post={post}
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
                       />
-                    </li>
+                    </React.Fragment>
                   ) : subfilter == null ? (
-                    <li key={uuidv4()}>
+                    <React.Fragment key={uuidv4()}>
                       <ArticleCard
                         post={post}
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
                       />
-                    </li>
+                    </React.Fragment>
                   ) : null}
                 </>
               );
             })}
-          </ul>
+          </div>
         </>
       ) : category.slug == "awards" ? (
-        <ul className="card--grid single-page">
+        <div className="card--grid single-page">
           {posts.map((post, index) => {
             return (
-              <li key={uuidv4()}>
+              <React.Fragment key={uuidv4()}>
                 <AwardWinnerCard
                   title={post.title.rendered}
                   slug={post.slug}
                   writer={post.acf.writer[0].post_title}
                 />
-              </li>
+              </React.Fragment>
             );
           })}
-        </ul>
+        </div>
       ) : (
         <>
           <CategoryFeaturedCard
@@ -98,24 +98,24 @@ export default function CategoryPage({ category, posts, subcategories }) {
             slug={posts[0]?.slug}
             writer={posts[0]?.acf.writer[0].post_title}
           />
-          <ul className="card--grid">
+          <div className="card--grid single-page">
             {posts.map((post, index) => {
               return (
                 <>
                   {index != 0 && (
-                    <li key={uuidv4()}>
+                    <React.Fragment key={uuidv4()}>
                       <ArticleCard
                         post={post}
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
                       />
-                    </li>
+                    </React.Fragment>
                   )}
                 </>
               );
             })}
-          </ul>
+          </div>
         </>
       )}
     </PageWrapper>
