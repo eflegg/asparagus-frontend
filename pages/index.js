@@ -81,15 +81,15 @@ export default function Home({ page, posts }) {
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
-                let initialDate = post.date;
-                let formattedDate = new Date(initialDate).toLocaleDateString(
-                  "en-US",
-                  {
-                    year: "numeric",
-                    month: "long",
-                    day: "2-digit",
-                  }
-                );
+                // let initialDate = post.date;
+                // let formattedDate = new Date(initialDate).toLocaleDateString(
+                //   "en-US",
+                //   {
+                //     year: "numeric",
+                //     month: "long",
+                //     day: "2-digit",
+                //   }
+                // );
 
                 return (
                   <>
@@ -97,17 +97,17 @@ export default function Home({ page, posts }) {
                       <>
                         <ArticleCard
                           post={post}
-                          title={post.title.rendered}
-                          slug={post.slug}
-                          categories={post._embedded["wp:term"]["0"]}
-                          image={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          excerpt={post.acf.excerpt}
-                          byline={post.acf.writer[0].post_title}
-                          read={post.acf.time_to_read}
-                          date={formattedDate}
-                          headshot={post.acf.writer[0].acf.headshot.url}
+                          // title={post.title.rendered}
+                          // slug={post.slug}
+                          // categories={post._embedded["wp:term"]["0"]}
+                          // image={
+                          //   post._embedded["wp:featuredmedia"]["0"].source_url
+                          // }
+                          // excerpt={post.acf.excerpt}
+                          // byline={post.acf.writer[0].post_title}
+                          // read={post.acf.time_to_read}
+                          // date={formattedDate}
+                          // headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </>
                     ) : null}
@@ -122,42 +122,37 @@ export default function Home({ page, posts }) {
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
-                let initialDate = post.date;
-                let formattedDate = new Date(initialDate).toLocaleDateString(
-                  "en-US",
-                  {
-                    year: "numeric",
-                    month: "long",
-                    day: "2-digit",
-                  }
-                );
+                // let initialDate = post.date;
+                // let formattedDate = new Date(initialDate).toLocaleDateString(
+                //   "en-US",
+                //   {
+                //     year: "numeric",
+                //     month: "long",
+                //     day: "2-digit",
+                //   }
+                // );
                 return (
                   <>
                     {page.acf.home_category_one[0].name == "Awards" &&
                     post.categories.includes(catOne) ? (
                       <React.Fragment key={uuidv4()}>
-                        <AwardWinnerCard
-                          date={formattedDate}
-                          slug={post.slug}
-                          title={post.title.rendered}
-                          read={post.acf.time_to_read}
-                        />
+                        <AwardWinnerCard post={post} />
                       </React.Fragment>
                     ) : post.categories.includes(catOne) ? (
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
                           post={post}
-                          date={formattedDate}
-                          read={post.acf.time_to_read}
-                          slug={post.slug}
-                          title={post.title.rendered}
-                          categories={post._embedded["wp:term"]["0"]}
-                          image={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          excerpt={post.acf.excerpt}
-                          byline={post.acf.writer[0].post_title}
-                          headshot={post.acf.writer[0].acf.headshot.url}
+                          // date={formattedDate}
+                          // read={post.acf.time_to_read}
+                          // slug={post.slug}
+                          // title={post.title.rendered}
+                          // categories={post._embedded["wp:term"]["0"]}
+                          // image={
+                          //   post._embedded["wp:featuredmedia"]["0"].source_url
+                          // }
+                          // excerpt={post.acf.excerpt}
+                          // byline={post.acf.writer[0].post_title}
+                          // headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     ) : null}
@@ -179,15 +174,15 @@ export default function Home({ page, posts }) {
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
-                let initialDate = post.date;
-                let formattedDate = new Date(initialDate).toLocaleDateString(
-                  "en-US",
-                  {
-                    year: "numeric",
-                    month: "long",
-                    day: "2-digit",
-                  }
-                );
+                // let initialDate = post.date;
+                // let formattedDate = new Date(initialDate).toLocaleDateString(
+                //   "en-US",
+                //   {
+                //     year: "numeric",
+                //     month: "long",
+                //     day: "2-digit",
+                //   }
+                // );
                 return (
                   <>
                     {page.acf.home_category_two[0].name == "Awards" &&
@@ -195,27 +190,28 @@ export default function Home({ page, posts }) {
                     index <= 5 ? (
                       <React.Fragment key={uuidv4()}>
                         <AwardWinnerCard
-                          date={formattedDate}
-                          read={post.acf.time_to_read}
-                          slug={post.slug}
-                          title={post.title.rendered}
+                          post={post}
+                          // date={formattedDate}
+                          // read={post.acf.time_to_read}
+                          // slug={post.slug}
+                          // title={post.title.rendered}
                         />
                       </React.Fragment>
                     ) : post.categories.includes(catTwo) && index <= 6 ? (
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
                           post={post}
-                          date={formattedDate}
-                          read={post.acf.time_to_read}
-                          slug={post.slug}
-                          title={post.title.rendered}
-                          categories={post._embedded["wp:term"]["0"]}
-                          image={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          excerpt={post.acf.excerpt}
-                          byline={post.acf.writer[0].post_title}
-                          headshot={post.acf.writer[0].acf.headshot.url}
+                          // date={formattedDate}
+                          // read={post.acf.time_to_read}
+                          // slug={post.slug}
+                          // title={post.title.rendered}
+                          // categories={post._embedded["wp:term"]["0"]}
+                          // image={
+                          //   post._embedded["wp:featuredmedia"]["0"].source_url
+                          // }
+                          // excerpt={post.acf.excerpt}
+                          // byline={post.acf.writer[0].post_title}
+                          // headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     ) : null}
@@ -236,15 +232,15 @@ export default function Home({ page, posts }) {
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
-                let initialDate = post.date;
-                let formattedDate = new Date(initialDate).toLocaleDateString(
-                  "en-US",
-                  {
-                    year: "numeric",
-                    month: "long",
-                    day: "2-digit",
-                  }
-                );
+                // let initialDate = post.date;
+                // let formattedDate = new Date(initialDate).toLocaleDateString(
+                //   "en-US",
+                //   {
+                //     year: "numeric",
+                //     month: "long",
+                //     day: "2-digit",
+                //   }
+                // );
                 return (
                   <>
                     {page.acf.home_category_three[0].name == "Awards" &&
@@ -252,27 +248,28 @@ export default function Home({ page, posts }) {
                     index <= 5 ? (
                       <React.Fragment key={uuidv4()}>
                         <AwardWinnerCard
-                          date={formattedDate}
-                          read={post.acf.time_to_read}
-                          slug={post.slug}
-                          title={post.title.rendered}
+                          post={post}
+                          // date={formattedDate}
+                          // read={post.acf.time_to_read}
+                          // slug={post.slug}
+                          // title={post.title.rendered}
                         />
                       </React.Fragment>
                     ) : post.categories.includes(catThree) && index <= 5 ? (
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
                           post={post}
-                          date={formattedDate}
-                          read={post.acf.time_to_read}
-                          slug={post.slug}
-                          title={post.title.rendered}
-                          categories={post._embedded["wp:term"]["0"]}
-                          image={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          excerpt={post.acf.excerpt}
-                          byline={post.acf.writer[0].post_title}
-                          headshot={post.acf.writer[0].acf.headshot.url}
+                          // date={formattedDate}
+                          // read={post.acf.time_to_read}
+                          // slug={post.slug}
+                          // title={post.title.rendered}
+                          // categories={post._embedded["wp:term"]["0"]}
+                          // image={
+                          //   post._embedded["wp:featuredmedia"]["0"].source_url
+                          // }
+                          // excerpt={post.acf.excerpt}
+                          // byline={post.acf.writer[0].post_title}
+                          // headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     ) : null}

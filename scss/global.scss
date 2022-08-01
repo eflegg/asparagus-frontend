@@ -269,11 +269,11 @@ h1,
   color: $gusGreen;
 
   @include media-query-min($sm) {
-    font-size: calc(36px + 40 * ((100vw - 320px) / 680));
+    font-size: calc(36px + 16 * ((100vw - 320px) / 680));
   }
 
   @include media-query-min($md) {
-    @include font-size(7.6);
+    @include font-size(5.2);
   }
 }
 

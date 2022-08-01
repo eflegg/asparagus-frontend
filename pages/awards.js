@@ -17,11 +17,7 @@ export default function Awards({ posts }) {
           return (
             <>
               {post.acf.award_winner == "Yes" ? (
-                <AwardWinnerCard
-                  // ref={ref}
-                  title={post.title.rendered}
-                  slug={post.slug}
-                />
+                <AwardWinnerCard post={post} />
               ) : null}
             </>
           );
@@ -33,11 +29,7 @@ export default function Awards({ posts }) {
           return (
             <>
               {post.acf.award_nominee == "Yes" ? (
-                <AwardWinnerCard
-                  // ref={ref}
-                  title={post.title.rendered}
-                  slug={post.slug}
-                />
+                <AwardWinnerCard post={post} />
               ) : null}
             </>
           );
