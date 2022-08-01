@@ -63,6 +63,7 @@ export default function Home({ page, posts }) {
                 <>
                   {post.id == page.acf.lead_story[0].ID ? (
                     <LeadStoryBlock
+                      post={post}
                       date={formattedDate}
                       image={post._embedded["wp:featuredmedia"]["0"].source_url}
                       title={post.title.rendered}
@@ -97,17 +98,17 @@ export default function Home({ page, posts }) {
                       <>
                         <ArticleCard
                           post={post}
-                          title={post.title.rendered}
-                          slug={post.slug}
-                          categories={post._embedded["wp:term"]["0"]}
-                          image={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          excerpt={post.acf.excerpt}
-                          byline={post.acf.writer[0].post_title}
-                          read={post.acf.time_to_read}
-                          date={formattedDate}
-                          headshot={post.acf.writer[0].acf.headshot.url}
+                          // title={post.title.rendered}
+                          // slug={post.slug}
+                          // categories={post._embedded["wp:term"]["0"]}
+                          // image={
+                          //   post._embedded["wp:featuredmedia"]["0"].source_url
+                          // }
+                          // excerpt={post.acf.excerpt}
+                          // byline={post.acf.writer[0].post_title}
+                          // read={post.acf.time_to_read}
+                          // date={formattedDate}
+                          // headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </>
                     ) : null}
@@ -147,17 +148,17 @@ export default function Home({ page, posts }) {
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
                           post={post}
-                          date={formattedDate}
-                          read={post.acf.time_to_read}
-                          slug={post.slug}
-                          title={post.title.rendered}
-                          categories={post._embedded["wp:term"]["0"]}
-                          image={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          excerpt={post.acf.excerpt}
-                          byline={post.acf.writer[0].post_title}
-                          headshot={post.acf.writer[0].acf.headshot.url}
+                          // date={formattedDate}
+                          // read={post.acf.time_to_read}
+                          // slug={post.slug}
+                          // title={post.title.rendered}
+                          // categories={post._embedded["wp:term"]["0"]}
+                          // image={
+                          //   post._embedded["wp:featuredmedia"]["0"].source_url
+                          // }
+                          // excerpt={post.acf.excerpt}
+                          // byline={post.acf.writer[0].post_title}
+                          // headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     ) : null}
@@ -205,17 +206,17 @@ export default function Home({ page, posts }) {
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
                           post={post}
-                          date={formattedDate}
-                          read={post.acf.time_to_read}
-                          slug={post.slug}
-                          title={post.title.rendered}
-                          categories={post._embedded["wp:term"]["0"]}
-                          image={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          excerpt={post.acf.excerpt}
-                          byline={post.acf.writer[0].post_title}
-                          headshot={post.acf.writer[0].acf.headshot.url}
+                          // date={formattedDate}
+                          // read={post.acf.time_to_read}
+                          // slug={post.slug}
+                          // title={post.title.rendered}
+                          // categories={post._embedded["wp:term"]["0"]}
+                          // image={
+                          //   post._embedded["wp:featuredmedia"]["0"].source_url
+                          // }
+                          // excerpt={post.acf.excerpt}
+                          // byline={post.acf.writer[0].post_title}
+                          // headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     ) : null}
