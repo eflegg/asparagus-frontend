@@ -8,6 +8,7 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
+import NewsletterSignup from "../components/NewsletterSignupCard";
 
 const CategoryContainer = styled.section`
   margin-bottom: 45px;
@@ -217,7 +218,13 @@ export default function Home({ page, posts }) {
             </div>
           </CategoryContainer>
 
-          <CategoryContainer className="cat-two--container">
+          <NewsletterSignup
+            title="Sign up for the Asparagus Newsletter"
+            subtitle="Pleasantly infrequent updates from the asparagus patch"
+            image="triplestalk.svg"
+          />
+
+          <CategoryContainer className="cat-three--container">
             <h2>{page.acf.home_category_three[0].name}</h2>
             <hr />
             <div className="card--grid">
