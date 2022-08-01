@@ -34,15 +34,10 @@ export default function Home({ page, posts }) {
   // const subcategoryQuery = await fetch(
   //   `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}`
   // );
-  console.log("posts: ", posts);
 
   const catOne = page.acf.home_category_one[0].term_id;
   const catTwo = page.acf.home_category_two[0].term_id;
   const catThree = page.acf.home_category_three[0].term_id;
-
-  console.log("cat one: ", catOne);
-  console.log("cat two: ", catTwo);
-  console.log("cat three: ", catThree);
 
   return (
     <>

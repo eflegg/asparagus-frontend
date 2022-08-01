@@ -1,19 +1,18 @@
 import Link from "next/link";
-import { getArticle, getSlugs } from "../../utils/wordpress";
+import RelatedPosts from "../../components/ArticleComponents/RelatedPosts";
+import PageWrapper from "../../components/Global/PageWrapper";
+import { getArticle, getArticles, getSlugs } from "../../utils/wordpress";
 
-export default function ArticlePage({ article }) {
+export default function ArticlePage({ article, allArticles }) {
   return (
-    <div className="container pt-5">
+    <PageWrapper>
       <h1 className="text-center pb-5">{article.title.rendered}</h1>
       <div
         className="card-text pb-5"
         dangerouslySetInnerHTML={{ __html: article.content.rendered }}
       ></div>
-
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
-    </div>
+      <RelatedPosts currentArticle={article} allArticles={allArticles} />
+    </PageWrapper>
   );
 }
 
@@ -32,10 +31,11 @@ export async function getStaticPaths() {
 //access the router, get the id, and get the data for that post
 export async function getStaticProps({ params }) {
   const article = await getArticle(params.slug);
-
+  const allArticles = await getArticles();
   return {
     props: {
       article,
+      allArticles,
     },
     revalidate: 10, // In seconds
   };

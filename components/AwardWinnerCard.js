@@ -6,7 +6,7 @@ const Card = styled.div`
 `;
 
 export default function AwardWinnerCard({ post }) {
-  console.log("post: ", post);
+  console.log("award post: ", post);
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     year: "numeric",
