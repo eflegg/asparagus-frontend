@@ -23,10 +23,27 @@ const MenuContainer = styled.div`
       padding-left: 0;
     }
   }
-  /* border: 1px solid red;  */
-  margin: 30px 57px; 
+  margin: 30px 15px; 
+  ${theme.mediaQuery.md`
+    margin: 30px 57px;
+  `};
 `;
+
+
 const MobileNav = styled.nav`
+`;
+
+const MobileConnectNavContainer = styled.div`
+ display: flex; 
+ justify-content: space-between; 
+ align-items: center; 
+  ${theme.mediaQuery.md`
+    flex: 0 0 50%; 
+    margin-top: 30px; 
+    align-items: flex-start; 
+  `};
+`
+const HamburgerMenuButton = styled.div`
   .btn-nav {
     cursor: pointer;
     &:focus {
@@ -40,17 +57,13 @@ const MobileNav = styled.nav`
     justify-content: center;
     background: transparent;
     border: 0px;
-    position: absolute;
-    position: fixed;
-    top: 18px;
-    right: 15px;
     span {
       width: 35px;
       height: 5px;
       margin-bottom: 1px;
       border-radius: 3px;
       margin-top: 5px;
-      background: ${theme.colours.gusGreen};
+      background: ${theme.colours.soil};
       z-index: 2;
     }
     .burger-2 {
@@ -65,8 +78,7 @@ const MobileNav = styled.nav`
       }
       .burger-2 {
         position: relative;
-        left: 150px;
-        overflow: hidden;
+        background: transparent;
         transition: all 0.15s ease-in-out;
       }
       .burger-3 {
@@ -104,28 +116,21 @@ const DesktopNav = styled.nav`
 const LogoConnectMenuContainer = styled.div`
   display: flex; 
   flex-direction: column-reverse; 
-  /* border: 1px solid black;  */
   justify-content: space-around; 
+  .img {
+    flex: 0 0 50%; 
+  }
   ${theme.mediaQuery.md`
     flex-direction: row;
     `};
-    .img {
-    flex: 0 0 50%; 
-    }
 `
 const ConnectMenuNav = styled.nav`
-  /* display: flex;
-  flex-direction: row;  */
-  /* border: 1px solid black;  */
-  flex: 0 0 50%; 
-  width: 100%; 
+  flex: 1; 
   ul {
-    margin: 30px 56px 0px 56px; 
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-evenly;
     align-items: center; 
     flex-wrap: nowrap;
-    /* border: none;  */
   }
   a {
     font-size: 2rem; 
@@ -135,15 +140,18 @@ const ConnectMenuNav = styled.nav`
     
   }
   li {
-    /* display: flex;  */
     flex: none; 
-    padding: 3px 30px; 
+    ${theme.mediaQuery.md`
+      padding: 3px 30px; 
+    `};
   }
   li:first-of-type {
     background-color: ${theme.colours.gusYellow};
-    padding: 3px 30px; 
+    padding: 3px 5px; 
     border-radius: 5px; 
-  }
+    ${theme.mediaQuery.md`
+      padding: 3px 30px; 
+    `};
   }
 `
 
@@ -230,23 +238,48 @@ export default function HeaderMenu() {
               <img src="/Asparagus_Nameplate_Color.png"/>
             </a>
           </Link>
-          <ConnectMenuNav>
-            <ul>
-              {connectLinks?.items?.map((connectLink, index) => {
-                return (
-                  <li key={uuidv4()}>
-                    <ActiveLink
-                      activeClassName="navlink--active"
-                      href={`/${connectLink.slug}`}
-                      to={`/${connectLink.slug}`}
-                    >
+          <MobileConnectNavContainer>
+            <ConnectMenuNav>
+              <ul>
+                {connectLinks?.items?.map((connectLink, index) => {
+                  return (
+                    <li key={uuidv4()}>
+                      <ActiveLink
+                        activeClassName="navlink--active"
+                        href={`/${connectLink.slug}`}
+                        to={`/${connectLink.slug}`}
+                      >
                       <a>{connectLink.title}</a>
-                    </ActiveLink>
-                  </li>
-                );
-              })}
-            </ul>
-          </ConnectMenuNav>
+                      </ActiveLink>
+                    </li>
+                  );
+                })}
+              </ul>
+            </ConnectMenuNav>
+
+            {size.width < 1000 && (
+              <HamburgerMenuButton>
+                <button
+                  className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
+                  onClick={() => {
+                  setNavActive(!navActive);
+                  }}
+                >
+                  <span className="burger-1"></span>
+                  <span className="burger-2"></span>
+                  <span className="burger-3"></span>
+                </button>
+                <button
+                  role="button"
+                  aria-controls="navMenu"
+                  style={{ display: "none" }}
+                  className="accessibility-close"
+                >
+                  Close Nav
+                </button>
+              </HamburgerMenuButton>
+            )}
+          </MobileConnectNavContainer>
         </LogoConnectMenuContainer>
 
         {size.width >= 1000 ? (
@@ -308,24 +341,6 @@ export default function HeaderMenu() {
           </DesktopNav>
         ) : (
           <MobileNav>
-            <button
-              className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
-              onClick={() => {
-                setNavActive(!navActive);
-              }}
-            >
-              <span className="burger-1"></span>
-              <span className="burger-2"></span>
-              <span className="burger-3"></span>
-            </button>
-            <button
-              role="button"
-              aria-controls="navMenu"
-              style={{ display: "none" }}
-              className="accessibility-close"
-            >
-              Close Nav
-            </button>
             {navActive ? (
               <ul>
                 {links?.items?.map((link, index) => {
