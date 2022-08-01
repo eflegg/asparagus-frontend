@@ -616,6 +616,23 @@ p.event--date,
 
 }
 
+p.single-event--date {
+  font-family: $headerFont;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $gusGreen;
+
+  @include media-query-min($sm) {
+    font-size: calc(20px + 12 * ((100vw - 320px) / 680));
+    line-height: 28px;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(32px);
+    line-height: 40px;
+  }
+}
+
 p.event--description {
   font-family: $bodyFont;
   font-size: 1.4rem;

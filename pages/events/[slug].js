@@ -3,6 +3,8 @@ import { getEvent, getSlugs } from "../../utils/wordpress";
 import theme from "../../components/Global/Theme";
 import styled from "styled-components";
 import PageWrapper from "../../components/Global/PageWrapper";
+import { v4 as uuidv4 } from "uuid";
+import React from "react";
 
 const SingleEvent = styled.div`
 border: solid blue;
@@ -41,8 +43,28 @@ margin: 0 auto;
 }
 `;
 
+const Gallery = styled.div`
+.event-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-row-gap: 70px;
+  grid-column-gap: 70px;
+  justify-content: center;
+  width: 90%;
+  margin: 20px auto;
+  list-style: none;
+  ${theme.mediaQuery.md`
+  grid-template-columns: repeat(auto-fit, 450px);
+  `}
+}
+`;
+
 export default function EventPage({ event, image }) {
   console.log("event: ", event);
+  const gallery = event.acf.event_images;
+  const galleryImage1 = gallery[0].title;
+  console.log("galleryImage1", galleryImage1);
+  console.log("gallery", gallery);
   return (
     <PageWrapper>
       <h1 className="text-center">{event.title.rendered}</h1>
@@ -53,7 +75,7 @@ export default function EventPage({ event, image }) {
           <img src={event._embedded["wp:featuredmedia"]["0"].source_url} alt=""/>
         </div>
       <div className="event-info">
-          <p className="event--date">{event.acf.date}</p>
+          <p className="single-event--date">{event.acf.date}</p>
           <p className="event--location">{event.acf.location}</p>
           <p className="event--description">{event.acf.description}</p>
           <Link href="/">
@@ -62,6 +84,20 @@ export default function EventPage({ event, image }) {
       </div>
       </div>  
     </SingleEvent>
+    <Gallery>
+      <div className="event-gallery">
+      {gallery.map((galleryImage, index)=>{
+        return (
+          <React.Fragment key={uuidv4()}>
+          <div>
+          <img src={galleryImage.url} alt=""></img>
+          </div>
+          </React.Fragment>
+        )
+      })}
+      </div>
+      </Gallery>
+    
     </PageWrapper>
   );
 }
