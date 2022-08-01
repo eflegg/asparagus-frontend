@@ -12,6 +12,10 @@ export default function Stockists({ stockists }) {
         {stockists.map((stockist, index) => {
           return (
             <div key={index} className="stockist--single">
+              <p>{stockist.acf.province}</p>
+              <p>{stockist.acf.stockist_name}</p>
+              <p>{stockist.acf.stockist_address}</p>
+              <p>{stockist.acf.stockist_phone_number}</p>
               <a
                 target="_blank"
                 rel="noreferrer"
