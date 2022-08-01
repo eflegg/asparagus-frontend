@@ -33,7 +33,7 @@ const MenuContainer = styled.div`
 const MobileNav = styled.nav`
 `;
 
-const MobileConnectNavContainer = styled.div`
+const ConnectMenuContainer = styled.div`
  display: flex; 
  justify-content: space-between; 
  align-items: center; 
@@ -238,7 +238,7 @@ export default function HeaderMenu() {
               <img src="/Asparagus_Nameplate_Color.png"/>
             </a>
           </Link>
-          <MobileConnectNavContainer>
+          <ConnectMenuContainer>
             <ConnectMenuNav>
               <ul>
                 {connectLinks?.items?.map((connectLink, index) => {
@@ -279,7 +279,7 @@ export default function HeaderMenu() {
                 </button>
               </HamburgerMenuButton>
             )}
-          </MobileConnectNavContainer>
+          </ConnectMenuContainer>
         </LogoConnectMenuContainer>
 
         {size.width >= 1000 ? (
