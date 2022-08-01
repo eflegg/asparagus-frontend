@@ -34,6 +34,10 @@ margin: 0 auto;
   width: 50%;
   `}
 }
+
+.event--description {
+  margin-bottom: 30px;
+}
 `;
 
 export default function EventPage({ event, image }) {
