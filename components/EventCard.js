@@ -3,17 +3,18 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 
 const EventCard = styled.div`
-border: solid pink;
+// border: solid pink;
 display: flex;
 flex-direction: column;
 ${theme.mediaQuery.sm`
 flex-direction: row;
 `}
 width: 75%;
+max-width: 1200px;
 margin: 26px auto;
 .event--image {
     flex: none;
-    border: solid blue;
+    // border: solid blue;
     ${theme.mediaQuery.sm`
         width: 40%;
         `}
@@ -24,7 +25,7 @@ margin: 26px auto;
     }
 }
 .event--info {
-    border: solid purple;
+    // border: solid purple;
     padding 40px;
     ${theme.mediaQuery.sm`
     width: 60%;
