@@ -35,11 +35,6 @@ export default function CategoryPage({ category, posts, subcategories }) {
   console.log("posts: ", posts);
   return (
     <PageWrapper pageTitle="category name" className="container pt-5">
-      {/* <CategoryH1
-        className="text-center"
-        dangerouslySetInnerHTML={{ __html: category.name }}
-      ></CategoryH1> */}
-
       {/* if the category is either start small or voices, show the subcategory filter
       followed by all the articles in the category. no feature article.
 
@@ -47,7 +42,11 @@ export default function CategoryPage({ category, posts, subcategories }) {
 
       all other categories show feature article followed by the rest of the articles
       */}
-      {/* {category.slug == "voices" || category.slug == "start-small" ? (
+      <CategoryH1
+        className="text-center"
+        dangerouslySetInnerHTML={{ __html: category.name }}
+      ></CategoryH1>
+      {category.slug == "voices" || category.slug == "start-small" ? (
         <>
           <p>{subfilter}</p>
           <ArticleFilter subcategories={subcategories} onClick={handleClick} />
@@ -128,7 +127,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
       ) : (
         <>
           <CategoryFeaturedCard
-            // post={posts[0]}
+            post={posts[0]}
             title={posts[0]?.title.rendered}
             slug={posts[0]?.slug}
             writer={posts[0]?.acf.writer[0].post_title}
@@ -169,7 +168,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
             })}
           </ul>
         </>
-      )} */}
+      )}
     </PageWrapper>
   );
 }
@@ -188,12 +187,12 @@ export async function getStaticProps({ params }) {
 
   //use this to get only subcategories for cards
   const subcategoryQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}`
+    `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}&_embed?per_page=100`
   );
   const subcategories = await subcategoryQuery.json();
 
   const categoryPosts = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${category?.id}&_embed`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${category?.id}`
   );
   const posts = await categoryPosts.json();
 

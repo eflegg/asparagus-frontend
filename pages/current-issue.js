@@ -21,6 +21,7 @@ const CoverContainer = styled.div`
 `;
 
 export default function CurrentIssue({ issues, articles }) {
+  const currentIssue = issues[0];
   return (
     <PageWrapper pageTitle="Current Issue" className="">
       <CoverContainer className="current-issue--cover">
