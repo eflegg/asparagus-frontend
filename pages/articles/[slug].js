@@ -2,16 +2,28 @@ import Link from "next/link";
 import RelatedPosts from "../../components/ArticleComponents/RelatedPosts";
 import PageWrapper from "../../components/Global/PageWrapper";
 import { getArticle, getArticles, getSlugs } from "../../utils/wordpress";
+import styled from "styled-components";
+import theme from "../../components/Global/Theme";
+
+const SingleContainer = styled.div`
+  .related--header {
+    width: 90%;
+    margin: 50px auto 0;
+    line-height: 100%;
+  }
+`;
 
 export default function ArticlePage({ article, allArticles }) {
   return (
     <PageWrapper>
-      <h1 className="text-center pb-5">{article.title.rendered}</h1>
-      <div
-        className="card-text pb-5"
-        dangerouslySetInnerHTML={{ __html: article.content.rendered }}
-      ></div>
-      <RelatedPosts currentArticle={article} allArticles={allArticles} />
+      <SingleContainer>
+        <h1 className="text-center pb-5">{article.title.rendered}</h1>
+        <div
+          className="card-text pb-5"
+          dangerouslySetInnerHTML={{ __html: article.content.rendered }}
+        ></div>
+        <RelatedPosts currentArticle={article} allArticles={allArticles} />
+      </SingleContainer>
     </PageWrapper>
   );
 }

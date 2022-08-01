@@ -15,10 +15,7 @@ export default function RelatedPosts({ allArticles, currentArticle }) {
   // define maxPosts to display
   const maxPosts = 3;
 
-  const currentTags = currentArticle.tags.map((tag) => {
-    return tag;
-  });
-
+  const currentTags = currentArticle.tags;
   console.log("current tags: ", currentTags);
 
   // rate posts depending on tags
@@ -38,12 +35,16 @@ export default function RelatedPosts({ allArticles, currentArticle }) {
   console.log("sorted articles: ", sortedPosts);
 
   return (
-    <div className="card--grid single-page">
-      {sortedPosts.slice(0, maxPosts).map((post, i) => (
-        <React.Fragment key={i}>
-          <ArticleCard post={post} />
-        </React.Fragment>
-      ))}
-    </div>
+    <>
+      <h5 className="related--header">Related Stories</h5>
+      <hr />
+      <div className="card--grid single-page">
+        {sortedPosts.slice(0, maxPosts).map((post, i) => (
+          <React.Fragment key={i}>
+            <ArticleCard post={post} />
+          </React.Fragment>
+        ))}
+      </div>
+    </>
   );
 }
