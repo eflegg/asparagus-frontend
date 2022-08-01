@@ -28,13 +28,10 @@ export default function CategoryPage({ category, posts, subcategories }) {
     setSubfilter(null);
   }, [dynamicRoute]);
 
+  console.log("category: ", category);
+  console.log("posts: ", posts);
   return (
     <PageWrapper pageTitle={category.name} className="container pt-5">
-      <h1
-        className="text-center"
-        dangerouslySetInnerHTML={{ __html: category.name }}
-      ></h1>
-
       {/* if the category is either start small or voices, show the subcategory filter
       followed by all the articles in the category. no feature article.
 
@@ -42,6 +39,11 @@ export default function CategoryPage({ category, posts, subcategories }) {
 
       all other categories show feature article followed by the rest of the articles
       */}
+      <h1
+        className="text-center"
+        dangerouslySetInnerHTML={{ __html: category.name }}
+      ></h1>
+      <hr />
       {category.slug == "voices" || category.slug == "start-small" ? (
         <>
           <p>{subfilter}</p>
@@ -116,9 +118,6 @@ export default function CategoryPage({ category, posts, subcategories }) {
           </ul>
         </>
       )}
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
     </PageWrapper>
   );
 }
@@ -136,12 +135,12 @@ export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
 
   const subcategoryQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}`
+    `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}&_embed?per_page=100`
   );
   const subcategories = await subcategoryQuery.json();
 
   const categoryPosts = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${category?.id}`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${category?.id}`
   );
   const posts = await categoryPosts.json();
 
