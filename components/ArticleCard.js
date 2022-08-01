@@ -12,20 +12,27 @@ export default function ArticleCard({
   slug,
   byline,
   excerpt,
-  categories,
+
   image,
   date,
   read,
   headshot,
+  post,
 }) {
+  const categories = post._embedded["wp:term"]["0"];
+  let initialDate = post.date;
+  let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
+    month: "long",
+    day: "2-digit",
+  });
   return (
     <Card>
-      <Link href={"/articles/[slug]"} as={`/articles/${slug}`}>
+      <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
         <a className="card--inner">
           <div>
             <div className="card--image">
               <Image
-                src={image && image}
+                src={post._embedded["wp:featuredmedia"]["0"].source_url}
                 layout="fill"
                 objectFit="cover"
                 alt="Article lead photo"
@@ -51,16 +58,16 @@ export default function ArticleCard({
             </div>
             <h3
               className="head--article-card"
-              dangerouslySetInnerHTML={{ __html: title }}
+              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
             ></h3>
 
-            <p className="deck--article-card">{excerpt}</p>
+            <p className="deck--article-card">{post.acf.excerpt}</p>
           </div>
           <div className="article-details">
             <div className="byline--image">
-              {headshot && (
+              {post.acf.writer[0].acf.headshot.url && (
                 <Image
-                  src={headshot}
+                  src={post.acf.writer[0].acf.headshot.url}
                   layout="fill"
                   objectFit="cover"
                   alt="Author headshot"
@@ -68,9 +75,11 @@ export default function ArticleCard({
               )}
             </div>
             <div>
-              <p className="byline--article-card">{byline}</p>
+              <p className="byline--article-card">
+                {post.acf.writer[0].post_title}
+              </p>
               <p className="date--article-card">
-                {date} - <span>{read} min read</span>
+                {formattedDate} - <span>{post.acf.time_to_read} min read</span>
               </p>
             </div>
           </div>

@@ -49,6 +49,7 @@ export default function CurrentIssue({ issues, articles }) {
               {currentIssue == appearsIn ? (
                 <>
                   <ArticleCard
+                    post={article}
                     title={article.title.rendered}
                     slug={article.slug}
                     image={

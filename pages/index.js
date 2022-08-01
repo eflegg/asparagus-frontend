@@ -3,6 +3,7 @@ import { Config } from "../config";
 import fetch from "isomorphic-fetch";
 import PageWrapper from "../components/Global/PageWrapper";
 import ArticleCard from "../components/ArticleCard";
+import NewsletterSignup from "../components/NewsletterSignupCard";
 import AwardWinnerCard from "../components/AwardWinnerCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
@@ -29,9 +30,10 @@ margin-bottom: 80px;
 `;
 
 export default function Home({ page, posts }) {
-  // const catOne = posts.tags.map((tag) => {
-  //   return tag.name
-  // })
+  //use this to get only subcategories for cards
+  // const subcategoryQuery = await fetch(
+  //   `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}`
+  // );
   console.log("posts: ", posts);
 
   const catOne = page.acf.home_category_one[0].term_id;
@@ -94,6 +96,7 @@ export default function Home({ page, posts }) {
                     {index <= 5 ? (
                       <>
                         <ArticleCard
+                          post={post}
                           title={post.title.rendered}
                           slug={post.slug}
                           categories={post._embedded["wp:term"]["0"]}
@@ -143,6 +146,7 @@ export default function Home({ page, posts }) {
                     ) : post.categories.includes(catOne) ? (
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
+                          post={post}
                           date={formattedDate}
                           read={post.acf.time_to_read}
                           slug={post.slug}
@@ -162,6 +166,13 @@ export default function Home({ page, posts }) {
               })}
             </div>
           </CategoryContainer>
+          {/* @elizabeth it doesn't have any children so it can be a self-closing tag */}
+          <NewsletterSignup
+            support={false}
+            title="Sign up for News from the Asparagus Patch"
+            subtitle="Pleasantly Infrequent Updates from Asparagus Magazine"
+            image="triplestalk.svg"
+          />
 
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
@@ -193,6 +204,7 @@ export default function Home({ page, posts }) {
                     ) : post.categories.includes(catTwo) && index <= 6 ? (
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
+                          post={post}
                           date={formattedDate}
                           read={post.acf.time_to_read}
                           slug={post.slug}
@@ -213,7 +225,13 @@ export default function Home({ page, posts }) {
             </div>
           </CategoryContainer>
 
-          <CategoryContainer className="cat-two--container">
+          <NewsletterSignup
+            title="Sign up for the Asparagus Newsletter"
+            subtitle="Pleasantly infrequent updates from the asparagus patch"
+            image="triplestalk.svg"
+          />
+
+          <CategoryContainer className="cat-three--container">
             <h2>{page.acf.home_category_three[0].name}</h2>
             <hr />
             <div className="card--grid">
@@ -243,6 +261,7 @@ export default function Home({ page, posts }) {
                     ) : post.categories.includes(catThree) && index <= 5 ? (
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
+                          post={post}
                           date={formattedDate}
                           read={post.acf.time_to_read}
                           slug={post.slug}

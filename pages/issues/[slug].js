@@ -40,7 +40,7 @@ export default function CurrentIssue({ issue, articles }) {
           <p>{issue.acf.secondary_cover_line}</p>
         </div>
       </CoverContainer>
-      <ul className="card--grid">
+      <ul className="card--grid single-page">
         {articles.map((article, index) => {
           const appearsIn = article.acf.appears_in;
 
@@ -49,6 +49,7 @@ export default function CurrentIssue({ issue, articles }) {
               {currentIssue == appearsIn ? (
                 <>
                   <ArticleCard
+                    post={article}
                     title={article.title.rendered}
                     slug={article.slug}
                     image={

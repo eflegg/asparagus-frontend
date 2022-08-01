@@ -28,13 +28,10 @@ export default function CategoryPage({ category, posts, subcategories }) {
     setSubfilter(null);
   }, [dynamicRoute]);
 
+  console.log("category: ", category);
+  console.log("posts: ", posts);
   return (
     <PageWrapper pageTitle={category.name} className="container pt-5">
-      <h1
-        className="text-center"
-        dangerouslySetInnerHTML={{ __html: category.name }}
-      ></h1>
-
       {/* if the category is either start small or voices, show the subcategory filter
       followed by all the articles in the category. no feature article.
 
@@ -42,79 +39,87 @@ export default function CategoryPage({ category, posts, subcategories }) {
 
       all other categories show feature article followed by the rest of the articles
       */}
+      <h1
+        className="text-center"
+        dangerouslySetInnerHTML={{ __html: category.name }}
+      ></h1>
+      <hr />
       {category.slug == "voices" || category.slug == "start-small" ? (
         <>
           <p>{subfilter}</p>
           <ArticleFilter subcategories={subcategories} onClick={handleClick} />
-          <ul className="card--grid">
+          <div className="card--grid single-page">
             {posts.map((post, index) => {
               return (
                 <>
                   {post.categories && post.categories.includes(subfilter) ? (
-                    <li key={uuidv4()}>
+                    <React.Fragment key={uuidv4()}>
                       <ArticleCard
+                        post={post}
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
                       />
-                    </li>
+                    </React.Fragment>
                   ) : subfilter == null ? (
-                    <li key={uuidv4()}>
+                    <React.Fragment key={uuidv4()}>
                       <ArticleCard
+                        post={post}
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
                       />
-                    </li>
+                    </React.Fragment>
                   ) : null}
                 </>
               );
             })}
-          </ul>
+          </div>
         </>
       ) : category.slug == "awards" ? (
-        <ul className="card--grid">
+        <div className="card--grid single-page">
           {posts.map((post, index) => {
             return (
-              <li key={uuidv4()}>
+              <React.Fragment key={uuidv4()}>
                 <AwardWinnerCard
                   title={post.title.rendered}
                   slug={post.slug}
                   writer={post.acf.writer[0].post_title}
                 />
-              </li>
+              </React.Fragment>
             );
           })}
-        </ul>
+        </div>
       ) : (
         <>
-          <CategoryFeaturedCard
-            title={posts[0]?.title.rendered}
-            slug={posts[0]?.slug}
-            writer={posts[0]?.acf.writer[0].post_title}
-          />
-          <ul className="card--grid">
+          {posts ? (
+            <CategoryFeaturedCard
+              post={posts[0]}
+              title={posts[0]?.title.rendered}
+              slug={posts[0]?.slug}
+              writer={posts[0]?.acf.writer[0].post_title}
+            />
+          ) : null}
+          <div className="card--grid single-page">
             {posts.map((post, index) => {
               return (
                 <>
                   {index != 0 && (
-                    <li key={uuidv4()}>
+                    <React.Fragment key={uuidv4()}>
                       <ArticleCard
+                        post={post}
                         title={post.title.rendered}
                         slug={post.slug}
                         writer={post.acf.writer[0].post_title}
                       />
-                    </li>
+                    </React.Fragment>
                   )}
                 </>
               );
             })}
-          </ul>
+          </div>
         </>
       )}
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
     </PageWrapper>
   );
 }
@@ -132,12 +137,12 @@ export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
 
   const subcategoryQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}`
+    `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}&_embed?per_page=100`
   );
   const subcategories = await subcategoryQuery.json();
 
   const categoryPosts = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${category?.id}`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${category?.id}`
   );
   const posts = await categoryPosts.json();
 
