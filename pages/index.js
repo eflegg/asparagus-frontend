@@ -63,6 +63,7 @@ export default function Home({ page, posts }) {
                 <>
                   {post.id == page.acf.lead_story[0].ID ? (
                     <LeadStoryBlock
+                      post={post}
                       date={formattedDate}
                       image={post._embedded["wp:featuredmedia"]["0"].source_url}
                       title={post.title.rendered}

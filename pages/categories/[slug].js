@@ -95,9 +95,9 @@ export default function CategoryPage({ category, posts, subcategories }) {
           {posts ? (
             <CategoryFeaturedCard
               post={posts[0]}
-              title={posts[0]?.title.rendered}
-              slug={posts[0]?.slug}
-              writer={posts[0]?.acf.writer[0].post_title}
+              // title={posts[0]?.title.rendered}
+              // slug={posts[0]?.slug}
+              // writer={posts[0]?.acf.writer[0].post_title}
             />
           ) : null}
           <div className="card--grid single-page">
