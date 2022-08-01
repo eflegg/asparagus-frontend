@@ -5,7 +5,7 @@ import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { getIssues, getArticles } from "../utils/wordpress";
 
-export default function RelatedPosts({ articles }) {
+export default function RelatedPosts({ articles, currentPost }) {
   return <h4>I am the related posts component</h4>;
 }
 
