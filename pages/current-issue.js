@@ -21,6 +21,7 @@ const CoverContainer = styled.div`
 `;
 
 export default function CurrentIssue({ issues, articles }) {
+  const currentIssue = issues[0];
   return (
     <PageWrapper pageTitle="Current Issue" className="">
       <CoverContainer className="current-issue--cover">
@@ -48,6 +49,7 @@ export default function CurrentIssue({ issues, articles }) {
               {currentIssue == appearsIn ? (
                 <>
                   <ArticleCard
+                    post={article}
                     title={article.title.rendered}
                     slug={article.slug}
                     image={

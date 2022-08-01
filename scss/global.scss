@@ -53,13 +53,18 @@ $xl: 1800px;
 //used everwhere a group of article cards is displayed
 .card--grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
+  // grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(auto-fill, minmax(min(25.5rem, 100%), 1fr));
   grid-row-gap: 70px;
   grid-column-gap: 70px;
   justify-content: center;
   width: 90%;
   margin: 0 auto;
   list-style: none;
+  max-width: 1200px;
+  &.single-page {
+    margin: 100px auto;
+  }
 }
 
 ul {
@@ -162,6 +167,7 @@ html {
 $headerFont: "Source Serif Pro", serif;
 $bodyFont: "Source Serif Pro", serif;
 $accentFont: "halcyon-regular", sans-serif;
+$semibold: "halcyon-semibold", sans-serif;
 
 $gusGreen: #339933;
 $soil: #913029;
@@ -274,7 +280,7 @@ h3,
   color: $gusGreen;
   font-size: 2.6rem;
   font-weight: 900;
-  line-height: 135%;
+  line-height: 115%;
 
   @include media-query-min($sm) {
     font-size: calc(2.6rem + 10 * ((100vw - 320px) / 680));
@@ -282,7 +288,6 @@ h3,
 
   @include media-query-min($md) {
     @include font-size(5.2);
-    line-height: 36px;
   }
 }
 
@@ -319,7 +324,7 @@ h5 {
 }
 
 h6 {
-  font-family: $accentFont;
+  font-family: $semibold;
   font-size: 1.5rem;
   font-weight: 600;
   color: $soil;
@@ -391,11 +396,11 @@ h6 {
 }
 
 .deck--topic-feature {
-  font-family: $accentFont;
-  font-weight: 600;
-  font-size: 2.6rem;
-  line-height: 3.2rem;
+  font-family: $semibold;
+  font-size: 1.7rem;
+  line-height: 2rem;
   color: black;
+  margin: 0;
 
   @include media-query-min($sm) {
     font-size: calc(17px + 9 * ((100vw - 320px) / 680));
@@ -423,6 +428,16 @@ h6 {
     line-height: 32px;
   }
 }
+.byline--image {
+  position: relative;
+  overflow: hidden;
+  flex: none;
+  width: 50px;
+  height: 50px;
+  background: slateblue;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 
 .byline--article-card {
   font-family: $headerFont;
@@ -433,7 +448,10 @@ h6 {
   margin: 0;
   padding: 0;
 }
-
+.article-details {
+  display: flex;
+  align-items: center;
+}
 .date--article-card {
   font-family: $accentFont;
   font-size: 1.3rem;
@@ -492,9 +510,8 @@ h6 {
 }
 
 .pullquote {
-  font-family: $accentFont;
+  font-family: $semibold;
   font-size: 2.8rem;
-  font-weight: 600;
   color: $gusGreen;
   line-height: 3.2rem;
 
@@ -641,8 +658,7 @@ a.footer-link {
 
 a.action-menu {
   font-size: 2rem;
-  font-weight: 600;
-  font-family: $accentFont;
+  font-family: $semibold;
   color: $soil;
 }
 

@@ -123,6 +123,7 @@ export default function TeamPage({ teamMember, posts }) {
               <>
                 {post.acf.photographer[0]?.ID == teamMember.id ? (
                   <ArticleCard
+                    post={post}
                     key={index}
                     title={post.title.rendered}
                     slug={post.slug}
@@ -134,6 +135,7 @@ export default function TeamPage({ teamMember, posts }) {
                 {post.acf.writer[0]?.ID == teamMember.id ? (
                   <React.Fragment key={index}>
                     <ArticleCard
+                      post={post}
                       title={post.title.rendered}
                       slug={post.slug}
                       writer={post.acf.writer[0].post_title}

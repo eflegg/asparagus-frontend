@@ -69,6 +69,18 @@ const LeadStory = styled.section`
       margin-left: auto;
     }
   }
+  .byline--index-feature {
+    position: relative;
+    span {
+      &::before {
+        content: "\\00B7";
+        font-size: 40px;
+        line-height: 5px;
+        position: relative;
+        top: 8px;
+      }
+    }
+  }
 `;
 
 export default function LeadStoryBlock({
@@ -77,6 +89,7 @@ export default function LeadStoryBlock({
   excerpt,
   byline,
   read,
+  headshot,
   title,
 }) {
   return (
@@ -92,14 +105,15 @@ export default function LeadStoryBlock({
       <div className="lead-text">
         <h1>{title}</h1>
         <div className="lead-text--inner">
-          <div>
-            <p>{byline}</p>
-            <p>
-              {date} - <span>{read}</span>
+          <div className="">
+            <p className="byline--index-feature">{byline}</p>
+            <p className="byline--index-feature">
+              {date} <span> {read} min read</span>
             </p>
           </div>
+
           <hr />
-          <p className="text-right lead-story--excerpt">{excerpt}</p>
+          <p className="text-right deck--index-feature">{excerpt}</p>
         </div>
       </div>
     </LeadStory>
