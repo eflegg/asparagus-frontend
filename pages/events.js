@@ -53,7 +53,7 @@ export default function Events({ events }) {
           {events.map((event, index) => {
             const eventDate = event.acf.date;
             const stringEventDate = new Date(eventDate).getTime();
-            
+
             return (
               <>
                 {stringEventDate < stringCurrentDate ? (

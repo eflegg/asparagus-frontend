@@ -129,6 +129,7 @@ export default function ContributorPage({ contributor, posts }) {
                 {post.acf.photographer[0]?.ID == contributor.id ? (
                   <>
                     <ArticleCard
+                      post={post}
                       key={index}
                       title={post.title.rendered}
                       slug={post.slug}
@@ -139,6 +140,7 @@ export default function ContributorPage({ contributor, posts }) {
                 {post.acf.writer[0]?.ID == contributor.id ? (
                   <>
                     <ArticleCard
+                      post={post}
                       key={index}
                       title={post.title.rendered}
                       slug={post.slug}

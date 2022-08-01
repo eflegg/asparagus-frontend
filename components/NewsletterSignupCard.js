@@ -70,8 +70,6 @@ left: 40px;
   }
 `;
 
-
-
 export default function NewsletterSignup({ title, subtitle, image, support }) {
   console.log("support: ", support);
   return (
@@ -83,12 +81,11 @@ export default function NewsletterSignup({ title, subtitle, image, support }) {
           <p className="newsletter-subheader--primary">{subtitle}</p>
           {support ? (
             <button className="btn--primary">Support</button>
-          ): (
-
-          <div className="flex-row">
-            <input type="text" />
-            <button className="btn--primary">Sign Up</button>
-          </div>
+          ) : (
+            <div className="flex-row">
+              <input type="text" />
+              <button className="btn--primary">Sign Up</button>
+            </div>
           )}
         </SignUp>
 

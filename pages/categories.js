@@ -3,23 +3,24 @@ import { Config } from "../config";
 import fetch from "isomorphic-fetch";
 import Link from "next/link";
 import PageWrapper from "../components/Global/PageWrapper";
+import { getCategories } from "../utils/wordpress";
 
-export default function Topics({ posts }) {
-  console.log("posts: ", posts);
+export default function AllCategories({ categories }) {
+  console.log("categories: ", categories);
   return (
     <PageWrapper>
       <div className="">
-        <h1>List of Posts</h1>
+        <h1>List of categories</h1>
         <ul>
-          {posts.map((post, index) => {
+          {categories.map((category, index) => {
             return (
               <Link
                 key={index}
-                href={"/posts/[slug]"}
-                as={`/posts/${post.slug}`}
+                href={"/categories/[slug]"}
+                as={`/categories/${category.slug}`}
               >
                 <a>
-                  <li>{post.title.rendered}</li>
+                  <li>{category.name}</li>
                 </a>
               </Link>
             );
@@ -33,12 +34,12 @@ export default function Topics({ posts }) {
   );
 }
 
-export async function getStaticProps() {
-  const result = await fetch(`${Config.apiUrl}/wp-json/wp/v2/posts`);
-  const posts = await result.json();
+export async function getStaticProps({ params }) {
+  const categories = await getCategories();
   return {
     props: {
-      posts: posts,
+      categories,
     },
+    revalidate: 10,
   };
 }

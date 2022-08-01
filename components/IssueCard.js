@@ -17,7 +17,7 @@ const Card = styled.div`
 export default function IssueCard({ title, slug, image, coverLine }) {
   return (
     <Card>
-      <Link href={"/issues/[slug]"} as={`/articles/${slug}`}>
+      <Link href={"/issues/[slug]"} as={`/issues/${slug}`}>
         <a>
           <div className="cover-image">
             <Image
