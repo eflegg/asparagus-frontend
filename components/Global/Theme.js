@@ -5,6 +5,7 @@ export const type = {
   body: "Arial",
   accent: "halcyon-regular",
   semibold: "halcyon-semibold",
+  medium: "halcyon-medium",
 };
 
 export const breakpoints = {
