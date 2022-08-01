@@ -85,7 +85,7 @@ export default function ContributorPage({ contributor, posts }) {
         <ContribHeader>
           <div className="contrib--image">
             <Image
-              src={contributor._embedded["wp:featuredmedia"]["0"].source_url}
+              src={contributor.acf.headshot.url}
               layout="fill"
               objectFit="cover"
               alt="Contributor photo"
@@ -122,7 +122,7 @@ export default function ContributorPage({ contributor, posts }) {
             </div>
           </div>
         </ContribHeader>
-        <ul className="card--grid">
+        <div className="card--grid single-page">
           {posts.map((post, index) => {
             return (
               <>
@@ -151,7 +151,7 @@ export default function ContributorPage({ contributor, posts }) {
               </>
             );
           })}
-        </ul>
+        </div>
       </div>
     </PageWrapper>
   );

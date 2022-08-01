@@ -60,58 +60,66 @@ const Card = styled.div`
 // needs categories, reading time, date, image
 
 export default function CategoryFeaturedCard({ post }) {
-  let initialDate = post.date;
+  let initialDate = post?.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",
   });
   console.log("category feature post: ", post);
   return (
-    <Card>
-      <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
-        <a>
-          <div className="card--image">
-            <Image
-              src={post._embedded["wp:featuredmedia"]["0"].source_url}
-              layout="fill"
-              objectFit="cover"
-              alt="Article lead photo"
-            />
-            <h3
-              className=""
-              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-            >
-              {/* {post.title.rendered} */}
-            </h3>
-          </div>
-          <div className="text-container">
-            <div className="excerpt">
-              <p className="deck--topic-feature">{post.acf.excerpt}</p>
-            </div>
-            <div className="article-details">
-              <div>
-                <p className="byline--article-card">
-                  {post.acf.writer[0].post_title}
-                </p>
-                <p className="date--article-card">
-                  {formattedDate} -{" "}
-                  <span>{post.acf.time_to_read} min read</span>
-                </p>
+    <>
+      {post ? (
+        <Card>
+          <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
+            <a>
+              <div className="card--image">
+                <Image
+                  src={post._embedded["wp:featuredmedia"]["0"].source_url}
+                  layout="fill"
+                  objectFit="cover"
+                  alt="Article lead photo"
+                />
+                <h3
+                  className=""
+                  dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                >
+                  {/* {post.title.rendered} */}
+                </h3>
               </div>
-              <div className="byline--image">
-                {post.acf.writer[0].acf.headshot.url && (
-                  <Image
-                    src={post.acf.writer[0].acf.headshot.url}
-                    layout="fill"
-                    objectFit="cover"
-                    alt="Author headshot"
-                  />
-                )}
+              <div className="text-container">
+                <div className="excerpt">
+                  <p className="deck--topic-feature">{post.acf.excerpt}</p>
+                </div>
+                <div className="article-details">
+                  <div>
+                    <p className="byline--article-card">
+                      {post.acf.writer[0].post_title}
+                    </p>
+                    <p className="date--article-card">
+                      {formattedDate} -{" "}
+                      <span>{post.acf.time_to_read} min read</span>
+                    </p>
+                  </div>
+                  <div className="byline--image">
+                    {post.acf.writer[0].acf.headshot.url && (
+                      <Image
+                        src={post.acf.writer[0].acf.headshot.url}
+                        layout="fill"
+                        objectFit="cover"
+                        alt="Author headshot"
+                      />
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </a>
-      </Link>
-    </Card>
+            </a>
+          </Link>
+        </Card>
+      ) : (
+        <h1>
+          probably a 404 or redirect in case anyone accidentally lands here
+        </h1>
+      )}
+    </>
   );
 }

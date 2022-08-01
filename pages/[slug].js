@@ -46,7 +46,7 @@ export async function getStaticPaths() {
 //access the router, get the id, and get the medatada for that post
 
 export async function getStaticProps({ params }) {
-  const genpages = await getGeneralPages();
+  const genpages = await getGeneralPage();
   const genpage = await getGeneralPage(params.slug);
 
   return {
