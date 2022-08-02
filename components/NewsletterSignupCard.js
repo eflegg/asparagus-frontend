@@ -3,11 +3,9 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 
 const NewsletterBlock = styled.div`
-  border: 2px solid ${theme.colours.grey};
-
   align-items: center;
   width: 100%;
-  margin: 0 auto;
+  margin: 45px auto;
   background-color: ${theme.colours.darkWheat};
   .signupWrapper {
     width: 90%;
@@ -33,13 +31,11 @@ left: -40px;
   height: 100%;
   `}
 flex-direction: row;
-  border: solid purple;
   padding: 2%;
 `;
 
 const PhotoStyled = styled.div`
   width: 65%;
-  border: solid black;
   object-fit: cover;
   img {
     width: 100%;
@@ -49,11 +45,14 @@ const PhotoStyled = styled.div`
 `;
 
 const SignUp = styled.div`
-  border: solid green;
+  // &.text--support {
+  //   border: 3px solid rebeccapurple;
+  // }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 30px;
+  align-items: flex-start;
+  padding: 40px;
   ${theme.mediaQuery.md`
 position: relative;
 left: 40px;
@@ -63,7 +62,11 @@ left: 40px;
     width: 280px;
     ${theme.mediaQuery.xs`
     width: 200px;
+    margin-right: 20px;
   `}
+  }
+  &.text--support {
+    padding: 45px;
   }
 `;
 
@@ -73,13 +76,17 @@ export default function NewsletterSignup({ title, subtitle, image, support }) {
     <NewsletterBlock>
       {/* @elizabeth this is how you use a prop in a ternary. if support exists, add this class. otherwise do nothing. apply signupWrapper regardless */}
       <div className={`${support ? "wrapper--support" : " "} signupWrapper`}>
-        <SignUp>
+        <SignUp className={`${support ? "text--support" : " "} `}>
           <p className="newsletter-header--primary">{title}</p>
           <p className="newsletter-subheader--primary">{subtitle}</p>
-          <div className="flex-row">
-            <input type="text" />
-            <button className="btn--primary">Sign Up</button>
-          </div>
+          {support ? (
+            <button className="btn--primary">Support</button>
+          ) : (
+            <div className="flex-row">
+              <input type="text" />
+              <button className="btn--primary">Sign Up</button>
+            </div>
+          )}
         </SignUp>
 
         {support ? (

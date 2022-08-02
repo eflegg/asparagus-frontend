@@ -1,19 +1,30 @@
 import Link from "next/link";
-import { getArticle, getSlugs } from "../../utils/wordpress";
+import RelatedPosts from "../../components/ArticleComponents/RelatedPosts";
+import PageWrapper from "../../components/Global/PageWrapper";
+import { getArticle, getArticles, getSlugs } from "../../utils/wordpress";
+import styled from "styled-components";
+import theme from "../../components/Global/Theme";
 
-export default function ArticlePage({ article }) {
+const SingleContainer = styled.div`
+  .related--header {
+    width: 90%;
+    margin: 50px auto 0;
+    line-height: 100%;
+  }
+`;
+
+export default function ArticlePage({ article, allArticles }) {
   return (
-    <div className="container pt-5">
-      <h1 className="text-center pb-5">{article.title.rendered}</h1>
-      <div
-        className="card-text pb-5"
-        dangerouslySetInnerHTML={{ __html: article.content.rendered }}
-      ></div>
-
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
-    </div>
+    <PageWrapper>
+      <SingleContainer>
+        <h1 className="text-center pb-5">{article.title.rendered}</h1>
+        <div
+          className="card-text pb-5"
+          dangerouslySetInnerHTML={{ __html: article.content.rendered }}
+        ></div>
+        <RelatedPosts currentArticle={article} allArticles={allArticles} />
+      </SingleContainer>
+    </PageWrapper>
   );
 }
 
@@ -32,10 +43,11 @@ export async function getStaticPaths() {
 //access the router, get the id, and get the data for that post
 export async function getStaticProps({ params }) {
   const article = await getArticle(params.slug);
-
+  const allArticles = await getArticles();
   return {
     props: {
       article,
+      allArticles,
     },
     revalidate: 10, // In seconds
   };
