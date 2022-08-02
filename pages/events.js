@@ -7,6 +7,11 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 
 const EventsContainer = styled.div`
+.toggle-active {
+  background-color: ${theme.colours.gusYellow};
+  border-radius: 5px;
+  padding: 3px 30px;
+}
 hr {
   margin-bottom: 25px;
 }
@@ -31,8 +36,8 @@ export default function Events({ events }) {
       <h1 className="text-center">Events</h1>
       <hr/>
       <div className="time-selector__btn d-flex justify-content-flex-end">
-        <h6 className="text-right" onClick={() => toggleCurrent()}>Past Events</h6>
-        <h6 onClick={() => toggleCurrent()}>Upcoming Events</h6>
+        <h6 className={`${isCurrent ? "" : "toggle-active"}`} onClick={() => toggleCurrent()}>Past Events</h6>
+        <h6 className={`${isCurrent ? "" : "toggle-active"}`} onClick={() => toggleCurrent()}>Upcoming Events</h6>
       </div>
      
       
