@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState, Suspense, useRef } from "react";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ActiveLink from "./ActiveLink";
@@ -18,17 +18,15 @@ const MenuContainer = styled.div`
     color: ${theme.colours.gusGreen};
     margin: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     ul {
       padding-left: 0;
     }
   }
-  margin: 30px 15px; 
   ${theme.mediaQuery.md`
-    margin: 30px 57px;
+  margin: 30px 57px 0px 57px;
   `};
 `;
-
 
 const MobileNav = styled.nav`
 `;
@@ -39,7 +37,7 @@ const ConnectMenuContainer = styled.div`
  align-items: center; 
   ${theme.mediaQuery.md`
     flex: 0 0 50%; 
-    margin-top: 30px; 
+    padding-top: 30px; 
     align-items: flex-start; 
   `};
 `
@@ -107,10 +105,47 @@ const HamburgerMenuButton = styled.div`
 `;
 
 const DesktopNav = styled.nav`
+  position: fixed; 
+  z-index: 1; 
+  width: 100vw; 
+
   ul {
     display: flex;
     justify-content: space-between; 
-  }
+    position: relative; 
+    width: 100vw;
+  };
+  ul.desktopnavcolorchange {
+    background-color: ${theme.colours.gusYellow}; 
+    margin: -30px -57px 0px -57px;
+  };
+  ul.desktopnav {
+    margin: 0px -57px 0px -57px;
+  };
+
+  ul.subnav {
+    display: flex;
+    align-items: center; 
+    padding: 20px; 
+    background-color: ${theme.colours.gusYellow};
+    justify-content: space-around; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    z-index: 1; 
+  };
+  li.subnav-link {
+    border-right: 1px solid;
+    border-color: ${theme.colours.grey}
+  };
+  li.subnav-link:last-of-type {
+    border: none; 
+  };
+  a.card-text.pb-5 {
+    font-family: ${theme.type.semibold};
+    color: ${theme.colours.gusGreen};
+    font-size: 1.8rem; 
+  };
 `;
 
 const LogoConnectMenuContainer = styled.div`
@@ -191,12 +226,13 @@ export default function HeaderMenu() {
     loadLinks();
   }, []);
 
-  function useWindowSize() {
+  function useWindowSpecs() {
     // Initialize state with undefined width/height so server and client renders match
     // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-    const [windowSize, setWindowSize] = useState({
+    const [windowSpecs, setWindowSpecs] = useState({
       width: undefined,
       height: undefined,
+      scrollY: undefined,
     });
 
     useEffect(() => {
@@ -207,14 +243,16 @@ export default function HeaderMenu() {
         // Handler to call on window resize
         function handleResize() {
           // Set window width/height to state
-          setWindowSize({
+          setWindowSpecs({
             width: window.innerWidth,
             height: window.innerHeight,
+            scrollY: window.scrollY,
           });
         }
 
         // Add event listener
         window.addEventListener("resize", handleResize);
+        window.addEventListener("scroll", handleResize);
 
         // Call handler right away so state gets updated with initial window size
         handleResize();
@@ -223,11 +261,12 @@ export default function HeaderMenu() {
         return () => window.removeEventListener("resize", handleResize);
       }
     }, []); // Empty array ensures that effect is only run on mount
-    return windowSize;
+    return windowSpecs;
   }
 
   //updates when the client loads so you can use it
-  const size = useWindowSize();
+  const size = useWindowSpecs();
+  const imgRef = useRef(null);
 
   return (
     <MenuContainer className="menu--container">
@@ -235,7 +274,7 @@ export default function HeaderMenu() {
         <LogoConnectMenuContainer>
           <Link href="/">
             <a>
-              <img src="/Asparagus_Nameplate_Color.png"/>
+              <img ref={imgRef} src="/Asparagus_Nameplate_Color.png"/>
             </a>
           </Link>
           <ConnectMenuContainer>
@@ -284,7 +323,8 @@ export default function HeaderMenu() {
 
         {size.width >= 1000 ? (
           <DesktopNav>
-            <ul>
+            <ul 
+              style = {size.scrollY >=10 ? {top: -10 - (imgRef.current.clientHeight)} : null} className={ size.scrollY >= 10 ? 'desktopnavcolorchange' : 'desktopnav'}>
               {links?.items?.map((link, index) => {
                 return (
                   <>

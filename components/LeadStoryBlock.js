@@ -5,6 +5,7 @@ import theme from "../components/Global/Theme";
 import Link from "next/link";
 
 const LeadStory = styled.section`
+  margin-top: 90px; 
   margin-bottom: 50px;
   position: relative;
   display: flex;
