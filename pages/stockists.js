@@ -24,7 +24,6 @@ h5.province {
   color: ${theme.colours.gusGreen};
 }
 .circle {
-  border: solid rebeccapurple;
   display: flex;
   align-items: center;
   border-radius: 50%;
@@ -41,8 +40,6 @@ h5.province {
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  position: relative;
-  left: -38px;
 p {
   margin-left: 10px;
 }
@@ -52,6 +49,10 @@ p {
   width: 100%;
   positon: relative;
   left: -38px;
+}
+.stockist-info {
+  position: relative;
+  left: 40px;
 }
 
 `;
@@ -70,12 +71,13 @@ export default function Stockists({ stockists }) {
           return (
             <div key={index} className="stockist--single">
               <div className="province-wrapper">
-              <h5 className="province">{stockist.acf.province}</h5>
+                <h5 className="province">{stockist.acf.province}</h5>
               </div>
               <div className="number-name-wrapper">
               <div className="circle">1</div>
               <p>{stockist.acf.stockist_name}</p>
               </div>
+              <div className="stockist-info">
               <p>{stockist.acf.stockist_address}</p>
               <p>{stockist.acf.stockist_phone_number}</p>
               <a
@@ -85,6 +87,7 @@ export default function Stockists({ stockists }) {
               >
                 <h5 className="website">{stockist.acf.stockist_website}</h5>
               </a>
+              </div>
             </div>
           );
         })}
