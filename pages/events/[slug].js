@@ -57,6 +57,15 @@ const Gallery = styled.div`
   grid-template-columns: repeat(auto-fit, 450px);
   `}
 }
+.event-image {
+  height: 450px;
+  width: 450px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
 `;
 
 export default function EventPage({ event, image }) {
@@ -89,7 +98,7 @@ export default function EventPage({ event, image }) {
       {gallery.map((galleryImage, index)=>{
         return (
           <React.Fragment key={uuidv4()}>
-          <div>
+          <div className="event-image">
           <img src={galleryImage.url} alt=""></img>
           </div>
           </React.Fragment>
