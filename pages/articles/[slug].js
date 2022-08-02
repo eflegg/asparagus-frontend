@@ -17,6 +17,14 @@ const SingleContainer = styled.div`
     margin: 50px auto 0;
     line-height: 100%;
   }
+  .content--container {
+    width: 90%;
+    max-width: 650px;
+    margin: 45px auto;
+    ${theme.mediaQuery.sm`
+    margin: 80px auto;
+    `}
+  }
 `;
 
 const SingleHero = styled.div`
@@ -37,9 +45,45 @@ const SingleHero = styled.div`
       }
     }
   }
+  .hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    ${theme.mediaQuery.sm`
+    flex-direction: row;
+    width: 95%;
+    max-width: 1500px;
+    margin: 0 auto;
+    `}
+    .hero--image {
+      width: 100%;
+      height: 450px;
+      ${theme.mediaQuery.sm`
+      width: 50%;
+      flex: none;
+      `}
+    }
+    .hero--text {
+      padding: 30px;
+      ${theme.mediaQuery.sm`
+      padding: 0px 20px 0 0;
+      `}
+    }
+    .article-details {
+      justify-content: flex-end;
+      ${theme.mediaQuery.sm`
+      justify-content: flex-start;
+      `}
+    }
+  }
 `;
 
 export default function ArticlePage({ article, allArticles, categories }) {
+  let initialDate = article.date;
+  let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
+    month: "long",
+    day: "2-digit",
+  });
   console.log("single article: ", article);
   console.log("categories: ", categories);
 
@@ -73,11 +117,44 @@ export default function ArticlePage({ article, allArticles, categories }) {
             })}
           </div>
           <hr />
+          <div className="hero d-flex">
+            <div className="hero--text">
+              <h1 className="">{article.title.rendered}</h1>
+              <p className="excerpt deck">{article.acf.excerpt}</p>
+              <div className="article-details">
+                <div className="byline--image">
+                  {article.acf.writer[0].acf.headshot.url && (
+                    <Image
+                      src={article.acf.writer[0].acf.headshot.url}
+                      layout="fill"
+                      objectFit="cover"
+                      alt="Author headshot"
+                    />
+                  )}
+                </div>
+                <div>
+                  <p className="byline--article-card">
+                    {article.acf.writer[0].post_title}
+                  </p>
+                  <p className="date--article-card">
+                    {formattedDate} -{" "}
+                    <span>{article.acf.time_to_read} min read</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="hero--image position-relative">
+              <Image
+                src={article._embedded["wp:featuredmedia"]["0"].source_url}
+                alt="Article lead image"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </div>
         </SingleHero>
-
-        <h1 className="text-center pb-5">{article.title.rendered}</h1>
         <div
-          className="card-text pb-5"
+          className="content--container"
           dangerouslySetInnerHTML={{ __html: article.content.rendered }}
         ></div>
         <RelatedPosts currentArticle={article} allArticles={allArticles} />

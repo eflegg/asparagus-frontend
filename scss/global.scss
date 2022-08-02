@@ -402,17 +402,20 @@ h6 {
 
 .deck {
   font-family: $accentFont;
-  font-size: 2rem;
-  line-height: 3.2rem;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
   color: black;
+  margin: 15px 0 40px;
 
   @include media-query-min($sm) {
+    margin: 22px 0 40px;
     font-size: calc(16px + 4 * ((100vw - 320px) / 680));
+    line-height: 2.1rem;
   }
 
   @include media-query-min($md) {
     @include font-size(2);
-    line-height: 32px;
+    line-height: 2.4rem;
   }
 }
 
