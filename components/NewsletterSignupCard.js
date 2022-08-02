@@ -89,7 +89,7 @@ export default function NewsletterSignup({ title, subtitle, image, support }) {
           {support ? (
             <button className="btn--primary">Support</button>
           ) : (
-            <div className="d-flex flex-column flex-sm-row">
+            <div className="d-flex flex-column flex-sm-row align-items-center">
               <input type="text" />
               <button className="btn--primary">Sign Up</button>
             </div>
