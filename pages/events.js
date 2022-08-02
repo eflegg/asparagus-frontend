@@ -6,6 +6,16 @@ import EventCard from "../components/EventCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 
+const EventsContainer = styled.div`
+hr {
+  margin-bottom: 25px;
+}
+h6 {
+  margin: 0 55px 0 25px;
+  font-size: 2.4rem;
+}
+`;
+
 export default function Events({ events }) {
   console.log("events: ", events);
 
@@ -17,10 +27,11 @@ export default function Events({ events }) {
 
   return (
     <PageWrapper pageTitle="Events" className="">
+      <EventsContainer>
       <h1 className="text-center">Events</h1>
       <hr/>
-      <div className="time-selector__btn d-flex text-right">
-        <h6 onClick={() => toggleCurrent()}>Past Events</h6>
+      <div className="time-selector__btn d-flex justify-content-flex-end">
+        <h6 className="text-right" onClick={() => toggleCurrent()}>Past Events</h6>
         <h6 onClick={() => toggleCurrent()}>Upcoming Events</h6>
       </div>
      
@@ -72,6 +83,7 @@ export default function Events({ events }) {
           })}
         </ul>
       )}
+      </EventsContainer>
     </PageWrapper>
   );
 }
