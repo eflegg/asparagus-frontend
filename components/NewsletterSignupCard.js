@@ -21,7 +21,8 @@ const NewsletterBlock = styled.div`
 
 const TripleStalk = styled.div`
   height: 100%;
-  min-width: 25%;
+  width: 25%;
+  min-width: 75px;
   ${theme.mediaQuery.md`
 position: relative;
 left: -40px;
@@ -59,9 +60,9 @@ left: 40px;
 `}
   input {
     height: 38px;
-    width: 280px;
-    ${theme.mediaQuery.xs`
     width: 200px;
+    ${theme.mediaQuery.md`
+    width: 280px;
     margin-right: 20px;
   `}
   }
