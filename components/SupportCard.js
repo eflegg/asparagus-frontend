@@ -5,7 +5,7 @@ import theme from "../components/Global/Theme";
 const SupportBlock = styled.div`
 width: 100%;
 border: solid teal;
-height: 40vh;
+height: 50vh;
 ${theme.mediaQuery.sm`
 height: 80vh;
 `}
@@ -35,21 +35,22 @@ right: 0;
 margin: 0 auto;
 text-align: center;
 margin-top: 10%;
-h1 {
+.support-title {
     margin-bottom: 10px;
 }
 .support-subtitle {
     font-family: ${theme.type.medium};
-    margin-bottom: 5%;
+    margin-bottom: 10px;
+    color: ${theme.colours.darkWheat}
 }
 }
 `;
 
-export default function SupportCard() {
+export default function SupportCard({}) {
     return (
 <SupportBlock>
     <div className="support-text">
-    <h1>Asparagus Depends on Readers</h1>
+    <h1 className="support-title">Asparagus Depends on Readers</h1>
     <h5 className="support-subtitle">Support our Work by Subscribing, Donating or Purchasing Sustainable Swag</h5>
     <button className="btn--primary">Visit Shop</button>
     </div>
