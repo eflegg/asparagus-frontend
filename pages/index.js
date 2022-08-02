@@ -157,7 +157,7 @@ export default function Home({ page, posts }) {
               })}
             </div>
           </CategoryContainer>
-          {/* @elizabeth it doesn't have any children so it can be a self-closing tag */}
+
           <NewsletterSignup
             support={false}
             title="Sign up for News from the Asparagus Patch"
@@ -170,45 +170,17 @@ export default function Home({ page, posts }) {
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
-                // let initialDate = post.date;
-                // let formattedDate = new Date(initialDate).toLocaleDateString(
-                //   "en-US",
-                //   {
-                //     year: "numeric",
-                //     month: "long",
-                //     day: "2-digit",
-                //   }
-                // );
                 return (
                   <>
                     {page.acf.home_category_two[0].name == "Awards" &&
                     post.categories.includes(catTwo) &&
                     index <= 5 ? (
                       <React.Fragment key={uuidv4()}>
-                        <AwardWinnerCard
-                          post={post}
-                          // date={formattedDate}
-                          // read={post.acf.time_to_read}
-                          // slug={post.slug}
-                          // title={post.title.rendered}
-                        />
+                        <AwardWinnerCard post={post} />
                       </React.Fragment>
                     ) : post.categories.includes(catTwo) && index <= 6 ? (
                       <React.Fragment key={uuidv4()}>
-                        <ArticleCard
-                          post={post}
-                          // date={formattedDate}
-                          // read={post.acf.time_to_read}
-                          // slug={post.slug}
-                          // title={post.title.rendered}
-                          // categories={post._embedded["wp:term"]["0"]}
-                          // image={
-                          //   post._embedded["wp:featuredmedia"]["0"].source_url
-                          // }
-                          // excerpt={post.acf.excerpt}
-                          // byline={post.acf.writer[0].post_title}
-                          // headshot={post.acf.writer[0].acf.headshot.url}
-                        />
+                        <ArticleCard post={post} />
                       </React.Fragment>
                     ) : null}
                   </>
@@ -228,45 +200,17 @@ export default function Home({ page, posts }) {
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
-                // let initialDate = post.date;
-                // let formattedDate = new Date(initialDate).toLocaleDateString(
-                //   "en-US",
-                //   {
-                //     year: "numeric",
-                //     month: "long",
-                //     day: "2-digit",
-                //   }
-                // );
                 return (
                   <>
                     {page.acf.home_category_three[0].name == "Awards" &&
                     post.categories.includes(catThree) &&
                     index <= 5 ? (
                       <React.Fragment key={uuidv4()}>
-                        <AwardWinnerCard
-                          post={post}
-                          // date={formattedDate}
-                          // read={post.acf.time_to_read}
-                          // slug={post.slug}
-                          // title={post.title.rendered}
-                        />
+                        <AwardWinnerCard post={post} />
                       </React.Fragment>
                     ) : post.categories.includes(catThree) && index <= 5 ? (
                       <React.Fragment key={uuidv4()}>
-                        <ArticleCard
-                          post={post}
-                          // date={formattedDate}
-                          // read={post.acf.time_to_read}
-                          // slug={post.slug}
-                          // title={post.title.rendered}
-                          // categories={post._embedded["wp:term"]["0"]}
-                          // image={
-                          //   post._embedded["wp:featuredmedia"]["0"].source_url
-                          // }
-                          // excerpt={post.acf.excerpt}
-                          // byline={post.acf.writer[0].post_title}
-                          // headshot={post.acf.writer[0].acf.headshot.url}
-                        />
+                        <ArticleCard post={post} />
                       </React.Fragment>
                     ) : null}
                   </>
@@ -290,15 +234,6 @@ export async function getStaticProps() {
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
   );
   const posts = await postsQuery.json();
-
-  //query posts whose categories match the three acf values
-
-  //cat one
-  // const categoryOne = page.acf.home_category_one[0].term_id;
-  // const postQueryOne = await fetch(
-  //   `${Config.apiUrl}/wp-json/wp/v2/articles?categories=${categoryOne}&_embed&per_page=6`
-  // );
-  // const catOnePosts = await postQueryOne.json();
 
   return {
     props: {
