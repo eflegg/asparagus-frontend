@@ -765,9 +765,19 @@ li.nav-link {
 .d-flex {
   display: flex;
 }
-
 .flex-column {
   flex-direction: column;
+}
+.flex-sm-row {
+  @include media-query-min($sm) {
+    flex-direction: row;
+  }
+}
+
+.flex-sm-column {
+  @include media-query-min($sm) {
+    flex-direction: column;
+  }
 }
 
 .justify-content-center {
