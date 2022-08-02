@@ -136,20 +136,7 @@ export default function Home({ page, posts }) {
                       </React.Fragment>
                     ) : post.categories.includes(catOne) ? (
                       <React.Fragment key={uuidv4()}>
-                        <ArticleCard
-                          post={post}
-                          // date={formattedDate}
-                          // read={post.acf.time_to_read}
-                          // slug={post.slug}
-                          // title={post.title.rendered}
-                          // categories={post._embedded["wp:term"]["0"]}
-                          // image={
-                          //   post._embedded["wp:featuredmedia"]["0"].source_url
-                          // }
-                          // excerpt={post.acf.excerpt}
-                          // byline={post.acf.writer[0].post_title}
-                          // headshot={post.acf.writer[0].acf.headshot.url}
-                        />
+                        <ArticleCard post={post} />
                       </React.Fragment>
                     ) : null}
                   </>
@@ -157,7 +144,7 @@ export default function Home({ page, posts }) {
               })}
             </div>
           </CategoryContainer>
-          {/* @elizabeth it doesn't have any children so it can be a self-closing tag */}
+
           <NewsletterSignup
             support={false}
             title="Sign up for News from the Asparagus Patch"
@@ -195,20 +182,7 @@ export default function Home({ page, posts }) {
                       </React.Fragment>
                     ) : post.categories.includes(catTwo) && index <= 6 ? (
                       <React.Fragment key={uuidv4()}>
-                        <ArticleCard
-                          post={post}
-                          // date={formattedDate}
-                          // read={post.acf.time_to_read}
-                          // slug={post.slug}
-                          // title={post.title.rendered}
-                          // categories={post._embedded["wp:term"]["0"]}
-                          // image={
-                          //   post._embedded["wp:featuredmedia"]["0"].source_url
-                          // }
-                          // excerpt={post.acf.excerpt}
-                          // byline={post.acf.writer[0].post_title}
-                          // headshot={post.acf.writer[0].acf.headshot.url}
-                        />
+                        <ArticleCard post={post} />
                       </React.Fragment>
                     ) : null}
                   </>
@@ -253,20 +227,7 @@ export default function Home({ page, posts }) {
                       </React.Fragment>
                     ) : post.categories.includes(catThree) && index <= 5 ? (
                       <React.Fragment key={uuidv4()}>
-                        <ArticleCard
-                          post={post}
-                          // date={formattedDate}
-                          // read={post.acf.time_to_read}
-                          // slug={post.slug}
-                          // title={post.title.rendered}
-                          // categories={post._embedded["wp:term"]["0"]}
-                          // image={
-                          //   post._embedded["wp:featuredmedia"]["0"].source_url
-                          // }
-                          // excerpt={post.acf.excerpt}
-                          // byline={post.acf.writer[0].post_title}
-                          // headshot={post.acf.writer[0].acf.headshot.url}
-                        />
+                        <ArticleCard post={post} />
                       </React.Fragment>
                     ) : null}
                   </>
