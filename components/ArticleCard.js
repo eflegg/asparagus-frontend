@@ -8,15 +8,15 @@ import { v4 as uuidv4 } from "uuid";
 import { Card } from "../components/Global/styles";
 
 export default function ArticleCard({
-  title,
-  slug,
-  byline,
-  excerpt,
+  // title,
+  // slug,
+  // byline,
+  // excerpt,
 
-  image,
-  date,
-  read,
-  headshot,
+  // image,
+  // date,
+  // read,
+  // headshot,
   post,
 }) {
   const categories = post._embedded["wp:term"]["0"];
