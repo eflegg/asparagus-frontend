@@ -13,6 +13,8 @@ export const breakpoints = {
   md: "1000px",
   lg: "1250px",
   xl: "1800px",
+  cardBreakSmall: "645px",
+  cardBreak: "1006px",
 };
 
 export const mediaQuery = Object.keys(breakpoints).reduce(
