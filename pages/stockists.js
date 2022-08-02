@@ -2,18 +2,80 @@ import React from "react";
 import Link from "next/link";
 import { getStockists } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
+import styled from "styled-components";
+import theme from "../components/Global/Theme";
+
+const StockistBlock = styled.div`
+border: solid pink;
+width: 60%;
+max-width: 1000px;
+padding-top: 20px;
+padding-bottom: 20px;
+margin: 10px auto;
+h5.website {
+  font-size: 1.6rem;
+
+  ${theme.mediaQuery.md`
+    font-size: 2rem;
+`}
+
+}
+h5.province {
+  color: ${theme.colours.gusGreen};
+}
+.circle {
+  border: solid rebeccapurple;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  padding: 10px;
+  background: ${theme.colours.soil};
+  color: ${theme.colours.darkWheat};
+  text-align: center;
+  font-size: 2rem;
+}
+.number-name-wrapper {
+  border: solid teal;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  position: relative;
+  left: -38px;
+p {
+  margin-left: 10px;
+}
+}
+.province-wrapper {
+  border: solid green;
+  width: 100%;
+  positon: relative;
+  left: -38px;
+}
+
+`;
+
 
 export default function Stockists({ stockists }) {
   console.log("stockists: ", stockists);
   return (
     <PageWrapper className="">
-      <h1>Stockists</h1>
+      <h1 className="text-center">Stockists</h1>
+      <hr/>
+      <p className="text-center">Pick up the latest issue of Asparagus Magazine at any one of these fine establishments!</p>
+      <StockistBlock>
       <ul>
         {stockists.map((stockist, index) => {
           return (
             <div key={index} className="stockist--single">
-              <p>{stockist.acf.province}</p>
+              <div className="province-wrapper">
+              <h5 className="province">{stockist.acf.province}</h5>
+              </div>
+              <div className="number-name-wrapper">
+              <div className="circle">1</div>
               <p>{stockist.acf.stockist_name}</p>
+              </div>
               <p>{stockist.acf.stockist_address}</p>
               <p>{stockist.acf.stockist_phone_number}</p>
               <a
@@ -21,12 +83,13 @@ export default function Stockists({ stockists }) {
                 rel="noreferrer"
                 href={stockist.acf.stockist_website}
               >
-                <h3>{stockist.title.rendered}</h3>
+                <h5 className="website">{stockist.acf.stockist_website}</h5>
               </a>
             </div>
           );
         })}
       </ul>
+      </StockistBlock>
     </PageWrapper>
   );
 }
