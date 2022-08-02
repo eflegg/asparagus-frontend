@@ -10,8 +10,6 @@ import { v4 as uuidv4 } from "uuid";
 import Loader from "./Loader";
 
 const MenuContainer = styled.div`
-  .subnav {
-  }
   .nav-link {
     font-family: ${theme.type.medium};
     font-size: 2.4rem;
@@ -24,7 +22,7 @@ const MenuContainer = styled.div`
     }
   }
   ${theme.mediaQuery.md`
-  margin: 30px 57px 0px 57px;
+    margin: 30px 57px 0px 57px;
   `};
 `;
 
@@ -126,7 +124,7 @@ const DesktopNav = styled.nav`
   ul.subnav {
     display: flex;
     align-items: center; 
-    padding: 20px; 
+    padding: 14px 20px; 
     background-color: ${theme.colours.gusYellow};
     justify-content: space-around; 
     position: absolute; 
@@ -136,7 +134,9 @@ const DesktopNav = styled.nav`
   };
   li.subnav-link {
     border-right: 1px solid;
-    border-color: ${theme.colours.grey}
+    border-color: ${theme.colours.grey};
+    width: 100%; 
+    text-align: center; 
   };
   li.subnav-link:last-of-type {
     border: none; 
