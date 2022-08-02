@@ -17,6 +17,7 @@ margin: 26px auto;
     // border: solid blue;
     ${theme.mediaQuery.sm`
         width: 40%;
+        height: 100%;
         `}
     img {
         width: 100%;
@@ -26,7 +27,7 @@ margin: 26px auto;
 }
 .event--info {
     // border: solid purple;
-    padding 40px;
+    padding: 20px;
     ${theme.mediaQuery.sm`
     width: 60%;
     `}
@@ -41,6 +42,7 @@ export default function EventBlock({
   name,
   date,
   location,
+  excerpt,
   description,
 }) {
   return (
@@ -52,6 +54,7 @@ export default function EventBlock({
         <h3 className="event--name">{name}</h3>
         <p className="event--date">{date}</p>
         <p className="event--location">{location}</p>
+        <p className="event--excerpt">{excerpt}</p>
         <p className="event--description">{description}</p>
         <button className="btn--primary">Learn More</button>
       </div>
