@@ -74,6 +74,8 @@ ul {
 
 /***  Type  ***/
 
+
+
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap");
 
 @font-face {
@@ -161,6 +163,8 @@ ul {
   font-size: $sizeValue + rem;
 }
 
+
+
 html {
   font-size: 62.5%;
 }
@@ -193,6 +197,23 @@ h5,
 h6 {
   font-family: $headerFont;
   margin: 0;
+  // padding: 20px;
+}
+
+
+
+.footer--container.span {
+  font-family: $headerFont;
+  font-weight: bold;
+}
+
+span {
+  font-family: $accentFont;
+  color: $gusGreen;
+}
+
+a.card-text {
+  color: black;
 }
 
 p {
@@ -221,13 +242,16 @@ li {
 
 a {
   text-decoration: none;
+  color: $soil;
+  font-weight: 600;
+  font-family: $accentFont;
 }
 
 li {
   list-style: none;
   font-family: $bodyFont;
   font-size: 1.8rem;
-  line-height: 150%;
+  font-size: 18px;
 }
 
 .paragraph--bold {
@@ -265,6 +289,7 @@ h2,
   line-height: 155%;
   color: white;
   font-weight: 900;
+
 
   @include media-query-min($sm) {
     font-size: calc(28px + 30 * ((100vw - 320px) / 680));
@@ -311,7 +336,7 @@ h4 {
 }
 
 h5 {
-  font-size: 3.4rem;
+  font-size: 1.8rem;
   color: $soil;
   font-weight: 700;
 

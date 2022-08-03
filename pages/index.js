@@ -9,6 +9,7 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
+import SupportCard from "../components/SupportCard";
 
 const CategoryContainer = styled.section`
   margin-bottom: 45px;
@@ -112,6 +113,7 @@ export default function Home({ page, posts }) {
               })}
             </div>
           </CategoryContainer>
+          <SupportCard/>
 
           <CategoryContainer className="cat-one--container">
             <h2>{page.acf.home_category_one[0].name}</h2>
