@@ -116,7 +116,7 @@ export default function Home({ page, posts }) {
           <CategoryContainer className="cat-one--container">
             <h2>{page.acf.home_category_one[0].name}</h2>
             <hr />
-            <div className="card--grid">
+            <div className="">
               {posts.map((post, index) => {
                 // let initialDate = post.date;
                 // let formattedDate = new Date(initialDate).toLocaleDateString(
