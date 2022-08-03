@@ -63,6 +63,7 @@ const Gallery = styled.div`
   `}
   }
   .event-image {
+    position: relative;
     img {
       height: 100%;
       width: 100%;
@@ -93,10 +94,6 @@ export default function EventPage({ event, image }) {
               layout="fill"
               objectFit="cover"
             />
-            {/* <img
-              src={event._embedded["wp:featuredmedia"]["0"].source_url}
-              alt=""
-            /> */}
           </div>
           <div className="event-info">
             <p className="single-event--date">{event.acf.date}</p>
@@ -119,7 +116,14 @@ export default function EventPage({ event, image }) {
                 return (
                   <React.Fragment key={uuidv4()}>
                     <div className="event-image">
-                      <img src={galleryImage.url} alt=""></img>
+                      <Image
+                        src={galleryImage?.url}
+                        alt=""
+                        layout="responsive"
+                        width="446"
+                        height="653"
+                        objectFit="cover"
+                      />
                     </div>
                   </React.Fragment>
                 );
