@@ -30,6 +30,7 @@ margin: 26px auto;
     padding: 20px;
     ${theme.mediaQuery.sm`
     width: 60%;
+    padding-top: 0px;
     `}
 }
 ${theme.mediaQuery.xs`

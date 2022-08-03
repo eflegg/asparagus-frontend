@@ -12,19 +12,19 @@ const EventsContainer = styled.div`
   border-radius: 5px;
   padding: 3px 30px;
   border: none;
-  font-family: ${theme.type.medium}
+  font-family: ${theme.type.medium};
   color: ${theme.colours.soil}
   font-size: 1.6rem;
 
 }
 .toggle-inactive {
-  font-family: ${theme.type.medium}
-  color: ${theme.colours.soil}
+  font-family: ${theme.type.medium};
+  color: ${theme.colours.soil};
   font-size: 1.6rem;
   border-radius: 5px;
   padding: 3px 30px;
   border: none;
-  background-color: none;
+  background-color: transparent;
 }
 hr {
   margin-bottom: 25px;
@@ -70,7 +70,7 @@ export default function Events({ events }) {
                     as={`/events/${event.slug}`}
                   >
                     <a>
-                    <EventCard name={event.title.rendered} date={event.acf.date} location={event.acf.location} excerpt={event.acf.excerpt}/>
+                    <EventCard image={event._embedded["wp:featuredmedia"]["0"].source_url} name={event.title.rendered} date={event.acf.date} location={event.acf.location} excerpt={event.acf.excerpt}/>
                     </a>
                   </Link>
                 ) : null}

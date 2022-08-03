@@ -7,13 +7,14 @@ import { v4 as uuidv4 } from "uuid";
 import React from "react";
 
 const SingleEvent = styled.div`
-border: solid blue;
+// border: solid blue;
 width: 80%;
 margin: 0 auto;
 .image-container {
-  border: solid black;
+  // border: solid black;
   ${theme.mediaQuery.md`
   width: 50%;
+  height: 100%;
   `}
   img {
     width: 100%;
@@ -31,10 +32,11 @@ margin: 0 auto;
 }
 
 .event-info {
-  border: solid red;
+  // border: solid red;
   padding: 20px;
   ${theme.mediaQuery.md`
   width: 50%;
+  padding-top: 0px;
   `}
 }
 
@@ -71,8 +73,8 @@ const Gallery = styled.div`
 export default function EventPage({ event, image }) {
   console.log("event: ", event);
   const gallery = event.acf.event_images;
-  const galleryImage1 = gallery[0].title;
-  console.log("galleryImage1", galleryImage1);
+  // const galleryImage1 = gallery[0].title;
+  // console.log("galleryImage1", galleryImage1);
   console.log("gallery", gallery);
   return (
     <PageWrapper>
@@ -88,22 +90,26 @@ export default function EventPage({ event, image }) {
           <p className="event--location">{event.acf.location}</p>
           <p className="event--description">{event.acf.description}</p>
           <Link href="/">
-          <a className="btn btn--primary">Get Tickets</a>
+          <a><button className="btn btn--primary">Get Tickets</button></a>
         </Link>
       </div>
       </div>  
     </SingleEvent>
     <Gallery>
       <div className="event-gallery">
-      {gallery.map((galleryImage, index)=>{
-        return (
+      {gallery && gallery.length >0 ?(
+gallery.map((galleryImage, index) => {
+return (
           <React.Fragment key={uuidv4()}>
           <div className="event-image">
           <img src={galleryImage.url} alt=""></img>
           </div>
           </React.Fragment>
-        )
-      })}
+    
+      )
+})
+) : null
+}
       </div>
       </Gallery>
     
