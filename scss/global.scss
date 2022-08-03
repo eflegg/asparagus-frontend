@@ -839,6 +839,15 @@ li.nav-link {
   text-align: center;
 }
 
+.btn--secondary {
+  // background-color: $gusYellow;
+  border-radius: 5px;
+  padding: 3px 30px;
+  font-family: $accentFont;
+  color: $soil;
+  font-size: 1.6rem;
+}
+
 /***  Images  ***/
 
 img {

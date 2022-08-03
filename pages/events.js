@@ -11,6 +11,20 @@ const EventsContainer = styled.div`
   background-color: ${theme.colours.gusYellow};
   border-radius: 5px;
   padding: 3px 30px;
+  border: none;
+  font-family: ${theme.type.medium}
+  color: ${theme.colours.soil}
+  font-size: 1.6rem;
+
+}
+.toggle-inactive {
+  font-family: ${theme.type.medium}
+  color: ${theme.colours.soil}
+  font-size: 1.6rem;
+  border-radius: 5px;
+  padding: 3px 30px;
+  border: none;
+  background-color: none;
 }
 hr {
   margin-bottom: 25px;
@@ -36,8 +50,8 @@ export default function Events({ events }) {
       <h1 className="text-center">Events</h1>
       <hr/>
       <div className="time-selector__btn d-flex justify-content-flex-end">
-        <h6 className={`${isCurrent ? "" : "toggle-active"}`} onClick={() => toggleCurrent()}>Past Events</h6>
-        <h6 className={`${isCurrent ? "" : "toggle-active"}`} onClick={() => toggleCurrent()}>Upcoming Events</h6>
+        <button className={`${!isCurrent ? "toggle-active btn--secondary" : "toggle-inactive btn--secondar"}`} onClick={() => toggleCurrent()}>Past Events</button>
+        <button className={`${isCurrent ? "toggle-active btn--secondary" : "toggle-inactive btn--secondary"}`} onClick={() => toggleCurrent()}>Upcoming Events</button>
       </div>
      
       
