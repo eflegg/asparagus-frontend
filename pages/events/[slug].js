@@ -59,16 +59,15 @@ const Gallery = styled.div`
     margin: 65px auto;
     list-style: none;
     ${theme.mediaQuery.md`
-  // grid-template-columns: repeat(auto-fit, 450px);
   `}
   }
   .event-image {
     position: relative;
-    img {
+    /* img {
       height: 100%;
       width: 100%;
       object-fit: cover;
-    }
+    } */
   }
 `;
 
@@ -120,8 +119,8 @@ export default function EventPage({ event, image }) {
                         src={galleryImage?.url}
                         alt=""
                         layout="responsive"
-                        width="446"
-                        height="653"
+                        width="500"
+                        height="500"
                         objectFit="cover"
                       />
                     </div>

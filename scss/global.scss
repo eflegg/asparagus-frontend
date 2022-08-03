@@ -74,86 +74,104 @@ ul {
 
 /***  Type  ***/
 
-
-
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap");
 
 @font-face {
   font-family: "halcyon-regular";
-  src: url("../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff2") format("woff2"),
-    url("../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff") format("woff");
+  src: url("../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff2")
+      format("woff2"),
+    url("../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "halcyon-semibolditalic";
-  src: url("../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff2") format("woff2"),
-    url("../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff") format("woff");
+  src: url("../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff2")
+      format("woff2"),
+    url("../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "halcyon-thinitalic";
-  src: url("../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff2") format("woff2"),
-    url("../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff") format("woff");
+  src: url("../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff2")
+      format("woff2"),
+    url("../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "halcyon-thin";
-  src: url("../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff2") format("woff2"),
-    url("../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff") format("woff");
+  src: url("../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff2")
+      format("woff2"),
+    url("../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "halcyon-semibold";
-  src: url("../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff2") format("woff2"),
-    url("../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff") format("woff");
+  src: url("../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff2")
+      format("woff2"),
+    url("../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "halcyon-medium";
-  src: url("../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff2") format("woff2"),
-    url("../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff") format("woff");
+  src: url("../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff2")
+      format("woff2"),
+    url("../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "halcyon-light";
-  src: url("../fonts/halcyon_light_macroman/halcyon-light-webfont.woff2") format("woff2"),
-    url("../fonts/halcyon_light_macroman/halcyon-light-webfont.woff") format("woff");
+  src: url("../fonts/halcyon_light_macroman/halcyon-light-webfont.woff2")
+      format("woff2"),
+    url("../fonts/halcyon_light_macroman/halcyon-light-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "halcyon-regularitalic";
-  src: url("../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff2") format("woff2"),
-    url("../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff") format("woff");
+  src: url("../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff2")
+      format("woff2"),
+    url("../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "halcyon-bold";
-  src: url("../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff2") format("woff2"),
-    url("../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff") format("woff");
+  src: url("../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff2")
+      format("woff2"),
+    url("../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "halcyon-black";
-  src: url("../fonts/halcyon_black_macroman/halcyon-black-webfont.woff2") format("woff2"),
-    url("../fonts/halcyon_black_macroman/halcyon-black-webfont.woff") format("woff");
+  src: url("../fonts/halcyon_black_macroman/halcyon-black-webfont.woff2")
+      format("woff2"),
+    url("../fonts/halcyon_black_macroman/halcyon-black-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -163,8 +181,6 @@ ul {
   font-size: $sizeValue + rem;
 }
 
-
-
 html {
   font-size: 62.5%;
 }
@@ -173,6 +189,7 @@ $headerFont: "Source Serif Pro", serif;
 $bodyFont: "Source Serif Pro", serif;
 $accentFont: "halcyon-regular", sans-serif;
 $semibold: "halcyon-semibold", sans-serif;
+$medium: "halcyon-medium", sans-serif;
 
 $gusGreen: #339933;
 $soil: #913029;
@@ -199,8 +216,6 @@ h6 {
   margin: 0;
   // padding: 20px;
 }
-
-
 
 .footer--container.span {
   font-family: $headerFont;
@@ -289,7 +304,6 @@ h2,
   line-height: 155%;
   color: white;
   font-weight: 900;
-
 
   @include media-query-min($sm) {
     font-size: calc(28px + 30 * ((100vw - 320px) / 680));
@@ -663,7 +677,6 @@ p.event--date,
     @include font-size(2.4);
     line-height: 36px;
   }
-
 }
 
 p.single-event--date {
@@ -697,7 +710,6 @@ p.event--description {
     @include font-size(20px);
     line-height: 32px;
   }
-
 }
 
 span.topic-menu {
@@ -868,9 +880,12 @@ li.nav-link {
   // background-color: $gusYellow;
   border-radius: 5px;
   padding: 3px 30px;
-  font-family: $accentFont;
+  margin: 5px;
+  font-family: $medium;
   color: $soil;
   font-size: 1.6rem;
+  background: transparent;
+  border: 0px;
 }
 
 /***  Images  ***/
