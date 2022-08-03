@@ -47,6 +47,19 @@ const SingleContainer = styled.div`
        margin: 25px auto;
     `}
   }
+  h2 {
+    width: 90%;
+    max-width: 650px;
+    margin: 30px auto 20px;
+    color: ${theme.colours.gusGreen};
+    font-size: 1.8rem;
+    ${theme.mediaQuery.sm`
+      font-size: 2.3rem;
+    `}
+    ${theme.mediaQuery.md`
+       font-size: 2.8rem;
+    `}
+  }
   .related--header {
     width: 90%;
     margin: 50px auto 0;
@@ -57,7 +70,7 @@ const SingleContainer = styled.div`
     max-width: 650px;
   } */
   .print-details {
-    width: 100%;
+    width: 90%;
     max-width: 650px;
     margin: 45px auto;
     p {
@@ -203,7 +216,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
         {article.acf.print_issue == "Yes" ? (
           <div className="print-details">
             <p className="content--container">
-              Print Issue: <span>{article.acf.appears_in}</span>
+              Print Issue: <span>{article.acf.appears_in[0].post_title}</span>
             </p>
             <p className="content--container">
               Print Title: <span>{article.acf.print_title}</span>
