@@ -1,38 +1,65 @@
 import Link from "next/link";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme, { mediaQuery } from "../components/Global/Theme";
 const Card = styled.div`
-  border: 4px solid ${theme.colours.gusGreen};
-  height: 60vh;
+  // border: 4px solid ${theme.colours.gusGreen};
   position: relative;
+  width: 100%;
   h3 {
     position: absolute;
-    top: 70px;
-    margin: 3%;
-    margin-right: 25%;
+    top: 220px;
+    margin-left: 5%;
+    width: 90%;
+    color: white;
+
+    // ${theme.mediaQuery.sm`
+    // top: 200px;
+    // width: 80%;
+`}
+    ${theme.mediaQuery.md`
+    top: 150px;
+    width: 70%;
+`}
   }
   .image-container {
-    border: solid blue;
-    height: 60%;
+    // border: solid blue;
+    height: 50vh;
+    // max-height: 625px;
+    object-fit: cover;
     img {
       height: 100%;
       width: 100%;
       object-fit: cover;
     }
   }
-  .award-text {
-    border: 2px solid teal;
-    padding: 3%;
+  .award-text-wrap {
+    border: solid ${theme.colours.darkWheat};
     background-color: ${theme.colours.darkWheat};
   }
+  .award-text {
+    // border: 2px solid teal;
+    margin-left: 5%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-right: 5%;
+  }
   .award-text--lower {
-    border: solid black;
+    // border: solid black;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    ${theme.mediaQuery.md`
+    flex-direction: row;
+`}
   }
   .deck--topic-feature {
     margin-bottom: 20px;
+  }
+
+  .award-title {
+    color: ${theme.colours.gusGreen};
+    font-family: ${theme.type.italic};
+    font-style: italic;
   }
 `;
 
@@ -53,17 +80,19 @@ export default function AwardWinnerCard({ post }) {
     <Card>
       <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
         <a>
-          <div className="image-container">
-          <img src={post._embedded["wp:featuredmedia"]["0"].source_url} alt=""></img>
-          </div>
-          <h3
+        <h3
             className="card-text pb-5"
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           ></h3>
+          <div className="image-container">
+          <img src={post._embedded["wp:featuredmedia"]["0"].source_url} alt=""></img>
+          </div>
+          
+          <div className="award-text-wrap">
           <div className="award-text">
-          <p className="deck--topic-feature">Textlandia Walking Tour taught me about Gentrification</p>
+          <p className="deck--topic-feature">{post.acf.dek}</p>
           <div className="award-text--lower">
-          <p>Canadian Online Fublishing - Silver 2021</p>
+          <p className="award-title">{post.acf.award_title}</p>
           <div className="article-details">
             <div className="byline--image">
               {post.acf.writer[0].acf.headshot.url && (
@@ -76,16 +105,17 @@ export default function AwardWinnerCard({ post }) {
               )}
             </div>
             <div>
+            </div>
               <p className="byline--article-card">
                 {post.acf.writer[0].post_title}
               </p>
-              <p className="date--article-card">
+                <p className="date--article-card">
                 {formattedDate} - <span>{post.acf.time_to_read} min read</span>
-              </p>
+                </p>
+              </div>
             </div>
-          </div>
-          </div>
-          </div>
+            </div>
+           </div>
         </a>
       </Link>
     </Card>
