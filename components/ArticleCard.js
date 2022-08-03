@@ -7,18 +7,7 @@ import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { Card } from "../components/Global/styles";
 
-export default function ArticleCard({
-  // title,
-  // slug,
-  // byline,
-  // excerpt,
-
-  // image,
-  // date,
-  // read,
-  // headshot,
-  post,
-}) {
+export default function ArticleCard({ post }) {
   const categories = post._embedded["wp:term"]["0"];
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {

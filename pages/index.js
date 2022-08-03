@@ -78,34 +78,11 @@ export default function Home({ page, posts }) {
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
-                // let initialDate = post.date;
-                // let formattedDate = new Date(initialDate).toLocaleDateString(
-                //   "en-US",
-                //   {
-                //     year: "numeric",
-                //     month: "long",
-                //     day: "2-digit",
-                //   }
-                // );
-
                 return (
                   <>
                     {index <= 5 ? (
                       <>
-                        <ArticleCard
-                          post={post}
-                          // title={post.title.rendered}
-                          // slug={post.slug}
-                          // categories={post._embedded["wp:term"]["0"]}
-                          // image={
-                          //   post._embedded["wp:featuredmedia"]["0"].source_url
-                          // }
-                          // excerpt={post.acf.excerpt}
-                          // byline={post.acf.writer[0].post_title}
-                          // read={post.acf.time_to_read}
-                          // date={formattedDate}
-                          // headshot={post.acf.writer[0].acf.headshot.url}
-                        />
+                        <ArticleCard post={post} />
                       </>
                     ) : null}
                   </>
@@ -113,22 +90,12 @@ export default function Home({ page, posts }) {
               })}
             </div>
           </CategoryContainer>
-          <SupportCard/>
 
           <CategoryContainer className="cat-one--container">
             <h2>{page.acf.home_category_one[0].name}</h2>
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
-                // let initialDate = post.date;
-                // let formattedDate = new Date(initialDate).toLocaleDateString(
-                //   "en-US",
-                //   {
-                //     year: "numeric",
-                //     month: "long",
-                //     day: "2-digit",
-                //   }
-                // );
                 return (
                   <>
                     {page.acf.home_category_one[0].name == "Awards" &&
@@ -146,13 +113,7 @@ export default function Home({ page, posts }) {
               })}
             </div>
           </CategoryContainer>
-
-          <NewsletterSignup
-            support={false}
-            title="Sign up for News from the Asparagus Patch"
-            subtitle="Pleasantly Infrequent Updates from Asparagus Magazine"
-            image="triplestalk.svg"
-          />
+          <SupportCard />
 
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
