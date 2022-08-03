@@ -5,114 +5,128 @@ import styled from "styled-components";
 import PageWrapper from "../../components/Global/PageWrapper";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
+import Image from "next/image";
 
 const SingleEvent = styled.div`
-// border: solid blue;
-width: 80%;
-margin: 0 auto;
-.image-container {
-  // border: solid black;
-  ${theme.mediaQuery.md`
+  // border: solid blue;
+  width: 80%;
+  margin: 0 auto;
+
+  .image-container {
+    position: relative;
+    height: initial;
+    min-height: 300px;
+    ${theme.mediaQuery.md`
   width: 50%;
-  height: 100%;
-  `}
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+  `}/* img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    } */
   }
-}
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  // margin-top: 50px;
-  ${theme.mediaQuery.md`
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    // margin-top: 50px;
+    ${theme.mediaQuery.md`
   flex-direction: row;
   `}
-}
+  }
 
-.event-info {
-  // border: solid red;
-  padding: 20px;
-  ${theme.mediaQuery.md`
+  .event-info {
+    // border: solid red;
+    padding: 20px;
+    ${theme.mediaQuery.md`
   width: 50%;
   padding-top: 0px;
   `}
-}
+  }
 
-.event--description {
-  margin-bottom: 30px;
-}
+  .event--description {
+    margin-bottom: 30px;
+  }
 `;
 
 const Gallery = styled.div`
-.event-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
-  grid-row-gap: 70px;
-  grid-column-gap: 70px;
-  justify-content: center;
-  width: 90%;
-  margin: 20px auto;
-  list-style: none;
-  ${theme.mediaQuery.md`
-  grid-template-columns: repeat(auto-fit, 450px);
+  .event-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(25.5rem, 100%), 1fr));
+    grid-row-gap: 50px;
+    grid-column-gap: 50px;
+    justify-content: center;
+    width: 80%;
+    margin: 65px auto;
+    list-style: none;
+    ${theme.mediaQuery.md`
+  // grid-template-columns: repeat(auto-fit, 450px);
   `}
-}
-.event-image {
-  height: 450px;
-  width: 450px;
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
   }
-}
+  .event-image {
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 `;
 
 export default function EventPage({ event, image }) {
   console.log("event: ", event);
   const gallery = event.acf.event_images;
-  // const galleryImage1 = gallery[0].title;
-  // console.log("galleryImage1", galleryImage1);
+
+  const eventDate = event.acf.date;
+  const stringEventDate = new Date(eventDate).getTime();
+  const stringCurrentDate = new Date().getTime();
+
   console.log("gallery", gallery);
   return (
     <PageWrapper>
       <h1 className="text-center">{event.title.rendered}</h1>
-      <hr/>
-   <SingleEvent>
-       <div className="wrapper">
-        <div className="image-container">
-          <img src={event._embedded["wp:featuredmedia"]["0"].source_url} alt=""/>
-        </div>
-      <div className="event-info">
-          <p className="single-event--date">{event.acf.date}</p>
-          <p className="event--location">{event.acf.location}</p>
-          <p className="event--description">{event.acf.description}</p>
-          <Link href="/">
-          <a><button className="btn btn--primary">Get Tickets</button></a>
-        </Link>
-      </div>
-      </div>  
-    </SingleEvent>
-    <Gallery>
-      <div className="event-gallery">
-      {gallery && gallery.length >0 ?(
-gallery.map((galleryImage, index) => {
-return (
-          <React.Fragment key={uuidv4()}>
-          <div className="event-image">
-          <img src={galleryImage.url} alt=""></img>
+      <hr />
+      <SingleEvent>
+        <div className="wrapper">
+          <div className="image-container">
+            <Image
+              src={event._embedded["wp:featuredmedia"]["0"].source_url}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+            {/* <img
+              src={event._embedded["wp:featuredmedia"]["0"].source_url}
+              alt=""
+            /> */}
           </div>
-          </React.Fragment>
-    
-      )
-})
-) : null
-}
-      </div>
+          <div className="event-info">
+            <p className="single-event--date">{event.acf.date}</p>
+            <p className="event--location">{event.acf.location}</p>
+            <p className="event--description">{event.acf.description}</p>
+            {stringEventDate >= stringCurrentDate ? (
+              <Link href="/">
+                <a>
+                  <button className="btn btn--primary">Get Tickets</button>
+                </a>
+              </Link>
+            ) : null}
+          </div>
+        </div>
+      </SingleEvent>
+      <Gallery>
+        <div className="event-gallery">
+          {gallery && gallery.length > 0
+            ? gallery.map((galleryImage, index) => {
+                return (
+                  <React.Fragment key={uuidv4()}>
+                    <div className="event-image">
+                      <img src={galleryImage.url} alt=""></img>
+                    </div>
+                  </React.Fragment>
+                );
+              })
+            : null}
+        </div>
       </Gallery>
-    
     </PageWrapper>
   );
 }
