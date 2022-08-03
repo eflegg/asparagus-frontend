@@ -126,7 +126,7 @@ export default function LeadStoryBlock({
           </div>
 
           <hr />
-          <p className="text-right deck--index-feature">{post.acf.excerpt}</p>
+          <p className="text-right deck--index-feature">{post.acf.dek}</p>
         </div>
       </div>
     </LeadStory>

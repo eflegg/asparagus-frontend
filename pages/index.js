@@ -65,7 +65,7 @@ export default function Home({ page, posts }) {
                       title={post.title.rendered}
                       read={post.acf.time_to_read}
                       byline={post.acf.writer[0].post_title}
-                      excerpt={post.acf.excerpt}
+                      excerpt={post.acf.dek}
                       headshot={post.acf.writer[0].acf.headshot.url}
                     />
                   ) : null}

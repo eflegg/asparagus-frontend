@@ -50,7 +50,7 @@ export default function ArticleCard({ post }) {
               dangerouslySetInnerHTML={{ __html: post.title.rendered }}
             ></h3>
 
-            <p className="deck--article-card">{post.acf.excerpt}</p>
+            <p className="deck--article-card">{post.acf.dek}</p>
           </div>
           <div className="article-details">
             <div className="byline--image">

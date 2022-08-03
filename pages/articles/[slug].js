@@ -120,7 +120,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
           <div className="hero d-flex">
             <div className="hero--text">
               <h1 className="">{article.title.rendered}</h1>
-              <p className="excerpt deck">{article.acf.excerpt}</p>
+              <p className="excerpt deck">{article.acf.dek}</p>
               <div className="article-details">
                 <div className="byline--image">
                   {article.acf.writer[0].acf.headshot.url && (
