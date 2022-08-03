@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const SupportBlock = styled.div`
   width: 100%;
-  border: solid teal;
+
   height: 50vh;
   ${theme.mediaQuery.sm`
 height: 80vh;
@@ -58,7 +58,12 @@ export default function SupportCard({}) {
         <button className="btn--primary">Visit Shop</button>
       </div>
       <div className="image-container">
-        <img src="supportmountains2.jpg" alt="" />
+        <Image
+          src="/supportmountains2.jpg"
+          alt=""
+          layout="fill"
+          objectFit="cover"
+        />
       </div>
     </SupportBlock>
   );
