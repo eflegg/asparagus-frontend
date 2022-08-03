@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
+import Link from "next/link";
 
 const LeadStory = styled.section`
   margin-bottom: 50px;
@@ -91,29 +92,41 @@ export default function LeadStoryBlock({
   read,
   headshot,
   title,
+  post,
 }) {
+  let initialDate = post.date;
+  let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
+    month: "long",
+    day: "2-digit",
+  });
   return (
     <LeadStory>
       <div className="lead-image">
         <Image
-          src={image}
+          src={post._embedded["wp:featuredmedia"]["0"].source_url}
           layout="fill"
           objectFit="cover"
           alt="Contributor photo"
         />
       </div>
       <div className="lead-text">
-        <h1>{title}</h1>
+        <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
+          <a>
+            <h1>{post.title.rendered}</h1>
+          </a>
+        </Link>
         <div className="lead-text--inner">
           <div className="">
-            <p className="byline--index-feature">{byline}</p>
             <p className="byline--index-feature">
-              {date} <span> {read} min read</span>
+              {post.acf.writer[0].post_title}
+            </p>
+            <p className="byline--index-feature">
+              {formattedDate} <span> {post.acf.time_to_read} min read</span>
             </p>
           </div>
 
           <hr />
-          <p className="text-right deck--index-feature">{excerpt}</p>
+          <p className="text-right deck--index-feature">{post.acf.excerpt}</p>
         </div>
       </div>
     </LeadStory>

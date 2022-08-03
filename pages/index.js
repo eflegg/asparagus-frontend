@@ -3,13 +3,13 @@ import { Config } from "../config";
 import fetch from "isomorphic-fetch";
 import PageWrapper from "../components/Global/PageWrapper";
 import ArticleCard from "../components/ArticleCard";
+import NewsletterSignup from "../components/NewsletterSignupCard";
 import AwardWinnerCard from "../components/AwardWinnerCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
 import SupportCard from "../components/SupportCard";
-import NewsletterSignup from "../components/NewsletterSignupCard";
 
 const CategoryContainer = styled.section`
   margin-bottom: 45px;
@@ -64,6 +64,7 @@ export default function Home({ page, posts }) {
                 <>
                   {post.id == page.acf.lead_story[0].ID ? (
                     <LeadStoryBlock
+                      post={post}
                       date={formattedDate}
                       image={post._embedded["wp:featuredmedia"]["0"].source_url}
                       title={post.title.rendered}
@@ -98,17 +99,17 @@ export default function Home({ page, posts }) {
                       <>
                         <ArticleCard
                           post={post}
-                          title={post.title.rendered}
-                          slug={post.slug}
-                          categories={post._embedded["wp:term"]["0"]}
-                          image={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          excerpt={post.acf.excerpt}
-                          byline={post.acf.writer[0].post_title}
-                          read={post.acf.time_to_read}
-                          date={formattedDate}
-                          headshot={post.acf.writer[0].acf.headshot.url}
+                          // title={post.title.rendered}
+                          // slug={post.slug}
+                          // categories={post._embedded["wp:term"]["0"]}
+                          // image={
+                          //   post._embedded["wp:featuredmedia"]["0"].source_url
+                          // }
+                          // excerpt={post.acf.excerpt}
+                          // byline={post.acf.writer[0].post_title}
+                          // read={post.acf.time_to_read}
+                          // date={formattedDate}
+                          // headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </>
                     ) : null}
@@ -149,17 +150,17 @@ export default function Home({ page, posts }) {
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
                           post={post}
-                          date={formattedDate}
-                          read={post.acf.time_to_read}
-                          slug={post.slug}
-                          title={post.title.rendered}
-                          categories={post._embedded["wp:term"]["0"]}
-                          image={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          excerpt={post.acf.excerpt}
-                          byline={post.acf.writer[0].post_title}
-                          headshot={post.acf.writer[0].acf.headshot.url}
+                          // date={formattedDate}
+                          // read={post.acf.time_to_read}
+                          // slug={post.slug}
+                          // title={post.title.rendered}
+                          // categories={post._embedded["wp:term"]["0"]}
+                          // image={
+                          //   post._embedded["wp:featuredmedia"]["0"].source_url
+                          // }
+                          // excerpt={post.acf.excerpt}
+                          // byline={post.acf.writer[0].post_title}
+                          // headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     ) : null}
@@ -168,6 +169,13 @@ export default function Home({ page, posts }) {
               })}
             </div>
           </CategoryContainer>
+          {/* @elizabeth it doesn't have any children so it can be a self-closing tag */}
+          <NewsletterSignup
+            support={false}
+            title="Sign up for News from the Asparagus Patch"
+            subtitle="Pleasantly Infrequent Updates from Asparagus Magazine"
+            image="triplestalk.svg"
+          />
 
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
@@ -200,17 +208,17 @@ export default function Home({ page, posts }) {
                       <React.Fragment key={uuidv4()}>
                         <ArticleCard
                           post={post}
-                          date={formattedDate}
-                          read={post.acf.time_to_read}
-                          slug={post.slug}
-                          title={post.title.rendered}
-                          categories={post._embedded["wp:term"]["0"]}
-                          image={
-                            post._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          excerpt={post.acf.excerpt}
-                          byline={post.acf.writer[0].post_title}
-                          headshot={post.acf.writer[0].acf.headshot.url}
+                          // date={formattedDate}
+                          // read={post.acf.time_to_read}
+                          // slug={post.slug}
+                          // title={post.title.rendered}
+                          // categories={post._embedded["wp:term"]["0"]}
+                          // image={
+                          //   post._embedded["wp:featuredmedia"]["0"].source_url
+                          // }
+                          // excerpt={post.acf.excerpt}
+                          // byline={post.acf.writer[0].post_title}
+                          // headshot={post.acf.writer[0].acf.headshot.url}
                         />
                       </React.Fragment>
                     ) : null}

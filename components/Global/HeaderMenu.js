@@ -13,7 +13,9 @@ const MenuContainer = styled.div`
   .subnav {
   }
   .nav-link {
+    font-family: ${theme.type.medium};
     font-size: 2.4rem;
+    color: ${theme.colours.gusGreen};
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -21,8 +23,27 @@ const MenuContainer = styled.div`
       padding-left: 0;
     }
   }
+  margin: 30px 15px; 
+  ${theme.mediaQuery.md`
+    margin: 30px 57px;
+  `};
 `;
+
+
 const MobileNav = styled.nav`
+`;
+
+const ConnectMenuContainer = styled.div`
+ display: flex; 
+ justify-content: space-between; 
+ align-items: center; 
+  ${theme.mediaQuery.md`
+    flex: 0 0 50%; 
+    margin-top: 30px; 
+    align-items: flex-start; 
+  `};
+`
+const HamburgerMenuButton = styled.div`
   .btn-nav {
     cursor: pointer;
     &:focus {
@@ -36,17 +57,13 @@ const MobileNav = styled.nav`
     justify-content: center;
     background: transparent;
     border: 0px;
-    position: absolute;
-    position: fixed;
-    top: 18px;
-    right: 15px;
     span {
       width: 35px;
       height: 5px;
       margin-bottom: 1px;
       border-radius: 3px;
       margin-top: 5px;
-      background: ${theme.colours.gusGreen};
+      background: ${theme.colours.soil};
       z-index: 2;
     }
     .burger-2 {
@@ -61,8 +78,7 @@ const MobileNav = styled.nav`
       }
       .burger-2 {
         position: relative;
-        left: 150px;
-        overflow: hidden;
+        background: transparent;
         transition: all 0.15s ease-in-out;
       }
       .burger-3 {
@@ -93,8 +109,51 @@ const MobileNav = styled.nav`
 const DesktopNav = styled.nav`
   ul {
     display: flex;
+    justify-content: space-between; 
   }
 `;
+
+const LogoConnectMenuContainer = styled.div`
+  display: flex; 
+  flex-direction: column-reverse; 
+  justify-content: space-around; 
+  .img {
+    flex: 0 0 50%; 
+  }
+  ${theme.mediaQuery.md`
+    flex-direction: row;
+    `};
+`
+const ConnectMenuNav = styled.nav`
+  flex: 1; 
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; 
+    flex-wrap: nowrap;
+  }
+  a {
+    font-size: 2rem; 
+    font-weight: 600; 
+    color: ${theme.colours.soil};
+    font-family: ${theme.type.semibold}; 
+    
+  }
+  li {
+    flex: none; 
+    ${theme.mediaQuery.md`
+      padding: 3px 30px; 
+    `};
+  }
+  li:first-of-type {
+    background-color: ${theme.colours.gusYellow};
+    padding: 3px 5px; 
+    border-radius: 5px; 
+    ${theme.mediaQuery.md`
+      padding: 3px 30px; 
+    `};
+  }
+`
 
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
@@ -173,11 +232,55 @@ export default function HeaderMenu() {
   return (
     <MenuContainer className="menu--container">
       <Suspense fallback={<Loader />}>
-        <Link href="/">
-          <a>
-            <h3>Asparagus Logo</h3>
-          </a>
-        </Link>
+        <LogoConnectMenuContainer>
+          <Link href="/">
+            <a>
+              <img src="/Asparagus_Nameplate_Color.png"/>
+            </a>
+          </Link>
+          <ConnectMenuContainer>
+            <ConnectMenuNav>
+              <ul>
+                {connectLinks?.items?.map((connectLink, index) => {
+                  return (
+                    <li key={uuidv4()}>
+                      <ActiveLink
+                        activeClassName="navlink--active"
+                        href={`/${connectLink.slug}`}
+                        to={`/${connectLink.slug}`}
+                      >
+                      <a>{connectLink.title}</a>
+                      </ActiveLink>
+                    </li>
+                  );
+                })}
+              </ul>
+            </ConnectMenuNav>
+
+            {size.width < 1000 && (
+              <HamburgerMenuButton>
+                <button
+                  className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
+                  onClick={() => {
+                  setNavActive(!navActive);
+                  }}
+                >
+                  <span className="burger-1"></span>
+                  <span className="burger-2"></span>
+                  <span className="burger-3"></span>
+                </button>
+                <button
+                  role="button"
+                  aria-controls="navMenu"
+                  style={{ display: "none" }}
+                  className="accessibility-close"
+                >
+                  Close Nav
+                </button>
+              </HamburgerMenuButton>
+            )}
+          </ConnectMenuContainer>
+        </LogoConnectMenuContainer>
 
         {size.width >= 1000 ? (
           <DesktopNav>
@@ -238,24 +341,6 @@ export default function HeaderMenu() {
           </DesktopNav>
         ) : (
           <MobileNav>
-            <button
-              className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
-              onClick={() => {
-                setNavActive(!navActive);
-              }}
-            >
-              <span className="burger-1"></span>
-              <span className="burger-2"></span>
-              <span className="burger-3"></span>
-            </button>
-            <button
-              role="button"
-              aria-controls="navMenu"
-              style={{ display: "none" }}
-              className="accessibility-close"
-            >
-              Close Nav
-            </button>
             {navActive ? (
               <ul>
                 {links?.items?.map((link, index) => {
@@ -300,24 +385,7 @@ export default function HeaderMenu() {
           </MobileNav>
         )}
 
-        <h3>Connect Menu</h3>
-        {/* <nav> */}
-        <ul>
-          {connectLinks?.items?.map((connectLink, index) => {
-            return (
-              <li key={uuidv4()}>
-                <ActiveLink
-                  activeClassName="navlink--active"
-                  href={`/${connectLink.slug}`}
-                  to={`/${connectLink.slug}`}
-                >
-                  <a>{connectLink.title}</a>
-                </ActiveLink>
-              </li>
-            );
-          })}
-        </ul>
-        {/* </nav> */}
+
       </Suspense>
     </MenuContainer>
   );

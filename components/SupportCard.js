@@ -5,8 +5,8 @@ import Image from "next/image";
 
 const SupportBlock = styled.div`
   width: 100%;
-
-  height: 40vh;
+  border: solid teal;
+  height: 50vh;
   ${theme.mediaQuery.sm`
 height: 80vh;
 `}
@@ -35,21 +35,22 @@ object-position: 0px -300px;
     margin: 0 auto;
     text-align: center;
     margin-top: 10%;
-    h1 {
+    .support-title {
       margin-bottom: 10px;
     }
     .support-subtitle {
       font-family: ${theme.type.medium};
-      margin-bottom: 5%;
+      margin-bottom: 10px;
+      color: ${theme.colours.darkWheat};
     }
   }
 `;
 
-export default function SupportCard() {
+export default function SupportCard({}) {
   return (
     <SupportBlock>
       <div className="support-text">
-        <h1>Asparagus Depends on Readers</h1>
+        <h1 className="support-title">Asparagus Depends on Readers</h1>
         <h5 className="support-subtitle">
           Support our Work by Subscribing, Donating or Purchasing Sustainable
           Swag
@@ -57,12 +58,7 @@ export default function SupportCard() {
         <button className="btn--primary">Visit Shop</button>
       </div>
       <div className="image-container">
-        <Image
-          src="/supportmountains2.jpg"
-          alt=""
-          layout="fill"
-          objectFit="cover"
-        />
+        <img src="supportmountains2.jpg" alt="" />
       </div>
     </SupportBlock>
   );

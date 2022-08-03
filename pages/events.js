@@ -8,7 +8,6 @@ export default function Events({ events }) {
 
   const [isCurrent, setIsCurrent] = useState(false);
   const stringCurrentDate = new Date().getTime();
-
   function toggleCurrent() {
     setIsCurrent(!isCurrent);
   }
@@ -54,6 +53,7 @@ export default function Events({ events }) {
           {events.map((event, index) => {
             const eventDate = event.acf.date;
             const stringEventDate = new Date(eventDate).getTime();
+
             return (
               <>
                 {stringEventDate < stringCurrentDate ? (
