@@ -10,20 +10,60 @@ import {
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
 import Image from "next/image";
+import SupportCard from "../../components/SupportCard";
 
 const SingleContainer = styled.div`
+  height: 100%;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+  figure {
+    margin: 50px auto;
+  }
+  figcaption {
+    width: 90%;
+    margin: 8px auto 0;
+    font-family: ${theme.type.accent};
+    font-size: 1.6rem;
+    strong {
+      font-family: ${theme.type.header};
+      font-style: italic;
+      position: relative;
+      top: 5px;
+    }
+  }
+  li {
+    margin: 0 auto 20px;
+    width: 90%;
+    max-width: 650px;
+  }
+  p {
+    width: 90%;
+    max-width: 650px;
+    margin: 17px auto;
+
+    ${theme.mediaQuery.sm`
+       margin: 25px auto;
+    `}
+  }
   .related--header {
     width: 90%;
     margin: 50px auto 0;
     line-height: 100%;
   }
-  .content--container {
+  /* .content--container {
     width: 90%;
     max-width: 650px;
+  } */
+  .print-details {
+    width: 100%;
+    max-width: 650px;
     margin: 45px auto;
-    ${theme.mediaQuery.sm`
-    margin: 80px auto;
-    `}
+    p {
+      margin: 5px 0;
+      font-style: italic;
+    }
   }
 `;
 
@@ -111,7 +151,10 @@ export default function ArticlePage({ article, allArticles, categories }) {
             {matchingCats.slice(0, 2).map((cat, index) => {
               return (
                 <>
-                  <h5 key={index}>{cat}</h5>
+                  <h5
+                    dangerouslySetInnerHTML={{ __html: cat }}
+                    key={index}
+                  ></h5>
                 </>
               );
             })}
@@ -154,9 +197,20 @@ export default function ArticlePage({ article, allArticles, categories }) {
           </div>
         </SingleHero>
         <div
-          className="content--container"
+          className=""
           dangerouslySetInnerHTML={{ __html: article.content.rendered }}
         ></div>
+        {article.acf.print_issue == "Yes" ? (
+          <div className="print-details">
+            <p className="content--container">
+              Print Issue: <span>{article.acf.appears_in}</span>
+            </p>
+            <p className="content--container">
+              Print Title: <span>{article.acf.print_title}</span>
+            </p>
+          </div>
+        ) : null}
+        <SupportCard />
         <RelatedPosts currentArticle={article} allArticles={allArticles} />
       </SingleContainer>
     </PageWrapper>
