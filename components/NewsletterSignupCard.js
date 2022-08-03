@@ -26,11 +26,15 @@ const NewsletterBlock = styled.div`
 const TripleStalk = styled.div`
   /* border: 3px solid orangered; */
   height: 100%;
-  min-width: 25%;
+  min-width: 40%;
+  ${theme.mediaQuery.sm`
+  min-width: 30%;
+  `}
   ${theme.mediaQuery.md`
-position: relative;
-left: -40px;
-`}
+  position: relative;
+  left: -40px;
+  min-width: 30%;
+  `}
 
   flex-direction: row;
   padding: 2%;
