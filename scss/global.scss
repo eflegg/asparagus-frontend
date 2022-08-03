@@ -274,11 +274,11 @@ h1,
   color: $gusGreen;
 
   @include media-query-min($sm) {
-    font-size: calc(36px + 40 * ((100vw - 320px) / 680));
+    font-size: calc(36px + 16 * ((100vw - 320px) / 680));
   }
 
   @include media-query-min($md) {
-    @include font-size(7.6);
+    @include font-size(5.2);
   }
 }
 
@@ -743,9 +743,19 @@ li.nav-link {
 .d-flex {
   display: flex;
 }
-
 .flex-column {
   flex-direction: column;
+}
+.flex-sm-row {
+  @include media-query-min($sm) {
+    flex-direction: row;
+  }
+}
+
+.flex-sm-column {
+  @include media-query-min($sm) {
+    flex-direction: column;
+  }
 }
 
 .justify-content-center {
