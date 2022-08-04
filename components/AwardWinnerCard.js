@@ -37,14 +37,14 @@ const Card = styled.div`
     background-color: ${theme.colours.darkWheat};
   }
   .award-text {
-    // border: 2px solid teal;
+    border: 2px solid teal;
     margin-left: 5%;
     margin-top: 40px;
     margin-bottom: 40px;
     margin-right: 5%;
   }
   .award-text--lower {
-    // border: solid black;
+    border: solid black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -60,6 +60,9 @@ const Card = styled.div`
     color: ${theme.colours.gusGreen};
     font-family: ${theme.type.italic};
     font-style: italic;
+  }
+  .article-details {
+    border: solid blue;
   }
 `;
 
@@ -105,14 +108,14 @@ export default function AwardWinnerCard({ post }) {
               )}
             </div>
             <div>
-            </div>
               <p className="byline--article-card">
                 {post.acf.writer[0].post_title}
               </p>
-                <p className="date--article-card">
+              <p className="date--article-card">
                 {formattedDate} - <span>{post.acf.time_to_read} min read</span>
-                </p>
-              </div>
+              </p>
+            </div>
+          </div>
             </div>
             </div>
            </div>
