@@ -9,6 +9,20 @@ import { Card } from "../components/Global/styles";
 
 export default function ArticleCard({ post }) {
   const categories = post._embedded["wp:term"]["0"];
+
+  console.log("categories: ", categories);
+
+  const subcategories = categories.filter(
+    (subCat) =>
+      subCat.id !== 6 &&
+      subCat.id !== 7 &&
+      subCat.id !== 8 &&
+      subCat.id !== 9 &&
+      subCat.id !== 10
+  );
+  console.log("subcategories: ", subcategories);
+  console.log("subcategory one: ", subcategories[0].name);
+
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
@@ -29,8 +43,8 @@ export default function ArticleCard({ post }) {
             </div>
 
             <div className="categories">
-              {categories &&
-                categories.map((category, index) => {
+              {subcategories &&
+                subcategories.map((category, index) => {
                   return (
                     <>
                       {index <= 1 ? (

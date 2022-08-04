@@ -348,7 +348,8 @@ h4 {
   }
 }
 
-h5 {
+h5,
+.h5 {
   font-size: 1.8rem;
   color: $soil;
   font-weight: 700;
@@ -726,7 +727,7 @@ li.nav-link {
     font-family: $semibold;
     @include media-query-min($sm) {
       font-size: calc(18px + 6 * ((100vw - 320px) / 680));
-      line-height: 2rem;
+      line-height: 2.6rem;
     }
 
     @include media-query-min($md) {

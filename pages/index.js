@@ -113,7 +113,6 @@ export default function Home({ page, posts }) {
               })}
             </div>
           </CategoryContainer>
-          <SupportCard />
 
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>

@@ -159,12 +159,8 @@ export default function ArticlePage({ article, allArticles, categories }) {
     month: "long",
     day: "2-digit",
   });
-  console.log("single article: ", article);
-  console.log("categories: ", categories);
 
   let subcategories = categories.filter((newCat) => newCat.parent !== 0);
-  console.log("subcategories: ", subcategories);
-  console.log("subcategory one: ", subcategories[5].name);
 
   const postCategories = article._embedded["wp:term"]["0"].map((category) => {
     return category.name;
@@ -176,7 +172,6 @@ export default function ArticlePage({ article, allArticles, categories }) {
       matchingCats.push(subcategory.name);
     }
   });
-  console.log("matching categories: ", matchingCats[0]);
 
   return (
     <PageWrapper>
@@ -291,3 +286,5 @@ export async function getStaticProps({ params }) {
     revalidate: 10, // In seconds
   };
 }
+
+18442232457;
