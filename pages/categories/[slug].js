@@ -87,11 +87,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
           {posts.map((post, index) => {
             return (
               <React.Fragment key={uuidv4()}>
-                <AwardWinnerCard
-                  title={post.title.rendered}
-                  slug={post.slug}
-                  writer={post.acf.writer[0].post_title}
-                />
+                <AwardWinnerCard post={post} />
               </React.Fragment>
             );
           })}

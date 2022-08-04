@@ -93,8 +93,5 @@ export default function ArticleCard({ post }) {
 }
 
 ArticleCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  excerpt: PropTypes.string.isRequired,
-  categories: PropTypes.array.isRequired,
+  prop: PropTypes.object.isRequired,
 };
