@@ -5,10 +5,11 @@ import Image from "next/image";
 
 const SupportBlock = styled.div`
   width: 100%;
-
+  min-height: 350px;
   height: 50vh;
   ${theme.mediaQuery.sm`
 height: 80vh;
+min-height: 400px;
 `}
   .image-container {
     position: relative;

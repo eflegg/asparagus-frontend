@@ -222,11 +222,6 @@ h6 {
   font-weight: bold;
 }
 
-// span {
-//   font-family: $accentFont;
-//   color: $gusGreen;
-// }
-
 a.card-text {
   color: black;
 }
@@ -263,10 +258,15 @@ a {
 }
 
 li {
-  list-style: none;
   font-family: $bodyFont;
   font-size: 1.8rem;
   font-size: 18px;
+}
+
+ul {
+  li {
+    list-style: none;
+  }
 }
 
 .paragraph--bold {
@@ -349,7 +349,8 @@ h4 {
   }
 }
 
-h5 {
+h5,
+.h5 {
   font-size: 1.8rem;
   color: $soil;
   font-weight: 700;
@@ -408,7 +409,7 @@ h6 {
   font-size: 1.4rem;
   line-height: 1.8rem;
   color: black;
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
 
   @include media-query-min($sm) {
     font-size: calc(14px + 2 * ((100vw - 320px) / 680));
@@ -422,17 +423,20 @@ h6 {
 
 .deck {
   font-family: $accentFont;
-  font-size: 2rem;
-  line-height: 3.2rem;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
   color: black;
+  margin: 15px 0 40px;
 
   @include media-query-min($sm) {
+    margin: 22px 0 40px;
     font-size: calc(16px + 4 * ((100vw - 320px) / 680));
+    line-height: 2.1rem;
   }
 
   @include media-query-min($md) {
     @include font-size(2);
-    line-height: 32px;
+    line-height: 2.4rem;
   }
 }
 
@@ -487,8 +491,8 @@ h6 {
   font-weight: 700;
   line-height: 2.1rem;
   color: black;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .article-details {
@@ -500,8 +504,8 @@ h6 {
   font-family: $accentFont;
   font-size: 1.3rem;
   color: black;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   line-height: 1.6rem;
 }
 
@@ -762,14 +766,24 @@ li.nav-link {
   font-family: $accentFont;
 }
 
-.wp-block-quote {
+.wp-block-pullquote {
   p {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     color: $gusGreen;
     width: 80%;
     margin: 20px auto;
     text-align: center;
+    font-family: $semibold;
+    @include media-query-min($sm) {
+      font-size: calc(18px + 6 * ((100vw - 320px) / 680));
+      line-height: 2.6rem;
+    }
+
+    @include media-query-min($md) {
+      @include font-size(2.4);
+      line-height: 32px;
+    }
   }
 }
 

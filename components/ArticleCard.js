@@ -7,19 +7,22 @@ import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { Card } from "../components/Global/styles";
 
-export default function ArticleCard({
-  // title,
-  // slug,
-  // byline,
-  // excerpt,
-
-  // image,
-  // date,
-  // read,
-  // headshot,
-  post,
-}) {
+export default function ArticleCard({ post }) {
   const categories = post._embedded["wp:term"]["0"];
+
+  console.log("categories: ", categories);
+
+  const subcategories = categories.filter(
+    (subCat) =>
+      subCat.id !== 6 &&
+      subCat.id !== 7 &&
+      subCat.id !== 8 &&
+      subCat.id !== 9 &&
+      subCat.id !== 10
+  );
+  console.log("subcategories: ", subcategories);
+  console.log("subcategory one: ", subcategories[0].name);
+
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
@@ -40,8 +43,8 @@ export default function ArticleCard({
             </div>
 
             <div className="categories">
-              {categories &&
-                categories.map((category, index) => {
+              {subcategories &&
+                subcategories.map((category, index) => {
                   return (
                     <>
                       {index <= 1 ? (
@@ -61,7 +64,7 @@ export default function ArticleCard({
               dangerouslySetInnerHTML={{ __html: post.title.rendered }}
             ></h3>
 
-            <p className="deck--article-card">{post.acf.excerpt}</p>
+            <p className="deck--article-card">{post.acf.dek}</p>
           </div>
           <div className="article-details">
             <div className="byline--image">
