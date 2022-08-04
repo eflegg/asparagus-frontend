@@ -17,7 +17,7 @@ export default function StockistSingle({ stockist, numeral }) {
         <a
           target="_blank"
           rel="noreferrer"
-          href={stockist.acf.stockist_website}
+          href={`https://${stockist.acf.stockist_website}`}
         >
           <h5 className="website">{stockist.acf.stockist_website}</h5>
         </a>

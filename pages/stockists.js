@@ -1,5 +1,6 @@
 import React from "react";
-import Link from "next/link";
+import { Config } from "../config";
+import fetch from "isomorphic-fetch";
 import { getStockists } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
@@ -63,38 +64,42 @@ const StockistBlock = styled.div`
 
 const provinces = ["British Columbia", "Alberta", "Saskatchewan"];
 
-export default function Stockists({ stockists }) {
+export default function Stockists({ stockists, page }) {
   console.log("stockists: ", stockists);
+  console.log("page: ", page);
   return (
     <PageWrapper className="">
       <h1 className="text-center">Stockists</h1>
       <hr />
       <p className="text-center">
-        Pick up the latest issue of Asparagus Magazine at any one of these fine
-        establishments!
+        Pick up the latest issue of <em>Asparagus Magazine</em> at any one of
+        these fine establishments!
       </p>
       <StockistBlock>
         <div className="stockist-map">
           <iframe
-            src="https://www.google.com/maps/d/u/1/embed?mid=1blqMUcfw2nIdUyHBsWc9diqt3sNqbVKI&ehbc=2E312F"
+            src={page.acf.stockist_map}
             width="100%"
             height="480"
           ></iframe>
         </div>
         {provinces.map((province, index) => {
+          const newStockists = stockists.filter(
+            (stockist) => stockist.acf.province === province
+          );
           return (
             <React.Fragment key={uuidv4()}>
               <div className="province-wrapper">
                 <h5 className="province">{province}</h5>
               </div>
               <ul>
-                {stockists.map((stockist, stockistIndex) => {
+                {newStockists.map((stockist, stockistIndex) => {
                   return (
                     <React.Fragment key={uuidv4()}>
                       {stockist.acf.province == province ? (
                         <StockistSingle
                           stockist={stockist}
-                          numeral={index + 1}
+                          numeral={stockistIndex + 1}
                         />
                       ) : null}
                     </React.Fragment>
@@ -111,10 +116,13 @@ export default function Stockists({ stockists }) {
 
 export async function getStaticProps({ params }) {
   const stockists = await getStockists();
+  const pageQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages/69`);
+  const page = await pageQuery.json();
 
   return {
     props: {
       stockists,
+      page,
     },
     revalidate: 10, // In seconds
   };
