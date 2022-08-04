@@ -7,6 +7,7 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import AwardWinnerCard from "../components/AwardWinnerCard";
 import PageWrapper from "../components/Global/PageWrapper";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Awards({ posts }) {
   return (
@@ -15,15 +16,11 @@ export default function Awards({ posts }) {
       <ul>
         {posts.map((post, index) => {
           return (
-            <>
+            <React.Fragment key={uuidv4()}>
               {post.acf.award_winner == "Yes" ? (
-                <AwardWinnerCard
-                  // ref={ref}
-                  title={post.title.rendered}
-                  slug={post.slug}
-                />
+                <AwardWinnerCard post={post} />
               ) : null}
-            </>
+            </React.Fragment>
           );
         })}
       </ul>
@@ -31,15 +28,11 @@ export default function Awards({ posts }) {
       <ul>
         {posts.map((post, index) => {
           return (
-            <>
+            <React.Fragment key={uuidv4()}>
               {post.acf.award_nominee == "Yes" ? (
-                <AwardWinnerCard
-                  // ref={ref}
-                  title={post.title.rendered}
-                  slug={post.slug}
-                />
+                <AwardWinnerCard post={post} />
               ) : null}
-            </>
+            </React.Fragment>
           );
         })}
       </ul>
