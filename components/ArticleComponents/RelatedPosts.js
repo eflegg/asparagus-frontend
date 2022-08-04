@@ -4,19 +4,15 @@ import React from "react";
 import { getRedirectStatus } from "next/dist/lib/load-custom-routes";
 
 export default function RelatedPosts({ allArticles, currentArticle }) {
-  console.log("all articles: ", allArticles);
-  console.log("current post: ", currentArticle);
   // filter out current post
   let posts = allArticles.filter(
     (newPost) => newPost.slug !== currentArticle.slug
   );
 
-  console.log("remaining posts: ", posts);
   // define maxPosts to display
   const maxPosts = 3;
 
   const currentTags = currentArticle.tags;
-  console.log("current tags: ", currentTags);
 
   // rate posts depending on tags
   posts.forEach((post) => {
@@ -32,7 +28,6 @@ export default function RelatedPosts({ allArticles, currentArticle }) {
   const sortedPosts = posts.sort(function (a, b) {
     return b.relevance - a.relevance;
   });
-  console.log("sorted articles: ", sortedPosts);
 
   return (
     <>

@@ -12,24 +12,18 @@ import ArticleFilter from "../../components/ArticleFilter";
 import { v4 as uuidv4 } from "uuid";
 
 export default function CategoryPage({ category, posts, subcategories }) {
-  // console.log("post categories: ", posts[1].categories);
-  // console.log("category: ", category);
-  // console.log("subcats: ", subcategories);
-  // console.log("subcat id:", subcategories[0].id);
-
   const dynamicRoute = useRouter().asPath;
   const [subfilter, setSubfilter] = useState(null);
   const handleClick = (subIndex) => {
     setSubfilter(subIndex);
-    console.log("subfilter: ", subfilter);
   };
 
   useEffect(() => {
     setSubfilter(null);
   }, [dynamicRoute]);
 
-  console.log("category: ", category);
-  console.log("posts: ", posts);
+  // console.log("category: ", category);
+  // console.log("posts: ", posts);
   return (
     <PageWrapper pageTitle={category.name} className="container pt-5">
       {/* if the category is either start small or voices, show the subcategory filter

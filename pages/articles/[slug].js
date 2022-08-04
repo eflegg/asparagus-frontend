@@ -1,9 +1,9 @@
-import Link from "next/link";
 import RelatedPosts from "../../components/ArticleComponents/RelatedPosts";
 import PageWrapper from "../../components/Global/PageWrapper";
 import { getArticle, getArticles, getSlugs } from "../../utils/wordpress";
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
+import Head from "next/head";
 
 const SingleContainer = styled.div`
   .related--header {
@@ -15,7 +15,18 @@ const SingleContainer = styled.div`
 
 export default function ArticlePage({ article, allArticles }) {
   return (
-    <PageWrapper>
+    <PageWrapper
+      SEOtitle={
+        article.yoast_head_json.title
+          ? article.yoast_head_json.title
+          : "Asparagus Magazine"
+      }
+      metadescription={
+        article.yoast_head_json.description
+          ? article.yoast_head_json.title
+          : "Telling the large and small stories of how we can live more sustainably"
+      }
+    >
       <SingleContainer>
         <h1 className="text-center pb-5">{article.title.rendered}</h1>
         <div
