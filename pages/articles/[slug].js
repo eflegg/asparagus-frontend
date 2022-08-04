@@ -11,6 +11,12 @@ import styled from "styled-components";
 import theme from "../../components/Global/Theme";
 import Image from "next/image";
 import SupportCard from "../../components/SupportCard";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from "next-share";
 
 const SingleContainer = styled.div`
   height: 100%;
@@ -65,10 +71,8 @@ const SingleContainer = styled.div`
     margin: 50px auto 0;
     line-height: 100%;
   }
-  /* .content--container {
-    width: 90%;
-    max-width: 650px;
-  } */
+  .content--container {
+  }
   .print-details {
     width: 90%;
     max-width: 650px;
@@ -76,6 +80,24 @@ const SingleContainer = styled.div`
     p {
       margin: 5px 0;
       font-style: italic;
+    }
+  }
+
+  .share-block {
+    width: 90%;
+    max-width: 650px;
+    margin: 45px auto;
+    svg {
+      circle {
+        fill: transparent;
+      }
+      path {
+        fill: ${theme.colours.soil};
+      }
+    }
+    .share {
+      font-family: ${theme.type.semibold};
+      font-size: 1.8rem;
     }
   }
 `;
@@ -223,6 +245,19 @@ export default function ArticlePage({ article, allArticles, categories }) {
             </p>
           </div>
         ) : null}
+        <div className="share-block d-flex align-items-center justify-content-center">
+          <span className="share">Share</span>
+          <FacebookShareButton
+            url={`http://asparagusmagazine.com/articles/${article.slug}`}
+          >
+            <FacebookIcon size={45} round />
+          </FacebookShareButton>
+          <TwitterShareButton
+            url={`http://asparagusmagazine.com/articles/${article.slug}`}
+          >
+            <TwitterIcon size={45} round />
+          </TwitterShareButton>
+        </div>
         <SupportCard />
         <RelatedPosts currentArticle={article} allArticles={allArticles} />
       </SingleContainer>
