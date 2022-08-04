@@ -93,7 +93,13 @@ export default function Home({ page, posts }) {
           <CategoryContainer className="cat-one--container">
             <h2>{page.acf.home_category_one[0].name}</h2>
             <hr />
-            <div className="card--grid">
+            <div
+              className={`${
+                page.acf.home_category_one[0].name == "Awards"
+                  ? "awards--container__home"
+                  : "card--grid"
+              }`}
+            >
               {posts.map((post, index) => {
                 return (
                   <>
@@ -116,7 +122,13 @@ export default function Home({ page, posts }) {
           <CategoryContainer className="cat-two--container">
             <h2>{page.acf.home_category_two[0].name}</h2>
             <hr />
-            <div className="card--grid">
+            <div
+              className={`${
+                page.acf.home_category_two[0].name == "Awards"
+                  ? "awards--container__home"
+                  : "card--grid"
+              }`}
+            >
               {posts.map((post, index) => {
                 return (
                   <>
@@ -146,7 +158,13 @@ export default function Home({ page, posts }) {
           <CategoryContainer className="cat-three--container">
             <h2>{page.acf.home_category_three[0].name}</h2>
             <hr />
-            <div className="card--grid">
+            <div
+              className={`${
+                page.acf.home_category_three[0].name == "Awards"
+                  ? "awards--container__home"
+                  : "card--grid"
+              }`}
+            >
               {posts.map((post, index) => {
                 return (
                   <>
