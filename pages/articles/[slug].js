@@ -192,7 +192,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
           : "Telling the large and small stories of how we can live more sustainably"
       }
     >
-      <SingleContainer>
+      <SingleContainer itemscope itemtype="https://schema.org/Article">
         <SingleHero>
           <div className="d-flex categories">
             {matchingCats.slice(0, 2).map((cat, index) => {
@@ -209,7 +209,9 @@ export default function ArticlePage({ article, allArticles, categories }) {
           <hr />
           <div className="hero d-flex">
             <div className="hero--text">
-              <h1 className="article--title">{article.title.rendered}</h1>
+              <h1 itempProp="name" className="article--title">
+                {article.title.rendered}
+              </h1>
               <p className="excerpt deck">{article.acf.dek}</p>
               <div className="article-details">
                 <div className="byline--image">
@@ -257,7 +259,11 @@ export default function ArticlePage({ article, allArticles, categories }) {
             </p>
           </div>
         ) : null}
-        <div className="share-block d-flex align-items-center justify-content-center">
+        <div
+          itemProp="interactionType"
+          content="https://schema.org/ShareAction"
+          className="share-block d-flex align-items-center justify-content-center"
+        >
           <span className="share">Share</span>
           <FacebookShareButton
             url={`http://asparagusmagazine.com/articles/${article.slug}`}
