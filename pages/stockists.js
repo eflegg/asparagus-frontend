@@ -9,7 +9,7 @@ import StockistSingle from "../components/StockistSingle";
 import { v4 as uuidv4 } from "uuid";
 
 const StockistBlock = styled.div`
-  border: solid pink;
+  // border: solid pink;
   width: 60%;
   max-width: 1000px;
   padding-top: 20px;
@@ -38,7 +38,7 @@ const StockistBlock = styled.div`
     font-size: 2rem;
   }
   .number-name-wrapper {
-    border: solid teal;
+    // border: solid teal;
     display: flex;
     flex-direction: row;
     align-items: baseline;
@@ -47,7 +47,7 @@ const StockistBlock = styled.div`
     }
   }
   .province-wrapper {
-    border: solid green;
+    // border: solid green;
     width: 100%;
     positon: relative;
     left: -38px;
@@ -56,11 +56,21 @@ const StockistBlock = styled.div`
     position: relative;
     left: 40px;
   }
-  iframe {
-    border: 0px;
-    margin: 45px 0;
-  }
 `;
+const Map = styled.div`
+iframe {
+  border: 0px;
+  margin: 45px 0;
+  width: 100%;
+}
+.stockist-map {
+  width: 90%;
+  margin: 0 auto;
+}
+`;
+
+
+
 
 const provinces = ["British Columbia", "Alberta", "Saskatchewan"];
 
@@ -75,14 +85,17 @@ export default function Stockists({ stockists, page }) {
         Pick up the latest issue of <em>Asparagus Magazine</em> at any one of
         these fine establishments!
       </p>
-      <StockistBlock>
-        <div className="stockist-map">
+      <Map>
+      <div className="stockist-map">
           <iframe
             src={page.acf.stockist_map}
             width="100%"
             height="480"
           ></iframe>
         </div>
+        </Map>
+      
+      <StockistBlock>
         {provinces.map((province, index) => {
           const newStockists = stockists.filter(
             (stockist) => stockist.acf.province === province
