@@ -15,15 +15,27 @@ const ContentContainer = styled.div`
   }
 `;
 
+const GeneralHero = styled.div`
+width: 100%;
+`;
+
 export default function GeneralPage({ genpage }) {
   return (
     <PageWrapper className="container pt-5">
+      <GeneralHero>
       <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
+      <p>hello</p>
+      <div className="cover-photo-container">
+      <img src={genpage.acf.image} alt=""></img>
+      </div>
+      </GeneralHero>
       <ContentContainer
         className="content-container"
         dangerouslySetInnerHTML={{ __html: genpage.content.rendered }}
       ></ContentContainer>
+      <p>{genpage.acf.header}</p>
       <p>{genpage.acf.text_block && genpage.acf.text_block}</p>
+      <p>{genpage.acf.pull_quote}</p>
       <Link href="/">
         <a className="btn btn-primary">Back to Home</a>
       </Link>
