@@ -9,8 +9,9 @@ import StockistSingle from "../components/StockistSingle";
 import { v4 as uuidv4 } from "uuid";
 
 const StockistBlock = styled.div`
-  // border: solid pink;
-  width: 80%;
+  /* border: 2px solid hotpink; */
+
+  width: 60%;
   max-width: 1000px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -48,10 +49,8 @@ const StockistBlock = styled.div`
     }
   }
   .province-wrapper {
-    // border: solid green;
     width: 100%;
-    positon: relative;
-    left: -38px;
+    position: relative;
   }
   .stockist-info {
     position: relative;
