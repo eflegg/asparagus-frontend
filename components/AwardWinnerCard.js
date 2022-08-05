@@ -24,10 +24,10 @@ const Card = styled.div`
    ${theme.mediaQuery.lg`
    width: 60%;
    `}
-
   }
   .image-container {
-    // border: solid blue;
+    /* // border: solid blue; */
+    position: relative;
     height: 50vh;
     min-height: 350px;
     object-fit: cover;
@@ -70,6 +70,13 @@ const Card = styled.div`
   .article-details {
     // border: solid blue;
   }
+  .award-graphic {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 100px;
+    width: 100px;
+  }
 `;
 
 export default function AwardWinnerCard({ post }) {
@@ -89,10 +96,22 @@ export default function AwardWinnerCard({ post }) {
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           ></h3>
           <div className="image-container">
-            <img
+            <Image
               src={post._embedded["wp:featuredmedia"]["0"].source_url}
-              alt=""
-            ></img>
+              alt="Article featured image"
+              layout="fill"
+              objectFit="cover"
+            />
+            {post.acf.award_graphic ? (
+              <div className="award-graphic">
+                <Image
+                  src={post.acf.award_graphic.url}
+                  alt={post.acf.award_graphic.alt}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            ) : null}
           </div>
 
           <div className="award-text-wrap">
