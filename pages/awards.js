@@ -21,6 +21,9 @@ const AwardContainer = styled.section`
 export default function Awards({ posts }) {
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/awards`}
+      ogImageUrl="triplestalk.svg"
+      ogTwitterImage="triplestalk.svg"
       SEOtitle="Awards"
       metadescription="A showcase of all our award-winning and nominated Asparagus Magazine stories"
     >

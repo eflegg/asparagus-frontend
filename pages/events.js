@@ -44,6 +44,9 @@ export default function Events({ events }) {
 
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/events`}
+      ogImageUrl="triplestalk.svg"
+      ogTwitterImage="triplestalk.svg"
       SEOtitle="Events"
       metadescription="A list of past and upcoming Asparagus Magazine events. Join us at the next one!"
     >

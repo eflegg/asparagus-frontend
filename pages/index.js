@@ -34,9 +34,14 @@ export default function Home({ page, posts }) {
   const catTwo = page.acf.home_category_two[0].term_id;
   const catThree = page.acf.home_category_three[0].term_id;
 
+  console.log("page", page);
+
   return (
     <>
       <PageWrapper
+        canonicalUrl="https://asparagusmagazine.com/"
+        ogImageUrl="triplestalk.svg"
+        ogTwitterImage="triplestalk.svg"
         SEOtitle={
           page.yoast_head_json.title
             ? page.yoast_head_json.title

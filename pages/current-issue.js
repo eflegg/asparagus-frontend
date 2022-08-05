@@ -22,8 +22,14 @@ const CoverContainer = styled.div`
 `;
 
 export default function CurrentIssue({ issues, articles }) {
+  const currentIssue = issues[0];
+  console.log("current issue: ", currentIssue.id);
+  console.log("articles: ", articles);
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/${currentIssue.slug}`}
+      ogImageUrl="triplestalk.svg"
+      ogTwitterImage="triplestalk.svg"
       SEOtitle="Current Issue"
       metadescription="All the sustainble stories from Asparagus Magazine's most recent issue"
     >
@@ -43,13 +49,13 @@ export default function CurrentIssue({ issues, articles }) {
           <p>{issues[0].acf.secondary_cover_line}</p>
         </div>
       </CoverContainer>
-      <ul className="card--grid">
+      <ul className="card--grid single-page">
         {articles.map((article, index) => {
           const appearsIn = article.acf.appears_in;
 
           return (
             <React.Fragment key={uuidv4()}>
-              {currentIssue == appearsIn ? (
+              {appearsIn && currentIssue.id == appearsIn[0].ID ? (
                 <>
                   <ArticleCard post={article} />
                 </>

@@ -85,6 +85,10 @@ const GeneralContainer = styled.div`
 export default function GeneralPage({ genpage }) {
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/${genpage.slug}`}
+      ogImageUrl={genpage.yoast_head_json.og_image}
+      ogType={genpage.yoast_head_json.og_type}
+      ogTwitterImage={genpage.yoast_head_json.twitter_card}
       SEOtitle={
         genpage.yoast_head_json.title
           ? genpage.yoast_head_json.title
@@ -95,7 +99,6 @@ export default function GeneralPage({ genpage }) {
           ? genpage.yoast_head_json.title
           : "Telling the large and small stories of how we can live more sustainably"
       }
-      className="container pt-5"
     >
       <GeneralContainer>
         <div className="general--header">

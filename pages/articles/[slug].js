@@ -17,6 +17,8 @@ import {
   TwitterShareButton,
   TwitterIcon,
 } from "next-share";
+import { v4 as uuidv4 } from "uuid";
+import React from "react";
 
 const SingleContainer = styled.div`
   height: 100%;
@@ -175,6 +177,10 @@ export default function ArticlePage({ article, allArticles, categories }) {
 
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/${article.slug}`}
+      ogImageUrl={article.yoast_head_json.og_image}
+      ogType={article.yoast_head_json.og_type}
+      ogTwitterImage={article.yoast_head_json.twitter_card}
       SEOtitle={
         article.yoast_head_json.title
           ? article.yoast_head_json.title
@@ -191,12 +197,12 @@ export default function ArticlePage({ article, allArticles, categories }) {
           <div className="d-flex categories">
             {matchingCats.slice(0, 2).map((cat, index) => {
               return (
-                <>
+                <React.Fragment key={uuidv4()}>
                   <h5
                     dangerouslySetInnerHTML={{ __html: cat }}
                     key={index}
                   ></h5>
-                </>
+                </React.Fragment>
               );
             })}
           </div>

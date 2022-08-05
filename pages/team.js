@@ -16,6 +16,9 @@ const TeamMemberContainer = styled.ul`
 export default function Team({ teamMembers }) {
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/team`}
+      ogImageUrl="triplestalk.svg"
+      ogTwitterImage="triplestalk.svg"
       SEOtitle="Team"
       metadescription="Meet the team at Asparagus Magazine telling large and small stories of sustainability"
     >
