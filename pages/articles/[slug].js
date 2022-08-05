@@ -223,7 +223,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
                   )}
                 </div>
                 <div>
-                  <p className="byline--article-card">
+                  <p itemProp="author" className="byline--article-card">
                     {article.acf.writer[0].post_title}
                   </p>
                   <p className="date--article-card">
