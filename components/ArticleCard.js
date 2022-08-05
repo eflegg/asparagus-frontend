@@ -20,8 +20,8 @@ export default function ArticleCard({ post }) {
       subCat.id !== 9 &&
       subCat.id !== 10
   );
-  console.log("subcategories: ", subcategories);
-  console.log("subcategory one: ", subcategories[0].name);
+  // console.log("subcategories: ", subcategories);
+  // console.log("subcategory one: ", subcategories[0].name);
 
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
@@ -30,68 +30,73 @@ export default function ArticleCard({ post }) {
   });
   return (
     <Card>
-      <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
-        <a className="card--inner">
-          <div>
-            <div className="card--image">
-              <Image
-                src={post._embedded["wp:featuredmedia"]["0"].source_url}
-                layout="fill"
-                objectFit="cover"
-                alt="Article lead photo"
-              />
-            </div>
-
-            <div className="categories">
-              {subcategories &&
-                subcategories.map((category, index) => {
-                  return (
-                    <>
-                      {index <= 1 ? (
-                        <a
-                          className="category-label"
-                          href={category.slug}
-                          key={uuidv4()}
-                          dangerouslySetInnerHTML={{ __html: category.name }}
-                        ></a>
-                      ) : null}
-                    </>
-                  );
-                })}
-            </div>
-            <h3
-              className="head--article-card"
-              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-            ></h3>
-
-            <p className="deck--article-card">{post.acf.dek}</p>
-          </div>
-          <div className="article-details">
-            <div className="byline--image">
-              {post.acf.writer[0].acf.headshot.url && (
+      <div className="card--inner">
+        <div>
+          <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
+            <a>
+              <div className="card--image">
                 <Image
-                  src={post.acf.writer[0].acf.headshot.url}
+                  src={post._embedded["wp:featuredmedia"]["0"].source_url}
                   layout="fill"
                   objectFit="cover"
-                  alt="Author headshot"
+                  alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
                 />
-              )}
-            </div>
-            <div>
-              <p className="byline--article-card">
-                {post.acf.writer[0].post_title}
-              </p>
-              <p className="date--article-card">
-                {formattedDate} - <span>{post.acf.time_to_read} min read</span>
-              </p>
-            </div>
+              </div>
+            </a>
+          </Link>
+          <div className="categories">
+            {categories &&
+              categories.slice(0, 2).map((category, index) => {
+                return (
+                  <React.Fragment key={uuidv4()}>
+                    <Link
+                      href={"/categories/[slug]"}
+                      as={`/categories/${category.slug}`}
+                    >
+                      <a
+                        className="category-label"
+                        dangerouslySetInnerHTML={{ __html: category.name }}
+                      ></a>
+                    </Link>
+                  </React.Fragment>
+                );
+              })}
           </div>
-        </a>
-      </Link>
+          <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
+            <a>
+              <h3
+                className="head--article-card"
+                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+              ></h3>
+              <p className="deck--article-card">{post.acf.dek}</p>
+            </a>
+          </Link>{" "}
+        </div>
+        <div className="article-details">
+          <div className="byline--image">
+            {post.acf.writer[0].acf.headshot.url && (
+              <Image
+                src={post.acf.writer[0].acf.headshot.url}
+                layout="fill"
+                objectFit="cover"
+                alt="Author headshot"
+              />
+            )}
+          </div>
+          <div>
+            <p className="byline--article-card">
+              {post.acf.writer[0].post_title}
+            </p>
+            <p className="date--article-card">
+              {formattedDate} - <span>{post.acf.time_to_read} min read</span>
+            </p>
+          </div>
+        </div>
+      </div>
     </Card>
   );
 }
 
 ArticleCard.propTypes = {
-  prop: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
 };

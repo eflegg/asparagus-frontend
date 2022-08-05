@@ -81,7 +81,10 @@ export default function EventPage({ event, image }) {
 
   console.log("gallery", gallery);
   return (
-    <PageWrapper>
+    <PageWrapper
+      SEOtitle={event.title.rendered}
+      metadescription={event.acf.excerpt}
+    >
       <h1 className="text-center">{event.title.rendered}</h1>
       <hr />
       <SingleEvent>
@@ -89,7 +92,7 @@ export default function EventPage({ event, image }) {
           <div className="image-container">
             <Image
               src={event._embedded["wp:featuredmedia"]["0"].source_url}
-              alt=""
+              alt={event._embedded["wp:featuredmedia"]["0"].alt_text}
               layout="fill"
               objectFit="cover"
             />

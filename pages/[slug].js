@@ -3,6 +3,7 @@ import { getGeneralPage, getSlugs } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
+import Image from "next/image";
 
 const ContentContainer = styled.div`
   ul {
@@ -14,31 +15,53 @@ const ContentContainer = styled.div`
     list-style: ;
   }
 `;
+const GeneralContainer = styled.div`
+  .general--header {
+    height: 200px;
+    width: 100%;
+    position: relative;
 
-const GeneralHero = styled.div`
-width: 100%;
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 `;
 
 export default function GeneralPage({ genpage }) {
   return (
-    <PageWrapper className="container pt-5">
-      <GeneralHero>
-      <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
-      <p>hello</p>
-      <div className="cover-photo-container">
-      <img src={genpage.acf.image} alt=""></img>
-      </div>
-      </GeneralHero>
-      <ContentContainer
-        className="content-container"
-        dangerouslySetInnerHTML={{ __html: genpage.content.rendered }}
-      ></ContentContainer>
-      <p>{genpage.acf.header}</p>
-      <p>{genpage.acf.text_block && genpage.acf.text_block}</p>
-      <p>{genpage.acf.pull_quote}</p>
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
+    <PageWrapper
+      SEOtitle={
+        genpage.yoast_head_json.title
+          ? genpage.yoast_head_json.title
+          : "Asparagus Magazine"
+      }
+      metadescription={
+        genpage.yoast_head_json.description
+          ? genpage.yoast_head_json.title
+          : "Telling the large and small stories of how we can live more sustainably"
+      }
+      className="container pt-5"
+    >
+      <GeneralContainer>
+        <div className="general--header">
+          <Image
+            src="/cherryblossoms.jpg"
+            layout="fill"
+            objectFit="cover"
+            alt=""
+          />
+          <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
+        </div>
+
+        <ContentContainer
+          className="content-container"
+          dangerouslySetInnerHTML={{ __html: genpage.content.rendered }}
+        ></ContentContainer>
+        <p>{genpage.acf.text_block && genpage.acf.text_block}</p>
+      </GeneralContainer>
     </PageWrapper>
   );
 }

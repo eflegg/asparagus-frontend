@@ -20,24 +20,27 @@ const CategoryH1 = styled.h1`
 `;
 
 export default function CategoryPage({ category, posts, subcategories }) {
-  console.log("category: ", category);
-  console.log("subcats: ", subcategories);
-
   const dynamicRoute = useRouter().asPath;
   const [subfilter, setSubfilter] = useState(null);
   const handleClick = (subIndex) => {
     setSubfilter(subIndex);
-    console.log("subfilter: ", subfilter);
   };
 
   useEffect(() => {
     setSubfilter(null);
   }, [dynamicRoute]);
 
-  console.log("category: ", category);
-  console.log("posts: ", posts);
+  // console.log("category: ", category);
+  // console.log("posts: ", posts);
   return (
-    <PageWrapper pageTitle={category.name} className="container pt-5">
+    <PageWrapper
+      SEOtitle={category.name}
+      metadescription={
+        category.yoast_head_json.description
+          ? category.yoast_head_json.title
+          : "Telling the large and small stories of how we can live more sustainably"
+      }
+    >
       {/* if the category is either start small or voices, show the subcategory filter
       followed by all the articles in the category. no feature article.
 
@@ -57,27 +60,23 @@ export default function CategoryPage({ category, posts, subcategories }) {
           <div className="card--grid single-page">
             {posts.map((post, index) => {
               return (
-                <>
+                <React.Fragment key={uuidv4()}>
                   {post.categories && post.categories.includes(subfilter) ? (
-                    <React.Fragment key={uuidv4()}>
-                      <ArticleCard
-                        post={post}
-                        title={post.title.rendered}
-                        slug={post.slug}
-                        writer={post.acf.writer[0].post_title}
-                      />
-                    </React.Fragment>
+                    <ArticleCard
+                      post={post}
+                      title={post.title.rendered}
+                      slug={post.slug}
+                      writer={post.acf.writer[0].post_title}
+                    />
                   ) : subfilter == null ? (
-                    <React.Fragment key={uuidv4()}>
-                      <ArticleCard
-                        post={post}
-                        title={post.title.rendered}
-                        slug={post.slug}
-                        writer={post.acf.writer[0].post_title}
-                      />
-                    </React.Fragment>
+                    <ArticleCard
+                      post={post}
+                      title={post.title.rendered}
+                      slug={post.slug}
+                      writer={post.acf.writer[0].post_title}
+                    />
                   ) : null}
-                </>
+                </React.Fragment>
               );
             })}
           </div>
@@ -98,18 +97,9 @@ export default function CategoryPage({ category, posts, subcategories }) {
           <div className="card--grid single-page">
             {posts.map((post, index) => {
               return (
-                <>
-                  {index != 0 && (
-                    <React.Fragment key={uuidv4()}>
-                      <ArticleCard
-                        post={post}
-                        title={post.title.rendered}
-                        slug={post.slug}
-                        writer={post.acf.writer[0].post_title}
-                      />
-                    </React.Fragment>
-                  )}
-                </>
+                <React.Fragment key={uuidv4()}>
+                  {index != 0 && <ArticleCard post={post} />}
+                </React.Fragment>
               );
             })}
           </div>

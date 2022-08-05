@@ -82,7 +82,6 @@ const SignUp = styled.div`
 `;
 
 export default function NewsletterSignup({ title, subtitle, image, support }) {
-  console.log("support: ", support);
   return (
     <NewsletterBlock>
       {/* @elizabeth this is how you use a prop in a ternary. if support exists, add this class. otherwise do nothing. apply signupWrapper regardless */}
