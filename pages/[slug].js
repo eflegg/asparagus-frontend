@@ -21,7 +21,7 @@ width: 100%;
 
 export default function GeneralPage({ genpage }) {
   return (
-    <PageWrapper className="container pt-5">
+    <PageWrapper>
       <GeneralHero>
       <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
       <p>hello</p>
