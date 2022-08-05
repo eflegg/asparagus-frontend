@@ -20,8 +20,8 @@ export default function ArticleCard({ post }) {
       subCat.id !== 9 &&
       subCat.id !== 10
   );
-  console.log("subcategories: ", subcategories);
-  console.log("subcategory one: ", subcategories[0].name);
+  // console.log("subcategories: ", subcategories);
+  // console.log("subcategory one: ", subcategories[0].name);
 
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
@@ -39,7 +39,7 @@ export default function ArticleCard({ post }) {
                   src={post._embedded["wp:featuredmedia"]["0"].source_url}
                   layout="fill"
                   objectFit="cover"
-                  alt="Article lead photo"
+                  alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
                 />
               </div>
             </a>

@@ -79,15 +79,7 @@ export default function Events({ events }) {
                       as={`/events/${event.slug}`}
                     >
                       <a>
-                        <EventCard
-                          image={
-                            event._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          name={event.title.rendered}
-                          date={event.acf.date}
-                          location={event.acf.location}
-                          excerpt={event.acf.excerpt}
-                        />
+                        <EventCard event={event} />
                       </a>
                     </Link>
                   ) : null}
@@ -110,15 +102,7 @@ export default function Events({ events }) {
                       as={`/events/${event.slug}`}
                     >
                       <a>
-                        <EventCard
-                          image={
-                            event._embedded["wp:featuredmedia"]["0"].source_url
-                          }
-                          name={event.title.rendered}
-                          date={event.acf.date}
-                          location={event.acf.location}
-                          excerpt={event.acf.excerpt}
-                        />
+                        <EventCard event={event} />
                       </a>
                     </Link>
                   ) : null}

@@ -34,7 +34,7 @@ export default function CurrentIssue({ issues, articles }) {
             layout="responsive"
             width="200px"
             height="250px"
-            alt="Cover photo"
+            alt={issues[0]._embedded["wp:featuredmedia"]["0"].alt_text}
           />
         </div>
         <div className="coverlines">

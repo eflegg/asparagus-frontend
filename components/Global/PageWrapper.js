@@ -10,11 +10,10 @@ const OuterContainer = styled.main`
 
 export default function PageWrapper({
   children,
-  pageTitle,
+
   metadescription,
   SEOtitle,
 }) {
-  console.log("seo title: ", SEOtitle);
   return (
     <OuterContainer>
       <Head>

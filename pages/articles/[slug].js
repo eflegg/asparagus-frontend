@@ -230,7 +230,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
             <div className="hero--image position-relative">
               <Image
                 src={article._embedded["wp:featuredmedia"]["0"].source_url}
-                alt="Article lead image"
+                alt={article._embedded["wp:featuredmedia"]["0"].alt_text}
                 layout="fill"
                 objectFit="cover"
               />

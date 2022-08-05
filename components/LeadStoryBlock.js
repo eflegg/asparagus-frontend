@@ -97,7 +97,7 @@ export default function LeadStoryBlock({ post }) {
           src={post._embedded["wp:featuredmedia"]["0"].source_url}
           layout="fill"
           objectFit="cover"
-          alt="Contributor photo"
+          alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
         />
       </div>
       <div className="lead-text">

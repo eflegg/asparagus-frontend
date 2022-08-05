@@ -98,7 +98,7 @@ export default function AwardWinnerCard({ post }) {
           <div className="image-container">
             <Image
               src={post._embedded["wp:featuredmedia"]["0"].source_url}
-              alt="Article featured image"
+              alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
               layout="fill"
               objectFit="cover"
             />
