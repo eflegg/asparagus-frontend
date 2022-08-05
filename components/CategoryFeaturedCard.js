@@ -65,7 +65,7 @@ export default function CategoryFeaturedCard({ post }) {
     month: "long",
     day: "2-digit",
   });
-  console.log("category feature post: ", post);
+
   return (
     <>
       {post ? (
@@ -77,7 +77,7 @@ export default function CategoryFeaturedCard({ post }) {
                   src={post._embedded["wp:featuredmedia"]["0"].source_url}
                   layout="fill"
                   objectFit="cover"
-                  alt="Article lead photo"
+                  alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
                 />
                 <h3
                   className=""

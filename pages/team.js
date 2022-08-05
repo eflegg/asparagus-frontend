@@ -6,6 +6,7 @@ import ContributorCard from "../components/ContributorCard";
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 const TeamMemberContainer = styled.ul`
   width: 90%;
@@ -13,15 +14,17 @@ const TeamMemberContainer = styled.ul`
 `;
 
 export default function Team({ teamMembers }) {
-  console.log("team members: ", teamMembers);
   return (
-    <PageWrapper pageTitle="Team">
+    <PageWrapper
+      SEOtitle="Team"
+      metadescription="Meet the team at Asparagus Magazine telling large and small stories of sustainability"
+    >
       <h1 className="text-center">Team</h1>
       <hr />
       <TeamMemberContainer>
         {teamMembers.map((member, index) => {
           return (
-            <React.Fragment key={index}>
+            <React.Fragment key={uuidv4()}>
               <ContributorCard
                 team
                 image={member.acf.headshot.url}

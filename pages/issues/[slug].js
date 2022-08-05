@@ -6,6 +6,7 @@ import PageWrapper from "../../components/Global/PageWrapper";
 import ArticleCard from "../../components/ArticleCard";
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
+import { v4 as uuidv4 } from "uuid";
 
 const CoverContainer = styled.div`
   display: flex;
@@ -20,10 +21,10 @@ const CoverContainer = styled.div`
   }
 `;
 
-export default function CurrentIssue({ issue, articles }) {
+export default function Issue({ issue, articles }) {
   const currentIssue = issue.ID;
   return (
-    <PageWrapper pageTitle="Current Issue" className="">
+    <PageWrapper SEOtitle="Current Issue" className="">
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
           <Image
@@ -31,7 +32,7 @@ export default function CurrentIssue({ issue, articles }) {
             layout="responsive"
             width="200px"
             height="250px"
-            alt="Cover photo"
+            alt={issue._embedded["wp:featuredmedia"]["0"].alt_text}
           />
         </div>
         <div className="coverlines">
@@ -45,21 +46,10 @@ export default function CurrentIssue({ issue, articles }) {
           const appearsIn = article.acf.appears_in;
 
           return (
-            <React.Fragment key={index}>
+            <React.Fragment key={uuidv4()}>
               {currentIssue == appearsIn ? (
                 <>
-                  <ArticleCard
-                    post={article}
-                    // title={article.title.rendered}
-                    // slug={article.slug}
-                    // image={
-                    //   article._embedded["wp:featuredmedia"]["0"].source_url
-                    // }
-                    // read={article.acf.time_to_read}
-                    // byline={article.acf.writer[0].post_title}
-                    // excerpt={article.acf.excerpt}
-                    // headshot={article.acf.writer[0].acf.headshot.url}
-                  />
+                  <ArticleCard post={article} />
                 </>
               ) : null}
             </React.Fragment>

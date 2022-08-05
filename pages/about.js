@@ -8,3 +8,5 @@ export default function About() {
     </PageWrapper>
   );
 }
+
+//delete this page, it should come from the general pages post type

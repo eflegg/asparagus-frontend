@@ -9,7 +9,6 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
-import SupportCard from "../components/SupportCard";
 
 const CategoryContainer = styled.section`
   margin-bottom: 45px;
@@ -31,18 +30,24 @@ margin-bottom: 80px;
 `;
 
 export default function Home({ page, posts }) {
-  //use this to get only subcategories for cards
-  // const subcategoryQuery = await fetch(
-  //   `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}`
-  // );
-
   const catOne = page.acf.home_category_one[0].term_id;
   const catTwo = page.acf.home_category_two[0].term_id;
   const catThree = page.acf.home_category_three[0].term_id;
 
   return (
     <>
-      <PageWrapper pageTitle="Asparagus Magazine - Home">
+      <PageWrapper
+        SEOtitle={
+          page.yoast_head_json.title
+            ? page.yoast_head_json.title
+            : "Asparagus Magazine"
+        }
+        metadescription={
+          page.yoast_head_json.description
+            ? page.yoast_head_json.title
+            : "Telling the large and small stories of how we can live more sustainably"
+        }
+      >
         <main>
           <div>
             {posts.map((post, index) => {
@@ -56,83 +61,78 @@ export default function Home({ page, posts }) {
                 }
               );
               return (
-                <>
+                <React.Fragment key={uuidv4()}>
                   {post.id == page.acf.lead_story[0].ID ? (
-                    <LeadStoryBlock
-                      post={post}
-                      date={formattedDate}
-                      image={post._embedded["wp:featuredmedia"]["0"].source_url}
-                      title={post.title.rendered}
-                      read={post.acf.time_to_read}
-                      byline={post.acf.writer[0].post_title}
-                      excerpt={post.acf.dek}
-                      headshot={post.acf.writer[0].acf.headshot.url}
-                    />
+                    <LeadStoryBlock post={post} />
                   ) : null}
-                </>
+                </React.Fragment>
               );
             })}
           </div>
           <CategoryContainer className="new-from--container">
-            <h2>New From Asparagus</h2>
+            <h2 className="h5">New From Asparagus</h2>
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
                 return (
-                  <>
+                  <React.Fragment key={uuidv4()}>
                     {index <= 5 ? (
                       <>
                         <ArticleCard post={post} />
                       </>
                     ) : null}
-                  </>
+                  </React.Fragment>
                 );
               })}
             </div>
           </CategoryContainer>
 
           <CategoryContainer className="cat-one--container">
-            <h2>{page.acf.home_category_one[0].name}</h2>
+            <h2 className="h5">{page.acf.home_category_one[0].name}</h2>
             <hr />
-            <div className="card--grid">
+            <div
+              className={`${
+                page.acf.home_category_one[0].name == "Awards"
+                  ? "awards--container__home"
+                  : "card--grid"
+              }`}
+            >
               {posts.map((post, index) => {
                 return (
-                  <>
+                  <React.Fragment key={uuidv4()}>
                     {page.acf.home_category_one[0].name == "Awards" &&
                     post.categories.includes(catOne) ? (
-                      <React.Fragment key={uuidv4()}>
-                        <AwardWinnerCard post={post} />
-                      </React.Fragment>
+                      <AwardWinnerCard post={post} />
                     ) : post.categories.includes(catOne) ? (
-                      <React.Fragment key={uuidv4()}>
-                        <ArticleCard post={post} />
-                      </React.Fragment>
+                      <ArticleCard post={post} />
                     ) : null}
-                  </>
+                  </React.Fragment>
                 );
               })}
             </div>
           </CategoryContainer>
 
           <CategoryContainer className="cat-two--container">
-            <h2>{page.acf.home_category_two[0].name}</h2>
+            <h2 className="h5">{page.acf.home_category_two[0].name}</h2>
             <hr />
-            <div className="card--grid">
+            <div
+              className={`${
+                page.acf.home_category_two[0].name == "Awards"
+                  ? "awards--container__home"
+                  : "card--grid"
+              }`}
+            >
               {posts.map((post, index) => {
                 return (
-                  <>
+                  <React.Fragment key={uuidv4()}>
                     {page.acf.home_category_two[0].name == "Awards" &&
                     post.categories.includes(catTwo) &&
                     index <= 5 ? (
-                      <React.Fragment key={uuidv4()}>
-                        <AwardWinnerCard post={post} />
-                      </React.Fragment>
+                      <AwardWinnerCard post={post} />
                     ) : post.categories.includes(catTwo) && index <= 6 ? (
-                      <React.Fragment key={uuidv4()}>
-                        <ArticleCard post={post} />
-                      </React.Fragment>
+                      <ArticleCard post={post} />
                     ) : null}
-                  </>
+                  </React.Fragment>
                 );
               })}
             </div>
@@ -145,24 +145,26 @@ export default function Home({ page, posts }) {
           />
 
           <CategoryContainer className="cat-three--container">
-            <h2>{page.acf.home_category_three[0].name}</h2>
+            <h2 className="h5">{page.acf.home_category_three[0].name}</h2>
             <hr />
-            <div className="card--grid">
+            <div
+              className={`${
+                page.acf.home_category_three[0].name == "Awards"
+                  ? "awards--container__home"
+                  : "card--grid"
+              }`}
+            >
               {posts.map((post, index) => {
                 return (
-                  <>
+                  <React.Fragment key={uuidv4()}>
                     {page.acf.home_category_three[0].name == "Awards" &&
                     post.categories.includes(catThree) &&
                     index <= 5 ? (
-                      <React.Fragment key={uuidv4()}>
-                        <AwardWinnerCard post={post} />
-                      </React.Fragment>
+                      <AwardWinnerCard post={post} />
                     ) : post.categories.includes(catThree) && index <= 5 ? (
-                      <React.Fragment key={uuidv4()}>
-                        <ArticleCard post={post} />
-                      </React.Fragment>
+                      <ArticleCard post={post} />
                     ) : null}
-                  </>
+                  </React.Fragment>
                 );
               })}
             </div>

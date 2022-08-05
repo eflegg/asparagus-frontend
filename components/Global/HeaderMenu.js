@@ -23,26 +23,24 @@ const MenuContainer = styled.div`
       padding-left: 0;
     }
   }
-  margin: 30px 15px; 
+  margin: 30px 15px;
   ${theme.mediaQuery.md`
     margin: 30px 57px;
   `};
 `;
 
-
-const MobileNav = styled.nav`
-`;
+const MobileNav = styled.nav``;
 
 const ConnectMenuContainer = styled.div`
- display: flex; 
- justify-content: space-between; 
- align-items: center; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   ${theme.mediaQuery.md`
     flex: 0 0 50%; 
     margin-top: 30px; 
     align-items: flex-start; 
   `};
-`
+`;
 const HamburgerMenuButton = styled.div`
   .btn-nav {
     cursor: pointer;
@@ -109,51 +107,50 @@ const HamburgerMenuButton = styled.div`
 const DesktopNav = styled.nav`
   ul {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
   }
 `;
 
 const LogoConnectMenuContainer = styled.div`
-  display: flex; 
-  flex-direction: column-reverse; 
-  justify-content: space-around; 
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
   .img {
-    flex: 0 0 50%; 
+    flex: 0 0 50%;
   }
   ${theme.mediaQuery.md`
     flex-direction: row;
     `};
-`
+`;
 const ConnectMenuNav = styled.nav`
-  flex: 1; 
+  flex: 1;
   ul {
     display: flex;
     justify-content: space-evenly;
-    align-items: center; 
+    align-items: center;
     flex-wrap: nowrap;
   }
   a {
-    font-size: 2rem; 
-    font-weight: 600; 
+    font-size: 2rem;
+    font-weight: 600;
     color: ${theme.colours.soil};
-    font-family: ${theme.type.semibold}; 
-    
+    font-family: ${theme.type.semibold};
   }
   li {
-    flex: none; 
+    flex: none;
     ${theme.mediaQuery.md`
       padding: 3px 30px; 
     `};
   }
   li:first-of-type {
     background-color: ${theme.colours.gusYellow};
-    padding: 3px 5px; 
-    border-radius: 5px; 
+    padding: 3px 5px;
+    border-radius: 5px;
     ${theme.mediaQuery.md`
       padding: 3px 30px; 
     `};
   }
-`
+`;
 
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
@@ -235,7 +232,7 @@ export default function HeaderMenu() {
         <LogoConnectMenuContainer>
           <Link href="/">
             <a>
-              <img src="/Asparagus_Nameplate_Color.png"/>
+              <img src="/Asparagus_Nameplate_Color.png" />
             </a>
           </Link>
           <ConnectMenuContainer>
@@ -249,7 +246,7 @@ export default function HeaderMenu() {
                         href={`/${connectLink.slug}`}
                         to={`/${connectLink.slug}`}
                       >
-                      <a>{connectLink.title}</a>
+                        <a>{connectLink.title}</a>
                       </ActiveLink>
                     </li>
                   );
@@ -262,7 +259,7 @@ export default function HeaderMenu() {
                 <button
                   className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
                   onClick={() => {
-                  setNavActive(!navActive);
+                    setNavActive(!navActive);
                   }}
                 >
                   <span className="burger-1"></span>
@@ -287,10 +284,9 @@ export default function HeaderMenu() {
             <ul>
               {links?.items?.map((link, index) => {
                 return (
-                  <>
+                  <React.Fragment key={uuidv4()}>
                     <li
                       className="nav-link"
-                      key={uuidv4()}
                       onClick={() => handleSubnavClick(link.ID)}
                     >
                       <span
@@ -334,7 +330,7 @@ export default function HeaderMenu() {
                         </ul>
                       ) : null}
                     </li>
-                  </>
+                  </React.Fragment>
                 );
               })}{" "}
             </ul>
@@ -345,10 +341,9 @@ export default function HeaderMenu() {
               <ul>
                 {links?.items?.map((link, index) => {
                   return (
-                    <>
+                    <React.Fragment key={uuidv4()}>
                       <li
                         className="nav-link"
-                        key={uuidv4()}
                         onClick={() => handleSubnavClick(link.ID)}
                       >
                         <span
@@ -377,15 +372,13 @@ export default function HeaderMenu() {
                           </ul>
                         ) : null}
                       </li>
-                    </>
+                    </React.Fragment>
                   );
                 })}{" "}
               </ul>
             ) : null}
           </MobileNav>
         )}
-
-
       </Suspense>
     </MenuContainer>
   );

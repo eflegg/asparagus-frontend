@@ -58,19 +58,16 @@ const StockistBlock = styled.div`
   }
 `;
 const Map = styled.div`
-iframe {
-  border: 0px;
-  margin: 45px 0;
-  width: 100%;
-}
-.stockist-map {
-  width: 90%;
-  margin: 0 auto;
-}
+  iframe {
+    border: 0px;
+    margin: 45px 0;
+    width: 100%;
+  }
+  .stockist-map {
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
-
-
-
 
 const provinces = ["British Columbia", "Alberta", "Saskatchewan"];
 
@@ -78,7 +75,10 @@ export default function Stockists({ stockists, page }) {
   console.log("stockists: ", stockists);
   console.log("page: ", page);
   return (
-    <PageWrapper className="">
+    <PageWrapper
+      SEOtitle="Stockists"
+      metadescription="Find Asparagus Magazine in print at one of these fine retailers!"
+    >
       <h1 className="text-center">Stockists</h1>
       <hr />
       <p className="text-center">
@@ -86,15 +86,14 @@ export default function Stockists({ stockists, page }) {
         these fine establishments!
       </p>
       <Map>
-      <div className="stockist-map">
+        <div className="stockist-map">
           <iframe
             src={page.acf.stockist_map}
             width="100%"
             height="480"
           ></iframe>
         </div>
-        </Map>
-      
+      </Map>
       <StockistBlock>
         {provinces.map((province, index) => {
           const newStockists = stockists.filter(
