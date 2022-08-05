@@ -3,10 +3,21 @@ import Link from "next/link";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 
+const StockistContainer = styled.div`
+  padding-left: 30px;
+  margin-bottom: 20px;
+  p {
+    margin: 0;
+  }
+  ${theme.mediaQuery.sm`
+  padding-left: 60px;
+ `}
+`;
+
 export default function StockistSingle({ stockist, numeral }) {
   console.log("numeral: ", numeral);
   return (
-    <div className="stockist--single">
+    <StockistContainer className="stockist--single">
       <div className="number-name-wrapper">
         <div className="circle">{numeral}</div>
         <p>{stockist.acf.stockist_name}</p>
@@ -22,6 +33,6 @@ export default function StockistSingle({ stockist, numeral }) {
           <h5 className="website">{stockist.acf.stockist_website}</h5>
         </a>
       </div>
-    </div>
+    </StockistContainer>
   );
 }
