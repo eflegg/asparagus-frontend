@@ -92,7 +92,7 @@ export default function EventPage({ event, image }) {
           <div className="image-container">
             <Image
               src={event._embedded["wp:featuredmedia"]["0"].source_url}
-              alt=""
+              alt={event._embedded["wp:featuredmedia"]["0"].alt_text}
               layout="fill"
               objectFit="cover"
             />

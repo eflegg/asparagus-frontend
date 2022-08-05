@@ -32,7 +32,7 @@ export default function Issue({ issue, articles }) {
             layout="responsive"
             width="200px"
             height="250px"
-            alt="Cover photo"
+            alt={issue._embedded["wp:featuredmedia"]["0"].alt_text}
           />
         </div>
         <div className="coverlines">

@@ -88,7 +88,7 @@ export default function TeamPage({ teamMember, posts }) {
               src={teamMember._embedded["wp:featuredmedia"]["0"].source_url}
               layout="fill"
               objectFit="cover"
-              alt="teamMember photo"
+              alt={teamMember._embedded["wp:featuredmedia"]["0"].alt_text}
             />
           </div>
           <div className="contrib--details">
@@ -121,7 +121,7 @@ export default function TeamPage({ teamMember, posts }) {
             </div>
           </div>
         </ContribHeader>
-        <ul className="card--grid">
+        <ul className="card--grid single-page">
           {posts.map((post, index) => {
             return (
               <React.Fragment key={uuidv4()}>

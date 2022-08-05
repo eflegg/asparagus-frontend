@@ -63,16 +63,7 @@ export default function Home({ page, posts }) {
               return (
                 <React.Fragment key={uuidv4()}>
                   {post.id == page.acf.lead_story[0].ID ? (
-                    <LeadStoryBlock
-                      post={post}
-                      date={formattedDate}
-                      image={post._embedded["wp:featuredmedia"]["0"].source_url}
-                      title={post.title.rendered}
-                      read={post.acf.time_to_read}
-                      byline={post.acf.writer[0].post_title}
-                      excerpt={post.acf.dek}
-                      headshot={post.acf.writer[0].acf.headshot.url}
-                    />
+                    <LeadStoryBlock post={post} />
                   ) : null}
                 </React.Fragment>
               );
