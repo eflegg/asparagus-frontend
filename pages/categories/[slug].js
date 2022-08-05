@@ -33,7 +33,14 @@ export default function CategoryPage({ category, posts, subcategories }) {
   // console.log("category: ", category);
   // console.log("posts: ", posts);
   return (
-    <PageWrapper pageTitle={category.name} className="container pt-5">
+    <PageWrapper
+      SEOtitle={category.name}
+      metadescription={
+        category.yoast_head_json.description
+          ? category.yoast_head_json.title
+          : "Telling the large and small stories of how we can live more sustainably"
+      }
+    >
       {/* if the category is either start small or voices, show the subcategory filter
       followed by all the articles in the category. no feature article.
 

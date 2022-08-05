@@ -12,4 +12,4 @@ export default function Shop() {
   );
 }
 
-// query big commerce
+// this will be deleted. the shop is NextCommerce on a subdomain

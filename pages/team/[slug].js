@@ -75,7 +75,10 @@ margin: initial;
 
 export default function TeamPage({ teamMember, posts }) {
   return (
-    <PageWrapper>
+    <PageWrapper
+      SEOtitle={teamMember.title.rendered}
+      metadescription={`${teamMember.title.rendered} - Meet the Asparagus Magazine Team `}
+    >
       <div className="container pt-5">
         <h1 className="text-center pb-5">{teamMember.title.rendered}</h1>
         <hr />

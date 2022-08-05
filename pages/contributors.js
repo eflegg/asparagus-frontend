@@ -27,7 +27,11 @@ export default function ContributorsPage({ contributors, categories }) {
 
   // const ref = React.forwardRef(null);
   return (
-    <PageWrapper pageTitle="Contributors" className="">
+    <PageWrapper
+      SEOtitle="Contributors"
+      metadescription="Meet the Asparagus contributors telling large and small stories of sustainable living"
+      className=""
+    >
       <h1 className="text-center">Contributors</h1>
       <hr />
       <ContribContainer>

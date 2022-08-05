@@ -11,7 +11,10 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function Awards({ posts }) {
   return (
-    <PageWrapper pageTitle="Awards" className="container pt-5">
+    <PageWrapper
+      SEOtitle="Awards"
+      metadescription="A showcase of all our award-winning and nominated Asparagus Magazine stories"
+    >
       <h3>Award Winners</h3>
       <ul>
         {posts.map((post, index) => {

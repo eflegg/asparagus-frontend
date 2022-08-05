@@ -14,6 +14,7 @@ export default function PageWrapper({
   metadescription,
   SEOtitle,
 }) {
+  console.log("seo title: ", SEOtitle);
   return (
     <OuterContainer>
       <Head>

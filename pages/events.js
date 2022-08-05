@@ -43,7 +43,10 @@ export default function Events({ events }) {
   }
 
   return (
-    <PageWrapper pageTitle="Events" className="">
+    <PageWrapper
+      SEOtitle="Events"
+      metadescription="A list of past and upcoming Asparagus Magazine events. Join us at the next one!"
+    >
       <EventsContainer>
         <h1 className="text-center">Events</h1>
         <hr />

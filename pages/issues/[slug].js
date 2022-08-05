@@ -21,10 +21,10 @@ const CoverContainer = styled.div`
   }
 `;
 
-export default function CurrentIssue({ issue, articles }) {
+export default function Issue({ issue, articles }) {
   const currentIssue = issue.ID;
   return (
-    <PageWrapper pageTitle="Current Issue" className="">
+    <PageWrapper SEOtitle="Current Issue" className="">
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
           <Image

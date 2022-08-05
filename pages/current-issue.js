@@ -22,9 +22,11 @@ const CoverContainer = styled.div`
 `;
 
 export default function CurrentIssue({ issues, articles }) {
-  const currentIssue = issues[0];
   return (
-    <PageWrapper pageTitle="Current Issue" className="">
+    <PageWrapper
+      SEOtitle="Current Issue"
+      metadescription="All the sustainble stories from Asparagus Magazine's most recent issue"
+    >
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
           <Image

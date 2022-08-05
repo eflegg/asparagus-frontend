@@ -42,7 +42,18 @@ export default function Home({ page, posts }) {
 
   return (
     <>
-      <PageWrapper pageTitle="Asparagus Magazine - Home">
+      <PageWrapper
+        SEOtitle={
+          page.yoast_head_json.title
+            ? page.yoast_head_json.title
+            : "Asparagus Magazine"
+        }
+        metadescription={
+          page.yoast_head_json.description
+            ? page.yoast_head_json.title
+            : "Telling the large and small stories of how we can live more sustainably"
+        }
+      >
         <main>
           <div>
             {posts.map((post, index) => {

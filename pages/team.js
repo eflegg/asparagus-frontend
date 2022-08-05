@@ -14,9 +14,11 @@ const TeamMemberContainer = styled.ul`
 `;
 
 export default function Team({ teamMembers }) {
-  console.log("team members: ", teamMembers);
   return (
-    <PageWrapper pageTitle="Team">
+    <PageWrapper
+      SEOtitle="Team"
+      metadescription="Meet the team at Asparagus Magazine telling large and small stories of sustainability"
+    >
       <h1 className="text-center">Team</h1>
       <hr />
       <TeamMemberContainer>

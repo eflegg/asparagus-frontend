@@ -13,7 +13,10 @@ export default function PastIssues({ issues }) {
   const currentIssue = issues[0].title.rendered;
 
   return (
-    <PageWrapper pageTitle="Past Issues" className="">
+    <PageWrapper
+      SEOtitl="Past Issues"
+      metadescription="Peruse stories of a just society on a healthy planet in all Asparagus Magazine's past issues"
+    >
       <ul className="card--grid">
         {issues.map((issue, index) => {
           return (

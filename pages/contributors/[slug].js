@@ -78,7 +78,10 @@ export default function ContributorPage({ contributor, posts }) {
   console.log("posts: ", posts);
 
   return (
-    <PageWrapper pageTitle={contributor.title.rendered}>
+    <PageWrapper
+      SEOtitle={contributor.title.rendered}
+      metadescription={contributor.acf.bio}
+    >
       <div className="container pt-5">
         <h1 className="text-center pb-5">{contributor.title.rendered}</h1>
         <hr />

@@ -23,7 +23,11 @@ export default function Tips({ tips }) {
   );
 
   return (
-    <PageWrapper className="">
+    <PageWrapper
+      SEOtitle="Asparagus Tips Archive"
+      metadescription="A newsletter series of quick tips on how to make every part of your life brighter and greener"
+      className=""
+    >
       <h1>Asparagus Tips</h1>
       <select
         value={newsletterSelected}
