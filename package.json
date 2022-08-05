@@ -15,6 +15,7 @@
     "isomorphic-fetch": "^3.0.0",
     "isomorphic-unfetch": "^3.1.0",
     "next": "12.1.6",
+    "next-share": "^0.18.0",
     "prop-types": "^15.8.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
@@ -28,5 +29,11 @@
     "babel-plugin-styled-components": "^2.0.7",
     "eslint": "8.16.0",
     "eslint-config-next": "12.1.6"
+  },
+  "overrides": {
+    "react-share": {
+      "react": "18.1.0",
+      "react-dom": "18.1.0"
+    }
   }
 }

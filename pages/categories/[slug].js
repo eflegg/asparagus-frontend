@@ -10,6 +10,14 @@ import PageWrapper from "../../components/Global/PageWrapper";
 import CategoryFeaturedCard from "../../components/CategoryFeaturedCard";
 import ArticleFilter from "../../components/ArticleFilter";
 import { v4 as uuidv4 } from "uuid";
+import NewsletterSignup from "../../components/NewsletterSignupCard";
+import styled from "styled-components";
+import theme from "../../components/Global/Theme";
+
+const CategoryH1 = styled.h1`
+  width: 90%;
+  margin: 0 auto;
+`;
 
 export default function CategoryPage({ category, posts, subcategories }) {
   const dynamicRoute = useRouter().asPath;
@@ -33,10 +41,10 @@ export default function CategoryPage({ category, posts, subcategories }) {
 
       all other categories show feature article followed by the rest of the articles
       */}
-      <h1
-        className="text-center"
+      <CategoryH1
+        className="h5"
         dangerouslySetInnerHTML={{ __html: category.name }}
-      ></h1>
+      ></CategoryH1>
       <hr />
       {category.slug == "voices" || category.slug == "start-small" ? (
         <>
@@ -71,11 +79,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
           {posts.map((post, index) => {
             return (
               <React.Fragment key={uuidv4()}>
-                <AwardWinnerCard
-                  title={post.title.rendered}
-                  slug={post.slug}
-                  writer={post.acf.writer[0].post_title}
-                />
+                <AwardWinnerCard post={post} />
               </React.Fragment>
             );
           })}
@@ -92,6 +96,11 @@ export default function CategoryPage({ category, posts, subcategories }) {
               );
             })}
           </div>
+          <NewsletterSignup
+            title="Sign up for the Asparagus Newsletter"
+            subtitle="Pleasantly infrequent updates from the asparagus patch"
+            image="/triplestalk.svg"
+          />
         </>
       )}
     </PageWrapper>

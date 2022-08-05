@@ -1,19 +1,136 @@
 import Link from "next/link";
 import { getEvent, getSlugs } from "../../utils/wordpress";
+import theme from "../../components/Global/Theme";
+import styled from "styled-components";
+import PageWrapper from "../../components/Global/PageWrapper";
+import { v4 as uuidv4 } from "uuid";
+import React from "react";
+import Image from "next/image";
 
-export default function EventPage({ event }) {
+const SingleEvent = styled.div`
+  // border: solid blue;
+  width: 80%;
+  margin: 0 auto;
+
+  .image-container {
+    position: relative;
+    height: initial;
+    min-height: 300px;
+    ${theme.mediaQuery.md`
+  width: 50%;
+
+  `}/* img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    } */
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    // margin-top: 50px;
+    ${theme.mediaQuery.md`
+  flex-direction: row;
+  `}
+  }
+
+  .event-info {
+    // border: solid red;
+    padding: 20px;
+    ${theme.mediaQuery.md`
+  width: 50%;
+  padding-top: 0px;
+  `}
+  }
+
+  .event--description {
+    margin-bottom: 30px;
+  }
+`;
+
+const Gallery = styled.div`
+  .event-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(25.5rem, 100%), 1fr));
+    grid-row-gap: 50px;
+    grid-column-gap: 50px;
+    justify-content: center;
+    width: 80%;
+    margin: 65px auto;
+    list-style: none;
+    ${theme.mediaQuery.md`
+  `}
+  }
+  .event-image {
+    position: relative;
+    /* img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    } */
+  }
+`;
+
+export default function EventPage({ event, image }) {
   console.log("event: ", event);
+  const gallery = event.acf.event_images;
+
+  const eventDate = event.acf.date;
+  const stringEventDate = new Date(eventDate).getTime();
+  const stringCurrentDate = new Date().getTime();
+
+  console.log("gallery", gallery);
   return (
-    <div className="container pt-5">
-      <h1 className="text-center pb-5">{event.title.rendered}</h1>
-      <div
-        className="card-text pb-5"
-        dangerouslySetInnerHTML={{ __html: event.content.rendered }}
-      ></div>
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
-    </div>
+    <PageWrapper>
+      <h1 className="text-center">{event.title.rendered}</h1>
+      <hr />
+      <SingleEvent>
+        <div className="wrapper">
+          <div className="image-container">
+            <Image
+              src={event._embedded["wp:featuredmedia"]["0"].source_url}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+          <div className="event-info">
+            <p className="single-event--date">{event.acf.date}</p>
+            <p className="event--location">{event.acf.location}</p>
+            <p className="event--description">{event.acf.description}</p>
+            {stringEventDate >= stringCurrentDate ? (
+              <Link href="/">
+                <a>
+                  <button className="btn btn--primary">Get Tickets</button>
+                </a>
+              </Link>
+            ) : null}
+          </div>
+        </div>
+      </SingleEvent>
+      <Gallery>
+        <div className="event-gallery">
+          {gallery && gallery.length > 0
+            ? gallery.map((galleryImage, index) => {
+                return (
+                  <React.Fragment key={uuidv4()}>
+                    <div className="event-image">
+                      <Image
+                        src={galleryImage?.url}
+                        alt=""
+                        layout="responsive"
+                        width="500"
+                        height="500"
+                        objectFit="cover"
+                      />
+                    </div>
+                  </React.Fragment>
+                );
+              })
+            : null}
+        </div>
+      </Gallery>
+    </PageWrapper>
   );
 }
 

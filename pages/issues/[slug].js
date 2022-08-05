@@ -49,18 +49,7 @@ export default function CurrentIssue({ issue, articles }) {
             <React.Fragment key={uuidv4()}>
               {currentIssue == appearsIn ? (
                 <>
-                  <ArticleCard
-                    post={article}
-                    title={article.title.rendered}
-                    slug={article.slug}
-                    image={
-                      article._embedded["wp:featuredmedia"]["0"].source_url
-                    }
-                    read={article.acf.time_to_read}
-                    byline={article.acf.writer[0].post_title}
-                    excerpt={article.acf.dek}
-                    headshot={article.acf.writer[0].acf.headshot.url}
-                  />
+                  <ArticleCard post={article} />
                 </>
               ) : null}
             </React.Fragment>

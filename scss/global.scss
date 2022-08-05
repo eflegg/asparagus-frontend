@@ -62,6 +62,7 @@ $xl: 1800px;
   margin: 0 auto;
   list-style: none;
   max-width: 1200px;
+
   &.single-page {
     margin: 100px auto;
   }
@@ -188,6 +189,7 @@ $headerFont: "Source Serif Pro", serif;
 $bodyFont: "Source Serif Pro", serif;
 $accentFont: "halcyon-regular", sans-serif;
 $semibold: "halcyon-semibold", sans-serif;
+$medium: "halcyon-medium", sans-serif;
 
 $gusGreen: #339933;
 $soil: #913029;
@@ -212,6 +214,16 @@ h5,
 h6 {
   font-family: $headerFont;
   margin: 0;
+  // padding: 20px;
+}
+
+.footer--container.span {
+  font-family: $headerFont;
+  font-weight: bold;
+}
+
+a.card-text {
+  color: black;
 }
 
 p {
@@ -240,13 +252,21 @@ li {
 
 a {
   text-decoration: none;
+  color: $soil;
+  font-weight: 600;
+  font-family: $accentFont;
 }
 
 li {
-  list-style: none;
   font-family: $bodyFont;
   font-size: 1.8rem;
-  line-height: 150%;
+  font-size: 18px;
+}
+
+ul {
+  li {
+    list-style: none;
+  }
 }
 
 .paragraph--bold {
@@ -329,8 +349,9 @@ h4 {
   }
 }
 
-h5 {
-  font-size: 3.4rem;
+h5,
+.h5 {
+  font-size: 1.8rem;
   color: $soil;
   font-weight: 700;
 
@@ -388,7 +409,7 @@ h6 {
   font-size: 1.4rem;
   line-height: 1.8rem;
   color: black;
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
 
   @include media-query-min($sm) {
     font-size: calc(14px + 2 * ((100vw - 320px) / 680));
@@ -402,17 +423,20 @@ h6 {
 
 .deck {
   font-family: $accentFont;
-  font-size: 2rem;
-  line-height: 3.2rem;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
   color: black;
+  margin: 15px 0 40px;
 
   @include media-query-min($sm) {
+    margin: 22px 0 40px;
     font-size: calc(16px + 4 * ((100vw - 320px) / 680));
+    line-height: 2.1rem;
   }
 
   @include media-query-min($md) {
     @include font-size(2);
-    line-height: 32px;
+    line-height: 2.4rem;
   }
 }
 
@@ -449,6 +473,7 @@ h6 {
     line-height: 32px;
   }
 }
+
 .byline--image {
   position: relative;
   overflow: hidden;
@@ -466,19 +491,21 @@ h6 {
   font-weight: 700;
   line-height: 2.1rem;
   color: black;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
+
 .article-details {
   display: flex;
   align-items: center;
 }
+
 .date--article-card {
   font-family: $accentFont;
   font-size: 1.3rem;
   color: black;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   line-height: 1.6rem;
 }
 
@@ -640,6 +667,55 @@ p.newsletter-subheader--primary {
   }
 }
 
+p.event--date,
+.event--location {
+  font-family: $accentFont;
+  font-size: 1.6rem;
+
+  @include media-query-min($sm) {
+    font-size: calc(16px + 8 * ((100vw - 320px) / 680));
+    line-height: 26px;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(2.4);
+    line-height: 36px;
+  }
+}
+
+p.single-event--date {
+  font-family: $headerFont;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $gusGreen;
+
+  @include media-query-min($sm) {
+    font-size: calc(20px + 12 * ((100vw - 320px) / 680));
+    line-height: 28px;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(32px);
+    line-height: 40px;
+  }
+}
+
+p.event--description {
+  font-family: $bodyFont;
+  font-size: 1.4rem;
+  line-height: 2rem;
+
+  @include media-query-min($sm) {
+    font-size: calc(14px + 6 * ((100vw - 320px) / 680));
+    line-height: 26px;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(20px);
+    line-height: 32px;
+  }
+}
+
 span.topic-menu {
   font-family: $accentFont;
   font-size: 3.2rem;
@@ -690,14 +766,24 @@ li.nav-link {
   font-family: $accentFont;
 }
 
-.wp-block-quote {
+.wp-block-pullquote {
   p {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     color: $gusGreen;
     width: 80%;
     margin: 20px auto;
     text-align: center;
+    font-family: $semibold;
+    @include media-query-min($sm) {
+      font-size: calc(18px + 6 * ((100vw - 320px) / 680));
+      line-height: 2.6rem;
+    }
+
+    @include media-query-min($md) {
+      @include font-size(2.4);
+      line-height: 32px;
+    }
   }
 }
 
@@ -734,9 +820,11 @@ li.nav-link {
 .d-flex {
   display: flex;
 }
+
 .flex-column {
   flex-direction: column;
 }
+
 .flex-sm-row {
   @include media-query-min($sm) {
     flex-direction: row;
@@ -751,6 +839,10 @@ li.nav-link {
 
 .justify-content-center {
   justify-content: center;
+}
+
+.justify-content-flex-end {
+  justify-content: flex-end;
 }
 
 .align-items-center {
@@ -796,6 +888,18 @@ li.nav-link {
   }
 
   text-align: center;
+}
+
+.btn--secondary {
+  // background-color: $gusYellow;
+  border-radius: 5px;
+  padding: 3px 30px;
+  margin: 5px;
+  font-family: $medium;
+  color: $soil;
+  font-size: 1.6rem;
+  background: transparent;
+  border: 0px;
 }
 
 /***  Images  ***/
