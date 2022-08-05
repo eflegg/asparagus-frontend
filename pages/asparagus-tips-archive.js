@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Link from "next/link";
+
 import { getTips } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
@@ -40,7 +40,7 @@ export default function Tips({ tips }) {
             <>
               {" "}
               {tip.title.rendered == newsletterSelected ? (
-                <React.Fragment key={tip.ID}>
+                <React.Fragment key={uuidv4()}>
                   <h2 className="text-center">{tip.title.rendered}</h2>
                   <div
                     className="newsletter-content"

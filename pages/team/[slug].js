@@ -9,6 +9,7 @@ import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
 import { ContribImage } from "../../components/Global/styles";
 import PageWrapper from "../../components/Global/PageWrapper";
+import { v4 as uuidv4 } from "uuid";
 
 const ContribHeader = styled.div`
   margin: 0 auto 70px;
@@ -120,29 +121,19 @@ export default function TeamPage({ teamMember, posts }) {
         <ul className="card--grid">
           {posts.map((post, index) => {
             return (
-              <>
+              <React.Fragment key={uuidv4()}>
                 {post.acf.photographer[0]?.ID == teamMember.id ? (
+                  <ArticleCard post={post} />
+                ) : null}
+                {post.acf.writer[0]?.ID == teamMember.id ? (
                   <ArticleCard
                     post={post}
-                    key={index}
                     title={post.title.rendered}
                     slug={post.slug}
                     writer={post.acf.writer[0].post_title}
-                    // categories={post.categories}
-                    image={post._embedded["wp:featuredmedia"]["0"].source_url}
                   />
                 ) : null}
-                {post.acf.writer[0]?.ID == teamMember.id ? (
-                  <React.Fragment key={index}>
-                    <ArticleCard
-                      post={post}
-                      title={post.title.rendered}
-                      slug={post.slug}
-                      writer={post.acf.writer[0].post_title}
-                    />
-                  </React.Fragment>
-                ) : null}
-              </>
+              </React.Fragment>
             );
           })}
         </ul>

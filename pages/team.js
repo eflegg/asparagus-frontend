@@ -6,6 +6,7 @@ import ContributorCard from "../components/ContributorCard";
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 const TeamMemberContainer = styled.ul`
   width: 90%;
@@ -21,7 +22,7 @@ export default function Team({ teamMembers }) {
       <TeamMemberContainer>
         {teamMembers.map((member, index) => {
           return (
-            <React.Fragment key={index}>
+            <React.Fragment key={uuidv4()}>
               <ContributorCard
                 team
                 image={member.acf.headshot.url}

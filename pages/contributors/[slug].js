@@ -9,6 +9,7 @@ import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
 import { ContribImage } from "../../components/Global/styles";
 import PageWrapper from "../../components/Global/PageWrapper";
+import { v4 as uuidv4 } from "uuid";
 
 const ContribHeader = styled.div`
   margin: 0 auto 70px;
@@ -125,30 +126,18 @@ export default function ContributorPage({ contributor, posts }) {
         <div className="card--grid single-page">
           {posts.map((post, index) => {
             return (
-              <>
+              <React.Fragment key={uuidv4()}>
                 {post.acf.photographer[0]?.ID == contributor.id ? (
                   <>
-                    <ArticleCard
-                      post={post}
-                      key={index}
-                      title={post.title.rendered}
-                      slug={post.slug}
-                      writer={post.acf.writer[0].post_title}
-                    />
+                    <ArticleCard post={post} />
                   </>
                 ) : null}
                 {post.acf.writer[0]?.ID == contributor.id ? (
                   <>
-                    <ArticleCard
-                      post={post}
-                      key={index}
-                      title={post.title.rendered}
-                      slug={post.slug}
-                      writer={post.acf.writer[0].post_title}
-                    />
+                    <ArticleCard post={post} />
                   </>
                 ) : null}
-              </>
+              </React.Fragment>
             );
           })}
         </div>

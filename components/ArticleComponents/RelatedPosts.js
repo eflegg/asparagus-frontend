@@ -35,7 +35,7 @@ export default function RelatedPosts({ allArticles, currentArticle }) {
       <hr />
       <div className="card--grid single-page">
         {sortedPosts.slice(0, maxPosts).map((post, i) => (
-          <React.Fragment key={i}>
+          <React.Fragment key={uuidv4()}>
             <ArticleCard post={post} />
           </React.Fragment>
         ))}

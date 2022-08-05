@@ -88,7 +88,7 @@ export default function CategoryFeaturedCard({ post }) {
               </div>
               <div className="text-container">
                 <div className="excerpt">
-                  <p className="deck--topic-feature">{post.acf.excerpt}</p>
+                  <p className="deck--topic-feature">{post.acf.dek}</p>
                 </div>
                 <div className="article-details">
                   <div>

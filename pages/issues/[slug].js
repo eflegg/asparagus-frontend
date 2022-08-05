@@ -6,6 +6,7 @@ import PageWrapper from "../../components/Global/PageWrapper";
 import ArticleCard from "../../components/ArticleCard";
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
+import { v4 as uuidv4 } from "uuid";
 
 const CoverContainer = styled.div`
   display: flex;
@@ -45,7 +46,7 @@ export default function CurrentIssue({ issue, articles }) {
           const appearsIn = article.acf.appears_in;
 
           return (
-            <React.Fragment key={index}>
+            <React.Fragment key={uuidv4()}>
               {currentIssue == appearsIn ? (
                 <>
                   <ArticleCard
@@ -57,7 +58,7 @@ export default function CurrentIssue({ issue, articles }) {
                     }
                     read={article.acf.time_to_read}
                     byline={article.acf.writer[0].post_title}
-                    excerpt={article.acf.excerpt}
+                    excerpt={article.acf.dek}
                     headshot={article.acf.writer[0].acf.headshot.url}
                   />
                 </>

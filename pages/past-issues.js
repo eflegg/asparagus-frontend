@@ -5,6 +5,7 @@ import PageWrapper from "../components/Global/PageWrapper";
 import IssueCard from "../components/IssueCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
+import { v4 as uuidv4 } from "uuid";
 
 export default function PastIssues({ issues }) {
   console.log("issues: ", issues);
@@ -16,7 +17,7 @@ export default function PastIssues({ issues }) {
       <ul className="card--grid">
         {issues.map((issue, index) => {
           return (
-            <React.Fragment key={index}>
+            <React.Fragment key={uuidv4()}>
               {issue.title.rendered != currentIssue ? (
                 <>
                   <IssueCard

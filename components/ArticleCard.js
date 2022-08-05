@@ -65,7 +65,7 @@ export default function ArticleCard({
                 className="head--article-card"
                 dangerouslySetInnerHTML={{ __html: post.title.rendered }}
               ></h3>
-              <p className="deck--article-card">{post.acf.excerpt}</p>
+              <p className="deck--article-card">{post.acf.dek}</p>
             </a>
           </Link>{" "}
         </div>
@@ -95,8 +95,5 @@ export default function ArticleCard({
 }
 
 ArticleCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  excerpt: PropTypes.string.isRequired,
-  categories: PropTypes.array.isRequired,
+  post: PropTypes.object.isRequired,
 };

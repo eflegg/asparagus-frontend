@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { getEvents } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Events({ events }) {
   console.log("events: ", events);
@@ -25,7 +26,7 @@ export default function Events({ events }) {
             const eventDate = event.acf.date;
             const stringEventDate = new Date(eventDate).getTime();
             return (
-              <>
+              <React.Fragment key={uuidv4()}>
                 {stringEventDate >= stringCurrentDate ? (
                   <Link
                     key={index}
@@ -44,7 +45,7 @@ export default function Events({ events }) {
                     </a>
                   </Link>
                 ) : null}
-              </>
+              </React.Fragment>
             );
           })}
         </ul>
@@ -55,7 +56,7 @@ export default function Events({ events }) {
             const stringEventDate = new Date(eventDate).getTime();
 
             return (
-              <>
+              <React.Fragment key={uuidv4()}>
                 {stringEventDate < stringCurrentDate ? (
                   <Link
                     key={index}
@@ -67,7 +68,7 @@ export default function Events({ events }) {
                     </a>
                   </Link>
                 ) : null}
-              </>
+              </React.Fragment>
             );
           })}
         </ul>
