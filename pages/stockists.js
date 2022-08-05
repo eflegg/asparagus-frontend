@@ -6,7 +6,10 @@ import PageWrapper from "../components/Global/PageWrapper";
 export default function Stockists({ stockists }) {
   console.log("stockists: ", stockists);
   return (
-    <PageWrapper className="">
+    <PageWrapper
+      SEOtitle="Stockists"
+      metadescription="Find Asparagus Magazine in print at one of these fine retailers!"
+    >
       <h1>Stockists</h1>
       <ul>
         {stockists.map((stockist, index) => {

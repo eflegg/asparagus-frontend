@@ -5,6 +5,7 @@ import PageWrapper from "../components/Global/PageWrapper";
 import IssueCard from "../components/IssueCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
+import { v4 as uuidv4 } from "uuid";
 
 export default function PastIssues({ issues }) {
   console.log("issues: ", issues);
@@ -12,11 +13,14 @@ export default function PastIssues({ issues }) {
   const currentIssue = issues[0].title.rendered;
 
   return (
-    <PageWrapper pageTitle="Past Issues" className="">
+    <PageWrapper
+      SEOtitl="Past Issues"
+      metadescription="Peruse stories of a just society on a healthy planet in all Asparagus Magazine's past issues"
+    >
       <ul className="card--grid">
         {issues.map((issue, index) => {
           return (
-            <React.Fragment key={index}>
+            <React.Fragment key={uuidv4()}>
               {issue.title.rendered != currentIssue ? (
                 <>
                   <IssueCard

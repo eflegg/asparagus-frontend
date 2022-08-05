@@ -1,4 +1,3 @@
-import Link from "next/link";
 import RelatedPosts from "../../components/ArticleComponents/RelatedPosts";
 import PageWrapper from "../../components/Global/PageWrapper";
 import {
@@ -9,6 +8,7 @@ import {
 } from "../../utils/wordpress";
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
+import Head from "next/head";
 import Image from "next/image";
 import SupportCard from "../../components/SupportCard";
 import {
@@ -174,7 +174,18 @@ export default function ArticlePage({ article, allArticles, categories }) {
   });
 
   return (
-    <PageWrapper>
+    <PageWrapper
+      SEOtitle={
+        article.yoast_head_json.title
+          ? article.yoast_head_json.title
+          : "Asparagus Magazine"
+      }
+      metadescription={
+        article.yoast_head_json.description
+          ? article.yoast_head_json.title
+          : "Telling the large and small stories of how we can live more sustainably"
+      }
+    >
       <SingleContainer>
         <SingleHero>
           <div className="d-flex categories">

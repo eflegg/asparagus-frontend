@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { getEvents } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
+import { v4 as uuidv4 } from "uuid";
 import EventCard from "../components/EventCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
@@ -42,7 +43,10 @@ export default function Events({ events }) {
   }
 
   return (
-    <PageWrapper pageTitle="Events" className="">
+    <PageWrapper
+      SEOtitle="Events"
+      metadescription="A list of past and upcoming Asparagus Magazine events. Join us at the next one!"
+    >
       <EventsContainer>
         <h1 className="text-center">Events</h1>
         <hr />

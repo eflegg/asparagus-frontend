@@ -17,7 +17,19 @@ const ContentContainer = styled.div`
 
 export default function GeneralPage({ genpage }) {
   return (
-    <PageWrapper className="container pt-5">
+    <PageWrapper
+      SEOtitle={
+        genpage.yoast_head_json.title
+          ? genpage.yoast_head_json.title
+          : "Asparagus Magazine"
+      }
+      metadescription={
+        genpage.yoast_head_json.description
+          ? genpage.yoast_head_json.title
+          : "Telling the large and small stories of how we can live more sustainably"
+      }
+      className="container pt-5"
+    >
       <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
       <ContentContainer
         className="content-container"

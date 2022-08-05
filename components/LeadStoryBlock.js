@@ -84,16 +84,7 @@ const LeadStory = styled.section`
   }
 `;
 
-export default function LeadStoryBlock({
-  image,
-  date,
-  excerpt,
-  byline,
-  read,
-  headshot,
-  title,
-  post,
-}) {
+export default function LeadStoryBlock({ post }) {
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",

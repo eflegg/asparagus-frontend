@@ -65,7 +65,7 @@ export default function CategoryFeaturedCard({ post }) {
     month: "long",
     day: "2-digit",
   });
-  console.log("category feature post: ", post);
+
   return (
     <>
       {post ? (
