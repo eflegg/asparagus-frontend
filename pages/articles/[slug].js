@@ -177,6 +177,10 @@ export default function ArticlePage({ article, allArticles, categories }) {
 
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/${article.slug}`}
+      ogImageUrl={article.yoast_head_json.og_image}
+      ogType={article.yoast_head_json.og_type}
+      ogTwitterImage={article.yoast_head_json.twitter_card}
       SEOtitle={
         article.yoast_head_json.title
           ? article.yoast_head_json.title

@@ -24,7 +24,14 @@ const CoverContainer = styled.div`
 export default function Issue({ issue, articles }) {
   const currentIssue = issue.ID;
   return (
-    <PageWrapper SEOtitle="Current Issue" className="">
+    <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/${issue.slug}`}
+      ogImageUrl={issue.yoast_head_json.og_image}
+      ogType={issue.yoast_head_json.og_type}
+      ogTwitterImage={issue.yoast_head_json.twitter_card}
+      SEOtitle="Current Issue"
+      className=""
+    >
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
           <Image

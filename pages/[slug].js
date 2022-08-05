@@ -47,7 +47,6 @@ export default function GeneralPage({ genpage }) {
           ? genpage.yoast_head_json.title
           : "Telling the large and small stories of how we can live more sustainably"
       }
-      className="container pt-5"
     >
       <GeneralContainer>
         <div className="general--header">

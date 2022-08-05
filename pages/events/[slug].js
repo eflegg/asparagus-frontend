@@ -82,6 +82,10 @@ export default function EventPage({ event, image }) {
   console.log("gallery", gallery);
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/${event.slug}`}
+      ogImageUrl={event.yoast_head_json.og_image}
+      ogType={event.yoast_head_json.og_type}
+      ogTwitterImage={event.yoast_head_json.twitter_card}
       SEOtitle={event.title.rendered}
       metadescription={event.acf.excerpt}
     >

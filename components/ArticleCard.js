@@ -10,8 +10,6 @@ import { Card } from "../components/Global/styles";
 export default function ArticleCard({ post }) {
   const categories = post._embedded["wp:term"]["0"];
 
-  console.log("categories: ", categories);
-
   const subcategories = categories.filter(
     (subCat) =>
       subCat.id !== 6 &&
@@ -20,8 +18,6 @@ export default function ArticleCard({ post }) {
       subCat.id !== 9 &&
       subCat.id !== 10
   );
-  // console.log("subcategories: ", subcategories);
-  // console.log("subcategory one: ", subcategories[0].name);
 
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
@@ -45,8 +41,8 @@ export default function ArticleCard({ post }) {
             </a>
           </Link>
           <div className="categories">
-            {categories &&
-              categories.slice(0, 2).map((category, index) => {
+            {subcategories &&
+              subcategories.slice(0, 2).map((category, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
                     <Link

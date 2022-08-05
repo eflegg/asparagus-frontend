@@ -76,6 +76,10 @@ margin: initial;
 export default function TeamPage({ teamMember, posts }) {
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/${teamMember.slug}`}
+      ogImageUrl={teamMember.yoast_head_json.og_image}
+      ogType={teamMember.yoast_head_json.og_type}
+      ogTwitterImage={teamMember.yoast_head_json.twitter_card}
       SEOtitle={teamMember.title.rendered}
       metadescription={`${teamMember.title.rendered} - Meet the Asparagus Magazine Team `}
     >

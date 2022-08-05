@@ -23,9 +23,6 @@ const ContribContainer = styled.ul`
 `;
 
 export default function ContributorsPage({ contributors, categories }) {
-  console.log("contributors: ", contributors);
-
-  // const ref = React.forwardRef(null);
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/contributors`}
@@ -33,7 +30,6 @@ export default function ContributorsPage({ contributors, categories }) {
       ogTwitterImage="triplestalk.svg"
       SEOtitle="Contributors"
       metadescription="Meet the Asparagus contributors telling large and small stories of sustainable living"
-      className=""
     >
       <h1 className="text-center">Contributors</h1>
       <hr />
