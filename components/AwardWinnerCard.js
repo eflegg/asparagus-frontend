@@ -14,19 +14,22 @@ const Card = styled.div`
     width: 90%;
     color: white;
 
-    // ${theme.mediaQuery.sm`
-    // top: 200px;
-    // width: 80%;
-//`}
+    ${theme.mediaQuery.sm`
+    top: 300px;
+`}
     ${theme.mediaQuery.md`
-    top: 150px;
-    width: 70%;
+    top: 200px;
+    width: 90%;
    `}
+   ${theme.mediaQuery.lg`
+   width: 60%;
+   `}
+
   }
   .image-container {
     // border: solid blue;
     height: 50vh;
-    // max-height: 625px;
+    min-height: 350px;
     object-fit: cover;
     img {
       height: 100%;
@@ -39,14 +42,14 @@ const Card = styled.div`
     background-color: ${theme.colours.darkWheat};
   }
   .award-text {
-    border: 2px solid teal;
+    // border: 2px solid teal;
     margin-left: 5%;
     margin-top: 40px;
     margin-bottom: 40px;
     margin-right: 5%;
   }
   .award-text--lower {
-    border: solid black;
+    // border: solid black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -62,9 +65,10 @@ const Card = styled.div`
     color: ${theme.colours.gusGreen};
     font-family: ${theme.type.italic};
     font-style: italic;
+    margin: 20px 0 20px 0;
   }
   .article-details {
-    border: solid blue;
+    // border: solid blue;
   }
 `;
 
