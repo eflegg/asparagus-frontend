@@ -6,22 +6,74 @@ import theme from "../components/Global/Theme";
 import Image from "next/image";
 
 const ContentContainer = styled.div`
-  ul {
+height: 100%;
+img {
+  height: 100%;
+  width: 100%;
+}
+
+figure {
+  margin: 50px auto;
+
+}
+figcaption {
+  width: 90%;
+  margin: 8px auto 0;
+  font-family: ${theme.type.accent};
+  font-size: 1.6rem;
+  strong {
+    font-family: ${theme.type.header};
+    font-style: italic;
+    position: relative;
+    top: 5px;
+  }
+} 
+
+p {
+  width: 90%;
+  max-width: 650px;
+  margin: 17px auto;
+
+  ${theme.mediaQuery.sm`
+     margin: 25px auto;
+  `}
+}
+
+h2 {
+  width: 90%;
+  max-width: 650px;
+  margin: 30px auto 20px;
+  color: ${theme.colours.gusGreen};
+  font-size: 1.8rem;
+  ${theme.mediaQuery.sm`
+    font-size: 2.3rem;
+  `}
+  ${theme.mediaQuery.md`
+     font-size: 2.8rem;
+  `}
+}
+
+ul {
+  list-style: none;
   }
   ol {
     padding-left: 0;
   }
   li {
-    list-style: ;
+    margin: 0 auto 20px;
+    width: 90%;
+    max-width: 650px;
   }
 `;
 const GeneralContainer = styled.div`
   .general--header {
-    height: 200px;
+    height: 400px;
     width: 100%;
     position: relative;
+    margin-bottom: 50px;
 
     h1 {
+      color: white;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -48,7 +100,7 @@ export default function GeneralPage({ genpage }) {
       <GeneralContainer>
         <div className="general--header">
           <Image
-            src="/cherryblossoms.jpg"
+            src={genpage.acf.header.url}
             layout="fill"
             objectFit="cover"
             alt=""
