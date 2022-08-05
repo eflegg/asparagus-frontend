@@ -20,6 +20,13 @@ const GeneralContainer = styled.div`
     height: 200px;
     width: 100%;
     position: relative;
+
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 `;
 
@@ -39,7 +46,6 @@ export default function GeneralPage({ genpage }) {
       className="container pt-5"
     >
       <GeneralContainer>
-        <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
         <div className="general--header">
           <Image
             src="/cherryblossoms.jpg"
@@ -47,6 +53,7 @@ export default function GeneralPage({ genpage }) {
             objectFit="cover"
             alt=""
           />
+          <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
         </div>
 
         <ContentContainer
