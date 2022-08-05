@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const StockistBlock = styled.div`
   // border: solid pink;
-  width: 60%;
+  width: 80%;
   max-width: 1000px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -20,6 +20,7 @@ const StockistBlock = styled.div`
 
     ${theme.mediaQuery.md`
     font-size: 2rem;
+    width: 60%;
 `}
   }
   h5.province {
