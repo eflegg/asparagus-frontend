@@ -283,6 +283,22 @@ hr {
 h1,
 .h1 {
   letter-spacing: 0.2rem;
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 105%;
+  color: $gusGreen;
+
+  @include media-query-min($sm) {
+    font-size: calc(32px + 44 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(7.6);
+  }
+}
+
+.article--title {
+  letter-spacing: 0.2rem;
   font-size: 3.6rem;
   font-weight: 900;
   line-height: 105%;
@@ -328,7 +344,7 @@ h3,
 
   @include media-query-min($md) {
     @include font-size(5.2);
-    line-height: 135%;
+    line-height: 100%;
   }
 }
 
@@ -432,11 +448,13 @@ h6 {
     margin: 22px 0 40px;
     font-size: calc(16px + 4 * ((100vw - 320px) / 680));
     line-height: 2.1rem;
+    margin: 15px 0 40px;
   }
 
   @include media-query-min($md) {
     @include font-size(2);
     line-height: 2.4rem;
+    margin: 15px 0 40px !important;
   }
 }
 

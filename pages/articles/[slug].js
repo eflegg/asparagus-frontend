@@ -203,7 +203,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
           <hr />
           <div className="hero d-flex">
             <div className="hero--text">
-              <h1 className="">{article.title.rendered}</h1>
+              <h1 className="article--title">{article.title.rendered}</h1>
               <p className="excerpt deck">{article.acf.dek}</p>
               <div className="article-details">
                 <div className="byline--image">

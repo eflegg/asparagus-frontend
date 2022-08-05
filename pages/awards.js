@@ -9,40 +9,51 @@ import AwardWinnerCard from "../components/AwardWinnerCard";
 import PageWrapper from "../components/Global/PageWrapper";
 import { v4 as uuidv4 } from "uuid";
 
+const AwardContainer = styled.section`
+  margin-bottom: 50px;
+  h5 {
+    margin: 20px 0 15px;
+    width: 90%;
+    margin: 0 auto;
+  }
+`;
+
 export default function Awards({ posts }) {
   return (
     <PageWrapper
       SEOtitle="Awards"
       metadescription="A showcase of all our award-winning and nominated Asparagus Magazine stories"
     >
-      <h3>Award Winners</h3>
-      <ul>
-        {posts.map((post, index) => {
-          return (
-            <React.Fragment key={uuidv4()}>
-              {post.acf.award_winner == "Yes" ? (
-                <AwardWinnerCard post={post} />
-              ) : null}
-            </React.Fragment>
-          );
-        })}
-      </ul>
-      <h3>Award Nominees</h3>
-      <ul>
-        {posts.map((post, index) => {
-          return (
-            <React.Fragment key={uuidv4()}>
-              {post.acf.award_nominee == "Yes" ? (
-                <AwardWinnerCard post={post} />
-              ) : null}
-            </React.Fragment>
-          );
-        })}
-      </ul>
-
-      <Link href="/">
-        <a className="btn btn-primary">Back to Home</a>
-      </Link>
+      <h1 className="text-center">Awards</h1>
+      <hr />
+      <AwardContainer>
+        <h5>Award Winners</h5>
+        <ul>
+          {posts.map((post, index) => {
+            return (
+              <React.Fragment key={uuidv4()}>
+                {post.acf.award_winner == "Yes" ? (
+                  <AwardWinnerCard post={post} />
+                ) : null}
+              </React.Fragment>
+            );
+          })}
+        </ul>
+      </AwardContainer>
+      <AwardContainer>
+        <h5>Award Nominees</h5>
+        <ul>
+          {posts.map((post, index) => {
+            return (
+              <React.Fragment key={uuidv4()}>
+                {post.acf.award_nominee == "Yes" ? (
+                  <AwardWinnerCard post={post} />
+                ) : null}
+              </React.Fragment>
+            );
+          })}
+        </ul>
+      </AwardContainer>
     </PageWrapper>
   );
 }

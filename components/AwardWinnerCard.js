@@ -13,12 +13,12 @@ const Card = styled.div`
     margin-left: 5%;
     width: 90%;
     color: white;
-
+    z-index: 10;
     ${theme.mediaQuery.sm`
     top: 300px;
 `}
     ${theme.mediaQuery.md`
-    top: 200px;
+    top: 170px;
     width: 90%;
    `}
    ${theme.mediaQuery.lg`

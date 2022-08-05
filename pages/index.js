@@ -31,11 +31,6 @@ margin-bottom: 80px;
 `;
 
 export default function Home({ page, posts }) {
-  //use this to get only subcategories for cards
-  // const subcategoryQuery = await fetch(
-  //   `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}`
-  // );
-
   const catOne = page.acf.home_category_one[0].term_id;
   const catTwo = page.acf.home_category_two[0].term_id;
   const catThree = page.acf.home_category_three[0].term_id;

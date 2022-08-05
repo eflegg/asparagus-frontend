@@ -9,7 +9,11 @@ const SupportBlock = styled.div`
   height: 50vh;
   ${theme.mediaQuery.sm`
 height: 80vh;
-min-height: 400px;
+min-height: 550px;
+`}
+  ${theme.mediaQuery.sm`
+
+min-height: 500px;
 `}
   .image-container {
     position: relative;
