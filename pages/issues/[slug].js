@@ -47,7 +47,7 @@ export default function Issue({ issue, articles }) {
 
           return (
             <React.Fragment key={uuidv4()}>
-              {currentIssue == appearsIn ? (
+              {appearsIn && currentIssue == appearsIn[0].ID ? (
                 <>
                   <ArticleCard post={article} />
                 </>

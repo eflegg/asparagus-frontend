@@ -10,6 +10,10 @@ import { getContributors } from "../utils/wordpress";
 export default function AsparagusManifesto({ contributors, page }) {
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/${page.slug}`}
+      ogImageUrl={page.yoast_head_json.og_image}
+      ogType={page.yoast_head_json.og_type}
+      ogTwitterImage={page.yoast_head_json.twitter_card}
       SEOtitle={
         page.yoast_head_json.title
           ? page.yoast_head_json.title

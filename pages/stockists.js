@@ -76,6 +76,9 @@ export default function Stockists({ stockists, page }) {
   console.log("page: ", page);
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/stockists`}
+      ogImageUrl="triplestalk.svg"
+      ogTwitterImage="triplestalk.svg"
       SEOtitle="Stockists"
       metadescription="Find Asparagus Magazine in print at one of these fine retailers!"
     >

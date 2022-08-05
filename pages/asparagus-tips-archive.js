@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { Config } from "../config";
+import fetch from "isomorphic-fetch";
 import { getTips } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
@@ -14,7 +15,7 @@ const NewsletterContainer = styled.section`
     height: auto;
   }
 `;
-export default function Tips({ tips }) {
+export default function Tips({ tips, page }) {
   //use state to set the index of the selected
   //tips date, rendered the data from that position
 
@@ -24,6 +25,10 @@ export default function Tips({ tips }) {
 
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/${page.slug}`}
+      ogImageUrl={page.yoast_head_json.og_image}
+      ogType={page.yoast_head_json.og_type}
+      ogTwitterImage={page.yoast_head_json.twitter_card}
       SEOtitle="Asparagus Tips Archive"
       metadescription="A newsletter series of quick tips on how to make every part of your life brighter and greener"
       className=""
@@ -63,9 +68,13 @@ export default function Tips({ tips }) {
 export async function getStaticProps({ params }) {
   const tips = await getTips();
 
+  const pageQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages/80`);
+  const page = await pageQuery.json();
+
   return {
     props: {
       tips,
+      page,
     },
     revalidate: 10, // In seconds
   };

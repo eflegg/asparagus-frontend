@@ -17,6 +17,8 @@ import {
   TwitterShareButton,
   TwitterIcon,
 } from "next-share";
+import { v4 as uuidv4 } from "uuid";
+import React from "react";
 
 const SingleContainer = styled.div`
   height: 100%;
@@ -191,12 +193,12 @@ export default function ArticlePage({ article, allArticles, categories }) {
           <div className="d-flex categories">
             {matchingCats.slice(0, 2).map((cat, index) => {
               return (
-                <>
+                <React.Fragment key={uuidv4()}>
                   <h5
                     dangerouslySetInnerHTML={{ __html: cat }}
                     key={index}
                   ></h5>
-                </>
+                </React.Fragment>
               );
             })}
           </div>

@@ -14,6 +14,9 @@ export default function PastIssues({ issues }) {
 
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/past-issues`}
+      ogImageUrl="triplestalk.svg"
+      ogTwitterImage="triplestalk.svg"
       SEOtitl="Past Issues"
       metadescription="Peruse stories of a just society on a healthy planet in all Asparagus Magazine's past issues"
     >

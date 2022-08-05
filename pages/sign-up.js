@@ -7,6 +7,9 @@ import Link from "next/link";
 export default function SignUp() {
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/sign-up`}
+      ogImageUrl="triplestalk.svg"
+      ogTwitterImage="triplestalk.svg"
       SEOtitle="Newsletter Sign Up"
       metadescription="Sign up to receive Asparagus Magazine's pleasantly infrequent newsletter"
     >

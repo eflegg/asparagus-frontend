@@ -28,6 +28,9 @@ export default function ContributorsPage({ contributors, categories }) {
   // const ref = React.forwardRef(null);
   return (
     <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/contributors`}
+      ogImageUrl="triplestalk.svg"
+      ogTwitterImage="triplestalk.svg"
       SEOtitle="Contributors"
       metadescription="Meet the Asparagus contributors telling large and small stories of sustainable living"
       className=""
