@@ -228,7 +228,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
                   <p itemProp="author" className="byline--article-card">
                     {article.acf.writer[0].post_title}
                   </p>
-                  <p className="date--article-card">
+                  <p itemProp="datePublished" className="date--article-card">
                     {formattedDate} -{" "}
                     <span>{article.acf.time_to_read} min read</span>
                   </p>

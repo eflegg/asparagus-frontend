@@ -89,9 +89,11 @@ export default function EventPage({ event, image }) {
       SEOtitle={event.title.rendered}
       metadescription={event.acf.excerpt}
     >
-      <h1 className="text-center">{event.title.rendered}</h1>
+      <h1 itemProp="name" className="text-center">
+        {event.title.rendered}
+      </h1>
       <hr />
-      <SingleEvent>
+      <SingleEvent itemscope itemtype="https://schema.org/Event">
         <div className="wrapper">
           <div className="image-container">
             <Image
@@ -102,8 +104,12 @@ export default function EventPage({ event, image }) {
             />
           </div>
           <div className="event-info">
-            <p className="single-event--date">{event.acf.date}</p>
-            <p className="event--location">{event.acf.location}</p>
+            <p itemProp="startDate" className="single-event--date">
+              {event.acf.date}
+            </p>
+            <p itemProp="address" className="event--location">
+              {event.acf.location}
+            </p>
             <p className="event--description">{event.acf.description}</p>
             {stringEventDate >= stringCurrentDate ? (
               <Link href="/">
