@@ -103,7 +103,7 @@ export default function LeadStoryBlock({ post }) {
       <div className="lead-text">
         <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
           <a>
-            <h1>{post.title.rendered}</h1>
+            <h1 className="article--title">{post.title.rendered}</h1>
           </a>
         </Link>
         <div className="lead-text--inner">

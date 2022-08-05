@@ -9,7 +9,6 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
-import SupportCard from "../components/SupportCard";
 
 const CategoryContainer = styled.section`
   margin-bottom: 45px;
@@ -80,7 +79,7 @@ export default function Home({ page, posts }) {
             })}
           </div>
           <CategoryContainer className="new-from--container">
-            <h2>New From Asparagus</h2>
+            <h2 className="h5">New From Asparagus</h2>
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
@@ -98,7 +97,7 @@ export default function Home({ page, posts }) {
           </CategoryContainer>
 
           <CategoryContainer className="cat-one--container">
-            <h2>{page.acf.home_category_one[0].name}</h2>
+            <h2 className="h5">{page.acf.home_category_one[0].name}</h2>
             <hr />
             <div
               className={`${
@@ -123,7 +122,7 @@ export default function Home({ page, posts }) {
           </CategoryContainer>
 
           <CategoryContainer className="cat-two--container">
-            <h2>{page.acf.home_category_two[0].name}</h2>
+            <h2 className="h5">{page.acf.home_category_two[0].name}</h2>
             <hr />
             <div
               className={`${
@@ -155,7 +154,7 @@ export default function Home({ page, posts }) {
           />
 
           <CategoryContainer className="cat-three--container">
-            <h2>{page.acf.home_category_three[0].name}</h2>
+            <h2 className="h5">{page.acf.home_category_three[0].name}</h2>
             <hr />
             <div
               className={`${
