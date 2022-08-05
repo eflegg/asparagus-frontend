@@ -67,7 +67,7 @@ ul {
 `;
 const GeneralContainer = styled.div`
   .general--header {
-    height: 400px;
+    // height: 400px;
     width: 100%;
     position: relative;
     margin-bottom: 50px;
@@ -99,12 +99,14 @@ export default function GeneralPage({ genpage }) {
     >
       <GeneralContainer>
         <div className="general--header">
-          <Image
-            src={genpage.acf.header.url}
-            layout="fill"
-            objectFit="cover"
-            alt=""
-          />
+        <Image
+          src={genpage.acf.header.url}
+          layout="responsive"
+          objectFit="cover"
+          height="322px"
+          width="1280px"
+          alt={genpage.acf.header.alt_text}
+        />
           <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
         </div>
 
