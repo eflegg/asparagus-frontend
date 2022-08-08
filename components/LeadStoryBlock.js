@@ -98,6 +98,7 @@ export default function LeadStoryBlock({ post }) {
           layout="fill"
           objectFit="cover"
           alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
+          priority
         />
       </div>
       <div className="lead-text">

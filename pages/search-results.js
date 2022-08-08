@@ -14,28 +14,48 @@ function SearchResults(props) {
   console.log("query: ", props.router.query.name);
   const query = props.router.query.name;
   console.log(query);
+
+  const filterPosts = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+
+    return posts.filter((post) => {
+      const postName = post.title.rendered.toLowerCase();
+      return postName.includes(query);
+    });
+  };
+
+  const filterContent = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+
+    return posts.filter((post) => {
+      const postContent = post.content.rendered.toLowerCase();
+      return postContent.includes(query);
+    });
+  };
+
+  const filteredContent = filterPosts(props.posts, props.router.query.name);
+  const filteredPosts = filterPosts(props.posts, props.router.query.name);
+
   return (
     <PageWrapper>
       <div>
         <h1>here are your search results for {props.router.query.name}</h1>
+
         <div className="card--grid single-page">
-          {props.posts
-            .filter((post) => {
-              if (query === "") {
-                return post;
-              } else if (
-                post.title.rendered
-                  .toLowerCase()
-                  .includes(query.toString().toLowerCase())
-              ) {
-                return post;
-              }
-            })
-            .map((post, index) => (
-              <React.Fragment key={uuidv4()}>
-                <ArticleCard post={post} />
-              </React.Fragment>
-            ))}
+          {filteredPosts.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <ArticleCard post={post} />
+            </React.Fragment>
+          ))}
+          {filteredContent.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <ArticleCard post={post} />
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </PageWrapper>
