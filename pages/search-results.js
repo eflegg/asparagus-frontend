@@ -9,6 +9,16 @@ import PageWrapper from "../components/Global/PageWrapper";
 import ArticleCard from "../components/ArticleCard";
 import { v4 as uuidv4 } from "uuid";
 
+const SearchContainer = styled.div`
+  h1 {
+    width: 90%;
+    margin: 0 auto;
+  }
+  h2 {
+    color: ${theme.colours.gusGreen};
+  }
+`;
+
 function SearchResults(props) {
   console.log("posts: ", props.posts);
   console.log("query: ", props.router.query.name);
@@ -37,13 +47,15 @@ function SearchResults(props) {
     });
   };
 
-  const filteredContent = filterPosts(props.posts, props.router.query.name);
+  const filteredContent = filterContent(props.posts, props.router.query.name);
   const filteredPosts = filterPosts(props.posts, props.router.query.name);
 
   return (
     <PageWrapper>
-      <div>
-        <h1>here are your search results for {props.router.query.name}</h1>
+      <SearchContainer>
+        <h1 className="h5">Search Results</h1>
+        <hr />
+        <h2>Search results for: {props.router.query.name}</h2>
 
         <div className="card--grid single-page">
           {filteredPosts.map((post) => (
@@ -57,7 +69,7 @@ function SearchResults(props) {
             </React.Fragment>
           ))}
         </div>
-      </div>
+      </SearchContainer>
     </PageWrapper>
   );
 }
