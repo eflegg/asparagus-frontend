@@ -45,14 +45,25 @@ export default function EventBlock({ event }) {
   return (
     <EventCard>
       <div className="event--image">
-        <Image
-          src={event._embedded["wp:featuredmedia"]["0"].source_url}
-          layout="responsive"
-          objectFit="cover"
-          height="250px"
-          width="300px"
-          alt={event._embedded["wp:featuredmedia"]["0"].alt_text}
-        />
+        {event._embedded["wp:featuredmedia"]["0"].source_url ? (
+          <Image
+            src={event._embedded["wp:featuredmedia"]["0"].source_url}
+            layout="responsive"
+            objectFit="cover"
+            height="250px"
+            width="300px"
+            alt={event._embedded["wp:featuredmedia"]["0"].alt_text}
+          />
+        ) : (
+          <Image
+            src="/triplestalk.svg"
+            layout="responsive"
+            objectFit="cover"
+            height="250px"
+            width="300px"
+            alt={event._embedded["wp:featuredmedia"]["0"].alt_text}
+          />
+        )}
       </div>
       <div className="event--info">
         <h3 className="event--name">{event.title.rendered}</h3>

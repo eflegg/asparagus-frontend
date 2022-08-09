@@ -7,7 +7,15 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import PageWrapper from "../components/Global/PageWrapper";
 import ArticleCard from "../components/ArticleCard";
+import EventCard from "../components/EventCard";
 import { v4 as uuidv4 } from "uuid";
+import {
+  getEvents,
+  getArticles,
+  getContributors,
+  getTeam,
+  getGeneralPages,
+} from "../utils/wordpress";
 
 const SearchContainer = styled.div`
   h1 {
@@ -20,35 +28,49 @@ const SearchContainer = styled.div`
 `;
 
 function SearchResults(props) {
-  console.log("posts: ", props.posts);
+  console.log("events: ", props.events);
   console.log("query: ", props.router.query.name);
   const query = props.router.query.name;
   console.log(query);
 
-  const filterPosts = (posts, query) => {
+  //Events
+  const filterEvents = (posts, query) => {
     if (!query) {
       return posts;
     }
-
     return posts.filter((post) => {
-      const postName = post.title.rendered.toLowerCase();
-      return postName.includes(query);
+      const eventDescrip = post.acf.description;
+      return eventDescrip.includes(query);
     });
   };
 
-  const filterContent = (posts, query) => {
+  //Articles
+  const filterArticles = (posts, query) => {
     if (!query) {
       return posts;
     }
-
     return posts.filter((post) => {
       const postContent = post.content.rendered.toLowerCase();
       return postContent.includes(query);
     });
   };
 
-  const filteredContent = filterContent(props.posts, props.router.query.name);
-  const filteredPosts = filterPosts(props.posts, props.router.query.name);
+  //General pages
+  const filterGeneralPages = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+    return posts.filter((post) => {
+      const postContent = post.content.rendered.toLowerCase();
+      return postContent.includes(query);
+    });
+  };
+  const filteredEvents = filterEvents(props.events, props.router.query.name);
+  const filteredContent = filterArticles(props.posts, props.router.query.name);
+  const filteredGeneralPages = filterEvents(
+    props.generalPages,
+    props.router.query.name
+  );
 
   return (
     <PageWrapper>
@@ -58,14 +80,24 @@ function SearchResults(props) {
         <h2>Search results for: {props.router.query.name}</h2>
 
         <div className="card--grid single-page">
-          {filteredPosts.map((post) => (
+          {filteredContent.map((post) => (
             <React.Fragment key={uuidv4()}>
               <ArticleCard post={post} />
             </React.Fragment>
           ))}
-          {filteredContent.map((post) => (
+
+          {filteredGeneralPages.map((post) => (
             <React.Fragment key={uuidv4()}>
-              <ArticleCard post={post} />
+              <div className="">
+                <h3>{post.title.rendered}</h3>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+        <div>
+          {filteredEvents.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <EventCard event={post} />
             </React.Fragment>
           ))}
         </div>
@@ -77,14 +109,15 @@ function SearchResults(props) {
 export default withRouter(SearchResults);
 
 export async function getStaticProps({ params }) {
-  const postsQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
-  );
-  const posts = await postsQuery.json();
+  const posts = await getArticles();
+  const events = await getEvents();
+  const generalPages = await getGeneralPages();
 
   return {
     props: {
       posts,
+      events,
+      generalPages,
     },
     revalidate: 10, // In seconds
   };

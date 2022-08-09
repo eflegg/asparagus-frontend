@@ -31,12 +31,21 @@ export default function ArticleCard({ post }) {
           <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
             <a>
               <div className="card--image">
-                <Image
-                  src={post._embedded["wp:featuredmedia"]["0"].source_url}
-                  layout="fill"
-                  objectFit="cover"
-                  alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
-                />
+                {post._embedded["wp:featuredmedia"]["0"].source_url ? (
+                  <Image
+                    src={post._embedded["wp:featuredmedia"]["0"].source_url}
+                    layout="fill"
+                    objectFit="cover"
+                    alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
+                  />
+                ) : (
+                  <Image
+                    src="/triplestalk.svg"
+                    layout="fill"
+                    objectFit="cover"
+                    alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
+                  />
+                )}
               </div>
             </a>
           </Link>
@@ -70,14 +79,14 @@ export default function ArticleCard({ post }) {
         </div>
         <div className="article-details">
           <div className="byline--image">
-            {post.acf.writer[0].acf.headshot.url && (
+            {post.acf.writer[0].acf.headshot.url ? (
               <Image
                 src={post.acf.writer[0].acf.headshot.url}
                 layout="fill"
                 objectFit="cover"
                 alt="Author headshot"
               />
-            )}
+            ) : null}
           </div>
           <div>
             <p className="byline--article-card">

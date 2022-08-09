@@ -93,13 +93,15 @@ export default function LeadStoryBlock({ post }) {
   return (
     <LeadStory>
       <div className="lead-image">
-        <Image
-          src={post._embedded["wp:featuredmedia"]["0"].source_url}
-          layout="fill"
-          objectFit="cover"
-          alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
-          priority
-        />
+        {post._embedded["wp:featuredmedia"]["0"].source_url ? (
+          <Image
+            src={post._embedded["wp:featuredmedia"]["0"].source_url}
+            layout="fill"
+            objectFit="cover"
+            alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
+            priority
+          />
+        ) : null}
       </div>
       <div className="lead-text">
         <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
