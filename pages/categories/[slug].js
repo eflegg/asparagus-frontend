@@ -52,10 +52,10 @@ export default function CategoryPage({ category, posts, subcategories }) {
         className="h5"
         dangerouslySetInnerHTML={{ __html: category.name }}
       ></CategoryH1>
-      <hr />
+      <hr className="start-small-rule" />
       {category.slug == "voices" || category.slug == "start-small" ? (
         <>
-          <p>{subfilter}</p>
+          {/* <p>{subfilter}</p> */}
           <ArticleFilter subcategories={subcategories} onClick={handleClick} subfilter={subfilter} />
           <div className="card--grid single-page">
             {posts.map((post, index) => {
