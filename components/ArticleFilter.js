@@ -47,7 +47,7 @@ p {
 }
 `;
 
-export default function ArticleFilter({ subcategories, onClick }) {
+export default function ArticleFilter({ subcategories, subfilter, onClick }) {
   return (
     <StartVoices>
       <div className="all">

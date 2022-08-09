@@ -56,7 +56,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
       {category.slug == "voices" || category.slug == "start-small" ? (
         <>
           <p>{subfilter}</p>
-          <ArticleFilter subcategories={subcategories} onClick={handleClick} />
+          <ArticleFilter subcategories={subcategories} onClick={handleClick} subfilter={subfilter} />
           <div className="card--grid single-page">
             {posts.map((post, index) => {
               return (
