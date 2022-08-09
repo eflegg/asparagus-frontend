@@ -14,9 +14,13 @@ export default function ArticleFilter({ subcategories, onClick, subfilter }) {
   console.log("subfilter: ", subfilter);
   console.log("subcategory one id: ", subcategories[0].id);
   return (
-    <div>
-      <ul>
-        <li onClick={() => onClick(null)}>All</li>
+    <StartVoices>
+      <div className="all">
+        <button className="btn--secondary" onClick={() => onClick(null)}>
+          All
+        </button>
+      </div>
+      <div className="sub-container">
         {subcategories.map((subcategory, index) => {
           return (
             <React.Fragment key={uuidv4()}>
@@ -29,7 +33,7 @@ export default function ArticleFilter({ subcategories, onClick, subfilter }) {
             </React.Fragment>
           );
         })}
-      </ul>
-    </div>
+      </div>
+    </StartVoices>
   );
 }
