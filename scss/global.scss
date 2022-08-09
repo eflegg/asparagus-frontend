@@ -82,6 +82,7 @@ ul {
     url("../fonts/halcyon_regular_macroman/halcyon-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -90,6 +91,7 @@ ul {
     url("../fonts/halcyon_semibolditalic_macroman/halcyon-semibolditalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -98,6 +100,7 @@ ul {
     url("../fonts/halcyon_thinitalic_macroman/halcyon-thinitalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -106,6 +109,7 @@ ul {
     url("../fonts/halcyon_thin_macroman/halcyon-thin-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -114,6 +118,7 @@ ul {
     url("../fonts/halcyon_semibold_macroman/halcyon-semibold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -122,6 +127,7 @@ ul {
     url("../fonts/halcyon_medium_macroman/halcyon-medium-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -130,6 +136,7 @@ ul {
     url("../fonts/halcyon_light_macroman/halcyon-light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -138,6 +145,7 @@ ul {
     url("../fonts/halcyon_italic_macroman/halcyon-regularitalic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -146,6 +154,7 @@ ul {
     url("../fonts/halcyon_bold_macroman/halcyon-bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -154,6 +163,7 @@ ul {
     url("../fonts/halcyon_black_macroman/halcyon-black-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @mixin font-size($sizeValue: 1.6) {
@@ -784,6 +794,24 @@ li.nav-link {
       line-height: 32px;
     }
   }
+
+  cite {
+    font-family: $bodyFont;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 20px auto;
+    text-align: center;
+
+    @include media-query-min($sm) {
+      font-size: calc(12px + 4 * ((100vw - 320px) / 680));
+      line-height: 2rem;
+    }
+
+    @include media-query-min($md) {
+      @include font-size(1.6);
+      line-height: 24px;
+    }
+  }
 }
 
 .navlink--active {
@@ -814,6 +842,9 @@ li.nav-link {
 
 .text-right {
   text-align: right;
+}
+.d-block {
+  display: block;
 }
 
 .d-flex {

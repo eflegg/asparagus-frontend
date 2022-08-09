@@ -96,12 +96,14 @@ export default function AwardWinnerCard({ post }) {
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           ></h3>
           <div className="image-container">
-            <Image
-              src={post._embedded["wp:featuredmedia"]["0"].source_url}
-              alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
-              layout="fill"
-              objectFit="cover"
-            />
+            {post._embedded["wp:featuredmedia"]["0"].source_url ? (
+              <Image
+                src={post._embedded["wp:featuredmedia"]["0"].source_url}
+                alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
+                layout="fill"
+                objectFit="cover"
+              />
+            ) : null}
             {post.acf.award_graphic ? (
               <div className="award-graphic">
                 <Image

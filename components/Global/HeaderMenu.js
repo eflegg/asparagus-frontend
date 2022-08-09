@@ -8,6 +8,8 @@ import theme from "./Theme";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
 import Loader from "./Loader";
+import Image from "next/image";
+import Search from "./search";
 
 const MenuContainer = styled.div`
   .subnav {
@@ -115,8 +117,12 @@ const LogoConnectMenuContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-around;
+  position: relative;
+
   .img {
     flex: 0 0 50%;
+    height: 100%;
+    width: 100%;
   }
   ${theme.mediaQuery.md`
     flex-direction: row;
@@ -231,8 +237,17 @@ export default function HeaderMenu() {
       <Suspense fallback={<Loader />}>
         <LogoConnectMenuContainer>
           <Link href="/">
-            <a>
-              <img src="/Asparagus_Nameplate_Color.png" />
+            <a className="position-relative d-block">
+              {/*           
+              <Image
+                src="/Asparagus_Nameplate_Color.png"
+                alt="Asparagus Magazine logo"
+                layout="responsive"
+                objectFit="cover"
+                width="604px"
+                height="173px"
+              /> */}
+              <img src="/Asparagus_Nameplate_Color.png" alt="" />
             </a>
           </Link>
           <ConnectMenuContainer>
@@ -251,6 +266,7 @@ export default function HeaderMenu() {
                     </li>
                   );
                 })}
+                <Search />
               </ul>
             </ConnectMenuNav>
 

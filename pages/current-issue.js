@@ -72,6 +72,8 @@ export async function getStaticProps({ params }) {
   const issues = await getIssues();
   const articles = await getArticles();
 
+  //could query for only articles in category magazine, and tell staff they have to add category magazine to all print stories
+
   return {
     props: {
       issues,
