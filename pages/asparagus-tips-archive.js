@@ -4,17 +4,70 @@ import fetch from "isomorphic-fetch";
 import { getTips } from "../utils/wordpress";
 import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme, { mediaQuery } from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
+import SupportCard from "../components/SupportCard";
 
 const NewsletterContainer = styled.section`
-  border: 3px solid salmon;
+  // border: 3px solid salmon;
   width: 70%;
-  margin: 0 auto;
+  margin: 30px auto;
+  h2 {
+    color: ${theme.colours.soil};
+    font-size: 2.8rem;
+    ${theme.mediaQuery.md`
+    font-size: 3.6rem;
+    `}
+  }
   img {
     height: auto;
   }
+  ul {
+    list-style: none;
+    }
+    ol {
+      padding-left: 0;
+    }
+    li {
+      margin: 0 auto 20px;
+      width: 90%;
+      max-width: 650px;
+    }
+    figure {
+      margin: 50px auto;
+    
+    }
+    figcaption {
+      width: 90%;
+      margin: 8px auto 0;
+      font-family: ${theme.type.accent};
+      font-size: 1.6rem;
+      strong {
+        font-family: ${theme.type.header};
+        font-style: italic;
+        position: relative;
+        top: 5px;
+      }
 `;
+
+const TipDropdown = styled.div`
+// border: solid 3px hotpink;
+width: 100%;
+display: flex;
+justify-content: center;
+${theme.mediaQuery.sm`
+  justify-content: flex-start;
+  margin-left: 20px;
+  `}
+select {
+  font-family: ${theme.type.medium};
+  font-size: 20px;
+  color: black;
+  border: 0px;
+  
+}
+`;
+
 export default function Tips({ tips, page }) {
   //use state to set the index of the selected
   //tips date, rendered the data from that position
@@ -33,7 +86,10 @@ export default function Tips({ tips, page }) {
       metadescription="A newsletter series of quick tips on how to make every part of your life brighter and greener"
       className=""
     >
-      <h1>Asparagus Tips</h1>
+      
+      <h1 className="text-center">Asparagus Tips</h1>
+      <hr/>
+      <TipDropdown>
       <select
         value={newsletterSelected}
         onChange={(e) => setNewsletterSelected(e.target.value)}
@@ -42,6 +98,7 @@ export default function Tips({ tips, page }) {
           return <option key={uuidv4()}>{tip.title.rendered}</option>;
         })}
       </select>
+      </TipDropdown>
       <NewsletterContainer>
         {/* <h2>{tips[newsletterSelected].title.rendered}</h2> */}
         {tips.map((tip, index) => {
@@ -61,6 +118,7 @@ export default function Tips({ tips, page }) {
           );
         })}
       </NewsletterContainer>
+      <SupportCard/>
     </PageWrapper>
   );
 }
