@@ -112,12 +112,16 @@ export async function getStaticProps({ params }) {
   const posts = await getArticles();
   const events = await getEvents();
   const generalPages = await getGeneralPages();
+  const contributors = await getContributors();
+  const team = await getTeam();
 
   return {
     props: {
       posts,
       events,
       generalPages,
+      contributors,
+      team,
     },
     revalidate: 10, // In seconds
   };

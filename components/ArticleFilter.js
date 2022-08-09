@@ -4,7 +4,15 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 
-export default function ArticleFilter({ subcategories, onClick }) {
+const FilterButton = styled.li`
+  &.active {
+    border: 2px solid hotpink;
+  }
+`;
+
+export default function ArticleFilter({ subcategories, onClick, subfilter }) {
+  console.log("subfilter: ", subfilter);
+  console.log("subcategory one id: ", subcategories[0].id);
   return (
     <div>
       <ul>
@@ -12,9 +20,12 @@ export default function ArticleFilter({ subcategories, onClick }) {
         {subcategories.map((subcategory, index) => {
           return (
             <React.Fragment key={uuidv4()}>
-              <li onClick={() => onClick(subcategory.id)}>
+              <FilterButton
+                className={`${subfilter == subcategory.id ? "active" : null}`}
+                onClick={() => onClick(subcategory.id)}
+              >
                 {subcategory.name}
-              </li>
+              </FilterButton>
             </React.Fragment>
           );
         })}
