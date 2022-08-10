@@ -16,6 +16,7 @@ import {
   getTeamMembers,
   getGeneralPages,
 } from "../utils/wordpress";
+import ContributorCard from "../components/ContributorCard";
 
 const SearchContainer = styled.div`
   h1 {
@@ -112,6 +113,13 @@ function SearchResults(props) {
             </React.Fragment>
           ))}
 
+          {filteredEvents.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <EventCard event={post} />
+            </React.Fragment>
+          ))}
+        </div>
+        <div>
           {filteredGeneralPages.map((post) => (
             <React.Fragment key={uuidv4()}>
               <div className="">
@@ -119,11 +127,15 @@ function SearchResults(props) {
               </div>
             </React.Fragment>
           ))}
-        </div>
-        <div>
-          {filteredEvents.map((post) => (
+
+          {filteredContributors.map((post) => (
             <React.Fragment key={uuidv4()}>
-              <EventCard event={post} />
+              <ContributorCard contributor={post} />
+            </React.Fragment>
+          ))}
+          {filteredTeam.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <ContributorCard contributor={post} />
             </React.Fragment>
           ))}
         </div>

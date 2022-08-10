@@ -31,7 +31,7 @@ export default function ArticleCard({ post }) {
           <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
             <a>
               <div className="card--image">
-                {post._embedded["wp:featuredmedia"]["0"].source_url ? (
+                {post._embedded["wp:featuredmedia"] ? (
                   <Image
                     src={post._embedded["wp:featuredmedia"]["0"].source_url}
                     layout="fill"
@@ -43,7 +43,7 @@ export default function ArticleCard({ post }) {
                     src="/triplestalk.svg"
                     layout="fill"
                     objectFit="cover"
-                    alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
+                    alt="Asparagus Magazine logo"
                   />
                 )}
               </div>
