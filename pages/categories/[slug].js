@@ -19,6 +19,8 @@ const CategoryH1 = styled.h1`
   margin: 0 auto;
 `;
 
+
+
 export default function CategoryPage({ category, posts, subcategories }) {
   const dynamicRoute = useRouter().asPath;
   const [subfilter, setSubfilter] = useState(null);
@@ -52,7 +54,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
         className="h5"
         dangerouslySetInnerHTML={{ __html: category.name }}
       ></CategoryH1>
-      <hr className="start-small-rule" />
+      <hr className={`${category.slug == "voices" || category.slug == "start-small" ? "start-small" : ""}`}/>
       {category.slug == "voices" || category.slug == "start-small" ? (
         <>
           {/* <p>{subfilter}</p> */}

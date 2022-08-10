@@ -270,6 +270,13 @@ hr {
   margin-bottom: 65px;
 }
 
+.start-small {
+  height: 3px;
+  border: 0px;
+  background: $teaGreen;
+  margin-bottom: 25px;
+}
+
 h1,
 .h1 {
   letter-spacing: 0.2rem;
@@ -843,6 +850,7 @@ li.nav-link {
 .text-right {
   text-align: right;
 }
+
 .d-block {
   display: block;
 }

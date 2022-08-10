@@ -8,7 +8,7 @@ const StartVoices = styled.div`
 // border: 4px solid slateblue;
 display: flex;
 flex-direction: row;
-justify-content: flex-end;
+justify-content: space-around;
 width: 100%;
 
 background-color: ${theme.colours.darkWheat};
