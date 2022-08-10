@@ -63,7 +63,7 @@ select {
   font-family: ${theme.type.medium};
   font-size: 20px;
   color: black;
-  border: 0px;
+  border: 3px solid ${theme.colours.teaGreen};
   
 }
 `;
