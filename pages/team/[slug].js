@@ -51,6 +51,7 @@ justify-content: flex-start;
       font-family: ${theme.type.semibold};
       font-size: 2rem;
       line-height: 2.2rem;
+      margin-left: 10px;
     }
   }
   h4 {

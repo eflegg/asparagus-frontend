@@ -13,9 +13,10 @@ import {
   getEvents,
   getArticles,
   getContributors,
-  getTeam,
+  getTeamMembers,
   getGeneralPages,
 } from "../utils/wordpress";
+import ContributorCard from "../components/ContributorCard";
 
 const SearchContainer = styled.div`
   h1 {
@@ -40,6 +41,7 @@ function SearchResults(props) {
     }
     return posts.filter((post) => {
       const eventDescrip = post.acf.description;
+      console.log("event description: ", eventDescrip);
       return eventDescrip.includes(query);
     });
   };
@@ -65,12 +67,37 @@ function SearchResults(props) {
       return postContent.includes(query);
     });
   };
+  //Contributors
+  const filterContributors = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+    return posts.filter((post) => {
+      const postContent = post.acf.bio.toLowerCase();
+      return postContent.includes(query);
+    });
+  };
+  //Team
+  const filterTeam = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+    return posts.filter((post) => {
+      const postContent = post.acf.bio.toLowerCase();
+      return postContent.includes(query);
+    });
+  };
   const filteredEvents = filterEvents(props.events, props.router.query.name);
   const filteredContent = filterArticles(props.posts, props.router.query.name);
-  const filteredGeneralPages = filterEvents(
+  const filteredGeneralPages = filterGeneralPages(
     props.generalPages,
     props.router.query.name
   );
+  const filteredContributors = filterContributors(
+    props.contributors,
+    props.router.query.name
+  );
+  const filteredTeam = filterTeam(props.team, props.router.query.name);
 
   return (
     <PageWrapper>
@@ -86,6 +113,13 @@ function SearchResults(props) {
             </React.Fragment>
           ))}
 
+          {filteredEvents.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <EventCard event={post} />
+            </React.Fragment>
+          ))}
+        </div>
+        <div>
           {filteredGeneralPages.map((post) => (
             <React.Fragment key={uuidv4()}>
               <div className="">
@@ -93,11 +127,15 @@ function SearchResults(props) {
               </div>
             </React.Fragment>
           ))}
-        </div>
-        <div>
-          {filteredEvents.map((post) => (
+
+          {filteredContributors.map((post) => (
             <React.Fragment key={uuidv4()}>
-              <EventCard event={post} />
+              <ContributorCard contributor={post} />
+            </React.Fragment>
+          ))}
+          {filteredTeam.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <ContributorCard contributor={post} />
             </React.Fragment>
           ))}
         </div>
@@ -113,7 +151,7 @@ export async function getStaticProps({ params }) {
   const events = await getEvents();
   const generalPages = await getGeneralPages();
   const contributors = await getContributors();
-  const team = await getTeam();
+  const team = await getTeamMembers();
 
   return {
     props: {

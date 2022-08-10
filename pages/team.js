@@ -29,6 +29,7 @@ export default function Team({ teamMembers }) {
           return (
             <React.Fragment key={uuidv4()}>
               <ContributorCard
+                contributor={member}
                 team
                 image={member.acf.headshot.url}
                 slug={member.slug}
