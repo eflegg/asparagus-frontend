@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getSlugs, getIssue, getArticles } from "../../utils/wordpress";
+import { getSlugs, getIssue, getArticles, getIssues } from "../../utils/wordpress";
 import PageWrapper from "../../components/Global/PageWrapper";
 import ArticleCard from "../../components/ArticleCard";
 import styled from "styled-components";
@@ -32,6 +32,8 @@ export default function Issue({ issue, articles }) {
       SEOtitle="Current Issue"
       className=""
     >
+      <h1 className="text-center">{issue.title.rendered}</h1>
+      <hr/>
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
           <Image

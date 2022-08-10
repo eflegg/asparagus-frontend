@@ -7,6 +7,24 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 
+const Issues = styled.div`
+hr {
+  margin-bottom: 30px;
+}
+.button-container {
+  width: 20%;
+  margin: 0 auto;
+  margin-bottom: 60px;
+}
+.btn--secondary {
+  font-size: 1.4rem;
+  ${theme.mediaQuery.md`
+  font-size: 2.4rem;
+  `}
+}
+`;
+
+
 export default function PastIssues({ issues }) {
   console.log("issues: ", issues);
 
@@ -20,6 +38,17 @@ export default function PastIssues({ issues }) {
       SEOtitl="Past Issues"
       metadescription="Peruse stories of a just society on a healthy planet in all Asparagus Magazine's past issues"
     >
+      <Issues>
+      <h1 className="text-center">Past Issues</h1>
+      <hr/>
+      <div className="button-container">
+      <Link href={"/current-issue"} >
+          <a>
+            <button className="btn--secondary">Go to Current Issue</button>
+          </a>
+        </Link>
+        </div>
+        </Issues>
       <ul className="card--grid">
         {issues.map((issue, index) => {
           return (
