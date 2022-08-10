@@ -20,7 +20,9 @@ export default function PastIssues({ issues }) {
       SEOtitl="Past Issues"
       metadescription="Peruse stories of a just society on a healthy planet in all Asparagus Magazine's past issues"
     >
-      <ul className="card--grid">
+      <h1 className="text-center">Past Issues</h1>
+      <hr/>
+      <ul className="card--grid single-page">
         {issues.map((issue, index) => {
           return (
             <React.Fragment key={uuidv4()}>

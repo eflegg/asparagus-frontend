@@ -32,6 +32,8 @@ export default function Issue({ issue, articles }) {
       SEOtitle="Current Issue"
       className=""
     >
+      <h1 className="text-center">{issue.title.rendered}</h1>
+      <hr/>
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
           <Image

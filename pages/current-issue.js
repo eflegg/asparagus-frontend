@@ -33,6 +33,8 @@ export default function CurrentIssue({ issues, articles }) {
       SEOtitle="Current Issue"
       metadescription="All the sustainble stories from Asparagus Magazine's most recent issue"
     >
+      <h1 className="text-center">{issues[0].title.rendered}</h1>
+      <hr/>
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
           <Image
