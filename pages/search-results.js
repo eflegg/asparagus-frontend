@@ -40,6 +40,7 @@ function SearchResults(props) {
     }
     return posts.filter((post) => {
       const eventDescrip = post.acf.description;
+      console.log("event description: ", eventDescrip);
       return eventDescrip.includes(query);
     });
   };
@@ -65,12 +66,37 @@ function SearchResults(props) {
       return postContent.includes(query);
     });
   };
+  //Contributors
+  const filterContributors = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+    return posts.filter((post) => {
+      const postContent = post.acf.bio.toLowerCase();
+      return postContent.includes(query);
+    });
+  };
+  //Team
+  const filterTeam = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+    return posts.filter((post) => {
+      const postContent = post.acf.bio.toLowerCase();
+      return postContent.includes(query);
+    });
+  };
   const filteredEvents = filterEvents(props.events, props.router.query.name);
   const filteredContent = filterArticles(props.posts, props.router.query.name);
-  const filteredGeneralPages = filterEvents(
+  const filteredGeneralPages = filterGeneralPages(
     props.generalPages,
     props.router.query.name
   );
+  const filteredContributors = filterContributors(
+    props.contributors,
+    props.router.query.name
+  );
+  const filteredTeam = filterTeam(props.team, props.router.query.name);
 
   return (
     <PageWrapper>
