@@ -13,7 +13,7 @@ import {
   getEvents,
   getArticles,
   getContributors,
-  getTeam,
+  getTeamMembers,
   getGeneralPages,
 } from "../utils/wordpress";
 
@@ -113,7 +113,7 @@ export async function getStaticProps({ params }) {
   const events = await getEvents();
   const generalPages = await getGeneralPages();
   const contributors = await getContributors();
-  const team = await getTeam();
+  const team = await getTeamMembers();
 
   return {
     props: {
