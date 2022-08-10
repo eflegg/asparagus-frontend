@@ -236,12 +236,21 @@ export default function ArticlePage({ article, allArticles, categories }) {
               </div>
             </div>
             <div className="hero--image position-relative">
-              <Image
-                src={article._embedded["wp:featuredmedia"]["0"].source_url}
-                alt={article._embedded["wp:featuredmedia"]["0"].alt_text}
-                layout="fill"
-                objectFit="cover"
-              />
+              {article._embedded["wp:featuredmedia"] ? (
+                <Image
+                  src={article._embedded["wp:featuredmedia"]["0"].source_url}
+                  alt={article._embedded["wp:featuredmedia"]["0"].alt_text}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              ) : (
+                <Image
+                  src="/triplestalk.svg"
+                  layout="fill"
+                  objectFit="cover"
+                  alt="Asparagus Magazine logo"
+                />
+              )}
             </div>
           </div>
         </SingleHero>
