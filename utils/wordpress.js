@@ -146,6 +146,21 @@ export async function getIssue(slug) {
   return issue;
 }
 
+/// Banner ads ///
+
+export async function getAds() {
+  const adsRes = await fetch(BASE_URL + "/advertising?_embed");
+  const ads = await adsRes.json();
+  return ads;
+}
+
+export async function getAd(slug) {
+  const ads = await getAds();
+  const adsArray = ads.filter((ad) => ad.slug == slug);
+  const ad = adsArray.length > 0 ? adsArray[0] : null;
+  return ad;
+}
+
 export async function getSlugs(type) {
   let elements = [];
   switch (type) {
@@ -178,6 +193,9 @@ export async function getSlugs(type) {
       break;
     case "issues":
       elements = await getIssues();
+      break;
+    case "advertising":
+      elements = await getAds();
       break;
   }
   const elementsIds = elements.map((element) => {

@@ -14,6 +14,7 @@ export default class MyDocument extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
+      // console.log("initial props: ", initialProps);
       return {
         ...initialProps,
         styles: (

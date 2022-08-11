@@ -241,12 +241,20 @@ export default function ArticlePage({ article, allArticles, categories }) {
               <p className="excerpt deck">{article.acf.dek}</p>
               <div className="article-details">
                 <div className="byline--image">
-                  {article.acf.writer[0].acf.headshot.url && (
+                  {article.acf.writer[0].acf.headshot ? (
                     <Image
                       src={article.acf.writer[0].acf.headshot.url}
                       layout="fill"
                       objectFit="cover"
                       alt="Author headshot"
+                    />
+                  ) : (
+                    <Image
+                      src="/singlestalk-square.svg"
+                      layout="responsive"
+                      height="100px"
+                      width="100px"
+                      alt="Contributor photo"
                     />
                   )}
                 </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import theme from "./Theme";
 import { useRouter } from "next/router";
+import { getAds } from "../../utils/wordpress";
 
 export default function AdBanner() {
   const dynamicRoute = useRouter().asPath;

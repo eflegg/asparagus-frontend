@@ -123,12 +123,20 @@ export default function AwardWinnerCard({ post }) {
                 <p className="award-title">{post.acf.award_title}</p>
                 <div className="article-details">
                   <div className="byline--image">
-                    {post.acf.writer[0].acf.headshot.url && (
+                    {post.acf.writer[0].acf.headshot.url ? (
                       <Image
                         src={post.acf.writer[0].acf.headshot.url}
                         layout="fill"
                         objectFit="cover"
                         alt="Author headshot"
+                      />
+                    ) : (
+                      <Image
+                        src="/singlestalk-square.svg"
+                        layout="responsive"
+                        height="100px"
+                        width="100px"
+                        alt="Contributor photo"
                       />
                     )}
                   </div>

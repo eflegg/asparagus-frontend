@@ -89,12 +89,22 @@ export default function ContributorPage({ contributor, posts }) {
 
         <ContribHeader>
           <div className="contrib--image">
-            <Image
-              src={contributor.acf.headshot.url}
-              layout="fill"
-              objectFit="cover"
-              alt="Contributor photo"
-            />
+            {contributor.acf.headshot ? (
+              <Image
+                src={contributor.acf.headshot.url}
+                layout="fill"
+                objectFit="cover"
+                alt="Contributor photo"
+              />
+            ) : (
+              <Image
+                src="/singlestalk-square.svg"
+                layout="responsive"
+                height="100px"
+                width="100px"
+                alt="Contributor photo"
+              />
+            )}
           </div>
           <div className="contrib--details">
             {contributor.acf.title && <h4>{contributor.acf.title}</h4>}

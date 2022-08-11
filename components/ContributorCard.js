@@ -59,14 +59,8 @@ const Card = styled.li`
 `;
 
 export default function ContributorCard({
-  name,
-  slug,
-  bio,
-  image,
-  title,
   team,
-  social,
-  socialLink,
+
   contributor,
 }) {
   return (
