@@ -66,7 +66,7 @@ hr {
   &:hover {
       &::after {
         content: "";
-        width: 76%;
+        width: 78%;
         transition: all 0.25s ease-out;
     }
   }
