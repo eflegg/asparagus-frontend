@@ -79,7 +79,7 @@ export default function ArticleCard({ post }) {
         </div>
         <div className="article-details">
           <div className="byline--image">
-            {post.acf.writer[0].acf.headshot.url ? (
+            {post.acf.writer[0].acf.headshot ? (
               <Image
                 src={post.acf.writer[0].acf.headshot.url}
                 layout="fill"
