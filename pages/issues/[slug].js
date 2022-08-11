@@ -19,7 +19,47 @@ const CoverContainer = styled.div`
     display: block;
     width: 277px;
   }
+  h3 {
+    color: ${theme.colours.soil};
+    font-size: 1.6rem;
+    ${theme.mediaQuery.md`
+    font-size: 3.2rem;
+    `}
+  }
+  p {
+    font-style: italic;
+    font-size: 1.4rem;
+    margin-top: 30px;
+    ${theme.mediaQuery.md`
+    font-size: 2.4rem;
+    `}
+  }
+  a {
+    text-align: center;
+  }
 `;
+
+const Issues = styled.div`
+hr {
+  margin-bottom: 30px;
+}
+.button-container {
+ display: flex;
+ justify-content: center;
+  margin-bottom: 60px;
+}
+.btn--secondary {
+  margin: 0 auto;
+  font-size: 1.4rem;
+  ${theme.mediaQuery.md`
+  font-size: 2.4rem;
+  `}
+}
+link {
+  margin: 0 auto;
+}
+`;
+
 
 export default function Issue({ issue, articles }) {
   const currentIssue = issue.ID;
@@ -33,7 +73,16 @@ export default function Issue({ issue, articles }) {
       className=""
     >
       <h1 className="text-center">{issue.title.rendered}</h1>
+      <Issues>
       <hr/>
+      <div className="button-container">
+      <Link href={"/past-issues"}>
+            <a>
+              <button className="btn--secondary">Go to Past Issues</button>
+            </a>
+      </Link>
+      </div>
+      </Issues>
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
           <Image
@@ -48,6 +97,7 @@ export default function Issue({ issue, articles }) {
           <h3>From This Issue:</h3>
           <p>{issue.acf.primary_cover_line}</p>
           <p>{issue.acf.secondary_cover_line}</p>
+          <button className="btn--primary">Buy Now</button>
         </div>
       </CoverContainer>
       <ul className="card--grid single-page">

@@ -12,8 +12,8 @@ hr {
   margin-bottom: 30px;
 }
 .button-container {
-  width: 20%;
-  margin: 0 auto;
+ display: flex;
+ justify-content: center;
   margin-bottom: 60px;
 }
 .btn--secondary {
