@@ -289,6 +289,21 @@ hr {
   background: $teaGreen;
   margin-bottom: 65px;
 }
+.wp-block-separator {
+  position: relative;
+  background: transparent;
+  overflow: initial;
+  margin-bottom: 100px;
+  &::after {
+    content: url("../public/triplestalk.svg");
+    height: 75px;
+    width: 36px;
+    opacity: 1;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+  }
+}
 
 .start-small {
   height: 3px;
