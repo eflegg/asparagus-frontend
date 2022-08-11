@@ -125,7 +125,7 @@ const SingleContainer = styled.div`
 `;
 
 const SingleHero = styled.div`
-  margin-bottom: 60px;
+  margin-bottom: 100px;
   .categories {
     width: 90%;
     margin: 0 auto;
