@@ -15,6 +15,7 @@ import {
   getContributors,
   getTeamMembers,
   getGeneralPages,
+  getTips,
 } from "../utils/wordpress";
 import ContributorCard from "../components/ContributorCard";
 
@@ -89,6 +90,15 @@ function SearchResults(props) {
   };
 
   //Asparagus Tips
+  const filterTips = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+    return posts.filter((post) => {
+      const postContent = post.content.rendered.toLowerCase();
+      return postContent.includes(query);
+    });
+  };
 
   const filteredEvents = filterEvents(props.events, props.router.query.name);
   const filteredContent = filterArticles(props.posts, props.router.query.name);
@@ -101,6 +111,8 @@ function SearchResults(props) {
     props.router.query.name
   );
   const filteredTeam = filterTeam(props.team, props.router.query.name);
+
+  const filteredTips = filterTips(props.tips, props.router.query.name);
 
   return (
     <PageWrapper>
@@ -141,6 +153,13 @@ function SearchResults(props) {
               <ContributorCard contributor={post} />
             </React.Fragment>
           ))}
+          {filteredTips.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <div className="">
+                <h3>{post.title.rendered}</h3>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
       </SearchContainer>
     </PageWrapper>
@@ -155,6 +174,7 @@ export async function getStaticProps({ params }) {
   const generalPages = await getGeneralPages();
   const contributors = await getContributors();
   const team = await getTeamMembers();
+  const tips = await getTips();
 
   return {
     props: {
@@ -163,6 +183,7 @@ export async function getStaticProps({ params }) {
       generalPages,
       contributors,
       team,
+      tips,
     },
     revalidate: 10, // In seconds
   };
