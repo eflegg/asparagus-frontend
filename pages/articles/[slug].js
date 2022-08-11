@@ -22,12 +22,16 @@ import React from "react";
 
 const SingleContainer = styled.div`
   height: 100%;
-  img {
-    height: 100%;
-    width: 100%;
-  }
+
   figure {
+    text-align: center;
     margin: 50px auto;
+    &.size-large {
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
   figcaption {
     width: 90%;
