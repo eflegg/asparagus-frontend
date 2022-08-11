@@ -49,14 +49,27 @@ hr {
   margin-bottom: 60px;
 }
 .btn--secondary {
-  margin: 0 auto;
+  position: relative;
   font-size: 1.4rem;
   ${theme.mediaQuery.md`
   font-size: 2.4rem;
   `}
-}
-link {
-  margin: 0 auto;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    border-bottom: 2px solid ${theme.colours.soil};
+    width: 0;
+    transition: all 0.25s ease-out;
+  }
+  &:hover {
+      &::after {
+        content: "";
+        width: 76%;
+        transition: all 0.25s ease-out;
+    }
+  }
 }
 `;
 
