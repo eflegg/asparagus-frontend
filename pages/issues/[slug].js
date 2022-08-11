@@ -91,7 +91,7 @@ export default function Issue({ issue, articles }) {
       <div className="button-container">
       <Link href={"/past-issues"}>
             <a>
-              <button className="btn--secondary">Go to Past Issues</button>
+              <button className="btn--secondary">Back to Past Issues</button>
             </a>
       </Link>
       </div>
