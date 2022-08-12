@@ -277,6 +277,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     alt={article._embedded["wp:featuredmedia"]["0"].alt_text}
                     layout="fill"
                     objectFit="cover"
+                    priority
                   />
                 ) : (
                   <Image
@@ -367,5 +368,3 @@ export async function getStaticProps({ params }) {
     revalidate: 10, // In seconds
   };
 }
-
-18442232457;

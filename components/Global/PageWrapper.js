@@ -45,7 +45,7 @@ export default function PageWrapper({
         {children}
         <Footer />
       </div>
-      {/* <AdBanner /> */}
+      <AdBanner />
     </OuterContainer>
   );
 }
