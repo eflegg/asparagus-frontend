@@ -17,6 +17,7 @@ import {
   getGeneralPages,
 } from "../utils/wordpress";
 import ContributorCard from "../components/ContributorCard";
+import Link from "next/link";
 
 const SearchContainer = styled.div`
   h1 {
@@ -24,7 +25,23 @@ const SearchContainer = styled.div`
     margin: 0 auto;
   }
   h2 {
-    color: ${theme.colours.gusGreen};
+    color: black;
+    font-family: ${theme.type.medium};
+    font-size: 2.4rem;
+    margin: 0px 72px;
+  }
+
+  .search-result--title {
+    // margin: 0px 72px 40px 72px;
+    font-size: 3.6rem;
+  }
+
+  .search-result--content {
+    width: 90%;
+    margin: 20px 72px;
+    ${theme.mediaQuery.md`
+    width: 40%;
+    `}
   }
 `;
 
@@ -125,8 +142,30 @@ function SearchResults(props) {
         <div>
           {filteredGeneralPages.map((post) => (
             <React.Fragment key={uuidv4()}>
-              <div className="">
-                <h3>{post.title.rendered}</h3>
+              <div className="search-result--content">
+              <Link href={"/[slug]"} as={`/${post.slug}`}>
+                <a>
+                <h3 className="search-result--title">{post.title.rendered}</h3>
+
+                {post.content.rendered &&
+						post.content.rendered.length > 100 ? (
+							<>
+								<p dangerouslySetInnerHTML={{ __html: post.content.rendered }}>
+									{post.content.rendered.replace(
+										/^(.{175}[^\s]*).*/,
+										'$1',
+									)}
+									..
+								</p>
+							</>
+						) : (
+							<p dangerouslySetInnerHTML={{ __html: post.content.rendered }}></p>
+						)}
+
+                
+
+                </a>
+                </Link>               
               </div>
             </React.Fragment>
           ))}
