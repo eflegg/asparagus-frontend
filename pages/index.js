@@ -57,14 +57,7 @@ export default function Home({ page, posts }) {
           <div>
             {posts.map((post, index) => {
               let initialDate = post.date;
-              let formattedDate = new Date(initialDate).toLocaleDateString(
-                "en-US",
-                {
-                  year: "numeric",
-                  month: "long",
-                  day: "2-digit",
-                }
-              );
+
               return (
                 <React.Fragment key={uuidv4()}>
                   {post.id == page.acf.lead_story[0].ID ? (

@@ -17,6 +17,7 @@ export default function PageWrapper({
   SEOtitle,
   ogImageUrl,
 }) {
+  const TRACKING_ID = "G-CT5R7MCS1Y";
   return (
     <OuterContainer>
       <Head>
