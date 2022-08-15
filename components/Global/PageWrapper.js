@@ -38,6 +38,23 @@ export default function PageWrapper({
         <meta property="og:description" content={metadescription} />
         <meta property="og:image" content={ogImageUrl} />
         <meta property="og:url" content={canonicalUrl} />
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${TRACKING_ID}', {
+          page_path: window.location.pathname,
+        });
+      `,
+          }}
+        />
       </Head>
 
       <div className="page-wrapper">
