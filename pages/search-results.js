@@ -143,29 +143,38 @@ function SearchResults(props) {
           {filteredGeneralPages.map((post) => (
             <React.Fragment key={uuidv4()}>
               <div className="search-result--content">
-              <Link href={"/[slug]"} as={`/${post.slug}`}>
-                <a>
-                <h3 className="search-result--title">{post.title.rendered}</h3>
+                <Link href={"/[slug]"} as={`/${post.slug}`}>
+                  <a>
+                    <h3 className="search-result--title">
+                      {post.title.rendered}
+                    </h3>
 
-                {post.content.rendered &&
-						post.content.rendered.length > 100 ? (
-							<>
-								<p dangerouslySetInnerHTML={{ __html: post.content.rendered }}>
-									{post.content.rendered.replace(
-										/^(.{175}[^\s]*).*/,
-										'$1',
-									)}
-									..
-								</p>
-							</>
-						) : (
-							<p dangerouslySetInnerHTML={{ __html: post.content.rendered }}></p>
-						)}
-
-                
-
-                </a>
-                </Link>               
+                    {/* check to make sure the excerpt exists */}
+                    {post.excerpt.rendered &&
+                    // check to see if it's longer than 100 characters
+                    post.excerpt.rendered.length > 100 ? (
+                      <>
+                        {/* use replace function to limit characters to 100 and stop 
+                      at the nearest space so it's not cut off mid word. 
+                      now don't need anything in side p tag*/}
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: post.excerpt.rendered.replace(
+                              /^(.{100}[^\s]*).*/,
+                              "$1"
+                            ),
+                          }}
+                        ></p>
+                      </>
+                    ) : (
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: post.excerpt.rendered,
+                        }}
+                      ></p>
+                    )}
+                  </a>
+                </Link>
               </div>
             </React.Fragment>
           ))}
