@@ -228,6 +228,7 @@ const ConnectMenuNav = styled.nav`
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
   const [connectLinks, setConnectLinks] = useState([]);
+  const [footerLinks, setFooterLinks] = useState([])
   const [navActive, setNavActive] = useState(false);
   const [subnav, setSubnav] = useState(null);
 
@@ -247,6 +248,11 @@ export default function HeaderMenu() {
       const connect = await fetch(
         `${Config.apiUrl}/wp-json/menus/v1/menus/connect-menu`
       );
+
+      const footer = await fetch(
+        `${Config.apiUrl}/wp-json/menus/v1/menus/footer-menu`
+      );
+
       if (!response.ok) {
         // oops! something went wrong
         return;
@@ -256,6 +262,8 @@ export default function HeaderMenu() {
       setLinks(links);
       const connectLinks = await connect.json();
       setConnectLinks(connectLinks);
+      const footerLinks = await footer.json(); 
+      setFooterLinks(footerLinks)
     }
 
     loadLinks();
@@ -488,6 +496,61 @@ export default function HeaderMenu() {
               })}{" "}
             </ul>
           </MobileNav>
+          <MobileNav>
+              <ul>
+                {footerLinks?.items?.map((footerLink, index) => {
+                  return (
+                    <li 
+                      className="nav-link" 
+                      key={uuidv4()}
+                      onClick={() => handleSubnavClick(footerLink.ID)}
+                    >
+                    <span dangerouslySetInnerHTML={{ __html: footerLink.title }} />
+               
+                    {footerLink.child_items && subnav == footerLink.ID ? (
+                      <ul className="subnav">
+                        <img src="/hamburger-arrow.svg" width="20px" height="13px"/>
+                        {footerLink?.child_items?.map((childItem, childIndex) => {
+                          return (
+                            <li key={uuidv4()}
+                              className="subnav-link">
+                                {childItem.object == "page" ? (
+                                  <ActiveLink
+                                    activeClassName="navlink--active"
+                                    href={`/[slug]}`}
+                                    as={`/${childItem.slug}`}
+                                  >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                    __html: childItem.title,
+                                  }}
+                                  />
+                                  </ActiveLink>
+                                  ) : (
+                                  <ActiveLink
+                                    activeClassName="navlink--active"
+                                    href={`/${childItem.slug}`}
+                                    as={`/${childItem.slug}`}
+                                  >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  />
+                                  </ActiveLink>
+                                )}
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    ) : null}
+                    </li>
+                          );
+                        })}
+                      </ul>
+            </MobileNav>
         </MobileNavContainer>
       ) : null}
     </Suspense>
