@@ -117,7 +117,7 @@ function SearchResults(props) {
       const postContent = post.content.rendered.toLowerCase();
       return postContent.includes(query);
     });
-  }
+  };
 
   const filteredEvents = filterEvents(props.events, props.router.query.name);
   const filteredContent = filterArticles(props.posts, props.router.query.name);
