@@ -19,7 +19,6 @@ import {
 } from "../utils/wordpress";
 import ContributorCard from "../components/ContributorCard";
 import Link from "next/link";
-import NewsLetterContainer from "../pages/asparagus-tips-archive";
 
 const SearchContainer = styled.div`
   h1 {
@@ -29,13 +28,20 @@ const SearchContainer = styled.div`
   h2 {
     color: black;
     font-family: ${theme.type.medium};
+    font-size: 1.7rem;
+    margin: 0px 20px;
+    ${theme.mediaQuery.md`
     font-size: 2.4rem;
     margin: 0px 72px;
+    `}  
   }
 
   .search-result--title {
     // margin: 0px 72px 40px 72px;
+    font-size: 1.8rem;
+    ${theme.mediaQuery.md`
     font-size: 3.6rem;
+    `}
   }
 
   .search-result--content {
@@ -164,31 +170,7 @@ function SearchResults(props) {
                     <h3 className="search-result--title">
                       {post.title.rendered}
                     </h3>
-
-                    {/* check to make sure the excerpt exists */}
-                    {post.excerpt.rendered &&
-                    // check to see if it's longer than 100 characters
-                    post.excerpt.rendered.length > 100 ? (
-                      <>
-                        {/* use replace function to limit characters to 100 and stop 
-                      at the nearest space so it's not cut off mid word. 
-                      now don't need anything in side p tag*/}
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html: post.excerpt.rendered.replace(
-                              /^(.{100}[^\s]*).*/,
-                              "$1"
-                            ),
-                          }}
-                        ></p>
-                      </>
-                    ) : (
-                      <p
-                        dangerouslySetInnerHTML={{
-                          __html: post.excerpt.rendered,
-                        }}
-                      ></p>
-                    )}
+                    <p>{post.yoast_head_json.description}</p>
                   </a>
                 </Link>
               </div>
@@ -197,6 +179,7 @@ function SearchResults(props) {
 
           {filteredTips.map((post) => (
             <React.Fragment key={uuidv4()}>
+               <div className="search-result--content">
               <Link href={"/asparagus-tips-archive"}>
                 <a>
                   <h3 className="search-result--title">
@@ -206,6 +189,7 @@ function SearchResults(props) {
                   {/* check to make sure the excerpt exists */}
                 </a>
               </Link>
+              </div>
             </React.Fragment>
           ))}
 
