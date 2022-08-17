@@ -15,9 +15,11 @@ import {
   getContributors,
   getTeamMembers,
   getGeneralPages,
+  getTips,
 } from "../utils/wordpress";
 import ContributorCard from "../components/ContributorCard";
 import Link from "next/link";
+import NewsLetterContainer from "../pages/asparagus-tips-archive";
 
 const SearchContainer = styled.div`
   h1 {
@@ -38,7 +40,7 @@ const SearchContainer = styled.div`
 
   .search-result--content {
     width: 90%;
-    margin: 20px 72px;
+    margin: 60px auto;
     ${theme.mediaQuery.md`
     width: 40%;
     `}
@@ -107,6 +109,16 @@ function SearchResults(props) {
 
   //Asparagus Tips
 
+  const filterTips = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+    return posts.filter((post) => {
+      const postContent = post.content.rendered.toLowerCase();
+      return postContent.includes(query);
+    });
+  }
+
   const filteredEvents = filterEvents(props.events, props.router.query.name);
   const filteredContent = filterArticles(props.posts, props.router.query.name);
   const filteredGeneralPages = filterGeneralPages(
@@ -118,6 +130,7 @@ function SearchResults(props) {
     props.router.query.name
   );
   const filteredTeam = filterTeam(props.team, props.router.query.name);
+  const filteredTips = filterTips(props.tips, props.router.query.name);
 
   return (
     <PageWrapper>
@@ -132,13 +145,21 @@ function SearchResults(props) {
               <ArticleCard post={post} />
             </React.Fragment>
           ))}
-
+        </div>
           {filteredEvents.map((post) => (
             <React.Fragment key={uuidv4()}>
+              <Link href={"/pages/[events]"} as={`/pages/${post.events}`}>
+                <a>
               <EventCard event={post} />
+              </a>
+              </Link>
             </React.Fragment>
           ))}
-        </div>
+          {filteredTips.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <NewsLetterContainer></NewsLetterContainer>
+            </React.Fragment>
+          ))}
         <div>
           {filteredGeneralPages.map((post) => (
             <React.Fragment key={uuidv4()}>
@@ -203,6 +224,7 @@ export async function getStaticProps({ params }) {
   const generalPages = await getGeneralPages();
   const contributors = await getContributors();
   const team = await getTeamMembers();
+  const tips = await getTips();
 
   return {
     props: {
@@ -211,6 +233,7 @@ export async function getStaticProps({ params }) {
       generalPages,
       contributors,
       team,
+      tips,
     },
     revalidate: 10, // In seconds
   };
