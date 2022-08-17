@@ -26,13 +26,47 @@ const MenuContainer = styled.div`
   `};
 `;
 
+
+const MobileNavContainer = styled.div`
+ background-color: ${theme.colours.darkWheat}; 
+  height: 100%;
+  width: 100%; 
+  position: fixed;
+  z-index: 1; 
+  top: 0; 
+  left: 0; 
+  
+  ul {
+    position: relative; 
+    width: 100%; 
+  }
+`
 const MobileNav = styled.nav`
+  .nav-link {
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-start; 
+  }
+  .subnav {
+    flex: 1;
+    margin-left: 10px;  
+  }
+  a.card-text.pb-5 {
+    font-family: ${theme.type.medium};
+    color: ${theme.colours.black};
+    font-size: 1.8rem; 
+  };
 `;
+const HamburgerLogoContainer = styled.div`
+  margin-top: 100px; 
+  padding: 30px; 
+`
 
 const ConnectMenuContainer = styled.div`
  display: flex; 
  justify-content: space-between; 
  align-items: center; 
+ margin-top: 15px; 
   ${theme.mediaQuery.md`
     flex: 0 0 50%; 
     padding-top: 30px; 
@@ -321,7 +355,7 @@ export default function HeaderMenu() {
           </ConnectMenuContainer>
         </LogoConnectMenuContainer>
 
-        {size.width >= 1000 ? (
+        {size.width >= 1000 && (
           <DesktopNav>
             <ul 
               style = {size.scrollY >=10 ? {top: -10 - (imgRef.current.clientHeight)} : null} className={ size.scrollY >= 10 ? 'desktopnavcolorchange' : 'desktopnav'}>
@@ -379,9 +413,21 @@ export default function HeaderMenu() {
               })}{" "}
             </ul>
           </DesktopNav>
-        ) : (
-          <MobileNav>
+        ) } 
+          
+          
             {navActive ? (
+              <MobileNavContainer>
+
+                <HamburgerLogoContainer>
+                  <Link href="/">
+                    <a>
+                      <img ref={imgRef} src="/Asparagus_Nameplate_Color.png"/>
+                    </a>
+                  </Link>
+                </HamburgerLogoContainer>
+              <MobileNav>
+
               <ul>
                 {links?.items?.map((link, index) => {
                   return (
@@ -395,7 +441,9 @@ export default function HeaderMenu() {
                           dangerouslySetInnerHTML={{ __html: link.title }}
                         ></span>
                         {link.child_items && subnav == link.ID ? (
+                          <>
                           <ul className="subnav">
+                          <img src="/hamburger-arrow.svg" width="20px" height="13px"/>
                             {link?.child_items?.map((childItem, childIndex) => {
                               return (
                                 <li key={uuidv4()} className="subnav-link">
@@ -415,15 +463,19 @@ export default function HeaderMenu() {
                               );
                             })}
                           </ul>
+                          </>
                         ) : null}
                       </li>
                     </>
                   );
                 })}{" "}
               </ul>
+              </MobileNav>
+              </MobileNavContainer>
             ) : null}
-          </MobileNav>
-        )}
+          
+          
+      
 
 
       </Suspense>
