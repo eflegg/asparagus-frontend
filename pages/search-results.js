@@ -15,6 +15,7 @@ import {
   getContributors,
   getTeamMembers,
   getGeneralPages,
+  getTips,
 } from "../utils/wordpress";
 import ContributorCard from "../components/ContributorCard";
 import Link from "next/link";
@@ -106,6 +107,15 @@ function SearchResults(props) {
   };
 
   //Asparagus Tips
+  const filterTips = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+    return posts.filter((post) => {
+      const postContent = post.content.rendered.toLowerCase();
+      return postContent.includes(query);
+    });
+  };
 
   const filteredEvents = filterEvents(props.events, props.router.query.name);
   const filteredContent = filterArticles(props.posts, props.router.query.name);
@@ -118,6 +128,7 @@ function SearchResults(props) {
     props.router.query.name
   );
   const filteredTeam = filterTeam(props.team, props.router.query.name);
+  const filteredTips = filterTips(props.tips, props.router.query.name);
 
   return (
     <PageWrapper>
@@ -179,6 +190,43 @@ function SearchResults(props) {
             </React.Fragment>
           ))}
 
+          {filteredTips.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <Link href={"/asparagus-tips-archive"}>
+                <a>
+                  <h3 className="search-result--title">
+                    {post.title.rendered}
+                  </h3>
+
+                  {/* check to make sure the excerpt exists */}
+                  {post.content.rendered &&
+                  // check to see if it's longer than 100 characters
+                  post.content.rendered.length > 100 ? (
+                    <>
+                      {/* use replace function to limit characters to 100 and stop 
+                      at the nearest space so it's not cut off mid word. 
+                      now don't need anything in side p tag*/}
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: post.content.rendered.replace(
+                            /^(.{100}[^\s]*).*/,
+                            "$1"
+                          ),
+                        }}
+                      ></p>
+                    </>
+                  ) : (
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: post.content.rendered,
+                      }}
+                    ></p>
+                  )}
+                </a>
+              </Link>
+            </React.Fragment>
+          ))}
+
           {filteredContributors.map((post) => (
             <React.Fragment key={uuidv4()}>
               <ContributorCard contributor={post} />
@@ -203,6 +251,7 @@ export async function getStaticProps({ params }) {
   const generalPages = await getGeneralPages();
   const contributors = await getContributors();
   const team = await getTeamMembers();
+  const tips = await getTips();
 
   return {
     props: {
@@ -211,6 +260,7 @@ export async function getStaticProps({ params }) {
       generalPages,
       contributors,
       team,
+      tips,
     },
     revalidate: 10, // In seconds
   };
