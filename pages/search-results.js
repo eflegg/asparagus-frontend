@@ -108,7 +108,6 @@ function SearchResults(props) {
   };
 
   //Asparagus Tips
-
   const filterTips = (posts, query) => {
     if (!query) {
       return posts;
@@ -146,20 +145,16 @@ function SearchResults(props) {
             </React.Fragment>
           ))}
         </div>
-          {filteredEvents.map((post) => (
-            <React.Fragment key={uuidv4()}>
-              <Link href={"/pages/[events]"} as={`/pages/${post.events}`}>
-                <a>
-              <EventCard event={post} />
+        {filteredEvents.map((post) => (
+          <React.Fragment key={uuidv4()}>
+            <Link href={"/pages/[events]"} as={`/pages/${post.events}`}>
+              <a>
+                <EventCard event={post} />
               </a>
-              </Link>
-            </React.Fragment>
-          ))}
-          {filteredTips.map((post) => (
-            <React.Fragment key={uuidv4()}>
-              <NewsLetterContainer></NewsLetterContainer>
-            </React.Fragment>
-          ))}
+            </Link>
+          </React.Fragment>
+        ))}
+
         <div>
           {filteredGeneralPages.map((post) => (
             <React.Fragment key={uuidv4()}>
@@ -197,6 +192,20 @@ function SearchResults(props) {
                   </a>
                 </Link>
               </div>
+            </React.Fragment>
+          ))}
+
+          {filteredTips.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <Link href={"/asparagus-tips-archive"}>
+                <a>
+                  <h3 className="search-result--title">
+                    {post.title.rendered}
+                  </h3>
+                  <p>{post.yoast_head_json.description}</p>
+                  {/* check to make sure the excerpt exists */}
+                </a>
+              </Link>
             </React.Fragment>
           ))}
 
