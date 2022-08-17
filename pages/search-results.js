@@ -19,6 +19,7 @@ import {
 } from "../utils/wordpress";
 import ContributorCard from "../components/ContributorCard";
 import Link from "next/link";
+import NewsLetterContainer from "../pages/asparagus-tips-archive";
 
 const SearchContainer = styled.div`
   h1 {
@@ -39,7 +40,7 @@ const SearchContainer = styled.div`
 
   .search-result--content {
     width: 90%;
-    margin: 20px 72px;
+    margin: 60px auto;
     ${theme.mediaQuery.md`
     width: 40%;
     `}
@@ -117,6 +118,16 @@ function SearchResults(props) {
     });
   };
 
+  const filterTips = (posts, query) => {
+    if (!query) {
+      return posts;
+    }
+    return posts.filter((post) => {
+      const postContent = post.content.rendered.toLowerCase();
+      return postContent.includes(query);
+    });
+  }
+
   const filteredEvents = filterEvents(props.events, props.router.query.name);
   const filteredContent = filterArticles(props.posts, props.router.query.name);
   const filteredGeneralPages = filterGeneralPages(
@@ -143,13 +154,21 @@ function SearchResults(props) {
               <ArticleCard post={post} />
             </React.Fragment>
           ))}
-
+        </div>
           {filteredEvents.map((post) => (
             <React.Fragment key={uuidv4()}>
+              <Link href={"/pages/[events]"} as={`/pages/${post.events}`}>
+                <a>
               <EventCard event={post} />
+              </a>
+              </Link>
             </React.Fragment>
           ))}
-        </div>
+          {filteredTips.map((post) => (
+            <React.Fragment key={uuidv4()}>
+              <NewsLetterContainer></NewsLetterContainer>
+            </React.Fragment>
+          ))}
         <div>
           {filteredGeneralPages.map((post) => (
             <React.Fragment key={uuidv4()}>
