@@ -6,11 +6,16 @@ import Image from "next/image";
 const Card = styled.div`
   .cover-image {
     display: block;
-
     overflow: hidden;
     img {
       height: ;
     }
+  }
+  h3 {
+    font-family: ${theme.type.semibold};
+    color: ${theme.colours.soil};
+    font-size: 2rem;
+    margin-top: 10px;
   }
 `;
 
@@ -32,7 +37,7 @@ export default function IssueCard({ title, slug, image, coverLine }) {
             className="card-text pb-5"
             dangerouslySetInnerHTML={{ __html: title }}
           ></h3>
-          <p dangerouslySetInnerHTML={{ __html: coverLine }}></p>
+          {/* <p dangerouslySetInnerHTML={{ __html: coverLine }}></p> */}
         </a>
       </Link>
     </Card>

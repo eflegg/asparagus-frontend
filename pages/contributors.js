@@ -23,17 +23,21 @@ const ContribContainer = styled.ul`
 `;
 
 export default function ContributorsPage({ contributors, categories }) {
-  console.log("contributors: ", contributors);
-
-  // const ref = React.forwardRef(null);
   return (
-    <PageWrapper pageTitle="Contributors" className="">
+    <PageWrapper
+      canonicalUrl={`https://asparagusmagazine.com/contributors`}
+      ogImageUrl="triplestalk.svg"
+      ogTwitterImage="triplestalk.svg"
+      SEOtitle="Contributors"
+      metadescription="Meet the Asparagus contributors telling large and small stories of sustainable living"
+    >
       <h1 className="text-center">Contributors</h1>
       <hr />
       <ContribContainer>
         {contributors.map((contributor, index) => {
           return (
             <ContributorCard
+              contributor={contributor}
               image={contributor.acf.headshot.url}
               key={index}
               slug={contributor.slug}

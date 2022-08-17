@@ -85,16 +85,7 @@ const LeadStory = styled.section`
   }
 `;
 
-export default function LeadStoryBlock({
-  image,
-  date,
-  excerpt,
-  byline,
-  read,
-  headshot,
-  title,
-  post,
-}) {
+export default function LeadStoryBlock({ post }) {
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
@@ -103,17 +94,20 @@ export default function LeadStoryBlock({
   return (
     <LeadStory>
       <div className="lead-image">
-        <Image
-          src={post._embedded["wp:featuredmedia"]["0"].source_url}
-          layout="fill"
-          objectFit="cover"
-          alt="Contributor photo"
-        />
+        {post._embedded["wp:featuredmedia"]["0"].source_url ? (
+          <Image
+            src={post._embedded["wp:featuredmedia"]["0"].source_url}
+            layout="fill"
+            objectFit="cover"
+            alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
+            priority
+          />
+        ) : null}
       </div>
       <div className="lead-text">
         <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
           <a>
-            <h1>{post.title.rendered}</h1>
+            <h1 className="article--title">{post.title.rendered}</h1>
           </a>
         </Link>
         <div className="lead-text--inner">
@@ -127,7 +121,7 @@ export default function LeadStoryBlock({
           </div>
 
           <hr />
-          <p className="text-right deck--index-feature">{post.acf.excerpt}</p>
+          <p className="text-right deck--index-feature">{post.acf.dek}</p>
         </div>
       </div>
     </LeadStory>

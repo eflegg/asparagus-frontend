@@ -10,28 +10,37 @@ import PageWrapper from "../../components/Global/PageWrapper";
 import CategoryFeaturedCard from "../../components/CategoryFeaturedCard";
 import ArticleFilter from "../../components/ArticleFilter";
 import { v4 as uuidv4 } from "uuid";
+import NewsletterSignup from "../../components/NewsletterSignupCard";
+import styled from "styled-components";
+import theme from "../../components/Global/Theme";
+
+const CategoryH1 = styled.h1`
+  width: 90%;
+  margin: 0 auto;
+`;
 
 export default function CategoryPage({ category, posts, subcategories }) {
-  // console.log("post categories: ", posts[1].categories);
-  // console.log("category: ", category);
-  // console.log("subcats: ", subcategories);
-  // console.log("subcat id:", subcategories[0].id);
-
   const dynamicRoute = useRouter().asPath;
   const [subfilter, setSubfilter] = useState(null);
   const handleClick = (subIndex) => {
     setSubfilter(subIndex);
-    console.log("subfilter: ", subfilter);
   };
 
   useEffect(() => {
     setSubfilter(null);
   }, [dynamicRoute]);
 
-  console.log("category: ", category);
-  console.log("posts: ", posts);
+  // console.log("category: ", category);
+  // console.log("posts: ", posts);
   return (
-    <PageWrapper pageTitle={category.name} className="container pt-5">
+    <PageWrapper
+      SEOtitle={category.name}
+      metadescription={
+        category.yoast_head_json.description
+          ? category.yoast_head_json.title
+          : "Telling the large and small stories of how we can live more sustainably"
+      }
+    >
       {/* if the category is either start small or voices, show the subcategory filter
       followed by all the articles in the category. no feature article.
 
@@ -39,39 +48,45 @@ export default function CategoryPage({ category, posts, subcategories }) {
 
       all other categories show feature article followed by the rest of the articles
       */}
-      <h1
-        className="text-center"
+      <CategoryH1
+        className="h5"
         dangerouslySetInnerHTML={{ __html: category.name }}
-      ></h1>
-      <hr />
+      ></CategoryH1>
+      <hr
+        className={`${
+          category.slug == "voices" || category.slug == "start-small"
+            ? "start-small"
+            : ""
+        }`}
+      />
       {category.slug == "voices" || category.slug == "start-small" ? (
         <>
-          <p>{subfilter}</p>
-          <ArticleFilter subcategories={subcategories} onClick={handleClick} />
+          {/* <p>{subfilter}</p> */}
+          <ArticleFilter
+            subcategories={subcategories}
+            onClick={handleClick}
+            subfilter={subfilter}
+          />
           <div className="card--grid single-page">
             {posts.map((post, index) => {
               return (
-                <>
+                <React.Fragment key={uuidv4()}>
                   {post.categories && post.categories.includes(subfilter) ? (
-                    <React.Fragment key={uuidv4()}>
-                      <ArticleCard
-                        post={post}
-                        title={post.title.rendered}
-                        slug={post.slug}
-                        writer={post.acf.writer[0].post_title}
-                      />
-                    </React.Fragment>
+                    <ArticleCard
+                      post={post}
+                      title={post.title.rendered}
+                      slug={post.slug}
+                      writer={post.acf.writer[0].post_title}
+                    />
                   ) : subfilter == null ? (
-                    <React.Fragment key={uuidv4()}>
-                      <ArticleCard
-                        post={post}
-                        title={post.title.rendered}
-                        slug={post.slug}
-                        writer={post.acf.writer[0].post_title}
-                      />
-                    </React.Fragment>
+                    <ArticleCard
+                      post={post}
+                      title={post.title.rendered}
+                      slug={post.slug}
+                      writer={post.acf.writer[0].post_title}
+                    />
                   ) : null}
-                </>
+                </React.Fragment>
               );
             })}
           </div>
@@ -81,43 +96,28 @@ export default function CategoryPage({ category, posts, subcategories }) {
           {posts.map((post, index) => {
             return (
               <React.Fragment key={uuidv4()}>
-                <AwardWinnerCard
-                  title={post.title.rendered}
-                  slug={post.slug}
-                  writer={post.acf.writer[0].post_title}
-                />
+                <AwardWinnerCard post={post} />
               </React.Fragment>
             );
           })}
         </div>
       ) : (
         <>
-          {posts ? (
-            <CategoryFeaturedCard
-              post={posts[0]}
-              // title={posts[0]?.title.rendered}
-              // slug={posts[0]?.slug}
-              // writer={posts[0]?.acf.writer[0].post_title}
-            />
-          ) : null}
+          {posts ? <CategoryFeaturedCard post={posts[0]} /> : null}
           <div className="card--grid single-page">
             {posts.map((post, index) => {
               return (
-                <>
-                  {index != 0 && (
-                    <React.Fragment key={uuidv4()}>
-                      <ArticleCard
-                        post={post}
-                        title={post.title.rendered}
-                        slug={post.slug}
-                        writer={post.acf.writer[0].post_title}
-                      />
-                    </React.Fragment>
-                  )}
-                </>
+                <React.Fragment key={uuidv4()}>
+                  {index != 0 && <ArticleCard post={post} />}
+                </React.Fragment>
               );
             })}
           </div>
+          <NewsletterSignup
+            title="Sign up for the Asparagus Newsletter"
+            subtitle="Pleasantly infrequent updates from the asparagus patch"
+            image="/triplestalk.svg"
+          />
         </>
       )}
     </PageWrapper>

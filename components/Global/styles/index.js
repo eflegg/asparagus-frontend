@@ -124,14 +124,19 @@ export const Card = styled.div`
     position: relative;
     height: 160px;
     top: 0;
+    margin-bottom: 10px;
   }
-
+  .categories {
+    margin: 5px 0 10px;
+    line-height: 15px !important;
+  }
   .category-label {
     color: ${theme.colours.soil};
     text-transform: uppercase;
     font-size: 1.5rem;
     font-family: ${theme.type.semibold};
     padding: 0;
+
     &:first-child {
       &::after {
         content: "\\00B7";

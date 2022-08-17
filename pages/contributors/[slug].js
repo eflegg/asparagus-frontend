@@ -9,6 +9,7 @@ import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
 import { ContribImage } from "../../components/Global/styles";
 import PageWrapper from "../../components/Global/PageWrapper";
+import { v4 as uuidv4 } from "uuid";
 
 const ContribHeader = styled.div`
   margin: 0 auto 70px;
@@ -50,6 +51,7 @@ justify-content: flex-start;
       font-family: ${theme.type.semibold};
       font-size: 2rem;
       line-height: 2.2rem;
+      margin-left: 10px;
     }
   }
   h4 {
@@ -77,7 +79,10 @@ export default function ContributorPage({ contributor, posts }) {
   console.log("posts: ", posts);
 
   return (
-    <PageWrapper pageTitle={contributor.title.rendered}>
+    <PageWrapper
+      SEOtitle={contributor.title.rendered}
+      metadescription={contributor.acf.bio}
+    >
       <div className="container pt-5">
         <h1 className="text-center pb-5">{contributor.title.rendered}</h1>
         <hr />
@@ -125,30 +130,18 @@ export default function ContributorPage({ contributor, posts }) {
         <div className="card--grid single-page">
           {posts.map((post, index) => {
             return (
-              <>
+              <React.Fragment key={uuidv4()}>
                 {post.acf.photographer[0]?.ID == contributor.id ? (
                   <>
-                    <ArticleCard
-                      post={post}
-                      key={index}
-                      title={post.title.rendered}
-                      slug={post.slug}
-                      writer={post.acf.writer[0].post_title}
-                    />
+                    <ArticleCard post={post} />
                   </>
                 ) : null}
                 {post.acf.writer[0]?.ID == contributor.id ? (
                   <>
-                    <ArticleCard
-                      post={post}
-                      key={index}
-                      title={post.title.rendered}
-                      slug={post.slug}
-                      writer={post.acf.writer[0].post_title}
-                    />
+                    <ArticleCard post={post} />
                   </>
                 ) : null}
-              </>
+              </React.Fragment>
             );
           })}
         </div>

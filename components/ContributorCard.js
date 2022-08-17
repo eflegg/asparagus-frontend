@@ -67,31 +67,34 @@ export default function ContributorCard({
   team,
   social,
   socialLink,
+  contributor,
 }) {
   return (
     <Card className="team--card" team={team}>
       <ContribImage team={team}>
         <Image
-          src={image}
+          src={contributor.acf.headshot.url}
           layout="fill"
           objectFit="cover"
           alt="Contributor photo"
         />
       </ContribImage>
       {team ? (
-        <Link href={"/team/[slug]"} as={`/team/${slug}`}>
+        <Link href={"/team/[slug]"} as={`/team/${contributor.slug}`}>
           <a className="card-link--container">
             <div>
               <h3 className="team-name">
-                {name} {""}
-                {title ? (
+                {contributor.title.rendered}
+                {""}
+                {contributor.acf.title ? (
                   <span className="team--title">
-                    <span className="long-dash"> &#8212;</span> {title}
+                    <span className="long-dash"> &#8212;</span>{" "}
+                    {contributor.acf.title}
                   </span>
                 ) : null}
               </h3>
 
-              <p>{bio}</p>
+              <p>{contributor.acf.bio}</p>
               {/* <a
                 className="social-link"
                 href={socialLink}
@@ -105,12 +108,15 @@ export default function ContributorCard({
           </a>
         </Link>
       ) : (
-        <Link href={"/contributors/[slug]"} as={`/contributors/${slug}`}>
+        <Link
+          href={"/contributors/[slug]"}
+          as={`/contributors/${contributor.slug}`}
+        >
           <a className="card-link--container">
             <div>
-              <h3 className="contributor-name">{name}</h3>
+              <h3 className="contributor-name">{contributor.title.rendered}</h3>
 
-              <p>{bio}</p>
+              <p>{contributor.acf.bio}</p>
               {/* <a
                 className="social-link"
                 href={socialLink}

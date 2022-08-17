@@ -4,6 +4,7 @@ import fetch from "isomorphic-fetch";
 import Link from "next/link";
 import PageWrapper from "../components/Global/PageWrapper";
 import { getCategories } from "../utils/wordpress";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AllCategories({ categories }) {
   console.log("categories: ", categories);
@@ -14,15 +15,16 @@ export default function AllCategories({ categories }) {
         <ul>
           {categories.map((category, index) => {
             return (
-              <Link
-                key={index}
-                href={"/categories/[slug]"}
-                as={`/categories/${category.slug}`}
-              >
-                <a>
-                  <li>{category.name}</li>
-                </a>
-              </Link>
+              <React.Fragment key={uuidv4()}>
+                <Link
+                  href={"/categories/[slug]"}
+                  as={`/categories/${category.slug}`}
+                >
+                  <a>
+                    <li>{category.name}</li>
+                  </a>
+                </Link>
+              </React.Fragment>
             );
           })}
         </ul>

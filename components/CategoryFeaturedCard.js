@@ -12,6 +12,7 @@ const Card = styled.div`
     position: relative;
     height: 250px;
     top: 0;
+    margin-bottom: 10px;
     ${theme.mediaQuery.sm`
     height: 315px;
     `}
@@ -65,7 +66,7 @@ export default function CategoryFeaturedCard({ post }) {
     month: "long",
     day: "2-digit",
   });
-  console.log("category feature post: ", post);
+
   return (
     <>
       {post ? (
@@ -73,12 +74,22 @@ export default function CategoryFeaturedCard({ post }) {
           <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
             <a>
               <div className="card--image">
-                <Image
-                  src={post._embedded["wp:featuredmedia"]["0"].source_url}
-                  layout="fill"
-                  objectFit="cover"
-                  alt="Article lead photo"
-                />
+                {post._embedded["wp:featuredmedia"] ? (
+                  <Image
+                    src={post._embedded["wp:featuredmedia"]["0"].source_url}
+                    layout="fill"
+                    objectFit="cover"
+                    alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
+                  />
+                ) : (
+                  <Image
+                    src="/triplestalk.svg"
+                    layout="fill"
+                    objectFit="cover"
+                    alt="Asparagus Magazine logo"
+                  />
+                )}
+
                 <h3
                   className=""
                   dangerouslySetInnerHTML={{ __html: post.title.rendered }}
@@ -88,7 +99,7 @@ export default function CategoryFeaturedCard({ post }) {
               </div>
               <div className="text-container">
                 <div className="excerpt">
-                  <p className="deck--topic-feature">{post.acf.excerpt}</p>
+                  <p className="deck--topic-feature">{post.acf.dek}</p>
                 </div>
                 <div className="article-details">
                   <div>

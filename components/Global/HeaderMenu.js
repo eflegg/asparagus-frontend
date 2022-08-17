@@ -8,6 +8,8 @@ import theme from "./Theme";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
 import Loader from "./Loader";
+import Image from "next/image";
+import Search from "./search";
 
 const MenuContainer = styled.div`
   .nav-link {
@@ -21,6 +23,7 @@ const MenuContainer = styled.div`
       padding-left: 0;
     }
   }
+  margin: 30px 15px;
   ${theme.mediaQuery.md`
     margin: 30px 57px 0px 57px;
   `};
@@ -64,16 +67,17 @@ const HamburgerLogoContainer = styled.div`
 `
 
 const ConnectMenuContainer = styled.div`
- display: flex; 
- justify-content: space-between; 
- align-items: center; 
- margin-top: 15px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px; 
   ${theme.mediaQuery.md`
     flex: 0 0 50%; 
     padding-top: 30px; 
     align-items: flex-start; 
   `};
-`
+`;
+
 const HamburgerMenuButton = styled.div`
   .btn-nav {
     cursor: pointer;
@@ -184,46 +188,49 @@ const DesktopNav = styled.nav`
 `;
 
 const LogoConnectMenuContainer = styled.div`
-  display: flex; 
-  flex-direction: column-reverse; 
-  justify-content: space-around; 
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+  position: relative;
+
   .img {
-    flex: 0 0 50%; 
+    flex: 0 0 50%;
+    height: 100%;
+    width: 100%;
   }
   ${theme.mediaQuery.md`
     flex-direction: row;
     `};
-`
+`;
 const ConnectMenuNav = styled.nav`
-  flex: 1; 
+  flex: 1;
   ul {
     display: flex;
     justify-content: space-evenly;
-    align-items: center; 
+    align-items: center;
     flex-wrap: nowrap;
   }
   a {
-    font-size: 2rem; 
-    font-weight: 600; 
+    font-size: 2rem;
+    font-weight: 600;
     color: ${theme.colours.soil};
-    font-family: ${theme.type.semibold}; 
-    
+    font-family: ${theme.type.semibold};
   }
   li {
-    flex: none; 
+    flex: none;
     ${theme.mediaQuery.md`
       padding: 3px 30px; 
     `};
   }
   li:first-of-type {
     background-color: ${theme.colours.gusYellow};
-    padding: 3px 5px; 
-    border-radius: 5px; 
+    padding: 3px 5px;
+    border-radius: 5px;
     ${theme.mediaQuery.md`
       padding: 3px 30px; 
     `};
   }
-`
+`;
 
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
@@ -316,8 +323,17 @@ export default function HeaderMenu() {
       <Suspense fallback={<Loader />}>
         <LogoConnectMenuContainer>
           <Link href="/">
-            <a>
-              <img ref={imgRef} src="/Asparagus_Nameplate_Color.png"/>
+            <a className="position-relative d-block">
+              {/*           
+              <Image
+                src="/Asparagus_Nameplate_Color.png"
+                alt="Asparagus Magazine logo"
+                layout="responsive"
+                objectFit="cover"
+                width="604px"
+                height="173px"
+              /> */}
+              <img src="/Asparagus_Nameplate_Color.png" alt="" />
             </a>
           </Link>
           <ConnectMenuContainer>
@@ -331,11 +347,12 @@ export default function HeaderMenu() {
                         href={`/${connectLink.slug}`}
                         to={`/${connectLink.slug}`}
                       >
-                      <a>{connectLink.title}</a>
+                        <a>{connectLink.title}</a>
                       </ActiveLink>
                     </li>
                   );
                 })}
+                <Search />
               </ul>
             </ConnectMenuNav>
 
@@ -344,7 +361,7 @@ export default function HeaderMenu() {
                 <button
                   className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
                   onClick={() => {
-                  setNavActive(!navActive);
+                    setNavActive(!navActive);
                   }}
                 >
                   <span className="burger-1"></span>
@@ -370,10 +387,9 @@ export default function HeaderMenu() {
               style = {size.scrollY >=10 ? {top: -10 - (imgRef.current.clientHeight)} : null} className={ size.scrollY >= 10 ? 'desktopnavcolorchange' : 'desktopnav'}>
               {links?.items?.map((link, index) => {
                 return (
-                  <>
+                  <React.Fragment key={uuidv4()}>
                     <li
                       className="nav-link"
-                      key={uuidv4()}
                       onClick={() => handleSubnavClick(link.ID)}
                     >
                       <span
@@ -417,7 +433,7 @@ export default function HeaderMenu() {
                         </ul>
                       ) : null}
                     </li>
-                  </>
+                  </React.Fragment>
                 );
               })}{" "}
             </ul>
@@ -458,10 +474,9 @@ export default function HeaderMenu() {
                 </li>
                 {links?.items?.map((link, index) => {
                   return (
-                    <>
+                    <React.Fragment key={uuidv4()}>
                       <li
                         className="nav-link"
-                        key={uuidv4()}
                         onClick={() => handleSubnavClick(link.ID)}
                       >
                       <span dangerouslySetInnerHTML={{ __html: link.title }}/>
@@ -491,7 +506,7 @@ export default function HeaderMenu() {
                         </>
                       ) : null}
                     </li>
-                  </>
+                  </React.Fragment>
                 );
               })}{" "}
             </ul>
@@ -547,6 +562,7 @@ export default function HeaderMenu() {
                       </ul>
                     ) : null}
                     </li>
+                   
                           );
                         })}
                       </ul>
