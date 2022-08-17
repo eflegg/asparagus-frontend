@@ -316,7 +316,7 @@ export default function HeaderMenu() {
 
   //updates when the client loads so you can use it
   const size = useWindowSpecs();
-  const imgRef = useRef(null);
+  const imgRef = useRef();
 
   return (
     <MenuContainer className="menu--container">
@@ -333,7 +333,7 @@ export default function HeaderMenu() {
                 width="604px"
                 height="173px"
               /> */}
-              <img src="/Asparagus_Nameplate_Color.png" alt="" />
+              <img ref={imgRef} src="/Asparagus_Nameplate_Color.png" alt="Asparagus Magazine logo" />
             </a>
           </Link>
           <ConnectMenuContainer>
