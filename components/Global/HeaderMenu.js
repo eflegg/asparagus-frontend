@@ -35,6 +35,7 @@ const MobileNavContainer = styled.div`
   z-index: 1; 
   top: 0; 
   left: 0; 
+  padding: 20px 36px 0px 36px; 
   
   ul {
     position: relative; 
@@ -58,8 +59,8 @@ const MobileNav = styled.nav`
   };
 `;
 const HamburgerLogoContainer = styled.div`
-  margin-top: 100px; 
-  padding: 30px; 
+  margin-top: 25px; 
+  /* padding: 30px;  */
 `
 
 const ConnectMenuContainer = styled.div`
@@ -416,19 +417,37 @@ export default function HeaderMenu() {
         ) } 
           
           
-            {navActive ? (
-              <MobileNavContainer>
-
-                <HamburgerLogoContainer>
-                  <Link href="/">
-                    <a>
-                      <img ref={imgRef} src="/Asparagus_Nameplate_Color.png"/>
-                    </a>
-                  </Link>
-                </HamburgerLogoContainer>
-              <MobileNav>
-
+        {navActive ? (
+          <MobileNavContainer>
+            <ConnectMenuNav>
               <ul>
+                {connectLinks?.items?.map((connectLink, index) => {
+                  return (
+                    <li key={uuidv4()}>
+                      <ActiveLink
+                        activeClassName="navlink--active"
+                        href={`/${connectLink.slug}`}
+                        to={`/${connectLink.slug}`}
+                      >
+                        <a>{connectLink.title}</a>
+                      </ActiveLink>
+                    </li>
+                  );
+                })}
+              </ul>
+            </ConnectMenuNav>
+            <HamburgerLogoContainer>
+              <Link href="/">
+                <a>
+                  <img ref={imgRef} src="/Asparagus_Nameplate_Color.png"/>
+                </a>
+              </Link>
+            </HamburgerLogoContainer>
+            <MobileNav>
+              <ul>
+                <li>
+                  <a class="nav-link" href="/">Home</a>
+                </li>
                 {links?.items?.map((link, index) => {
                   return (
                     <>
@@ -437,48 +456,41 @@ export default function HeaderMenu() {
                         key={uuidv4()}
                         onClick={() => handleSubnavClick(link.ID)}
                       >
-                        <span
-                          dangerouslySetInnerHTML={{ __html: link.title }}
-                        ></span>
-                        {link.child_items && subnav == link.ID ? (
-                          <>
-                          <ul className="subnav">
-                          <img src="/hamburger-arrow.svg" width="20px" height="13px"/>
-                            {link?.child_items?.map((childItem, childIndex) => {
-                              return (
-                                <li key={uuidv4()} className="subnav-link">
-                                  <ActiveLink
-                                    activeClassName="navlink--active"
-                                    href={"/categories/[slug]"}
-                                    as={`/categories/${childItem.slug}`}
-                                  >
-                                    <a
-                                      className="card-text pb-5"
-                                      dangerouslySetInnerHTML={{
-                                        __html: childItem.title,
-                                      }}
-                                    ></a>
-                                  </ActiveLink>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                          </>
-                        ) : null}
-                      </li>
-                    </>
-                  );
-                })}{" "}
-              </ul>
-              </MobileNav>
-              </MobileNavContainer>
-            ) : null}
-          
-          
-      
-
-
-      </Suspense>
-    </MenuContainer>
+                      <span dangerouslySetInnerHTML={{ __html: link.title }}/>
+                      {link.child_items && subnav == link.ID ? (
+                        <>
+                        <ul className="subnav">
+                        <img src="/hamburger-arrow.svg" width="20px" height="13px"/>
+                          {link?.child_items?.map((childItem, childIndex) => {
+                            return (
+                              <li key={uuidv4()} className="subnav-link">
+                                <ActiveLink
+                                  activeClassName="navlink--active"
+                                  href={"/categories/[slug]"}
+                                  as={`/categories/${childItem.slug}`}
+                                >
+                                <a
+                                  className="card-text pb-5"
+                                  dangerouslySetInnerHTML={{
+                                    __html: childItem.title,
+                                  }}
+                                />
+                                </ActiveLink>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                        </>
+                      ) : null}
+                    </li>
+                  </>
+                );
+              })}{" "}
+            </ul>
+          </MobileNav>
+        </MobileNavContainer>
+      ) : null}
+    </Suspense>
+  </MenuContainer>
   );
 }
