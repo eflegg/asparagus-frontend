@@ -14,20 +14,21 @@ img {
 
 figure {
   margin: 50px auto;
-
 }
 figcaption {
   width: 90%;
   margin: 8px auto 0;
   font-family: ${theme.type.accent};
   font-size: 1.6rem;
-  strong {
-    font-family: ${theme.type.header};
-    font-style: italic;
-    position: relative;
-    top: 5px;
-  }
 } 
+
+// strong {
+//   font-family: ${theme.type.bodyFont};
+//   font-size: 16px;
+//   font-style: italic;
+//   position: relative;
+//   top: 5px;
+// }
 
 p {
   width: 90%;

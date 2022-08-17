@@ -225,13 +225,13 @@ a,
 li {
   letter-spacing: 0.2rem;
   font-family: $bodyFont;
-  font-size: 16px;
+  font-size: 1.7rem;
   line-height: 150%;
   color: black;
   font-weight: 400;
 
   @include media-query-min($sm) {
-    font-size: calc(16px + 4 * ((100vw - 320px) / 680));
+    font-size: calc(17px + 3 * ((100vw - 320px) / 680));
   }
 
   @include media-query-min($md) {
@@ -268,6 +268,12 @@ hr {
   border: 0px;
   background: $teaGreen;
   margin-bottom: 65px;
+}
+
+em {
+  font-family: $bodyFont;
+  font-size: 1.6rem;
+  font-weight: 800;
 }
 
 .start-small {
@@ -797,13 +803,13 @@ li.nav-link {
     font-family: $semibold;
 
     @include media-query-min($sm) {
-      font-size: calc(18px + 6 * ((100vw - 320px) / 680));
+      font-size: calc(18px + 18 * ((100vw - 320px) / 680));
       line-height: 2.6rem;
     }
 
     @include media-query-min($md) {
-      @include font-size(2.4);
-      line-height: 32px;
+      @include font-size(3.6);
+      line-height: 38px;
     }
   }
 
