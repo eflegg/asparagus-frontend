@@ -17,6 +17,12 @@ const Card = styled.li`
   align-items: flex-start;
   margin-bottom: 100px;
   `}
+  .team-name {
+    font-size: 1.8rem;
+    ${theme.mediaQuery.md`
+    font-size: 2.8rem;
+    `}
+  }
   .card-link--container {
     display: flex;
     flex-direction: column;
@@ -43,6 +49,9 @@ const Card = styled.li`
     ${theme.mediaQuery.sm`
     display: inline-block;
     `}
+    ${theme.mediaQuery.md`
+    font-size: 1.8rem;
+    `}
   }
   .long-dash {
     display: none;
@@ -55,6 +64,9 @@ const Card = styled.li`
     ${theme.mediaQuery.sm`
  margin-bottom: 100px;
   `}
+  }
+  p {
+    font-size:
   }
 `;
 

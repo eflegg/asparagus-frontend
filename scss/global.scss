@@ -225,13 +225,13 @@ a,
 li {
   letter-spacing: 0.2rem;
   font-family: $bodyFont;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 150%;
   color: black;
   font-weight: 400;
 
   @include media-query-min($sm) {
-    font-size: calc(16px + 4 * ((100vw - 320px) / 680));
+    font-size: calc(17px + 3 * ((100vw - 320px) / 680));
   }
 
   @include media-query-min($md) {
@@ -404,8 +404,8 @@ h6 {
 
 .body {
   font-family: $bodyFont;
-  font-size: 2rem;
-  line-height: 3.2rem;
+  font-size: 1.7rem;
+  line-height: 2.5rem;
 
   @include media-query-min($sm) {
     font-size: calc(17px + 3 * ((100vw - 320px) / 680));
