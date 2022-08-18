@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import Loader from "./Loader";
 import Image from "next/image";
 import Search from "./search";
+import HamburgerMenuButton from "../HeaderMenuComponents/HamburgerMenuButton"
 
 const MenuContainer = styled.div`
   .nav-link {
@@ -76,69 +77,6 @@ const ConnectMenuContainer = styled.div`
     padding-top: 30px; 
     align-items: flex-start; 
   `};
-`;
-
-const HamburgerMenuButton = styled.div`
-  .btn-nav {
-    cursor: pointer;
-    &:focus {
-      outline: none;
-    }
-    height: 50px;
-    width: 50px;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: transparent;
-    border: 0px;
-    span {
-      width: 35px;
-      height: 5px;
-      margin-bottom: 1px;
-      border-radius: 3px;
-      margin-top: 5px;
-      background: ${theme.colours.soil};
-      z-index: 2;
-    }
-    .burger-2 {
-      position: relative;
-    }
-    &.nav-close {
-      .burger-1 {
-        position: relative;
-        transform: rotate(-45deg);
-        top: 8px;
-        transition: all 0.15s ease-in-out;
-      }
-      .burger-2 {
-        position: relative;
-        background: transparent;
-        transition: all 0.15s ease-in-out;
-      }
-      .burger-3 {
-        position: relative;
-        top: -15px;
-        transform: rotate(45deg);
-        transition: all 0.15s ease-in-out;
-      }
-    }
-    &.nav-open {
-      .burger-1 {
-        transform: rotate(0deg);
-
-        transition: all 0.15s ease-in-out;
-      }
-      .burger-2 {
-        overflow: hidden;
-        transition: all 0.15s ease-in-out;
-      }
-      .burger-3 {
-        transform: rotate(0deg);
-        transition: all 0.15s ease-in-out;
-      }
-    }
-  }
 `;
 
 const DesktopNav = styled.nav`
@@ -391,26 +329,7 @@ export default function HeaderMenu() {
               </div>
               <div className="right-container">
                 <Search />
-                <HamburgerMenuButton>
-                <button
-                  className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
-                  onClick={() => {
-                    setNavActive(!navActive);
-                  }}
-                >
-                  <span className="burger-1"></span>
-                  <span className="burger-2"></span>
-                  <span className="burger-3"></span>
-                </button>
-                <button
-                  role="button"
-                  aria-controls="navMenu"
-                  style={{ display: "none" }}
-                  className="accessibility-close"
-                >
-                  Close Nav
-                </button>
-              </HamburgerMenuButton>
+                <HamburgerMenuButton navActive={navActive} />
               </div>
             </ConnectScrollMenuContainer>
           }
@@ -435,26 +354,7 @@ export default function HeaderMenu() {
             </ConnectMenuNav>
 
             {size.width < 1000 && (
-              <HamburgerMenuButton>
-                <button
-                  className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
-                  onClick={() => {
-                    setNavActive(!navActive);
-                  }}
-                >
-                  <span className="burger-1"></span>
-                  <span className="burger-2"></span>
-                  <span className="burger-3"></span>
-                </button>
-                <button
-                  role="button"
-                  aria-controls="navMenu"
-                  style={{ display: "none" }}
-                  className="accessibility-close"
-                >
-                  Close Nav
-                </button>
-              </HamburgerMenuButton>
+              <HamburgerMenuButton navActive={navActive} />
             )}
           </ConnectMenuContainer>
         </LogoConnectMenuContainer>
