@@ -310,13 +310,15 @@ export default function HeaderMenu() {
           {size.scrollY >=10 && size.width < 1000 && 
             <ConnectScrollMenuContainer>
               <div className="left-container">
-                <Image
-                  src="/triplestalk.svg"
-                  alt="Asparagus Magazine logo"
-                  layout="fixed"
-                  width="53px"
-                  height="56px"
-                />
+                <Link href="/">
+                  <Image
+                    src="/triplestalk.svg"
+                    alt="Asparagus Magazine logo"
+                    layout="fixed"
+                    width="53px"
+                    height="56px"
+                  />
+                </Link>
                 <div className="donate-button">
                   <ActiveLink
                     activeClassName="navlink--active"
