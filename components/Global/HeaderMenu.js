@@ -151,6 +151,8 @@ const DesktopNav = styled.nav`
     justify-content: space-between; 
     position: relative; 
     width: 100vw;
+    padding-left: 30px; 
+    padding-right: 30px; 
   };
   ul.desktopnavcolorchange {
     background-color: ${theme.colours.gusYellow}; 
@@ -440,7 +442,6 @@ export default function HeaderMenu() {
           </DesktopNav>
         ) } 
           
-          
         {navActive ? (
           <MobileNavContainer>
             <ConnectMenuNav>
@@ -470,7 +471,7 @@ export default function HeaderMenu() {
             <MobileNav>
               <ul>
                 <li>
-                  <a class="nav-link" href="/">Home</a>
+                  <a className="nav-link" href="/">Home</a>
                 </li>
                 {links?.items?.map((link, index) => {
                   return (
@@ -510,16 +511,14 @@ export default function HeaderMenu() {
                 );
               })}{" "}
             </ul>
-          </MobileNav>
-          <MobileNav>
-              <ul>
-                {footerLinks?.items?.map((footerLink, index) => {
-                  return (
-                    <li 
-                      className="nav-link" 
-                      key={uuidv4()}
-                      onClick={() => handleSubnavClick(footerLink.ID)}
-                    >
+            <ul>
+              {footerLinks?.items?.map((footerLink, index) => {
+                return (
+                  <li 
+                    className="nav-link" 
+                    key={uuidv4()}
+                    onClick={() => handleSubnavClick(footerLink.ID)}
+                  >
                     <span dangerouslySetInnerHTML={{ __html: footerLink.title }} />
                
                     {footerLink.child_items && subnav == footerLink.ID ? (
@@ -560,15 +559,15 @@ export default function HeaderMenu() {
                           )
                         })}
                       </ul>
-                    ) : null}
-                    </li>
+                      ) : null}
+                  </li>
                    
-                          );
-                        })}
-                      </ul>
-            </MobileNav>
+                  );
+                })}
+            </ul>
+          </MobileNav>
         </MobileNavContainer>
-      ) : null}
+        ) : null}
     </Suspense>
   </MenuContainer>
   );
