@@ -7,7 +7,7 @@ const Card = styled.div`
   // border: 4px solid ${theme.colours.gusGreen};
   position: relative;
   width: 100%;
-  h3 {
+  h3.awards-hed {
     position: absolute;
     top: 220px;
     margin-left: 5%;
@@ -15,14 +15,15 @@ const Card = styled.div`
     color: white;
     z-index: 10;
     ${theme.mediaQuery.sm`
-    top: 300px;
+    top: 100px;
 `}
     ${theme.mediaQuery.md`
     top: 170px;
-    width: 90%;
+    width: 80%;
    `}
    ${theme.mediaQuery.lg`
-   width: 60%;
+   top: 220px;
+   width: 70%;
    `}
   }
   .image-container {
@@ -53,6 +54,7 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: flex-end;
     ${theme.mediaQuery.md`
     flex-direction: row;
 `}
@@ -92,7 +94,7 @@ export default function AwardWinnerCard({ post }) {
       <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
         <a>
           <h3
-            className="card-text pb-5"
+            className="card-text pb-5 awards-hed"
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           ></h3>
           <div className="image-container">
@@ -122,6 +124,15 @@ export default function AwardWinnerCard({ post }) {
               <div className="award-text--lower">
                 <p className="award-title">{post.acf.award_title}</p>
                 <div className="article-details">
+                  <div>
+                    <p className="byline--article-card">
+                      {post.acf.writer[0].post_title}
+                    </p>
+                    <p className="date--article-card">
+                      {formattedDate} -{" "}
+                      <span>{post.acf.time_to_read} min read</span>
+                    </p>
+                  </div>
                   <div className="byline--image">
                     {post.acf.writer[0].acf.headshot.url && (
                       <Image
@@ -131,15 +142,6 @@ export default function AwardWinnerCard({ post }) {
                         alt="Author headshot"
                       />
                     )}
-                  </div>
-                  <div>
-                    <p className="byline--article-card">
-                      {post.acf.writer[0].post_title}
-                    </p>
-                    <p className="date--article-card">
-                      {formattedDate} -{" "}
-                      <span>{post.acf.time_to_read} min read</span>
-                    </p>
                   </div>
                 </div>
               </div>

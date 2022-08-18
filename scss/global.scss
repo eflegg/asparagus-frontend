@@ -294,6 +294,19 @@ h1,
   }
 }
 
+.awards-hed {
+  font-size: 2.8rem;
+
+  @include media-query-min($sm) {
+    font-size: calc(28px + 30 * ((100vw - 320px) / 680));
+  }
+
+  @include media-query-min($md) {
+    @include font-size(5.8);
+  }
+
+}
+
 .article--title {
   letter-spacing: 0.2rem;
   font-size: 3.6rem;
@@ -457,13 +470,13 @@ h6 {
 
 .deck--topic-feature {
   font-family: $semibold;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   line-height: 2rem;
   color: black;
   margin: 0;
 
   @include media-query-min($sm) {
-    font-size: calc(17px + 9 * ((100vw - 320px) / 680));
+    font-size: calc(18px + 8 * ((100vw - 320px) / 680));
   }
 
   @include media-query-min($md) {

@@ -12,9 +12,12 @@ import { v4 as uuidv4 } from "uuid";
 const AwardContainer = styled.section`
   margin-bottom: 50px;
   h5 {
-    margin: 20px 0 15px;
+    margin: 0 72px 30px 72px;
     width: 90%;
-    margin: 0 auto;
+    // margin: 0 auto;
+  }
+  hr {
+    margin-bottom: 30px;
   }
 `;
 
@@ -28,8 +31,8 @@ export default function Awards({ posts }) {
       metadescription="A showcase of all our award-winning and nominated Asparagus Magazine stories"
     >
       <h1 className="text-center">Awards</h1>
-      <hr />
       <AwardContainer>
+      <hr />
         <h5>Award Winners</h5>
         <ul>
           {posts.map((post, index) => {
