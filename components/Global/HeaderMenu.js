@@ -67,7 +67,7 @@ const HamburgerLogoContainer = styled.div`
 `
 
 const ConnectMenuContainer = styled.div`
-  display: flex;
+  display: ${ props => props.scroll && props.mobile ? 'none' : 'flex'};
   justify-content: space-between;
   align-items: center;
   margin-top: 15px; 
@@ -233,6 +233,37 @@ const ConnectMenuNav = styled.nav`
     `};
   }
 `;
+const ConnectScrollMenuContainer = styled.div`
+  display: flex; 
+  direction: row; 
+  align-items: center; 
+  justify-content: space-evenly; 
+  background-color: ${theme.colours.darkWheat}; 
+  position: fixed; 
+  z-index: 1; 
+  width: 100vw;  
+  padding-left: 20px; 
+  padding-right: 20px; 
+  /* height: 100%;  */
+  margin: -150px 0px 0px -15px;
+  div.left-container {
+    display: flex; 
+    align-items: center;
+    /* justify-content: space-around;  */
+    flex: 1; 
+  }
+  div.right-container {
+    display: flex; 
+    align-items: center;
+    justify-content: flex-end; 
+    flex: 1; 
+  }
+  div.donate-button {
+    background-color: ${theme.colours.gusYellow};
+    padding: 3px 5px; 
+    border-radius: 5px; 
+  }
+`
 
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
@@ -338,7 +369,52 @@ export default function HeaderMenu() {
               <img ref={imgRef} src="/Asparagus_Nameplate_Color.png" alt="Asparagus Magazine logo" />
             </a>
           </Link>
-          <ConnectMenuContainer>
+          {size.scrollY >=10 && size.width < 1000 && 
+            <ConnectScrollMenuContainer>
+              <div className="left-container">
+                <Image
+                  src="/triplestalk.svg"
+                  alt="Asparagus Magazine logo"
+                  layout="fixed"
+                  width="53px"
+                  height="56px"
+                />
+                <div className="donate-button">
+                  <ActiveLink
+                    activeClassName="navlink--active"
+                    href={`/${connectLinks?.items?.[0].slug}`}
+                    to={`/${connectLinks?.items?.[0].slug}`}
+                  >
+                    <a>{connectLinks?.items?.[0].title}</a>
+                  </ActiveLink>
+                </div>
+              </div>
+              <div className="right-container">
+                <Search />
+                <HamburgerMenuButton>
+                <button
+                  className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
+                  onClick={() => {
+                    setNavActive(!navActive);
+                  }}
+                >
+                  <span className="burger-1"></span>
+                  <span className="burger-2"></span>
+                  <span className="burger-3"></span>
+                </button>
+                <button
+                  role="button"
+                  aria-controls="navMenu"
+                  style={{ display: "none" }}
+                  className="accessibility-close"
+                >
+                  Close Nav
+                </button>
+              </HamburgerMenuButton>
+              </div>
+            </ConnectScrollMenuContainer>
+          }
+          <ConnectMenuContainer scroll={ size.scrollY >=10 ? true : false} mobile={ size.width < 1000 ? true : false}>
             <ConnectMenuNav>
               <ul>
                 {connectLinks?.items?.map((connectLink, index) => {
