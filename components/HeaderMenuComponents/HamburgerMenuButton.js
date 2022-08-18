@@ -66,14 +66,12 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export default function HamburgerMenuButton({navActive}) {
+export default function HamburgerMenuButton({navActive, onClick}) {
     return (
         <ButtonContainer>
         <button
         className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
-        onClick={() => {
-          setNavActive(!navActive);
-        }}
+        onClick={onClick}
       >
         <span className="burger-1"></span>
         <span className="burger-2"></span>
@@ -93,4 +91,5 @@ export default function HamburgerMenuButton({navActive}) {
 
 HamburgerMenuButton.propTypes = {
     navActive: PropTypes.bool.isRequired,
+    onClick: PropTypes.func.isRequired
   };

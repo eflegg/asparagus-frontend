@@ -329,7 +329,10 @@ export default function HeaderMenu() {
               </div>
               <div className="right-container">
                 <Search />
-                <HamburgerMenuButton navActive={navActive} />
+                <HamburgerMenuButton 
+                  navActive={navActive} 
+                  onClick={() => { setNavActive(!navActive) }}
+                />
               </div>
             </ConnectScrollMenuContainer>
           }
@@ -354,7 +357,10 @@ export default function HeaderMenu() {
             </ConnectMenuNav>
 
             {size.width < 1000 && (
-              <HamburgerMenuButton navActive={navActive} />
+              <HamburgerMenuButton 
+                navActive={navActive} 
+                onClick={() => { setNavActive(!navActive);}}
+              />
             )}
           </ConnectMenuContainer>
         </LogoConnectMenuContainer>
