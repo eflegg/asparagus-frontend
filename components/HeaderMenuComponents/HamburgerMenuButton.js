@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../Global/Theme";
+import PropTypes from "prop-types";
 
 const ButtonContainer = styled.div`
   .btn-nav {
@@ -89,3 +90,7 @@ export default function HamburgerMenuButton({navActive}) {
       </ButtonContainer>
     )
 }
+
+HamburgerMenuButton.propTypes = {
+    navActive: PropTypes.bool.isRequired,
+  };
