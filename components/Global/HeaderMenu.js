@@ -64,7 +64,6 @@ const MobileNav = styled.nav`
 `;
 const HamburgerLogoContainer = styled.div`
   margin-top: 25px; 
-  /* padding: 30px;  */
 `
 
 const ConnectMenuContainer = styled.div`
@@ -179,15 +178,13 @@ const ConnectScrollMenuContainer = styled.div`
   background-color: ${theme.colours.darkWheat}; 
   position: fixed; 
   z-index: 1; 
+  top: 0; 
   width: 100vw;  
-  padding-left: 20px; 
-  padding-right: 20px; 
-  /* height: 100%;  */
-  margin: -150px 0px 0px -15px;
+  padding: 10px 20px; 
+  margin-left: -15px; 
   div.left-container {
     display: flex; 
     align-items: center;
-    /* justify-content: space-around;  */
     flex: 1; 
   }
   div.right-container {
@@ -200,6 +197,9 @@ const ConnectScrollMenuContainer = styled.div`
     background-color: ${theme.colours.gusYellow};
     padding: 3px 5px; 
     border-radius: 5px; 
+  }
+  div.search-container {
+    margin-right: 15px; 
   }
 `
 
@@ -328,7 +328,9 @@ export default function HeaderMenu() {
                 </div>
               </div>
               <div className="right-container">
-                <Search />
+                <div className="search-container">
+                  <Search />
+                </div>
                 <HamburgerMenuButton 
                   navActive={navActive} 
                   onClick={() => { setNavActive(!navActive) }}
