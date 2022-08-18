@@ -47,7 +47,7 @@ const Issues = styled.div`
 }
 .btn--secondary {
   position: relative;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   ${theme.mediaQuery.md`
   font-size: 2.4rem;
   `}

@@ -70,7 +70,7 @@ export default function EventBlock({ event }) {
         <p className="event--date">{event.acf.date}</p>
         <p className="event--location">{event.acf.location}</p>
         <p className="event--excerpt">{event.acf.excerpt}</p>
-        <p className="event--description">{event.acf.description}</p>
+        {/* <p className="event--description">{event.acf.description}</p> */}
         <button className="btn--primary">Learn More</button>
       </div>
     </EventCard>
