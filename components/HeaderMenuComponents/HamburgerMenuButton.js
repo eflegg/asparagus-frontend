@@ -32,6 +32,7 @@ const ButtonContainer = styled.div`
     &.nav-close {
       .burger-1 {
         position: relative;
+
         transform: rotate(-45deg);
         top: 8px;
         transition: all 0.15s ease-in-out;
@@ -66,30 +67,30 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export default function HamburgerMenuButton({navActive, onClick}) {
-    return (
-      <ButtonContainer>
-        <button
-          className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
-          onClick={onClick}
-        >
-          <span className="burger-1"></span>
-          <span className="burger-2"></span>
-          <span className="burger-3"></span>
-        </button>
-        <button
-          role="button"
-          aria-controls="navMenu"
-          style={{ display: "none" }}
-          className="accessibility-close"
-        >
+export default function HamburgerMenuButton({ navActive, onClick }) {
+  return (
+    <ButtonContainer>
+      <button
+        className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
+        onClick={onClick}
+      >
+        <span className="burger-1"></span>
+        <span className="burger-2"></span>
+        <span className="burger-3"></span>
+      </button>
+      <button
+        role="button"
+        aria-controls="navMenu"
+        style={{ display: "none" }}
+        className="accessibility-close"
+      >
         Close Nav
-        </button>
-      </ButtonContainer>
-    )
+      </button>
+    </ButtonContainer>
+  );
 }
 
 HamburgerMenuButton.propTypes = {
-    navActive: PropTypes.bool.isRequired,
-    onClick: PropTypes.func.isRequired
-  };
+  navActive: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
