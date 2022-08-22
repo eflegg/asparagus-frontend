@@ -15,7 +15,6 @@ const StartVoices = styled.div`
 
   .btn--secondary {
     transition: all 0.25s ease-in-out;
-    font-size: 2.4rem;
     &.toggle-active {
       background-color: ${theme.colours.gusYellow};
       transition: all 0.25s ease-in-out;
@@ -23,7 +22,10 @@ const StartVoices = styled.div`
   }
   .all {
     // border: 3px solid rebeccapurple;
+    margin: 10px;
+    ${theme.mediaQuery.md`
     margin: 20px;
+    `}
     &.toggle-active {
       background-color: ${theme.colours.gusYellow};
       transition: all 0.25s ease-in-out;
@@ -35,7 +37,11 @@ const StartVoices = styled.div`
   }
   .sub-catagories {
     // border: 2px solid goldenrod;
+    width: 50%;
+    ${theme.mediaQuery.md`
     width: 30%;
+    `}
+    
     p {
       font-family: ${theme.type.medium};
       color: ${theme.colours.soil};
@@ -45,7 +51,10 @@ const StartVoices = styled.div`
   .sub-container {
     // border: solid yellow;
     width: 75%;
+    margin: 10px;
+    ${theme.mediaQuery.md`
     margin: 20px;
+    `}
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
