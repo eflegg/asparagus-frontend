@@ -2,6 +2,7 @@ import React, { useEffect, useState, Suspense, useRef } from "react";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ActiveLink from "./ActiveLink";
+
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import theme from "./Theme";
@@ -13,9 +14,22 @@ import Search from "./search";
 import HamburgerMenuButton from "../HeaderMenuComponents/HamburgerMenuButton";
 
 const MenuContainer = styled.div`
-  position: sticky;
+  .nameplate {
+    ${theme.mediaQuery.md`
+ 
+ max-width: 457px;
+  `};
+  }
+  ${theme.mediaQuery.md`
+    position: sticky;
   z-index: 10;
-  top: -175px;
+  top: -110px;
+  `};
+  /* ${theme.mediaQuery.lg`
+    position: sticky;
+  z-index: 10;
+  top: -116px;
+  `}; */
   .nav-link {
     font-family: ${theme.type.medium};
     font-size: 2.4rem;
@@ -27,7 +41,7 @@ const MenuContainer = styled.div`
       padding-left: 0;
     }
   }
-  margin: 30px 15px;
+  margin: 0px 15px 30px;
   ${theme.mediaQuery.md`
     margin: 30px 57px 0px 57px;
   `};
@@ -38,10 +52,10 @@ const MobileNavContainer = styled.div`
   height: 100%;
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
-  padding: 20px 36px 0px 36px;
+  padding: 60px 36px 0px 36px;
 
   ul {
     position: relative;
@@ -69,13 +83,15 @@ const HamburgerLogoContainer = styled.div`
 `;
 
 const ConnectMenuContainer = styled.div`
-  display: ${(props) => (props.scroll && props.mobile ? "none" : "flex")};
+  /* display: ${(props) => (props.scroll && props.mobile ? "none" : "flex")}; */
+  width: 100%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 2%;
   ${theme.mediaQuery.md`
-    flex: 0 0 50%; 
-    padding-top: 30px; 
+    flex: 0 0 60%; 
+    // padding-top: 30px; 
     align-items: flex-start; 
   `};
 `;
@@ -84,7 +100,7 @@ const DesktopNav = styled.nav`
   /* position: fixed; */
 
   z-index: 1;
-  width: 100vw;
+  width: 100%;
 
   ul.desktopnav {
     display: flex;
@@ -135,6 +151,7 @@ const LogoConnectMenuContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-around;
+  align-items: flex-start;
   position: relative;
 
   .img {
@@ -148,19 +165,62 @@ const LogoConnectMenuContainer = styled.div`
 `;
 const ConnectMenuNav = styled.nav`
   flex: 1;
-  ul {
+  position: relative;
+  transition: all 0.25s ease-in-out;
+  ul.connect-ul {
+    .mobile--home-stalk {
+      display: none;
+      transition: all 0.25s ease-in-out;
+    }
+    &.nav-active--mobile {
+      position: fixed;
+      padding: 0px 3%;
+      background: transparent;
+      transition: all 0.25s ease-in-out;
+    }
+    &.scrolled--mobile {
+      position: fixed;
+      top: 0;
+      background: ${theme.colours.darkWheat};
+      transition: all 0.25s ease-in-out;
+      padding: 10px 0px;
+      li {
+        display: none;
+        &:first-of-type {
+          display: block;
+        }
+        transition: all 0.25s ease-in-out;
+      }
+      .mobile--home-stalk {
+        display: block;
+        transition: all 0.25s ease-in-out;
+      }
+    }
+
+    width: 100%;
+    /* position: fixed;
+    ${theme.mediaQuery.md`
+    position: relative;
+    `}; */
+    left: 0;
+    z-index: 20;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: nowrap;
   }
   a {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: ${theme.colours.soil};
     font-family: ${theme.type.semibold};
+    ${theme.mediaQuery.sm`
+     font-size: 2rem;
+    `};
   }
   li {
+    display: block;
+    transition: all 0.25s ease-in-out;
     flex: none;
     ${theme.mediaQuery.md`
       padding: 3px 30px; 
@@ -182,7 +242,6 @@ const ConnectScrollMenuContainer = styled.div`
   justify-content: space-evenly;
   background-color: ${theme.colours.darkWheat};
   position: fixed;
-
   z-index: 1;
   top: 0;
   width: 100vw;
@@ -301,23 +360,15 @@ export default function HeaderMenu() {
         <LogoConnectMenuContainer>
           <Link href="/">
             <a className="position-relative d-block">
-              {/*           
-              <Image
-                src="/Asparagus_Nameplate_Color.png"
-                alt="Asparagus Magazine logo"
-                layout="responsive"
-                objectFit="cover"
-                width="604px"
-                height="173px"
-              /> */}
               <img
+                className="nameplate nameplate--desktop"
                 ref={imgRef}
                 src="/Asparagus_Nameplate_Color.png"
                 alt="Asparagus Magazine logo"
               />
             </a>
           </Link>
-          {size.scrollY >= 10 && size.width < 1000 && (
+          {/* {size.scrollY >= 10 && size.width < 1000 && (
             <ConnectScrollMenuContainer>
               <div className="left-container">
                 <Link href="/">
@@ -351,13 +402,45 @@ export default function HeaderMenu() {
                 />
               </div>
             </ConnectScrollMenuContainer>
-          )}
+          )} */}
           <ConnectMenuContainer
-            scroll={size.scrollY >= 10 ? true : false}
-            mobile={size.width < 1000 ? true : false}
+          // scroll={size.scrollY >= 10 ? true : false}
+          // mobile={size.width < 1000 ? true : false}
           >
             <ConnectMenuNav>
-              <ul>
+              <ul
+                // style={{
+                //   border: "2px solid hotpink",
+                //   padding:
+                //     navActive && size.width < 1000 ? "0px 3%" : "initial",
+                //   // width: navActive && size.width < 1000 ? "100%" : "initial",
+                //   position:
+                //     navActive && size.width < 1000
+                //       ? "fixed"
+                //       : size.scrollY > 2 && size.width < 1000
+                //       ? "fixed"
+                //       : "relative",
+                //   top: size.scrollY > 2 && size.width < 1000 ? "0" : "initial",
+                // }}
+                className={`${
+                  navActive && size.width < 1000
+                    ? "nav-active--mobile"
+                    : size.scrollY > 2 && size.width < 1000
+                    ? "scrolled--mobile"
+                    : ""
+                } connect-ul`}
+              >
+                <div className="mobile--home-stalk">
+                  <Link href="/">
+                    <Image
+                      src="/triplestalk.svg"
+                      alt="Asparagus Magazine logo"
+                      layout="fixed"
+                      width="53px"
+                      height="56px"
+                    />
+                  </Link>
+                </div>
                 {connectLinks?.items?.map((connectLink, index) => {
                   return (
                     <li key={uuidv4()}>
@@ -372,17 +455,16 @@ export default function HeaderMenu() {
                   );
                 })}
                 <Search />
+                {size.width < 1000 && (
+                  <HamburgerMenuButton
+                    navActive={navActive}
+                    onClick={() => {
+                      setNavActive(!navActive);
+                    }}
+                  />
+                )}
               </ul>
             </ConnectMenuNav>
-
-            {size.width < 1000 && (
-              <HamburgerMenuButton
-                navActive={navActive}
-                onClick={() => {
-                  setNavActive(!navActive);
-                }}
-              />
-            )}
           </ConnectMenuContainer>
         </LogoConnectMenuContainer>
 
@@ -395,7 +477,7 @@ export default function HeaderMenu() {
               //     : null
               // }
               className={`${
-                size.scrollY >= 175 ? "desktopnavcolorchange" : ""
+                size.scrollY >= 100 ? "desktopnavcolorchange" : ""
               } desktopnav`}
               // {
               //   size.scrollY >= 175 ? "desktopnavcolorchange" : "desktopnav"
@@ -458,7 +540,7 @@ export default function HeaderMenu() {
 
         {navActive ? (
           <MobileNavContainer>
-            <ConnectMenuNav>
+            {/* <ConnectMenuNav>
               <ul>
                 {connectLinks?.items?.map((connectLink, index) => {
                   return (
@@ -473,22 +555,25 @@ export default function HeaderMenu() {
                     </li>
                   );
                 })}
+                <h3>hello</h3>
               </ul>
-            </ConnectMenuNav>
+            </ConnectMenuNav> */}
             <HamburgerLogoContainer>
               <Link href="/">
                 <a>
-                  <img ref={imgRef} src="/Asparagus_Nameplate_Color.png" />
+                  <img
+                    className="nameplate nameplate--mobile"
+                    ref={imgRef}
+                    src="/Asparagus_Nameplate_Color.png"
+                  />
                 </a>
               </Link>
             </HamburgerLogoContainer>
             <MobileNav>
               <ul>
-                <li>
-                  <a className="nav-link" href="/">
-                    Home
-                  </a>
-                </li>
+                <Link href="/">
+                  <a>Home</a>
+                </Link>
                 {links?.items?.map((link, index) => {
                   return (
                     <React.Fragment key={uuidv4()}>

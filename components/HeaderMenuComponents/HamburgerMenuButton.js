@@ -18,9 +18,10 @@ const ButtonContainer = styled.div`
     background: transparent;
     border: 0px;
     span {
-      width: 35px;
-      height: 5px;
-      margin-bottom: 1px;
+      width: 45px;
+      height: 3px;
+      margin: 2px auto;
+      /* margin-bottom: 1px; */
       border-radius: 3px;
       margin-top: 5px;
       background: ${theme.colours.soil};
