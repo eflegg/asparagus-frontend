@@ -147,6 +147,26 @@ const ConnectMenuNav = styled.nav`
     ${theme.mediaQuery.md`
       padding: 3px 30px; 
     `};
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      border-bottom: 2px solid ${theme.colours.soil};
+      width: 0;
+      transition: all 0.25s ease-out;
+    }
+    &:hover {
+      &:not(:first-child) {
+        &::after {
+          content: "";
+
+          width: 50%;
+          transition: all 0.25s ease-out;
+        }
+      }
+    }
   }
   li:first-of-type {
     background-color: ${theme.colours.gusYellow};
@@ -255,7 +275,7 @@ export default function HeaderMenu() {
               <ul>
                 {connectLinks?.items?.map((connectLink, index) => {
                   return (
-                    <li key={uuidv4()}>
+                    <li className="connect--link" key={uuidv4()}>
                       <ActiveLink
                         activeClassName="navlink--active"
                         href={`/${connectLink.slug}`}

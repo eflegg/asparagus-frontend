@@ -289,6 +289,21 @@ hr {
   background: $teaGreen;
   margin-bottom: 65px;
 }
+.wp-block-separator {
+  position: relative;
+  background: transparent;
+  overflow: initial;
+  margin-bottom: 100px;
+  &::after {
+    content: url("../public/singlestalk-square.svg");
+    height: 60px;
+    width: 60px;
+    opacity: 1;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+  }
+}
 
 .start-small {
   height: 3px;
@@ -933,7 +948,7 @@ li.nav-link {
   margin: 15px 0;
   border: 0px;
   color: $wheat;
-  font-family: $accentFont;
+  font-family: $semibold;
   font-weight: 600;
   font-size: 16px;
 
@@ -954,7 +969,6 @@ li.nav-link {
 }
 
 .btn--secondary {
-  // background-color: $gusYellow;
   border-radius: 5px;
   padding: 3px 30px;
   margin: 5px;
@@ -980,4 +994,94 @@ img {
     width: 100%;
     object-fit: cover;
   }
+}
+
+//Custom block styles
+
+.newsletter-block {
+  position: relative;
+  box-sizing: border-box;
+  align-items: center;
+  width: 100%;
+  margin: 45px auto;
+  background-color: #f0e7db;
+  .signupWrapper {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &.wrapper--support {
+      width: 100%;
+    }
+  }
+}
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 0px 20px 20px;
+  @include media-query-min($sm) {
+    padding: 30px;
+  }
+
+  @include media-query-min($md) {
+    position: relative;
+    left: 40px;
+    padding: 40px;
+  }
+
+  input {
+    height: 38px;
+    max-width: 280px;
+    @include media-query-min($xs) {
+      width: 200px;
+      margin-right: 20px;
+    }
+  }
+  &.text--support {
+    padding: 45px;
+  }
+  button {
+    background-color: $soil;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 15px 0;
+    border: 0px;
+    color: $wheat;
+    font-family: $accentFont;
+    font-weight: 600;
+    font-size: 16px;
+
+    transition: all 0.25s ease-in;
+
+    &:hover {
+      background: $gusGreen;
+      transition: all 0.25s ease-in;
+    }
+
+    a {
+      color: white;
+      font-family: $bodyFont;
+      font-size: 16px;
+    }
+
+    text-align: center;
+  }
+}
+.triple-stalk {
+  height: 100%;
+  min-width: 40%;
+  @include media-query-min($sm) {
+    min-width: 30%;
+  }
+  @include media-query-min($md) {
+    position: relative;
+    left: -40px;
+    min-width: 30%;
+  }
+
+  flex-direction: row;
+  padding: 2%;
 }

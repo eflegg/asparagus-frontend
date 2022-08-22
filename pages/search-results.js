@@ -87,6 +87,9 @@ function SearchResults(props) {
       return postContent.includes(query);
     });
   };
+
+  //Asparagus Tips
+
   const filteredEvents = filterEvents(props.events, props.router.query.name);
   const filteredContent = filterArticles(props.posts, props.router.query.name);
   const filteredGeneralPages = filterGeneralPages(

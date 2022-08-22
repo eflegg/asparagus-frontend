@@ -22,18 +22,38 @@ import React from "react";
 
 const SingleContainer = styled.div`
   height: 100%;
-  img {
-    height: 100%;
-    width: 100%;
-  }
+
   figure {
+    text-align: center;
     margin: 50px auto;
+    &.size-large {
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
   figcaption {
+    &.credit {
+      position: absolute;
+      bottom: -30px;
+    }
     width: 90%;
     margin: 8px auto 0;
     font-family: ${theme.type.accent};
     font-size: 1.6rem;
+    &.caption {
+      position: absolute;
+
+      bottom: -85px;
+      p {
+        font-size: 1.6rem;
+        margin-left: 0;
+        font-family: ${theme.type.header};
+        font-style: italic;
+        font-weight: 700;
+      }
+    }
     strong {
       font-family: ${theme.type.header};
       font-style: italic;
@@ -105,6 +125,7 @@ const SingleContainer = styled.div`
 `;
 
 const SingleHero = styled.div`
+  margin-bottom: 100px;
   .categories {
     width: 90%;
     margin: 0 auto;
@@ -139,6 +160,10 @@ const SingleHero = styled.div`
       width: 50%;
       flex: none;
       `}
+      .hero--right--inner {
+        /* height: 500px; */
+        position: relative;
+      }
     }
     .hero--text {
       padding: 30px;
@@ -156,6 +181,7 @@ const SingleHero = styled.div`
 `;
 
 export default function ArticlePage({ article, allArticles, categories }) {
+  console.log("article: ", article);
   let initialDate = article.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
@@ -236,21 +262,36 @@ export default function ArticlePage({ article, allArticles, categories }) {
               </div>
             </div>
             <div className="hero--image position-relative">
-              {article._embedded["wp:featuredmedia"] ? (
-                <Image
-                  src={article._embedded["wp:featuredmedia"]["0"].source_url}
-                  alt={article._embedded["wp:featuredmedia"]["0"].alt_text}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              ) : (
-                <Image
-                  src="/triplestalk.svg"
-                  layout="fill"
-                  objectFit="cover"
-                  alt="Asparagus Magazine logo"
-                />
-              )}
+              <div className="hero-right--inner">
+                {article._embedded["wp:featuredmedia"] ? (
+                  <Image
+                    src={article._embedded["wp:featuredmedia"]["0"].source_url}
+                    alt={article._embedded["wp:featuredmedia"]["0"].alt_text}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                ) : (
+                  <Image
+                    src="/triplestalk.svg"
+                    layout="fill"
+                    objectFit="cover"
+                    alt="Asparagus Magazine logo"
+                  />
+                )}
+                <figcaption className="credit ">
+                  {article._embedded["wp:featuredmedia"]["0"].title.rendered}
+                </figcaption>{" "}
+                <strong>
+                  <figcaption
+                    className="caption "
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        article._embedded["wp:featuredmedia"]["0"].caption
+                          .rendered,
+                    }}
+                  ></figcaption>
+                </strong>
+              </div>
             </div>
           </div>
         </SingleHero>
