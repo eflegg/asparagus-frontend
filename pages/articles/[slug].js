@@ -48,7 +48,7 @@ const SingleContainer = styled.div`
       bottom: -85px;
       p {
         font-size: 1.6rem;
-        margin-left: 0;
+        margin-left: 0px;
         font-family: ${theme.type.header};
         font-style: italic;
         font-weight: 700;
@@ -102,6 +102,7 @@ const SingleContainer = styled.div`
     p {
       margin: 5px 0;
       font-style: italic;
+      font-weight: 600;
     }
   }
 
@@ -157,7 +158,7 @@ const SingleHero = styled.div`
       width: 100%;
       height: 450px;
       ${theme.mediaQuery.sm`
-      width: 50%;
+      width: 57%;
       flex: none;
       `}
       .hero--right--inner {
@@ -177,6 +178,19 @@ const SingleHero = styled.div`
       justify-content: flex-start;
       `}
     }
+  }
+
+  hr {
+    margin-bottom: 26px;
+    ${theme.mediaQuery.md`
+    margin-bottom: 38px;
+    `}
+  }
+  .article--title {
+    font-size: 2.6rem;
+    ${theme.mediaQuery.md`
+    font-size: 5.2rem;
+    `}
   }
 `;
 
@@ -251,10 +265,10 @@ export default function ArticlePage({ article, allArticles, categories }) {
                   )}
                 </div>
                 <div>
-                  <p itemProp="author" className="byline--article-card">
+                  <p itemProp="author" className="byline">
                     {article.acf.writer[0].post_title}
                   </p>
-                  <p itemProp="datePublished" className="date--article-card">
+                  <p itemProp="datePublished" className="date--single-article">
                     {formattedDate} -{" "}
                     <span>{article.acf.time_to_read} min read</span>
                   </p>

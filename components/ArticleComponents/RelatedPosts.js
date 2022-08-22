@@ -32,7 +32,7 @@ export default function RelatedPosts({ allArticles, currentArticle }) {
   return (
     <>
       <h5 className="related--header">Related Stories</h5>
-      <hr />
+      <hr className="hr--related"/>
       <div className="card--grid single-page">
         {sortedPosts.slice(0, maxPosts).map((post, i) => (
           <React.Fragment key={uuidv4()}>
