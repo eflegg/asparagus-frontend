@@ -72,12 +72,22 @@ export default function ContributorCard({
   return (
     <Card className="team--card" team={team}>
       <ContribImage team={team}>
-        <Image
-          src={contributor.acf.headshot.url}
-          layout="fill"
-          objectFit="cover"
-          alt="Contributor photo"
-        />
+        {contributor.acf.headshot ? (
+          <Image
+            src={contributor.acf.headshot.url}
+            layout="fill"
+            objectFit="cover"
+            alt="Contributor photo"
+          />
+        ) : (
+          <Image
+            src="/singlestalk-square.svg"
+            layout="responsive"
+            height="100px"
+            width="100px"
+            alt="Contributor photo"
+          />
+        )}
       </ContribImage>
       {team ? (
         <Link href={"/team/[slug]"} as={`/team/${contributor.slug}`}>
