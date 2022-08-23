@@ -44,8 +44,10 @@ const SingleContainer = styled.div`
     font-size: 1.6rem;
     &.caption {
       position: absolute;
-
+      bottom: -100px;
+      ${theme.mediaQuery.md`
       bottom: -85px;
+      `}
       p {
         font-size: 1.6rem;
         margin-left: 0px;
@@ -110,6 +112,21 @@ const SingleContainer = styled.div`
   a:active {
     color: ${theme.colours.gusYellow};
   }
+
+  .wp-block-pullquote {
+    p {
+      font-size: 18px;
+      font-weight: 600;
+      color: ${theme.colours.gusGreen};
+      width: 80%;
+      margin: 20px auto;
+      text-align: center;
+      font-family: ${theme.type.semibold};
+     ${theme.mediaQuery.md`
+      font-size: 28px;
+     `}
+      
+    }
 }
   
 
@@ -214,6 +231,7 @@ const SingleHero = styled.div`
     `}
   }
   .article--title {
+    margin-top: 100px;
     font-size: 2.6rem;
     ${theme.mediaQuery.md`
     font-size: 5.2rem;
