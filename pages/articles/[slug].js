@@ -90,6 +90,26 @@ const SingleContainer = styled.div`
     `}
   }
 
+  a {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    font-family: ${theme.type.bodyFont};
+    color: black;
+    font-weight: 400;
+  }
+  
+  a:visited {
+    color: ${theme.colours.soil};
+  }
+  
+  a:hover {
+    color: ${theme.colours.gusGreen};
+  }
+  
+  a:active {
+    color: ${theme.colours.gusYellow};
+  }
+
   .related--header {
     width: 90%;
     margin: 50px auto 0;

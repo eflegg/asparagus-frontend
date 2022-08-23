@@ -254,22 +254,10 @@ li {
 }
 
 a {
-  text-decoration: underline;
-  text-decoration-skip-ink: auto;
-  // font-weight: 600;
-  font-family: $bodyFont;
-}
-
-a:visited {
+  text-decoration: none;
   color: $soil;
-}
-
-a:hover {
-  color: $gusGreen;
-}
-
-a:active {
-  color: $gusYellow;
+  font-weight: 600;
+  font-family: $bodyFont;
 }
 
 li {
