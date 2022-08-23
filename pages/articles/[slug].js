@@ -33,6 +33,9 @@ const SingleContainer = styled.div`
       }
     }
   }
+  a {
+    color: hotpink;
+  }
   figcaption {
     &.credit {
       position: absolute;
