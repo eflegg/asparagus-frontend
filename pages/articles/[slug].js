@@ -45,20 +45,21 @@ const SingleContainer = styled.div`
     &.caption {
       position: absolute;
 
-      bottom: -85px;
+      bottom: -105px;
       p {
         font-size: 1.6rem;
         margin-left: 0px;
         font-family: ${theme.type.header};
         font-style: italic;
         font-weight: 700;
+        line-height: 2rem;
       }
     }
     strong {
       font-family: ${theme.type.header};
       font-style: italic;
       position: relative;
-      top: 5px;
+      // top: 5px;
     }
   }
   li {
@@ -88,6 +89,7 @@ const SingleContainer = styled.div`
        font-size: 2.8rem;
     `}
   }
+
   .related--header {
     width: 90%;
     margin: 50px auto 0;
