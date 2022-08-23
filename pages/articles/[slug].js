@@ -45,7 +45,7 @@ const SingleContainer = styled.div`
     &.caption {
       position: absolute;
 
-      bottom: -105px;
+      bottom: -85px;
       p {
         font-size: 1.6rem;
         margin-left: 0px;
@@ -67,15 +67,7 @@ const SingleContainer = styled.div`
     width: 90%;
     max-width: 650px;
   }
-  p {
-    width: 90%;
-    max-width: 650px;
-    margin: 17px auto;
-
-    ${theme.mediaQuery.sm`
-       margin: 25px auto;
-    `}
-  }
+  
   h2 {
     width: 90%;
     max-width: 650px;
@@ -89,7 +81,16 @@ const SingleContainer = styled.div`
        font-size: 2.8rem;
     `}
   }
+.body-content {
+  p {
+    width: 90%;
+    max-width: 650px;
+    margin: 17px auto;
 
+    ${theme.mediaQuery.sm`
+       margin: 25px auto;
+    `}
+  }
   a {
     text-decoration: underline;
     text-decoration-skip-ink: auto;
@@ -109,6 +110,10 @@ const SingleContainer = styled.div`
   a:active {
     color: ${theme.colours.gusYellow};
   }
+}
+  
+
+
 
   .related--header {
     width: 90%;
@@ -213,6 +218,12 @@ const SingleHero = styled.div`
     ${theme.mediaQuery.md`
     font-size: 5.2rem;
     `}
+  }
+  .byline {
+    margin: 5px auto;
+  }
+  .date--single-article {
+    margin: 5px auto;
   }
 `;
 
@@ -332,7 +343,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
           </div>
         </SingleHero>
         <div
-          className=""
+          className="body-content"
           dangerouslySetInnerHTML={{ __html: article.content.rendered }}
         ></div>
         {article.acf.print_issue == "Yes" ? (
