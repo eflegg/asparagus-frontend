@@ -20,13 +20,13 @@ export default function ArticleCard({ post }) {
   );
 
   let initialDate = post.acf.publication_date;
-  console.log("date: ", initialDate);
+  // console.log("date: ", initialDate);
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",
     year: "numeric",
   });
-  console.log("formatted date: ", formattedDate);
+  // console.log("formatted date: ", formattedDate);
   return (
     <Card>
       <div className="card--inner">

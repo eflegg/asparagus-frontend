@@ -35,6 +35,7 @@ export default function Home({ page, posts }) {
   const catThree = page.acf.home_category_three[0].term_id;
 
   console.log("page", page);
+  console.log("posts", posts);
 
   return (
     <>
@@ -57,19 +58,15 @@ export default function Home({ page, posts }) {
           <div>
             {posts.map((post, index) => {
               let initialDate = post.date;
-              let formattedDate = new Date(initialDate).toLocaleDateString(
-                "en-US",
-                {
-                  year: "numeric",
-                  month: "long",
-                  day: "2-digit",
-                }
-              );
+
               return (
                 <React.Fragment key={uuidv4()}>
-                  {post.id == page.acf.lead_story[0].ID ? (
+                  {page.acf.lead_story &&
+                  page.acf.lead_story[0].ID === post.id ? (
                     <LeadStoryBlock post={post} />
-                  ) : null}
+                  ) : (
+                    <p>no lead story</p>
+                  )}
                 </React.Fragment>
               );
             })}
@@ -187,7 +184,7 @@ export async function getStaticProps() {
 
   //all posts
   const postsQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed?`
   );
   const posts = await postsQuery.json();
 
