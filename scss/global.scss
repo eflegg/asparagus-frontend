@@ -792,45 +792,6 @@ li.nav-link {
   font-family: $accentFont;
 }
 
-.wp-block-pullquote {
-  p {
-    font-size: 18px;
-    font-weight: 600;
-    color: $gusGreen;
-    width: 80%;
-    margin: 20px auto;
-    text-align: center;
-    font-family: $semibold;
-
-    @include media-query-min($sm) {
-      font-size: calc(18px + 18 * ((100vw - 320px) / 680));
-      line-height: 2.6rem;
-    }
-
-    @include media-query-min($md) {
-      @include font-size(3.6);
-      line-height: 38px;
-    }
-  }
-
-  cite {
-    font-family: $bodyFont;
-    font-size: 1.2rem;
-    font-style: italic;
-    margin: 20px auto;
-    text-align: center;
-
-    @include media-query-min($sm) {
-      font-size: calc(12px + 4 * ((100vw - 320px) / 680));
-      line-height: 2rem;
-    }
-
-    @include media-query-min($md) {
-      @include font-size(1.6);
-      line-height: 24px;
-    }
-  }
-}
 
 .navlink--active {
   border: 2px solid orangered;

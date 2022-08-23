@@ -40,6 +40,22 @@ p {
   `}
 }
 
+
+.wp-block-pullquote {
+  p {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: ${theme.colours.gusGreen};
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+    font-family: ${theme.type.semibold};
+    ${theme.mediaQuery.md`
+    font-size: 3.6rem;
+    `}
+  }
+}
+
 h2 {
   width: 90%;
   max-width: 650px;
