@@ -121,12 +121,6 @@ export default function SignUp() {
           Pleasantly Infrequent Updates from Asparagus Magazine
         </h2>
 
-        <link
-          href="//cdn-images.mailchimp.com/embedcode/classic-071822.css"
-          rel="stylesheet"
-          type="text/css"
-        />
-
         <div id="mc_embed_signup">
           <form
             action="https://eepurl.us16.list-manage.com/subscribe/post?u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0"
