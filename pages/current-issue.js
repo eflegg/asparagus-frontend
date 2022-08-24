@@ -15,9 +15,61 @@ const CoverContainer = styled.div`
   div {
     margin: 0 24px 30px;
   }
+  h3 {
+    color: ${theme.colours.soil};
+    font-size: 1.6rem;
+    ${theme.mediaQuery.md`
+    font-size: 3.2rem;
+    `}
+  }
   .cover-image {
     display: block;
     width: 277px;
+  }
+  p {
+    font-style: italic;
+    font-size: 1.4rem;
+    margin-top: 30px;
+    ${theme.mediaQuery.md`
+    font-size: 2.4rem;
+    `}
+  }
+  a {
+    text-align: center;
+  }
+`;
+
+const Issues = styled.div`
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+  .btn--secondary {
+    position: relative;
+    font-size: 1.4rem;
+    ${theme.mediaQuery.md`
+  font-size: 2.4rem;
+  `}
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      border-bottom: 2px solid ${theme.colours.soil};
+      width: 0;
+      transition: all 0.25s ease-out;
+    }
+    &:hover {
+      &::after {
+        content: "";
+        width: 76%;
+        transition: all 0.25s ease-out;
+      }
+    }
+  }
+  hr {
+    margin-bottom: 30px;
   }
 `;
 
@@ -33,8 +85,17 @@ export default function CurrentIssue({ issues, articles }) {
       SEOtitle="Current Issue"
       metadescription="All the sustainble stories from Asparagus Magazine's most recent issue"
     >
-      <h1 className="text-center">{issues[0].title.rendered}</h1>
-      <hr/>
+      <Issues>
+        <h1 className="text-center">{issues[0].title.rendered}</h1>
+        <hr />
+        <div className="button-container">
+          <Link href={"/past-issues"}>
+            <a>
+              <button className="btn--secondary">Go to Past Issues</button>
+            </a>
+          </Link>
+        </div>
+      </Issues>
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
           <Image
@@ -49,6 +110,7 @@ export default function CurrentIssue({ issues, articles }) {
           <h3>From This Issue:</h3>
           <p>{issues[0].acf.primary_cover_line}</p>
           <p>{issues[0].acf.secondary_cover_line}</p>
+          <button className="btn--primary">Buy Now</button>
         </div>
       </CoverContainer>
       <ul className="card--grid single-page">

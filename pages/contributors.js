@@ -11,7 +11,7 @@ const ContribContainer = styled.ul`
   grid-template-columns: repeat(auto-fill, minmax(min(40rem, 100%), 1fr));
   grid-row-gap: 50px;
   ${theme.mediaQuery.sm`
-   grid-row-gap: 100px;
+   grid-row-gap: 50px;
   `}
   grid-column-gap: 80px;
   justify-content: center;
@@ -37,6 +37,7 @@ export default function ContributorsPage({ contributors, categories }) {
         {contributors.map((contributor, index) => {
           return (
             <ContributorCard
+              contributor={contributor}
               image={contributor.acf.headshot.url}
               key={index}
               slug={contributor.slug}

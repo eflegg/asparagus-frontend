@@ -92,7 +92,7 @@ export const Card = styled.div`
     position: absolute;
     top: 0;
     left: -35px;
-    height: 100%;
+    height: calc(100% + 70px);
     border-left: 1px solid ${theme.colours.grey};
   }
   /* Horizontal lines above cells in the first column */
@@ -101,7 +101,7 @@ export const Card = styled.div`
     position: absolute;
     top: -35px;
     left: 0;
-    width: 100%;
+    width: calc(100% + 70px);
     border-top: 1px solid ${theme.colours.grey};
   }
   /* Horizontal lines above cells in all other columns */
@@ -111,7 +111,7 @@ export const Card = styled.div`
     position: absolute;
     top: -35px;
     left: -70px;
-    width: calc(100% + 70px);
+    width: calc(100% + 140px);
     border-top: 1px solid ${theme.colours.grey};
   }
   `}
@@ -124,6 +124,7 @@ export const Card = styled.div`
     position: relative;
     height: 160px;
     top: 0;
+    margin-bottom: 10px;
   }
   .categories {
     margin: 5px 0 10px;

@@ -19,8 +19,6 @@ const CategoryH1 = styled.h1`
   margin: 0 auto;
 `;
 
-
-
 export default function CategoryPage({ category, posts, subcategories }) {
   const dynamicRoute = useRouter().asPath;
   const [subfilter, setSubfilter] = useState(null);
@@ -32,7 +30,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
     setSubfilter(null);
   }, [dynamicRoute]);
 
-  // console.log("category: ", category);
+  console.log("category: ", category);
   // console.log("posts: ", posts);
   return (
     <PageWrapper
@@ -54,11 +52,21 @@ export default function CategoryPage({ category, posts, subcategories }) {
         className="h5"
         dangerouslySetInnerHTML={{ __html: category.name }}
       ></CategoryH1>
-      <hr className={`${category.slug == "voices" || category.slug == "start-small" ? "start-small" : ""}`}/>
+      <hr
+        className={`${
+          category.slug == "voices" || category.slug == "start-small"
+            ? "start-small"
+            : ""
+        }`}
+      />
       {category.slug == "voices" || category.slug == "start-small" ? (
         <>
           {/* <p>{subfilter}</p> */}
-          <ArticleFilter subcategories={subcategories} onClick={handleClick} subfilter={subfilter} />
+          <ArticleFilter
+            subcategories={subcategories}
+            onClick={handleClick}
+            subfilter={subfilter}
+          />
           <div className="card--grid single-page">
             {posts.map((post, index) => {
               return (
@@ -66,16 +74,16 @@ export default function CategoryPage({ category, posts, subcategories }) {
                   {post.categories && post.categories.includes(subfilter) ? (
                     <ArticleCard
                       post={post}
-                      title={post.title.rendered}
-                      slug={post.slug}
-                      writer={post.acf.writer[0].post_title}
+                      // title={post.title.rendered}
+                      // slug={post.slug}
+                      // writer={post.acf.writer[0].post_title}
                     />
                   ) : subfilter == null ? (
                     <ArticleCard
                       post={post}
-                      title={post.title.rendered}
-                      slug={post.slug}
-                      writer={post.acf.writer[0].post_title}
+                      // title={post.title.rendered}
+                      // slug={post.slug}
+                      // writer={post.acf.writer[0].post_title}
                     />
                   ) : null}
                 </React.Fragment>
