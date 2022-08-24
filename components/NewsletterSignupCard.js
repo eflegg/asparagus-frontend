@@ -51,10 +51,6 @@ const PhotoStyled = styled.div`
 `;
 
 const SignUp = styled.div`
-  // &.text--support {
-  //   border: 3px solid rebeccapurple;
-  // }
-  /* border: 3px solid rebeccapurple; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,7 +80,6 @@ const SignUp = styled.div`
 export default function NewsletterSignup({ title, subtitle, image, support }) {
   return (
     <NewsletterBlock>
-      {/* @elizabeth this is how you use a prop in a ternary. if support exists, add this class. otherwise do nothing. apply signupWrapper regardless */}
       <div className={`${support ? "wrapper--support" : " "} signupWrapper`}>
         <SignUp className={`${support ? "text--support" : " "} `}>
           <p className="newsletter-header--primary">{title}</p>

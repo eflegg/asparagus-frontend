@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 
 export const type = {
-  header: "Source Sans Pro",
+  header: "Source Serif Pro",
   body: "Arial",
   accent: "halcyon-regular",
   medium: "halcyon-medium",
