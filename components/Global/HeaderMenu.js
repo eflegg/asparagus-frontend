@@ -372,7 +372,7 @@ export default function HeaderMenu() {
 
   //updates when the client loads so you can use it
   const size = useWindowSpecs();
-  const imgRef = useRef();
+  // const imgRef = useRef();
 
   return (
     <MenuContainer className="menu--container">
@@ -382,7 +382,7 @@ export default function HeaderMenu() {
             <a className="position-relative d-block">
               <img
                 className="nameplate nameplate--desktop"
-                ref={imgRef}
+                // ref={imgRef}
                 src="/Asparagus_Nameplate_Color.png"
                 alt="Asparagus Magazine logo"
               />
