@@ -35,6 +35,7 @@ export default function Home({ page, posts }) {
   const catThree = page.acf.home_category_three[0].term_id;
 
   console.log("page", page);
+  console.log("posts", posts);
 
   return (
     <>
@@ -180,7 +181,7 @@ export async function getStaticProps() {
 
   //all posts
   const postsQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=100`
   );
   const posts = await postsQuery.json();
 

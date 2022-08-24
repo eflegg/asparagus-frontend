@@ -33,6 +33,9 @@ const SingleContainer = styled.div`
       }
     }
   }
+  a {
+    color: hotpink;
+  }
   figcaption {
     &.credit {
       position: absolute;
@@ -304,9 +307,12 @@ export default function ArticlePage({ article, allArticles, categories }) {
             <p className="content--container">
               Print Issue: <span>{article.acf.appears_in[0].post_title}</span>
             </p>
-            <p className="content--container">
-              Print Title: <span>{article.acf.print_title}</span>
-            </p>
+
+            {article.acf.print_title ? (
+              <p className="content--container">
+                Print Title: <span>{article.acf.print_title}</span>
+              </p>
+            ) : null}
           </div>
         ) : null}
         <div
@@ -359,5 +365,3 @@ export async function getStaticProps({ params }) {
     revalidate: 10, // In seconds
   };
 }
-
-18442232457;
