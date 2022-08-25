@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getSlugs, getIssue, getArticles, getIssues } from "../../utils/wordpress";
+import {
+  getSlugs,
+  getIssue,
+  getArticles,
+  getIssues,
+} from "../../utils/wordpress";
 import PageWrapper from "../../components/Global/PageWrapper";
 import ArticleCard from "../../components/ArticleCard";
 import styled from "styled-components";
@@ -40,39 +45,38 @@ const CoverContainer = styled.div`
 `;
 
 const Issues = styled.div`
-hr {
-  margin-bottom: 30px;
-}
-.button-container {
- display: flex;
- justify-content: center;
-  margin-bottom: 60px;
-}
-.btn--secondary {
-  position: relative;
-  font-size: 1.4rem;
-  ${theme.mediaQuery.md`
+  hr {
+    margin-bottom: 30px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+  .btn--secondary {
+    position: relative;
+    font-size: 1.4rem;
+    ${theme.mediaQuery.md`
   font-size: 2.4rem;
   `}
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 30px;
-    border-bottom: 2px solid ${theme.colours.soil};
-    width: 0;
-    transition: all 0.25s ease-out;
-  }
-  &:hover {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      border-bottom: 2px solid ${theme.colours.soil};
+      width: 0;
+      transition: all 0.25s ease-out;
+    }
+    &:hover {
       &::after {
         content: "";
         width: 78%;
         transition: all 0.25s ease-out;
+      }
     }
   }
-}
 `;
-
 
 export default function Issue({ issue, articles }) {
   const currentIssue = issue.ID;
@@ -87,14 +91,14 @@ export default function Issue({ issue, articles }) {
     >
       <h1 className="text-center">{issue.title.rendered}</h1>
       <Issues>
-      <hr/>
-      <div className="button-container">
-      <Link href={"/past-issues"}>
+        <hr />
+        <div className="button-container">
+          <Link href={"/past-issues"}>
             <a>
               <button className="btn--secondary">Back to Past Issues</button>
             </a>
-      </Link>
-      </div>
+          </Link>
+        </div>
       </Issues>
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
