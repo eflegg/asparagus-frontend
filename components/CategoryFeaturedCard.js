@@ -12,7 +12,6 @@ const Card = styled.div`
     position: relative;
     height: 250px;
     top: 0;
-    /* margin-bottom: 10px; */
     ${theme.mediaQuery.sm`
     height: 315px;
     `}

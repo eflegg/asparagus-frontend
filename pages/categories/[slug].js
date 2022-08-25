@@ -57,7 +57,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
           category.slug == "voices" || category.slug == "start-small"
             ? "start-small"
             : ""
-        }`}
+        } hr--topic`}
       />
       {category.slug == "voices" || category.slug == "start-small" ? (
         <>
