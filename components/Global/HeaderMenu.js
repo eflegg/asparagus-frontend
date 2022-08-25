@@ -14,6 +14,35 @@ import Search from "./search";
 import HamburgerMenuButton from "../HeaderMenuComponents/HamburgerMenuButton";
 
 const MenuContainer = styled.div`
+  .nameplate-container {
+    position: relative;
+    top: 35px;
+    ${theme.mediaQuery.md`
+    top: 0;
+    `}
+  }
+  .custom-tagline {
+    width: 80%;
+    position: relative;
+    top: 35px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    font-family: ${theme.type.italic};
+    ${theme.mediaQuery.md`
+    display: none;
+    `}
+  }
+  .custom-tagline--desktop {
+    width: 80%;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    display: none;
+    font-family: ${theme.type.italic};
+    ${theme.mediaQuery.md`
+    display: block;
+    `}
+  }
   .nameplate {
     ${theme.mediaQuery.md`
  
@@ -25,11 +54,7 @@ const MenuContainer = styled.div`
   z-index: 10;
   top: -110px;
   `};
-  /* ${theme.mediaQuery.lg`
-    position: sticky;
-  z-index: 10;
-  top: -116px;
-  `}; */
+
   .nav-link {
     font-family: ${theme.type.medium};
     font-size: 2.4rem;
@@ -52,7 +77,7 @@ const MobileNavContainer = styled.div`
   height: 100%;
   width: 100%;
   position: fixed;
-  z-index: 10;
+  z-index: 20;
   top: 0;
   left: 0;
   padding: 60px 36px 0px 36px;
@@ -93,6 +118,8 @@ const ConnectMenuContainer = styled.div`
     flex: 0 0 60%; 
     // padding-top: 30px; 
     align-items: flex-start; 
+  
+
   `};
 `;
 
@@ -153,7 +180,7 @@ const LogoConnectMenuContainer = styled.div`
   justify-content: space-around;
   align-items: flex-start;
   position: relative;
-
+  margin-bottom: 60px;
   .img {
     flex: 0 0 50%;
     height: 100%;
@@ -161,6 +188,7 @@ const LogoConnectMenuContainer = styled.div`
   }
   ${theme.mediaQuery.md`
     flex-direction: row;
+    margin-bottom: 20px;
     `};
 `;
 const ConnectMenuNav = styled.nav`
@@ -203,7 +231,7 @@ const ConnectMenuNav = styled.nav`
     position: relative;
     `}; */
     left: 0;
-    z-index: 20;
+    z-index: 30;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -378,70 +406,26 @@ export default function HeaderMenu() {
     <MenuContainer className="menu--container">
       <Suspense fallback={<Loader />}>
         <LogoConnectMenuContainer>
-          <Link href="/">
-            <a className="position-relative d-block">
-              <img
-                className="nameplate nameplate--desktop"
-                // ref={imgRef}
-                src="/Asparagus_Nameplate_Color.png"
-                alt="Asparagus Magazine logo"
-              />
-            </a>
-          </Link>
-          {/* {size.scrollY >= 10 && size.width < 1000 && (
-            <ConnectScrollMenuContainer>
-              <div className="left-container">
-                <Link href="/">
-                  <Image
-                    src="/triplestalk.svg"
-                    alt="Asparagus Magazine logo"
-                    layout="fixed"
-                    width="53px"
-                    height="56px"
-                  />
-                </Link>
-                <div className="donate-button">
-                  <ActiveLink
-                    activeClassName="navlink--active"
-                    href={`/${connectLinks?.items?.[0].slug}`}
-                    to={`/${connectLinks?.items?.[0].slug}`}
-                  >
-                    <a>{connectLinks?.items?.[0].title}</a>
-                  </ActiveLink>
-                </div>
-              </div>
-              <div className="right-container">
-                <div className="search-container">
-                  <Search />
-                </div>
-                <HamburgerMenuButton
-                  navActive={navActive}
-                  onClick={() => {
-                    setNavActive(!navActive);
-                  }}
+          <p className="custom-tagline text-center">
+            Telling large and small stories of how we can live sustainably.
+          </p>
+          <div className="logo-tagline--container">
+            <Link href="/">
+              <a className="position-relative d-block nameplate-container">
+                <img
+                  className="nameplate nameplate--desktop"
+                  src="/Asparagus_Nameplate_Color.png"
+                  alt="Asparagus Magazine logo"
                 />
-              </div>
-            </ConnectScrollMenuContainer>
-          )} */}
-          <ConnectMenuContainer
-          // scroll={size.scrollY >= 10 ? true : false}
-          // mobile={size.width < 1000 ? true : false}
-          >
+              </a>
+            </Link>
+            <p className="custom-tagline--desktop ">
+              Telling large and small stories of how we can live sustainably.
+            </p>
+          </div>
+          <ConnectMenuContainer>
             <ConnectMenuNav>
               <ul
-                // style={{
-                //   border: "2px solid hotpink",
-                //   padding:
-                //     navActive && size.width < 1000 ? "0px 3%" : "initial",
-                //   // width: navActive && size.width < 1000 ? "100%" : "initial",
-                //   position:
-                //     navActive && size.width < 1000
-                //       ? "fixed"
-                //       : size.scrollY > 2 && size.width < 1000
-                //       ? "fixed"
-                //       : "relative",
-                //   top: size.scrollY > 2 && size.width < 1000 ? "0" : "initial",
-                // }}
                 className={`${
                   navActive && size.width < 1000
                     ? "nav-active--mobile"
@@ -491,17 +475,9 @@ export default function HeaderMenu() {
         {size.width >= 1000 && (
           <DesktopNav>
             <ul
-              // style={
-              //   size.scrollY >= 10
-              //     ? { top: -10 - imgRef.current.clientHeight }
-              //     : null
-              // }
               className={`${
                 size.scrollY >= 100 ? "desktopnavcolorchange" : ""
               } desktopnav`}
-              // {
-              //   size.scrollY >= 175 ? "desktopnavcolorchange" : "desktopnav"
-              // }
             >
               {links?.items?.map((link, index) => {
                 return (
@@ -560,27 +536,9 @@ export default function HeaderMenu() {
 
         {navActive ? (
           <MobileNavContainer>
-            {/* <ConnectMenuNav>
-              <ul>
-                {connectLinks?.items?.map((connectLink, index) => {
-                  return (
-                    <li key={uuidv4()}>
-                      <ActiveLink
-                        activeClassName="navlink--active"
-                        href={`/${connectLink.slug}`}
-                        to={`/${connectLink.slug}`}
-                      >
-                        <a>{connectLink.title}</a>
-                      </ActiveLink>
-                    </li>
-                  );
-                })}
-                <h3>hello</h3>
-              </ul>
-            </ConnectMenuNav> */}
             <HamburgerLogoContainer>
               <Link href="/">
-                <a>
+                <a onClick={() => setNavActive(false)}>
                   <img
                     className="nameplate nameplate--mobile"
                     // ref={imgRef}
@@ -636,15 +594,15 @@ export default function HeaderMenu() {
                                       ) : (
                                         <ActiveLink
                                           activeClassName="navlink--active"
-                                          href={`/${childItem.slug}`}
-                                          as={`/${childItem.slug}`}
+                                          href={"/categories/[slug]"}
+                                          as={`/categories/${childItem.slug}`}
                                         >
                                           <a
                                             className="card-text pb-5"
                                             dangerouslySetInnerHTML={{
                                               __html: childItem.title,
                                             }}
-                                          />
+                                          ></a>
                                         </ActiveLink>
                                       )}
                                     </li>
