@@ -52,7 +52,7 @@ const MenuContainer = styled.div`
   ${theme.mediaQuery.md`
     position: sticky;
   z-index: 10;
-  top: -110px;
+  top: -182px;
   `};
 
   .nav-link {

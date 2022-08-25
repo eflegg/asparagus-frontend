@@ -9,6 +9,7 @@ import { Card } from "../components/Global/styles";
 
 export default function ArticleCard({ post }) {
   const categories = post._embedded["wp:term"]["0"];
+  console.log("post", post);
 
   const subcategories = categories.filter(
     (subCat) =>
@@ -73,31 +74,66 @@ export default function ArticleCard({ post }) {
                 className="head--article-card"
                 dangerouslySetInnerHTML={{ __html: post.title.rendered }}
               ></h3>
-              <hr className="hr--article-card"/>
+              <hr className="hr--article-card" />
               <p className="deck--article-card">{post.acf.dek}</p>
             </a>
           </Link>{" "}
         </div>
-        <div className="article-details">
-          <div className="byline--image">
-            {post.acf.writer[0].acf.headshot.url ? (
-              <Image
-                src={post.acf.writer[0].acf.headshot.url}
-                layout="fill"
-                objectFit="cover"
-                alt="Author headshot"
-              />
-            ) : null}
-          </div>
-          <div>
-            <p className="byline--article-card">
-              {post.acf.writer[0].post_title}
-            </p>
-            <p className="date--article-card">
-              {formattedDate} - <span>{post.acf.time_to_read} min read</span>
-            </p>
-          </div>
-        </div>
+        {post.acf.writer[0].acf.contributor ? (
+          <Link
+            href={"/contributors/[slug]"}
+            as={`/contributors/${post.acf.writer[0].post_name}`}
+          >
+            <div className="article-details">
+              <div className="byline--image">
+                {post.acf.writer[0].acf.headshot.url ? (
+                  <Image
+                    src={post.acf.writer[0].acf.headshot.url}
+                    layout="fill"
+                    objectFit="cover"
+                    alt="Author headshot"
+                  />
+                ) : null}
+              </div>
+              <div>
+                <p className="byline--article-card">
+                  {post.acf.writer[0].post_title}
+                </p>
+                <p className="date--article-card">
+                  {formattedDate} -{" "}
+                  <span>{post.acf.time_to_read} min read</span>
+                </p>
+              </div>
+            </div>
+          </Link>
+        ) : (
+          <Link
+            href={"/team/[slug]"}
+            as={`/team/${post.acf.writer[0].post_name}`}
+          >
+            <div className="article-details">
+              <div className="byline--image">
+                {post.acf.writer[0].acf.headshot.url ? (
+                  <Image
+                    src={post.acf.writer[0].acf.headshot.url}
+                    layout="fill"
+                    objectFit="cover"
+                    alt="Author headshot"
+                  />
+                ) : null}
+              </div>
+              <div>
+                <p className="byline--article-card">
+                  {post.acf.writer[0].post_title}
+                </p>
+                <p className="date--article-card">
+                  {formattedDate} -{" "}
+                  <span>{post.acf.time_to_read} min read</span>
+                </p>
+              </div>
+            </div>
+          </Link>
+        )}
       </div>
     </Card>
   );
