@@ -15,12 +15,12 @@ const CategoryContainer = styled.section`
   ${theme.mediaQuery.sm`
 margin-bottom: 80px;
 `}
-  hr {
-    height: 3px;
-    border: 0px;
-    background: ${theme.colours.teaGreen};
-    margin-bottom: 65px;
-  }
+  // hr {
+  //   height: 3px;
+  //   border: 0px;
+  //   background: ${theme.colours.teaGreen};
+  //   margin-bottom: 65px;
+  // }
   h2 {
     color: ${theme.colours.soil};
     padding-bottom: 0;

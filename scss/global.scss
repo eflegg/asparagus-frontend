@@ -64,12 +64,25 @@ $xl: 1800px;
   max-width: 1200px;
 
   &.single-page {
-    margin: 100px auto;
+    margin: 35px auto;
+
+    @include media-query-min($md) {
+      margin: 100px auto;
+    }
   }
 }
 
 ul {
   padding-left: 0px;
+}
+
+.hr--related {
+  margin-bottom: 35px;
+}
+
+.hr--article-card {
+  height: 1px;
+  margin-bottom: 0px;
 }
 
 /***  Type  ***/
@@ -264,7 +277,7 @@ a {
   text-decoration: none;
   color: $soil;
   font-weight: 600;
-  font-family: $accentFont;
+  font-family: $bodyFont;
 }
 
 li {
@@ -289,11 +302,13 @@ hr {
   background: $teaGreen;
   margin-bottom: 65px;
 }
+
 .wp-block-separator {
   position: relative;
   background: transparent;
   overflow: initial;
   margin-bottom: 100px;
+
   &::after {
     content: url("../public/singlestalk-square.svg");
     height: 60px;
@@ -476,7 +491,7 @@ h6 {
 }
 
 .deck {
-  font-family: $accentFont;
+  font-family: $medium;
   font-size: 1.6rem;
   line-height: 1.8rem;
   color: black;
@@ -492,7 +507,8 @@ h6 {
   @include media-query-min($md) {
     @include font-size(2);
     line-height: 2.4rem;
-    margin: 15px 0 40px !important;
+    margin: 25px 0 40px !important;
+    font-family: $accentFont;
   }
 }
 
@@ -515,18 +531,19 @@ h6 {
 
 .byline {
   font-family: $headerFont;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  line-height: 3.2rem;
+  line-height: 1.8rem;
   color: black;
+  margin-bottom: 10px;
 
   @include media-query-min($sm) {
-    font-size: calc(12px + 4 * ((100vw - 320px) / 680));
+    font-size: calc(14px + 2 * ((100vw - 320px) / 680));
   }
 
   @include media-query-min($md) {
     @include font-size(1.6);
-    line-height: 32px;
+    line-height: 2rem;
   }
 }
 
@@ -567,17 +584,17 @@ h6 {
 
 .date--single-article {
   font-family: $accentFont;
-  font-size: 1.4rem;
-  line-height: 3.2rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
   color: black;
 
   @include media-query-min($sm) {
-    font-size: calc(11px + 3 * ((100vw - 320px) / 680));
+    font-size: calc(12px + 2 * ((100vw - 320px) / 680));
   }
 
   @include media-query-min($md) {
     @include font-size(1.4);
-    line-height: 32px;
+    line-height: 18px;
   }
 }
 
@@ -971,23 +988,27 @@ img {
   width: 100%;
   margin: 45px auto;
   background-color: #f0e7db;
+
   .signupWrapper {
     width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     align-items: center;
+
     &.wrapper--support {
       width: 100%;
     }
   }
 }
+
 .sign-up {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 30px 0px 20px 20px;
+
   @include media-query-min($sm) {
     padding: 30px;
   }
@@ -1001,14 +1022,17 @@ img {
   input {
     height: 38px;
     max-width: 280px;
+
     @include media-query-min($xs) {
       width: 200px;
       margin-right: 20px;
     }
   }
+
   &.text--support {
     padding: 45px;
   }
+
   button {
     background-color: $soil;
     border-radius: 10px;
@@ -1036,12 +1060,15 @@ img {
     text-align: center;
   }
 }
+
 .triple-stalk {
   height: 100%;
   min-width: 40%;
+
   @include media-query-min($sm) {
     min-width: 30%;
   }
+
   @include media-query-min($md) {
     position: relative;
     left: -40px;

@@ -7,11 +7,12 @@ const SupportBlock = styled.div`
   width: 100%;
   min-height: 350px;
   height: 50vh;
+  margin-bottom: 40px;
   ${theme.mediaQuery.sm`
 height: 80vh;
 min-height: 550px;
 `}
-  ${theme.mediaQuery.sm`
+  ${theme.mediaQuery.md`
 
 min-height: 500px;
 `}
@@ -25,9 +26,9 @@ min-height: 500px;
       height: 100%;
       object-fit: cover;
       ${theme.mediaQuery.sm`
-object-fit: cover;
-object-position: 0px -300px;
-`}
+      object-fit: cover;
+      object-position: 0px -300px;
+      `}
     }
   }
   .support-text {

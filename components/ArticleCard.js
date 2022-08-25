@@ -73,6 +73,7 @@ export default function ArticleCard({ post }) {
                 className="head--article-card"
                 dangerouslySetInnerHTML={{ __html: post.title.rendered }}
               ></h3>
+              <hr className="hr--article-card"/>
               <p className="deck--article-card">{post.acf.dek}</p>
             </a>
           </Link>{" "}
