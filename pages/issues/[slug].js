@@ -17,8 +17,9 @@ const CoverContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  div {
-    margin: 0 24px 30px;
+  div.coverlines {
+    // margin: 0 24px 30px;
+    border: 1px solid green;
   }
   .cover-image {
     display: block;
@@ -27,6 +28,7 @@ const CoverContainer = styled.div`
   h3 {
     color: ${theme.colours.soil};
     font-size: 1.6rem;
+    font-weight: 700;
     ${theme.mediaQuery.md`
     font-size: 3.2rem;
     `}
@@ -34,9 +36,10 @@ const CoverContainer = styled.div`
   p {
     font-style: italic;
     font-size: 1.4rem;
-    margin-top: 30px;
+    margin-top: 10px;
     ${theme.mediaQuery.md`
     font-size: 2.4rem;
+    margin-top: 30px;
     `}
   }
   a {
