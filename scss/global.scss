@@ -360,7 +360,6 @@ h1,
   @include media-query-min($md) {
     @include font-size(5.8);
   }
-
 }
 
 .article--title {
@@ -473,8 +472,8 @@ h6 {
 
 .body {
   font-family: $bodyFont;
-  font-size: 2rem;
-  line-height: 3.2rem;
+  font-size: 1.7rem;
+  line-height: 2.5rem;
 
   @include media-query-min($sm) {
     font-size: calc(17px + 3 * ((100vw - 320px) / 680));
