@@ -6,11 +6,13 @@ import Link from "next/link";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import Image from "next/image";
+import React, { useState } from "react";
+import { useFormFields, useMailChimpForm } from "use-mailchimp-form";
 
 const NewsLetter = styled.div`
   width: 100%;
   position: relative;
-  padding-top: 40px;
+  padding: 40px 0px;
   margin-bottom: 40px;
   overflow: hidden;
   h2 {
@@ -30,17 +32,20 @@ const NewsLetter = styled.div`
 `}
   }
   input {
-    // width: 75%;
+    width: 100%;
+    height: 45px;
+    position: relative;
+    padding-left: 10px;
   }
+
   label {
+    position: relative;
     font-family: ${theme.type.semibold};
     color: ${theme.colours.soil};
     font-size: 1.6rem;
     ${theme.mediaQuery.md`
     font-size: 1.8rem;
   `}
-  }
-  label {
     // border: solid hotpink;
     display: flex;
     flex-direction: column;
@@ -49,6 +54,10 @@ const NewsLetter = styled.div`
     margin-bottom: 15px;
   }
   select {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    padding-left: 10px;
     font-family: ${theme.type.accent};
     font-size: 1.6rem;
     ${theme.mediaQuery.md`
@@ -82,7 +91,11 @@ const NewsLetter = styled.div`
       object-fit: cover;
     }
   }
-
+  button {
+    background: blue;
+    border: 2px solid yellow;
+    position: relative;
+  }
   .btn--primary {
     width: 75%;
     ${theme.mediaQuery.sm`
@@ -91,18 +104,32 @@ const NewsLetter = styled.div`
     font-family: ${theme.type.semibold};
   }
   form {
+    position: relative;
     width: 80%;
     margin: 0 auto;
     ${theme.mediaQuery.sm`
-  width: 75%;
+  width: 60%;
 `}
     ${theme.mediaQuery.md`
-  width: 60%;
+  width: 50%;
 `}
   }
 `;
 
 export default function SignUp() {
+  const [emailValue, setEmailValue] = useState("");
+  const [newsletterValue, setNewsletterValue] = useState("");
+  const [suggestedValue, setSuggestedValue] = useState("");
+
+  const url =
+    "https://eepurl.us16.list-manage.com/subscribe/post?u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0";
+  const { loading, error, success, message, handleSubmit } =
+    useMailChimpForm(url);
+  const { fields, handleFieldChange } = useFormFields({
+    EMAIL: "",
+    NEWSLETTER: "",
+    SUGGEST: "",
+  });
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/sign-up`}
@@ -128,43 +155,44 @@ export default function SignUp() {
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"
             className="validate"
-            target="_blank"
-            noValidate
+            target="_self"
           >
             <div id="mc_embed_signup_scroll">
-              <h2>Subscribe</h2>
-              <div className="indicates-required">
-                <span className="asterisk">*</span> indicates required
-              </div>
               <div className="mc-field-group">
-                <label htmlFor="mce-EMAIL">
-                  Email Address (required) <span className="asterisk">*</span>
-                </label>
+                <label htmlFor="mce-EMAIL">Email Address (required)*</label>
                 <input
                   type="email"
-                  value=""
                   name="EMAIL"
                   className="required email"
                   id="mce-EMAIL"
+                  required
+                  value={emailValue}
+                  onChange={(e) => setEmailValue(e.target.value)}
                 />
-                {/* <span id="mce-EMAIL-HELPERTEXT" className="helper_text"></span> */}
+                <span id="mce-EMAIL-HELPERTEXT" className="helper_text"></span>
               </div>
               <div className="mc-field-group">
                 <label htmlFor="mce-MMERGE7">
-                  Which newsletter(s) interest you? (required){" "}
+                  Which newsletter(s) interest you? (required)*
                 </label>
-                <select name="MMERGE7" className="" id="mce-MMERGE7">
-                  <option value=""></option>
+                <select
+                  name="MMERGE7"
+                  className=""
+                  id="mce-MMERGE7"
+                  value={newsletterValue}
+                  onChange={(e) => setNewsletterValue(e.target.value)}
+                >
+                  {/* <option value=""></option> */}
                   <option value="Asparagus Tips">Asparagus Tips</option>
                   <option value="Letters from the Editor">
                     Letters from the Editor
                   </option>
                   <option value="Both newsletters">Both newsletters</option>
                 </select>
-                {/* <span
+                <span
                   id="mce-MMERGE7-HELPERTEXT"
                   className="helper_text"
-                ></span> */}
+                ></span>
               </div>
               <div id="mce-responses" className="clear foot">
                 <div
@@ -178,7 +206,6 @@ export default function SignUp() {
                   style={{ display: "none" }}
                 ></div>
               </div>
-              {/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */}
               <div
                 style={{ position: "absolute", left: "-5000px" }}
                 aria-hidden="true"
@@ -197,17 +224,14 @@ export default function SignUp() {
                     value="Subscribe"
                     name="subscribe"
                     id="mc-embedded-subscribe"
-                    className="button"
+                    className="button btn--primary"
                   />
                 </div>
               </div>
             </div>
           </form>
         </div>
-        {/* <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[7]='MMERGE7';ftypes[7]='dropdown';fnames[5]='SUGGEST';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script> */}
       </NewsLetter>
     </PageWrapper>
   );
 }
-
-// query the page with the slug sign-up
