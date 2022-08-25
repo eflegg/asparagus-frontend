@@ -583,7 +583,7 @@ export default function HeaderMenu() {
                 <a>
                   <img
                     className="nameplate nameplate--mobile"
-                    ref={imgRef}
+                    // ref={imgRef}
                     src="/Asparagus_Nameplate_Color.png"
                   />
                 </a>
@@ -615,19 +615,38 @@ export default function HeaderMenu() {
                               {link?.child_items?.map(
                                 (childItem, childIndex) => {
                                   return (
-                                    <li key={uuidv4()} className="subnav-link">
-                                      <ActiveLink
-                                        activeClassName="navlink--active"
-                                        href={"/categories/[slug]"}
-                                        as={`/categories/${childItem.slug}`}
-                                      >
-                                        <a
-                                          className="card-text pb-5"
-                                          dangerouslySetInnerHTML={{
-                                            __html: childItem.title,
-                                          }}
-                                        />
-                                      </ActiveLink>
+                                    <li
+                                      onClick={() => setNavActive(false)}
+                                      key={uuidv4()}
+                                      className="subnav-link"
+                                    >
+                                      {childItem.object == "page" ? (
+                                        <ActiveLink
+                                          activeClassName="navlink--active"
+                                          href={`/[slug]}`}
+                                          as={`/${childItem.slug}`}
+                                        >
+                                          <a
+                                            className="card-text pb-5"
+                                            dangerouslySetInnerHTML={{
+                                              __html: childItem.title,
+                                            }}
+                                          />
+                                        </ActiveLink>
+                                      ) : (
+                                        <ActiveLink
+                                          activeClassName="navlink--active"
+                                          href={`/${childItem.slug}`}
+                                          as={`/${childItem.slug}`}
+                                        >
+                                          <a
+                                            className="card-text pb-5"
+                                            dangerouslySetInnerHTML={{
+                                              __html: childItem.title,
+                                            }}
+                                          />
+                                        </ActiveLink>
+                                      )}
                                     </li>
                                   );
                                 }
