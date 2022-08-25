@@ -39,6 +39,21 @@ const ContentContainer = styled.div`
   `}
   }
 
+  .wp-block-pullquote {
+    p {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: ${theme.colours.gusGreen};
+      width: 80%;
+      margin: 20px auto;
+      text-align: center;
+      font-family: ${theme.type.semibold};
+      ${theme.mediaQuery.md`
+    font-size: 3.6rem;
+    `}
+    }
+  }
+
   h2 {
     width: 90%;
     max-width: 650px;
@@ -63,9 +78,6 @@ const ContentContainer = styled.div`
     margin: 0 auto 20px;
     width: 90%;
     max-width: 650px;
-  }
-  a {
-    color: hotpink;
   }
 `;
 const GeneralContainer = styled.div`
