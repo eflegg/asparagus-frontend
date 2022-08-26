@@ -44,14 +44,15 @@ const SingleContainer = styled.div`
     font-size: 1.6rem;
     &.caption {
       position: absolute;
-      bottom: -100px;
+      bottom: -120px;
       ${theme.mediaQuery.md`
       bottom: -85px;
       `}
       p {
+        margin: 15px 0;
         font-size: 1.6rem;
         margin-left: 0px;
-        font-family: ${theme.type.header};
+        font-family: ${theme.type.headerFont};
         font-style: italic;
         font-weight: 700;
         line-height: 2rem;
@@ -234,6 +235,7 @@ const SingleHero = styled.div`
     margin-top: 100px;
     font-size: 2.6rem;
     ${theme.mediaQuery.md`
+    margin-top: 0px;
     font-size: 5.2rem;
     `}
   }
