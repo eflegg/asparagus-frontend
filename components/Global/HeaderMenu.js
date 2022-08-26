@@ -264,10 +264,9 @@ const ConnectMenuNav = styled.nav`
       transition: all 0.25s ease-out;
     }
     &:hover {
-      &:not(:first-child) {
+      &:not(:first-of-type) {
         &::after {
           content: "";
-
           width: 50%;
           transition: all 0.25s ease-out;
         }
