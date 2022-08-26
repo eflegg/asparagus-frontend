@@ -72,7 +72,7 @@ const SingleContainer = styled.div`
     width: 90%;
     max-width: 650px;
   }
-  
+
   h2 {
     width: 90%;
     max-width: 650px;
@@ -86,61 +86,58 @@ const SingleContainer = styled.div`
        font-size: 2.8rem;
     `}
   }
-.body-content {
-  p {
-    width: 90%;
-    max-width: 650px;
-    margin: 17px auto;
+  .body-content {
+    p {
+      width: 90%;
+      max-width: 650px;
+      margin: 17px auto;
 
-    ${theme.mediaQuery.sm`
+      ${theme.mediaQuery.sm`
        margin: 25px auto;
     `}
-  }
-  a {
-    text-decoration: underline;
-    text-decoration-skip-ink: auto;
-    font-family: ${theme.type.bodyFont};
-    color: black;
-    font-weight: 400;
-  }
-  
-  a:visited {
-    color: ${theme.colours.soil};
-  }
-  
-  a:hover {
-    color: ${theme.colours.gusGreen};
-  }
-  
-  a:active {
-    color: ${theme.colours.gusYellow};
-  }
+    }
+    a {
+      text-decoration: underline;
+      text-decoration-skip-ink: auto;
+      font-family: ${theme.type.bodyFont};
+      color: black;
+      font-weight: 400;
+    }
 
-  .wp-block-pullquote {
-    p {
-      font-size: 18px;
-      font-weight: 600;
+    a:visited {
+      color: ${theme.colours.soil};
+    }
+
+    a:hover {
       color: ${theme.colours.gusGreen};
-      width: 80%;
-      margin: 20px auto;
-      text-align: center;
-      font-family: ${theme.type.semibold};
-     ${theme.mediaQuery.md`
+    }
+
+    a:active {
+      color: ${theme.colours.gusYellow};
+    }
+
+    .wp-block-pullquote {
+      p {
+        font-size: 18px;
+        font-weight: 600;
+        color: ${theme.colours.gusGreen};
+        width: 80%;
+        margin: 20px auto;
+        text-align: center;
+        font-family: ${theme.type.semibold};
+        ${theme.mediaQuery.md`
       font-size: 28px;
      `}
-      
+      }
     }
-}
-  
 
-
-
-  .related--header {
-    width: 90%;
-    margin: 50px auto 0;
-    line-height: 100%;
-  }
-  .content--container {
+    .related--header {
+      width: 90%;
+      margin: 50px auto 0;
+      line-height: 100%;
+    }
+    .content--container {
+    }
   }
   .print-details {
     width: 90%;
