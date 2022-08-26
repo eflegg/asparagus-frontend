@@ -845,7 +845,10 @@ li.nav-link {
 }
 
 .navlink--active {
-  border: 2px solid orangered;
+  color: $gusGreen;
+  // border: 2px solid $teaGreen;
+  // border-radius: 10px;
+  // padding: 3px 30px;
 }
 
 .has-text-align-center {
