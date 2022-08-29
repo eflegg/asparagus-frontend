@@ -340,7 +340,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     src="/triplestalk.svg"
                     layout="fill"
                     objectFit="cover"
-                    alt="Asparagus Magazine logo"
+                    alt="Asparagus Magazine three-stalk logo"
                   />
                 )}
                 <figcaption className="credit ">
@@ -364,7 +364,8 @@ export default function ArticlePage({ article, allArticles, categories }) {
           className="body-content"
           dangerouslySetInnerHTML={{ __html: article.content.rendered }}
         ></div>
-        {article.acf.print_issue == "Yes" ? (
+        {article.acf.print_issue === "Yes" &&
+        article.acf.appears_in != undefined ? (
           <div className="print-details">
             <p className="content--container">
               Print Issue: <span>{article.acf.appears_in[0].post_title}</span>

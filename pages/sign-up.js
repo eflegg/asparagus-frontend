@@ -121,15 +121,15 @@ export default function SignUp() {
   const [newsletterValue, setNewsletterValue] = useState("");
   const [suggestedValue, setSuggestedValue] = useState("");
 
-  const url =
-    "https://eepurl.us16.list-manage.com/subscribe/post?u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0";
-  const { loading, error, success, message, handleSubmit } =
-    useMailChimpForm(url);
-  const { fields, handleFieldChange } = useFormFields({
-    EMAIL: "",
-    NEWSLETTER: "",
-    SUGGEST: "",
-  });
+  // const url =
+  // "https://eepurl.us16.list-manage.com/subscribe/post?u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0";
+  // const { loading, error, success, message, handleSubmit } =
+  // useMailChimpForm(url);
+  // const { fields, handleFieldChange } = useFormFields({
+  // EMAIL: "",
+  // NEWSLETTER: "",
+  // SUGGEST: "",
+  // });
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/sign-up`}

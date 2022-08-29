@@ -55,7 +55,7 @@ const MenuContainer = styled.div`
   top: -182px;
   `};
 
-  .nav-link {
+  .nav-link a {
     font-family: ${theme.type.medium};
     font-size: 2.4rem;
     color: ${theme.colours.gusGreen};
@@ -485,9 +485,10 @@ export default function HeaderMenu() {
                       className="nav-link"
                       onClick={() => handleSubnavClick(link.ID)}
                     >
-                      <span
+                      <a
+                        href="#"
                         dangerouslySetInnerHTML={{ __html: link.title }}
-                      ></span>
+                      ></a>
                       {link.child_items && subnav == link.ID ? (
                         <ul className="subnav">
                           {link?.child_items?.map((childItem, childIndex) => {
