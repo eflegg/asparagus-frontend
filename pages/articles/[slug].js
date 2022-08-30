@@ -248,10 +248,11 @@ const SingleHero = styled.div`
 
 export default function ArticlePage({ article, allArticles, categories }) {
   console.log("article: ", article);
-  let initialDate = article.date;
+  let initialDate = article.acf.publication_date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",
+    year: "numeric",
   });
 
   let subcategories = categories.filter((newCat) => newCat.parent !== 0);
