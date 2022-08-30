@@ -235,6 +235,7 @@ const SingleHero = styled.div`
     font-size: 2.6rem;
     ${theme.mediaQuery.md`
     font-size: 5.2rem;
+    margin-top: 0;
     `}
   }
   .byline {
