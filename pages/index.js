@@ -137,11 +137,29 @@ export default function Home({ page, posts }) {
             </div>
           </CategoryContainer>
 
-          <NewsletterSignup
-            title="Sign up for the Asparagus Newsletter"
-            subtitle="Pleasantly infrequent updates from the asparagus patch"
-            image="triplestalk.svg"
-          />
+          {page.acf.include_support_block == "Yes" ? (
+            page.acf.which_block == "Newsletter" ? (
+              <NewsletterSignup
+                title="Sign up for the Asparagus Newsletter"
+                subtitle="Pleasantly infrequent updates from the asparagus patch"
+                image="triplestalk.svg"
+              />
+            ) : (
+              <NewsletterSignup
+                support
+                title="Sign up for the Asparagus Newsletter"
+                subtitle="Donate to Asparagus Magazine"
+                image="cherryblossom.png"
+              />
+            )
+          ) : null}
+
+          {/* <NewsletterSignup 
+            // title="Sign up for the Asparagus Newsletter"
+            // subtitle="Pleasantly infrequent updates from the asparagus patch"
+            // image="triplestalk.svg"
+          // />
+          */}
 
           <CategoryContainer className="cat-three--container">
             <h2 className="h5">{page.acf.home_category_three[0].name}</h2>
