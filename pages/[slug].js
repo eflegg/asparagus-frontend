@@ -6,55 +6,70 @@ import theme from "../components/Global/Theme";
 import Image from "next/image";
 
 const ContentContainer = styled.div`
-height: 100%;
-img {
   height: 100%;
-  width: 100%;
-}
-
-figure {
-  margin: 50px auto;
-
-}
-figcaption {
-  width: 90%;
-  margin: 8px auto 0;
-  font-family: ${theme.type.accent};
-  font-size: 1.6rem;
-  strong {
-    font-family: ${theme.type.header};
-    font-style: italic;
-    position: relative;
-    top: 5px;
+  img {
+    height: 100%;
+    width: 100%;
   }
-} 
 
-p {
-  width: 90%;
-  max-width: 650px;
-  margin: 17px auto;
+  figure {
+    margin: 50px auto;
+  }
+  figcaption {
+    width: 90%;
+    margin: 8px auto 0;
+    font-family: ${theme.type.accent};
+    font-size: 1.6rem;
+    strong {
+      font-family: ${theme.type.header};
+      font-weight: bold;
+      font-style: italic;
+      position: relative;
+      top: 5px;
+    }
+  }
 
-  ${theme.mediaQuery.sm`
+  p {
+    width: 90%;
+    max-width: 650px;
+    margin: 17px auto;
+
+    ${theme.mediaQuery.sm`
      margin: 25px auto;
   `}
-}
+  }
 
-h2 {
-  width: 90%;
-  max-width: 650px;
-  margin: 30px auto 20px;
-  color: ${theme.colours.gusGreen};
-  font-size: 1.8rem;
-  ${theme.mediaQuery.sm`
+  .wp-block-pullquote {
+    p {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: ${theme.colours.gusGreen};
+      width: 80%;
+      margin: 20px auto;
+      text-align: center;
+      font-family: ${theme.type.semibold};
+      ${theme.mediaQuery.md`
+    font-size: 3.6rem;
+    `}
+    }
+  }
+
+  h2 {
+    width: 90%;
+    max-width: 650px;
+    margin: 30px auto 20px;
+    color: ${theme.colours.gusGreen};
+    font-size: 1.8rem;
+    ${theme.mediaQuery.sm`
     font-size: 2.3rem;
   `}
-  ${theme.mediaQuery.md`
+    ${theme.mediaQuery.md`
      font-size: 2.8rem;
   `}
-}
+  }
 
-ul {
-  list-style: none;
+  ul {
+    list-style: none;
   }
   ol {
     padding-left: 0;
@@ -102,14 +117,14 @@ export default function GeneralPage({ genpage }) {
     >
       <GeneralContainer>
         <div className="general--header">
-        <Image
-          src={genpage.acf.header.url}
-          layout="responsive"
-          objectFit="cover"
-          height="322px"
-          width="1280px"
-          alt={genpage.acf.header.alt_text}
-        />
+          <Image
+            src={genpage.acf.header.url}
+            layout="responsive"
+            objectFit="cover"
+            height="322px"
+            width="1280px"
+            alt={genpage.acf.header.alt_text}
+          />
           <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
         </div>
 

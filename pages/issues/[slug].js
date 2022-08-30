@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getSlugs, getIssue, getArticles, getIssues } from "../../utils/wordpress";
+import {
+  getSlugs,
+  getIssue,
+  getArticles,
+  getIssues,
+} from "../../utils/wordpress";
 import PageWrapper from "../../components/Global/PageWrapper";
 import ArticleCard from "../../components/ArticleCard";
 import styled from "styled-components";
@@ -12,8 +17,9 @@ const CoverContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  div {
-    margin: 0 24px 30px;
+  div.coverlines {
+    // margin: 0 24px 30px;
+    border: 1px solid green;
   }
   .cover-image {
     display: block;
@@ -22,6 +28,7 @@ const CoverContainer = styled.div`
   h3 {
     color: ${theme.colours.soil};
     font-size: 1.6rem;
+    font-weight: 700;
     ${theme.mediaQuery.md`
     font-size: 3.2rem;
     `}
@@ -29,9 +36,10 @@ const CoverContainer = styled.div`
   p {
     font-style: italic;
     font-size: 1.4rem;
-    margin-top: 30px;
+    margin-top: 10px;
     ${theme.mediaQuery.md`
     font-size: 2.4rem;
+    margin-top: 30px;
     `}
   }
   a {
@@ -40,39 +48,38 @@ const CoverContainer = styled.div`
 `;
 
 const Issues = styled.div`
-hr {
-  margin-bottom: 30px;
-}
-.button-container {
- display: flex;
- justify-content: center;
-  margin-bottom: 60px;
-}
-.btn--secondary {
-  position: relative;
-  font-size: 1.4rem;
-  ${theme.mediaQuery.md`
+  hr {
+    margin-bottom: 30px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+  .btn--secondary {
+    position: relative;
+    font-size: 1.4rem;
+    ${theme.mediaQuery.md`
   font-size: 2.4rem;
   `}
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 30px;
-    border-bottom: 2px solid ${theme.colours.soil};
-    width: 0;
-    transition: all 0.25s ease-out;
-  }
-  &:hover {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      border-bottom: 2px solid ${theme.colours.soil};
+      width: 0;
+      transition: all 0.25s ease-out;
+    }
+    &:hover {
       &::after {
         content: "";
         width: 78%;
         transition: all 0.25s ease-out;
+      }
     }
   }
-}
 `;
-
 
 export default function Issue({ issue, articles }) {
   const currentIssue = issue.ID;
@@ -87,14 +94,14 @@ export default function Issue({ issue, articles }) {
     >
       <h1 className="text-center">{issue.title.rendered}</h1>
       <Issues>
-      <hr/>
-      <div className="button-container">
-      <Link href={"/past-issues"}>
+        <hr />
+        <div className="button-container">
+          <Link href={"/past-issues"}>
             <a>
               <button className="btn--secondary">Back to Past Issues</button>
             </a>
-      </Link>
-      </div>
+          </Link>
+        </div>
       </Issues>
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">

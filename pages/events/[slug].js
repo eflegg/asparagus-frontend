@@ -6,6 +6,7 @@ import PageWrapper from "../../components/Global/PageWrapper";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
 import Image from "next/image";
+import SupportCard from "../../components/SupportCard";
 
 const SingleEvent = styled.div`
   // border: solid blue;
@@ -46,6 +47,40 @@ const SingleEvent = styled.div`
   .event--description {
     margin-bottom: 30px;
   }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    ${theme.mediaQuery.md`
+    margin-bottom: 40px;
+    `}
+    
+  }
+  .btn--secondary {
+    position: relative;
+    font-size: 1.6rem;
+    ${theme.mediaQuery.md`
+    font-size: 2.4rem;
+    `}
+    margin: 0 auto;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      border-bottom: 2px solid ${theme.colours.soil};
+      width: 0;
+      transition: all 0.25s ease-out;
+    }
+    &:hover {
+        &::after {
+          content: "";
+          width: 73%;
+          transition: all 0.25s ease-out;
+      }
+    }
+  }
 `;
 
 const Gallery = styled.div`
@@ -71,6 +106,13 @@ const Gallery = styled.div`
   }
 `;
 
+const RuleBox = styled.div`
+hr {
+  margin-bottom: 20px;
+}
+`;
+
+
 export default function EventPage({ event, image }) {
   console.log("event: ", event);
   const gallery = event.acf.event_images;
@@ -92,8 +134,18 @@ export default function EventPage({ event, image }) {
       <h1 itemProp="name" className="text-center">
         {event.title.rendered}
       </h1>
-      <hr />
+      <RuleBox>
+        <hr/>
+        </RuleBox>
+      
       <SingleEvent itemscope itemtype="https://schema.org/Event">
+        <div className="btn-container">
+          <Link href={"/events"}>
+            <a>
+          <button className="btn--secondary">Back to Events</button>
+          </a>
+          </Link>
+        </div>
         <div className="wrapper">
           <div className="image-container">
             <Image
@@ -143,6 +195,7 @@ export default function EventPage({ event, image }) {
             : null}
         </div>
       </Gallery>
+      <SupportCard></SupportCard>
     </PageWrapper>
   );
 }

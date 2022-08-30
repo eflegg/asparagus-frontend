@@ -5,6 +5,7 @@ import theme from "../components/Global/Theme";
 import Link from "next/link";
 
 const LeadStory = styled.section`
+  margin-top: 90px;
   margin-bottom: 50px;
   position: relative;
   display: flex;
@@ -110,14 +111,35 @@ export default function LeadStoryBlock({ post }) {
           </a>
         </Link>
         <div className="lead-text--inner">
-          <div className="">
-            <p className="byline--index-feature">
-              {post.acf.writer[0].post_title}
-            </p>
-            <p className="byline--index-feature">
-              {formattedDate} <span> {post.acf.time_to_read} min read</span>
-            </p>
-          </div>
+          {post.acf.writer[0].acf.contributor ? (
+            <Link
+              href={"/contributors/[slug]"}
+              as={`/contributors/${post.acf.writer[0].post_name}`}
+            >
+              <div className="lead-story--details">
+                <p className="byline--index-feature">
+                  {post.acf.writer[0].post_title}
+                </p>
+                <p className="byline--index-feature">
+                  {formattedDate} <span> {post.acf.time_to_read} min read</span>
+                </p>
+              </div>
+            </Link>
+          ) : (
+            <Link
+              href={"/team/[slug]"}
+              as={`/team/${post.acf.writer[0].post_name}`}
+            >
+              <div className="lead-story--details">
+                <p className="byline--index-feature">
+                  {post.acf.writer[0].post_title}
+                </p>
+                <p className="byline--index-feature">
+                  {formattedDate} <span> {post.acf.time_to_read} min read</span>
+                </p>
+              </div>
+            </Link>
+          )}
 
           <hr />
           <p className="text-right deck--index-feature">{post.acf.dek}</p>
