@@ -19,6 +19,7 @@ import {
 } from "next-share";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
+import TwoAuthorCard from "../../components/TwoAuthorCard";
 
 const SingleContainer = styled.div`
   height: 100%;
@@ -307,25 +308,43 @@ export default function ArticlePage({ article, allArticles, categories }) {
               </h1>
               <p className="excerpt deck">{article.acf.dek}</p>
               <div className="article-details">
-                <div className="byline--image">
-                  {article.acf.writer[0].acf.headshot.url && (
-                    <Image
-                      src={article.acf.writer[0].acf.headshot.url}
-                      layout="fill"
-                      objectFit="cover"
-                      alt="Author headshot"
-                    />
-                  )}
-                </div>
-                <div>
-                  <p itemProp="author" className="byline">
-                    {article.acf.writer[0].post_title}
-                  </p>
-                  <p itemProp="datePublished" className="date--single-article">
-                    {formattedDate} -{" "}
-                    <span>{article.acf.time_to_read} min read</span>
-                  </p>
-                </div>
+                {/* using the article-details container to wrap all of it
+                check for secondary author, if yes show twoauthor card, otherwise 
+                show the rest of the regular single author details
+
+                two author card just needs a bit more styling!
+                */}
+                {article.acf.secondary_author != undefined ? (
+                  <TwoAuthorCard post={article} />
+                ) : (
+                  <>
+                    <div className="byline--image">
+                      {article.acf.writer[0].acf.headshot.url && (
+                        // this will need to have that same conditional checking for contributor
+                        // and rendering the Link with the right slug
+
+                        <Image
+                          src={article.acf.writer[0].acf.headshot.url}
+                          layout="fill"
+                          objectFit="cover"
+                          alt="Author headshot"
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <p itemProp="author" className="byline">
+                        {article.acf.writer[0].post_title}
+                      </p>
+                      <p
+                        itemProp="datePublished"
+                        className="date--single-article"
+                      >
+                        {formattedDate} -{" "}
+                        <span>{article.acf.time_to_read} min read</span>
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             <div className="hero--image position-relative">
