@@ -1063,6 +1063,7 @@ img {
     position: relative;
     left: 40px;
     padding: 40px;
+    width: 70%;
   }
 
   input {
@@ -1123,6 +1124,16 @@ img {
 
   flex-direction: row;
   padding: 2%;
+}
+
+.input-container {
+  margin-left: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  @include media-query-min($md) {
+    flex-direction: row;
+  }
 }
 
 // <React.Fragment key={uuidv4()}>
