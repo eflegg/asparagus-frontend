@@ -38,7 +38,8 @@ const NewsLetter = styled.div`
     padding-left: 10px;
   }
 
-  label {
+  label,
+  .label {
     position: relative;
     font-family: ${theme.type.semibold};
     color: ${theme.colours.soil};
