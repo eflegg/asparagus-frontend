@@ -99,13 +99,23 @@ export default function CurrentIssue({ issues, articles }) {
       </Issues>
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
-          <Image
-            src={issues[0]._embedded["wp:featuredmedia"]["0"].source_url}
-            layout="responsive"
-            width="200px"
-            height="250px"
-            alt={issues[0]._embedded["wp:featuredmedia"]["0"].alt_text}
-          />
+          {issues[0]._embedded != undefined ? (
+            <Image
+              src={issues[0]._embedded["wp:featuredmedia"]["0"].source_url}
+              layout="responsive"
+              width="200px"
+              height="250px"
+              alt={issues[0]._embedded["wp:featuredmedia"]["0"].alt_text}
+            />
+          ) : (
+            <Image
+              src="/triplestalk.svg"
+              layout="responsive"
+              width="200px"
+              height="250px"
+              alt="Asparagus logo"
+            />
+          )}
         </div>
         <div className="coverlines">
           <h3>From This Issue:</h3>
@@ -117,10 +127,15 @@ export default function CurrentIssue({ issues, articles }) {
       <ul className="card--grid single-page">
         {articles.map((article, index) => {
           const appearsIn = article.acf.appears_in;
+          const printIssue = article.acf.print_issue;
 
           return (
             <React.Fragment key={uuidv4()}>
-              {appearsIn && currentIssue.id == appearsIn[0].ID ? (
+              {appearsIn &&
+              printIssue === "Yes" &&
+              appearsIn &&
+              appearsIn[0] &&
+              appearsIn[0].ID == currentIssue.id ? (
                 <>
                   <ArticleCard post={article} />
                 </>

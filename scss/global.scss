@@ -1124,3 +1124,11 @@ img {
   flex-direction: row;
   padding: 2%;
 }
+
+// <React.Fragment key={uuidv4()}>
+// {appearsIn && currentIssue.id == appearsIn[0].ID ? (
+// <>
+// <ArticleCard post={article} />
+// </>
+// ) : null}
+// </React.Fragment>
