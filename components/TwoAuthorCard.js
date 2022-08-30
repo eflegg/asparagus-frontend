@@ -11,6 +11,7 @@ export default function TwoAuthorCard({ post }) {
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",
+    year: "numeric",
   });
   return (
     <DoubleAuthor className="double-author">
