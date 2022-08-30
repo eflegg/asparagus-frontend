@@ -320,6 +320,14 @@ export default function ArticlePage({ article, allArticles, categories }) {
                   <p itemProp="author" className="byline">
                     {article.acf.writer[0].post_title}
                   </p>
+
+                  {article.acf.secondary_author != undefined ? (
+                        <p>{article.acf.secondary_author[0].post_title}</p>
+                          ):(
+                            null
+                          )     
+                     }     
+                     
                   <p itemProp="datePublished" className="date--single-article">
                     {formattedDate} -{" "}
                     <span>{article.acf.time_to_read} min read</span>
@@ -428,3 +436,5 @@ export async function getStaticProps({ params }) {
     revalidate: 10, // In seconds
   };
 }
+
+
