@@ -364,8 +364,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
           className="body-content"
           dangerouslySetInnerHTML={{ __html: article.content.rendered }}
         ></div>
-        {article.acf.print_issue === "Yes" &&
-        article.acf.appears_in != undefined ? (
+        {article.acf.print_issue === "Yes" && article.acf.appears_in != "" ? (
           <div className="print-details">
             <p className="content--container">
               Print Issue: <span>{article.acf.appears_in[0].post_title}</span>
