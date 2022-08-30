@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
 
 const CategoryContainer = styled.section`
+  overflow: hidden;
   margin-bottom: 45px;
   ${theme.mediaQuery.sm`
 margin-bottom: 80px;
@@ -147,9 +148,9 @@ export default function Home({ page, posts }) {
             ) : (
               <NewsletterSignup
                 support
-                title="Sign up for the Asparagus Newsletter"
+                title="Asparagus relies on readers like you!"
                 subtitle="Donate to Asparagus Magazine"
-                image="cherryblossom.png"
+                image="cherryblossoms.jpg"
               />
             )
           ) : null}

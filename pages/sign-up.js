@@ -74,8 +74,8 @@ const NewsLetter = styled.div`
     align-items: center;
     width: 100%;
     ${theme.mediaQuery.md`
-  width: 40%;
-  `}
+    width: 40%;
+    `}
   }
   .image-container {
     position: absolute;
@@ -101,7 +101,7 @@ const NewsLetter = styled.div`
     width: 75%;
     ${theme.mediaQuery.sm`
   width: 30%;
-`}
+  `}
     font-family: ${theme.type.semibold};
   }
   form {
@@ -110,10 +110,10 @@ const NewsLetter = styled.div`
     margin: 0 auto;
     ${theme.mediaQuery.sm`
   width: 60%;
-`}
+  `}
     ${theme.mediaQuery.md`
   width: 50%;
-`}
+  `}
   }
 `;
 
