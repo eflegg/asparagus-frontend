@@ -155,13 +155,6 @@ export default function Home({ page, posts }) {
             )
           ) : null}
 
-          {/* <NewsletterSignup 
-            // title="Sign up for the Asparagus Newsletter"
-            // subtitle="Pleasantly infrequent updates from the asparagus patch"
-            // image="triplestalk.svg"
-          // />
-          */}
-
           <CategoryContainer className="cat-three--container">
             <h2 className="h5">{page.acf.home_category_three[0].name}</h2>
             <hr />
