@@ -314,7 +314,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
 
                 two author card just needs a bit more styling!
                 */}
-                {article.acf.secondary_author != undefined ? (
+                {article.acf.secondary_author == undefined ? (
                   <TwoAuthorCard post={article} />
                 ) : (
                   <>
@@ -364,19 +364,26 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     alt="Asparagus Magazine three-stalk logo"
                   />
                 )}
-                <figcaption className="credit ">
-                  {article._embedded["wp:featuredmedia"]["0"].title.rendered}
-                </figcaption>{" "}
-                <strong>
-                  <figcaption
-                    className="caption "
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        article._embedded["wp:featuredmedia"]["0"].caption
-                          .rendered,
-                    }}
-                  ></figcaption>
-                </strong>
+                {article._embedded["wp:featuredmedia"] ? (
+                  <>
+                    <figcaption className="credit ">
+                      {
+                        article._embedded["wp:featuredmedia"]["0"].title
+                          .rendered
+                      }
+                    </figcaption>
+                    <strong>
+                      <figcaption
+                        className="caption "
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            article._embedded["wp:featuredmedia"]["0"].caption
+                              .rendered,
+                        }}
+                      ></figcaption>
+                    </strong>
+                  </>
+                ) : null}
               </div>
             </div>
           </div>
