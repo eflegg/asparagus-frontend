@@ -224,7 +224,11 @@ const SingleHero = styled.div`
       `}
     }
   }
-
+.categories {
+  ${theme.mediaQuery.md`
+  margin: 30px 0 0 80px;
+  `}
+}
   hr {
     margin-bottom: 26px;
     ${theme.mediaQuery.md`
