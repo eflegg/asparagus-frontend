@@ -49,7 +49,7 @@ export async function getCategory(slug) {
 /// Articles ///
 
 export async function getArticles() {
-  const articlesRes = await fetch(BASE_URL + "/articles?_embed");
+  const articlesRes = await fetch(BASE_URL + "/articles?_embed&per_page=100");
   const articles = await articlesRes.json();
   return articles;
 }
@@ -64,7 +64,9 @@ export async function getArticle(slug) {
 /// Contributors ///
 
 export async function getContributors() {
-  const contributorsRes = await fetch(BASE_URL + "/contributors?_embed");
+  const contributorsRes = await fetch(
+    BASE_URL + "/contributors?_embed&per_page=100"
+  );
   const contributors = await contributorsRes.json();
   return contributors;
 }
@@ -81,7 +83,7 @@ export async function getContributor(slug) {
 /// Stockists ///
 
 export async function getStockists() {
-  const stockistsRes = await fetch(BASE_URL + "/stockists?_embed");
+  const stockistsRes = await fetch(BASE_URL + "/stockists?_embed&per_page=100");
   const stockists = await stockistsRes.json();
   return stockists;
 }
@@ -89,7 +91,9 @@ export async function getStockists() {
 /// General Pages ///
 
 export async function getGeneralPages() {
-  const genpagesRes = await fetch(BASE_URL + "/general_pages?_embed");
+  const genpagesRes = await fetch(
+    BASE_URL + "/general_pages?_embed&per_page=100"
+  );
   const genpages = await genpagesRes.json();
   return genpages;
 }
@@ -104,7 +108,7 @@ export async function getGeneralPage(slug) {
 /// Gus Tips Newsletter ///
 
 export async function getTips() {
-  const tipsRes = await fetch(BASE_URL + "/asparagus_tips?_embed");
+  const tipsRes = await fetch(BASE_URL + "/asparagus_tips?_embed&per_page=100");
   const tips = await tipsRes.json();
   return tips;
 }
@@ -119,7 +123,9 @@ export async function getTip(slug) {
 /// Team ///
 
 export async function getTeamMembers() {
-  const membersRes = await fetch(BASE_URL + "/team_members?_embed");
+  const membersRes = await fetch(
+    BASE_URL + "/team_members?_embed&per_page=100"
+  );
   const members = await membersRes.json();
   return members;
 }
@@ -134,7 +140,7 @@ export async function getTeamMember(slug) {
 /// Issues ///
 
 export async function getIssues() {
-  const issuesRes = await fetch(BASE_URL + "/issues?_embed");
+  const issuesRes = await fetch(BASE_URL + "/issues?_embed&per_page=100");
   const issues = await issuesRes.json();
   return issues;
 }

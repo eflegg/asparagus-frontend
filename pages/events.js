@@ -15,9 +15,12 @@ const EventsContainer = styled.div`
   border: none;
   font-family: ${theme.type.medium};
   color: ${theme.colours.soil}
-  font-size: 1.6rem;
+  // font-size: 1.6rem;
 } */
   .btn--secondary {
+    ${theme.mediaQuery.md`
+     margin-bottom: 40px;
+    `}
     transition: all 0.25s ease-in-out;
     &.toggle-active {
       background-color: ${theme.colours.gusYellow};

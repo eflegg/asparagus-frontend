@@ -30,7 +30,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
     setSubfilter(null);
   }, [dynamicRoute]);
 
-  // console.log("category: ", category);
+  console.log("category: ", category);
   // console.log("posts: ", posts);
   return (
     <PageWrapper
@@ -57,7 +57,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
           category.slug == "voices" || category.slug == "start-small"
             ? "start-small"
             : ""
-        }`}
+        } hr--topic`}
       />
       {category.slug == "voices" || category.slug == "start-small" ? (
         <>
@@ -74,16 +74,16 @@ export default function CategoryPage({ category, posts, subcategories }) {
                   {post.categories && post.categories.includes(subfilter) ? (
                     <ArticleCard
                       post={post}
-                      title={post.title.rendered}
-                      slug={post.slug}
-                      writer={post.acf.writer[0].post_title}
+                      // title={post.title.rendered}
+                      // slug={post.slug}
+                      // writer={post.acf.writer[0].post_title}
                     />
                   ) : subfilter == null ? (
                     <ArticleCard
                       post={post}
-                      title={post.title.rendered}
-                      slug={post.slug}
-                      writer={post.acf.writer[0].post_title}
+                      // title={post.title.rendered}
+                      // slug={post.slug}
+                      // writer={post.acf.writer[0].post_title}
                     />
                   ) : null}
                 </React.Fragment>

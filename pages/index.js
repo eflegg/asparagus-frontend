@@ -11,16 +11,17 @@ import { v4 as uuidv4 } from "uuid";
 import LeadStoryBlock from "../components/LeadStoryBlock";
 
 const CategoryContainer = styled.section`
+  overflow: hidden;
   margin-bottom: 45px;
   ${theme.mediaQuery.sm`
 margin-bottom: 80px;
 `}
-  hr {
-    height: 3px;
-    border: 0px;
-    background: ${theme.colours.teaGreen};
-    margin-bottom: 65px;
-  }
+  // hr {
+  //   height: 3px;
+  //   border: 0px;
+  //   background: ${theme.colours.teaGreen};
+  //   margin-bottom: 65px;
+  // }
   h2 {
     color: ${theme.colours.soil};
     padding-bottom: 0;
@@ -35,6 +36,7 @@ export default function Home({ page, posts }) {
   const catThree = page.acf.home_category_three[0].term_id;
 
   console.log("page", page);
+  console.log("posts", posts);
 
   return (
     <>
@@ -57,14 +59,7 @@ export default function Home({ page, posts }) {
           <div>
             {posts.map((post, index) => {
               let initialDate = post.date;
-              let formattedDate = new Date(initialDate).toLocaleDateString(
-                "en-US",
-                {
-                  year: "numeric",
-                  month: "long",
-                  day: "2-digit",
-                }
-              );
+
               return (
                 <React.Fragment key={uuidv4()}>
                   {post.id == page.acf.lead_story[0].ID ? (
@@ -143,11 +138,29 @@ export default function Home({ page, posts }) {
             </div>
           </CategoryContainer>
 
-          <NewsletterSignup
-            title="Sign up for the Asparagus Newsletter"
-            subtitle="Pleasantly infrequent updates from the asparagus patch"
-            image="triplestalk.svg"
-          />
+          {page.acf.include_support_block == "Yes" ? (
+            page.acf.which_block == "Newsletter" ? (
+              <NewsletterSignup
+                title="Sign up for the Asparagus Newsletter"
+                subtitle="Pleasantly infrequent updates from the asparagus patch"
+                image="triplestalk.svg"
+              />
+            ) : (
+              <NewsletterSignup
+                support
+                title="Asparagus relies on readers like you!"
+                subtitle="Donate to Asparagus Magazine"
+                image="cherryblossoms.jpg"
+              />
+            )
+          ) : null}
+
+          {/* <NewsletterSignup 
+            // title="Sign up for the Asparagus Newsletter"
+            // subtitle="Pleasantly infrequent updates from the asparagus patch"
+            // image="triplestalk.svg"
+          // />
+          */}
 
           <CategoryContainer className="cat-three--container">
             <h2 className="h5">{page.acf.home_category_three[0].name}</h2>
@@ -187,7 +200,7 @@ export async function getStaticProps() {
 
   //all posts
   const postsQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=100`
   );
   const posts = await postsQuery.json();
 

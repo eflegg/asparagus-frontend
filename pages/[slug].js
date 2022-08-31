@@ -22,6 +22,7 @@ const ContentContainer = styled.div`
     font-size: 1.6rem;
     strong {
       font-family: ${theme.type.header};
+      font-weight: bold;
       font-style: italic;
       position: relative;
       top: 5px;
@@ -36,6 +37,21 @@ const ContentContainer = styled.div`
     ${theme.mediaQuery.sm`
      margin: 25px auto;
   `}
+  }
+
+  .wp-block-pullquote {
+    p {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: ${theme.colours.gusGreen};
+      width: 80%;
+      margin: 20px auto;
+      text-align: center;
+      font-family: ${theme.type.semibold};
+      ${theme.mediaQuery.md`
+    font-size: 3.6rem;
+    `}
+    }
   }
 
   h2 {
