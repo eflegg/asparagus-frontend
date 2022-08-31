@@ -107,13 +107,23 @@ export default function Issue({ issue, articles }) {
       </Issues>
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
-          <Image
-            src={issue._embedded["wp:featuredmedia"]["0"].source_url}
-            layout="responsive"
-            width="200px"
-            height="250px"
-            alt={issue._embedded["wp:featuredmedia"]["0"].alt_text}
-          />
+          {issue._embedded != undefined ? (
+            <Image
+              src={issue._embedded["wp:featuredmedia"]["0"].source_url}
+              layout="responsive"
+              width="200px"
+              height="250px"
+              alt={issue._embedded["wp:featuredmedia"]["0"].alt_text}
+            />
+          ) : (
+            <Image
+              src="/triplestalk.svg"
+              layout="responsive"
+              width="200px"
+              height="250px"
+              alt="Asparagus logo"
+            />
+          )}
         </div>
         <div className="coverlines">
           <h3>From This Issue:</h3>

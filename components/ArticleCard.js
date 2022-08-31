@@ -96,7 +96,14 @@ export default function ArticleCard({ post }) {
                     objectFit="cover"
                     alt="Author headshot"
                   />
-                ) : null}
+                ) : (
+                  <Image
+                    src="/singlestalk-square.svg"
+                    layout="fill"
+                    objectFit="cover"
+                    alt="Author headshot"
+                  />
+                )}
               </div>
               <div>
                 <p className="byline--article-card">
