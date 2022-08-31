@@ -218,7 +218,9 @@ const SingleHero = styled.div`
       `}
     }
     .article-details {
-      justify-content: flex-end;
+      // display: flex
+      // flex-direction: column;
+      align-items: flex-start;
       ${theme.mediaQuery.sm`
       justify-content: flex-start;
       `}
@@ -242,8 +244,16 @@ const SingleHero = styled.div`
   .byline {
     margin: 5px auto;
   }
+  .byline--single-article {
+    margin: 0px 0 0 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    ${theme.mediaQuery.md`
+    font-size: 1.6rem;
+    `}
+  }
   .date--single-article {
-    margin: 5px auto;
+    margin: 5px 0 0 0;
   }
 `;
 
