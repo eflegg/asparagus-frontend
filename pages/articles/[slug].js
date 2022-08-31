@@ -218,8 +218,6 @@ const SingleHero = styled.div`
       `}
     }
     .article-details {
-      // display: flex
-      // flex-direction: column;
       align-items: flex-start;
       ${theme.mediaQuery.sm`
       justify-content: flex-start;
