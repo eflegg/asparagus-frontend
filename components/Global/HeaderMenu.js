@@ -40,7 +40,7 @@ const MenuContainer = styled.div`
     display: none;
     font-family: ${theme.type.italic};
     ${theme.mediaQuery.md`
-    display: block;
+    // display: none;
     `}
   }
   .nameplate {
@@ -134,8 +134,8 @@ const DesktopNav = styled.nav`
     justify-content: space-between;
     position: relative;
     width: 100vw;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 72px;
+    padding-right: 72px;
     /* border: 2px solid orange; */
     margin: 0px -57px 0px -57px;
     background-color: transparent;
@@ -312,6 +312,9 @@ const ConnectScrollMenuContainer = styled.div`
   }
   div.search-container {
     margin-right: 15px;
+  }
+  input.search_Input-sc-e3akmt-1.dDDPtX {
+    border: 0px;
   }
 `;
 
