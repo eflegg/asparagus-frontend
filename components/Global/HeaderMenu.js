@@ -56,6 +56,8 @@ const MenuContainer = styled.div`
   `};
 
   .nav-link a {
+    position: relative;
+    z-index: 19;
     font-family: ${theme.type.medium};
     font-size: 2.4rem;
     color: ${theme.colours.gusGreen};
@@ -88,7 +90,7 @@ const MobileNavContainer = styled.div`
   }
 `;
 const MobileNav = styled.nav`
-  .nav-link {
+  .nav-link a {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -133,6 +135,8 @@ const DesktopNav = styled.nav`
     display: flex;
     justify-content: space-between;
     position: relative;
+    z-index: 20;
+    width: 100%;
     /* width: 100vw; */
     /* padding-left: 30px; */
     /* padding-right: 30px; */
@@ -140,9 +144,23 @@ const DesktopNav = styled.nav`
     /* margin: 0px -57px 0px -57px; */
     background-color: transparent;
     transition: all 0.25s ease-in-out;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 54px;
+      width: 150%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: transparent;
+      transition: all 0.25s ease-in-out;
+    }
     &.desktopnavcolorchange {
       transition: all 0.25s ease-in-out;
-      background-color: ${theme.colours.gusYellow};
+      &:after {
+        transition: all 0.25s ease-in-out;
+        background-color: ${theme.colours.gusYellow};
+      }
     }
   }
 
@@ -153,10 +171,17 @@ const DesktopNav = styled.nav`
     background-color: ${theme.colours.gusYellow};
     justify-content: space-around;
     position: absolute;
-    width: 100%;
+    width: 115%;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    &.subnav-open {
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
   }
   li.subnav-link {
     border-right: 1px solid;
@@ -489,43 +514,49 @@ export default function HeaderMenu() {
                         href="#"
                         dangerouslySetInnerHTML={{ __html: link.title }}
                       ></a>
-                      {link.child_items && subnav == link.ID ? (
-                        <ul className="subnav">
-                          {link?.child_items?.map((childItem, childIndex) => {
-                            return (
-                              <li key={uuidv4()} className="subnav-link">
-                                {childItem.object == "page" ? (
-                                  <ActiveLink
-                                    activeClassName="navlink--active"
-                                    href={`/${childItem.slug}`}
-                                    as={`/${childItem.slug}`}
-                                  >
-                                    <a
-                                      className="card-text pb-5"
-                                      dangerouslySetInnerHTML={{
-                                        __html: childItem.title,
-                                      }}
-                                    ></a>
-                                  </ActiveLink>
-                                ) : (
-                                  <ActiveLink
-                                    activeClassName="navlink--active"
-                                    href={"/categories/[slug]"}
-                                    as={`/categories/${childItem.slug}`}
-                                  >
-                                    <a
-                                      className="card-text pb-5"
-                                      dangerouslySetInnerHTML={{
-                                        __html: childItem.title,
-                                      }}
-                                    ></a>
-                                  </ActiveLink>
-                                )}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      ) : null}
+                      {/* {link.child_items && subnav == link.ID ? ( */}
+                      <ul
+                        className={`${
+                          link.child_items && subnav == link.ID
+                            ? "subnav-open"
+                            : ""
+                        } subnav `}
+                      >
+                        {link?.child_items?.map((childItem, childIndex) => {
+                          return (
+                            <li key={uuidv4()} className="subnav-link">
+                              {childItem.object == "page" ? (
+                                <ActiveLink
+                                  activeClassName="navlink--active"
+                                  href={`/${childItem.slug}`}
+                                  as={`/${childItem.slug}`}
+                                >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  ></a>
+                                </ActiveLink>
+                              ) : (
+                                <ActiveLink
+                                  activeClassName="navlink--active"
+                                  href={"/categories/[slug]"}
+                                  as={`/categories/${childItem.slug}`}
+                                >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  ></a>
+                                </ActiveLink>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      {/* // ) : null} */}
                     </li>
                   </React.Fragment>
                 );
