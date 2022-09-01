@@ -133,11 +133,11 @@ const DesktopNav = styled.nav`
     display: flex;
     justify-content: space-between;
     position: relative;
-    width: 100vw;
-    padding-left: 30px;
-    padding-right: 30px;
+    /* width: 100vw; */
+    /* padding-left: 30px; */
+    /* padding-right: 30px; */
     /* border: 2px solid orange; */
-    margin: 0px -57px 0px -57px;
+    /* margin: 0px -57px 0px -57px; */
     background-color: transparent;
     transition: all 0.25s ease-in-out;
     &.desktopnavcolorchange {
@@ -233,7 +233,7 @@ const ConnectMenuNav = styled.nav`
     left: 0;
     z-index: 30;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: nowrap;
   }
