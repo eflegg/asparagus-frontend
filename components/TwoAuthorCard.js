@@ -3,7 +3,12 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 
-const DoubleAuthor = styled.div``;
+const DoubleAuthor = styled.div`
+.article-details {
+  display: flex;
+  flex-direction: column;
+}
+`;
 
 export default function TwoAuthorCard({ post }) {
   //added in the date formatting so you can use the formattedDate variable
@@ -24,10 +29,12 @@ export default function TwoAuthorCard({ post }) {
             <p className="byline--single-article">
               {post.acf.writer[0].post_title}
             </p>
+
             <p className="byline--single-article">
-              {post.acf.secondary_author[0].post_title}
+              {post.acf.secondary_author[0] &&
+                post.acf.secondary_author[0].post_title}
             </p>
-            <p className="date--article-card">
+            <p className="date--single-article">
               {formattedDate} - <span>{post.acf.time_to_read} min read</span>
             </p>
           </div>
@@ -42,7 +49,7 @@ export default function TwoAuthorCard({ post }) {
               {post.acf.writer[0].post_title}
             </p>
             <p>{post.acf.secondary_author[0].post_title}</p>
-            <p className="date--article-card">
+            <p className="date--single-article">
               {formattedDate} - <span>{post.acf.time_to_read} min read</span>
             </p>
           </div>

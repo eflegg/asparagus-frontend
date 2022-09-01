@@ -17,9 +17,11 @@ const CoverContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 90%;
+  margin: 0 auto;
   div.coverlines {
-    // margin: 0 24px 30px;
-    border: 1px solid green;
+    margin-left: 20px;
+    max-width: 400px;
   }
   .cover-image {
     display: block;
@@ -39,7 +41,7 @@ const CoverContainer = styled.div`
     margin-top: 10px;
     ${theme.mediaQuery.md`
     font-size: 2.4rem;
-    margin-top: 30px;
+    margin-top: 15px;
     `}
   }
   a {
@@ -105,13 +107,23 @@ export default function Issue({ issue, articles }) {
       </Issues>
       <CoverContainer className="current-issue--cover">
         <div className="cover-image">
-          <Image
-            src={issue._embedded["wp:featuredmedia"]["0"].source_url}
-            layout="responsive"
-            width="200px"
-            height="250px"
-            alt={issue._embedded["wp:featuredmedia"]["0"].alt_text}
-          />
+          {issue._embedded != undefined ? (
+            <Image
+              src={issue._embedded["wp:featuredmedia"]["0"].source_url}
+              layout="responsive"
+              width="200px"
+              height="250px"
+              alt={issue._embedded["wp:featuredmedia"]["0"].alt_text}
+            />
+          ) : (
+            <Image
+              src="/triplestalk.svg"
+              layout="responsive"
+              width="200px"
+              height="250px"
+              alt="Asparagus logo"
+            />
+          )}
         </div>
         <div className="coverlines">
           <h3>From This Issue:</h3>
@@ -123,10 +135,14 @@ export default function Issue({ issue, articles }) {
       <ul className="card--grid single-page">
         {articles.map((article, index) => {
           const appearsIn = article.acf.appears_in;
-
+          const printIssue = article.acf.print_issue;
           return (
             <React.Fragment key={uuidv4()}>
-              {appearsIn && currentIssue == appearsIn[0].ID ? (
+              {appearsIn &&
+              printIssue === "Yes" &&
+              appearsIn &&
+              appearsIn[0] &&
+              appearsIn[0].ID == currentIssue ? (
                 <>
                   <ArticleCard post={article} />
                 </>

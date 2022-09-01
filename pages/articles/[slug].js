@@ -218,7 +218,7 @@ const SingleHero = styled.div`
       `}
     }
     .article-details {
-      justify-content: flex-end;
+      align-items: flex-start;
       ${theme.mediaQuery.sm`
       justify-content: flex-start;
       `}
@@ -246,8 +246,16 @@ const SingleHero = styled.div`
   .byline {
     margin: 5px auto;
   }
+  .byline--single-article {
+    margin: 0px 0 0 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    ${theme.mediaQuery.md`
+    font-size: 1.6rem;
+    `}
+  }
   .date--single-article {
-    margin: 5px auto;
+    margin: 5px 0 0 0;
   }
 `;
 
@@ -318,17 +326,23 @@ export default function ArticlePage({ article, allArticles, categories }) {
 
                 two author card just needs a bit more styling!
                 */}
-                {article.acf.secondary_author != undefined ? (
+                {article.acf.secondary_author !== "" ? (
                   <TwoAuthorCard post={article} />
                 ) : (
                   <>
                     <div className="byline--image">
-                      {article.acf.writer[0].acf.headshot.url && (
+                      {article.acf.writer[0].acf.headshot.url ? (
                         // this will need to have that same conditional checking for contributor
                         // and rendering the Link with the right slug
-
                         <Image
                           src={article.acf.writer[0].acf.headshot.url}
+                          layout="fill"
+                          objectFit="cover"
+                          alt="Author headshot"
+                        />
+                      ) : (
+                        <Image
+                          src="/singlestalk-square.svg"
                           layout="fill"
                           objectFit="cover"
                           alt="Author headshot"
@@ -368,19 +382,26 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     alt="Asparagus Magazine three-stalk logo"
                   />
                 )}
-                <figcaption className="credit ">
-                  {article._embedded["wp:featuredmedia"]["0"].title.rendered}
-                </figcaption>{" "}
-                <strong>
-                  <figcaption
-                    className="caption "
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        article._embedded["wp:featuredmedia"]["0"].caption
-                          .rendered,
-                    }}
-                  ></figcaption>
-                </strong>
+                {article._embedded["wp:featuredmedia"] ? (
+                  <>
+                    <figcaption className="credit ">
+                      {
+                        article._embedded["wp:featuredmedia"]["0"].title
+                          .rendered
+                      }
+                    </figcaption>
+                    <strong>
+                      <figcaption
+                        className="caption "
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            article._embedded["wp:featuredmedia"]["0"].caption
+                              .rendered,
+                        }}
+                      ></figcaption>
+                    </strong>
+                  </>
+                ) : null}
               </div>
             </div>
           </div>
