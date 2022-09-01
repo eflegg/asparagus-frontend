@@ -133,11 +133,11 @@ const DesktopNav = styled.nav`
     display: flex;
     justify-content: space-between;
     position: relative;
-    // width: 100vw;
-    // padding-left: 72px;
-    // padding-right: 72px;
-    // /* border: 2px solid orange; */
-    // margin: 0px -57px 0px -57px;
+    /* width: 100vw; */
+    /* padding-left: 30px; */
+    /* padding-right: 30px; */
+    /* border: 2px solid orange; */
+    /* margin: 0px -57px 0px -57px; */
     background-color: transparent;
     transition: all 0.25s ease-in-out;
     &.desktopnavcolorchange {
