@@ -45,14 +45,13 @@ const MenuContainer = styled.div`
   }
   .nameplate {
     ${theme.mediaQuery.md`
- 
- max-width: 457px;
+  max-width: 457px;
   `};
   }
   ${theme.mediaQuery.md`
     position: sticky;
-  z-index: 10;
-  top: -182px;
+    z-index: 10;
+    top: -182px;
   `};
 
   .nav-link a {
@@ -124,7 +123,7 @@ const ConnectMenuContainer = styled.div`
 `;
 
 const DesktopNav = styled.nav`
-  /* position: fixed; */
+  //  position: fixed; 
 
   z-index: 1;
   width: 100%;
@@ -267,7 +266,7 @@ const ConnectMenuNav = styled.nav`
       &:not(:first-of-type) {
         &::after {
           content: "";
-          width: 50%;
+          width: 54%;
           transition: all 0.25s ease-out;
         }
       }
