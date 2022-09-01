@@ -179,7 +179,7 @@ export async function getStaticProps({ params }) {
   const contributorPosts = await fetch(
     // `${Config.apiUrl}/wp-json/wp/v2/articles?writer=${contributor.id}`
     // @erin this should work, come back to it
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=100`
   );
 
   const posts = await contributorPosts.json();

@@ -314,17 +314,23 @@ export default function ArticlePage({ article, allArticles, categories }) {
 
                 two author card just needs a bit more styling!
                 */}
-                {article.acf.secondary_author == undefined ? (
+                {article.acf.secondary_author !== "" ? (
                   <TwoAuthorCard post={article} />
                 ) : (
                   <>
                     <div className="byline--image">
-                      {article.acf.writer[0].acf.headshot.url && (
+                      {article.acf.writer[0].acf.headshot.url ? (
                         // this will need to have that same conditional checking for contributor
                         // and rendering the Link with the right slug
-
                         <Image
                           src={article.acf.writer[0].acf.headshot.url}
+                          layout="fill"
+                          objectFit="cover"
+                          alt="Author headshot"
+                        />
+                      ) : (
+                        <Image
+                          src="/singlestalk-square.svg"
                           layout="fill"
                           objectFit="cover"
                           alt="Author headshot"
