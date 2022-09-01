@@ -25,13 +25,23 @@ export default function IssueCard({ title, slug, image, coverLine }) {
       <Link href={"/issues/[slug]"} as={`/issues/${slug}`}>
         <a>
           <div className="cover-image">
-            <Image
-              src={image}
-              layout="responsive"
-              width="200px"
-              height="250px"
-              alt="Cover photo"
-            />
+            {image ? (
+              <Image
+                src={image}
+                layout="responsive"
+                width="200px"
+                height="250px"
+                alt="Cover photo"
+              />
+            ) : (
+              <Image
+                src="/triplestalk.svg"
+                layout="responsive"
+                width="200px"
+                height="250px"
+                alt="Asparagus Magazine logo"
+              />
+            )}
           </div>
           <h3
             className="card-text pb-5"

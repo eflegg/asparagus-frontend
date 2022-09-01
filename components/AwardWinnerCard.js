@@ -88,6 +88,7 @@ export default function AwardWinnerCard({ post }) {
     year: "numeric",
     month: "long",
     day: "2-digit",
+    year: "numeric",
   });
   return (
     <Card>

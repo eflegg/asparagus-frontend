@@ -16,6 +16,7 @@ export default function TwoAuthorCard({ post }) {
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",
+    year: "numeric",
   });
   return (
     <DoubleAuthor className="double-author">
@@ -28,8 +29,10 @@ export default function TwoAuthorCard({ post }) {
             <p className="byline--single-article">
               {post.acf.writer[0].post_title}
             </p>
+
             <p className="byline--single-article">
-              {post.acf.secondary_author[0].post_title}
+              {post.acf.secondary_author[0] &&
+                post.acf.secondary_author[0].post_title}
             </p>
             <p className="date--single-article">
               {formattedDate} - <span>{post.acf.time_to_read} min read</span>

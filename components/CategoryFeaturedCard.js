@@ -64,6 +64,7 @@ export default function CategoryFeaturedCard({ post }) {
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",
+    year: "numeric",
   });
 
   return (

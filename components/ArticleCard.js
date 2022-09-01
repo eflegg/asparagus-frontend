@@ -20,11 +20,14 @@ export default function ArticleCard({ post }) {
       subCat.id !== 10
   );
 
-  let initialDate = post.date;
+  let initialDate = post.acf.publication_date;
+  // console.log("date: ", initialDate);
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",
+    year: "numeric",
   });
+  // console.log("formatted date: ", formattedDate);
   return (
     <Card>
       <div className="card--inner">
@@ -93,7 +96,14 @@ export default function ArticleCard({ post }) {
                     objectFit="cover"
                     alt="Author headshot"
                   />
-                ) : null}
+                ) : (
+                  <Image
+                    src="/singlestalk-square.svg"
+                    layout="fill"
+                    objectFit="cover"
+                    alt="Author headshot"
+                  />
+                )}
               </div>
               <div>
                 <p className="byline--article-card">
