@@ -133,11 +133,11 @@ const DesktopNav = styled.nav`
     display: flex;
     justify-content: space-between;
     position: relative;
-    width: 100vw;
-    padding-left: 72px;
-    padding-right: 72px;
-    /* border: 2px solid orange; */
-    margin: 0px -57px 0px -57px;
+    // width: 100vw;
+    // padding-left: 72px;
+    // padding-right: 72px;
+    // /* border: 2px solid orange; */
+    // margin: 0px -57px 0px -57px;
     background-color: transparent;
     transition: all 0.25s ease-in-out;
     &.desktopnavcolorchange {
@@ -177,7 +177,7 @@ const DesktopNav = styled.nav`
 const LogoConnectMenuContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-start;
   position: relative;
   margin-bottom: 60px;
@@ -233,7 +233,7 @@ const ConnectMenuNav = styled.nav`
     left: 0;
     z-index: 30;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
   }
@@ -313,9 +313,7 @@ const ConnectScrollMenuContainer = styled.div`
   div.search-container {
     margin-right: 15px;
   }
-  input.search_Input-sc-e3akmt-1.dDDPtX {
-    border: 0px;
-  }
+ 
 `;
 
 export default function HeaderMenu() {
