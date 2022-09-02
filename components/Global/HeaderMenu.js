@@ -227,6 +227,7 @@ const LogoConnectMenuContainer = styled.div`
     `};
 `;
 const ConnectMenuNav = styled.nav`
+  margin-left: 15px;
   width: 100%;
   position: relative;
   transition: all 0.25s ease-in-out;
@@ -286,7 +287,7 @@ const ConnectMenuNav = styled.nav`
     transition: all 0.25s ease-in-out;
     flex: none;
     ${theme.mediaQuery.md`
-      padding: 3px 25px; 
+      padding: 3px 20px; 
     `};
     position: relative;
     &::after {
