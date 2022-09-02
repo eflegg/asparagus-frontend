@@ -40,6 +40,9 @@ const Card = styled.div`
     `}
     .article-details {
       align-self: flex-end;
+      .byline--image {
+        margin-left: 10px;
+      }
       ${theme.mediaQuery.md`
       margin-left: 20px;
       align-self: initial;
