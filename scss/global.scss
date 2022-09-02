@@ -717,6 +717,7 @@ p.newsletter-header--primary {
   font-weight: 600;
   color: $gusGreen;
   line-height: 2rem;
+  width: 90%;
 
   @include media-query-min($xs) {
     font-size: calc(20px + 47 * ((100vw - 320px) / 680));
@@ -738,6 +739,7 @@ p.newsletter-subheader--primary {
   font-family: $accentFont;
   font-size: 1.4rem;
   color: $soil;
+  width: 80%;
 
   @include media-query-min($xs) {
     font-size: calc(14px + 22 * ((100vw - 320px) / 680));
