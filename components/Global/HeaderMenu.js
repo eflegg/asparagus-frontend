@@ -55,16 +55,19 @@ const MenuContainer = styled.div`
   
   `};
 
-  .nav-link a {
+  .nav-link {
+    button {
+      font-family: ${theme.type.medium};
+      font-size: 2.4rem;
+      color: ${theme.colours.gusGreen};
+    }
     &:focus {
       border: 1px solid orange;
     }
-    position: relative;
-    z-index: 19;
-    font-family: ${theme.type.medium};
-    font-size: 2.4rem;
-    color: ${theme.colours.gusGreen};
-    margin: 10px;
+    /* position: relative; */
+    z-index: 20;
+
+    margin: 15px 10px;
     display: flex;
     flex-direction: column-reverse;
     ul {
@@ -93,7 +96,7 @@ const MobileNavContainer = styled.div`
   }
 `;
 const MobileNav = styled.nav`
-  .nav-link a {
+  .nav-link {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -152,7 +155,7 @@ const DesktopNav = styled.nav`
     &:after {
       content: "";
       position: absolute;
-      height: 54px;
+      height: 68px;
       width: 150%;
       left: 50%;
       transform: translateX(-50%);
@@ -176,15 +179,18 @@ const DesktopNav = styled.nav`
     justify-content: space-around;
     position: absolute;
     width: 115%;
-
+    top: 50px;
     transform: translateX(-50%);
     z-index: 1;
     height: 0px;
-    left: -1000px;
+    left: 50%;
+    opacity: 0;
+    display: none;
     transition: all 1s ease-in-out;
     &.subnav-open {
       height: auto;
-      left: 50%;
+      opacity: 1;
+      display: flex;
       transition: all 1s ease-in-out;
     }
   }
@@ -515,7 +521,10 @@ export default function HeaderMenu() {
                       className="nav-link"
                       onClick={() => handleSubnavClick(link.ID)}
                     >
-                      <a dangerouslySetInnerHTML={{ __html: link.title }}></a>
+                      <button
+                        className="no-button"
+                        dangerouslySetInnerHTML={{ __html: link.title }}
+                      ></button>
                       {/* {link.child_items && subnav == link.ID ? ( */}
                       <ul
                         className={`${
