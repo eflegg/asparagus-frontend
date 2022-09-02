@@ -123,8 +123,7 @@ const ConnectMenuContainer = styled.div`
   align-items: center;
   margin-top: 2%;
   ${theme.mediaQuery.md`
-    flex: 0 0 60%; 
-    // padding-top: 30px; 
+    // flex: 0 0 60%; 
     align-items: flex-start; 
   
 
@@ -218,7 +217,7 @@ const LogoConnectMenuContainer = styled.div`
   position: relative;
   margin-bottom: 60px;
   .img {
-    flex: 0 0 50%;
+    /* flex: 0 0 50%; */
     height: 100%;
     width: 100%;
   }
@@ -228,7 +227,7 @@ const LogoConnectMenuContainer = styled.div`
     `};
 `;
 const ConnectMenuNav = styled.nav`
-  flex: 1;
+  width: 100%;
   position: relative;
   transition: all 0.25s ease-in-out;
   ul.connect-ul {
@@ -287,7 +286,7 @@ const ConnectMenuNav = styled.nav`
     transition: all 0.25s ease-in-out;
     flex: none;
     ${theme.mediaQuery.md`
-      padding: 3px 30px; 
+      padding: 3px 25px; 
     `};
     position: relative;
     &::after {
@@ -316,38 +315,6 @@ const ConnectMenuNav = styled.nav`
     ${theme.mediaQuery.md`
       padding: 3px 30px; 
     `};
-  }
-`;
-const ConnectScrollMenuContainer = styled.div`
-  display: flex;
-  direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: ${theme.colours.darkWheat};
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  width: 100vw;
-  padding: 10px 20px;
-  margin-left: -15px;
-  div.left-container {
-    display: flex;
-    align-items: center;
-    flex: 1;
-  }
-  div.right-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1;
-  }
-  div.donate-button {
-    background-color: ${theme.colours.gusYellow};
-    padding: 3px 5px;
-    border-radius: 5px;
-  }
-  div.search-container {
-    margin-right: 15px;
   }
 `;
 
