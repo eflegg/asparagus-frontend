@@ -52,9 +52,7 @@ const MenuContainer = styled.div`
     position: sticky;
     z-index: 10;
     top: -132px;
-  
   `};
-
   .nav-link {
     button {
       font-family: ${theme.type.medium};
@@ -66,7 +64,6 @@ const MenuContainer = styled.div`
     }
     /* position: relative; */
     z-index: 20;
-
     margin: 15px 10px;
     display: flex;
     flex-direction: column-reverse;
@@ -89,7 +86,6 @@ const MobileNavContainer = styled.div`
   top: 0;
   left: 0;
   padding: 60px 36px 0px 36px;
-
   ul {
     position: relative;
     width: 100%;
@@ -126,23 +122,19 @@ const ConnectMenuContainer = styled.div`
     // flex: 0 0 60%; 
     align-items: flex-start; 
   
-
   `};
 `;
 
 const DesktopNav = styled.nav`
   //  position: fixed;
-
   z-index: 1;
   width: 100%;
-
   ul.desktopnav {
     display: flex;
     justify-content: space-between;
     position: relative;
     z-index: 20;
     width: 100%;
-
     /* width: 100vw; */
     /* padding-left: 30px; */
     /* padding-right: 30px; */
@@ -150,12 +142,11 @@ const DesktopNav = styled.nav`
     /* margin: 0px -57px 0px -57px; */
     background-color: transparent;
     transition: all 0.25s ease-in-out;
-
     &:after {
       content: "";
       position: absolute;
       height: 68px;
-      width: 150%;
+      width: 112%;
       left: 50%;
       transform: translateX(-50%);
       background-color: transparent;
@@ -169,7 +160,6 @@ const DesktopNav = styled.nav`
       }
     }
   }
-
   ul.subnav {
     display: flex;
     align-items: center;
@@ -260,7 +250,6 @@ const ConnectMenuNav = styled.nav`
         transition: all 0.25s ease-in-out;
       }
     }
-
     width: 100%;
     /* position: fixed;
     ${theme.mediaQuery.md`
