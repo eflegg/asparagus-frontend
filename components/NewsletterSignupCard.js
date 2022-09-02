@@ -20,6 +20,8 @@ const NewsletterBlock = styled.div`
     /* this is how you use the & in scss */
     &.wrapper--support {
       width: 100%;
+      // border: solid rebeccapurple;
+      align-items: stretch;
     }
   }
   width: 100%;
@@ -122,7 +124,7 @@ const TripleStalk = styled.div`
 `;
 
 const PhotoStyled = styled.div`
-  width: 85%;
+  width: 75%;
   // border: solid hotpink;
   .image-container {
     // border: 2px solid green;
