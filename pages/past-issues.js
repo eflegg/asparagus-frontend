@@ -8,39 +8,38 @@ import theme from "../components/Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 
 const Issues = styled.div`
-hr {
-  margin-bottom: 30px;
-}
-.button-container {
- display: flex;
- justify-content: center;
-  margin-bottom: 60px;
-}
-.btn--secondary {
-  position: relative;
-  font-size: 1.4rem;
-  ${theme.mediaQuery.md`
+  hr {
+    margin-bottom: 30px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+  .btn--secondary {
+    position: relative;
+    font-size: 1.4rem;
+    ${theme.mediaQuery.md`
   font-size: 2.4rem;
   `}
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 30px;
-    border-bottom: 2px solid ${theme.colours.soil};
-    width: 0;
-    transition: all 0.25s ease-out;
-  }
-  &:hover {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      border-bottom: 2px solid ${theme.colours.soil};
+      width: 0;
+      transition: all 0.25s ease-out;
+    }
+    &:hover {
       &::after {
         content: "";
         width: 78%;
         transition: all 0.25s ease-out;
+      }
     }
   }
-}
 `;
-
 
 export default function PastIssues({ issues }) {
   console.log("issues: ", issues);
@@ -56,16 +55,16 @@ export default function PastIssues({ issues }) {
       metadescription="Peruse stories of a just society on a healthy planet in all Asparagus Magazine's past issues"
     >
       <Issues>
-      <h1 className="text-center">Past Issues</h1>
-      <hr/>
-      <div className="button-container">
-      <Link href={"/current-issue"} >
-          <a>
-            <button className="btn--secondary">Go to Current Issue</button>
-          </a>
-        </Link>
+        <h1 className="text-center">Past Issues</h1>
+        <hr />
+        <div className="button-container">
+          <Link href={"/current-issue"}>
+            <a>
+              <button className="btn--secondary">Go to Current Issue</button>
+            </a>
+          </Link>
         </div>
-        </Issues>
+      </Issues>
       <ul className="card--grid">
         {issues.map((issue, index) => {
           return (

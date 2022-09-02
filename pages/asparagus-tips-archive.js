@@ -33,15 +33,25 @@ const NewsletterContainer = styled.section`
       width: 90%;
       max-width: 650px;
     }
-    figure {
-      margin: 50px auto;
-    
+    figure.wp-block-pullquote {
+      margin: 20px auto;
+      p {
+      font-family: ${theme.type.semibold};
+      color: ${theme.colours.gusGreen};
+      font-size: 1.8rem;
+      text-align: center;
+      ${theme.mediaQuery.md`
+      font-size: 2.8rem;
+      margin: 40px auto;
+      `}
     }
+      }
     figcaption {
       width: 90%;
       margin: 8px auto 0;
       font-family: ${theme.type.accent};
       font-size: 1.6rem;
+    
       strong {
         font-family: ${theme.type.header};
         font-style: italic;

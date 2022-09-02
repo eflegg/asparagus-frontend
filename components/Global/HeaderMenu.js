@@ -14,23 +14,49 @@ import Search from "./search";
 import HamburgerMenuButton from "../HeaderMenuComponents/HamburgerMenuButton";
 
 const MenuContainer = styled.div`
+  .nameplate-container {
+    position: relative;
+    top: 35px;
+    ${theme.mediaQuery.md`
+    top: 0;
+    `}
+  }
+  .custom-tagline {
+    width: 80%;
+    position: relative;
+    top: 35px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    font-family: ${theme.type.italic};
+    ${theme.mediaQuery.md`
+    display: none;
+    `}
+  }
+  .custom-tagline--desktop {
+    width: 80%;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    display: none;
+    font-family: ${theme.type.italic};
+    ${theme.mediaQuery.md`
+    // display: none;
+    `}
+  }
   .nameplate {
     ${theme.mediaQuery.md`
- 
- max-width: 457px;
+  max-width: 457px;
   `};
   }
   ${theme.mediaQuery.md`
     position: sticky;
-  z-index: 10;
-  top: -110px;
+    z-index: 10;
+    top: -130px;
   `};
-  /* ${theme.mediaQuery.lg`
-    position: sticky;
-  z-index: 10;
-  top: -116px;
-  `}; */
-  .nav-link {
+
+  .nav-link a {
+    position: relative;
+    z-index: 19;
     font-family: ${theme.type.medium};
     font-size: 2.4rem;
     color: ${theme.colours.gusGreen};
@@ -52,7 +78,7 @@ const MobileNavContainer = styled.div`
   height: 100%;
   width: 100%;
   position: fixed;
-  z-index: 10;
+  z-index: 20;
   top: 0;
   left: 0;
   padding: 60px 36px 0px 36px;
@@ -63,7 +89,7 @@ const MobileNavContainer = styled.div`
   }
 `;
 const MobileNav = styled.nav`
-  .nav-link {
+  .nav-link a {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -93,11 +119,13 @@ const ConnectMenuContainer = styled.div`
     flex: 0 0 60%; 
     // padding-top: 30px; 
     align-items: flex-start; 
+  
+
   `};
 `;
 
 const DesktopNav = styled.nav`
-  /* position: fixed; */
+  //  position: fixed;
 
   z-index: 1;
   width: 100%;
@@ -106,16 +134,32 @@ const DesktopNav = styled.nav`
     display: flex;
     justify-content: space-between;
     position: relative;
-    width: 100vw;
-    padding-left: 30px;
-    padding-right: 30px;
+    z-index: 20;
+    width: 100%;
+    /* width: 100vw; */
+    /* padding-left: 30px; */
+    /* padding-right: 30px; */
     /* border: 2px solid orange; */
-    margin: 0px -57px 0px -57px;
+    /* margin: 0px -57px 0px -57px; */
     background-color: transparent;
     transition: all 0.25s ease-in-out;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 54px;
+      width: 150%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: transparent;
+      transition: all 0.25s ease-in-out;
+    }
     &.desktopnavcolorchange {
       transition: all 0.25s ease-in-out;
-      background-color: ${theme.colours.gusYellow};
+      &:after {
+        transition: all 0.25s ease-in-out;
+        background-color: ${theme.colours.gusYellow};
+      }
     }
   }
 
@@ -126,10 +170,17 @@ const DesktopNav = styled.nav`
     background-color: ${theme.colours.gusYellow};
     justify-content: space-around;
     position: absolute;
-    width: 100%;
+    width: 115%;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    &.subnav-open {
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
   }
   li.subnav-link {
     border-right: 1px solid;
@@ -150,10 +201,10 @@ const DesktopNav = styled.nav`
 const LogoConnectMenuContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-start;
   position: relative;
-
+  margin-bottom: 60px;
   .img {
     flex: 0 0 50%;
     height: 100%;
@@ -161,6 +212,7 @@ const LogoConnectMenuContainer = styled.div`
   }
   ${theme.mediaQuery.md`
     flex-direction: row;
+    margin-bottom: 20px;
     `};
 `;
 const ConnectMenuNav = styled.nav`
@@ -203,16 +255,16 @@ const ConnectMenuNav = styled.nav`
     position: relative;
     `}; */
     left: 0;
-    z-index: 20;
+    z-index: 30;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
   }
   a {
     font-size: 1.6rem;
     font-weight: 600;
-    color: ${theme.colours.soil};
+    // color: ${theme.colours.soil};
     font-family: ${theme.type.semibold};
     ${theme.mediaQuery.sm`
      font-size: 2rem;
@@ -236,11 +288,10 @@ const ConnectMenuNav = styled.nav`
       transition: all 0.25s ease-out;
     }
     &:hover {
-      &:not(:first-child) {
+      &:not(:first-of-type) {
         &::after {
           content: "";
-
-          width: 50%;
+          width: 54%;
           transition: all 0.25s ease-out;
         }
       }
@@ -372,7 +423,7 @@ export default function HeaderMenu() {
 
   //updates when the client loads so you can use it
   const size = useWindowSpecs();
-  const imgRef = useRef();
+  // const imgRef = useRef();
 
   return (
     <MenuContainer className="menu--container">
@@ -442,7 +493,7 @@ export default function HeaderMenu() {
           <DesktopNav>
             <ul
               className={`${
-                size.scrollY >= 100 ? "desktopnavcolorchange" : ""
+                size.scrollY >= 182 ? "desktopnavcolorchange" : ""
               } desktopnav`}
             >
               {links?.items?.map((link, index) => {
@@ -452,46 +503,53 @@ export default function HeaderMenu() {
                       className="nav-link"
                       onClick={() => handleSubnavClick(link.ID)}
                     >
-                      <span
+                      <a
+                        href="#"
                         dangerouslySetInnerHTML={{ __html: link.title }}
-                      ></span>
-                      {link.child_items && subnav == link.ID ? (
-                        <ul className="subnav">
-                          {link?.child_items?.map((childItem, childIndex) => {
-                            return (
-                              <li key={uuidv4()} className="subnav-link">
-                                {childItem.object == "page" ? (
-                                  <ActiveLink
-                                    activeClassName="navlink--active"
-                                    href={`/${childItem.slug}`}
-                                    as={`/${childItem.slug}`}
-                                  >
-                                    <a
-                                      className="card-text pb-5"
-                                      dangerouslySetInnerHTML={{
-                                        __html: childItem.title,
-                                      }}
-                                    ></a>
-                                  </ActiveLink>
-                                ) : (
-                                  <ActiveLink
-                                    activeClassName="navlink--active"
-                                    href={"/categories/[slug]"}
-                                    as={`/categories/${childItem.slug}`}
-                                  >
-                                    <a
-                                      className="card-text pb-5"
-                                      dangerouslySetInnerHTML={{
-                                        __html: childItem.title,
-                                      }}
-                                    ></a>
-                                  </ActiveLink>
-                                )}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      ) : null}
+                      ></a>
+                      {/* {link.child_items && subnav == link.ID ? ( */}
+                      <ul
+                        className={`${
+                          link.child_items && subnav == link.ID
+                            ? "subnav-open"
+                            : ""
+                        } subnav `}
+                      >
+                        {link?.child_items?.map((childItem, childIndex) => {
+                          return (
+                            <li key={uuidv4()} className="subnav-link">
+                              {childItem.object == "page" ? (
+                                <ActiveLink
+                                  activeClassName="navlink--active"
+                                  href={`/${childItem.slug}`}
+                                  as={`/${childItem.slug}`}
+                                >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  ></a>
+                                </ActiveLink>
+                              ) : (
+                                <ActiveLink
+                                  activeClassName="navlink--active"
+                                  href={"/categories/[slug]"}
+                                  as={`/categories/${childItem.slug}`}
+                                >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  ></a>
+                                </ActiveLink>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      {/* // ) : null} */}
                     </li>
                   </React.Fragment>
                 );
@@ -504,10 +562,10 @@ export default function HeaderMenu() {
           <MobileNavContainer>
             <HamburgerLogoContainer>
               <Link href="/">
-                <a>
+                <a onClick={() => setNavActive(false)}>
                   <img
                     className="nameplate nameplate--mobile"
-                    ref={imgRef}
+                    // ref={imgRef}
                     src="/Asparagus_Nameplate_Color.png"
                   />
                 </a>
@@ -539,19 +597,38 @@ export default function HeaderMenu() {
                               {link?.child_items?.map(
                                 (childItem, childIndex) => {
                                   return (
-                                    <li key={uuidv4()} className="subnav-link">
-                                      <ActiveLink
-                                        activeClassName="navlink--active"
-                                        href={"/categories/[slug]"}
-                                        as={`/categories/${childItem.slug}`}
-                                      >
-                                        <a
-                                          className="card-text pb-5"
-                                          dangerouslySetInnerHTML={{
-                                            __html: childItem.title,
-                                          }}
-                                        />
-                                      </ActiveLink>
+                                    <li
+                                      onClick={() => setNavActive(false)}
+                                      key={uuidv4()}
+                                      className="subnav-link"
+                                    >
+                                      {childItem.object == "page" ? (
+                                        <ActiveLink
+                                          activeClassName="navlink--active"
+                                          href={`/[slug]}`}
+                                          as={`/${childItem.slug}`}
+                                        >
+                                          <a
+                                            className="card-text pb-5"
+                                            dangerouslySetInnerHTML={{
+                                              __html: childItem.title,
+                                            }}
+                                          />
+                                        </ActiveLink>
+                                      ) : (
+                                        <ActiveLink
+                                          activeClassName="navlink--active"
+                                          href={"/categories/[slug]"}
+                                          as={`/categories/${childItem.slug}`}
+                                        >
+                                          <a
+                                            className="card-text pb-5"
+                                            dangerouslySetInnerHTML={{
+                                              __html: childItem.title,
+                                            }}
+                                          ></a>
+                                        </ActiveLink>
+                                      )}
                                     </li>
                                   );
                                 }

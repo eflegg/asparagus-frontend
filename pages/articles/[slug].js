@@ -19,6 +19,7 @@ import {
 } from "next-share";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
+import TwoAuthorCard from "../../components/TwoAuthorCard";
 
 const SingleContainer = styled.div`
   height: 100%;
@@ -47,21 +48,24 @@ const SingleContainer = styled.div`
     font-size: 1.6rem;
     &.caption {
       position: absolute;
-
+      bottom: -100px;
+      ${theme.mediaQuery.md`
       bottom: -85px;
+      `}
       p {
         font-size: 1.6rem;
-        margin-left: 0;
+        margin-left: 0px;
         font-family: ${theme.type.header};
         font-style: italic;
         font-weight: 700;
+        line-height: 2rem;
       }
     }
     strong {
       font-family: ${theme.type.header};
       font-style: italic;
       position: relative;
-      top: 5px;
+      // top: 5px;
     }
   }
   li {
@@ -69,15 +73,7 @@ const SingleContainer = styled.div`
     width: 90%;
     max-width: 650px;
   }
-  p {
-    width: 90%;
-    max-width: 650px;
-    margin: 17px auto;
 
-    ${theme.mediaQuery.sm`
-       margin: 25px auto;
-    `}
-  }
   h2 {
     width: 90%;
     max-width: 650px;
@@ -91,12 +87,58 @@ const SingleContainer = styled.div`
        font-size: 2.8rem;
     `}
   }
-  .related--header {
-    width: 90%;
-    margin: 50px auto 0;
-    line-height: 100%;
-  }
-  .content--container {
+  .body-content {
+    p {
+      width: 90%;
+      max-width: 650px;
+      margin: 17px auto;
+
+      ${theme.mediaQuery.sm`
+       margin: 25px auto;
+    `}
+    }
+    a {
+      text-decoration: underline;
+      text-decoration-skip-ink: auto;
+      font-family: ${theme.type.bodyFont};
+      color: black;
+      font-weight: 400;
+    }
+
+    a:visited {
+      color: ${theme.colours.soil};
+    }
+
+    a:hover {
+      color: ${theme.colours.gusGreen};
+    }
+
+    a:active {
+      color: ${theme.colours.gusYellow};
+    }
+
+    .wp-block-pullquote {
+      p {
+        font-size: 18px;
+        font-weight: 600;
+        color: ${theme.colours.gusGreen};
+        width: 80%;
+        margin: 20px auto;
+        text-align: center;
+        font-family: ${theme.type.semibold};
+        ${theme.mediaQuery.md`
+      font-size: 28px;
+     `}
+      }
+    }
+
+    .related--header {
+      width: 90%;
+      margin: 50px auto 0;
+      line-height: 100%;
+    }
+    .content--container {
+    }
   }
   .print-details {
     width: 90%;
@@ -105,6 +147,7 @@ const SingleContainer = styled.div`
     p {
       margin: 5px 0;
       font-style: italic;
+      font-weight: 600;
     }
   }
 
@@ -131,17 +174,22 @@ const SingleHero = styled.div`
   margin-bottom: 100px;
   .categories {
     width: 90%;
-    margin: 0 auto;
+    margin: 70px 0 0 36px;
     h5 {
       margin-right: 10px;
       &:first-child {
         &::after {
           content: "\\00B7";
-          font-size: 40px;
+          font-size: 35px;
           line-height: 5px;
           position: relative;
+          top: 7px;
+          left: 5px;
+          ${theme.mediaQuery.md`
           top: 3px;
           left: 3px;
+          font-size: 40px;
+          `}
         }
       }
     }
@@ -160,7 +208,7 @@ const SingleHero = styled.div`
       width: 100%;
       height: 450px;
       ${theme.mediaQuery.sm`
-      width: 50%;
+      width: 57%;
       flex: none;
       `}
       .hero--right--inner {
@@ -175,20 +223,54 @@ const SingleHero = styled.div`
       `}
     }
     .article-details {
-      justify-content: flex-end;
+      align-items: flex-start;
       ${theme.mediaQuery.sm`
       justify-content: flex-start;
       `}
     }
   }
+.categories {
+  ${theme.mediaQuery.md`
+  // margin: 30px 0 0 80px;
+  `}
+}
+  hr {
+    margin-bottom: 26px;
+    ${theme.mediaQuery.md`
+    margin-bottom: 38px;
+    `}
+  }
+  .article--title {
+    margin-top: 100px;
+    font-size: 2.6rem;
+    ${theme.mediaQuery.md`
+    font-size: 5.2rem;
+    margin-top: 0;
+    `}
+  }
+  .byline {
+    margin: 5px auto;
+  }
+  .byline--single-article {
+    margin: 0px 0 0 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    ${theme.mediaQuery.md`
+    font-size: 1.6rem;
+    `}
+  }
+  .date--single-article {
+    margin: 5px 0 0 0;
+  }
 `;
 
 export default function ArticlePage({ article, allArticles, categories }) {
   console.log("article: ", article);
-  let initialDate = article.date;
+  let initialDate = article.acf.publication_date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",
+    year: "numeric",
   });
 
   let subcategories = categories.filter((newCat) => newCat.parent !== 0);
@@ -243,25 +325,49 @@ export default function ArticlePage({ article, allArticles, categories }) {
               </h1>
               <p className="excerpt deck">{article.acf.dek}</p>
               <div className="article-details">
-                <div className="byline--image">
-                  {article.acf.writer[0].acf.headshot.url && (
-                    <Image
-                      src={article.acf.writer[0].acf.headshot.url}
-                      layout="fill"
-                      objectFit="cover"
-                      alt="Author headshot"
-                    />
-                  )}
-                </div>
-                <div>
-                  <p itemProp="author" className="byline--article-card">
-                    {article.acf.writer[0].post_title}
-                  </p>
-                  <p itemProp="datePublished" className="date--article-card">
-                    {formattedDate} -{" "}
-                    <span>{article.acf.time_to_read} min read</span>
-                  </p>
-                </div>
+                {/* using the article-details container to wrap all of it
+                check for secondary author, if yes show twoauthor card, otherwise 
+                show the rest of the regular single author details
+
+                two author card just needs a bit more styling!
+                */}
+                {article.acf.secondary_author !== "" ? (
+                  <TwoAuthorCard post={article} />
+                ) : (
+                  <>
+                    <div className="byline--image">
+                      {article.acf.writer[0].acf.headshot.url ? (
+                        // this will need to have that same conditional checking for contributor
+                        // and rendering the Link with the right slug
+                        <Image
+                          src={article.acf.writer[0].acf.headshot.url}
+                          layout="fill"
+                          objectFit="cover"
+                          alt="Author headshot"
+                        />
+                      ) : (
+                        <Image
+                          src="/singlestalk-square.svg"
+                          layout="fill"
+                          objectFit="cover"
+                          alt="Author headshot"
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <p itemProp="author" className="byline">
+                        {article.acf.writer[0].post_title}
+                      </p>
+                      <p
+                        itemProp="datePublished"
+                        className="date--single-article"
+                      >
+                        {formattedDate} -{" "}
+                        <span>{article.acf.time_to_read} min read</span>
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             <div className="hero--image position-relative">
@@ -278,31 +384,38 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     src="/triplestalk.svg"
                     layout="fill"
                     objectFit="cover"
-                    alt="Asparagus Magazine logo"
+                    alt="Asparagus Magazine three-stalk logo"
                   />
                 )}
-                <figcaption className="credit ">
-                  {article._embedded["wp:featuredmedia"]["0"].title.rendered}
-                </figcaption>{" "}
-                <strong>
-                  <figcaption
-                    className="caption "
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        article._embedded["wp:featuredmedia"]["0"].caption
-                          .rendered,
-                    }}
-                  ></figcaption>
-                </strong>
+                {article._embedded["wp:featuredmedia"] ? (
+                  <>
+                    <figcaption className="credit ">
+                      {
+                        article._embedded["wp:featuredmedia"]["0"].title
+                          .rendered
+                      }
+                    </figcaption>
+                    <strong>
+                      <figcaption
+                        className="caption "
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            article._embedded["wp:featuredmedia"]["0"].caption
+                              .rendered,
+                        }}
+                      ></figcaption>
+                    </strong>
+                  </>
+                ) : null}
               </div>
             </div>
           </div>
         </SingleHero>
         <div
-          className=""
+          className="body-content"
           dangerouslySetInnerHTML={{ __html: article.content.rendered }}
         ></div>
-        {article.acf.print_issue == "Yes" ? (
+        {article.acf.print_issue === "Yes" && article.acf.appears_in != "" ? (
           <div className="print-details">
             <p className="content--container">
               Print Issue: <span>{article.acf.appears_in[0].post_title}</span>
