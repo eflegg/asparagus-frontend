@@ -51,10 +51,14 @@ const MenuContainer = styled.div`
   ${theme.mediaQuery.md`
     position: sticky;
     z-index: 10;
-    top: -130px;
+    top: -132px;
+  
   `};
 
   .nav-link a {
+    &:focus {
+      border: 1px solid orange;
+    }
     position: relative;
     z-index: 19;
     font-family: ${theme.type.medium};
@@ -136,6 +140,7 @@ const DesktopNav = styled.nav`
     position: relative;
     z-index: 20;
     width: 100%;
+
     /* width: 100vw; */
     /* padding-left: 30px; */
     /* padding-right: 30px; */
@@ -171,15 +176,16 @@ const DesktopNav = styled.nav`
     justify-content: space-around;
     position: absolute;
     width: 115%;
-    top: 100%;
-    left: 50%;
+
     transform: translateX(-50%);
     z-index: 1;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+    height: 0px;
+    left: -1000px;
+    transition: all 1s ease-in-out;
     &.subnav-open {
-      opacity: 1;
-      transition: opacity 1s ease-in-out;
+      height: auto;
+      left: 50%;
+      transition: all 1s ease-in-out;
     }
   }
   li.subnav-link {
@@ -509,10 +515,7 @@ export default function HeaderMenu() {
                       className="nav-link"
                       onClick={() => handleSubnavClick(link.ID)}
                     >
-                      <a
-                        href="#"
-                        dangerouslySetInnerHTML={{ __html: link.title }}
-                      ></a>
+                      <a dangerouslySetInnerHTML={{ __html: link.title }}></a>
                       {/* {link.child_items && subnav == link.ID ? ( */}
                       <ul
                         className={`${
