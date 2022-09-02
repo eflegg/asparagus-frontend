@@ -433,7 +433,6 @@ export default function HeaderMenu() {
             <a className="position-relative d-block">
               <img
                 className="nameplate nameplate--desktop"
-                ref={imgRef}
                 src="/Asparagus_Nameplate_Color.png"
                 alt="Asparagus Magazine logo"
               />

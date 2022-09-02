@@ -355,7 +355,6 @@ h1,
   font-weight: 900;
   line-height: 105%;
   color: $gusGreen;
-  margin-top: 40px;
 
   @include media-query-min($sm) {
     font-size: calc(32px + 44 * ((100vw - 320px) / 680));
@@ -363,6 +362,7 @@ h1,
 
   @include media-query-min($md) {
     @include font-size(7.6);
+    margin-top: 40px;
   }
 }
 
