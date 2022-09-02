@@ -239,7 +239,7 @@ const ConnectMenuNav = styled.nav`
   a {
     font-size: 1.6rem;
     font-weight: 600;
-    color: ${theme.colours.soil};
+    // color: ${theme.colours.soil};
     font-family: ${theme.type.semibold};
     ${theme.mediaQuery.sm`
      font-size: 2rem;

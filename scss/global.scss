@@ -841,6 +841,10 @@ a.footer-link {
   }
 }
 
+a.footer-link:active {
+  color: $gusGreen;
+}
+
 a.action-menu {
   font-size: 2rem;
   font-family: $semibold;
@@ -852,7 +856,7 @@ li.nav-link {
 }
 
 .navlink--active {
-  border: 2px solid orangered;
+  color: $gusGreen;
 }
 
 .has-text-align-center {
