@@ -12,13 +12,15 @@ const FooterContainer = styled.footer`
   max-width: 100%;
   background: ${theme.colours.gusYellow};
   overflow: hidden;
-  padding-top: 50px; 
+  padding: 50px 0 50px 50px; 
   display: flex; 
   flex-direction: column; 
+  border: solid black;
 `;
 const FooterMenu = styled.div`
   display: flex;
   justify-content: space-between; 
+  border: solid hotpink;
   li {
     padding: 5px;
     list-style-type: none; 
@@ -46,14 +48,14 @@ const FooterMenu = styled.div`
 
 const SocialMediaLogos = styled.div`
   display: flex; 
-`
+`;
 
 const NewsletterContainer = styled.div`
-
-`
+border: solid rebeccapurple;
+`;
 const SignUp = styled.div`
   // &.text--support {
-  //   border: 3px solid rebeccapurple;
+    border: 3px solid rebeccapurple;
   // }
   /* border: 3px solid rebeccapurple; */
   display: flex;
