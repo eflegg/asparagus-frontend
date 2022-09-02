@@ -4,7 +4,7 @@ const nextConfig = {
   // apiUrl: "http://asparagus.local",
   apiUrl: "https://stage.asparagusmagazine.com",
   images: {
-    //enter the domain or subdomain where you have WordPress installed
+    // enter the domain or subdomain where you have WordPress installed
     // domains: ["asparagus.local"],
     domains: ["stage.asparagusmagazine.com"],
   },

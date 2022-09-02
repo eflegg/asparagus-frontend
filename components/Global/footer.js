@@ -217,7 +217,11 @@ export default function Footer() {
                             as={`/${childItem.slug}`}
                           >
                             <a
+<<<<<<< HEAD
                               className="footer-link card-text pb-5"
+=======
+                              className="pb-5"
+>>>>>>> ab30f55094b018b0867af5f62015c8f2f729edbf
                               dangerouslySetInnerHTML={{
                                 __html: childItem.title,
                               }}

@@ -17,6 +17,12 @@ const Card = styled.li`
   align-items: flex-start;
   margin-bottom: 100px;
   `}
+  .team-name {
+    font-size: 1.8rem;
+    ${theme.mediaQuery.md`
+    font-size: 2.8rem;
+    `}
+  }
   .card-link--container {
     display: flex;
     flex-direction: column;
@@ -43,6 +49,9 @@ const Card = styled.li`
     ${theme.mediaQuery.sm`
     display: inline-block;
     `}
+    ${theme.mediaQuery.md`
+    font-size: 1.8rem;
+    `}
   }
   .long-dash {
     display: none;
@@ -56,19 +65,12 @@ const Card = styled.li`
  margin-bottom: 100px;
   `}
   }
+  p {
+    font-size: ;
+  }
 `;
 
-export default function ContributorCard({
-  name,
-  slug,
-  bio,
-  image,
-  title,
-  team,
-  social,
-  socialLink,
-  contributor,
-}) {
+export default function ContributorCard({ team, contributor }) {
   return (
     <Card className="team--card" team={team}>
       <ContribImage team={team}>

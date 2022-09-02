@@ -9,9 +9,9 @@ import StockistSingle from "../components/StockistSingle";
 import { v4 as uuidv4 } from "uuid";
 
 const StockistBlock = styled.div`
-  /* border: 2px solid hotpink; */
+  border: 2px solid white; 
 
-  width: 60%;
+  width: 90%;
   max-width: 1000px;
   padding-top: 20px;
   padding-bottom: 20px;

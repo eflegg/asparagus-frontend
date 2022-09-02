@@ -12,7 +12,6 @@ const Card = styled.div`
     position: relative;
     height: 250px;
     top: 0;
-    /* margin-bottom: 10px; */
     ${theme.mediaQuery.sm`
     height: 315px;
     `}
@@ -41,6 +40,9 @@ const Card = styled.div`
     `}
     .article-details {
       align-self: flex-end;
+      .byline--image {
+        margin-left: 10px;
+      }
       ${theme.mediaQuery.md`
       margin-left: 20px;
       align-self: initial;
@@ -65,6 +67,7 @@ export default function CategoryFeaturedCard({ post }) {
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",
+    year: "numeric",
   });
 
   return (
@@ -93,35 +96,68 @@ export default function CategoryFeaturedCard({ post }) {
                 <h3
                   className=""
                   dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-                >
-                  {/* {post.title.rendered} */}
-                </h3>
+                ></h3>
               </div>
               <div className="text-container">
                 <div className="excerpt">
                   <p className="deck--topic-feature">{post.acf.dek}</p>
                 </div>
-                <div className="article-details">
-                  <div>
-                    <p className="byline--article-card">
-                      {post.acf.writer[0].post_title}
-                    </p>
-                    <p className="date--article-card">
-                      {formattedDate} -{" "}
-                      <span>{post.acf.time_to_read} min read</span>
-                    </p>
-                  </div>
-                  <div className="byline--image">
-                    {post.acf.writer[0].acf.headshot.url && (
-                      <Image
-                        src={post.acf.writer[0].acf.headshot.url}
-                        layout="fill"
-                        objectFit="cover"
-                        alt="Author headshot"
-                      />
-                    )}
-                  </div>
-                </div>
+
+                {post.acf.writer[0].acf.contributor ? (
+                  <Link
+                    href={"/contributors/[slug]"}
+                    as={`/contributors/${post.acf.writer[0].post_name}`}
+                  >
+                    <div className="article-details">
+                      <div>
+                        <p className="byline--article-card">
+                          {post.acf.writer[0].post_title}
+                        </p>
+                        <p className="date--article-card">
+                          {formattedDate} -{" "}
+                          <span>{post.acf.time_to_read} min read</span>
+                        </p>
+                      </div>
+                      <div className="byline--image">
+                        {post.acf.writer[0].acf.headshot.url ? (
+                          <Image
+                            src={post.acf.writer[0].acf.headshot.url}
+                            layout="fill"
+                            objectFit="cover"
+                            alt="Author headshot"
+                          />
+                        ) : null}
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <Link
+                    href={"/team/[slug]"}
+                    as={`/team/${post.acf.writer[0].post_name}`}
+                  >
+                    <div className="article-details">
+                      <div>
+                        <p className="byline--article-card">
+                          {post.acf.writer[0].post_title}
+                        </p>
+                        <p className="date--article-card">
+                          {formattedDate} -{" "}
+                          <span>{post.acf.time_to_read} min read</span>
+                        </p>
+                      </div>
+                      <div className="byline--image">
+                        {post.acf.writer[0].acf.headshot.url ? (
+                          <Image
+                            src={post.acf.writer[0].acf.headshot.url}
+                            layout="fill"
+                            objectFit="cover"
+                            alt="Author headshot"
+                          />
+                        ) : null}
+                      </div>
+                    </div>
+                  </Link>
+                )}
               </div>
             </a>
           </Link>
