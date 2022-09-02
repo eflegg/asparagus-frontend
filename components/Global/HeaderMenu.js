@@ -479,7 +479,7 @@ export default function HeaderMenu() {
           <DesktopNav>
             <ul
               className={`${
-                size.scrollY >= 182 ? "desktopnavcolorchange" : ""
+                size.scrollY >= 132 ? "desktopnavcolorchange" : ""
               } desktopnav`}
             >
               {links?.items?.map((link, index) => {
