@@ -174,17 +174,22 @@ const SingleHero = styled.div`
   margin-bottom: 100px;
   .categories {
     width: 90%;
-    margin: 0 auto;
+    margin: 70px 0 0 36px;
     h5 {
       margin-right: 10px;
       &:first-child {
         &::after {
           content: "\\00B7";
-          font-size: 40px;
+          font-size: 35px;
           line-height: 5px;
           position: relative;
+          top: 7px;
+          left: 5px;
+          ${theme.mediaQuery.md`
           top: 3px;
           left: 3px;
+          font-size: 40px;
+          `}
         }
       }
     }
@@ -226,7 +231,7 @@ const SingleHero = styled.div`
   }
 .categories {
   ${theme.mediaQuery.md`
-  margin: 30px 0 0 80px;
+  // margin: 30px 0 0 80px;
   `}
 }
   hr {
