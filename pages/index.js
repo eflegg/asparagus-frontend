@@ -1,4 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
+import Loader from "../components/Global/Loader";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+
 import { Config } from "../config";
 import fetch from "isomorphic-fetch";
 import PageWrapper from "../components/Global/PageWrapper";
@@ -16,12 +20,7 @@ const CategoryContainer = styled.section`
   ${theme.mediaQuery.sm`
 margin-bottom: 80px;
 `}
-  // hr {
-  //   height: 3px;
-  //   border: 0px;
-  //   background: ${theme.colours.teaGreen};
-  //   margin-bottom: 65px;
-  // }
+
   h2 {
     color: ${theme.colours.soil};
     padding-bottom: 0;
@@ -31,6 +30,12 @@ margin-bottom: 80px;
 `;
 
 export default function Home({ page, posts }) {
+  // get URL parameters
+  const { query: queryParams } = useRouter();
+  //default to 1 if no parameter
+  const first = queryParams.first != undefined ? queryParams.first : 1;
+  //pagewrapper is rendered with the URL parameter
+
   const catOne = page.acf.home_category_one[0].term_id;
   const catTwo = page.acf.home_category_two[0].term_id;
   const catThree = page.acf.home_category_three[0].term_id;
@@ -154,13 +159,6 @@ export default function Home({ page, posts }) {
               />
             )
           ) : null}
-
-          {/* <NewsletterSignup 
-            // title="Sign up for the Asparagus Newsletter"
-            // subtitle="Pleasantly infrequent updates from the asparagus patch"
-            // image="triplestalk.svg"
-          // />
-          */}
 
           <CategoryContainer className="cat-three--container">
             <h2 className="h5">{page.acf.home_category_three[0].name}</h2>
