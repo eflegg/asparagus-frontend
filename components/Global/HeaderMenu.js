@@ -51,7 +51,7 @@ const MenuContainer = styled.div`
   ${theme.mediaQuery.md`
     position: sticky;
     z-index: 10;
-    top: -182px;
+    top: -130px;
   `};
 
   .nav-link a {
@@ -125,7 +125,7 @@ const ConnectMenuContainer = styled.div`
 `;
 
 const DesktopNav = styled.nav`
-  //  position: fixed; 
+  //  position: fixed;
 
   z-index: 1;
   width: 100%;
@@ -337,7 +337,6 @@ const ConnectScrollMenuContainer = styled.div`
   div.search-container {
     margin-right: 15px;
   }
- 
 `;
 
 export default function HeaderMenu() {
