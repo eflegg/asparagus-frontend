@@ -98,12 +98,12 @@ justify-content: flex-end;
 // width: 45%;
 `;
 const SignUp = styled.div`
-  // border: 3px solid salmon;
+  border: 3px solid salmon;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 10px;
+  padding: 0 10px;
   ${theme.mediaQuery.md`
   margin-top: 40px;
   `}
