@@ -18,7 +18,7 @@ const FooterContainer = styled.footer`
   // border: solid black;
   .footer-inner {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     // border: solid 2px white;
     width: 100%;
     ${theme.mediaQuery.md`
@@ -30,7 +30,7 @@ const FooterMenu = styled.div`
   display: flex;
   justify-content: space-between; 
   // border: solid hotpink;
-  padding: 20px 12px;
+  padding: 20px 0 20px 12px;
   ${theme.mediaQuery.md`
   padding: 40px 20px 40px 40px;
   width: 60%;
@@ -43,7 +43,7 @@ const FooterMenu = styled.div`
     justify-content: space-between;
   }
   li {
-    padding: 0 0 5px 0;
+    // padding: 0 0 5px 0;
     list-style-type: none; 
   }
   .nav-link {
@@ -62,11 +62,14 @@ const FooterMenu = styled.div`
     a {
       font-family: ${theme.type.accent};
       font-size: 1.3rem; 
-      color: black;
+      // color: black;
       ${theme.mediaQuery.md`
       font-size: 1.8rem;
       `}
     }
+  }
+  .subnav a:active {
+    color: ${theme.colours.gusGreen};
   }
 `;
 
@@ -74,9 +77,16 @@ const SocialMediaLogos = styled.div`
 // border: solid green;
   display: flex; 
   justify-content: center;
+  ${theme.mediaQuery.md`
+  justify-content: flex-start;
+  `}
   img {
     height: 20px;
-  }
+    margin: 5px;
+    // ${theme.mediaQuery.md`
+    // height: 20px;
+    // `}
+  
   
 `;
 
@@ -93,7 +103,7 @@ const SignUp = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-right: 10px;
+  padding: 10px;
   ${theme.mediaQuery.md`
   margin-top: 40px;
   `}
@@ -117,9 +127,15 @@ const SignUp = styled.div`
    position: absolute;
    font-size: 1.4rem;
    left: 165px;
+   ${theme.mediaQuery.sm`
+   left: 285px;
+   `}
    ${theme.mediaQuery.md`
-   left: 990px;
+   left: 680px;
    font-size: 1.6rem;
+   `}
+   ${theme.mediaQuery.lg`
+   left: 990px;
    `}
  }
 `;
@@ -187,7 +203,7 @@ export default function Footer() {
                             as={`/${childItem.slug}`}
                           >
                             <a
-                              className=""
+                              className="footer-link"
                               dangerouslySetInnerHTML={{
                                 __html: childItem.title,
                               }}
@@ -200,7 +216,7 @@ export default function Footer() {
                             as={`/${childItem.slug}`}
                           >
                             <a
-                              className="card-text pb-5"
+                              className="footer-link card-text pb-5"
                               dangerouslySetInnerHTML={{
                                 __html: childItem.title,
                               }}
