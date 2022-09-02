@@ -12,10 +12,10 @@ const FooterContainer = styled.footer`
   max-width: 100%;
   background: ${theme.colours.gusYellow};
   overflow: hidden;
-  // padding: 50px 0 50px 50px; 
-  display: flex; 
-  flex-direction: row; 
-  // border: solid black;
+  // padding: 50px 0 50px 50px;
+  display: flex;
+  flex-direction: row;
+
   .footer-inner {
     display: flex;
     flex-direction: column-reverse;
@@ -28,7 +28,7 @@ const FooterContainer = styled.footer`
 `;
 const FooterMenu = styled.div`
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   // border: solid hotpink;
   padding: 20px 0 20px 12px;
   ${theme.mediaQuery.md`
@@ -44,24 +44,24 @@ const FooterMenu = styled.div`
   }
   li {
     // padding: 0 0 5px 0;
-    list-style-type: none; 
+    list-style-type: none;
   }
   .nav-link {
-    color: ${theme.colours.gusGreen}; 
+    color: ${theme.colours.gusGreen};
     font-family: ${theme.type.header};
     font-size: 1.6rem;
     ${theme.mediaQuery.md`
     font-size: 2.8rem;
     `}
-     
-    font-weight: bold; 
+
+    font-weight: bold;
   }
   .subnav {
     // border: solid blue;
     padding-left: 0;
     a {
       font-family: ${theme.type.accent};
-      font-size: 1.3rem; 
+      font-size: 1.3rem;
       // color: black;
       ${theme.mediaQuery.md`
       font-size: 1.8rem;
@@ -74,8 +74,8 @@ const FooterMenu = styled.div`
 `;
 
 const SocialMediaLogos = styled.div`
-// border: solid green;
-  display: flex; 
+  // border: solid green;
+  display: flex;
   justify-content: center;
   ${theme.mediaQuery.md`
   justify-content: flex-start;
@@ -86,16 +86,18 @@ const SocialMediaLogos = styled.div`
     // ${theme.mediaQuery.md`
     // height: 20px;
     // `}
-  
-  
+  }
 `;
 
 const NewsletterContainer = styled.div`
-// border: solid rebeccapurple;
-display: flex;
-flex-direction: row;
-justify-content: flex-end;
-// width: 45%;
+  // border: solid rebeccapurple;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  ${theme.mediaQuery.md`
+ align-items: initial;
+ `}// width: 45%;
 `;
 const SignUp = styled.div`
   // border: 3px solid salmon;
@@ -108,43 +110,52 @@ const SignUp = styled.div`
   padding-top: 0;
   margin-top: 40px;
   `}
-  
+
   input {
     height: 38px;
     max-width: 280px;
-    flex: 1; 
+    flex: 1;
     ${theme.mediaQuery.xs`
-    width: 200px;
+    max-width: 200px;
     margin-right: 20px;
   `}
+    ${theme.mediaQuery.sm`
+   width: 280px;
+   margin-right: 20px;
+ `}
   }
- .input-container {
-   display: flex; 
-   align-items: center; 
-   
- }
- .btn--primary {
-   z-index: 1; 
-   position: absolute;
-   font-size: 1.4rem;
-   left: 165px;
-   ${theme.mediaQuery.sm`
-   left: 285px;
+  .input-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    ${theme.mediaQuery.sm`
+ flex-direction: row;
+ align-items: center;
+`}
+  }
+  .btn--primary {
+    z-index: 1;
+    position: relative;
+    font-size: 1.4rem;
+
+    ${theme.mediaQuery.sm`
+     left: 50px;
    `}
-   ${theme.mediaQuery.md`
-   left: 680px;
+    ${theme.mediaQuery.md`
+  //  left: 680px;
    font-size: 1.6rem;
    `}
    ${theme.mediaQuery.lg`
-   left: 990px;
+  //  left: 990px;
    `}
- }
+  }
 `;
 
 const Logo = styled.div`
-// border: solid teal;
-width: 100%;
-min-width: 150px;
+  // border: solid teal;
+  width: 100%;
+  min-width: 150px;
   img {
     width: 100%;
     height: 100%;
@@ -159,8 +170,6 @@ min-width: 150px;
   // // left: -40px;
   min-width: 30%;
   `}
-
-  // flex-direction: row;
 `;
 
 export default function Footer() {
@@ -186,64 +195,68 @@ export default function Footer() {
   return (
     <FooterContainer>
       <div className="footer-inner">
-      <FooterMenu className="footer--container">
-        <div className="footer-menu--inner">
-        {footerLinks?.items?.map((link, index) => {
-          return (
-            <li className="nav-link" key={uuidv4()}>
-              <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
-              {link.child_items && (
-                <ul className="subnav">
-                  {link?.child_items?.map((childItem, childIndex) => {
-                    return (
-                      <li key={uuidv4()} className="subnav-link">
-                        {childItem.object == "general_pages" ? (
-                          <ActiveLink
-                            activeClassName="navlink--active"
-                            href={`/[slug]}`}
-                            as={`/${childItem.slug}`}
-                          >
-                            <a
-                              className="footer-link"
-                              dangerouslySetInnerHTML={{
-                                __html: childItem.title,
-                              }}
-                            ></a>
-                          </ActiveLink>
-                        ) : (
-                          <ActiveLink
-                            activeClassName="navlink--active"
-                            href={`/${childItem.slug}`}
-                            as={`/${childItem.slug}`}
-                          >
-                            <a
-                              className="footer-link card-text pb-5"
-                              dangerouslySetInnerHTML={{
-                                __html: childItem.title,
-                              }}
-                            ></a>
-                          </ActiveLink>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
-            </li>
-          );
-        })}
-      </div>
-      <SocialMediaLogos>
-        <img src="/twitter_soil.svg" />
-        <img src="/instagram_soil.svg" />
-        <img src="/facebook_soil.svg" />
-      </SocialMediaLogos>
+        <FooterMenu className="footer--container">
+          <div className="footer-menu--inner">
+            {footerLinks?.items?.map((link, index) => {
+              return (
+                <li className="nav-link" key={uuidv4()}>
+                  <span dangerouslySetInnerHTML={{ __html: link.title }}></span>
+                  {link.child_items && (
+                    <ul className="subnav">
+                      {link?.child_items?.map((childItem, childIndex) => {
+                        return (
+                          <li key={uuidv4()} className="subnav-link">
+                            {childItem.object == "general_pages" ? (
+                              <ActiveLink
+                                activeClassName="navlink--active"
+                                href={`/[slug]}`}
+                                as={`/${childItem.slug}`}
+                              >
+                                <a
+                                  className="footer-link"
+                                  dangerouslySetInnerHTML={{
+                                    __html: childItem.title,
+                                  }}
+                                ></a>
+                              </ActiveLink>
+                            ) : (
+                              <ActiveLink
+                                activeClassName="navlink--active"
+                                href={`/${childItem.slug}`}
+                                as={`/${childItem.slug}`}
+                              >
+                                <a
+                                  className="footer-link card-text pb-5"
+                                  dangerouslySetInnerHTML={{
+                                    __html: childItem.title,
+                                  }}
+                                ></a>
+                              </ActiveLink>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </li>
+              );
+            })}
+          </div>
+          <SocialMediaLogos>
+            <img src="/twitter_soil.svg" />
+            <img src="/instagram_soil.svg" />
+            <img src="/facebook_soil.svg" />
+          </SocialMediaLogos>
         </FooterMenu>
         <NewsletterContainer>
           <div className="signupWrapper">
             <SignUp>
-              <p className="newsletter-header--footer">Sign up for News from the Asparagus Patch</p>
-              <p className="newsletter-subheader--footer">Pleasantly infrequent updates from Asparagus Magazine</p>
+              <p className="newsletter-header--footer">
+                Sign up for News from the Asparagus Patch
+              </p>
+              <p className="newsletter-subheader--footer">
+                Pleasantly infrequent updates from Asparagus Magazine
+              </p>
               <div className="input-container">
                 <input type="test" />
                 <button className="btn--primary"> Sign Up </button>
@@ -251,11 +264,10 @@ export default function Footer() {
             </SignUp>
           </div>
           <Logo>
-          <img src="asparagus_tip_logo.svg" alt="asparagus logo" />
-        </Logo>
+            <img src="asparagus_tip_logo.svg" alt="asparagus logo" />
+          </Logo>
         </NewsletterContainer>
-        </div>
-      
+      </div>
     </FooterContainer>
   );
 }

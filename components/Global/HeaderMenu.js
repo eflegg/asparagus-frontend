@@ -388,60 +388,10 @@ export default function HeaderMenu() {
               />
             </a>
           </Link>
-          {/* {size.scrollY >= 10 && size.width < 1000 && (
-            <ConnectScrollMenuContainer>
-              <div className="left-container">
-                <Link href="/">
-                  <Image
-                    src="/triplestalk.svg"
-                    alt="Asparagus Magazine logo"
-                    layout="fixed"
-                    width="53px"
-                    height="56px"
-                  />
-                </Link>
-                <div className="donate-button">
-                  <ActiveLink
-                    activeClassName="navlink--active"
-                    href={`/${connectLinks?.items?.[0].slug}`}
-                    to={`/${connectLinks?.items?.[0].slug}`}
-                  >
-                    <a>{connectLinks?.items?.[0].title}</a>
-                  </ActiveLink>
-                </div>
-              </div>
-              <div className="right-container">
-                <div className="search-container">
-                  <Search />
-                </div>
-                <HamburgerMenuButton
-                  navActive={navActive}
-                  onClick={() => {
-                    setNavActive(!navActive);
-                  }}
-                />
-              </div>
-            </ConnectScrollMenuContainer>
-          )} */}
-          <ConnectMenuContainer
-          // scroll={size.scrollY >= 10 ? true : false}
-          // mobile={size.width < 1000 ? true : false}
-          >
+
+          <ConnectMenuContainer>
             <ConnectMenuNav>
               <ul
-                // style={{
-                //   border: "2px solid hotpink",
-                //   padding:
-                //     navActive && size.width < 1000 ? "0px 3%" : "initial",
-                //   // width: navActive && size.width < 1000 ? "100%" : "initial",
-                //   position:
-                //     navActive && size.width < 1000
-                //       ? "fixed"
-                //       : size.scrollY > 2 && size.width < 1000
-                //       ? "fixed"
-                //       : "relative",
-                //   top: size.scrollY > 2 && size.width < 1000 ? "0" : "initial",
-                // }}
                 className={`${
                   navActive && size.width < 1000
                     ? "nav-active--mobile"
@@ -491,17 +441,9 @@ export default function HeaderMenu() {
         {size.width >= 1000 && (
           <DesktopNav>
             <ul
-              // style={
-              //   size.scrollY >= 10
-              //     ? { top: -10 - imgRef.current.clientHeight }
-              //     : null
-              // }
               className={`${
                 size.scrollY >= 100 ? "desktopnavcolorchange" : ""
               } desktopnav`}
-              // {
-              //   size.scrollY >= 175 ? "desktopnavcolorchange" : "desktopnav"
-              // }
             >
               {links?.items?.map((link, index) => {
                 return (
@@ -560,24 +502,6 @@ export default function HeaderMenu() {
 
         {navActive ? (
           <MobileNavContainer>
-            {/* <ConnectMenuNav>
-              <ul>
-                {connectLinks?.items?.map((connectLink, index) => {
-                  return (
-                    <li key={uuidv4()}>
-                      <ActiveLink
-                        activeClassName="navlink--active"
-                        href={`/${connectLink.slug}`}
-                        to={`/${connectLink.slug}`}
-                      >
-                        <a>{connectLink.title}</a>
-                      </ActiveLink>
-                    </li>
-                  );
-                })}
-                <h3>hello</h3>
-              </ul>
-            </ConnectMenuNav> */}
             <HamburgerLogoContainer>
               <Link href="/">
                 <a>
