@@ -118,7 +118,7 @@ const SignUp = styled.div`
 
   input {
     height: 30px;
-    max-width: 280px;
+    width: 80%;
     flex: 1;
     ${theme.mediaQuery.xs`
     width: 180px;
@@ -126,7 +126,7 @@ const SignUp = styled.div`
 
   `}
     ${theme.mediaQuery.sm`
-   width: 280px;
+   width: 200px;
    margin-right: 20px;
  `}
   }
@@ -204,12 +204,12 @@ const Logo = styled.div`
     flex-grow: 1;
   }
   ${theme.mediaQuery.sm`
-  min-width: 30%;
+  // min-width: 30%;
   `}
   ${theme.mediaQuery.md`
   // position: relative;
   // // left: -40px;
-  min-width: 30%;
+  // min-width: 30%;
   `}
 `;
 
