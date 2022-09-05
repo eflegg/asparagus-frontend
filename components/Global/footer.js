@@ -6,6 +6,7 @@ import ActiveLink from "./ActiveLink";
 import styled from "styled-components";
 import theme from "./Theme";
 import { v4 as uuidv4 } from "uuid";
+import { useFormFields, useMailChimpForm } from "use-mailchimp-form";
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -29,11 +30,13 @@ const FooterContainer = styled.footer`
 const FooterMenu = styled.div`
   display: flex;
   justify-content: space-between; 
-  // border: solid hotpink;
-  padding: 20px 0 20px 12px;
+  padding: 40px 0;
+  ${theme.mediaQuery.sm`
+  padding: 80px;
+  `}
   ${theme.mediaQuery.md`
   padding: 40px 20px 40px 40px;
-  width: 60%;
+  width: 70%;
   `}
   flex-direction: column;
   .footer-menu--inner {
@@ -41,9 +44,10 @@ const FooterMenu = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0 12px 20px 12px;
   }
   li {
-    // padding: 0 0 5px 0;
+    padding: 0 10px 10px 0;
     list-style-type: none; 
   }
   .nav-link {
@@ -62,6 +66,7 @@ const FooterMenu = styled.div`
     a {
       font-family: ${theme.type.accent};
       font-size: 1.3rem; 
+      line-height: 1rem;
       // color: black;
       ${theme.mediaQuery.md`
       font-size: 1.8rem;
@@ -110,33 +115,74 @@ const SignUp = styled.div`
   `}
   
   input {
-    height: 38px;
+    height: 30px;
     max-width: 280px;
     flex: 1; 
     ${theme.mediaQuery.xs`
-    width: 200px;
+    width: 180px;
     margin-right: 20px;
+
   `}
   }
- .input-container {
-   display: flex; 
-   align-items: center; 
-   
- }
+//  .input-container {
+//    display: flex; 
+//    align-items: center; 
+//  }
+
+ label,
+  .label {
+    position: relative;
+    font-family: ${theme.type.semibold};
+    color: ${theme.colours.soil};
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
+    ${theme.mediaQuery.md`
+    font-size: 1.6rem;
+    margin: 20px 0 15px;
+  `}
+  }
+
+  #mc_embed_signup {
+    margin-left: 10px;
+    ${theme.mediaQuery.xs`
+    margin-left: 18px;
+    `}
+    ${theme.mediaQuery.sm`
+    margin: 20px
+    `}
+    ${theme.mediaQuery.md`
+     margin: 80px 0 40px 0;
+    `}
+  }
+
  .btn--primary {
    z-index: 1; 
    position: absolute;
    font-size: 1.4rem;
    left: 165px;
+   width: 25%;
+   margin: 0px;
+   text-align: center;
+   padding: 0px;
+   ${theme.mediaQuery.xs`
+   width: 18%;
+   left: 228px;
+   `}
    ${theme.mediaQuery.sm`
-   left: 285px;
+   left: 295px;
+   width: 12%;
    `}
    ${theme.mediaQuery.md`
-   left: 680px;
+   left: 780px;
    font-size: 1.6rem;
+   width: 12%;
    `}
    ${theme.mediaQuery.lg`
-   left: 990px;
+   left: 1005px;
+   width: 10%;
    `}
  }
 `;
@@ -163,8 +209,13 @@ min-width: 150px;
   // flex-direction: row;
 `;
 
+
+
 export default function Footer() {
   const [footerLinks, setFooterLinks] = useState([]);
+  const [emailValue, setEmailValue] = useState("");
+  const [newsletterValue, setNewsletterValue] = useState("");
+  const [suggestedValue, setSuggestedValue] = useState("");
 
   useEffect(() => {
     async function loadLinks() {
@@ -244,9 +295,33 @@ export default function Footer() {
             <SignUp>
               <p className="newsletter-header--footer">Sign up for News from the Asparagus Patch</p>
               <p className="newsletter-subheader--footer">Pleasantly infrequent updates from Asparagus Magazine</p>
-              <div className="input-container">
-                <input type="test" />
-                <button className="btn--primary"> Sign Up </button>
+              <div id="mc_embed_signup">
+              <form
+            action="https://eepurl.us16.list-manage.com/subscribe/post?u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            className="validate"
+            target="_self"
+          >
+                 <label htmlFor="mce-EMAIL">Email Address (required)*</label>
+                <input
+                  type="email"
+                  name="EMAIL"
+                  className="required email"
+                  id="mce-EMAIL"
+                  required
+                  value={emailValue}
+                  onChange={(e) => setEmailValue(e.target.value)}
+                />
+                 <input
+                    type="submit"
+                    value="Sign Up"
+                    name="subscribe"
+                    id="mc-embedded-subscribe"
+                    className="button btn--primary"
+                  />
+                </form>
               </div>
             </SignUp>
           </div>
