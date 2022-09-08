@@ -73,6 +73,7 @@ const SingleContainer = styled.div`
     margin: 0 auto 20px;
     width: 90%;
     max-width: 650px;
+    list-style: disc;
   }
 
   h2 {
@@ -321,50 +322,15 @@ export default function ArticlePage({ article, allArticles, categories }) {
           <hr />
           <div className="hero d-flex">
             <div className="hero--text">
-              <h1 itempProp="name" className="article--title">
-                {article.title.rendered}
+              <h1
+                itempprop="name"
+                className="article--title"
+                dangerouslySetInnerHTML={{ __html: article.title.rendered }}
+              >
+                {/* {article.title.rendered} */}
               </h1>
               <p className="excerpt deck">{article.acf.dek}</p>
               <Byline article={article} />
-              {/* <div className="article-details">
-           
-                {article.acf.secondary_author == "Yes" ? (
-                  <TwoAuthorCard post={article} />
-                ) : (
-                  <>
-                    <div className="byline--image">
-                      {article.acf.writer[0].acf.headshot.url ? (
-                    
-                        <Image
-                          src={article.acf.writer[0].acf.headshot.url}
-                          layout="fill"
-                          objectFit="cover"
-                          alt="Author headshot"
-                        />
-                      ) : (
-                        <Image
-                          src="/singlestalk-square.svg"
-                          layout="fill"
-                          objectFit="cover"
-                          alt="Author headshot"
-                        />
-                      )}
-                    </div>
-                    <div>
-                      <p itemProp="author" className="byline">
-                        {article.acf.writer[0].post_title}
-                      </p>
-                      <p
-                        itemProp="datePublished"
-                        className="date--single-article"
-                      >
-                        {formattedDate} -{" "}
-                        <span>{article.acf.time_to_read} min read</span>
-                      </p>
-                    </div>
-                  </>
-                )}
-              </div> */}
             </div>
             <div className="hero--image position-relative">
               <div className="hero-right--inner">
@@ -374,6 +340,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     alt={article._embedded["wp:featuredmedia"]["0"].alt_text}
                     layout="fill"
                     objectFit="cover"
+                    priority
                   />
                 ) : (
                   <Image
@@ -381,6 +348,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     layout="fill"
                     objectFit="cover"
                     alt="Asparagus Magazine three-stalk logo"
+                    priority
                   />
                 )}
                 {article._embedded["wp:featuredmedia"] ? (
