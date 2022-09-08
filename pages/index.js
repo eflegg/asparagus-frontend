@@ -26,7 +26,7 @@ margin-bottom: 80px;
     color: ${theme.colours.soil};
     padding-bottom: 0;
     width: 80%;
-    margin: 0 auto;
+    margin: 0 0 0 72px;
   }
 `;
 

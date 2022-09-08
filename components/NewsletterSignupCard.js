@@ -11,6 +11,7 @@ const NewsletterBlock = styled.div`
   margin: 45px auto;
   background-color: ${theme.colours.darkWheat};
   .signupWrapper {
+    // border: solid red;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -19,12 +20,12 @@ const NewsletterBlock = styled.div`
     /* this is how you use the & in scss */
     &.wrapper--support {
       width: 100%;
+      // border: solid rebeccapurple;
+      align-items: stretch;
     }
   }
   width: 100%;
   position: relative;
-  padding: 40px 0px;
-  margin-bottom: 40px;
   overflow: hidden;
   h2 {
     position: relative;
@@ -77,7 +78,7 @@ const NewsletterBlock = styled.div`
   }
   .newsletter-options {
     position: relative;
-    // border: solid blue;
+    border: solid blue;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -87,20 +88,8 @@ const NewsletterBlock = styled.div`
    width: 40%;
    `}
   }
-  .image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    width: 100%;
-    img {
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
+  
+  
 
   .btn--primary {
     width: 75%;
@@ -117,8 +106,9 @@ const NewsletterBlock = styled.div`
 `;
 
 const TripleStalk = styled.div`
-  /* border: 3px solid orangered; */
+  // border: 3px solid orangered;
   height: 100%;
+  max-height: 800px;
   min-width: 40%;
   ${theme.mediaQuery.sm`
   min-width: 30%;
@@ -134,16 +124,24 @@ const TripleStalk = styled.div`
 `;
 
 const PhotoStyled = styled.div`
-  width: 65%;
-  object-fit: cover;
-  img {
-    width: 100%;
-    height: 100%;
+  width: 75%;
+  // border: solid hotpink;
+  .image-container {
+    // border: 2px solid green;
+  
     object-fit: cover;
+    height: 100%;
+    // width: 65%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 `;
 
 const SignUp = styled.div`
+// border: 3px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -282,7 +280,9 @@ u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0"
 
         {support ? (
           <PhotoStyled>
+            <div className="image-container">
             <img src={image} alt="nature image" />
+            </div>
           </PhotoStyled>
         ) : (
           <TripleStalk>

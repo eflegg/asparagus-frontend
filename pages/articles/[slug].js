@@ -174,17 +174,22 @@ const SingleHero = styled.div`
   margin-bottom: 100px;
   .categories {
     width: 90%;
-    margin: 0 auto;
+    margin: 70px 0 0 36px;
     h5 {
       margin-right: 10px;
       &:first-child {
         &::after {
           content: "\\00B7";
-          font-size: 40px;
+          font-size: 35px;
           line-height: 5px;
           position: relative;
+          top: 7px;
+          left: 5px;
+          ${theme.mediaQuery.md`
           top: 3px;
           left: 3px;
+          font-size: 40px;
+          `}
         }
       }
     }
@@ -218,13 +223,17 @@ const SingleHero = styled.div`
       `}
     }
     .article-details {
-      justify-content: flex-end;
+      align-items: flex-start;
       ${theme.mediaQuery.sm`
       justify-content: flex-start;
       `}
     }
   }
-
+.categories {
+  ${theme.mediaQuery.md`
+  // margin: 30px 0 0 80px;
+  `}
+}
   hr {
     margin-bottom: 26px;
     ${theme.mediaQuery.md`
@@ -242,8 +251,16 @@ const SingleHero = styled.div`
   .byline {
     margin: 5px auto;
   }
+  .byline--single-article {
+    margin: 0px 0 0 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    ${theme.mediaQuery.md`
+    font-size: 1.6rem;
+    `}
+  }
   .date--single-article {
-    margin: 5px auto;
+    margin: 5px 0 0 0;
   }
 `;
 
@@ -314,17 +331,23 @@ export default function ArticlePage({ article, allArticles, categories }) {
 
                 two author card just needs a bit more styling!
                 */}
-                {article.acf.secondary_author == undefined ? (
+                {article.acf.secondary_author !== "" ? (
                   <TwoAuthorCard post={article} />
                 ) : (
                   <>
                     <div className="byline--image">
-                      {article.acf.writer[0].acf.headshot.url && (
+                      {article.acf.writer[0].acf.headshot.url ? (
                         // this will need to have that same conditional checking for contributor
                         // and rendering the Link with the right slug
-
                         <Image
                           src={article.acf.writer[0].acf.headshot.url}
+                          layout="fill"
+                          objectFit="cover"
+                          alt="Author headshot"
+                        />
+                      ) : (
+                        <Image
+                          src="/singlestalk-square.svg"
                           layout="fill"
                           objectFit="cover"
                           alt="Author headshot"

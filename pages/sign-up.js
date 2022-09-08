@@ -12,12 +12,15 @@ import { useFormFields, useMailChimpForm } from "use-mailchimp-form";
 const NewsLetter = styled.div`
   width: 100%;
   position: relative;
-  padding: 40px 0px;
+  padding: 80px 0px;
   margin-bottom: 40px;
   overflow: hidden;
+  ${theme.mediaQuery.md`
+  padding: 140px 0;
+  `}
   h2 {
     position: relative;
-    color: ${theme.colours.darkWheat};
+    color: ${theme.colours.soil};
     width: 80%;
     margin: 0 auto;
     ${theme.mediaQuery.md`
@@ -83,6 +86,7 @@ const NewsLetter = styled.div`
     left: 0;
     object-fit: cover;
     width: 100%;
+    height: 100%;
 
     img {
       top: 0;

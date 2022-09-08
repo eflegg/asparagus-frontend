@@ -40,26 +40,34 @@ const MenuContainer = styled.div`
     display: none;
     font-family: ${theme.type.italic};
     ${theme.mediaQuery.md`
-    display: block;
+    // display: none;
     `}
   }
   .nameplate {
     ${theme.mediaQuery.md`
- 
- max-width: 457px;
+  max-width: 457px;
   `};
   }
   ${theme.mediaQuery.md`
     position: sticky;
-  z-index: 10;
-  top: -182px;
+    z-index: 10;
+    top: -132px;
+  
   `};
 
-  .nav-link a {
-    font-family: ${theme.type.medium};
-    font-size: 2.4rem;
-    color: ${theme.colours.gusGreen};
-    margin: 10px;
+  .nav-link {
+    button {
+      font-family: ${theme.type.medium};
+      font-size: 2.4rem;
+      color: ${theme.colours.gusGreen};
+    }
+    &:focus {
+      border: 1px solid orange;
+    }
+    /* position: relative; */
+    z-index: 20;
+
+    margin: 15px 10px;
     display: flex;
     flex-direction: column-reverse;
     ul {
@@ -115,8 +123,7 @@ const ConnectMenuContainer = styled.div`
   align-items: center;
   margin-top: 2%;
   ${theme.mediaQuery.md`
-    flex: 0 0 60%; 
-    // padding-top: 30px; 
+    // flex: 0 0 60%; 
     align-items: flex-start; 
   
 
@@ -124,7 +131,7 @@ const ConnectMenuContainer = styled.div`
 `;
 
 const DesktopNav = styled.nav`
-  /* position: fixed; */
+  //  position: fixed;
 
   z-index: 1;
   width: 100%;
@@ -133,16 +140,33 @@ const DesktopNav = styled.nav`
     display: flex;
     justify-content: space-between;
     position: relative;
-    width: 100vw;
-    padding-left: 30px;
-    padding-right: 30px;
+    z-index: 20;
+    width: 100%;
+
+    /* width: 100vw; */
+    /* padding-left: 30px; */
+    /* padding-right: 30px; */
     /* border: 2px solid orange; */
-    margin: 0px -57px 0px -57px;
+    /* margin: 0px -57px 0px -57px; */
     background-color: transparent;
     transition: all 0.25s ease-in-out;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 68px;
+      width: 150%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: transparent;
+      transition: all 0.25s ease-in-out;
+    }
     &.desktopnavcolorchange {
       transition: all 0.25s ease-in-out;
-      background-color: ${theme.colours.gusYellow};
+      &:after {
+        transition: all 0.25s ease-in-out;
+        background-color: ${theme.colours.gusYellow};
+      }
     }
   }
 
@@ -153,10 +177,21 @@ const DesktopNav = styled.nav`
     background-color: ${theme.colours.gusYellow};
     justify-content: space-around;
     position: absolute;
-    width: 100%;
-    top: 100%;
-    left: 0;
+    width: 115%;
+    top: 50px;
+    transform: translateX(-50%);
     z-index: 1;
+    height: 0px;
+    left: 50%;
+    opacity: 0;
+    display: none;
+    transition: all 1s ease-in-out;
+    &.subnav-open {
+      height: auto;
+      opacity: 1;
+      display: flex;
+      transition: all 1s ease-in-out;
+    }
   }
   li.subnav-link {
     border-right: 1px solid;
@@ -177,12 +212,12 @@ const DesktopNav = styled.nav`
 const LogoConnectMenuContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-start;
   position: relative;
   margin-bottom: 60px;
   .img {
-    flex: 0 0 50%;
+    /* flex: 0 0 50%; */
     height: 100%;
     width: 100%;
   }
@@ -192,7 +227,8 @@ const LogoConnectMenuContainer = styled.div`
     `};
 `;
 const ConnectMenuNav = styled.nav`
-  flex: 1;
+  margin-left: 15px;
+  width: 100%;
   position: relative;
   transition: all 0.25s ease-in-out;
   ul.connect-ul {
@@ -233,14 +269,14 @@ const ConnectMenuNav = styled.nav`
     left: 0;
     z-index: 30;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
   }
   a {
     font-size: 1.6rem;
     font-weight: 600;
-    color: ${theme.colours.soil};
+    // color: ${theme.colours.soil};
     font-family: ${theme.type.semibold};
     ${theme.mediaQuery.sm`
      font-size: 2rem;
@@ -251,7 +287,7 @@ const ConnectMenuNav = styled.nav`
     transition: all 0.25s ease-in-out;
     flex: none;
     ${theme.mediaQuery.md`
-      padding: 3px 30px; 
+      padding: 3px 20px; 
     `};
     position: relative;
     &::after {
@@ -267,7 +303,7 @@ const ConnectMenuNav = styled.nav`
       &:not(:first-of-type) {
         &::after {
           content: "";
-          width: 50%;
+          width: 54%;
           transition: all 0.25s ease-out;
         }
       }
@@ -280,38 +316,6 @@ const ConnectMenuNav = styled.nav`
     ${theme.mediaQuery.md`
       padding: 3px 30px; 
     `};
-  }
-`;
-const ConnectScrollMenuContainer = styled.div`
-  display: flex;
-  direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: ${theme.colours.darkWheat};
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  width: 100vw;
-  padding: 10px 20px;
-  margin-left: -15px;
-  div.left-container {
-    display: flex;
-    align-items: center;
-    flex: 1;
-  }
-  div.right-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1;
-  }
-  div.donate-button {
-    background-color: ${theme.colours.gusYellow};
-    padding: 3px 5px;
-    border-radius: 5px;
-  }
-  div.search-container {
-    margin-right: 15px;
   }
 `;
 
@@ -485,47 +489,53 @@ export default function HeaderMenu() {
                       className="nav-link"
                       onClick={() => handleSubnavClick(link.ID)}
                     >
-                      <a
-                        href="#"
+                      <button
+                        className="no-button"
                         dangerouslySetInnerHTML={{ __html: link.title }}
-                      ></a>
-                      {link.child_items && subnav == link.ID ? (
-                        <ul className="subnav">
-                          {link?.child_items?.map((childItem, childIndex) => {
-                            return (
-                              <li key={uuidv4()} className="subnav-link">
-                                {childItem.object == "page" ? (
-                                  <ActiveLink
-                                    activeClassName="navlink--active"
-                                    href={`/${childItem.slug}`}
-                                    as={`/${childItem.slug}`}
-                                  >
-                                    <a
-                                      className="card-text pb-5"
-                                      dangerouslySetInnerHTML={{
-                                        __html: childItem.title,
-                                      }}
-                                    ></a>
-                                  </ActiveLink>
-                                ) : (
-                                  <ActiveLink
-                                    activeClassName="navlink--active"
-                                    href={"/categories/[slug]"}
-                                    as={`/categories/${childItem.slug}`}
-                                  >
-                                    <a
-                                      className="card-text pb-5"
-                                      dangerouslySetInnerHTML={{
-                                        __html: childItem.title,
-                                      }}
-                                    ></a>
-                                  </ActiveLink>
-                                )}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      ) : null}
+                      ></button>
+                      {/* {link.child_items && subnav == link.ID ? ( */}
+                      <ul
+                        className={`${
+                          link.child_items && subnav == link.ID
+                            ? "subnav-open"
+                            : ""
+                        } subnav `}
+                      >
+                        {link?.child_items?.map((childItem, childIndex) => {
+                          return (
+                            <li key={uuidv4()} className="subnav-link">
+                              {childItem.object == "page" ? (
+                                <ActiveLink
+                                  activeClassName="navlink--active"
+                                  href={`/${childItem.slug}`}
+                                  as={`/${childItem.slug}`}
+                                >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  ></a>
+                                </ActiveLink>
+                              ) : (
+                                <ActiveLink
+                                  activeClassName="navlink--active"
+                                  href={"/categories/[slug]"}
+                                  as={`/categories/${childItem.slug}`}
+                                >
+                                  <a
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  ></a>
+                                </ActiveLink>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      {/* // ) : null} */}
                     </li>
                   </React.Fragment>
                 );
