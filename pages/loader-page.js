@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import theme from "./Theme";
+import theme from "../components/Global/Theme";
 
 const LoaderContainer = styled.div`
   height: 100vh;

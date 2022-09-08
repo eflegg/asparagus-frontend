@@ -20,6 +20,7 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
 import TwoAuthorCard from "../../components/TwoAuthorCard";
+import Byline from "../../components/ArticleComponents/Byline";
 
 const SingleContainer = styled.div`
   height: 100%;
@@ -72,6 +73,7 @@ const SingleContainer = styled.div`
     margin: 0 auto 20px;
     width: 90%;
     max-width: 650px;
+    list-style: disc;
   }
 
   h2 {
@@ -229,11 +231,11 @@ const SingleHero = styled.div`
       `}
     }
   }
-.categories {
-  ${theme.mediaQuery.md`
+  .categories {
+    ${theme.mediaQuery.md`
   // margin: 30px 0 0 80px;
   `}
-}
+  }
   hr {
     margin-bottom: 26px;
     ${theme.mediaQuery.md`
@@ -266,12 +268,12 @@ const SingleHero = styled.div`
 
 export default function ArticlePage({ article, allArticles, categories }) {
   console.log("article: ", article);
-  let initialDate = article.acf.publication_date;
-  let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
-    month: "long",
-    day: "2-digit",
-    year: "numeric",
-  });
+  // let initialDate = article.acf.publication_date;
+  // let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
+  //   month: "long",
+  //   day: "2-digit",
+  //   year: "numeric",
+  // });
 
   let subcategories = categories.filter((newCat) => newCat.parent !== 0);
 
@@ -320,55 +322,15 @@ export default function ArticlePage({ article, allArticles, categories }) {
           <hr />
           <div className="hero d-flex">
             <div className="hero--text">
-              <h1 itempProp="name" className="article--title">
-                {article.title.rendered}
+              <h1
+                itempprop="name"
+                className="article--title"
+                dangerouslySetInnerHTML={{ __html: article.title.rendered }}
+              >
+                {/* {article.title.rendered} */}
               </h1>
               <p className="excerpt deck">{article.acf.dek}</p>
-              <div className="article-details">
-                {/* using the article-details container to wrap all of it
-                check for secondary author, if yes show twoauthor card, otherwise 
-                show the rest of the regular single author details
-
-                two author card just needs a bit more styling!
-                */}
-                {article.acf.secondary_author !== "" ? (
-                  <TwoAuthorCard post={article} />
-                ) : (
-                  <>
-                    <div className="byline--image">
-                      {article.acf.writer[0].acf.headshot.url ? (
-                        // this will need to have that same conditional checking for contributor
-                        // and rendering the Link with the right slug
-                        <Image
-                          src={article.acf.writer[0].acf.headshot.url}
-                          layout="fill"
-                          objectFit="cover"
-                          alt="Author headshot"
-                        />
-                      ) : (
-                        <Image
-                          src="/singlestalk-square.svg"
-                          layout="fill"
-                          objectFit="cover"
-                          alt="Author headshot"
-                        />
-                      )}
-                    </div>
-                    <div>
-                      <p itemProp="author" className="byline">
-                        {article.acf.writer[0].post_title}
-                      </p>
-                      <p
-                        itemProp="datePublished"
-                        className="date--single-article"
-                      >
-                        {formattedDate} -{" "}
-                        <span>{article.acf.time_to_read} min read</span>
-                      </p>
-                    </div>
-                  </>
-                )}
-              </div>
+              <Byline article={article} />
             </div>
             <div className="hero--image position-relative">
               <div className="hero-right--inner">
@@ -378,6 +340,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     alt={article._embedded["wp:featuredmedia"]["0"].alt_text}
                     layout="fill"
                     objectFit="cover"
+                    priority
                   />
                 ) : (
                   <Image
@@ -385,6 +348,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     layout="fill"
                     objectFit="cover"
                     alt="Asparagus Magazine three-stalk logo"
+                    priority
                   />
                 )}
                 {article._embedded["wp:featuredmedia"] ? (
