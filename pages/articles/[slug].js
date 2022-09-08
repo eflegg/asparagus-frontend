@@ -20,6 +20,7 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
 import TwoAuthorCard from "../../components/TwoAuthorCard";
+import Byline from "../../components/ArticleComponents/Byline";
 
 const SingleContainer = styled.div`
   height: 100%;
@@ -229,11 +230,11 @@ const SingleHero = styled.div`
       `}
     }
   }
-.categories {
-  ${theme.mediaQuery.md`
+  .categories {
+    ${theme.mediaQuery.md`
   // margin: 30px 0 0 80px;
   `}
-}
+  }
   hr {
     margin-bottom: 26px;
     ${theme.mediaQuery.md`
@@ -266,12 +267,12 @@ const SingleHero = styled.div`
 
 export default function ArticlePage({ article, allArticles, categories }) {
   console.log("article: ", article);
-  let initialDate = article.acf.publication_date;
-  let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
-    month: "long",
-    day: "2-digit",
-    year: "numeric",
-  });
+  // let initialDate = article.acf.publication_date;
+  // let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
+  //   month: "long",
+  //   day: "2-digit",
+  //   year: "numeric",
+  // });
 
   let subcategories = categories.filter((newCat) => newCat.parent !== 0);
 
@@ -324,21 +325,16 @@ export default function ArticlePage({ article, allArticles, categories }) {
                 {article.title.rendered}
               </h1>
               <p className="excerpt deck">{article.acf.dek}</p>
-              <div className="article-details">
-                {/* using the article-details container to wrap all of it
-                check for secondary author, if yes show twoauthor card, otherwise 
-                show the rest of the regular single author details
-
-                two author card just needs a bit more styling!
-                */}
-                {article.acf.secondary_author !== "" ? (
+              <Byline article={article} />
+              {/* <div className="article-details">
+           
+                {article.acf.secondary_author == "Yes" ? (
                   <TwoAuthorCard post={article} />
                 ) : (
                   <>
                     <div className="byline--image">
                       {article.acf.writer[0].acf.headshot.url ? (
-                        // this will need to have that same conditional checking for contributor
-                        // and rendering the Link with the right slug
+                    
                         <Image
                           src={article.acf.writer[0].acf.headshot.url}
                           layout="fill"
@@ -368,7 +364,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     </div>
                   </>
                 )}
-              </div>
+              </div> */}
             </div>
             <div className="hero--image position-relative">
               <div className="hero-right--inner">
