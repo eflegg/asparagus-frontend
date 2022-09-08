@@ -229,11 +229,11 @@ const SingleHero = styled.div`
       `}
     }
   }
-.categories {
-  ${theme.mediaQuery.md`
+  .categories {
+    ${theme.mediaQuery.md`
   // margin: 30px 0 0 80px;
   `}
-}
+  }
   hr {
     margin-bottom: 26px;
     ${theme.mediaQuery.md`
@@ -325,20 +325,12 @@ export default function ArticlePage({ article, allArticles, categories }) {
               </h1>
               <p className="excerpt deck">{article.acf.dek}</p>
               <div className="article-details">
-                {/* using the article-details container to wrap all of it
-                check for secondary author, if yes show twoauthor card, otherwise 
-                show the rest of the regular single author details
-
-                two author card just needs a bit more styling!
-                */}
                 {article.acf.secondary_author !== "" ? (
                   <TwoAuthorCard post={article} />
                 ) : (
                   <>
                     <div className="byline--image">
                       {article.acf.writer[0].acf.headshot.url ? (
-                        // this will need to have that same conditional checking for contributor
-                        // and rendering the Link with the right slug
                         <Image
                           src={article.acf.writer[0].acf.headshot.url}
                           layout="fill"
