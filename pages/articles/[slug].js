@@ -8,7 +8,7 @@ import {
 } from "../../utils/wordpress";
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
-import Head from "next/head";
+
 import Image from "next/image";
 import SupportCard from "../../components/SupportCard";
 import {
@@ -19,7 +19,7 @@ import {
 } from "next-share";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
-import TwoAuthorCard from "../../components/TwoAuthorCard";
+
 import Byline from "../../components/ArticleComponents/Byline";
 
 const SingleContainer = styled.div`

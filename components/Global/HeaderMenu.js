@@ -315,7 +315,7 @@ export default function HeaderMenu() {
   const [navActive, setNavActive] = useState(false);
   const [subnav, setSubnav] = useState(null);
 
-  console.log("links: ", links);
+  // console.log("links: ", links);
 
   const handleSubnavClick = (menuId) => {
     if (subnav == menuId) {

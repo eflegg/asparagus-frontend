@@ -31,7 +31,7 @@ export default function AdBanner() {
 
   useEffect(() => {
     async function loadLinks() {
-      const response = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages/272`);
+      const response = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages/604`);
 
       if (!response.ok) {
         // oops! something went wrong
@@ -53,7 +53,6 @@ export default function AdBanner() {
     setAdIndex(Math.floor(Math.random() * length));
   };
 
-  //
   console.log("ads: ", ads);
 
   useEffect(() => {
