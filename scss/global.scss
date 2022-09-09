@@ -349,6 +349,7 @@ h1,
   font-weight: 900;
   line-height: 105%;
   color: $gusGreen;
+  margin-top: 40px;
 
   @include media-query-min($sm) {
     font-size: calc(32px + 44 * ((100vw - 320px) / 680));
@@ -574,7 +575,7 @@ h6 {
   flex: none;
   width: 50px;
   height: 50px;
-  background: slateblue;
+
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -691,10 +692,12 @@ h6 {
     line-height: 32px;
   }
 }
+
 .related--header {
   width: 90%;
   margin: 50px auto 0;
 }
+
 .newsletter-header--footer {
   font-family: $headerFont;
   font-size: 2.8rem;
@@ -734,6 +737,7 @@ p.newsletter-header--primary {
   font-weight: 600;
   color: $gusGreen;
   line-height: 2rem;
+  width: 90%;
 
   @include media-query-min($xs) {
     font-size: calc(20px + 47 * ((100vw - 320px) / 680));
@@ -755,6 +759,7 @@ p.newsletter-subheader--primary {
   font-family: $accentFont;
   font-size: 1.4rem;
   color: $soil;
+  width: 80%;
 
   @include media-query-min($xs) {
     font-size: calc(14px + 22 * ((100vw - 320px) / 680));
@@ -858,6 +863,10 @@ a.footer-link {
   }
 }
 
+a.footer-link:active {
+  color: $gusGreen;
+}
+
 a.action-menu {
   font-size: 2rem;
   font-family: $semibold;
@@ -869,7 +878,16 @@ li.nav-link {
 }
 
 .navlink--active {
-  border: 2px solid orangered;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 50%;
+    background: $gusGreen;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .has-text-align-center {
@@ -885,6 +903,12 @@ li.nav-link {
 }
 
 /***  Utilities  ***/
+
+.no-button {
+  background: transparent;
+  border: 0px;
+  margin: 0;
+}
 
 .text-center {
   text-align: center;
@@ -1131,15 +1155,27 @@ img {
   display: flex;
   align-items: center;
   flex-direction: column;
+
   @include media-query-min($md) {
     flex-direction: row;
   }
 }
 
-// <React.Fragment key={uuidv4()}>
-// {appearsIn && currentIssue.id == appearsIn[0].ID ? (
-// <>
-// <ArticleCard post={article} />
-// </>
-// ) : null}
-// </React.Fragment>
+//Loader animation
+
+@keyframes dashStalk {
+  from {
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.stalk-path {
+  fill: transparent;
+  stroke: $gusGreen;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: dashStalk 5s infinite;
+}

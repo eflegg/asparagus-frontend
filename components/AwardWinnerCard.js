@@ -71,6 +71,9 @@ const Card = styled.div`
   }
   .article-details {
     // border: solid blue;
+    .byline--image {
+      margin-left: 10px;
+    }
   }
   .award-graphic {
     position: absolute;

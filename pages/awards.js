@@ -8,6 +8,7 @@ import theme from "../components/Global/Theme";
 import AwardWinnerCard from "../components/AwardWinnerCard";
 import PageWrapper from "../components/Global/PageWrapper";
 import { v4 as uuidv4 } from "uuid";
+import { getArticles } from "../utils/wordpress";
 
 const AwardContainer = styled.section`
   margin-bottom: 50px;
@@ -32,7 +33,7 @@ export default function Awards({ posts }) {
     >
       <h1 className="text-center">Awards</h1>
       <AwardContainer>
-      <hr />
+        <hr />
         <h5>Award Winners</h5>
         <ul>
           {posts.map((post, index) => {
@@ -73,7 +74,7 @@ export async function getStaticProps({ params }) {
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
   );
 
-  const posts = await awardPosts.json();
+  const posts = await getArticles();
 
   return {
     props: {

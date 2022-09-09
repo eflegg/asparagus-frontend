@@ -82,7 +82,7 @@ export default function Footer() {
                             as={`/${childItem.slug}`}
                           >
                             <a
-                              className="card-text pb-5"
+                              className="pb-5"
                               dangerouslySetInnerHTML={{
                                 __html: childItem.title,
                               }}

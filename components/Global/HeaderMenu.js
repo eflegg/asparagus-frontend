@@ -40,26 +40,31 @@ const MenuContainer = styled.div`
     display: none;
     font-family: ${theme.type.italic};
     ${theme.mediaQuery.md`
-    display: block;
+    // display: none;
     `}
   }
   .nameplate {
     ${theme.mediaQuery.md`
- 
- max-width: 457px;
+  max-width: 457px;
   `};
   }
   ${theme.mediaQuery.md`
     position: sticky;
-  z-index: 10;
-  top: -182px;
+    z-index: 10;
+    top: -132px;
   `};
-
-  .nav-link a {
-    font-family: ${theme.type.medium};
-    font-size: 2.4rem;
-    color: ${theme.colours.gusGreen};
-    margin: 10px;
+  .nav-link {
+    button {
+      font-family: ${theme.type.medium};
+      font-size: 2.4rem;
+      color: ${theme.colours.gusGreen};
+    }
+    &:focus {
+      border: 1px solid orange;
+    }
+    /* position: relative; */
+    z-index: 20;
+    margin: 15px 10px;
     display: flex;
     flex-direction: column-reverse;
     ul {
@@ -81,7 +86,6 @@ const MobileNavContainer = styled.div`
   top: 0;
   left: 0;
   padding: 60px 36px 0px 36px;
-
   ul {
     position: relative;
     width: 100%;
@@ -115,37 +119,47 @@ const ConnectMenuContainer = styled.div`
   align-items: center;
   margin-top: 2%;
   ${theme.mediaQuery.md`
-    flex: 0 0 60%; 
-    // padding-top: 30px; 
+    // flex: 0 0 60%; 
     align-items: flex-start; 
   
-
   `};
 `;
 
 const DesktopNav = styled.nav`
-  /* position: fixed; */
-
+  //  position: fixed;
   z-index: 1;
   width: 100%;
-
   ul.desktopnav {
     display: flex;
     justify-content: space-between;
     position: relative;
-    width: 100vw;
-    padding-left: 30px;
-    padding-right: 30px;
+    z-index: 20;
+    width: 100%;
+    /* width: 100vw; */
+    /* padding-left: 30px; */
+    /* padding-right: 30px; */
     /* border: 2px solid orange; */
-    margin: 0px -57px 0px -57px;
+    /* margin: 0px -57px 0px -57px; */
     background-color: transparent;
     transition: all 0.25s ease-in-out;
+    &:after {
+      content: "";
+      position: absolute;
+      height: 68px;
+      width: 111%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: transparent;
+      transition: all 0.25s ease-in-out;
+    }
     &.desktopnavcolorchange {
       transition: all 0.25s ease-in-out;
-      background-color: ${theme.colours.gusYellow};
+      &:after {
+        transition: all 0.25s ease-in-out;
+        background-color: ${theme.colours.gusYellow};
+      }
     }
   }
-
   ul.subnav {
     display: flex;
     align-items: center;
@@ -153,10 +167,21 @@ const DesktopNav = styled.nav`
     background-color: ${theme.colours.gusYellow};
     justify-content: space-around;
     position: absolute;
-    width: 100%;
-    top: 100%;
-    left: 0;
+    width: 115%;
+    top: 50px;
+    transform: translateX(-50%);
     z-index: 1;
+    height: 0px;
+    left: 50%;
+    opacity: 0;
+    display: none;
+    transition: all 1s ease-in-out;
+    &.subnav-open {
+      height: auto;
+      opacity: 1;
+      display: flex;
+      transition: all 1s ease-in-out;
+    }
   }
   li.subnav-link {
     border-right: 1px solid;
@@ -177,12 +202,12 @@ const DesktopNav = styled.nav`
 const LogoConnectMenuContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-start;
   position: relative;
   margin-bottom: 60px;
   .img {
-    flex: 0 0 50%;
+    /* flex: 0 0 50%; */
     height: 100%;
     width: 100%;
   }
@@ -192,7 +217,8 @@ const LogoConnectMenuContainer = styled.div`
     `};
 `;
 const ConnectMenuNav = styled.nav`
-  flex: 1;
+  margin-left: 15px;
+  width: 100%;
   position: relative;
   transition: all 0.25s ease-in-out;
   ul.connect-ul {
@@ -224,7 +250,6 @@ const ConnectMenuNav = styled.nav`
         transition: all 0.25s ease-in-out;
       }
     }
-
     width: 100%;
     /* position: fixed;
     ${theme.mediaQuery.md`
@@ -233,14 +258,14 @@ const ConnectMenuNav = styled.nav`
     left: 0;
     z-index: 30;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
   }
   a {
     font-size: 1.6rem;
     font-weight: 600;
-    color: ${theme.colours.soil};
+    // color: ${theme.colours.soil};
     font-family: ${theme.type.semibold};
     ${theme.mediaQuery.sm`
      font-size: 2rem;
@@ -251,7 +276,7 @@ const ConnectMenuNav = styled.nav`
     transition: all 0.25s ease-in-out;
     flex: none;
     ${theme.mediaQuery.md`
-      padding: 3px 30px; 
+      padding: 3px 20px; 
     `};
     position: relative;
     &::after {
@@ -267,7 +292,7 @@ const ConnectMenuNav = styled.nav`
       &:not(:first-of-type) {
         &::after {
           content: "";
-          width: 50%;
+          width: 54%;
           transition: all 0.25s ease-out;
         }
       }
@@ -282,38 +307,6 @@ const ConnectMenuNav = styled.nav`
     `};
   }
 `;
-const ConnectScrollMenuContainer = styled.div`
-  display: flex;
-  direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: ${theme.colours.darkWheat};
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  width: 100vw;
-  padding: 10px 20px;
-  margin-left: -15px;
-  div.left-container {
-    display: flex;
-    align-items: center;
-    flex: 1;
-  }
-  div.right-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1;
-  }
-  div.donate-button {
-    background-color: ${theme.colours.gusYellow};
-    padding: 3px 5px;
-    border-radius: 5px;
-  }
-  div.search-container {
-    margin-right: 15px;
-  }
-`;
 
 export default function HeaderMenu() {
   const [links, setLinks] = useState([]);
@@ -321,6 +314,8 @@ export default function HeaderMenu() {
   const [footerLinks, setFooterLinks] = useState([]);
   const [navActive, setNavActive] = useState(false);
   const [subnav, setSubnav] = useState(null);
+
+  console.log("links: ", links);
 
   const handleSubnavClick = (menuId) => {
     if (subnav == menuId) {
@@ -402,95 +397,103 @@ export default function HeaderMenu() {
   // const imgRef = useRef();
 
   return (
-    <MenuContainer className="menu--container">
-      <Suspense fallback={<Loader />}>
-        <LogoConnectMenuContainer>
-          <p className="custom-tagline text-center">
-            Telling large and small stories of how we can live sustainably.
-          </p>
-          <div className="logo-tagline--container">
-            <Link href="/">
-              <a className="position-relative d-block nameplate-container">
-                <img
-                  className="nameplate nameplate--desktop"
-                  src="/Asparagus_Nameplate_Color.png"
-                  alt="Asparagus Magazine logo"
-                />
-              </a>
-            </Link>
-            <p className="custom-tagline--desktop ">
+    <>
+      {links.length < 1 ? (
+        <Loader />
+      ) : (
+        <MenuContainer className="menu--container">
+          <LogoConnectMenuContainer>
+            <p className="custom-tagline text-center">
               Telling large and small stories of how we can live sustainably.
             </p>
-          </div>
-          <ConnectMenuContainer>
-            <ConnectMenuNav>
+            <div className="logo-tagline--container">
+              <Link href="/">
+                <a className="position-relative d-block nameplate-container">
+                  <img
+                    className="nameplate nameplate--desktop"
+                    src="/Asparagus_Nameplate_Color.png"
+                    alt="Asparagus Magazine logo"
+                  />
+                </a>
+              </Link>
+              <p className="custom-tagline--desktop ">
+                Telling large and small stories of how we can live sustainably.
+              </p>
+            </div>
+            <ConnectMenuContainer>
+              <ConnectMenuNav>
+                <ul
+                  className={`${
+                    navActive && size.width < 1000
+                      ? "nav-active--mobile"
+                      : size.scrollY > 2 && size.width < 1000
+                      ? "scrolled--mobile"
+                      : ""
+                  } connect-ul`}
+                >
+                  <div className="mobile--home-stalk">
+                    <Link href="/">
+                      <Image
+                        src="/triplestalk.svg"
+                        alt="Asparagus Magazine logo"
+                        layout="fixed"
+                        width="53px"
+                        height="56px"
+                      />
+                    </Link>
+                  </div>
+                  {connectLinks?.items?.map((connectLink, index) => {
+                    return (
+                      <li className="connect--link" key={uuidv4()}>
+                        <ActiveLink
+                          activeClassName="navlink--active"
+                          href={`/${connectLink.slug}`}
+                          to={`/${connectLink.slug}`}
+                        >
+                          <a>{connectLink.title}</a>
+                        </ActiveLink>
+                      </li>
+                    );
+                  })}
+                  <Search />
+                  {size.width < 1000 && (
+                    <HamburgerMenuButton
+                      navActive={navActive}
+                      onClick={() => {
+                        setNavActive(!navActive);
+                      }}
+                    />
+                  )}
+                </ul>
+              </ConnectMenuNav>
+            </ConnectMenuContainer>
+          </LogoConnectMenuContainer>
+          {size.width >= 1000 && (
+            <DesktopNav>
               <ul
                 className={`${
-                  navActive && size.width < 1000
-                    ? "nav-active--mobile"
-                    : size.scrollY > 2 && size.width < 1000
-                    ? "scrolled--mobile"
-                    : ""
-                } connect-ul`}
+                  size.scrollY >= 132 ? "desktopnavcolorchange" : ""
+                } desktopnav`}
               >
-                <div className="mobile--home-stalk">
-                  <Link href="/">
-                    <Image
-                      src="/triplestalk.svg"
-                      alt="Asparagus Magazine logo"
-                      layout="fixed"
-                      width="53px"
-                      height="56px"
-                    />
-                  </Link>
-                </div>
-                {connectLinks?.items?.map((connectLink, index) => {
+                {links?.items?.map((link, index) => {
                   return (
-                    <li className="connect--link" key={uuidv4()}>
-                      <ActiveLink
-                        activeClassName="navlink--active"
-                        href={`/${connectLink.slug}`}
-                        to={`/${connectLink.slug}`}
+                    <React.Fragment key={uuidv4()}>
+                      <li
+                        className="nav-link"
+                        onClick={() => handleSubnavClick(link.ID)}
                       >
-                        <a>{connectLink.title}</a>
-                      </ActiveLink>
-                    </li>
-                  );
-                })}
-                <Search />
-                {size.width < 1000 && (
-                  <HamburgerMenuButton
-                    navActive={navActive}
-                    onClick={() => {
-                      setNavActive(!navActive);
-                    }}
-                  />
-                )}
-              </ul>
-            </ConnectMenuNav>
-          </ConnectMenuContainer>
-        </LogoConnectMenuContainer>
-
-        {size.width >= 1000 && (
-          <DesktopNav>
-            <ul
-              className={`${
-                size.scrollY >= 182 ? "desktopnavcolorchange" : ""
-              } desktopnav`}
-            >
-              {links?.items?.map((link, index) => {
-                return (
-                  <React.Fragment key={uuidv4()}>
-                    <li
-                      className="nav-link"
-                      onClick={() => handleSubnavClick(link.ID)}
-                    >
-                      <a
-                        href="#"
-                        dangerouslySetInnerHTML={{ __html: link.title }}
-                      ></a>
-                      {link.child_items && subnav == link.ID ? (
-                        <ul className="subnav">
+                        <button
+                          className="no-button"
+                          dangerouslySetInnerHTML={{ __html: link.title }}
+                        ></button>
+                        {/* {link.child_items && subnav == link.ID ? ( */}
+                        <ul
+                          className={`${
+                            link.child_items && subnav == link.ID
+                              ? "subnav-open"
+                              : ""
+                          } subnav `}
+                        >
                           {link?.child_items?.map((childItem, childIndex) => {
                             return (
                               <li key={uuidv4()} className="subnav-link">
@@ -525,162 +528,161 @@ export default function HeaderMenu() {
                             );
                           })}
                         </ul>
-                      ) : null}
-                    </li>
-                  </React.Fragment>
-                );
-              })}{" "}
-            </ul>
-          </DesktopNav>
-        )}
-
-        {navActive ? (
-          <MobileNavContainer>
-            <HamburgerLogoContainer>
-              <Link href="/">
-                <a onClick={() => setNavActive(false)}>
-                  <img
-                    className="nameplate nameplate--mobile"
-                    // ref={imgRef}
-                    src="/Asparagus_Nameplate_Color.png"
-                  />
-                </a>
-              </Link>
-            </HamburgerLogoContainer>
-            <MobileNav>
-              <ul>
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
-                {links?.items?.map((link, index) => {
-                  return (
-                    <React.Fragment key={uuidv4()}>
-                      <li
-                        className="nav-link"
-                        onClick={() => handleSubnavClick(link.ID)}
-                      >
-                        <span
-                          dangerouslySetInnerHTML={{ __html: link.title }}
-                        />
-                        {link.child_items && subnav == link.ID ? (
-                          <>
-                            <ul className="subnav">
-                              <img
-                                src="/hamburger-arrow.svg"
-                                width="20px"
-                                height="13px"
-                              />
-                              {link?.child_items?.map(
-                                (childItem, childIndex) => {
-                                  return (
-                                    <li
-                                      onClick={() => setNavActive(false)}
-                                      key={uuidv4()}
-                                      className="subnav-link"
-                                    >
-                                      {childItem.object == "page" ? (
-                                        <ActiveLink
-                                          activeClassName="navlink--active"
-                                          href={`/[slug]}`}
-                                          as={`/${childItem.slug}`}
-                                        >
-                                          <a
-                                            className="card-text pb-5"
-                                            dangerouslySetInnerHTML={{
-                                              __html: childItem.title,
-                                            }}
-                                          />
-                                        </ActiveLink>
-                                      ) : (
-                                        <ActiveLink
-                                          activeClassName="navlink--active"
-                                          href={"/categories/[slug]"}
-                                          as={`/categories/${childItem.slug}`}
-                                        >
-                                          <a
-                                            className="card-text pb-5"
-                                            dangerouslySetInnerHTML={{
-                                              __html: childItem.title,
-                                            }}
-                                          ></a>
-                                        </ActiveLink>
-                                      )}
-                                    </li>
-                                  );
-                                }
-                              )}
-                            </ul>
-                          </>
-                        ) : null}
+                        {/* // ) : null} */}
                       </li>
                     </React.Fragment>
                   );
                 })}{" "}
               </ul>
-              <ul>
-                {footerLinks?.items?.map((footerLink, index) => {
-                  return (
-                    <li
-                      className="nav-link"
-                      key={uuidv4()}
-                      onClick={() => handleSubnavClick(footerLink.ID)}
-                    >
-                      <span
-                        dangerouslySetInnerHTML={{ __html: footerLink.title }}
-                      />
-
-                      {footerLink.child_items && subnav == footerLink.ID ? (
-                        <ul className="subnav">
-                          <img
-                            src="/hamburger-arrow.svg"
-                            width="20px"
-                            height="13px"
+            </DesktopNav>
+          )}
+          {navActive ? (
+            <MobileNavContainer>
+              <HamburgerLogoContainer>
+                <Link href="/">
+                  <a onClick={() => setNavActive(false)}>
+                    <img
+                      className="nameplate nameplate--mobile"
+                      // ref={imgRef}
+                      src="/Asparagus_Nameplate_Color.png"
+                    />
+                  </a>
+                </Link>
+              </HamburgerLogoContainer>
+              <MobileNav>
+                <ul>
+                  <Link href="/">
+                    <a>Home</a>
+                  </Link>
+                  {links?.items?.map((link, index) => {
+                    return (
+                      <React.Fragment key={uuidv4()}>
+                        <li
+                          className="nav-link"
+                          onClick={() => handleSubnavClick(link.ID)}
+                        >
+                          <span
+                            dangerouslySetInnerHTML={{ __html: link.title }}
                           />
-                          {footerLink?.child_items?.map(
-                            (childItem, childIndex) => {
-                              return (
-                                <li key={uuidv4()} className="subnav-link">
-                                  {childItem.object == "page" ? (
-                                    <ActiveLink
-                                      activeClassName="navlink--active"
-                                      href={`/[slug]}`}
-                                      as={`/${childItem.slug}`}
-                                    >
-                                      <a
-                                        className="card-text pb-5"
-                                        dangerouslySetInnerHTML={{
-                                          __html: childItem.title,
-                                        }}
-                                      />
-                                    </ActiveLink>
-                                  ) : (
-                                    <ActiveLink
-                                      activeClassName="navlink--active"
-                                      href={`/${childItem.slug}`}
-                                      as={`/${childItem.slug}`}
-                                    >
-                                      <a
-                                        className="card-text pb-5"
-                                        dangerouslySetInnerHTML={{
-                                          __html: childItem.title,
-                                        }}
-                                      />
-                                    </ActiveLink>
-                                  )}
-                                </li>
-                              );
-                            }
-                          )}
-                        </ul>
-                      ) : null}
-                    </li>
-                  );
-                })}
-              </ul>
-            </MobileNav>
-          </MobileNavContainer>
-        ) : null}
-      </Suspense>
-    </MenuContainer>
+                          {link.child_items && subnav == link.ID ? (
+                            <>
+                              <ul className="subnav">
+                                <img
+                                  src="/hamburger-arrow.svg"
+                                  width="20px"
+                                  height="13px"
+                                />
+                                {link?.child_items?.map(
+                                  (childItem, childIndex) => {
+                                    return (
+                                      <li
+                                        onClick={() => setNavActive(false)}
+                                        key={uuidv4()}
+                                        className="subnav-link"
+                                      >
+                                        {childItem.object == "page" ? (
+                                          <ActiveLink
+                                            activeClassName="navlink--active"
+                                            href={`/[slug]}`}
+                                            as={`/${childItem.slug}`}
+                                          >
+                                            <a
+                                              className="card-text pb-5"
+                                              dangerouslySetInnerHTML={{
+                                                __html: childItem.title,
+                                              }}
+                                            />
+                                          </ActiveLink>
+                                        ) : (
+                                          <ActiveLink
+                                            activeClassName="navlink--active"
+                                            href={"/categories/[slug]"}
+                                            as={`/categories/${childItem.slug}`}
+                                          >
+                                            <a
+                                              className="card-text pb-5"
+                                              dangerouslySetInnerHTML={{
+                                                __html: childItem.title,
+                                              }}
+                                            ></a>
+                                          </ActiveLink>
+                                        )}
+                                      </li>
+                                    );
+                                  }
+                                )}
+                              </ul>
+                            </>
+                          ) : null}
+                        </li>
+                      </React.Fragment>
+                    );
+                  })}{" "}
+                </ul>
+                <ul>
+                  {footerLinks?.items?.map((footerLink, index) => {
+                    return (
+                      <li
+                        className="nav-link"
+                        key={uuidv4()}
+                        onClick={() => handleSubnavClick(footerLink.ID)}
+                      >
+                        <span
+                          dangerouslySetInnerHTML={{ __html: footerLink.title }}
+                        />
+                        {footerLink.child_items && subnav == footerLink.ID ? (
+                          <ul className="subnav">
+                            <img
+                              src="/hamburger-arrow.svg"
+                              width="20px"
+                              height="13px"
+                            />
+                            {footerLink?.child_items?.map(
+                              (childItem, childIndex) => {
+                                return (
+                                  <li key={uuidv4()} className="subnav-link">
+                                    {childItem.object == "page" ? (
+                                      <ActiveLink
+                                        activeClassName="navlink--active"
+                                        href={`/[slug]}`}
+                                        as={`/${childItem.slug}`}
+                                      >
+                                        <a
+                                          className="card-text pb-5"
+                                          dangerouslySetInnerHTML={{
+                                            __html: childItem.title,
+                                          }}
+                                        />
+                                      </ActiveLink>
+                                    ) : (
+                                      <ActiveLink
+                                        activeClassName="navlink--active"
+                                        href={`/${childItem.slug}`}
+                                        as={`/${childItem.slug}`}
+                                      >
+                                        <a
+                                          className="card-text pb-5"
+                                          dangerouslySetInnerHTML={{
+                                            __html: childItem.title,
+                                          }}
+                                        />
+                                      </ActiveLink>
+                                    )}
+                                  </li>
+                                );
+                              }
+                            )}
+                          </ul>
+                        ) : null}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </MobileNav>
+            </MobileNavContainer>
+          ) : null}
+        </MenuContainer>
+      )}
+    </>
   );
 }

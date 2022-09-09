@@ -66,15 +66,11 @@ const Card = styled.li`
   `}
   }
   p {
-    font-size:
+    font-size: ;
   }
 `;
 
-export default function ContributorCard({
-  team,
-
-  contributor,
-}) {
+export default function ContributorCard({ team, contributor }) {
   return (
     <Card className="team--card" team={team}>
       <ContribImage team={team}>

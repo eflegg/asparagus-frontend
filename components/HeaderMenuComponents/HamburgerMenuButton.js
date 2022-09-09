@@ -45,7 +45,7 @@ const ButtonContainer = styled.div`
       }
       .burger-3 {
         position: relative;
-        top: -15px;
+        top: -12px;
         transform: rotate(45deg);
         transition: all 0.15s ease-in-out;
       }
