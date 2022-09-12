@@ -99,7 +99,7 @@ const NewsletterContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  align-items: center;
+  
   ${theme.mediaQuery.md`
  align-items: initial;
  `}// width: 45%;
