@@ -1,9 +1,7 @@
-import React, { useEffect, useState, Suspense, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ActiveLink from "./ActiveLink";
-
-import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import theme from "./Theme";
 import Link from "next/link";
