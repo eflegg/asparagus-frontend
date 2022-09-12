@@ -101,7 +101,7 @@ const MobileNav = styled.nav`
     flex: 1;
     margin-left: 10px;
   }
-  a.card-text.pb-5 {
+  a.card-text {
     font-family: ${theme.type.medium};
     color: ${theme.colours.black};
     font-size: 1.8rem;
@@ -192,7 +192,7 @@ const DesktopNav = styled.nav`
   li.subnav-link:last-of-type {
     border: none;
   }
-  a.card-text.pb-5 {
+  a.card-text {
     font-family: ${theme.type.semibold};
     color: ${theme.colours.gusGreen};
     font-size: 1.8rem;
@@ -283,7 +283,8 @@ const ConnectMenuNav = styled.nav`
       content: "";
       position: absolute;
       bottom: 0;
-      left: 30px;
+      left: 50%;
+      transform: translateX(-50%);
       border-bottom: 2px solid ${theme.colours.soil};
       width: 0;
       transition: all 0.25s ease-out;

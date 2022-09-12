@@ -878,6 +878,7 @@ li.nav-link {
 }
 
 .navlink--active {
+  position: relative;
   &:after {
     content: "";
     position: absolute;
