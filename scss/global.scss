@@ -267,7 +267,7 @@ li {
   letter-spacing: 0.2rem;
   font-family: $bodyFont;
   font-size: 1.7rem;
-  line-height: 150%;
+  line-height: 100%;
   color: black;
   font-weight: 400;
 
@@ -335,6 +335,12 @@ em {
   font-weight: 800;
 }
 
+em {
+  font-family: $bodyFont;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
 .start-small {
   height: 3px;
   border: 0px;
@@ -349,7 +355,6 @@ h1,
   font-weight: 900;
   line-height: 105%;
   color: $gusGreen;
-  margin-top: 40px;
 
   @include media-query-min($sm) {
     font-size: calc(32px + 44 * ((100vw - 320px) / 680));
@@ -357,6 +362,7 @@ h1,
 
   @include media-query-min($md) {
     @include font-size(7.6);
+    margin-top: 40px;
   }
 }
 
@@ -700,34 +706,48 @@ h6 {
 
 .newsletter-header--footer {
   font-family: $headerFont;
-  font-size: 2.8rem;
+  font-size: 2rem;
   font-weight: 600;
   color: $gusGreen;
+  margin: 40px 10px 10px 10px;
+
+  @include media-query-min($xs) {
+    margin: 40px 18px 10px 18px;
+  }
 
   @include media-query-min($sm) {
     font-size: calc(20px + 8 * ((100vw - 320px) / 680));
-    line-height: 2rem;
+    line-height: 3.2rem;
+    margin: 20px;
   }
 
   @include media-query-min($md) {
     @include font-size(2.8);
     line-height: 32px;
+    margin: 0 20px 20px 0;
   }
 }
 
 p.newsletter-subheader--footer {
   font-family: $accentFont;
-  font-size: 2rem;
+  font-size: 1.3rem;
   color: $soil;
+  margin: 10px;
+
+  @include media-query-min($xs) {
+    margin: 10px 18px 18px 18px;
+  }
 
   @include media-query-min($sm) {
     font-size: calc(13px + 7 * ((100vw - 320px) / 680));
-    line-height: 1.6rem;
+    line-height: 2.6rem;
+    margin: 20px;
   }
 
   @include media-query-min($md) {
     @include font-size(2);
     line-height: 2.4rem;
+    margin: 10px 0;
   }
 }
 
@@ -832,7 +852,7 @@ span.topic-menu {
 
 span.footer-menu {
   font-family: $headerFont;
-  font-size: 2.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: $gusGreen;
 
@@ -849,17 +869,17 @@ span.footer-menu {
 
 a.footer-link {
   font-family: $accentFont;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   color: black;
 
   @include media-query-min($sm) {
     font-size: calc(13px + 5 * ((100vw - 320px) / 680));
-    line-height: 2rem;
+    line-height: 1.3rem;
   }
 
   @include media-query-min($md) {
     @include font-size(1.8);
-    line-height: 32px;
+    line-height: 24px;
   }
 }
 
@@ -878,6 +898,7 @@ li.nav-link {
 }
 
 .navlink--active {
+  position: relative;
   &:after {
     content: "";
     position: absolute;

@@ -13,7 +13,7 @@ const Card = styled.div`
     margin-left: 5%;
     width: 90%;
     color: white;
-    z-index: 10;
+    z-index: 1;
     ${theme.mediaQuery.sm`
     top: 100px;
 `}
@@ -98,11 +98,11 @@ export default function AwardWinnerCard({ post }) {
       <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
         <a>
           <h3
-            className="card-text pb-5 awards-hed"
+            className="card-text awards-hed"
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           ></h3>
           <div className="image-container">
-            {post._embedded["wp:featuredmedia"]["0"].source_url ? (
+            {post._embedded["wp:featuredmedia"] ? (
               <Image
                 src={post._embedded["wp:featuredmedia"]["0"].source_url}
                 alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
@@ -119,7 +119,14 @@ export default function AwardWinnerCard({ post }) {
                   objectFit="cover"
                 />
               </div>
-            ) : null}
+            ) : (
+              <Image
+                src="/triplestalk.svg"
+                layout="fill"
+                objectFit="cover"
+                alt="Asparagus Magazine logo"
+              />
+            )}
           </div>
 
           <div className="award-text-wrap">
