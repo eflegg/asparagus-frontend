@@ -35,6 +35,7 @@ export default function Home({
   catThreePosts,
   catTwoPosts,
   catOnePosts,
+  leadStoryPost,
 }) {
   // get URL parameters
   const { query: queryParams } = useRouter();
@@ -42,12 +43,13 @@ export default function Home({
   const first = queryParams.first != undefined ? queryParams.first : 1;
   //pagewrapper is rendered with the URL parameter
 
-  const catOne = page.acf.home_category_one[0].term_id;
-  const catTwo = page.acf.home_category_two[0].term_id;
-  const catThree = page.acf.home_category_three[0].term_id;
+  // const catOne = page.acf.home_category_one[0].term_id;
+  // const catTwo = page.acf.home_category_two[0].term_id;
+  // const catThree = page.acf.home_category_three[0].term_id;
 
   console.log("page", page);
-  console.log("cat two posts", catTwoPosts);
+  console.log("lead story: ", page.acf.lead_story[0]);
+  console.log("leadStoryPost: ", leadStoryPost);
 
   console.log("cat one ", page.acf.home_category_one[0].name);
   return (
@@ -68,7 +70,7 @@ export default function Home({
         }
       >
         <main>
-          <div>
+          {/* <div>
             {posts.map((post, index) => {
               let initialDate = post.date;
 
@@ -80,6 +82,9 @@ export default function Home({
                 </React.Fragment>
               );
             })}
+          </div> */}
+          <div>
+            <LeadStoryBlock post={page.acf.lead_story[0]} />{" "}
           </div>
           <CategoryContainer className="new-from--container">
             <h2 className="h5">New from Asparagus</h2>
@@ -203,7 +208,7 @@ export async function getStaticProps() {
   const page = await pageQuery.json();
 
   const categoryOnePosts = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${page?.acf.home_category_one[0].term_id}&_embed&per_page=6`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${page?.acf.home_category_one[0].term_id}&per_page=6`
   );
   const catOnePosts = await categoryOnePosts.json();
 
@@ -216,6 +221,13 @@ export async function getStaticProps() {
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${page?.acf.home_category_three[0].term_id}&_embed&per_page=6`
   );
   const catThreePosts = await categoryThreePosts.json();
+
+  const leadStory = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&include=${page?.acf.lead_story[0].ID}
+  `
+  );
+
+  const leadStoryPost = await leadStory.json();
 
   //all posts
   const postsQuery = await fetch(
@@ -230,6 +242,7 @@ export async function getStaticProps() {
       catThreePosts: catThreePosts,
       catTwoPosts: catTwoPosts,
       catOnePosts: catOnePosts,
+      leadStoryPost: leadStoryPost,
     },
   };
 }
