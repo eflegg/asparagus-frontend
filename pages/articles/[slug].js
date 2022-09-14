@@ -45,7 +45,7 @@ const SingleContainer = styled.div`
     }
     width: 90%;
     margin: 8px auto 0;
-    font-family: ${theme.type.accent};
+    font-family: ${theme.type.bodyFont};
     font-size: 1.6rem;
     &.caption {
       position: absolute;
@@ -105,6 +105,15 @@ letter-spacing: 0;
       ${theme.mediaQuery.md`
       font-size: 2rem;
       `}
+    }
+    strong {
+      em {
+        font-size: 1.7rem;
+      font-weight: 800;
+      ${theme.mediaQuery.md`
+      font-size: 2rem;
+      `}
+      }
     }
     a {
       text-decoration: underline;
