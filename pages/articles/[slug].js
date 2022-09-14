@@ -99,6 +99,13 @@ letter-spacing: 0;
        margin: 25px auto;
     `}
     }
+    em {
+      font-size: 1.7rem;
+      font-weight: 600;
+      ${theme.mediaQuery.md`
+      font-size: 2rem;
+      `}
+    }
     a {
       text-decoration: underline;
       text-decoration-skip-ink: auto;
