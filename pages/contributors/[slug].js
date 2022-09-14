@@ -76,7 +76,6 @@ margin: initial;
 
 export default function ContributorPage({ contributor, posts }) {
   console.log("contributor id: ", contributor.id);
-  console.log("posts: ", posts);
 
   return (
     <PageWrapper

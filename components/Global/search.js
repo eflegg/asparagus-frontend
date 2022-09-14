@@ -27,7 +27,7 @@ const SearchContainer = styled.form`
 `;
 
 const Input = styled.input`
-  border: 1px solid ${theme.colours.soil};
+  border: 1px solid black;
   border-radius: 5px;
   height: 30px;
   width: 100px;

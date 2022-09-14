@@ -72,13 +72,13 @@ const SingleContainer = styled.div`
   li {
     margin: 0 auto 20px;
     width: 90%;
-    max-width: 650px;
+    max-width: 680px;
     list-style: disc;
   }
 
   h2 {
     width: 90%;
-    max-width: 650px;
+    max-width: 680px;
     margin: 30px auto 20px;
     color: ${theme.colours.gusGreen};
     font-size: 1.8rem;
@@ -92,9 +92,9 @@ const SingleContainer = styled.div`
   .body-content {
     p {
       width: 90%;
-      max-width: 650px;
+      max-width: 680px;
       margin: 17px auto;
-
+letter-spacing: 0;
       ${theme.mediaQuery.sm`
        margin: 25px auto;
     `}
@@ -144,7 +144,7 @@ const SingleContainer = styled.div`
   }
   .print-details {
     width: 90%;
-    max-width: 650px;
+    8px;
     margin: 45px auto;
     p {
       margin: 5px 0;
@@ -155,7 +155,7 @@ const SingleContainer = styled.div`
 
   .share-block {
     width: 90%;
-    max-width: 650px;
+    max-width: 680px;
     margin: 45px auto;
     svg {
       circle {
@@ -268,12 +268,6 @@ const SingleHero = styled.div`
 
 export default function ArticlePage({ article, allArticles, categories }) {
   console.log("article: ", article);
-  // let initialDate = article.acf.publication_date;
-  // let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
-  //   month: "long",
-  //   day: "2-digit",
-  //   year: "numeric",
-  // });
 
   let subcategories = categories.filter((newCat) => newCat.parent !== 0);
 

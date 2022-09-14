@@ -13,6 +13,7 @@ const LeadStory = styled.section`
   ${theme.mediaQuery.md`
   flex-direction: row;
   margin-bottom: 80px;
+  margin-top: 35px;
   `}
 
   .lead-image {

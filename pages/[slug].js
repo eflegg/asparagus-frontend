@@ -31,7 +31,7 @@ const ContentContainer = styled.div`
 
   p {
     width: 90%;
-    max-width: 650px;
+    max-width: 680px;
     margin: 17px auto;
 
     ${theme.mediaQuery.sm`
@@ -56,7 +56,7 @@ const ContentContainer = styled.div`
 
   h2 {
     width: 90%;
-    max-width: 650px;
+    max-width: 680px;
     margin: 30px auto 20px;
     color: ${theme.colours.gusGreen};
     font-size: 1.8rem;
@@ -77,7 +77,7 @@ const ContentContainer = styled.div`
   li {
     margin: 0 auto 20px;
     width: 90%;
-    max-width: 650px;
+    max-width: 680px;
   }
 `;
 const GeneralContainer = styled.div`

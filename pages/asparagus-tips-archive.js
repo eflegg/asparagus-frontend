@@ -31,7 +31,7 @@ const NewsletterContainer = styled.section`
     li {
       margin: 0 auto 20px;
       width: 90%;
-      max-width: 650px;
+      max-width: 680px;
     }
     figure.wp-block-pullquote {
       margin: 20px auto;
@@ -61,21 +61,20 @@ const NewsletterContainer = styled.section`
 `;
 
 const TipDropdown = styled.div`
-// border: solid 3px hotpink;
-width: 100%;
-display: flex;
-justify-content: center;
-${theme.mediaQuery.sm`
+  // border: solid 3px hotpink;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  ${theme.mediaQuery.sm`
   justify-content: flex-start;
   margin-left: 20px;
   `}
-select {
-  font-family: ${theme.type.medium};
-  font-size: 20px;
-  color: black;
-  border: 3px solid ${theme.colours.teaGreen};
-  
-}
+  select {
+    font-family: ${theme.type.medium};
+    font-size: 20px;
+    color: black;
+    border: 3px solid ${theme.colours.teaGreen};
+  }
 `;
 
 export default function Tips({ tips, page }) {
@@ -96,18 +95,17 @@ export default function Tips({ tips, page }) {
       metadescription="A newsletter series of quick tips on how to make every part of your life brighter and greener"
       className=""
     >
-      
       <h1 className="text-center">Asparagus Tips</h1>
-      <hr/>
+      <hr />
       <TipDropdown>
-      <select
-        value={newsletterSelected}
-        onChange={(e) => setNewsletterSelected(e.target.value)}
-      >
-        {tips.map((tip, index) => {
-          return <option key={uuidv4()}>{tip.title.rendered}</option>;
-        })}
-      </select>
+        <select
+          value={newsletterSelected}
+          onChange={(e) => setNewsletterSelected(e.target.value)}
+        >
+          {tips.map((tip, index) => {
+            return <option key={uuidv4()}>{tip.title.rendered}</option>;
+          })}
+        </select>
       </TipDropdown>
       <NewsletterContainer>
         {/* <h2>{tips[newsletterSelected].title.rendered}</h2> */}
@@ -128,7 +126,7 @@ export default function Tips({ tips, page }) {
           );
         })}
       </NewsletterContainer>
-      <SupportCard/>
+      <SupportCard />
     </PageWrapper>
   );
 }

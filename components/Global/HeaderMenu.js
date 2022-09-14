@@ -44,17 +44,22 @@ const MenuContainer = styled.div`
   .nameplate {
     ${theme.mediaQuery.md`
   max-width: 457px;
+  transition: all .15s ease-in-out;
+  `};
+    ${theme.mediaQuery.lg`
+  max-width: 518px;
+  transition: all .15s ease-in-out;
   `};
   }
   ${theme.mediaQuery.md`
     position: sticky;
     z-index: 10;
-    top: -132px;
+    top: -120px;
   `};
   .nav-link {
     button {
       font-family: ${theme.type.medium};
-      font-size: 2.4rem;
+      /* font-size: 2.4rem; */
       color: ${theme.colours.gusGreen};
     }
     &:focus {
@@ -119,6 +124,12 @@ const ConnectMenuContainer = styled.div`
   ${theme.mediaQuery.md`
     // flex: 0 0 60%; 
     align-items: flex-start; 
+    margin-left: 20px;
+  
+  `};
+  ${theme.mediaQuery.lg`
+
+    margin-left: 50px;
   
   `};
 `;
@@ -132,6 +143,8 @@ const DesktopNav = styled.nav`
     justify-content: space-between;
     position: relative;
     z-index: 20;
+    padding-left: 2%;
+    padding-right: 2%;
     width: 100%;
     /* width: 100vw; */
     /* padding-left: 30px; */
@@ -143,9 +156,10 @@ const DesktopNav = styled.nav`
     &:after {
       content: "";
       position: absolute;
-      height: 68px;
+      height: 58px;
       width: 111%;
       left: 50%;
+      top: -10px;
       transform: translateX(-50%);
       background-color: transparent;
       transition: all 0.25s ease-in-out;
@@ -166,7 +180,7 @@ const DesktopNav = styled.nav`
     justify-content: space-around;
     position: absolute;
     width: 115%;
-    top: 50px;
+    top: 48px;
     transform: translateX(-50%);
     z-index: 1;
     height: 0px;
@@ -314,7 +328,7 @@ export default function HeaderMenu() {
   const [navActive, setNavActive] = useState(false);
   const [subnav, setSubnav] = useState(null);
 
-  console.log("links: ", links);
+  // console.log("links: ", links);
 
   const handleSubnavClick = (menuId) => {
     if (subnav == menuId) {
@@ -471,7 +485,7 @@ export default function HeaderMenu() {
             <DesktopNav>
               <ul
                 className={`${
-                  size.scrollY >= 132 ? "desktopnavcolorchange" : ""
+                  size.scrollY >= 142 ? "desktopnavcolorchange" : ""
                 } desktopnav`}
               >
                 {links?.items?.map((link, index) => {
