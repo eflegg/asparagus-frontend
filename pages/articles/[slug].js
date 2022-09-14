@@ -136,8 +136,15 @@ letter-spacing: 0;
         text-align: center;
         font-family: ${theme.type.semibold};
         ${theme.mediaQuery.md`
-      font-size: 28px;
+      font-size: 2.8rem;
      `}
+      }
+      em {
+        font-size: 18px;
+        font-weight: 600;
+        ${theme.mediaQuery.md`
+        font-size: 2.8rem;
+       `}
       }
     }
 
