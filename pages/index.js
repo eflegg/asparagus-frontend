@@ -48,8 +48,8 @@ export default function Home({
   // const catThree = page.acf.home_category_three[0].term_id;
 
   console.log("page", page);
-  console.log("lead story: ", page.acf.lead_story[0]);
-  console.log("leadStoryPost: ", leadStoryPost);
+  // console.log("lead story: ", page.acf.lead_story[0]);
+  // console.log("leadStoryPost: ", leadStoryPost);
 
   console.log("cat one ", page.acf.home_category_one[0].name);
   return (
@@ -84,7 +84,7 @@ export default function Home({
             })}
           </div> */}
           <div>
-            <LeadStoryBlock post={page.acf.lead_story[0]} />{" "}
+            <LeadStoryBlock post={leadStoryPost[0]} />
           </div>
           <CategoryContainer className="new-from--container">
             <h2 className="h5">New from Asparagus</h2>

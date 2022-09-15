@@ -98,7 +98,7 @@ export default function LeadStoryBlock({ post }) {
 
   return (
     <LeadStory>
-      {/* <div className="lead-image">
+      <div className="lead-image">
         {post._embedded["wp:featuredmedia"] ? (
           <Image
             src={post._embedded["wp:featuredmedia"]["0"].source_url}
@@ -108,11 +108,11 @@ export default function LeadStoryBlock({ post }) {
             priority
           />
         ) : null}
-      </div> */}
+      </div>
       <div className="lead-text">
-        <Link href={"/articles/[slug]"} as={`/articles/${post.post_name}`}>
+        <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
           <a>
-            <h1 className="article--title">{post.post_title}</h1>
+            <h1 className="article--title">{post.title.rendered}</h1>
           </a>
         </Link>
         <div className="lead-text--inner">
