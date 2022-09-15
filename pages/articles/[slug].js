@@ -40,17 +40,15 @@ const SingleContainer = styled.div`
   figcaption {
     &.credit {
       /* position: absolute; */
-     
     }
     width: 90%;
     ${theme.mediaQuery.md`
      width: 100%;
     `}
-  margin: 0 auto;
+    margin: 0 auto;
     font-family: ${theme.type.accent};
     font-size: 1.6rem;
     &.caption {
-
       p {
         font-size: 1.6rem;
         margin-left: 0px;
@@ -93,7 +91,7 @@ const SingleContainer = styled.div`
       width: 90%;
       max-width: 680px;
       margin: 17px auto;
-letter-spacing: 0;
+      letter-spacing: 0;
       ${theme.mediaQuery.sm`
        margin: 25px auto;
     `}
@@ -143,10 +141,10 @@ letter-spacing: 0;
   }
   .print-details {
     width: 90%;
-    8px;
+    text-align: center;
     margin: 45px auto;
     p {
-      margin: 5px 0;
+      margin: 5px auto;
       font-style: italic;
       font-weight: 600;
     }
