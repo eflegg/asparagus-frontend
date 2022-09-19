@@ -8,7 +8,6 @@ import {
 } from "../../utils/wordpress";
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
-import Head from "next/head";
 import Image from "next/image";
 import SupportCard from "../../components/SupportCard";
 import {
@@ -19,7 +18,6 @@ import {
 } from "next-share";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
-import TwoAuthorCard from "../../components/TwoAuthorCard";
 import Byline from "../../components/ArticleComponents/Byline";
 import Link from "next/link";
 
@@ -283,7 +281,7 @@ const SingleHero = styled.div`
   }
 `;
 
-export default function ArticlePage({ article, allArticles, categories }) {
+export default function ArticlePage({ article, categories }) {
   console.log("article: ", article);
 
   let subcategories = categories.filter((newCat) => newCat.parent !== 0);
@@ -428,7 +426,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
           </TwitterShareButton>
         </div>
         <SupportCard />
-        <RelatedPosts currentArticle={article} allArticles={allArticles} />
+        <RelatedPosts currentArticle={article} />
       </SingleContainer>
     </PageWrapper>
   );
@@ -449,12 +447,12 @@ export async function getStaticPaths() {
 //access the router, get the id, and get the data for that post
 export async function getStaticProps({ params }) {
   const article = await getArticle(params.slug);
-  const allArticles = await getArticles();
+  // const allArticles = await getArticles();
   const categories = await getCategories();
   return {
     props: {
       article,
-      allArticles,
+      // allArticles,
       categories,
     },
     revalidate: 10, // In seconds
