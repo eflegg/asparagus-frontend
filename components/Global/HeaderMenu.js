@@ -54,7 +54,7 @@ const MenuContainer = styled.div`
   ${theme.mediaQuery.md`
     position: sticky;
     z-index: 10;
-    top: -133px;
+    top: -120px;
   `};
   .nav-link {
     button {

@@ -332,7 +332,7 @@ export default function Footer() {
             </SignUp>
           </div>
           <Logo>
-            <img src="asparagus_tip_logo.svg" alt="asparagus logo" />
+            <img src="/Asparagus_Tip_Logo.svg" alt="Asparagus logo white" />
           </Logo>
         </NewsletterContainer>
       </div>
