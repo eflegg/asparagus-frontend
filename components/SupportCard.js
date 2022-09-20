@@ -12,10 +12,10 @@ const SupportBlock = styled.div`
 height: 80vh;
 min-height: 550px;
 `}
-  ${theme.mediaQuery.md`
+  /* ${theme.mediaQuery.md`
 
 min-height: 500px;
-`}
+`} */
   .image-container {
     position: relative;
     width: 100%;

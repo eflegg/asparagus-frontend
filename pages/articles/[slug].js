@@ -8,7 +8,6 @@ import {
 } from "../../utils/wordpress";
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
-import Head from "next/head";
 import Image from "next/image";
 import SupportCard from "../../components/SupportCard";
 import {
@@ -19,8 +18,8 @@ import {
 } from "next-share";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
-import TwoAuthorCard from "../../components/TwoAuthorCard";
 import Byline from "../../components/ArticleComponents/Byline";
+import Link from "next/link";
 
 const SingleContainer = styled.div`
   height: 100%;
@@ -35,27 +34,23 @@ const SingleContainer = styled.div`
       }
     }
   }
-  a {
-    color: hotpink;
-  }
+
   figcaption {
     &.credit {
-      position: absolute;
-      bottom: -30px;
+      /* position: absolute; */
     }
     width: 90%;
-    margin: 8px auto 0;
+    ${theme.mediaQuery.md`
+     width: 100%;
+    `}
+    margin: 0 auto;
     font-family: ${theme.type.accent};
     font-size: 1.6rem;
     &.caption {
-      position: absolute;
-      bottom: -100px;
-      ${theme.mediaQuery.md`
-      bottom: -85px;
-      `}
       p {
         font-size: 1.6rem;
         margin-left: 0px;
+        margin-bottom: 85px;
         font-family: ${theme.type.header};
         font-style: italic;
         font-weight: 700;
@@ -72,13 +67,13 @@ const SingleContainer = styled.div`
   li {
     margin: 0 auto 20px;
     width: 90%;
-    max-width: 650px;
+    max-width: 680px;
     list-style: disc;
   }
 
   h2 {
     width: 90%;
-    max-width: 650px;
+    max-width: 680px;
     margin: 30px auto 20px;
     color: ${theme.colours.gusGreen};
     font-size: 1.8rem;
@@ -92,9 +87,9 @@ const SingleContainer = styled.div`
   .body-content {
     p {
       width: 90%;
-      max-width: 650px;
+      max-width: 680px;
       margin: 17px auto;
-
+      letter-spacing: 0;
       ${theme.mediaQuery.sm`
        margin: 25px auto;
     `}
@@ -144,10 +139,10 @@ const SingleContainer = styled.div`
   }
   .print-details {
     width: 90%;
-    max-width: 650px;
+    text-align: center;
     margin: 45px auto;
     p {
-      margin: 5px 0;
+      margin: 5px auto;
       font-style: italic;
       font-weight: 600;
     }
@@ -155,7 +150,7 @@ const SingleContainer = styled.div`
 
   .share-block {
     width: 90%;
-    max-width: 650px;
+    max-width: 680px;
     margin: 45px auto;
     svg {
       circle {
@@ -173,25 +168,44 @@ const SingleContainer = styled.div`
 `;
 
 const SingleHero = styled.div`
-  margin-bottom: 100px;
+  margin-bottom: 45px;
   .categories {
     width: 90%;
-    margin: 70px 0 0 36px;
     h5 {
-      margin-right: 10px;
+      line-height: 100%;
+    }
+    margin: 70px 0 5px 36px;
+    ${theme.mediaQuery.sm`
+        margin: 70px 0 15px 36px;
+          `}
+    ${theme.mediaQuery.md`
+        margin: 50px 0 20px 36px;
+     
+          `}
+    .category-label {
+      margin-right: 20px;
+      position: relative;
       &:first-child {
         &::after {
           content: "\\00B7";
           font-size: 35px;
           line-height: 5px;
-          position: relative;
-          top: 7px;
-          left: 5px;
+          position: absolute;
+          top: 50%;
+          transform: translateX(-50%);
+          right: -22px;
+          display: table;
+          margin-left: auto;
           ${theme.mediaQuery.md`
-          top: 3px;
-          left: 3px;
+          // top: 3px;
+          // left: 3px;
           font-size: 40px;
           `}
+        }
+      }
+      &:only-child {
+        &::after {
+          content: "";
         }
       }
     }
@@ -204,7 +218,7 @@ const SingleHero = styled.div`
     flex-direction: row;
     width: 95%;
     max-width: 1500px;
-    margin: 0 auto;
+    margin: 0 auto 150px;
     `}
     .hero--image {
       width: 100%;
@@ -213,9 +227,10 @@ const SingleHero = styled.div`
       width: 57%;
       flex: none;
       `}
-      .hero--right--inner {
+      .hero-right--inner {
         /* height: 500px; */
         position: relative;
+        height: 100%;
       }
     }
     .hero--text {
@@ -266,14 +281,8 @@ const SingleHero = styled.div`
   }
 `;
 
-export default function ArticlePage({ article, allArticles, categories }) {
+export default function ArticlePage({ article, categories }) {
   console.log("article: ", article);
-  // let initialDate = article.acf.publication_date;
-  // let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
-  //   month: "long",
-  //   day: "2-digit",
-  //   year: "numeric",
-  // });
 
   let subcategories = categories.filter((newCat) => newCat.parent !== 0);
 
@@ -284,9 +293,11 @@ export default function ArticlePage({ article, allArticles, categories }) {
   const matchingCats = [];
   subcategories.forEach((subcategory) => {
     if (postCategories.includes(subcategory.name)) {
-      matchingCats.push(subcategory.name);
+      // matchingCats.push(subcategory.name);
+      matchingCats.push(subcategory);
     }
   });
+  console.log("matching cats: ", matchingCats);
 
   return (
     <PageWrapper
@@ -311,10 +322,17 @@ export default function ArticlePage({ article, allArticles, categories }) {
             {matchingCats.slice(0, 2).map((cat, index) => {
               return (
                 <React.Fragment key={uuidv4()}>
-                  <h5
-                    dangerouslySetInnerHTML={{ __html: cat }}
-                    key={index}
-                  ></h5>
+                  <Link
+                    href={"/categories/[slug]"}
+                    as={`/categories/${cat.slug}`}
+                  >
+                    <a className="category-label display-flex">
+                      <h5
+                        dangerouslySetInnerHTML={{ __html: cat.name }}
+                        key={index}
+                      ></h5>
+                    </a>
+                  </Link>
                 </React.Fragment>
               );
             })}
@@ -351,27 +369,25 @@ export default function ArticlePage({ article, allArticles, categories }) {
                     priority
                   />
                 )}
-                {article._embedded["wp:featuredmedia"] ? (
-                  <>
-                    <figcaption className="credit ">
-                      {
-                        article._embedded["wp:featuredmedia"]["0"].title
-                          .rendered
-                      }
-                    </figcaption>
-                    <strong>
-                      <figcaption
-                        className="caption "
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            article._embedded["wp:featuredmedia"]["0"].caption
-                              .rendered,
-                        }}
-                      ></figcaption>
-                    </strong>
-                  </>
-                ) : null}
               </div>
+              {article._embedded["wp:featuredmedia"] ? (
+                <>
+                  <figcaption className="credit">
+                    {article._embedded["wp:featuredmedia"]["0"].title.rendered}
+                  </figcaption>
+                  <strong>
+                    <figcaption
+                      className="caption "
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          article._embedded["wp:featuredmedia"]["0"].caption
+                            .rendered,
+                      }}
+                    ></figcaption>
+                  </strong>
+                </>
+              ) : null}
+              {/* hero right inner */}
             </div>
           </div>
         </SingleHero>
@@ -410,7 +426,7 @@ export default function ArticlePage({ article, allArticles, categories }) {
           </TwitterShareButton>
         </div>
         <SupportCard />
-        <RelatedPosts currentArticle={article} allArticles={allArticles} />
+        <RelatedPosts currentArticle={article} />
       </SingleContainer>
     </PageWrapper>
   );
@@ -431,12 +447,12 @@ export async function getStaticPaths() {
 //access the router, get the id, and get the data for that post
 export async function getStaticProps({ params }) {
   const article = await getArticle(params.slug);
-  const allArticles = await getArticles();
+  // const allArticles = await getArticles();
   const categories = await getCategories();
   return {
     props: {
       article,
-      allArticles,
+      // allArticles,
       categories,
     },
     revalidate: 10, // In seconds

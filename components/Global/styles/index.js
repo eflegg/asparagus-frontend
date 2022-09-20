@@ -144,6 +144,12 @@ export const Card = styled.div`
         line-height: 5px;
         position: relative;
         top: 8px;
+        margin: 0 5px;
+      }
+    }
+    &:only-child {
+      &::after {
+        content: "";
       }
     }
   }
@@ -166,5 +172,6 @@ export const Card = styled.div`
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
+    padding-top: 10px;
   }
 `;

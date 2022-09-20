@@ -29,20 +29,29 @@ margin-bottom: 80px;
   }
 `;
 
-export default function Home({ page, posts }) {
+export default function Home({
+  page,
+  posts,
+  catThreePosts,
+  catTwoPosts,
+  catOnePosts,
+  leadStoryPost,
+}) {
   // get URL parameters
   const { query: queryParams } = useRouter();
   //default to 1 if no parameter
   const first = queryParams.first != undefined ? queryParams.first : 1;
   //pagewrapper is rendered with the URL parameter
 
-  const catOne = page.acf.home_category_one[0].term_id;
-  const catTwo = page.acf.home_category_two[0].term_id;
-  const catThree = page.acf.home_category_three[0].term_id;
+  // const catOne = page.acf.home_category_one[0].term_id;
+  // const catTwo = page.acf.home_category_two[0].term_id;
+  // const catThree = page.acf.home_category_three[0].term_id;
 
   console.log("page", page);
-  console.log("posts", posts);
+  // console.log("lead story: ", page.acf.lead_story[0]);
+  // console.log("leadStoryPost: ", leadStoryPost);
 
+  console.log("cat one ", page.acf.home_category_one[0].name);
   return (
     <>
       <PageWrapper
@@ -61,7 +70,7 @@ export default function Home({ page, posts }) {
         }
       >
         <main>
-          <div>
+          {/* <div>
             {posts.map((post, index) => {
               let initialDate = post.date;
 
@@ -73,19 +82,20 @@ export default function Home({ page, posts }) {
                 </React.Fragment>
               );
             })}
+          </div> */}
+          <div>
+            <LeadStoryBlock post={leadStoryPost[0]} />
           </div>
           <CategoryContainer className="new-from--container">
-            <h2 className="h5">New From Asparagus</h2>
+            <h2 className="h5">New from Asparagus</h2>
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
-                    {index <= 5 ? (
-                      <>
-                        <ArticleCard post={post} />
-                      </>
-                    ) : null}
+                    <>
+                      <ArticleCard post={post} />
+                    </>
                   </React.Fragment>
                 );
               })}
@@ -102,15 +112,19 @@ export default function Home({ page, posts }) {
                   : "card--grid"
               }`}
             >
-              {posts.map((post, index) => {
+              {catOnePosts.map((catOnePost, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
-                    {page.acf.home_category_one[0].name == "Awards" &&
-                    post.categories.includes(catOne) ? (
-                      <AwardWinnerCard post={post} />
-                    ) : post.categories.includes(catOne) ? (
-                      <ArticleCard post={post} />
-                    ) : null}
+                    {
+                      page.acf.home_category_one[0].name == "Awards" &&
+                      index <= 5 ? (
+                        <AwardWinnerCard post={catOnePost} />
+                      ) : (
+                        // index <= 5 ?
+                        <ArticleCard post={catOnePost} />
+                      )
+                      // : null
+                    }
                   </React.Fragment>
                 );
               })}
@@ -127,16 +141,14 @@ export default function Home({ page, posts }) {
                   : "card--grid"
               }`}
             >
-              {posts.map((post, index) => {
+              {catTwoPosts.map((catTwoPost, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
-                    {page.acf.home_category_two[0].name == "Awards" &&
-                    post.categories.includes(catTwo) &&
-                    index <= 5 ? (
-                      <AwardWinnerCard post={post} />
-                    ) : post.categories.includes(catTwo) && index <= 6 ? (
-                      <ArticleCard post={post} />
-                    ) : null}
+                    {page.acf.home_category_two[0].name == "Awards" ? (
+                      <AwardWinnerCard post={catTwoPost} />
+                    ) : (
+                      <ArticleCard post={catTwoPost} />
+                    )}
                   </React.Fragment>
                 );
               })}
@@ -154,7 +166,7 @@ export default function Home({ page, posts }) {
               <NewsletterSignup
                 support
                 title="Asparagus relies on readers like you!"
-                subtitle="Donate to Asparagus Magazine"
+                subtitle="Support Asparagus Magazine"
                 image="cherryblossoms.jpg"
               />
             )
@@ -170,15 +182,14 @@ export default function Home({ page, posts }) {
                   : "card--grid"
               }`}
             >
-              {posts.map((post, index) => {
+              {catThreePosts.map((catThreePost, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
                     {page.acf.home_category_three[0].name == "Awards" &&
-                    post.categories.includes(catThree) &&
                     index <= 5 ? (
-                      <AwardWinnerCard post={post} />
-                    ) : post.categories.includes(catThree) && index <= 5 ? (
-                      <ArticleCard post={post} />
+                      <AwardWinnerCard post={catThreePost} />
+                    ) : index <= 5 ? (
+                      <ArticleCard post={catThreePost} />
                     ) : null}
                   </React.Fragment>
                 );
@@ -196,9 +207,31 @@ export async function getStaticProps() {
   const pageQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages/114`);
   const page = await pageQuery.json();
 
+  const categoryOnePosts = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${page?.acf.home_category_one[0].term_id}&per_page=6`
+  );
+  const catOnePosts = await categoryOnePosts.json();
+
+  const categoryTwoPosts = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${page?.acf.home_category_two[0].term_id}&_embed&per_page=6`
+  );
+  const catTwoPosts = await categoryTwoPosts.json();
+
+  const categoryThreePosts = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${page?.acf.home_category_three[0].term_id}&_embed&per_page=6`
+  );
+  const catThreePosts = await categoryThreePosts.json();
+
+  const leadStory = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&include=${page?.acf.lead_story[0].ID}
+  `
+  );
+
+  const leadStoryPost = await leadStory.json();
+
   //all posts
   const postsQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=100`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=6`
   );
   const posts = await postsQuery.json();
 
@@ -206,6 +239,10 @@ export async function getStaticProps() {
     props: {
       page: page,
       posts: posts,
+      catThreePosts: catThreePosts,
+      catTwoPosts: catTwoPosts,
+      catOnePosts: catOnePosts,
+      leadStoryPost: leadStoryPost,
     },
   };
 }

@@ -126,7 +126,15 @@ export default function CategoryFeaturedCard({ post }) {
                             objectFit="cover"
                             alt="Author headshot"
                           />
-                        ) : null}
+                        ) : (
+                          <Image
+                            src="/singlestalk-square.svg"
+                            layout="responsive"
+                            height="100px"
+                            width="100px"
+                            alt="Contributor photo"
+                          />
+                        )}
                       </div>
                     </div>
                   </Link>

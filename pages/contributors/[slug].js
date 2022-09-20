@@ -76,7 +76,6 @@ margin: initial;
 
 export default function ContributorPage({ contributor, posts }) {
   console.log("contributor id: ", contributor.id);
-  console.log("posts: ", posts);
 
   return (
     <PageWrapper
@@ -113,22 +112,40 @@ export default function ContributorPage({ contributor, posts }) {
             </div>
 
             <div className="where-to-find">
-              {contributor.acf.which_social_media_network == "instagram" ? (
-                <div className="icon">
-                  <img src="/insta.png" />
-                </div>
-              ) : contributor.acf.which_social_media_network == "twitter" ? (
-                <div className="icon">
-                  <img src="/twitter.png" />
-                </div>
+              {contributor.acf.which_social_media_network === "Instagram" ? (
+                <a
+                  href={contributor.acf.social_media_link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="icon">
+                    <img src="/insta.png" />
+                  </div>
+                </a>
+              ) : contributor.acf.which_social_media_network == "Twitter" ? (
+                <a
+                  href={contributor.acf.social_media_link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="icon">
+                    <img src="/twitter.png" />
+                  </div>
+                </a>
               ) : (
-                <div className="icon">
-                  <img src="/insta.png" />
-                </div>
+                <a
+                  href={contributor.acf.social_media_link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="icon">
+                    <img src="/insta.png" />
+                  </div>
+                </a>
               )}
               <a
                 className="contrib-website"
-                href={`https://www.${contributor.acf.website}`}
+                href={`https://${contributor.acf.website}`}
                 rel="noreferrer"
                 target="_blank"
               >

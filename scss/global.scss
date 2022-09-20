@@ -267,7 +267,7 @@ li {
   letter-spacing: 0.2rem;
   font-family: $bodyFont;
   font-size: 1.7rem;
-  line-height: 100%;
+  line-height: 25px;
   color: black;
   font-weight: 400;
 
@@ -766,12 +766,13 @@ p.newsletter-header--primary {
 
   @include media-query-min($md) {
     @include font-size(6.7);
-    line-height: 120%;
+    line-height: 100%;
   }
 }
 
 .category-label {
   line-height: 105%;
+  letter-spacing: 0;
   margin-top: 10px;
 }
 
@@ -893,8 +894,19 @@ a.action-menu {
   color: $soil;
 }
 
-li.nav-link {
-  font-family: $accentFont;
+li.nav-link button {
+  font-size: 2.4rem;
+  color: black;
+
+  @include media-query-min($sm) {
+    font-size: calc(24px + 8 * ((100vw - 320px) / 680));
+    line-height: 3rem;
+  }
+
+  @include media-query-min($md) {
+    @include font-size(3.2);
+    line-height: 3.2px;
+  }
 }
 
 .navlink--active {
@@ -1077,6 +1089,7 @@ img {
   box-sizing: border-box;
   align-items: center;
   width: 100%;
+  max-width: 680px;
   margin: 45px auto;
   background-color: #f0e7db;
 
@@ -1186,6 +1199,15 @@ img {
 
 @keyframes dashStalk {
   from {
+    stroke-dashoffset: 400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dashFloret {
+  from {
     stroke-dashoffset: 200;
   }
   to {
@@ -1196,7 +1218,15 @@ img {
 .stalk-path {
   fill: transparent;
   stroke: $gusGreen;
+  stroke-dasharray: 400;
+  // stroke-dashoffset: 200;
+  animation: dashStalk 4s infinite;
+}
+
+.floret-path {
+  fill: transparent;
+  stroke: $gusGreen;
   stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: dashStalk 5s infinite;
+  // stroke-dashoffset: 200;
+  animation: dashFloret 4s infinite;
 }

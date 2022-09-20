@@ -10,6 +10,15 @@ const NewsletterBlock = styled.div`
   width: 100%;
   margin: 45px auto;
   background-color: ${theme.colours.darkWheat};
+  button {
+    font-size: 2rem;
+    ${theme.mediaQuery.md`
+  font-size: 2.2rem;
+  `};
+    ${theme.mediaQuery.md`
+  font-size: 2.6rem;
+  `};
+  }
   .signupWrapper {
     // border: solid red;
     width: 100%;
@@ -88,13 +97,11 @@ const NewsletterBlock = styled.div`
    width: 40%;
    `}
   }
-  
-  
 
   .btn--primary {
     width: 75%;
     ${theme.mediaQuery.sm`
- width: 30%;
+ width: 35%;
  `}
     font-family: ${theme.type.semibold};
   }
@@ -128,7 +135,7 @@ const PhotoStyled = styled.div`
   // border: solid hotpink;
   .image-container {
     // border: 2px solid green;
-  
+
     object-fit: cover;
     height: 100%;
     // width: 65%;
@@ -141,7 +148,7 @@ const PhotoStyled = styled.div`
 `;
 
 const SignUp = styled.div`
-// border: 3px solid black;
+  // border: 3px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -180,7 +187,7 @@ export default function NewsletterSignup({ title, subtitle, image, support }) {
           <p className="newsletter-header--primary">{title}</p>
           <p className="newsletter-subheader--primary">{subtitle}</p>
           {support ? (
-            <button className="btn--primary">Support</button>
+            <button className="btn--primary">Donate Today</button>
           ) : (
             <div className="d-flex flex-column flex-sm-row align-items-center">
               <div id="mc_embed_signup">
@@ -281,7 +288,7 @@ u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0"
         {support ? (
           <PhotoStyled>
             <div className="image-container">
-            <img src={image} alt="nature image" />
+              <img src={image} alt="nature image" />
             </div>
           </PhotoStyled>
         ) : (

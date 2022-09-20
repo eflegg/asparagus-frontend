@@ -29,7 +29,7 @@ const FooterContainer = styled.footer`
 `;
 const FooterMenu = styled.div`
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   padding: 40px 0;
   ${theme.mediaQuery.sm`
   padding: 80px;
@@ -48,7 +48,7 @@ const FooterMenu = styled.div`
   }
   li {
     padding: 0 10px 10px 0;
-    list-style-type: none; 
+    list-style-type: none;
   }
   .nav-link {
     color: ${theme.colours.gusGreen};
@@ -65,7 +65,7 @@ const FooterMenu = styled.div`
     padding-left: 0;
     a {
       font-family: ${theme.type.accent};
-      font-size: 1.3rem; 
+      font-size: 1.3rem;
       line-height: 1rem;
       // color: black;
       ${theme.mediaQuery.md`
@@ -99,7 +99,7 @@ const NewsletterContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  
+
   ${theme.mediaQuery.md`
  align-items: initial;
  `}// width: 45%;
@@ -116,7 +116,7 @@ const SignUp = styled.div`
   margin-top: 40px;
   `}
 
-  input {
+  input.email {
     height: 30px;
     width: 80%;
     flex: 1;
@@ -129,13 +129,17 @@ const SignUp = styled.div`
    width: 200px;
    margin-right: 20px;
  `}
+  ${theme.mediaQuery.md`
+   width: 220px;
+  
+ `}
   }
-//  .input-container {
-//    display: flex; 
-//    align-items: center; 
-//  }
+  //  .input-container {
+  //    display: flex;
+  //    align-items: center;
+  //  }
 
- label,
+  label,
   .label {
     position: relative;
     font-family: ${theme.type.semibold};
@@ -164,32 +168,33 @@ const SignUp = styled.div`
     `}
   }
 
- .btn--primary {
-   z-index: 1; 
-   position: absolute;
-   font-size: 1.4rem;
-   left: 165px;
-   width: 25%;
-   margin: 0px;
-   text-align: center;
-   padding: 0px;
-   ${theme.mediaQuery.xs`
+  .btn--primary {
+    z-index: 1;
+    /* position: absolute; */
+    position: relative;
+    font-size: 1.4rem;
+    /* left: 165px; */
+    width: 35%;
+    margin: 0px;
+    text-align: center;
+    padding: 0px;
+    ${theme.mediaQuery.md`
+   left:50px;
+   font-size: 1.6rem;
+ 
+   `}/* ${theme.mediaQuery.xs`
    width: 18%;
    left: 228px;
    `}
-   ${theme.mediaQuery.sm`
+    ${theme.mediaQuery.sm`
    left: 295px;
    width: 12%;
    `}
-   ${theme.mediaQuery.md`
-   left: 780px;
-   font-size: 1.6rem;
-   width: 12%;
-   `}
+ 
    ${theme.mediaQuery.lg`
    left: 1005px;
    width: 10%;
-   `}
+   `} */
   }
 `;
 
@@ -212,8 +217,6 @@ const Logo = styled.div`
   // min-width: 30%;
   `}
 `;
-
-
 
 export default function Footer() {
   const [footerLinks, setFooterLinks] = useState([]);
@@ -297,40 +300,46 @@ export default function Footer() {
         <NewsletterContainer>
           <div className="signupWrapper">
             <SignUp>
-              <p className="newsletter-header--footer">Sign up for News from the Asparagus Patch</p>
-              <p className="newsletter-subheader--footer">Pleasantly infrequent updates from Asparagus Magazine</p>
+              <p className="newsletter-header--footer">
+                Sign up for our email newsletters
+              </p>
+              <p className="newsletter-subheader--footer">
+                Get articles, events, and green-living tips in your inbox
+              </p>
               <div id="mc_embed_signup">
-              <form
-            action="https://eepurl.us16.list-manage.com/subscribe/post?u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0"
-            method="post"
-            id="mc-embedded-subscribe-form"
-            name="mc-embedded-subscribe-form"
-            className="validate"
-            target="_self"
-          >
-                 <label htmlFor="mce-EMAIL">Email Address (required)*</label>
-                <input
-                  type="email"
-                  name="EMAIL"
-                  className="required email"
-                  id="mce-EMAIL"
-                  required
-                  value={emailValue}
-                  onChange={(e) => setEmailValue(e.target.value)}
-                />
-                 <input
-                    type="submit"
-                    value="Sign Up"
-                    name="subscribe"
-                    id="mc-embedded-subscribe"
-                    className="button btn--primary"
-                  />
+                <form
+                  action="https://eepurl.us16.list-manage.com/subscribe/post?u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0"
+                  method="post"
+                  id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form"
+                  className="validate"
+                  target="_self"
+                >
+                  <label htmlFor="mce-EMAIL">Email Address (required)*</label>
+                  <div className="d-flex">
+                    <input
+                      type="email"
+                      name="EMAIL"
+                      className="required email"
+                      id="mce-EMAIL"
+                      required
+                      value={emailValue}
+                      onChange={(e) => setEmailValue(e.target.value)}
+                    />
+                    <input
+                      type="submit"
+                      value="Sign Up"
+                      name="subscribe"
+                      id="mc-embedded-subscribe"
+                      className="button btn--primary"
+                    />
+                  </div>
                 </form>
               </div>
             </SignUp>
           </div>
           <Logo>
-            <img src="asparagus_tip_logo.svg" alt="asparagus logo" />
+            <img src="/Asparagus_Tip_Logo.svg" alt="Asparagus logo white" />
           </Logo>
         </NewsletterContainer>
       </div>

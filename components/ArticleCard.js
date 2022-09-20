@@ -9,7 +9,6 @@ import { Card } from "../components/Global/styles";
 
 export default function ArticleCard({ post }) {
   const categories = post._embedded["wp:term"]["0"];
-  console.log("post", post);
 
   const subcategories = categories.filter(
     (subCat) =>
@@ -24,12 +23,12 @@ export default function ArticleCard({ post }) {
   // console.log("date: ", initialDate);
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
-    day: "2-digit",
+    day: "numeric",
     year: "numeric",
   });
   // console.log("formatted date: ", formattedDate);
   return (
-    <Card>
+    <Card className="article-card">
       <div className="card--inner">
         <div>
           <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>

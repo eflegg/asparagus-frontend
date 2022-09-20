@@ -1,9 +1,30 @@
 import { v4 as uuidv4 } from "uuid";
 import ArticleCard from "../ArticleCard";
-import React from "react";
-import { getRedirectStatus } from "next/dist/lib/load-custom-routes";
+import React, { useState, useEffect } from "react";
 
-export default function RelatedPosts({ allArticles, currentArticle }) {
+import { Config } from "../../config";
+import fetch from "isomorphic-fetch";
+
+export default function RelatedPosts({ currentArticle }) {
+  const [allArticles, setAllArticles] = useState([]);
+  console.log("all articles: ", allArticles);
+
+  useEffect(() => {
+    async function loadLinks() {
+      const response = await fetch(
+        `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=100`
+      );
+      if (!response.ok) {
+        // oops! something went wrong
+        return;
+      }
+      const links = await response.json();
+      setAllArticles(links);
+    }
+
+    loadLinks();
+  }, []);
+
   // filter out current post
   let posts = allArticles.filter(
     (newPost) => newPost.slug !== currentArticle.slug
@@ -32,7 +53,7 @@ export default function RelatedPosts({ allArticles, currentArticle }) {
   return (
     <>
       <h5 className="related--header">Related Stories</h5>
-      <hr className="hr--related"/>
+      <hr className="hr--related" />
       <div className="card--grid single-page">
         {sortedPosts.slice(0, maxPosts).map((post, i) => (
           <React.Fragment key={uuidv4()}>

@@ -16,7 +16,7 @@ import theme from "../../components/Global/Theme";
 
 const CategoryH1 = styled.h1`
   width: 90%;
-  margin: 0 auto;
+  margin: 48px auto 0;
 `;
 
 export default function CategoryPage({ category, posts, subcategories }) {
@@ -31,7 +31,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
   }, [dynamicRoute]);
 
   console.log("category: ", category);
-  // console.log("posts: ", posts);
+  console.log("posts: ", posts);
   return (
     <PageWrapper
       SEOtitle={category.name}
@@ -72,19 +72,9 @@ export default function CategoryPage({ category, posts, subcategories }) {
               return (
                 <React.Fragment key={uuidv4()}>
                   {post.categories && post.categories.includes(subfilter) ? (
-                    <ArticleCard
-                      post={post}
-                      // title={post.title.rendered}
-                      // slug={post.slug}
-                      // writer={post.acf.writer[0].post_title}
-                    />
+                    <ArticleCard post={post} />
                   ) : subfilter == null ? (
-                    <ArticleCard
-                      post={post}
-                      // title={post.title.rendered}
-                      // slug={post.slug}
-                      // writer={post.acf.writer[0].post_title}
-                    />
+                    <ArticleCard post={post} />
                   ) : null}
                 </React.Fragment>
               );
@@ -137,12 +127,12 @@ export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
 
   const subcategoryQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}&_embed?per_page=100`
+    `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}&_embed&per_page=100`
   );
   const subcategories = await subcategoryQuery.json();
 
   const categoryPosts = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${category?.id}`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${category?.id}&_embed&per_page=100`
   );
   const posts = await categoryPosts.json();
 
