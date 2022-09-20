@@ -470,7 +470,6 @@ export async function getStaticPaths() {
 //access the router, get the id, and get the data for that post
 export async function getStaticProps({ params }) {
   const article = await getArticle(params.slug);
-  // const allArticles = await getArticles();
   const categories = await getCategories();
   return {
     props: {
