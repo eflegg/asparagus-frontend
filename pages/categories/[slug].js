@@ -31,7 +31,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
   }, [dynamicRoute]);
 
   console.log("category: ", category);
-  // console.log("posts: ", posts);
+  console.log("posts: ", posts);
   return (
     <PageWrapper
       SEOtitle={category.name}
@@ -127,12 +127,12 @@ export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
 
   const subcategoryQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}&_embed?per_page=100`
+    `${Config.apiUrl}/wp-json/wp/v2/categories?parent=${category?.id}&_embed&per_page=100`
   );
   const subcategories = await subcategoryQuery.json();
 
   const categoryPosts = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${category?.id}`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=${category?.id}&_embed&per_page=100`
   );
   const posts = await categoryPosts.json();
 
