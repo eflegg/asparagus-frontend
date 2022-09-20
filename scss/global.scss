@@ -247,7 +247,7 @@ li {
   letter-spacing: 0.2rem;
   font-family: $bodyFont;
   font-size: 1.7rem;
-  line-height: 100%;
+  line-height: 25px;
   color: black;
   font-weight: 400;
 
@@ -1070,6 +1070,7 @@ img {
   box-sizing: border-box;
   align-items: center;
   width: 100%;
+  max-width: 680px;
   margin: 45px auto;
   background-color: #f0e7db;
 
@@ -1179,6 +1180,16 @@ img {
 
 @keyframes dashStalk {
   from {
+    stroke-dashoffset: 400;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dashFloret {
+  from {
     stroke-dashoffset: 200;
   }
 
@@ -1190,7 +1201,15 @@ img {
 .stalk-path {
   fill: transparent;
   stroke: $gusGreen;
+  stroke-dasharray: 400;
+  // stroke-dashoffset: 200;
+  animation: dashStalk 4s infinite;
+}
+
+.floret-path {
+  fill: transparent;
+  stroke: $gusGreen;
   stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: dashStalk 5s infinite;
+  // stroke-dashoffset: 200;
+  animation: dashFloret 4s infinite;
 }

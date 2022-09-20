@@ -8,6 +8,15 @@ const nextConfig = {
     // domains: ["asparagus.local"],
     domains: ["stage.asparagusmagazine.com"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/test-broken-link",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

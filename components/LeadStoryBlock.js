@@ -93,10 +93,13 @@ export default function LeadStoryBlock({ post }) {
     day: "2-digit",
     year: "numeric",
   });
+
+  console.log("lead story: ", post);
+
   return (
     <LeadStory>
       <div className="lead-image">
-        {post._embedded["wp:featuredmedia"]["0"].source_url ? (
+        {post._embedded["wp:featuredmedia"] ? (
           <Image
             src={post._embedded["wp:featuredmedia"]["0"].source_url}
             layout="fill"
