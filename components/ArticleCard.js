@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import { Card } from "../components/Global/styles";
+import Byline from "./ArticleComponents/Byline";
 
 export default function ArticleCard({ post }) {
   const categories = post._embedded["wp:term"]["0"];
@@ -81,7 +82,8 @@ export default function ArticleCard({ post }) {
             </a>
           </Link>{" "}
         </div>
-        {post.acf.writer[0].acf.contributor ? (
+        <Byline article={post}/>
+        {/* {post.acf.writer[0].acf.contributor ? (
           <Link
             href={"/contributors/[slug]"}
             as={`/contributors/${post.acf.writer[0].post_name}`}
@@ -146,7 +148,7 @@ export default function ArticleCard({ post }) {
               </div>
             </a>
           </Link>
-        )}
+        )} */}
       </div>
     </Card>
   );
