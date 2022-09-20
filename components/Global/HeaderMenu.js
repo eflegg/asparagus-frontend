@@ -56,6 +56,11 @@ const MenuContainer = styled.div`
     z-index: 10;
     top: -120px;
   `};
+  ${theme.mediaQuery.lg`
+    position: sticky;
+    z-index: 10;
+    top: -133px;
+  `};
   .nav-link {
     button {
       font-family: ${theme.type.medium};
@@ -157,7 +162,7 @@ const DesktopNav = styled.nav`
       content: "";
       position: absolute;
       height: 58px;
-      width: 111%;
+      width: 113%;
       left: 50%;
       top: -10px;
       transform: translateX(-50%);
