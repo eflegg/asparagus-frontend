@@ -116,7 +116,7 @@ const SignUp = styled.div`
   margin-top: 40px;
   `}
 
-  input {
+  input.email {
     height: 30px;
     width: 80%;
     flex: 1;
@@ -128,6 +128,10 @@ const SignUp = styled.div`
     ${theme.mediaQuery.sm`
    width: 200px;
    margin-right: 20px;
+ `}
+  ${theme.mediaQuery.md`
+   width: 220px;
+  
  `}
   }
   //  .input-container {
@@ -166,14 +170,19 @@ const SignUp = styled.div`
 
   .btn--primary {
     z-index: 1;
-    position: absolute;
+    /* position: absolute; */
+    position: relative;
     font-size: 1.4rem;
-    left: 165px;
-    width: 25%;
+    /* left: 165px; */
+    width: 35%;
     margin: 0px;
     text-align: center;
     padding: 0px;
-    ${theme.mediaQuery.xs`
+    ${theme.mediaQuery.md`
+   left:50px;
+   font-size: 1.6rem;
+ 
+   `}/* ${theme.mediaQuery.xs`
    width: 18%;
    left: 228px;
    `}
@@ -181,15 +190,11 @@ const SignUp = styled.div`
    left: 295px;
    width: 12%;
    `}
-   ${theme.mediaQuery.md`
-   left: 780px;
-   font-size: 1.6rem;
-   width: 12%;
-   `}
+ 
    ${theme.mediaQuery.lg`
    left: 1005px;
    width: 10%;
-   `}
+   `} */
   }
 `;
 
@@ -311,22 +316,24 @@ export default function Footer() {
                   target="_self"
                 >
                   <label htmlFor="mce-EMAIL">Email Address (required)*</label>
-                  <input
-                    type="email"
-                    name="EMAIL"
-                    className="required email"
-                    id="mce-EMAIL"
-                    required
-                    value={emailValue}
-                    onChange={(e) => setEmailValue(e.target.value)}
-                  />
-                  <input
-                    type="submit"
-                    value="Sign Up"
-                    name="subscribe"
-                    id="mc-embedded-subscribe"
-                    className="button btn--primary"
-                  />
+                  <div className="d-flex">
+                    <input
+                      type="email"
+                      name="EMAIL"
+                      className="required email"
+                      id="mce-EMAIL"
+                      required
+                      value={emailValue}
+                      onChange={(e) => setEmailValue(e.target.value)}
+                    />
+                    <input
+                      type="submit"
+                      value="Sign Up"
+                      name="subscribe"
+                      id="mc-embedded-subscribe"
+                      className="button btn--primary"
+                    />
+                  </div>
                 </form>
               </div>
             </SignUp>
