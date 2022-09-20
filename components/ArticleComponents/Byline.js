@@ -62,7 +62,7 @@ export default function Byline({ article }) {
                 href={"/team/[slug]"}
                 as={`/team/${article.acf.writer[0].post_name}`}
               >
-                <a className="d-flex">
+                <a className="d-flex byline-link">
                   <div className="byline--image">
                     {article.acf.writer[0].acf.headshot.url ? (
                       <Image

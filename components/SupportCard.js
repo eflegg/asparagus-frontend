@@ -56,12 +56,12 @@ export default function SupportCard({}) {
   return (
     <SupportBlock>
       <div className="support-text">
-        <h1 className="support-title">Asparagus Depends on Readers</h1>
+        <h1 className="support-title">Asparagus depends on readers</h1>
         <h5 className="support-subtitle">
-          Support our Work by Subscribing, Donating or Purchasing Sustainable
-          Swag
+          Support our work by subscribing, donating or buying sustainable
+          swag
         </h5>
-        <button className="btn--primary">Visit Shop</button>
+        <button className="btn--primary">Support Now</button>
       </div>
       <div className="image-container">
         <Image
