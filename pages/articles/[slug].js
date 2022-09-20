@@ -104,8 +104,8 @@ const SingleContainer = styled.div`
     strong {
       em {
         font-size: 1.7rem;
-      font-weight: 800;
-      ${theme.mediaQuery.md`
+        font-weight: 800;
+        ${theme.mediaQuery.md`
       font-size: 2rem;
       `}
       }
@@ -289,7 +289,7 @@ const SingleHero = styled.div`
     `}
   }
   .byline {
-    margin: 5px auto;
+    margin: 0px auto;
   }
   .byline--single-article {
     margin: 0px 0 0 0;
@@ -300,7 +300,7 @@ const SingleHero = styled.div`
     `}
   }
   .date--single-article {
-    margin: 5px 0 0 0;
+    margin: 0 0 0 0;
   }
 `;
 
