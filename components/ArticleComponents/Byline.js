@@ -5,6 +5,12 @@ import styled from "styled-components";
 import theme from "../Global/Theme";
 import TwoAuthorCard from "../TwoAuthorCard";
 
+const BylineContainer = styled.div`
+  p {
+    margin: 0 auto;
+  }
+`;
+
 export default function Byline({ article }) {
   let initialDate = article.acf.publication_date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
@@ -15,7 +21,7 @@ export default function Byline({ article }) {
 
   return (
     <>
-      <div className="article-details">
+      <BylineContainer className="article-details">
         {article.acf.secondary_author == "Yes" ? (
           <TwoAuthorCard post={article} />
         ) : (
@@ -25,7 +31,7 @@ export default function Byline({ article }) {
                 href={"/contributors/[slug]"}
                 as={`/contributors/${article.acf.writer[0].post_name}`}
               >
-                <a className="d-flex">
+                <a className="d-flex align-items-center">
                   <div className="byline--image">
                     {article.acf.writer[0].acf.headshot.url ? (
                       <Image
@@ -97,7 +103,7 @@ export default function Byline({ article }) {
             )}
           </>
         )}
-      </div>
+      </BylineContainer>
     </>
   );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import Image from "next/image";
+import Byline from "./ArticleComponents/Byline";
 
 const Card = styled.div`
   // border: 4px solid ${theme.colours.gusGreen};
@@ -109,7 +110,14 @@ export default function AwardWinnerCard({ post }) {
                 layout="fill"
                 objectFit="cover"
               />
-            ) : null}
+            ) : (
+              <Image
+                src="/triplestalk.svg"
+                layout="fill"
+                objectFit="cover"
+                alt="Author headshot"
+              />
+            )}
             {post.acf.award_graphic ? (
               <div className="award-graphic">
                 <Image
@@ -119,14 +127,13 @@ export default function AwardWinnerCard({ post }) {
                   objectFit="cover"
                 />
               </div>
-            ) : (
-              <Image
-                src="/triplestalk.svg"
-                layout="fill"
-                objectFit="cover"
-                alt="Asparagus Magazine logo"
-              />
-            )}
+            ) : // <Image
+            //   src="/triplestalk.svg"
+            //   layout="fill"
+            //   objectFit="cover"
+            //   alt="Asparagus Magazine logo"
+            // />
+            null}
           </div>
 
           <div className="award-text-wrap">
@@ -134,7 +141,8 @@ export default function AwardWinnerCard({ post }) {
               <p className="deck--topic-feature">{post.acf.dek}</p>
               <div className="award-text--lower">
                 <p className="award-title">{post.acf.award_title}</p>
-                <div className="article-details">
+                <Byline article={post} />
+                {/* <div className="article-details">
                   <div>
                     <p className="byline--article-card">
                       {post.acf.writer[0].post_title}
@@ -145,16 +153,23 @@ export default function AwardWinnerCard({ post }) {
                     </p>
                   </div>
                   <div className="byline--image">
-                    {post.acf.writer[0].acf.headshot.url && (
+                    {post.acf.writer[0].acf.headshot.url ? (
                       <Image
                         src={post.acf.writer[0].acf.headshot.url}
                         layout="fill"
                         objectFit="cover"
                         alt="Author headshot"
                       />
+                    ) : (
+                      <Image
+                        src="/triplestalk.svg"
+                        layout="fill"
+                        objectFit="cover"
+                        alt="Asparagus Magazine logo"
+                      />
                     )}
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
