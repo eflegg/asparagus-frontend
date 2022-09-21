@@ -14,7 +14,7 @@ const AwardContainer = styled.section`
   margin-bottom: 50px;
   h5 {
     margin: 0 72px 30px 72px;
-    width: 90%;
+    /* width: 90%; */
     // margin: 0 auto;
   }
   hr {
