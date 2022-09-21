@@ -171,7 +171,7 @@ const SignUp = styled.div`
   `}
   }
   &.text--support {
-    padding: 45px;
+    padding: 20px;
   }
 `;
 
@@ -187,7 +187,7 @@ export default function NewsletterSignup({ title, subtitle, image, support }) {
           <p className="newsletter-header--primary">{title}</p>
           <p className="newsletter-subheader--primary">{subtitle}</p>
           {support ? (
-            <button className="btn--primary">Donate Today</button>
+            <button className="btn--primary">Donate</button>
           ) : (
             <div className="d-flex flex-column flex-sm-row align-items-center">
               <div id="mc_embed_signup">
