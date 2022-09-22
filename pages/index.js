@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import Loader from "../components/Global/Loader";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
