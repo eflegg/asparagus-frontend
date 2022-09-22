@@ -26,6 +26,8 @@ const FooterContainer = styled.footer`
     flex-direction: row;
     `}
   }
+  .footer-link {
+  }
 `;
 const FooterMenu = styled.div`
   display: flex;
@@ -70,6 +72,7 @@ const FooterMenu = styled.div`
       // color: black;
       ${theme.mediaQuery.md`
       font-size: 1.8rem;
+      line-height: 1.3rem;
       `}
     }
   }
@@ -174,10 +177,14 @@ const SignUp = styled.div`
     position: relative;
     font-size: 1.4rem;
     /* left: 165px; */
-    width: 35%;
-    margin: 0px;
+    width: 75%;
+    margin: 10px 0px;
     text-align: center;
     padding: 0px;
+    ${theme.mediaQuery.sm`
+width: 35%;
+ 
+   `}
     ${theme.mediaQuery.md`
    left:50px;
    font-size: 1.6rem;
@@ -316,7 +323,7 @@ export default function Footer() {
                   target="_self"
                 >
                   <label htmlFor="mce-EMAIL">Email Address (required)*</label>
-                  <div className="d-flex">
+                  <div className="d-flex flex-column flex-sm-row">
                     <input
                       type="email"
                       name="EMAIL"

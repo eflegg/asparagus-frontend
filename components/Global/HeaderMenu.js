@@ -162,7 +162,7 @@ const DesktopNav = styled.nav`
       content: "";
       position: absolute;
       height: 58px;
-      width: 113%;
+      width: 110%;
       left: 50%;
       top: -10px;
       transform: translateX(-50%);

@@ -291,7 +291,6 @@ a {
 li {
   font-family: $bodyFont;
   font-size: 1.8rem;
-  font-size: 18px;
 }
 
 ul {
@@ -737,7 +736,7 @@ p.newsletter-subheader--footer {
   font-size: 1.3rem;
   color: $soil;
   margin: 10px;
-
+  line-height: 1.8rem;
   @include media-query-min($xs) {
     margin: 10px 18px 18px 18px;
   }
