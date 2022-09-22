@@ -127,22 +127,17 @@ export default function AwardWinnerCard({ post }) {
                   objectFit="cover"
                 />
               </div>
-            ) : // <Image
-            //   src="/triplestalk.svg"
-            //   layout="fill"
-            //   objectFit="cover"
-            //   alt="Asparagus Magazine logo"
-            // />
-            null}
+            ) : null}
           </div>
-
-          <div className="award-text-wrap">
-            <div className="award-text">
-              <p className="deck--topic-feature">{post.acf.dek}</p>
-              <div className="award-text--lower">
-                <p className="award-title">{post.acf.award_title}</p>
-                <Byline article={post} />
-                {/* <div className="article-details">
+        </a>
+      </Link>
+      <div className="award-text-wrap">
+        <div className="award-text">
+          <p className="deck--topic-feature">{post.acf.dek}</p>
+          <div className="award-text--lower">
+            <p className="award-title">{post.acf.award_title}</p>
+            <Byline article={post} />
+            {/* <div className="article-details">
                   <div>
                     <p className="byline--article-card">
                       {post.acf.writer[0].post_title}
@@ -170,11 +165,9 @@ export default function AwardWinnerCard({ post }) {
                     )}
                   </div>
                 </div> */}
-              </div>
-            </div>
           </div>
-        </a>
-      </Link>
+        </div>
+      </div>
     </Card>
   );
 }

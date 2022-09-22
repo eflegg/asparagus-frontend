@@ -26,7 +26,7 @@ export default function FourOhFour() {
   return (
     <PageWrapper>
       <Wrapper className="404-wrapper">
-        <h1 className="h5">Hmm, seems there's nothing growing here!</h1>
+        <h1 className="h5">Hmm, seems there `$apos`s nothing growing here!</h1>
         <div className="error-image">
           <Image
             src="/triplestalk.svg"
@@ -36,13 +36,13 @@ export default function FourOhFour() {
             alt="Asparagus Magazine logo"
           />
         </div>
-        <p>
+        <h4>
           Visit our{" "}
           <Link href="/">
             <a>Home Page</a>
           </Link>{" "}
           or use the search bar to find somthing tasty to read
-        </p>
+        </h4>
       </Wrapper>
     </PageWrapper>
   );

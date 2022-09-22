@@ -33,18 +33,22 @@ export default function TwoAuthorCard({ post }) {
               href={"/contributors/[slug]"}
               as={`/contributors/${post.acf.writer[0].post_name}`}
             >
-              <p className="byline--single-article">
-                {post.acf.writer[0].post_title},
-              </p>
+              <a>
+                <p className="byline--single-article">
+                  {post.acf.writer[0].post_title},
+                </p>
+              </a>
             </Link>
           ) : (
             <Link
               href={"/team/[slug]"}
               as={`/team/${post.acf.writer[0].post_name}`}
             >
-              <p className="byline--single-article">
-                {post.acf.writer[0].post_title},
-              </p>
+              <a>
+                <p className="byline--single-article">
+                  {post.acf.writer[0].post_title},
+                </p>
+              </a>
             </Link>
           )}
           {post.acf.secondary_author_name[0].acf.contributor ? (
@@ -52,18 +56,22 @@ export default function TwoAuthorCard({ post }) {
               href={"/contributors/[slug]"}
               as={`/contributors/${post.acf.secondary_author_name[0].post_name}`}
             >
-              <p className="byline--single-article">
-                {post.acf.secondary_author_name[0].post_title}
-              </p>
+              <a>
+                <p className="byline--single-article">
+                  {post.acf.secondary_author_name[0].post_title}
+                </p>
+              </a>
             </Link>
           ) : (
             <Link
               href={"/team/[slug]"}
               as={`/team/${post.acf.secondary_author_name[0].post_name}`}
             >
-              <p className="byline--single-article">
-                {post.acf.secondary_author_name[0].post_title}
-              </p>
+              <a>
+                <p className="byline--single-article">
+                  {post.acf.secondary_author_name[0].post_title}
+                </p>
+              </a>
             </Link>
           )}
         </div>

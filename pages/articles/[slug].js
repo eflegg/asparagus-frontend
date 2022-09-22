@@ -94,6 +94,9 @@ const SingleContainer = styled.div`
        margin: 25px auto;
     `}
     }
+    a {
+      letter-spacing: 0;
+    }
     em {
       font-size: 1.7rem;
       font-weight: 600;
