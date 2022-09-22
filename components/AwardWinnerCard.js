@@ -23,7 +23,7 @@ const Card = styled.div`
     width: 80%;
    `}
    ${theme.mediaQuery.lg`
-   top: 220px;
+   top: 175px;
    width: 70%;
    `}
   }
