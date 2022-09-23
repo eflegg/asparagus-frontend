@@ -27,11 +27,16 @@ const SearchContainer = styled.form`
 `;
 
 const Input = styled.input`
-  border: 1px solid black;
-  border-radius: 5px;
+  ${theme.mediaQuery.sm`
+
+width: 100px;
+padding-left: 30px;
+border: 1px solid black;
+border-radius: 5px;
+`}
   height: 30px;
-  width: 100px;
-  padding-left: 30px;
+  width: 30px;
+  border: 0px;
 `;
 
 export default function Search() {

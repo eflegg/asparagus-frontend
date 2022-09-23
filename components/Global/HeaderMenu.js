@@ -237,34 +237,59 @@ const ConnectMenuNav = styled.nav`
   margin-left: 15px;
   width: 100%;
   position: relative;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.5s ease-in-out;
   ul.connect-ul {
+    position: relative;
     .mobile--home-stalk {
-      display: none;
+      position: absolute;
+      opacity: 0;
+      left: -500px;
       transition: all 0.25s ease-in-out;
     }
     &.nav-active--mobile {
       position: fixed;
       padding: 0px 3%;
       background: transparent;
-      transition: all 0.25s ease-in-out;
+      transition: all 0.5s ease-in-out;
+    }
+    li {
+      position: relative;
+      opacity: 1;
+      top: 0px;
+      width: initial;
+      transition: all 0.5s ease-in-out;
+      &:first-of-type {
+        width: 75px;
+      }
+      transition: all 0.5s ease-in-out;
     }
     &.scrolled--mobile {
       position: fixed;
       top: 0;
+
       background: ${theme.colours.darkWheat};
-      transition: all 0.25s ease-in-out;
+      transition: all 0.5s ease-in-out;
       padding: 10px 0px;
       li {
-        display: none;
+        /* display: none; */
+        opacity: 0;
+        width: 0px;
+        transition: all 0.5s ease-in-out;
         &:first-of-type {
-          display: block;
+          /* display: block; */
+          position: relative;
+          opacity: 1;
+          top: 0;
+          width: 75px;
+          transition: all 0.5s ease-in-out;
         }
-        transition: all 0.25s ease-in-out;
+        transition: all 0.5s ease-in-out;
       }
       .mobile--home-stalk {
-        display: block;
-        transition: all 0.25s ease-in-out;
+        position: relative;
+        left: 0;
+        opacity: 1;
+        transition: all 0.55s ease-in-out;
       }
     }
     width: 100%;
@@ -569,9 +594,9 @@ export default function HeaderMenu() {
               </HamburgerLogoContainer>
               <MobileNav>
                 <ul>
-                  <Link href="/">
+                  {/* <Link href="/">
                     <a>Home</a>
-                  </Link>
+                  </Link> */}
                   {links?.items?.map((link, index) => {
                     return (
                       <React.Fragment key={uuidv4()}>
