@@ -49,7 +49,7 @@ export async function getCategory(slug) {
 /// Articles ///
 
 export async function getArticles() {
-  const articlesRes = await fetch(BASE_URL + "/articles?_embed&per_page=100");
+  const articlesRes = await fetch(BASE_URL + "/articles?_embed&per_page=300");
   const articles = await articlesRes.json();
   return articles;
 }
@@ -65,7 +65,7 @@ export async function getArticle(slug) {
 
 export async function getContributors() {
   const contributorsRes = await fetch(
-    BASE_URL + "/contributors?_embed&per_page=100"
+    BASE_URL + "/contributors?_embed&per_page=300"
   );
   const contributors = await contributorsRes.json();
   return contributors;

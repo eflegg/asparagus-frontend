@@ -195,9 +195,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const contributor = await getContributor(params.slug);
   const contributorPosts = await fetch(
-    // `${Config.apiUrl}/wp-json/wp/v2/articles?writer=${contributor.id}`
-    // @erin this should work, come back to it
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=100`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=300`
   );
 
   const posts = await contributorPosts.json();
