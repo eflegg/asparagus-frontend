@@ -259,7 +259,7 @@ const ConnectMenuNav = styled.nav`
       width: initial;
       transition: all 0.5s ease-in-out;
       &:first-of-type {
-        width: 75px;
+        width: initial;
       }
       transition: all 0.5s ease-in-out;
     }
@@ -280,7 +280,7 @@ const ConnectMenuNav = styled.nav`
           position: relative;
           opacity: 1;
           top: 0;
-          width: 75px;
+          width: initial;
           transition: all 0.5s ease-in-out;
         }
         transition: all 0.5s ease-in-out;
