@@ -95,7 +95,7 @@ const LeadStory = styled.section`
 `;
 
 export default function LeadStoryBlock({ post }) {
-  let initialDate = post.date;
+  let initialDate = post.acf.publication_date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",

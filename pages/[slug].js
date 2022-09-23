@@ -86,7 +86,7 @@ const GeneralContainer = styled.div`
     width: 100%;
     position: relative;
     margin-bottom: 50px;
-
+    margin-top: 35px;
     h1 {
       color: white;
       position: absolute;
