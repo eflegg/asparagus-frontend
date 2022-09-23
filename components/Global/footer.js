@@ -88,9 +88,16 @@ const SocialMediaLogos = styled.div`
   ${theme.mediaQuery.md`
   justify-content: flex-start;
   `}
+
   img {
-    height: 20px;
-    margin: 5px;
+    height: 30px;
+    &.fb-icon {
+      height: 33px;
+      margin: 25px 25px 25px 5px;
+      position: relative;
+      top: -1px;
+    }
+    margin: 25px;
     // ${theme.mediaQuery.md`
     // height: 20px;
     // `}
@@ -120,7 +127,7 @@ const SignUp = styled.div`
   `}
 
   input.email {
-    height: 30px;
+    height: 35px;
     width: 80%;
     flex: 1;
     ${theme.mediaQuery.xs`
@@ -299,9 +306,27 @@ export default function Footer() {
             })}
           </div>
           <SocialMediaLogos>
-            <img src="/twitter_soil.svg" />
-            <img src="/instagram_soil.svg" />
-            <img src="/facebook_soil.svg" />
+            <a
+              href="https://twitter.com/asparagusmag"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src="/twitter_soil.svg" />
+            </a>
+            <a
+              href="https://www.instagram.com/asparagus.mag"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src="/instagram_soil.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/asparagusmag"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img className="fb-icon" src="/facebook_soil.svg" />
+            </a>
           </SocialMediaLogos>
         </FooterMenu>
         <NewsletterContainer>
