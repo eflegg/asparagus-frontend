@@ -28,7 +28,6 @@ flex-direction: row;
     }
   }
   .event--info {
-    // border: solid purple;
     padding: 20px;
     ${theme.mediaQuery.sm`
     width: 60%;
