@@ -10,10 +10,10 @@ const SearchContainer = styled.form`
   position: relative;
   .icon {
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 30px;
-    height: 30px;
+    left: 3px;
+    top: 3px;
+    width: 25px;
+    height: 25px;
   }
   .visually-hidden {
     clip: rect(0 0 0 0);
@@ -76,7 +76,7 @@ export default function Search({ scrolled }) {
           layout="responsive"
           width="50px"
           height="50px"
-          src="/searchicon.png"
+          src="/magnifying-glass-solid.svg"
           alt="search icon"
         />
       </div>

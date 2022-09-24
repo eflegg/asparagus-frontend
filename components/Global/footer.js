@@ -271,7 +271,7 @@ export default function Footer() {
                           <li key={uuidv4()} className="subnav-link">
                             {childItem.object == "general_pages" ? (
                               <ActiveLink
-                                activeClassName="navlink--active"
+                                activeClassName="navlink--active__footer"
                                 href={`/[slug]}`}
                                 as={`/${childItem.slug}`}
                               >
@@ -282,9 +282,17 @@ export default function Footer() {
                                   }}
                                 ></a>
                               </ActiveLink>
+                            ) : childItem.object == "custom" ? (
+                              <a
+                                href={childItem.url}
+                                className="footer-link card-text pb-5"
+                                dangerouslySetInnerHTML={{
+                                  __html: childItem.title,
+                                }}
+                              ></a>
                             ) : (
                               <ActiveLink
-                                activeClassName="navlink--active"
+                                activeClassName="navlink--active__footer"
                                 href={`/${childItem.slug}`}
                                 as={`/${childItem.slug}`}
                               >
