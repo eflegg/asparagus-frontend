@@ -124,6 +124,7 @@ export default function GeneralPage({ genpage }) {
             height="322px"
             width="1280px"
             alt={genpage.acf.header.alt_text}
+            priority
           />
           <h1 className="text-center pb-5">{genpage.title.rendered}</h1>
         </div>

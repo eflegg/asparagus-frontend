@@ -28,8 +28,8 @@ export default function ContributorsPage({ contributors, categories }) {
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/contributors`}
-      ogImageUrl="triplestalk.svg"
-      ogTwitterImage="triplestalk.svg"
+      ogImageUrl="triplestalk.png"
+      ogTwitterImage="triplestalk.png"
       SEOtitle="Contributors"
       metadescription="Meet the Asparagus contributors telling large and small stories of sustainable living"
     >
