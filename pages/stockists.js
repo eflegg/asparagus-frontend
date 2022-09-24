@@ -9,7 +9,7 @@ import StockistSingle from "../components/StockistSingle";
 import { v4 as uuidv4 } from "uuid";
 
 const StockistBlock = styled.div`
-  border: 2px solid white; 
+  border: 2px solid white;
 
   width: 90%;
   max-width: 1000px;
@@ -29,6 +29,7 @@ const StockistBlock = styled.div`
   }
   .circle {
     display: flex;
+    justify-content: center;
     align-items: center;
     border-radius: 50%;
     width: 28px;
@@ -69,11 +70,26 @@ const Map = styled.div`
   }
 `;
 
-const provinces = ["British Columbia", "Alberta", "Saskatchewan"];
+// const provinces = [
+//   "British Columbia",
+//   "Alberta",
+//   "Saskatchewan",
+//   "Manitoba",
+//   "Ontario",
+//   "Quebec",
+//   "New Brunswick",
+//   "Newfoundland and Labrador",
+//   "Nova Scotia",
+//   "Prince Edward Island",
+//   "Yukon",
+// ];
 
 export default function Stockists({ stockists, page }) {
   console.log("stockists: ", stockists);
   console.log("page: ", page);
+
+  const provinces = page.acf.provinces_represented;
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/stockists`}
@@ -100,18 +116,18 @@ export default function Stockists({ stockists, page }) {
       <StockistBlock>
         {provinces.map((province, index) => {
           const newStockists = stockists.filter(
-            (stockist) => stockist.acf.province === province
+            (stockist) => stockist.acf.province === province.name
           );
           return (
             <React.Fragment key={uuidv4()}>
               <div className="province-wrapper">
-                <h5 className="province">{province}</h5>
+                <h5 className="province">{province.name}</h5>
               </div>
               <ul>
                 {newStockists.map((stockist, stockistIndex) => {
                   return (
                     <React.Fragment key={uuidv4()}>
-                      {stockist.acf.province == province ? (
+                      {stockist.acf.province == province.name ? (
                         <StockistSingle
                           stockist={stockist}
                           numeral={stockistIndex + 1}

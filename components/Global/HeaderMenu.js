@@ -54,12 +54,12 @@ const MenuContainer = styled.div`
   ${theme.mediaQuery.md`
     position: sticky;
     z-index: 10;
-    top: -120px;
+    top: -121px;
   `};
   ${theme.mediaQuery.lg`
     position: sticky;
     z-index: 10;
-    top: -133px;
+    top: -134px;
   `};
   .nav-link {
     button {
