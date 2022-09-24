@@ -13,8 +13,8 @@ const LoaderContainer = styled.div`
     transform: translate(-50%, -50%);
   }
   svg {
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 190px;
     position: absolute;
     top: 50%;
     left: 50%;

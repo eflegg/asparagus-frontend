@@ -452,11 +452,19 @@ export default function HeaderMenu() {
             <div className="logo-tagline--container">
               <Link href="/">
                 <a className="position-relative d-block nameplate-container">
-                  <img
-                    className="nameplate nameplate--desktop"
-                    src="/Asparagus_Nameplate_Color.png"
-                    alt="Asparagus Magazine logo"
-                  />
+                  {size.width < 1000 ? (
+                    <img
+                      className="nameplate nameplate--desktop"
+                      src="/Asparagus_Nameplate_notag.png"
+                      alt="Asparagus Magazine logo"
+                    />
+                  ) : (
+                    <img
+                      className="nameplate nameplate--desktop"
+                      src="/Asparagus_Nameplate_Color.png"
+                      alt="Asparagus Magazine logo"
+                    />
+                  )}
                 </a>
               </Link>
               <p className="custom-tagline--desktop ">
