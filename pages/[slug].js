@@ -7,6 +7,8 @@ import Image from "next/image";
 
 const ContentContainer = styled.div`
   height: 100%;
+  width: 90%;
+  margin: 0 auto;
   img {
     height: 100%;
     width: 100%;

@@ -53,7 +53,7 @@ export default function AdBanner() {
     setAdIndex(Math.floor(Math.random() * length));
   };
 
-  console.log("ads: ", ads);
+  // console.log("ads: ", ads);
 
   useEffect(() => {
     randomAd();

@@ -282,6 +282,14 @@ export default function Footer() {
                                   }}
                                 ></a>
                               </ActiveLink>
+                            ) : childItem.object == "custom" ? (
+                              <a
+                                href={childItem.url}
+                                className="footer-link card-text pb-5"
+                                dangerouslySetInnerHTML={{
+                                  __html: childItem.title,
+                                }}
+                              ></a>
                             ) : (
                               <ActiveLink
                                 activeClassName="navlink--active"

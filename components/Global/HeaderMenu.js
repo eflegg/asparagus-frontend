@@ -97,9 +97,15 @@ const MobileNavContainer = styled.div`
   ul {
     position: relative;
     width: 100%;
+    top: 20px;
   }
 `;
 const MobileNav = styled.nav`
+  .menu-chevron {
+    position: relative;
+    top: 5px;
+    left: 5px;
+  }
   .nav-link {
     display: flex;
     flex-direction: row;
@@ -439,6 +445,9 @@ export default function HeaderMenu() {
   const size = useWindowSpecs();
   // const imgRef = useRef();
 
+  console.log("connect links: ", connectLinks);
+  console.log("footer links: ", footerLinks);
+
   return (
     <>
       {links.length < 1 ? (
@@ -496,13 +505,17 @@ export default function HeaderMenu() {
                   {connectLinks?.items?.map((connectLink, index) => {
                     return (
                       <li className="connect--link" key={uuidv4()}>
-                        <ActiveLink
-                          activeClassName="navlink--active"
-                          href={`/${connectLink.slug}`}
-                          to={`/${connectLink.slug}`}
-                        >
-                          <a>{connectLink.title}</a>
-                        </ActiveLink>
+                        {connectLink.object === "page" ? (
+                          <ActiveLink
+                            activeClassName="navlink--active"
+                            href={`/${connectLink.slug}`}
+                            to={`/${connectLink.slug}`}
+                          >
+                            <a>{connectLink.title}</a>
+                          </ActiveLink>
+                        ) : (
+                          <a href={connectLink.url}>{connectLink.title}</a>
+                        )}
                       </li>
                     );
                   })}
@@ -685,13 +698,16 @@ export default function HeaderMenu() {
                         <span
                           dangerouslySetInnerHTML={{ __html: footerLink.title }}
                         />
+                        {footerLink.child_items ? (
+                          <img
+                            className="menu-chevron"
+                            src="/hamburger-arrow.svg"
+                            width="20px"
+                            height="13px"
+                          />
+                        ) : null}
                         {footerLink.child_items && subnav == footerLink.ID ? (
                           <ul className="subnav">
-                            <img
-                              src="/hamburger-arrow.svg"
-                              width="20px"
-                              height="13px"
-                            />
                             {footerLink?.child_items?.map(
                               (childItem, childIndex) => {
                                 return (
@@ -709,6 +725,14 @@ export default function HeaderMenu() {
                                           }}
                                         />
                                       </ActiveLink>
+                                    ) : childItem.object == "custom" ? (
+                                      <a
+                                        href={childItem.url}
+                                        className="card-text pb-5"
+                                        dangerouslySetInnerHTML={{
+                                          __html: childItem.title,
+                                        }}
+                                      />
                                     ) : (
                                       <ActiveLink
                                         activeClassName="navlink--active"
