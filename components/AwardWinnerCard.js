@@ -2,6 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import Image from "next/image";
+import Byline from "./ArticleComponents/Byline";
 
 const Card = styled.div`
   // border: 4px solid ${theme.colours.gusGreen};
@@ -22,7 +23,7 @@ const Card = styled.div`
     width: 80%;
    `}
    ${theme.mediaQuery.lg`
-   top: 220px;
+   top: 175px;
    width: 70%;
    `}
   }
@@ -85,7 +86,7 @@ const Card = styled.div`
 `;
 
 export default function AwardWinnerCard({ post }) {
-  console.log("award post: ", post);
+  // console.log("award post: ", post);
   let initialDate = post.date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     year: "numeric",
@@ -109,7 +110,14 @@ export default function AwardWinnerCard({ post }) {
                 layout="fill"
                 objectFit="cover"
               />
-            ) : null}
+            ) : (
+              <Image
+                src="/triplestalk.svg"
+                layout="fill"
+                objectFit="cover"
+                alt="Author headshot"
+              />
+            )}
             {post.acf.award_graphic ? (
               <div className="award-graphic">
                 <Image
@@ -119,22 +127,17 @@ export default function AwardWinnerCard({ post }) {
                   objectFit="cover"
                 />
               </div>
-            ) : (
-              <Image
-                src="/triplestalk.svg"
-                layout="fill"
-                objectFit="cover"
-                alt="Asparagus Magazine logo"
-              />
-            )}
+            ) : null}
           </div>
-
-          <div className="award-text-wrap">
-            <div className="award-text">
-              <p className="deck--topic-feature">{post.acf.dek}</p>
-              <div className="award-text--lower">
-                <p className="award-title">{post.acf.award_title}</p>
-                <div className="article-details">
+        </a>
+      </Link>
+      <div className="award-text-wrap">
+        <div className="award-text">
+          <p className="deck--topic-feature">{post.acf.dek}</p>
+          <div className="award-text--lower">
+            <p className="award-title">{post.acf.award_title}</p>
+            <Byline article={post} />
+            {/* <div className="article-details">
                   <div>
                     <p className="byline--article-card">
                       {post.acf.writer[0].post_title}
@@ -145,21 +148,26 @@ export default function AwardWinnerCard({ post }) {
                     </p>
                   </div>
                   <div className="byline--image">
-                    {post.acf.writer[0].acf.headshot.url && (
+                    {post.acf.writer[0].acf.headshot.url ? (
                       <Image
                         src={post.acf.writer[0].acf.headshot.url}
                         layout="fill"
                         objectFit="cover"
                         alt="Author headshot"
                       />
+                    ) : (
+                      <Image
+                        src="/triplestalk.svg"
+                        layout="fill"
+                        objectFit="cover"
+                        alt="Asparagus Magazine logo"
+                      />
                     )}
                   </div>
-                </div>
-              </div>
-            </div>
+                </div> */}
           </div>
-        </a>
-      </Link>
+        </div>
+      </div>
     </Card>
   );
 }

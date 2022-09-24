@@ -89,12 +89,22 @@ export default function TeamPage({ teamMember, posts }) {
         <hr />
         <ContribHeader>
           <div className="contrib--image">
-            <Image
-              src={teamMember._embedded["wp:featuredmedia"]["0"].source_url}
-              layout="fill"
-              objectFit="cover"
-              alt={teamMember._embedded["wp:featuredmedia"]["0"].alt_text}
-            />
+            {teamMember._embedded["wp:featuredmedia"] ? (
+              <Image
+                src={teamMember._embedded["wp:featuredmedia"]["0"].source_url}
+                layout="fill"
+                objectFit="cover"
+                alt={teamMember._embedded["wp:featuredmedia"]["0"].alt_text}
+              />
+            ) : (
+              <Image
+                src="/singlestalk-square.svg"
+                layout="responsive"
+                height="100px"
+                width="100px"
+                alt="Contributor photo"
+              />
+            )}
           </div>
           <div className="contrib--details">
             {teamMember.acf.title && <h4>{teamMember.acf.title}</h4>}
@@ -134,12 +144,7 @@ export default function TeamPage({ teamMember, posts }) {
                   <ArticleCard post={post} />
                 ) : null}
                 {post.acf.writer[0]?.ID == teamMember.id ? (
-                  <ArticleCard
-                    post={post}
-                    title={post.title.rendered}
-                    slug={post.slug}
-                    writer={post.acf.writer[0].post_title}
-                  />
+                  <ArticleCard post={post} />
                 ) : null}
               </React.Fragment>
             );

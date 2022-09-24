@@ -26,6 +26,8 @@ const FooterContainer = styled.footer`
     flex-direction: row;
     `}
   }
+  .footer-link {
+  }
 `;
 const FooterMenu = styled.div`
   display: flex;
@@ -47,7 +49,7 @@ const FooterMenu = styled.div`
     padding: 0 12px 20px 12px;
   }
   li {
-    padding: 0 10px 10px 0;
+    padding: 0 10px 15px 0;
     list-style-type: none;
   }
   .nav-link {
@@ -70,6 +72,7 @@ const FooterMenu = styled.div`
       // color: black;
       ${theme.mediaQuery.md`
       font-size: 1.8rem;
+      line-height: 1.3rem;
       `}
     }
   }
@@ -85,9 +88,16 @@ const SocialMediaLogos = styled.div`
   ${theme.mediaQuery.md`
   justify-content: flex-start;
   `}
+
   img {
-    height: 20px;
-    margin: 5px;
+    height: 30px;
+    &.fb-icon {
+      height: 33px;
+      margin: 25px 25px 25px 5px;
+      position: relative;
+      top: -1px;
+    }
+    margin: 25px;
     // ${theme.mediaQuery.md`
     // height: 20px;
     // `}
@@ -117,7 +127,7 @@ const SignUp = styled.div`
   `}
 
   input.email {
-    height: 30px;
+    height: 35px;
     width: 80%;
     flex: 1;
     ${theme.mediaQuery.xs`
@@ -174,10 +184,14 @@ const SignUp = styled.div`
     position: relative;
     font-size: 1.4rem;
     /* left: 165px; */
-    width: 35%;
-    margin: 0px;
+    width: 75%;
+    margin: 10px 0px;
     text-align: center;
     padding: 0px;
+    ${theme.mediaQuery.sm`
+width: 35%;
+ 
+   `}
     ${theme.mediaQuery.md`
    left:50px;
    font-size: 1.6rem;
@@ -292,9 +306,27 @@ export default function Footer() {
             })}
           </div>
           <SocialMediaLogos>
-            <img src="/twitter_soil.svg" />
-            <img src="/instagram_soil.svg" />
-            <img src="/facebook_soil.svg" />
+            <a
+              href="https://twitter.com/asparagusmag"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src="/twitter_soil.svg" />
+            </a>
+            <a
+              href="https://www.instagram.com/asparagus.mag"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src="/instagram_soil.svg" />
+            </a>
+            <a
+              href="https://www.facebook.com/asparagusmag"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img className="fb-icon" src="/facebook_soil.svg" />
+            </a>
           </SocialMediaLogos>
         </FooterMenu>
         <NewsletterContainer>
@@ -316,7 +348,7 @@ export default function Footer() {
                   target="_self"
                 >
                   <label htmlFor="mce-EMAIL">Email Address (required)*</label>
-                  <div className="d-flex">
+                  <div className="d-flex flex-column flex-sm-row">
                     <input
                       type="email"
                       name="EMAIL"

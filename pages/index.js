@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import Loader from "../components/Global/Loader";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -47,11 +47,8 @@ export default function Home({
   // const catTwo = page.acf.home_category_two[0].term_id;
   // const catThree = page.acf.home_category_three[0].term_id;
 
-  console.log("page", page);
-  // console.log("lead story: ", page.acf.lead_story[0]);
-  // console.log("leadStoryPost: ", leadStoryPost);
+  // console.log("page", page);
 
-  console.log("cat one ", page.acf.home_category_one[0].name);
   return (
     <>
       <PageWrapper

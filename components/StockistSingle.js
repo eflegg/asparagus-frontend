@@ -15,7 +15,7 @@ const StockistContainer = styled.div`
 `;
 
 export default function StockistSingle({ stockist, numeral }) {
-  console.log("numeral: ", numeral);
+  // console.log("numeral: ", numeral);
   return (
     <StockistContainer className="stockist--single">
       <div className="number-name-wrapper">

@@ -27,16 +27,28 @@ const SearchContainer = styled.form`
 `;
 
 const Input = styled.input`
-  border: 1px solid black;
-  border-radius: 5px;
+  ${theme.mediaQuery.sm`
+
+width: 100px;
+
+border: 1px solid black;
+border-radius: 5px;
+`}
+  background: transparent;
   height: 30px;
-  width: 100px;
+  width: ${(props) => (props.scrolled == true ? "120px" : "30px")};
+  border: ${(props) => (props.scrolled == true ? "1px solid black" : "0px")};
+  border-radius: 5px;
   padding-left: 30px;
+  position: relative;
+  z-index: 20;
 `;
 
-export default function Search() {
+export default function Search({ scrolled }) {
   const router = useRouter();
   const [searchQuery, setQuery] = useState("");
+
+  // console.log("search scrolled: ", scrolled);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +66,11 @@ export default function Search() {
       <label htmlFor="" className="visually-hidden">
         Search Bar
       </label>
-      <Input type="text" onChange={(event) => setQuery(event.target.value)} />
+      <Input
+        scrolled={scrolled}
+        type="text"
+        onChange={(event) => setQuery(event.target.value)}
+      />
       <div className="icon">
         <Image
           layout="responsive"

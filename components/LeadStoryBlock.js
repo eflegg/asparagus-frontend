@@ -3,6 +3,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import Link from "next/link";
+import TwoAuthorCard from "./TwoAuthorCard";
 
 const LeadStory = styled.section`
   margin-top: 90px;
@@ -58,6 +59,13 @@ const LeadStory = styled.section`
     `}
     }
     .lead-text--inner {
+      .article-details {
+        margin: 10px 0;
+        align-items: flex-start;
+        p {
+          margin: 0 5px 0 0;
+        }
+      }
       display: flex;
       flex-direction: column-reverse;
       ${theme.mediaQuery.md`
@@ -87,7 +95,7 @@ const LeadStory = styled.section`
 `;
 
 export default function LeadStoryBlock({ post }) {
-  let initialDate = post.date;
+  let initialDate = post.acf.publication_date;
   let formattedDate = new Date(initialDate).toLocaleDateString("en-US", {
     month: "long",
     day: "2-digit",
@@ -116,34 +124,41 @@ export default function LeadStoryBlock({ post }) {
           </a>
         </Link>
         <div className="lead-text--inner">
-          {post.acf.writer[0].acf.contributor ? (
+          {post.acf.secondary_author == "Yes" ? (
+            <TwoAuthorCard post={post} />
+          ) : post.acf.writer[0].acf.contributor ? (
             <Link
               href={"/contributors/[slug]"}
               as={`/contributors/${post.acf.writer[0].post_name}`}
             >
-              <div className="lead-story--details">
-                <p className="byline--index-feature">
-                  {post.acf.writer[0].post_title}
-                </p>
-                <p className="byline--index-feature">
-                  {formattedDate} <span> {post.acf.time_to_read} min read</span>
-                </p>
-              </div>
+              <a>
+                <div className="lead-story--details">
+                  <p className="byline--index-feature">
+                    {post.acf.writer[0].post_title}
+                  </p>
+                  <p className="byline--index-feature">
+                    {formattedDate}{" "}
+                    <span> {post.acf.time_to_read} min read</span>
+                  </p>
+                </div>
+              </a>
             </Link>
           ) : (
-            <Link
-              href={"/team/[slug]"}
-              as={`/team/${post.acf.writer[0].post_name}`}
-            >
-              <div className="lead-story--details">
-                <p className="byline--index-feature">
-                  {post.acf.writer[0].post_title}
-                </p>
-                <p className="byline--index-feature">
-                  {formattedDate} <span> {post.acf.time_to_read} min read</span>
-                </p>
-              </div>
-            </Link>
+            <div className="lead-story--details">
+              <Link
+                href={"/team/[slug]"}
+                as={`/team/${post.acf.writer[0].post_name}`}
+              >
+                <a>
+                  <p className="byline--index-feature">
+                    {post.acf.writer[0].post_title}
+                  </p>
+                </a>
+              </Link>
+              <p className="byline--index-feature">
+                {formattedDate} <span> {post.acf.time_to_read} min read</span>
+              </p>
+            </div>
           )}
 
           <hr />

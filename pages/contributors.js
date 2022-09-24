@@ -5,6 +5,8 @@ import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import ContributorCard from "../components/ContributorCard";
+import { Config } from "../config";
+import fetch from "isomorphic-fetch";
 
 const ContribContainer = styled.ul`
   display: grid;
@@ -26,8 +28,8 @@ export default function ContributorsPage({ contributors, categories }) {
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/contributors`}
-      ogImageUrl="triplestalk.svg"
-      ogTwitterImage="triplestalk.svg"
+      ogImageUrl="triplestalk.png"
+      ogTwitterImage="triplestalk.png"
       SEOtitle="Contributors"
       metadescription="Meet the Asparagus contributors telling large and small stories of sustainable living"
     >
@@ -54,8 +56,14 @@ export default function ContributorsPage({ contributors, categories }) {
 }
 
 export async function getStaticProps({ params }) {
-  const contributors = await getContributors();
+  // const contributors = await getContributors();
   const categories = await getCategories();
+
+  const contributorPosts = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/contributors?_embed&per_page=200`
+  );
+
+  const contributors = await contributorPosts.json();
 
   return {
     props: {

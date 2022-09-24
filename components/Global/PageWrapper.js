@@ -39,6 +39,7 @@ export default function PageWrapper({
         <meta property="og:description" content={metadescription} />
         <meta property="og:image" content={ogImageUrl} />
         <meta property="og:url" content={canonicalUrl} />
+
         {/* Global Site Tag (gtag.js) - Google Analytics */}
         <script
           async
@@ -63,7 +64,7 @@ export default function PageWrapper({
         {children}
         <Footer />
       </div>
-      {/* <AdBanner /> */}
+      <AdBanner />
     </OuterContainer>
   );
 }

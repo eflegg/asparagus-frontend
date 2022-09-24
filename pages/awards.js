@@ -14,7 +14,7 @@ const AwardContainer = styled.section`
   margin-bottom: 50px;
   h5 {
     margin: 0 72px 30px 72px;
-    width: 90%;
+    /* width: 90%; */
     // margin: 0 auto;
   }
   hr {
@@ -23,6 +23,8 @@ const AwardContainer = styled.section`
 `;
 
 export default function Awards({ posts }) {
+  console.log("awards page posts: ", posts);
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/awards`}
@@ -71,10 +73,10 @@ export async function getStaticProps({ params }) {
   const awardPosts = await fetch(
     // `${Config.apiUrl}/wp-json/wp/v2/articles?writer=${contributor.id}`
     // @erin this should work, come back to it
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=18&per_page=100`
   );
 
-  const posts = await getArticles();
+  const posts = await awardPosts.json();
 
   return {
     props: {
