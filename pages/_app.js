@@ -10,7 +10,7 @@ const TRACKING_ID = "G-CT5R7MCS1Y";
 ReactGA4.initialize(TRACKING_ID);
 
 function MyApp({ Component, pageProps }) {
-  console.log("pageprops: ", pageProps);
+  // console.log("pageprops: ", pageProps);
   useEffect(() => {
     TagManager.initialize({ gtmId: "GTM-WWFDF6N" });
   }, []);
