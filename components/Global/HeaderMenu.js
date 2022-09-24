@@ -126,7 +126,6 @@ const HamburgerLogoContainer = styled.div`
 `;
 
 const ConnectMenuContainer = styled.div`
-  /* display: ${(props) => (props.scroll && props.mobile ? "none" : "flex")}; */
   width: 100%;
   display: flex;
   justify-content: space-between;
