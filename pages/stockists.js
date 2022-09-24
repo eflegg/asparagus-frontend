@@ -85,8 +85,8 @@ const Map = styled.div`
 // ];
 
 export default function Stockists({ stockists, page }) {
-  console.log("stockists: ", stockists);
-  console.log("page: ", page);
+  // console.log("stockists: ", stockists);
+  // console.log("page: ", page);
 
   const provinces = page.acf.provinces_represented;
 

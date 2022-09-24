@@ -30,8 +30,8 @@ export default function CategoryPage({ category, posts, subcategories }) {
     setSubfilter(null);
   }, [dynamicRoute]);
 
-  console.log("category: ", category);
-  console.log("posts: ", posts);
+  // console.log("category: ", category);
+  // console.log("posts: ", posts);
   return (
     <PageWrapper
       SEOtitle={category.name}

@@ -7,7 +7,7 @@ import fetch from "isomorphic-fetch";
 
 export default function RelatedPosts({ currentArticle }) {
   const [allArticles, setAllArticles] = useState([]);
-  console.log("all articles: ", allArticles);
+  // console.log("all articles: ", allArticles);
 
   useEffect(() => {
     async function loadLinks() {

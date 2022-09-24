@@ -41,7 +41,7 @@ const StartVoices = styled.div`
     ${theme.mediaQuery.md`
     width: 30%;
     `}
-    
+
     p {
       font-family: ${theme.type.medium};
       color: ${theme.colours.soil};
@@ -63,7 +63,7 @@ const StartVoices = styled.div`
 
 export default function ArticleFilter({ subcategories, subfilter, onClick }) {
   console.log("subfilter: ", subfilter);
-  console.log("subcategory one id: ", subcategories[0].id);
+
   return (
     <StartVoices>
       <div className="all">
