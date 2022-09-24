@@ -876,7 +876,10 @@ a.footer-link {
   font-family: $accentFont;
   font-size: 1.3rem;
   color: black;
-
+  &.navlink--active__footer {
+    color: $gusGreen;
+    font-weight: bold;
+  }
   @include media-query-min($sm) {
     font-size: calc(13px + 5 * ((100vw - 320px) / 680));
     line-height: 1.3rem;
