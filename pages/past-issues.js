@@ -94,6 +94,6 @@ export async function getStaticProps({ params }) {
     props: {
       issues,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
   };
 }

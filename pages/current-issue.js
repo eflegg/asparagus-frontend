@@ -159,6 +159,6 @@ export async function getStaticProps({ params }) {
       issues,
       articles,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
   };
 }

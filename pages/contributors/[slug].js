@@ -205,6 +205,6 @@ export async function getStaticProps({ params }) {
       contributor,
       posts,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
   };
 }

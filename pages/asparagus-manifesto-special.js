@@ -44,6 +44,6 @@ export async function getStaticProps({ params }) {
       contributors,
       page,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
   };
 }
