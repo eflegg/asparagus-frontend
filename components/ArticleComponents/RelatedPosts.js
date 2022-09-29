@@ -40,9 +40,9 @@ export default function RelatedPosts({ currentArticle }) {
   posts.forEach((post) => {
     post.relevance = 0;
     post.tags.forEach((tag) => {
-      if (currentTags.includes(tag.name)) {
+      if (currentTags.includes(tag)) {
         post.relevance++;
-        console.log("related tag name: ", tag.name);
+        console.log("related tag name: ", tag);
       }
     });
   });

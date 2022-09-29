@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getTeamMember, getSlugs } from "../../utils/wordpress";
@@ -74,7 +74,35 @@ margin: initial;
   }
 `;
 
-export default function TeamPage({ teamMember, posts }) {
+export default function TeamPage({ teamMember, posts, tags }) {
+  console.log("contributor name: ", teamMember.title.rendered);
+  console.log("team tags: ", tags);
+
+  let contribTag = tags.filter(
+    (newTag) => newTag.name == teamMember.title.rendered
+  );
+  console.log("contrib tag: ", contribTag);
+
+  const [contribPosts, setContribPosts] = useState([]);
+
+  useEffect(() => {
+    async function loadLinks() {
+      const response = await fetch(
+        `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&tags=${contribTag[0].id}&per_page=100`
+      );
+      if (!response.ok) {
+        // oops! something went wrong
+        return;
+      }
+      const posts = await response.json();
+      setContribPosts(posts);
+    }
+
+    loadLinks();
+  }, []);
+
+  console.log("contrib posts: ", contribPosts);
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${teamMember.slug}`}
@@ -137,7 +165,7 @@ export default function TeamPage({ teamMember, posts }) {
           </div>
         </ContribHeader>
         <ul className="card--grid single-page">
-          {posts.map((post, index) => {
+          {/* {posts.map((post, index) => {
             return (
               <React.Fragment key={uuidv4()}>
                 {post.acf.photographer[0]?.ID == teamMember.id ? (
@@ -146,6 +174,15 @@ export default function TeamPage({ teamMember, posts }) {
                 {post.acf.writer[0]?.ID == teamMember.id ? (
                   <ArticleCard post={post} />
                 ) : null}
+              </React.Fragment>
+            );
+          })} */}
+          {contribPosts.map((post, index) => {
+            return (
+              <React.Fragment key={uuidv4()}>
+                <>
+                  <ArticleCard post={post} />
+                </>
               </React.Fragment>
             );
           })}
@@ -171,18 +208,23 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const teamMember = await getTeamMember(params.slug);
-  const teamMemberPosts = await fetch(
-    // `${Config.apiUrl}/wp-json/wp/v2/articles?writer=${contributor.id}`
-    // @erin this should work, come back to it
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
+
+  const allTagsQuery = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/tags?_embed&per_page=100`
   );
 
-  const posts = await teamMemberPosts.json();
+  const tags = await allTagsQuery.json();
+
+  // const teamMemberPosts = await fetch(
+  //   `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
+  // );
+  // const posts = await teamMemberPosts.json();
 
   return {
     props: {
       teamMember,
-      posts,
+
+      tags,
     },
     revalidate: 600, // In seconds
   };
