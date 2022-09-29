@@ -445,8 +445,8 @@ export default function HeaderMenu() {
   const size = useWindowSpecs();
   // const imgRef = useRef();
 
-  console.log("connect links: ", connectLinks);
-  console.log("footer links: ", footerLinks);
+  // console.log("connect links: ", connectLinks);
+  // console.log("footer links: ", footerLinks);
 
   return (
     <>
