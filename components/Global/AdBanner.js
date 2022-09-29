@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { getAds } from "../../utils/wordpress";
 
 const AdBannerContainer = styled.div`
-  width: 75%;
+  width: 97%;
   margin: 60px auto;
   height: 150px;
   position: relative;

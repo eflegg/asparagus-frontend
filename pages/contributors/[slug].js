@@ -98,7 +98,7 @@ export default function ContributorPage({ contributor, tags }) {
     }
 
     loadLinks();
-  }, [contribTag]);
+  });
 
   console.log("contrib posts: ", contribPosts);
 

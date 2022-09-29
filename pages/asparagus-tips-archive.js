@@ -24,18 +24,18 @@ const NewsletterContainer = styled.section`
   }
   ul {
     list-style: none;
-    }
-    ol {
-      padding-left: 0;
-    }
-    li {
-      margin: 0 auto 20px;
-      width: 90%;
-      max-width: 680px;
-    }
-    figure.wp-block-pullquote {
-      margin: 20px auto;
-      p {
+  }
+  ol {
+    padding-left: 0;
+  }
+  li {
+    margin: 0 auto 20px;
+    width: 90%;
+    max-width: 680px;
+  }
+  figure.wp-block-pullquote {
+    margin: 20px auto;
+    p {
       font-family: ${theme.type.semibold};
       color: ${theme.colours.gusGreen};
       font-size: 1.8rem;
@@ -45,23 +45,23 @@ const NewsletterContainer = styled.section`
       margin: 40px auto;
       `}
     }
-      }
-    figcaption {
-      width: 90%;
-      margin: 8px auto 0;
-      font-family: ${theme.type.accent};
-      font-size: 1.6rem;
-    
-      strong {
-        font-family: ${theme.type.header};
-        font-style: italic;
-        position: relative;
-        top: 5px;
-      }
+  }
+  figcaption {
+    width: 90%;
+    margin: 8px auto 0;
+    font-family: ${theme.type.accent};
+    font-size: 1.6rem;
+
+    strong {
+      font-family: ${theme.type.header};
+      font-style: italic;
+      position: relative;
+      top: 5px;
+    }
+  }
 `;
 
 const TipDropdown = styled.div`
-  // border: solid 3px hotpink;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -88,7 +88,7 @@ export default function Tips({ tips, page }) {
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${page.slug}`}
-      ogImageUrl={page.yoast_head_json.og_image}
+      ogImageUrl="triplestalk.svg"
       ogType={page.yoast_head_json.og_type}
       ogTwitterImage={page.yoast_head_json.twitter_card}
       SEOtitle="Asparagus Tips Archive"
