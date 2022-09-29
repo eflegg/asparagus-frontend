@@ -76,14 +76,6 @@ margin: initial;
 
 export default function ContributorPage({ contributor, tags }) {
   console.log("contributor name: ", contributor.title.rendered);
-  // console.log("all tags: ", tags);
-
-  tags.forEach((tag) => {
-    if (tag.name == contributor.title.rendered) {
-      return tag.name;
-    }
-    // console.log("tag: ", tag);
-  });
 
   let contribTag = tags.filter(
     (newTag) => newTag.name == contributor.title.rendered
