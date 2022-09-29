@@ -74,7 +74,7 @@ margin: initial;
   }
 `;
 
-export default function TeamPage({ teamMember, posts, tags }) {
+export default function TeamPage({ teamMember, tags }) {
   console.log("contributor name: ", teamMember.title.rendered);
   console.log("team tags: ", tags);
 
@@ -87,19 +87,21 @@ export default function TeamPage({ teamMember, posts, tags }) {
 
   useEffect(() => {
     async function loadLinks() {
-      const response = await fetch(
-        `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&tags=${contribTag[0].id}&per_page=100`
-      );
-      if (!response.ok) {
-        // oops! something went wrong
-        return;
+      if (contribTag > 0) {
+        const response = await fetch(
+          `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&tags=${contribTag[0].id}&per_page=100`
+        );
+        if (!response.ok) {
+          // oops! something went wrong
+          return;
+        }
+        const posts = await response.json();
+        setContribPosts(posts);
       }
-      const posts = await response.json();
-      setContribPosts(posts);
     }
 
     loadLinks();
-  }, []);
+  }, [contribTag]);
 
   console.log("contrib posts: ", contribPosts);
 
@@ -117,12 +119,12 @@ export default function TeamPage({ teamMember, posts, tags }) {
         <hr />
         <ContribHeader>
           <div className="contrib--image">
-            {teamMember._embedded["wp:featuredmedia"] ? (
+            {teamMember.acf.headshot.url ? (
               <Image
-                src={teamMember._embedded["wp:featuredmedia"]["0"].source_url}
+                src={teamMember.acf.headshot.url}
                 layout="fill"
                 objectFit="cover"
-                alt={teamMember._embedded["wp:featuredmedia"]["0"].alt_text}
+                alt={`Team member ${teamMember.title.rendered}`}
               />
             ) : (
               <Image
@@ -165,27 +167,17 @@ export default function TeamPage({ teamMember, posts, tags }) {
           </div>
         </ContribHeader>
         <ul className="card--grid single-page">
-          {/* {posts.map((post, index) => {
-            return (
-              <React.Fragment key={uuidv4()}>
-                {post.acf.photographer[0]?.ID == teamMember.id ? (
-                  <ArticleCard post={post} />
-                ) : null}
-                {post.acf.writer[0]?.ID == teamMember.id ? (
-                  <ArticleCard post={post} />
-                ) : null}
-              </React.Fragment>
-            );
-          })} */}
-          {contribPosts.map((post, index) => {
-            return (
-              <React.Fragment key={uuidv4()}>
-                <>
-                  <ArticleCard post={post} />
-                </>
-              </React.Fragment>
-            );
-          })}
+          {contribPosts.length > 0
+            ? contribPosts.map((post, index) => {
+                return (
+                  <React.Fragment key={uuidv4()}>
+                    <>
+                      <ArticleCard post={post} />
+                    </>
+                  </React.Fragment>
+                );
+              })
+            : null}
         </ul>
       </div>
     </PageWrapper>
@@ -209,9 +201,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const teamMember = await getTeamMember(params.slug);
 
-  const allTagsQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/tags?_embed&per_page=100`
-  );
+  const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
 
   const tags = await allTagsQuery.json();
 

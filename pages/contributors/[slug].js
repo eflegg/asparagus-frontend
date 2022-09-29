@@ -75,7 +75,7 @@ margin: initial;
 `;
 
 export default function ContributorPage({ contributor, tags }) {
-  console.log("contributor name: ", contributor.title.rendered);
+  console.log("contributor tags: ", tags);
 
   let contribTag = tags.filter(
     (newTag) => newTag.name == contributor.title.rendered
@@ -98,7 +98,7 @@ export default function ContributorPage({ contributor, tags }) {
     }
 
     loadLinks();
-  }, []);
+  }, [contribTag]);
 
   console.log("contrib posts: ", contribPosts);
 
@@ -180,22 +180,6 @@ export default function ContributorPage({ contributor, tags }) {
           </div>
         </ContribHeader>
         <div className="card--grid single-page">
-          {/* {posts.map((post, index) => {
-            return (
-              <React.Fragment key={uuidv4()}>
-                {post.acf.photographer[0]?.ID == contributor.id ? (
-                  <>
-                    <ArticleCard post={post} />
-                  </>
-                ) : null}
-                {post.acf.writer[0]?.ID == contributor.id ? (
-                  <>
-                    <ArticleCard post={post} />
-                  </>
-                ) : null}
-              </React.Fragment>
-            );
-          })} */}
           {contribPosts.map((post, index) => {
             return (
               <React.Fragment key={uuidv4()}>
@@ -227,9 +211,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const contributor = await getContributor(params.slug);
-  const allTagsQuery = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/tags?_embed&per_page=100`
-  );
+  const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
 
   const tags = await allTagsQuery.json();
 
