@@ -9,7 +9,6 @@ import { getContributors } from "../utils/wordpress";
 
 const SingleContainer = styled.div`
   height: 100%;
-
   figure {
     text-align: center;
     margin: 50px auto;

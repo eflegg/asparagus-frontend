@@ -15,6 +15,7 @@ const ContentContainer = styled.div`
   }
 
   figure {
+    display: table;
     margin: 50px auto;
   }
   figcaption {
@@ -28,31 +29,6 @@ const ContentContainer = styled.div`
       font-style: italic;
       position: relative;
       top: 5px;
-    }
-  }
-
-  p {
-    width: 90%;
-    max-width: 680px;
-    margin: 17px auto;
-
-    ${theme.mediaQuery.sm`
-     margin: 25px auto;
-  `}
-  }
-
-  .wp-block-pullquote {
-    p {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: ${theme.colours.gusGreen};
-      width: 80%;
-      margin: 20px auto;
-      text-align: center;
-      font-family: ${theme.type.semibold};
-      ${theme.mediaQuery.md`
-    font-size: 3.6rem;
-    `}
     }
   }
 
@@ -80,6 +56,77 @@ const ContentContainer = styled.div`
     margin: 0 auto 20px;
     width: 90%;
     max-width: 680px;
+  }
+  &.body-content {
+    p {
+      width: 90%;
+      max-width: 680px;
+      margin: 17px auto;
+      letter-spacing: 0;
+      ${theme.mediaQuery.sm`
+     margin: 25px auto;
+    `}
+    }
+    a {
+      letter-spacing: 0;
+    }
+    em {
+      font-size: 1.7rem;
+      font-weight: 600;
+      ${theme.mediaQuery.md`
+    font-size: 2rem;
+    `}
+    }
+    strong {
+      em {
+        font-size: 1.7rem;
+        font-weight: 800;
+        ${theme.mediaQuery.md`
+    font-size: 2rem;
+    `}
+      }
+    }
+    a {
+      text-decoration: underline;
+      text-decoration-skip-ink: auto;
+      font-family: ${theme.type.bodyFont};
+      color: black;
+      font-weight: 400;
+    }
+
+    a:visited {
+      color: ${theme.colours.soil};
+    }
+
+    a:hover {
+      color: ${theme.colours.gusGreen};
+    }
+
+    a:active {
+      color: ${theme.colours.gusYellow};
+    }
+
+    .wp-block-pullquote {
+      p {
+        font-size: 18px;
+        font-weight: 600;
+        color: ${theme.colours.gusGreen};
+        width: 80%;
+        margin: 20px auto;
+        text-align: center;
+        font-family: ${theme.type.semibold};
+        ${theme.mediaQuery.md`
+       font-size: 2.8rem;
+        `}
+        em {
+          font-size: 18px;
+          font-weight: 600;
+          ${theme.mediaQuery.md`
+      font-size: 2.8rem;
+     `}
+        }
+      }
+    }
   }
 `;
 const GeneralContainer = styled.div`
@@ -132,7 +179,7 @@ export default function GeneralPage({ genpage }) {
         </div>
 
         <ContentContainer
-          className="content-container"
+          className="content-container body-content"
           dangerouslySetInnerHTML={{ __html: genpage.content.rendered }}
         ></ContentContainer>
         <p>{genpage.acf.text_block && genpage.acf.text_block}</p>

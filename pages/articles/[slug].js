@@ -25,6 +25,7 @@ const SingleContainer = styled.div`
   height: 100%;
 
   figure {
+    display: table;
     text-align: center;
     margin: 50px auto;
     &.size-large {

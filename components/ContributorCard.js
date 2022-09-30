@@ -116,7 +116,7 @@ export default function ContributorCard({ team, contributor }) {
                 <p>{social}</p>
               </a> */}
             </div>
-            <button className="btn--primary">Contributor Profile</button>
+            {/* <button className="btn--primary">Contributor Profile</button> */}
           </a>
         </Link>
       ) : (
@@ -138,7 +138,7 @@ export default function ContributorCard({ team, contributor }) {
                 <p>{social}</p>
               </a> */}
             </div>
-            <button className="btn--primary">Contributor Profile</button>
+            <button className="btn--primary ">Contributor Profile</button>
           </a>
         </Link>
       )}

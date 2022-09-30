@@ -23,7 +23,7 @@ import Link from "next/link";
 const SearchContainer = styled.div`
   h1 {
     width: 90%;
-    margin: 0 auto;
+    margin: 50px 0 20px 36px;
   }
   h2 {
     color: black;
@@ -54,8 +54,6 @@ const SearchContainer = styled.div`
 `;
 
 function SearchResults(props) {
-  // console.log("events: ", props.events);
-  // console.log("query: ", props.router.query.name);
   const query = props.router.query.name;
   console.log(query);
 

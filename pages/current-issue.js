@@ -121,7 +121,13 @@ export default function CurrentIssue({ issues, articles }) {
           <h3>From This Issue:</h3>
           <p>{issues[0].acf.primary_cover_line}</p>
           <p>{issues[0].acf.secondary_cover_line}</p>
-          <button className="btn--primary">Buy Now</button>
+          <a
+            href="https://shop.asparagusmagazine.com/current-issue/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <button className="btn--primary">Buy Now</button>
+          </a>
         </div>
       </CoverContainer>
       <ul className="card--grid single-page">

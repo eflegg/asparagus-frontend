@@ -58,10 +58,15 @@ export default function SupportCard({}) {
       <div className="support-text">
         <h1 className="support-title">Asparagus depends on readers</h1>
         <h5 className="support-subtitle">
-          Support our work by subscribing, donating or buying sustainable
-          swag
+          Support our work by subscribing, donating or buying sustainable swag
         </h5>
-        <button className="btn--primary">Support Now</button>
+        <a
+          href="https://shop.asparagusmagazine.com/current-issue/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <button className="btn--primary">Support Now</button>
+        </a>
       </div>
       <div className="image-container">
         <Image

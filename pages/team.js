@@ -43,8 +43,8 @@ export default function Team({ teamMembers }) {
           );
         })}
       </TeamMemberContainer>
-      <h1 className="text-center">Columnists</h1>
-      <hr />
+      {/* <h1 className="text-center">Columnists</h1>
+      <hr /> */}
     </PageWrapper>
   );
 }

@@ -12,6 +12,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/categories/awards",
+        destination: "/awards",
+        permanent: true,
+      },
+      {
         source: "/test-broken-link",
         destination: "/",
         permanent: true,
