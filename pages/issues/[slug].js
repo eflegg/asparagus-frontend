@@ -80,8 +80,12 @@ const Issues = styled.div`
   }
 `;
 
-export default function Issue({ issue, articles, posts }) {
-  const currentIssue = issue.ID;
+export default function Issue({ issue, posts }) {
+  const currentIssue = issue.id;
+
+  console.log("issue posts: ", posts);
+  console.log("issue: ", issue);
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${issue.slug}`}
@@ -89,7 +93,6 @@ export default function Issue({ issue, articles, posts }) {
       ogType={issue.yoast_head_json.og_type}
       ogTwitterImage={issue.yoast_head_json.twitter_card}
       SEOtitle={issue.title.rendered}
-      className=""
     >
       <h1 className="text-center">{issue.title.rendered}</h1>
       <Issues>
@@ -171,7 +174,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const issue = await getIssue(params.slug);
-  const articles = await getArticles();
+  // const articles = await getArticles();
 
   const issuePosts = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=10&_embed&per_page=300`
@@ -183,7 +186,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       issue,
-      articles,
+
       posts,
     },
     revalidate: 600, // In seconds
