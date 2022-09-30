@@ -174,8 +174,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const issue = await getIssue(params.slug);
-  // const articles = await getArticles();
-
   const issuePosts = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=10&_embed&per_page=300`
   );
