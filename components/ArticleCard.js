@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
-import styled from "styled-components";
-import theme from "../components/Global/Theme";
+
 import PropTypes from "prop-types";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";

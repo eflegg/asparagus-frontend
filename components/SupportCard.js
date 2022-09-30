@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import Image from "next/image";
@@ -12,10 +11,7 @@ const SupportBlock = styled.div`
 height: 80vh;
 min-height: 550px;
 `}
-  /* ${theme.mediaQuery.md`
 
-min-height: 500px;
-`} */
   .image-container {
     position: relative;
     width: 100%;

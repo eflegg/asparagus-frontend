@@ -1,10 +1,7 @@
-import Head from "next/head";
-import theme from "../components/Global/Theme";
 import PageWrapper from "../components/Global/PageWrapper";
 import { getTeamMembers } from "../utils/wordpress";
 import ContributorCard from "../components/ContributorCard";
 import React from "react";
-import Link from "next/link";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 

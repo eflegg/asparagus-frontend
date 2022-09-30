@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  getSlugs,
-  getIssue,
-  getArticles,
-  getIssues,
-} from "../../utils/wordpress";
+import { getSlugs, getIssue, getArticles } from "../../utils/wordpress";
 import PageWrapper from "../../components/Global/PageWrapper";
 import ArticleCard from "../../components/ArticleCard";
 import styled from "styled-components";
