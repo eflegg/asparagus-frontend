@@ -206,10 +206,13 @@ export async function getStaticProps({ params }) {
   const genpages = await getGeneralPage();
   const genpage = await getGeneralPage(params.slug);
 
+  const notFound = !genpage;
+
   return {
     props: {
       genpage,
     },
     revalidate: 600, // In seconds
+    notFound,
   };
 }

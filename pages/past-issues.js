@@ -65,7 +65,7 @@ export default function PastIssues({ issues }) {
           </Link>
         </div>
       </Issues>
-      <ul className="card--grid">
+      <ul className="card--grid single-page">
         {issues.map((issue, index) => {
           return (
             <React.Fragment key={uuidv4()}>
@@ -89,11 +89,13 @@ export default function PastIssues({ issues }) {
 
 export async function getStaticProps({ params }) {
   const issues = await getIssues();
+  const notFound = !issues;
 
   return {
     props: {
       issues,
     },
     revalidate: 600, // In seconds
+    notFound,
   };
 }

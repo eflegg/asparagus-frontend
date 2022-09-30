@@ -476,12 +476,14 @@ export async function getStaticProps({ params }) {
   const article = await getArticle(params.slug);
   // const allArticles = await getArticles();
   const categories = await getCategories();
+
+  const notFound = !article;
   return {
     props: {
       article,
-      // allArticles,
       categories,
     },
     revalidate: 600, // In seconds
+    notFound,
   };
 }

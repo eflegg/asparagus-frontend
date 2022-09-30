@@ -228,11 +228,7 @@ export async function getStaticProps({ params }) {
 
   const tags = await allTagsQuery.json();
 
-  // const contributorPosts = await fetch(
-  //   `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=300`
-  // );
-
-  // const posts = await contributorPosts.json();
+  const notFound = !contributor;
 
   return {
     props: {
@@ -241,5 +237,6 @@ export async function getStaticProps({ params }) {
       tags,
     },
     revalidate: 600, // In seconds
+    notFound,
   };
 }

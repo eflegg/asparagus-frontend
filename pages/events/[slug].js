@@ -55,7 +55,6 @@ const SingleEvent = styled.div`
     ${theme.mediaQuery.md`
     margin-bottom: 40px;
     `}
-    
   }
   .btn--secondary {
     position: relative;
@@ -74,10 +73,10 @@ const SingleEvent = styled.div`
       transition: all 0.25s ease-out;
     }
     &:hover {
-        &::after {
-          content: "";
-          width: 73%;
-          transition: all 0.25s ease-out;
+      &::after {
+        content: "";
+        width: 73%;
+        transition: all 0.25s ease-out;
       }
     }
   }
@@ -107,11 +106,10 @@ const Gallery = styled.div`
 `;
 
 const RuleBox = styled.div`
-hr {
-  margin-bottom: 20px;
-}
+  hr {
+    margin-bottom: 20px;
+  }
 `;
-
 
 export default function EventPage({ event, image }) {
   console.log("event: ", event);
@@ -135,15 +133,15 @@ export default function EventPage({ event, image }) {
         {event.title.rendered}
       </h1>
       <RuleBox>
-        <hr/>
-        </RuleBox>
-      
+        <hr />
+      </RuleBox>
+
       <SingleEvent itemscope itemtype="https://schema.org/Event">
         <div className="btn-container">
           <Link href={"/events"}>
             <a>
-          <button className="btn--secondary">Back to Events</button>
-          </a>
+              <button className="btn--secondary">Back to Events</button>
+            </a>
           </Link>
         </div>
         <div className="wrapper">
@@ -217,10 +215,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const event = await getEvent(params.slug);
 
+  const notFound = !event;
+
   return {
     props: {
       event,
     },
     revalidate: 10, // In seconds
+    notFound,
   };
 }

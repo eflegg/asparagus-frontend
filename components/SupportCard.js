@@ -57,7 +57,7 @@ export default function SupportCard({}) {
           Support our work by subscribing, donating or buying sustainable swag
         </h5>
         <a
-          href="https://shop.asparagusmagazine.com/current-issue/"
+          href="https://shop.asparagusmagazine.com/donations/"
           rel="noreferrer"
           target="_blank"
         >

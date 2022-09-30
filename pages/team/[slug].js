@@ -75,36 +75,30 @@ margin: initial;
   }
 `;
 
-export default function TeamPage({ teamMember, tags }) {
-  // console.log("contributor name: ", teamMember.title.rendered);
-  // console.log("team tags: ", tags);
-
-  let contribTag = tags.filter(
-    (newTag) => newTag.name == teamMember.title.rendered
-  );
-  // console.log("contrib tag: ", contribTag);
+export default function TeamPage({ teamMember }) {
+  // let contribTag = tags.filter(
+  //   (newTag) => newTag.name == teamMember.title.rendered
+  // );
 
   const [contribPosts, setContribPosts] = useState([]);
 
-  useEffect(() => {
-    async function loadLinks() {
-      if (contribTag > 0) {
-        const response = await fetch(
-          `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&tags=${contribTag[0].id}&per_page=100`
-        );
-        if (!response.ok) {
-          // oops! something went wrong
-          return;
-        }
-        const posts = await response.json();
-        setContribPosts(posts);
-      }
-    }
+  // useEffect(() => {
+  //   async function loadLinks() {
+  //     if (contribTag > 0) {
+  //       const response = await fetch(
+  //         `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&tags=${contribTag[0].id}&per_page=100`
+  //       );
+  //       if (!response.ok) {
+  //         // oops! something went wrong
+  //         return;
+  //       }
+  //       const posts = await response.json();
+  //       setContribPosts(posts);
+  //     }
+  //   }
 
-    loadLinks();
-  }, [contribTag]);
-
-  // console.log("contrib posts: ", contribPosts);
+  //   loadLinks();
+  // }, [contribTag]);
 
   return (
     <PageWrapper
@@ -179,7 +173,7 @@ export default function TeamPage({ teamMember, tags }) {
             </div>
           </div>
         </ContribHeader>
-        <ul className="card--grid single-page">
+        {/* <ul className="card--grid single-page">
           {contribPosts.length > 0
             ? contribPosts.map((post, index) => {
                 return (
@@ -191,7 +185,7 @@ export default function TeamPage({ teamMember, tags }) {
                 );
               })
             : null}
-        </ul>
+        </ul> */}
       </div>
     </PageWrapper>
   );
@@ -214,21 +208,17 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const teamMember = await getTeamMember(params.slug);
 
-  const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
+  // const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
+  // const tags = await allTagsQuery.json();
 
-  const tags = await allTagsQuery.json();
-
-  // const teamMemberPosts = await fetch(
-  //   `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
-  // );
-  // const posts = await teamMemberPosts.json();
+  const notFound = !teamMember;
 
   return {
     props: {
       teamMember,
-
-      tags,
+      // tags,
     },
     revalidate: 600, // In seconds
+    notFound,
   };
 }

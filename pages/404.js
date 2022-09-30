@@ -20,13 +20,19 @@ const Wrapper = styled.div`
     width: 82px;
     margin: 0 auto;
   }
+  h2 {
+    font-size: 2.2rem;
+    color: black;
+    font-weight: 400;
+    text-align: center;
+  }
 `;
 
 export default function FourOhFour() {
   return (
     <PageWrapper>
       <Wrapper className="404-wrapper">
-        <h1 className="h5">Hmm, seems there `$apos`s nothing growing here!</h1>
+        <h1 className="h5">Hmm, seems there is nothing growing here!</h1>
         <div className="error-image">
           <Image
             src="/triplestalk.svg"
@@ -36,13 +42,13 @@ export default function FourOhFour() {
             alt="Asparagus Magazine logo"
           />
         </div>
-        <h4>
+        <h2>
           Visit our{" "}
           <Link href="/">
             <a>Home Page</a>
           </Link>{" "}
           or use the search bar to find somthing tasty to read
-        </h4>
+        </h2>
       </Wrapper>
     </PageWrapper>
   );
