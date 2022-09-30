@@ -76,8 +76,8 @@ const Issues = styled.div`
 
 export default function CurrentIssue({ issues, articles }) {
   const currentIssue = issues[0];
-  console.log("current issue: ", currentIssue.id);
-  console.log("articles: ", articles);
+  // console.log("current issue: ", currentIssue.id);
+  // console.log("articles: ", articles);
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${currentIssue.slug}`}

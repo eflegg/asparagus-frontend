@@ -75,13 +75,13 @@ margin: initial;
 `;
 
 export default function TeamPage({ teamMember, tags }) {
-  console.log("contributor name: ", teamMember.title.rendered);
-  console.log("team tags: ", tags);
+  // console.log("contributor name: ", teamMember.title.rendered);
+  // console.log("team tags: ", tags);
 
   let contribTag = tags.filter(
     (newTag) => newTag.name == teamMember.title.rendered
   );
-  console.log("contrib tag: ", contribTag);
+  // console.log("contrib tag: ", contribTag);
 
   const [contribPosts, setContribPosts] = useState([]);
 
@@ -103,7 +103,7 @@ export default function TeamPage({ teamMember, tags }) {
     loadLinks();
   }, [contribTag]);
 
-  console.log("contrib posts: ", contribPosts);
+  // console.log("contrib posts: ", contribPosts);
 
   return (
     <PageWrapper

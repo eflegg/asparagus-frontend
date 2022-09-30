@@ -54,8 +54,8 @@ const SearchContainer = styled.div`
 `;
 
 function SearchResults(props) {
-  console.log("events: ", props.events);
-  console.log("query: ", props.router.query.name);
+  // console.log("events: ", props.events);
+  // console.log("query: ", props.router.query.name);
   const query = props.router.query.name;
   console.log(query);
 
