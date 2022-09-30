@@ -43,12 +43,6 @@ export default function Home({
   const first = queryParams.first != undefined ? queryParams.first : 1;
   //pagewrapper is rendered with the URL parameter
 
-  // const catOne = page.acf.home_category_one[0].term_id;
-  // const catTwo = page.acf.home_category_two[0].term_id;
-  // const catThree = page.acf.home_category_three[0].term_id;
-
-  // console.log("page", page);
-
   return (
     <>
       <PageWrapper
@@ -67,19 +61,6 @@ export default function Home({
         }
       >
         <main>
-          {/* <div>
-            {posts.map((post, index) => {
-              let initialDate = post.date;
-
-              return (
-                <React.Fragment key={uuidv4()}>
-                  {post.id == page.acf.lead_story[0].ID ? (
-                    <LeadStoryBlock post={post} />
-                  ) : null}
-                </React.Fragment>
-              );
-            })}
-          </div> */}
           <div>
             <LeadStoryBlock post={leadStoryPost[0]} />
           </div>
@@ -112,16 +93,12 @@ export default function Home({
               {catOnePosts.map((catOnePost, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
-                    {
-                      page.acf.home_category_one[0].name == "Awards" &&
-                      index <= 5 ? (
-                        <AwardWinnerCard post={catOnePost} />
-                      ) : (
-                        // index <= 5 ?
-                        <ArticleCard post={catOnePost} />
-                      )
-                      // : null
-                    }
+                    {page.acf.home_category_one[0].name == "Awards" &&
+                    index <= 5 ? (
+                      <AwardWinnerCard post={catOnePost} />
+                    ) : (
+                      <ArticleCard post={catOnePost} />
+                    )}
                   </React.Fragment>
                 );
               })}

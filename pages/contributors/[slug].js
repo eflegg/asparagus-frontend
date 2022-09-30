@@ -65,6 +65,7 @@ justify-content: flex-start;
   `}
   }
   .icon {
+    position: relative;
     width: 30px;
     height: 30px;
     margin: 15px 0;
@@ -144,7 +145,11 @@ export default function ContributorPage({ contributor, tags }) {
                   rel="noreferrer"
                 >
                   <div className="icon">
-                    <img src="/insta.png" />
+                    <Image
+                      src="/insta.png"
+                      alt="Instagram logo and link"
+                      layout="fill"
+                    />
                   </div>
                 </a>
               ) : contributor.acf.which_social_media_network == "Twitter" ? (
@@ -154,7 +159,11 @@ export default function ContributorPage({ contributor, tags }) {
                   rel="noreferrer"
                 >
                   <div className="icon">
-                    <img src="/twitter.png" />
+                    <Image
+                      src="/twitter.png"
+                      alt="Twitter logo and link"
+                      layout="fill"
+                    />
                   </div>
                 </a>
               ) : (
@@ -164,7 +173,11 @@ export default function ContributorPage({ contributor, tags }) {
                   rel="noreferrer"
                 >
                   <div className="icon">
-                    <img src="/insta.png" />
+                    <Image
+                      src="/insta.png"
+                      alt="Instagram logo and link"
+                      layout="fill"
+                    />
                   </div>
                 </a>
               )}
