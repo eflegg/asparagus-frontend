@@ -4,6 +4,7 @@ import Loader from "../components/Global/Loader";
 import { useState, useEffect } from "react";
 import ReactGA4 from "react-ga4";
 import TagManager from "react-gtm-module";
+import Script from "next/script";
 
 const TRACKING_ID = "G-CT5R7MCS1Y";
 
@@ -32,7 +33,32 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeError", handleComplete);
     };
   });
-  return <>{loading ? <Loader /> : <Component {...pageProps} />}</>;
+  return (
+    <>
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <Script
+        strategy="lazyOnload"
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
+      />
+      <Script
+        id="google-analytics"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: `
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ gtag('config', '${TRACKING_ID}', {
+   page_path: window.location.pathname,
+ });
+`,
+        }}
+      />
+
+      {loading ? <Loader /> : <Component {...pageProps} />}
+    </>
+  );
 }
 
 export default MyApp;

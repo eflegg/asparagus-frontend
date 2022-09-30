@@ -82,7 +82,7 @@ export default function CategoryPage({ category, posts, subcategories }) {
           </div>
         </>
       ) : category.slug == "awards" ? (
-        <div className="card--grid single-page">
+        <div className="single-page">
           {posts.map((post, index) => {
             return (
               <React.Fragment key={uuidv4()}>
@@ -136,12 +136,15 @@ export async function getStaticProps({ params }) {
   );
   const posts = await categoryPosts.json();
 
+  const notFound = !category;
+
   return {
     props: {
       category,
       subcategories,
       posts,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
+    notFound,
   };
 }

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import Image from "next/image";
@@ -12,10 +11,7 @@ const SupportBlock = styled.div`
 height: 80vh;
 min-height: 550px;
 `}
-  /* ${theme.mediaQuery.md`
 
-min-height: 500px;
-`} */
   .image-container {
     position: relative;
     width: 100%;
@@ -58,10 +54,15 @@ export default function SupportCard({}) {
       <div className="support-text">
         <h1 className="support-title">Asparagus depends on readers</h1>
         <h5 className="support-subtitle">
-          Support our work by subscribing, donating or buying sustainable
-          swag
+          Support our work by subscribing, donating or buying sustainable swag
         </h5>
-        <button className="btn--primary">Support Now</button>
+        <a
+          href="https://shop.asparagusmagazine.com/donations/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <button className="btn--primary">Support Now</button>
+        </a>
       </div>
       <div className="image-container">
         <Image

@@ -1,10 +1,7 @@
-import Head from "next/head";
-import theme from "../components/Global/Theme";
 import PageWrapper from "../components/Global/PageWrapper";
 import { getTeamMembers } from "../utils/wordpress";
 import ContributorCard from "../components/ContributorCard";
 import React from "react";
-import Link from "next/link";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
@@ -43,8 +40,8 @@ export default function Team({ teamMembers }) {
           );
         })}
       </TeamMemberContainer>
-      <h1 className="text-center">Columnists</h1>
-      <hr />
+      {/* <h1 className="text-center">Columnists</h1>
+      <hr /> */}
     </PageWrapper>
   );
 }
@@ -55,6 +52,6 @@ export async function getStaticProps({ params }) {
     props: {
       teamMembers,
     },
-    revalidate: 10,
+    revalidate: 600,
   };
 }

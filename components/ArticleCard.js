@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
-import styled from "styled-components";
-import theme from "../components/Global/Theme";
+
 import PropTypes from "prop-types";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
@@ -82,73 +81,7 @@ export default function ArticleCard({ post }) {
             </a>
           </Link>{" "}
         </div>
-        <Byline article={post}/>
-        {/* {post.acf.writer[0].acf.contributor ? (
-          <Link
-            href={"/contributors/[slug]"}
-            as={`/contributors/${post.acf.writer[0].post_name}`}
-          >
-            <a>
-              <div className="article-details">
-                <div className="byline--image">
-                  {post.acf.writer[0].acf.headshot.url ? (
-                    <Image
-                      src={post.acf.writer[0].acf.headshot.url}
-                      layout="fill"
-                      objectFit="cover"
-                      alt="Author headshot"
-                    />
-                  ) : (
-                    <Image
-                      src="/singlestalk-square.svg"
-                      layout="fill"
-                      objectFit="cover"
-                      alt="Author headshot"
-                    />
-                  )}
-                </div>
-                <div>
-                  <p className="byline--article-card">
-                    {post.acf.writer[0].post_title}
-                  </p>
-                  <p className="date--article-card">
-                    {formattedDate} -{" "}
-                    <span>{post.acf.time_to_read} min read</span>
-                  </p>
-                </div>
-              </div>
-            </a>
-          </Link>
-        ) : (
-          <Link
-            href={"/team/[slug]"}
-            as={`/team/${post.acf.writer[0].post_name}`}
-          >
-            <a>
-              <div className="article-details">
-                <div className="byline--image">
-                  {post.acf.writer[0].acf.headshot.url ? (
-                    <Image
-                      src={post.acf.writer[0].acf.headshot.url}
-                      layout="fill"
-                      objectFit="cover"
-                      alt="Author headshot"
-                    />
-                  ) : null}
-                </div>
-                <div>
-                  <p className="byline--article-card">
-                    {post.acf.writer[0].post_title}
-                  </p>
-                  <p className="date--article-card">
-                    {formattedDate} -{" "}
-                    <span>{post.acf.time_to_read} min read</span>
-                  </p>
-                </div>
-              </div>
-            </a>
-          </Link>
-        )} */}
+        <Byline article={post} />
       </div>
     </Card>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getIssues, getArticles } from "../utils/wordpress";
@@ -76,8 +76,8 @@ const Issues = styled.div`
 
 export default function CurrentIssue({ issues, articles }) {
   const currentIssue = issues[0];
-  console.log("current issue: ", currentIssue.id);
-  console.log("articles: ", articles);
+  // console.log("current issue: ", currentIssue.id);
+  // console.log("articles: ", articles);
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${currentIssue.slug}`}
@@ -121,7 +121,13 @@ export default function CurrentIssue({ issues, articles }) {
           <h3>From This Issue:</h3>
           <p>{issues[0].acf.primary_cover_line}</p>
           <p>{issues[0].acf.secondary_cover_line}</p>
-          <button className="btn--primary">Buy Now</button>
+          <a
+            href="https://shop.asparagusmagazine.com/current-issue/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <button className="btn--primary">Buy Now</button>
+          </a>
         </div>
       </CoverContainer>
       <ul className="card--grid single-page">
@@ -159,6 +165,6 @@ export async function getStaticProps({ params }) {
       issues,
       articles,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
   };
 }

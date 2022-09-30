@@ -103,6 +103,7 @@ const MobileNavContainer = styled.div`
 const MobileNav = styled.nav`
   .menu-chevron {
     position: relative;
+    width: 20px;
     top: 5px;
     left: 5px;
   }
@@ -156,11 +157,7 @@ const DesktopNav = styled.nav`
     padding-left: 2%;
     padding-right: 2%;
     width: 100%;
-    /* width: 100vw; */
-    /* padding-left: 30px; */
-    /* padding-right: 30px; */
-    /* border: 2px solid orange; */
-    /* margin: 0px -57px 0px -57px; */
+
     background-color: transparent;
     transition: all 0.25s ease-in-out;
     &:after {
@@ -363,8 +360,6 @@ export default function HeaderMenu() {
   const [navActive, setNavActive] = useState(false);
   const [subnav, setSubnav] = useState(null);
 
-  // console.log("links: ", links);
-
   const handleSubnavClick = (menuId) => {
     if (subnav == menuId) {
       setSubnav(null);
@@ -442,10 +437,6 @@ export default function HeaderMenu() {
 
   //updates when the client loads so you can use it
   const size = useWindowSpecs();
-  // const imgRef = useRef();
-
-  // console.log("connect links: ", connectLinks);
-  // console.log("footer links: ", footerLinks);
 
   return (
     <>
@@ -610,7 +601,6 @@ export default function HeaderMenu() {
                   <a onClick={() => setNavActive(false)}>
                     <img
                       className="nameplate nameplate--mobile"
-                      // ref={imgRef}
                       src="/Asparagus_Nameplate_Color.png"
                     />
                   </a>
@@ -618,9 +608,6 @@ export default function HeaderMenu() {
               </HamburgerLogoContainer>
               <MobileNav>
                 <ul>
-                  {/* <Link href="/">
-                    <a>Home</a>
-                  </Link> */}
                   {links?.items?.map((link, index) => {
                     return (
                       <React.Fragment key={uuidv4()}>
@@ -634,11 +621,15 @@ export default function HeaderMenu() {
                           {link.child_items && subnav == link.ID ? (
                             <>
                               <ul className="subnav">
-                                <img
-                                  src="/hamburger-arrow.svg"
-                                  width="20px"
-                                  height="13px"
-                                />
+                                <div className="position-relative menu-chevron">
+                                  <Image
+                                    src="/hamburger-arrow.svg"
+                                    width="20px"
+                                    height="13px"
+                                    layout="responsive"
+                                    alt="Chevron icon to activate submenu"
+                                  />
+                                </div>
                                 {link?.child_items?.map(
                                   (childItem, childIndex) => {
                                     return (
@@ -695,15 +686,19 @@ export default function HeaderMenu() {
                         onClick={() => handleSubnavClick(footerLink.ID)}
                       >
                         <span
+                          className="position-relative"
                           dangerouslySetInnerHTML={{ __html: footerLink.title }}
                         />
                         {footerLink.child_items ? (
-                          <img
-                            className="menu-chevron"
-                            src="/hamburger-arrow.svg"
-                            width="20px"
-                            height="13px"
-                          />
+                          <div className="position-relative menu-chevron">
+                            <Image
+                              src="/hamburger-arrow.svg"
+                              width="20px"
+                              height="13px"
+                              layout="responsive"
+                              alt="Chevron icon to activate submenu"
+                            />
+                          </div>
                         ) : null}
                         {footerLink.child_items && subnav == footerLink.ID ? (
                           <ul className="subnav">

@@ -23,7 +23,7 @@ import Link from "next/link";
 const SearchContainer = styled.div`
   h1 {
     width: 90%;
-    margin: 0 auto;
+    margin: 50px 0 20px 36px;
   }
   h2 {
     color: black;
@@ -33,7 +33,7 @@ const SearchContainer = styled.div`
     ${theme.mediaQuery.md`
     font-size: 2.4rem;
     margin: 0px 72px;
-    `}  
+    `}
   }
 
   .search-result--title {
@@ -54,8 +54,6 @@ const SearchContainer = styled.div`
 `;
 
 function SearchResults(props) {
-  console.log("events: ", props.events);
-  console.log("query: ", props.router.query.name);
   const query = props.router.query.name;
   console.log(query);
 
@@ -179,16 +177,16 @@ function SearchResults(props) {
 
           {filteredTips.map((post) => (
             <React.Fragment key={uuidv4()}>
-               <div className="search-result--content">
-              <Link href={"/asparagus-tips-archive"}>
-                <a>
-                  <h3 className="search-result--title">
-                    {post.title.rendered}
-                  </h3>
-                  <p>{post.yoast_head_json.description}</p>
-                  {/* check to make sure the excerpt exists */}
-                </a>
-              </Link>
+              <div className="search-result--content">
+                <Link href={"/asparagus-tips-archive"}>
+                  <a>
+                    <h3 className="search-result--title">
+                      {post.title.rendered}
+                    </h3>
+                    <p>{post.yoast_head_json.description}</p>
+                    {/* check to make sure the excerpt exists */}
+                  </a>
+                </Link>
               </div>
             </React.Fragment>
           ))}
@@ -228,6 +226,6 @@ export async function getStaticProps({ params }) {
       team,
       tips,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
   };
 }

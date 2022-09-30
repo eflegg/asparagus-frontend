@@ -7,7 +7,7 @@ import { getCategories } from "../utils/wordpress";
 import { v4 as uuidv4 } from "uuid";
 
 export default function AllCategories({ categories }) {
-  console.log("categories: ", categories);
+  // console.log("categories: ", categories);
   return (
     <PageWrapper>
       <div className="">

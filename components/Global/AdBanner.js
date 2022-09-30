@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { getAds } from "../../utils/wordpress";
 
 const AdBannerContainer = styled.div`
-  width: 75%;
+  width: 97%;
   margin: 60px auto;
   height: 150px;
   position: relative;
@@ -69,11 +69,11 @@ export default function AdBanner() {
         {ads.length !== 0 ? (
           <>
             {/* <Image
-            
               src={ads?.acf?.banner_ads[adIndex]?.banner_image.url}
-              layout="fill"
+              layout="responsive"
+              width="97%"
+              height="150px"
               alt={ads?.acf?.banner_ads[adIndex]?.advertiser_name}
-              objectFit="cover"
             /> */}
             <img
               id={`banner-ad--${adIndex}`}

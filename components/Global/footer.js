@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
-import Link from "next/link";
+import Image from "next/image";
 import ActiveLink from "./ActiveLink";
 import styled from "styled-components";
 import theme from "./Theme";
@@ -13,14 +13,14 @@ const FooterContainer = styled.footer`
   max-width: 100%;
   background: ${theme.colours.gusYellow};
   overflow: hidden;
-  // padding: 50px 0 50px 50px;
+
   display: flex;
   flex-direction: row;
 
   .footer-inner {
     display: flex;
     flex-direction: column-reverse;
-    // border: solid 2px white;
+
     width: 100%;
     ${theme.mediaQuery.md`
     flex-direction: row;
@@ -63,13 +63,12 @@ const FooterMenu = styled.div`
     font-weight: bold;
   }
   .subnav {
-    // border: solid blue;
     padding-left: 0;
     a {
       font-family: ${theme.type.accent};
       font-size: 1.3rem;
       line-height: 1rem;
-      // color: black;
+
       ${theme.mediaQuery.md`
       font-size: 1.8rem;
       line-height: 1.3rem;
@@ -82,15 +81,15 @@ const FooterMenu = styled.div`
 `;
 
 const SocialMediaLogos = styled.div`
-  // border: solid green;
   display: flex;
   justify-content: center;
   ${theme.mediaQuery.md`
   justify-content: flex-start;
   `}
 
-  img {
+  a {
     height: 30px;
+    width: 30px;
     &.fb-icon {
       height: 33px;
       margin: 25px 25px 25px 5px;
@@ -98,24 +97,19 @@ const SocialMediaLogos = styled.div`
       top: -1px;
     }
     margin: 25px;
-    // ${theme.mediaQuery.md`
-    // height: 20px;
-    // `}
   }
 `;
 
 const NewsletterContainer = styled.div`
-  // border: solid rebeccapurple;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 
   ${theme.mediaQuery.md`
  align-items: initial;
- `}// width: 45%;
+ `}
 `;
 const SignUp = styled.div`
-  // border: 3px solid salmon;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -144,10 +138,6 @@ const SignUp = styled.div`
   
  `}
   }
-  //  .input-container {
-  //    display: flex;
-  //    align-items: center;
-  //  }
 
   label,
   .label {
@@ -196,24 +186,11 @@ width: 35%;
    left:50px;
    font-size: 1.6rem;
  
-   `}/* ${theme.mediaQuery.xs`
-   width: 18%;
-   left: 228px;
    `}
-    ${theme.mediaQuery.sm`
-   left: 295px;
-   width: 12%;
-   `}
- 
-   ${theme.mediaQuery.lg`
-   left: 1005px;
-   width: 10%;
-   `} */
   }
 `;
 
 const Logo = styled.div`
-  // border: solid teal;
   width: 100%;
   min-width: 150px;
   img {
@@ -235,8 +212,6 @@ const Logo = styled.div`
 export default function Footer() {
   const [footerLinks, setFooterLinks] = useState([]);
   const [emailValue, setEmailValue] = useState("");
-  const [newsletterValue, setNewsletterValue] = useState("");
-  const [suggestedValue, setSuggestedValue] = useState("");
 
   useEffect(() => {
     async function loadLinks() {
@@ -315,25 +290,40 @@ export default function Footer() {
           </div>
           <SocialMediaLogos>
             <a
+              className="position-relative"
               href="https://twitter.com/asparagusmag"
               target="_blank"
               rel="noreferrer"
             >
-              <img src="/twitter_soil.svg" />
+              <Image
+                src="/twitter_soil.svg"
+                alt="Twitter logo and link"
+                layout="fill"
+              />
             </a>
             <a
+              className="position-relative"
               href="https://www.instagram.com/asparagus.mag"
               target="_blank"
               rel="noreferrer"
             >
-              <img src="/instagram_soil.svg" />
+              <Image
+                src="/instagram_soil.svg"
+                alt="Instagram logo and link"
+                layout="fill"
+              />
             </a>
             <a
+              className="position-relative"
               href="https://www.facebook.com/asparagusmag"
               target="_blank"
               rel="noreferrer"
             >
-              <img className="fb-icon" src="/facebook_soil.svg" />
+              <Image
+                src="/facebook_soil.svg"
+                alt="Facebook logo and link"
+                layout="fill"
+              />
             </a>
           </SocialMediaLogos>
         </FooterMenu>

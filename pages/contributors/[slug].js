@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getContributor, getSlugs } from "../../utils/wordpress";
@@ -65,6 +65,7 @@ justify-content: flex-start;
   `}
   }
   .icon {
+    position: relative;
     width: 30px;
     height: 30px;
     margin: 15px 0;
@@ -74,9 +75,33 @@ margin: initial;
   }
 `;
 
-export default function ContributorPage({ contributor, posts }) {
-  console.log("contributor id: ", contributor.id);
-  console.log("contributor posts: ", posts);
+export default function ContributorPage({ contributor, tags }) {
+  console.log("contributor tags: ", tags);
+
+  let contribTag = tags.filter(
+    (newTag) => newTag.name == contributor.title.rendered
+  );
+  console.log("contrib tag: ", contribTag);
+
+  const [contribPosts, setContribPosts] = useState([]);
+
+  useEffect(() => {
+    async function loadLinks() {
+      const response = await fetch(
+        `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&tags=${contribTag[0].id}&per_page=100`
+      );
+      if (!response.ok) {
+        // oops! something went wrong
+        return;
+      }
+      const posts = await response.json();
+      setContribPosts(posts);
+    }
+
+    loadLinks();
+  });
+
+  console.log("contrib posts: ", contribPosts);
 
   return (
     <PageWrapper
@@ -120,7 +145,11 @@ export default function ContributorPage({ contributor, posts }) {
                   rel="noreferrer"
                 >
                   <div className="icon">
-                    <img src="/insta.png" />
+                    <Image
+                      src="/insta.png"
+                      alt="Instagram logo and link"
+                      layout="fill"
+                    />
                   </div>
                 </a>
               ) : contributor.acf.which_social_media_network == "Twitter" ? (
@@ -130,7 +159,11 @@ export default function ContributorPage({ contributor, posts }) {
                   rel="noreferrer"
                 >
                   <div className="icon">
-                    <img src="/twitter.png" />
+                    <Image
+                      src="/twitter.png"
+                      alt="Twitter logo and link"
+                      layout="fill"
+                    />
                   </div>
                 </a>
               ) : (
@@ -140,7 +173,11 @@ export default function ContributorPage({ contributor, posts }) {
                   rel="noreferrer"
                 >
                   <div className="icon">
-                    <img src="/insta.png" />
+                    <Image
+                      src="/insta.png"
+                      alt="Instagram logo and link"
+                      layout="fill"
+                    />
                   </div>
                 </a>
               )}
@@ -156,19 +193,12 @@ export default function ContributorPage({ contributor, posts }) {
           </div>
         </ContribHeader>
         <div className="card--grid single-page">
-          {posts.map((post, index) => {
+          {contribPosts.map((post, index) => {
             return (
               <React.Fragment key={uuidv4()}>
-                {post.acf.photographer[0]?.ID == contributor.id ? (
-                  <>
-                    <ArticleCard post={post} />
-                  </>
-                ) : null}
-                {post.acf.writer[0]?.ID == contributor.id ? (
-                  <>
-                    <ArticleCard post={post} />
-                  </>
-                ) : null}
+                <>
+                  <ArticleCard post={post} />
+                </>
               </React.Fragment>
             );
           })}
@@ -194,17 +224,19 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const contributor = await getContributor(params.slug);
-  const contributorPosts = await fetch(
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=300`
-  );
+  const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
 
-  const posts = await contributorPosts.json();
+  const tags = await allTagsQuery.json();
+
+  const notFound = !contributor;
 
   return {
     props: {
       contributor,
-      posts,
+
+      tags,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
+    notFound,
   };
 }

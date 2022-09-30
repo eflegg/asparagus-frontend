@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  getSlugs,
-  getIssue,
-  getArticles,
-  getIssues,
-} from "../../utils/wordpress";
+import { Config } from "../../config";
+import fetch from "isomorphic-fetch";
+import { getSlugs, getIssue, getArticles } from "../../utils/wordpress";
 import PageWrapper from "../../components/Global/PageWrapper";
 import ArticleCard from "../../components/ArticleCard";
 import styled from "styled-components";
@@ -83,16 +80,19 @@ const Issues = styled.div`
   }
 `;
 
-export default function Issue({ issue, articles }) {
-  const currentIssue = issue.ID;
+export default function Issue({ issue, posts }) {
+  const currentIssue = issue.id;
+
+  console.log("issue posts: ", posts);
+  console.log("issue: ", issue);
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${issue.slug}`}
       ogImageUrl={issue.yoast_head_json.og_image}
       ogType={issue.yoast_head_json.og_type}
       ogTwitterImage={issue.yoast_head_json.twitter_card}
-      SEOtitle="Current Issue"
-      className=""
+      SEOtitle={issue.title.rendered}
     >
       <h1 className="text-center">{issue.title.rendered}</h1>
       <Issues>
@@ -129,11 +129,17 @@ export default function Issue({ issue, articles }) {
           <h3>From This Issue:</h3>
           <p>{issue.acf.primary_cover_line}</p>
           <p>{issue.acf.secondary_cover_line}</p>
-          <button className="btn--primary">Buy Now</button>
+          <a
+            href="https://shop.asparagusmagazine.com/back-issues/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <button className="btn--primary">Buy Now</button>
+          </a>
         </div>
       </CoverContainer>
       <ul className="card--grid single-page">
-        {articles.map((article, index) => {
+        {posts.map((article, index) => {
           const appearsIn = article.acf.appears_in;
           const printIssue = article.acf.print_issue;
           return (
@@ -168,13 +174,20 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const issue = await getIssue(params.slug);
-  const articles = await getArticles();
+  const issuePosts = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=10&_embed&per_page=300`
+  );
+
+  const posts = await issuePosts.json();
+  const notFound = !issue;
 
   return {
     props: {
       issue,
-      articles,
+
+      posts,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
+    notFound,
   };
 }

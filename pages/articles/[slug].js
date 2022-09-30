@@ -25,6 +25,7 @@ const SingleContainer = styled.div`
   height: 100%;
 
   figure {
+    display: table;
     text-align: center;
     margin: 50px auto;
     &.size-large {
@@ -474,12 +475,14 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const article = await getArticle(params.slug);
   const categories = await getCategories();
+
+  const notFound = !article;
   return {
     props: {
       article,
-      // allArticles,
       categories,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
+    notFound,
   };
 }

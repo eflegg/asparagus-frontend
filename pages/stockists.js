@@ -155,6 +155,6 @@ export async function getStaticProps({ params }) {
       stockists,
       page,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
   };
 }

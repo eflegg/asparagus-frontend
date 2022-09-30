@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getTeamMember, getSlugs } from "../../utils/wordpress";
@@ -65,6 +65,7 @@ justify-content: flex-start;
   `}
   }
   .icon {
+    position: relative;
     width: 30px;
     height: 30px;
     margin: 15px 0;
@@ -74,7 +75,31 @@ margin: initial;
   }
 `;
 
-export default function TeamPage({ teamMember, posts }) {
+export default function TeamPage({ teamMember }) {
+  // let contribTag = tags.filter(
+  //   (newTag) => newTag.name == teamMember.title.rendered
+  // );
+
+  const [contribPosts, setContribPosts] = useState([]);
+
+  // useEffect(() => {
+  //   async function loadLinks() {
+  //     if (contribTag > 0) {
+  //       const response = await fetch(
+  //         `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&tags=${contribTag[0].id}&per_page=100`
+  //       );
+  //       if (!response.ok) {
+  //         // oops! something went wrong
+  //         return;
+  //       }
+  //       const posts = await response.json();
+  //       setContribPosts(posts);
+  //     }
+  //   }
+
+  //   loadLinks();
+  // }, [contribTag]);
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${teamMember.slug}`}
@@ -89,12 +114,12 @@ export default function TeamPage({ teamMember, posts }) {
         <hr />
         <ContribHeader>
           <div className="contrib--image">
-            {teamMember._embedded["wp:featuredmedia"] ? (
+            {teamMember.acf.headshot.url ? (
               <Image
-                src={teamMember._embedded["wp:featuredmedia"]["0"].source_url}
+                src={teamMember.acf.headshot.url}
                 layout="fill"
                 objectFit="cover"
-                alt={teamMember._embedded["wp:featuredmedia"]["0"].alt_text}
+                alt={`Team member ${teamMember.title.rendered}`}
               />
             ) : (
               <Image
@@ -114,15 +139,27 @@ export default function TeamPage({ teamMember, posts }) {
             <div className="where-to-find">
               {teamMember.acf.which_social_media_network == "instagram" ? (
                 <div className="icon">
-                  <img src="/insta.png" />
+                  <Image
+                    src="/insta.png"
+                    alt="Instagram logo and link"
+                    layout="fill"
+                  />
                 </div>
               ) : teamMember.acf.which_social_media_network == "twitter" ? (
                 <div className="icon">
-                  <img src="/twitter.png" />
+                  <Image
+                    src="/twitter.png"
+                    alt="Twitter logo and link"
+                    layout="fill"
+                  />
                 </div>
               ) : (
                 <div className="icon">
-                  <img src="/insta.png" />
+                  <Image
+                    src="/insta.png"
+                    alt="Instagram logo and link"
+                    layout="fill"
+                  />
                 </div>
               )}
               <a
@@ -136,20 +173,19 @@ export default function TeamPage({ teamMember, posts }) {
             </div>
           </div>
         </ContribHeader>
-        <ul className="card--grid single-page">
-          {posts.map((post, index) => {
-            return (
-              <React.Fragment key={uuidv4()}>
-                {post.acf.photographer[0]?.ID == teamMember.id ? (
-                  <ArticleCard post={post} />
-                ) : null}
-                {post.acf.writer[0]?.ID == teamMember.id ? (
-                  <ArticleCard post={post} />
-                ) : null}
-              </React.Fragment>
-            );
-          })}
-        </ul>
+        {/* <ul className="card--grid single-page">
+          {contribPosts.length > 0
+            ? contribPosts.map((post, index) => {
+                return (
+                  <React.Fragment key={uuidv4()}>
+                    <>
+                      <ArticleCard post={post} />
+                    </>
+                  </React.Fragment>
+                );
+              })
+            : null}
+        </ul> */}
       </div>
     </PageWrapper>
   );
@@ -171,19 +207,18 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const teamMember = await getTeamMember(params.slug);
-  const teamMemberPosts = await fetch(
-    // `${Config.apiUrl}/wp-json/wp/v2/articles?writer=${contributor.id}`
-    // @erin this should work, come back to it
-    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed`
-  );
 
-  const posts = await teamMemberPosts.json();
+  // const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
+  // const tags = await allTagsQuery.json();
+
+  const notFound = !teamMember;
 
   return {
     props: {
       teamMember,
-      posts,
+      // tags,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
+    notFound,
   };
 }
