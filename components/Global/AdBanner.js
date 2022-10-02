@@ -11,7 +11,7 @@ import { getAds } from "../../utils/wordpress";
 const AdBannerContainer = styled.div`
   width: 97%;
   margin: 60px auto;
-  height: 150px;
+
   height: auto;
   position: relative;
   img {

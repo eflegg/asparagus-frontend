@@ -41,6 +41,7 @@ const SingleContainer = styled.div`
       /* position: absolute; */
     }
     width: 90%;
+    max-width: 680px;
     ${theme.mediaQuery.md`
      width: 100%;
     `}
@@ -72,8 +73,7 @@ const SingleContainer = styled.div`
     list-style: disc;
   }
   h3,
-  h4,
-  h5 {
+  h4 {
     width: 90%;
     max-width: 680px;
   }
