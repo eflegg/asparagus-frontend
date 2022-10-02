@@ -71,7 +71,12 @@ const SingleContainer = styled.div`
     max-width: 680px;
     list-style: disc;
   }
-
+  h3,
+  h4,
+  h5 {
+    width: 90%;
+    max-width: 680px;
+  }
   h2 {
     width: 90%;
     max-width: 680px;
