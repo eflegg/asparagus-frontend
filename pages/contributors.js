@@ -1,6 +1,5 @@
 import React from "react";
-import Link from "next/link";
-import { getContributors, getCategories } from "../utils/wordpress";
+
 import PageWrapper from "../components/Global/PageWrapper";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
@@ -24,7 +23,7 @@ const ContribContainer = styled.ul`
   margin-bottom: 100px;
 `;
 
-export default function ContributorsPage({ contributors, categories }) {
+export default function ContributorsPage({ contributors }) {
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/contributors`}
@@ -57,7 +56,7 @@ export default function ContributorsPage({ contributors, categories }) {
 
 export async function getStaticProps({ params }) {
   // const contributors = await getContributors();
-  const categories = await getCategories();
+  // const categories = await getCategories();
 
   const contributorPosts = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/contributors?_embed&per_page=200`
@@ -68,8 +67,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       contributors,
-      categories,
     },
-    revalidate: 300, // In seconds
+    revalidate: 600, // In seconds
   };
 }

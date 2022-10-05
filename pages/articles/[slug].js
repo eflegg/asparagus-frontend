@@ -380,9 +380,7 @@ export default function ArticlePage({ article, categories }) {
                 itempprop="name"
                 className="article--title"
                 dangerouslySetInnerHTML={{ __html: article.title.rendered }}
-              >
-                {/* {article.title.rendered} */}
-              </h1>
+              ></h1>
               <p className="excerpt deck">{article.acf.dek}</p>
               <Byline article={article} />
             </div>
@@ -491,7 +489,7 @@ export async function getStaticProps({ params }) {
       article,
       categories,
     },
-    revalidate: 300, // In seconds
+    revalidate: 600, // In seconds
     notFound,
   };
 }

@@ -107,6 +107,9 @@ export default function ContributorPage({ contributor, tags }) {
     <PageWrapper
       SEOtitle={contributor.title.rendered}
       metadescription={contributor.acf.bio}
+      ogImageUrl={contributor.yoast_head_json.og_image}
+      ogType={contributor.yoast_head_json.og_type}
+      ogTwitterImage={contributor.yoast_head_json.twitter_card}
     >
       <div className="container pt-5">
         <h1 className="text-center pb-5">{contributor.title.rendered}</h1>
