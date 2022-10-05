@@ -70,6 +70,6 @@ export async function getStaticProps({ params }) {
       contributors,
       categories,
     },
-    revalidate: 600, // In seconds
+    revalidate: 300, // In seconds
   };
 }

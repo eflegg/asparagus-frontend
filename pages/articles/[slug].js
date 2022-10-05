@@ -334,7 +334,11 @@ export default function ArticlePage({ article, categories }) {
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${article.slug}`}
-      ogImageUrl={article.yoast_head_json.og_image}
+      ogImageUrl={`${
+        article._embedded["wp:featuredmedia"]
+          ? article._embedded["wp:featuredmedia"]
+          : "/triplestalk.svg"
+      }`}
       ogType={article.yoast_head_json.og_type}
       ogTwitterImage={article.yoast_head_json.twitter_card}
       SEOtitle={
@@ -487,7 +491,7 @@ export async function getStaticProps({ params }) {
       article,
       categories,
     },
-    revalidate: 600, // In seconds
+    revalidate: 300, // In seconds
     notFound,
   };
 }
