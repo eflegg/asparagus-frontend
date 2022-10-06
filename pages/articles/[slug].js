@@ -333,25 +333,28 @@ export default function ArticlePage({ article, categories }) {
   });
   console.log("matching cats: ", matchingCats);
 
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${article.slug}`}
       ogImageUrl={`${
         article._embedded["wp:featuredmedia"]
           ? article._embedded["wp:featuredmedia"]["0"].source_url
-          : "/triplestalk.svg"
+          : fallbackImage
       }`}
       ogType={article.yoast_head_json.og_type}
       ogTwitterImage={article.yoast_head_json.twitter_card}
       SEOtitle={
         article.yoast_head_json.title
           ? article.yoast_head_json.title
-          : "Asparagus Magazine"
+          : article.title.rendered
       }
       metadescription={
         article.yoast_head_json.description
           ? article.yoast_head_json.title
-          : "Telling the large and small stories of how we can live more sustainably"
+          : article.acf.dek
       }
     >
       <SingleContainer itemscope itemtype="https://schema.org/Article">
