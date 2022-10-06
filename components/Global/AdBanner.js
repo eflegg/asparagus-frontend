@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
-import Image from "next/image";
-import Link from "next/link";
+
 import styled from "styled-components";
-import theme from "./Theme";
+
 import { useRouter } from "next/router";
-import { getAds } from "../../utils/wordpress";
 
 const AdBannerContainer = styled.div`
   width: 97%;
@@ -26,7 +24,7 @@ const AdBannerContainer = styled.div`
 `;
 
 export default function AdBanner() {
-  const dynamicRoute = useRouter().asPath;
+  // const dynamicRoute = useRouter().asPath;
   const [adIndex, setAdIndex] = useState(1);
   const [ads, setAds] = useState([]);
 

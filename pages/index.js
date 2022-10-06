@@ -208,6 +208,7 @@ export async function getStaticProps() {
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=6`
   );
   const posts = await postsQuery.json();
+
   const notFound = !page;
   return {
     props: {
@@ -218,7 +219,7 @@ export async function getStaticProps() {
       catOnePosts: catOnePosts,
       leadStoryPost: leadStoryPost,
     },
-    revalidate: 300, // In seconds
+    revalidate: 600, // In seconds
     notFound,
   };
 }

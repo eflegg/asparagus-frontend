@@ -227,8 +227,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const contributor = await getContributor(params.slug);
-  const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
 
+  const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
   const tags = await allTagsQuery.json();
 
   const notFound = !contributor;
