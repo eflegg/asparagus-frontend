@@ -328,6 +328,39 @@ hr {
   }
 }
 
+.wp-block-quote {
+  display: flex;
+  flex-direction: column;
+  cite {
+    width: 90%;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: right;
+    font-size: 1.6rem;
+    margin-top: -18px;
+    &::before {
+      content: "- ";
+      position: relative;
+    }
+  }
+}
+.wp-block-pullquote {
+  display: flex;
+  flex-direction: column;
+  cite {
+    width: 90%;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: right;
+    font-size: 1.6rem;
+    margin-top: -18px;
+    &::before {
+      content: "- ";
+      position: relative;
+    }
+  }
+}
+
 em {
   font-family: $bodyFont;
   font-size: 1.6rem;

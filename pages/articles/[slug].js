@@ -338,7 +338,7 @@ export default function ArticlePage({ article, categories }) {
       canonicalUrl={`https://asparagusmagazine.com/${article.slug}`}
       ogImageUrl={`${
         article._embedded["wp:featuredmedia"]
-          ? article._embedded["wp:featuredmedia"]
+          ? article._embedded["wp:featuredmedia"]["0"].source_url
           : "/triplestalk.svg"
       }`}
       ogType={article.yoast_head_json.og_type}
