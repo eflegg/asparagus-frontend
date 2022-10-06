@@ -76,6 +76,8 @@ const SingleContainer = styled.div`
   h4 {
     width: 90%;
     max-width: 680px;
+    margin: 0 auto;
+    font-size: 1.6rem;
   }
   h2 {
     width: 90%;
