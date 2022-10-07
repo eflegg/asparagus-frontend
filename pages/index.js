@@ -219,7 +219,7 @@ export async function getStaticProps() {
       catOnePosts: catOnePosts,
       leadStoryPost: leadStoryPost,
     },
-    revalidate: 600, // In seconds
+    revalidate: 1200, // In seconds
     notFound,
   };
 }

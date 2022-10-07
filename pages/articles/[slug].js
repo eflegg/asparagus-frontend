@@ -494,7 +494,7 @@ export async function getStaticProps({ params }) {
       article,
       categories,
     },
-    revalidate: 600, // In seconds
+    revalidate: 1200, // In seconds
     notFound,
   };
 }

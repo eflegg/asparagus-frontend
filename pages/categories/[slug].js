@@ -144,7 +144,7 @@ export async function getStaticProps({ params }) {
       subcategories,
       posts,
     },
-    revalidate: 600, // In seconds
+    revalidate: 1200, // In seconds
     notFound,
   };
 }
