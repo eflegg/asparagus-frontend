@@ -55,7 +55,8 @@ const SearchContainer = styled.div`
 
 function SearchResults(props) {
   const query = props.router.query.name;
-  console.log(query);
+  // const queryPlain = props.router.query.name.toString().toLowerCase();
+  console.log(typeof query);
 
   //Events
   const filterEvents = (posts, query) => {
@@ -76,7 +77,7 @@ function SearchResults(props) {
     }
     return posts.filter((post) => {
       const postContent = post.content.rendered.toLowerCase();
-      return postContent.includes(query);
+      return postContent.includes(query.toLowerCase());
     });
   };
 
@@ -87,7 +88,7 @@ function SearchResults(props) {
     }
     return posts.filter((post) => {
       const postContent = post.content.rendered.toLowerCase();
-      return postContent.includes(query);
+      return postContent.includes(query.toLowerCase());
     });
   };
   //Contributors
@@ -97,7 +98,7 @@ function SearchResults(props) {
     }
     return posts.filter((post) => {
       const postContent = post.acf.bio.toLowerCase();
-      return postContent.includes(query);
+      return postContent.includes(query.toLowerCase());
     });
   };
   //Team
@@ -107,7 +108,7 @@ function SearchResults(props) {
     }
     return posts.filter((post) => {
       const postContent = post.acf.bio.toLowerCase();
-      return postContent.includes(query);
+      return postContent.includes(query.toLowerCase());
     });
   };
 
@@ -118,7 +119,7 @@ function SearchResults(props) {
     }
     return posts.filter((post) => {
       const postContent = post.content.rendered.toLowerCase();
-      return postContent.includes(query);
+      return postContent.includes(query.toLowerCase());
     });
   };
 
