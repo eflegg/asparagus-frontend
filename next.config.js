@@ -14,6 +14,7 @@ const nextConfig = {
   },
   env: {
     REVALIDATION_TOKEN: process.env.REVALIDATION_TOKEN,
+    API_URL: process.env.API_URL,
   },
   staticPageGenerationTimeout: 600,
   async redirects() {
