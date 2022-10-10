@@ -371,14 +371,14 @@ export default function HeaderMenu() {
   useEffect(() => {
     async function loadLinks() {
       const response = await fetch(
-        `${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`
+        `${process.env.API_URL}/wp-json/menus/v1/menus/header-menu`
       );
       const connect = await fetch(
-        `${Config.apiUrl}/wp-json/menus/v1/menus/connect-menu`
+        `${process.env.API_URL}/wp-json/menus/v1/menus/connect-menu`
       );
 
       const footer = await fetch(
-        `${Config.apiUrl}/wp-json/menus/v1/menus/footer-menu`
+        `${process.env.API_URL}/wp-json/menus/v1/menus/footer-menu`
       );
 
       if (!response.ok) {
