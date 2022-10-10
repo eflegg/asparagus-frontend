@@ -88,7 +88,10 @@ export default function Stockists({ stockists, page }) {
   // console.log("stockists: ", stockists);
   // console.log("page: ", page);
 
-  const provinces = page.acf.provinces_represented;
+  const provinces =
+    page.acf.provinces_represented.length != 0
+      ? page.acf.provinces_represented
+      : null;
 
   return (
     <PageWrapper

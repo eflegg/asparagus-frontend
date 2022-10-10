@@ -11,6 +11,8 @@ const AdBannerContainer = styled.div`
   margin: 60px auto;
 
   height: auto;
+  max-height: 150px;
+  overflow: hidden;
   position: relative;
   img {
     height: 100%;

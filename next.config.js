@@ -12,6 +12,9 @@ const nextConfig = {
     // domains: ["stage.asparagusmagazine.com"],
     domains: [`${process.env.WP_DOMAIN}`],
   },
+  env: {
+    REVALIDATION_TOKEN: process.env.REVALIDATION_TOKEN,
+  },
   staticPageGenerationTimeout: 600,
   async redirects() {
     return [
