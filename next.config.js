@@ -2,11 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   // apiUrl: "http://asparagus.local",
-  apiUrl: "https://stage.asparagusmagazine.com",
+  // apiUrl: "https://stage.asparagusmagazine.com",
+
+  apiUrl: `${process.env.API_URL}`,
+
   images: {
     // enter the domain or subdomain where you have WordPress installed
     // domains: ["asparagus.local"],
-    domains: ["stage.asparagusmagazine.com"],
+    // domains: ["stage.asparagusmagazine.com"],
+    domains: [`${process.env.WP_DOMAIN}`],
   },
   staticPageGenerationTimeout: 600,
   async redirects() {
