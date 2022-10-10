@@ -339,13 +339,17 @@ export default function ArticlePage({ article, categories }) {
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${article.slug}`}
-      ogImageUrl={`${
+      ogImageUrl={
         article._embedded["wp:featuredmedia"]
           ? article._embedded["wp:featuredmedia"]["0"].source_url
           : fallbackImage
-      }`}
+      }
       ogType={article.yoast_head_json.og_type}
-      ogTwitterImage={article.yoast_head_json.twitter_card}
+      ogTwitterImage={
+        article._embedded["wp:featuredmedia"]
+          ? article._embedded["wp:featuredmedia"]["0"].source_url
+          : article.yoast_head_json.twitter_card
+      }
       SEOtitle={
         article.yoast_head_json.title
           ? article.yoast_head_json.title
