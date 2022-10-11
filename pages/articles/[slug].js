@@ -357,7 +357,7 @@ export default function ArticlePage({ article, categories }) {
       }
       metadescription={
         article.yoast_head_json.description
-          ? article.yoast_head_json.title
+          ? article.yoast_head_json.description
           : article.acf.dek
       }
     >
