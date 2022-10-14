@@ -62,6 +62,9 @@ const MenuContainer = styled.div`
     top: -134px;
   `};
   .nav-link {
+    .no-button {
+      height: 42px;
+    }
     button {
       font-family: ${theme.type.medium};
       /* font-size: 2.4rem; */
@@ -72,7 +75,7 @@ const MenuContainer = styled.div`
     }
     /* position: relative; */
     z-index: 20;
-    margin: 15px 10px;
+    margin: 0px 10px;
     display: flex;
     flex-direction: column-reverse;
     ul {
