@@ -8,8 +8,11 @@ const SearchContainer = styled.form`
   display: flex;
   align-items: center;
   position: relative;
+  display: ${(props) => (props.scrolled == true ? "flex" : "none")};
+  opacity: ${(props) => (props.scrolled == true ? "1" : "0")};
   .icon {
     position: absolute;
+
     left: 3px;
     top: 3px;
     width: 25px;
@@ -36,8 +39,13 @@ border-radius: 5px;
 `}
   background: transparent;
   height: 30px;
-  width: ${(props) => (props.scrolled == true ? "120px" : "30px")};
-  border: ${(props) => (props.scrolled == true ? "1px solid black" : "0px")};
+  /* width: ${(props) => (props.scrolled == true ? "120px" : "0px")};
+  border: ${(props) => (props.scrolled == true ? "1px solid black" : "0px")}; */
+  display: ${(props) => (props.scrolled == true ? "block" : "none")};
+  opacity: ${(props) => (props.scrolled == true ? "1" : "0")};
+  transition: all 0.15s ease-in-out;
+  width: 120px;
+  border: 1px solid black;
   border-radius: 5px;
   padding-left: 30px;
   position: relative;
@@ -62,7 +70,11 @@ export default function Search({ scrolled }) {
   };
 
   return (
-    <SearchContainer className="searchbar-container" onSubmit={onSubmit}>
+    <SearchContainer
+      scrolled={scrolled}
+      className="searchbar-container"
+      onSubmit={onSubmit}
+    >
       <label htmlFor="" className="visually-hidden">
         Search Bar
       </label>
