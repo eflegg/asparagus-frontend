@@ -28,12 +28,12 @@ const SingleContainer = styled.div`
     display: table;
     text-align: center;
     margin: 50px auto;
-    &.size-large {
+    /* &.size-large {
       img {
         height: 100%;
         width: 100%;
       }
-    }
+    } */
   }
 
   figcaption {
