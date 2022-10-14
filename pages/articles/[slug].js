@@ -252,19 +252,23 @@ const SingleHero = styled.div`
     flex-direction: row;
     width: 95%;
     max-width: 1500px;
-    margin: 0 auto 150px;
+    margin: 0 auto 50px;
     `}
     .hero--image {
       width: 100%;
-      height: 450px;
+      /* height: 250px; */
+      ${theme.mediaQuery.xs`
+      // height: 350px;
+      `}
       ${theme.mediaQuery.sm`
       width: 57%;
       flex: none;
+      // height: 450px;
       `}
       .hero-right--inner {
         /* height: 500px; */
         position: relative;
-        height: 100%;
+        /* height: 100%; */
       }
     }
     .hero--text {
@@ -292,7 +296,7 @@ const SingleHero = styled.div`
     `}
   }
   .article--title {
-    margin-top: 100px;
+    /* margin-top: 30px; */
     font-size: 2.6rem;
     ${theme.mediaQuery.md`
     font-size: 5.2rem;
@@ -399,7 +403,9 @@ export default function ArticlePage({ article, categories }) {
                   <Image
                     src={article._embedded["wp:featuredmedia"]["0"].source_url}
                     alt={article._embedded["wp:featuredmedia"]["0"].alt_text}
-                    layout="fill"
+                    layout="responsive"
+                    width="600px"
+                    height="450"
                     objectFit="cover"
                     priority
                   />
