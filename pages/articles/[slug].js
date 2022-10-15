@@ -52,11 +52,14 @@ const SingleContainer = styled.div`
       p {
         font-size: 1.6rem;
         margin-left: 0px;
-        margin-bottom: 85px;
+        margin-bottom: 45px;
         font-family: ${theme.type.header};
         font-style: italic;
         font-weight: 700;
         line-height: 2rem;
+        ${theme.mediaQuery.md`
+         margin-bottom: 85px;
+        `}
       }
     }
     strong {
@@ -312,6 +315,7 @@ const SingleHero = styled.div`
     font-weight: 700;
     ${theme.mediaQuery.md`
     font-size: 1.6rem;
+    line-height: 2rem;
     `}
   }
   .date--single-article {

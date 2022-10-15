@@ -52,9 +52,10 @@ const MenuContainer = styled.div`
   `};
   }
   ${theme.mediaQuery.md`
-    position: sticky;
+    // position: sticky;
     z-index: 10;
-    top: -121px;
+    // top: -121px;
+  
   `};
   ${theme.mediaQuery.lg`
     position: sticky;
@@ -107,17 +108,22 @@ const MobileNav = styled.nav`
   .menu-chevron {
     position: relative;
     width: 20px;
-    top: 5px;
-    left: 5px;
+    top: 15px;
+    left: 10px;
   }
   .nav-link {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    font-size: 2rem;
+    color: ${theme.colours.gusGreen};
+    font-weight: bold;
+    margin: 10px 0;
   }
   .subnav {
     flex: 1;
     margin-left: 10px;
+    margin: 15px 0 20px -10px;
   }
   a.card-text {
     font-family: ${theme.type.medium};
@@ -160,14 +166,17 @@ const DesktopNav = styled.nav`
     padding-left: 2%;
     padding-right: 2%;
     width: 100%;
-
+    left: 50%;
+    transform: translateX(-50%);
     background-color: transparent;
     transition: all 0.25s ease-in-out;
     &:after {
       content: "";
       position: absolute;
+
       height: 58px;
       width: 110%;
+      width: 100%;
       left: 50%;
       top: -10px;
       transform: translateX(-50%);
@@ -176,6 +185,11 @@ const DesktopNav = styled.nav`
     }
     &.desktopnavcolorchange {
       transition: all 0.25s ease-in-out;
+      position: fixed;
+      top: 10px;
+      .subnav {
+        width: 100%;
+      }
       &:after {
         transition: all 0.25s ease-in-out;
         background-color: ${theme.colours.gusYellow};
@@ -210,6 +224,7 @@ const DesktopNav = styled.nav`
     border-color: ${theme.colours.grey};
     width: 100%;
     text-align: center;
+    line-height: 22px;
   }
   li.subnav-link:last-of-type {
     border: none;
@@ -621,18 +636,20 @@ export default function HeaderMenu() {
                           <span
                             dangerouslySetInnerHTML={{ __html: link.title }}
                           />
+                          {link.child_items ? (
+                            <div className="position-relative menu-chevron">
+                              <Image
+                                src="/hamburger-arrow.svg"
+                                width="20px"
+                                height="13px"
+                                layout="responsive"
+                                alt="Chevron icon to activate submenu"
+                              />
+                            </div>
+                          ) : null}
                           {link.child_items && subnav == link.ID ? (
                             <>
                               <ul className="subnav">
-                                <div className="position-relative menu-chevron">
-                                  <Image
-                                    src="/hamburger-arrow.svg"
-                                    width="20px"
-                                    height="13px"
-                                    layout="responsive"
-                                    alt="Chevron icon to activate submenu"
-                                  />
-                                </div>
                                 {link?.child_items?.map(
                                   (childItem, childIndex) => {
                                     return (

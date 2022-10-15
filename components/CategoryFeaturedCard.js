@@ -3,6 +3,8 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
+import Byline from "./ArticleComponents/Byline";
+import TwoAuthorCard from "./TwoAuthorCard";
 const Card = styled.div`
   margin-bottom: 60px;
   ${theme.mediaQuery.sm`
@@ -102,8 +104,10 @@ export default function CategoryFeaturedCard({ post }) {
                 <div className="excerpt">
                   <p className="deck--topic-feature">{post.acf.dek}</p>
                 </div>
-
-                {post.acf.writer[0].acf.contributor ? (
+                {/* <Byline article={post} /> */}
+                {post.acf.secondary_author == "Yes" ? (
+                  <TwoAuthorCard post={post} />
+                ) : post.acf.writer[0].acf.contributor ? (
                   <Link
                     href={"/contributors/[slug]"}
                     as={`/contributors/${post.acf.writer[0].post_name}`}
