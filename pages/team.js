@@ -11,12 +11,15 @@ const TeamMemberContainer = styled.ul`
 `;
 
 export default function Team({ teamMembers }) {
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/team`}
-      ogImageUrl="triplestalk.svg"
-      ogTwitterImage="triplestalk.svg"
-      SEOtitle="Team"
+      ogImageUrl={fallbackImage}
+      ogTwitterImage={fallbackImage}
+      SEOtitle="Asparagus Team"
       metadescription="Meet the team at Asparagus Magazine telling large and small stories of sustainability"
     >
       <h1 className="text-center">Team</h1>

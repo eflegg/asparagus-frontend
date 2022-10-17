@@ -119,13 +119,24 @@ export default function EventPage({ event, image }) {
   const stringEventDate = new Date(eventDate).getTime();
   const stringCurrentDate = new Date().getTime();
 
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   console.log("gallery", gallery);
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${event.slug}`}
-      ogImageUrl={event.yoast_head_json.og_image}
+      ogImageUrl={
+        event._embedded["wp:featuredmedia"]
+          ? event._embedded["wp:featuredmedia"]["0"].source_url
+          : fallbackImage
+      }
       ogType={event.yoast_head_json.og_type}
-      ogTwitterImage={event.yoast_head_json.twitter_card}
+      ogTwitterImage={
+        event._embedded["wp:featuredmedia"]
+          ? event._embedded["wp:featuredmedia"]["0"].source_url
+          : fallbackImage
+      }
       SEOtitle={event.title.rendered}
       metadescription={event.acf.excerpt}
     >

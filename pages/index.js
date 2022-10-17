@@ -43,12 +43,15 @@ export default function Home({
   const first = queryParams.first != undefined ? queryParams.first : 1;
   //pagewrapper is rendered with the URL parameter
 
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
     <>
       <PageWrapper
         canonicalUrl="https://asparagusmagazine.com/"
-        ogImageUrl="triplestalk.svg"
-        ogTwitterImage="triplestalk.svg"
+        ogImageUrl={fallbackImage}
+        ogTwitterImage={fallbackImage}
         SEOtitle={
           page.yoast_head_json.title
             ? page.yoast_head_json.title

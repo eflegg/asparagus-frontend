@@ -76,11 +76,11 @@ const Issues = styled.div`
 
 export default function CurrentIssue({ issues, articles }) {
   const currentIssue = issues[0];
-  // console.log("current issue: ", currentIssue.id);
+  console.log("current issue: ", currentIssue);
   // console.log("articles: ", articles);
   return (
     <PageWrapper
-      canonicalUrl={`https://asparagusmagazine.com/${currentIssue.slug}`}
+      canonicalUrl={`https://asparagusmagazine.com/current-issue`}
       ogImageUrl="triplestalk.svg"
       ogTwitterImage="triplestalk.svg"
       SEOtitle="Current Issue"

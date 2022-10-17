@@ -45,11 +45,14 @@ export default function Events({ events }) {
     setIsCurrent(!isCurrent);
   }
 
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/events`}
-      ogImageUrl="triplestalk.png"
-      ogTwitterImage="triplestalk.png"
+      ogImageUrl={fallbackImage}
+      ogTwitterImage={fallbackImage}
       SEOtitle="Events"
       metadescription="A list of past and upcoming Asparagus Magazine events. Join us at the next one!"
     >

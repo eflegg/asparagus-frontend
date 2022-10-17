@@ -86,12 +86,23 @@ export default function Issue({ issue, posts }) {
   console.log("issue posts: ", posts);
   console.log("issue: ", issue);
 
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${issue.slug}`}
-      ogImageUrl={issue.yoast_head_json.og_image}
+      ogImageUrl={
+        issue._embedded["wp:featuredmedia"]
+          ? issue._embedded["wp:featuredmedia"]["0"].source_url
+          : fallbackImage
+      }
       ogType={issue.yoast_head_json.og_type}
-      ogTwitterImage={issue.yoast_head_json.twitter_card}
+      ogTwitterImage={
+        issue._embedded["wp:featuredmedia"]
+          ? issue._embedded["wp:featuredmedia"]["0"].source_url
+          : fallbackImage
+      }
       SEOtitle={issue.title.rendered}
     >
       <h1 className="text-center">{issue.title.rendered}</h1>

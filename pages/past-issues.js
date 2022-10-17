@@ -45,12 +45,14 @@ export default function PastIssues({ issues }) {
   console.log("issues: ", issues);
 
   const currentIssue = issues[0].title.rendered;
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/past-issues`}
-      ogImageUrl="triplestalk.svg"
-      ogTwitterImage="triplestalk.svg"
+      ogImageUrl={fallbackImage}
+      ogTwitterImage={fallbackImage}
       SEOtitl="Past Issues"
       metadescription="Peruse stories of a just society on a healthy planet in all Asparagus Magazine's past issues"
     >

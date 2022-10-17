@@ -24,11 +24,14 @@ const ContribContainer = styled.ul`
 `;
 
 export default function ContributorsPage({ contributors }) {
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/contributors`}
-      ogImageUrl="triplestalk.png"
-      ogTwitterImage="triplestalk.png"
+      ogImageUrl={fallbackImage}
+      ogTwitterImage={fallbackImage}
       SEOtitle="Contributors"
       metadescription="Meet the Asparagus contributors telling large and small stories of sustainable living"
     >

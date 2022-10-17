@@ -44,6 +44,11 @@ export default function CategoryPage({ category, posts, subcategories }) {
           ? posts[0]._embedded["wp:featuredmedia"]["0"].source_url
           : fallbackImage
       }
+      ogTwitterImage={
+        posts && posts[0] && posts[0]._embedded["wp:featuredmedia"]
+          ? posts[0]._embedded["wp:featuredmedia"]["0"].source_url
+          : fallbackImage
+      }
       SEOtitle={category.name}
       metadescription={`${category.name} - Telling the large and small stories of how we can live more sustainably`}
     >

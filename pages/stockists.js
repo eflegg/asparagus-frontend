@@ -89,12 +89,14 @@ export default function Stockists({ stockists, page }) {
   // console.log("page: ", page);
 
   const provinces = page.acf.provinces_represented;
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/stockists`}
-      ogImageUrl="triplestalk.svg"
-      ogTwitterImage="triplestalk.svg"
+      ogImageUrl={fallbackImage}
+      ogTwitterImage={fallbackImage}
       SEOtitle="Stockists"
       metadescription="Find Asparagus Magazine in print at one of these fine retailers!"
     >

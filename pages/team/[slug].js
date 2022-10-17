@@ -100,6 +100,9 @@ export default function TeamPage({ teamMember }) {
   //   loadLinks();
   // }, [contribTag]);
 
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${teamMember.slug}`}

@@ -135,11 +135,15 @@ export default function SignUp() {
   // NEWSLETTER: "",
   // SUGGEST: "",
   // });
+
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/sign-up`}
-      ogImageUrl="triplestalk.svg"
-      ogTwitterImage="triplestalk.svg"
+      ogImageUrl={fallbackImage}
+      ogTwitterImage={fallbackImage}
       SEOtitle="Newsletter Sign Up"
       metadescription="Sign up to receive Asparagus Magazine's pleasantly infrequent newsletter"
     >

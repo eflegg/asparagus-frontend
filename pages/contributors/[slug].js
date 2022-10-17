@@ -102,14 +102,20 @@ export default function ContributorPage({ contributor, tags }) {
   });
 
   console.log("contrib posts: ", contribPosts);
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 
   return (
     <PageWrapper
       SEOtitle={contributor.title.rendered}
       metadescription={contributor.acf.bio}
-      ogImageUrl={contributor.yoast_head_json.og_image}
+      ogImageUrl={
+        contributor.acf.headshot ? contributor.acf.headshot.url : fallbackImage
+      }
       ogType={contributor.yoast_head_json.og_type}
-      ogTwitterImage={contributor.yoast_head_json.twitter_card}
+      ogTwitterImage={
+        contributor.acf.headshot ? contributor.acf.headshot.url : fallbackImage
+      }
     >
       <div className="container pt-5">
         <h1 className="text-center pb-5">{contributor.title.rendered}</h1>

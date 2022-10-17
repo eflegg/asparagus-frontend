@@ -160,8 +160,16 @@ function SearchResults(props) {
   const filteredTeam = filterTeam(props.team, props.router.query.name);
   const filteredTips = filterTips(props.tips, props.router.query.name);
 
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
-    <PageWrapper>
+    <PageWrapper
+      SEOtitle={`Search Results`}
+      metadescription={`Can't find what you're looking for? Try a search!`}
+      ogImageUrl={fallbackImage}
+      ogTwitterImage={fallbackImage}
+    >
       <SearchContainer>
         <h1 className="h5">Search Results</h1>
         <hr />
