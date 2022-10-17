@@ -91,6 +91,30 @@ const SingleContainer = styled.div`
     `}
   }
   .body-content {
+    .is-type-video {
+      width: 90% !important;
+
+      margin: 0 auto;
+      max-width: 680px;
+      display: block;
+      figure {
+        display: block;
+        margin: 0;
+      }
+      iframe {
+        border: 3px seagreen;
+        height: 180px;
+        width: 320px;
+        ${theme.mediaQuery.xs`
+        height: 213px;
+        width: 380px 
+    `}
+        ${theme.mediaQuery.sm`
+        height: 383px;
+        width: 680px 
+    `}
+      }
+    }
     h3,
     h4 {
       width: 90%;

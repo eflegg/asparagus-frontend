@@ -80,9 +80,9 @@ const ContentContainer = styled.div`
       em {
         /* font-size: 1.7rem; */
         font-weight: 800;
-        ${theme.mediaQuery.md`
+        /* ${theme.mediaQuery.md`
     font-size: 2rem;
-    `}
+    `} */
       }
     }
     a {
