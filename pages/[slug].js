@@ -161,7 +161,7 @@ export default function GeneralPage({ genpage }) {
       metadescription={
         genpage.yoast_head_json.description
           ? genpage.yoast_head_json.title
-          : "Telling the large and small stories of how we can live more sustainably"
+          : `${genpage.title.rendered} - Telling the large and small stories of how we can live more sustainably`
       }
     >
       <GeneralContainer>
