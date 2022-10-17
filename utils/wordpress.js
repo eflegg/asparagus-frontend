@@ -1,7 +1,7 @@
-// const BASE_URL = "http://asparagus.local/wp-json/wp/v2";
+const BASE_URL = "http://asparagus.local/wp-json/wp/v2";
 // const BASE_URL = "https://stage.asparagusmagazine.com/wp-json/wp/v2";
 
-const BASE_URL = `${process.env.BASE_URL}`;
+// const BASE_URL = `${process.env.BASE_URL}`;
 
 /// Posts ///
 
