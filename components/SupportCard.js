@@ -5,9 +5,13 @@ import Image from "next/image";
 const SupportBlock = styled.div`
   width: 100%;
   min-height: 350px;
-  height: 50vh;
+  height: 30vh;
   margin-bottom: 40px;
   ${theme.mediaQuery.sm`
+height: 50vh;
+// min-height: 550px;
+`}
+  ${theme.mediaQuery.md`
 height: 80vh;
 min-height: 550px;
 `}

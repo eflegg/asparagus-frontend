@@ -292,7 +292,7 @@ const ConnectMenuNav = styled.nav`
 
       background: ${theme.colours.darkWheat};
       transition: all 0.5s ease-in-out;
-      padding: 10px 0px;
+      padding: 10px 10px;
       li {
         /* display: none; */
         opacity: 0;
