@@ -63,10 +63,12 @@ const MenuContainer = styled.div`
     top: -134px;
   `};
   .nav-link {
+    cursor: pointer;
     .no-button {
       height: 42px;
     }
     button {
+      cursor: pointer;
       font-family: ${theme.type.medium};
       /* font-size: 2.4rem; */
       color: ${theme.colours.gusGreen};
@@ -119,6 +121,7 @@ const MobileNav = styled.nav`
     color: ${theme.colours.gusGreen};
     font-weight: bold;
     margin: 10px 0;
+    cursor: pointer;
   }
   .subnav {
     flex: 1;
@@ -586,6 +589,14 @@ export default function HeaderMenu() {
                                       }}
                                     ></a>
                                   </ActiveLink>
+                                ) : childItem.object == "custom" ? (
+                                  <a
+                                    href={childItem.url}
+                                    className="card-text pb-5"
+                                    dangerouslySetInnerHTML={{
+                                      __html: childItem.title,
+                                    }}
+                                  />
                                 ) : (
                                   <ActiveLink
                                     activeClassName="navlink--active"

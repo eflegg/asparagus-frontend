@@ -183,7 +183,7 @@ width: 35%;
  
    `}
     ${theme.mediaQuery.md`
-   left:50px;
+
    font-size: 1.6rem;
  
    `}

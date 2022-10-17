@@ -76,14 +76,26 @@ const Issues = styled.div`
 
 export default function CurrentIssue({ issues, articles }) {
   const currentIssue = issues[0];
-  console.log("current issue: ", currentIssue);
+
   // console.log("articles: ", articles);
+
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/current-issue`}
-      ogImageUrl="triplestalk.svg"
-      ogTwitterImage="triplestalk.svg"
-      SEOtitle="Current Issue"
+      ogImageUrl={
+        issues[0]._embedded["wp:featuredmedia"]
+          ? issues[0]._embedded["wp:featuredmedia"]["0"].source_url
+          : fallbackImage
+      }
+      ogTwitterImage={
+        issues[0]._embedded["wp:featuredmedia"]
+          ? issues[0]._embedded["wp:featuredmedia"]["0"].source_url
+          : fallbackImage
+      }
+      SEOtitle={`Current Issue - ${issues[0].title.rendered}`}
       metadescription="All the sustainble stories from Asparagus Magazine's most recent issue"
     >
       <Issues>

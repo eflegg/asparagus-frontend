@@ -47,7 +47,7 @@ export default function FourOhFour() {
           <Link href="/">
             <a>Home Page</a>
           </Link>{" "}
-          or use the search bar to find somthing tasty to read
+          or use the search bar to find somthing tasty to read.
         </h2>
       </Wrapper>
     </PageWrapper>

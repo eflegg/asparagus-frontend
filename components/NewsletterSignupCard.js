@@ -103,7 +103,9 @@ const NewsletterBlock = styled.div`
     ${theme.mediaQuery.sm`
  width: 35%;
  `}
-    font-family: ${theme.type.semibold};
+    a {
+      font-family: ${theme.type.semibold};
+    }
   }
   form {
     position: relative;

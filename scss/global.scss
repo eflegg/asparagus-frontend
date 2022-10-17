@@ -263,7 +263,8 @@ p {
 
 p,
 a,
-li {
+li,
+em {
   letter-spacing: 0.2rem;
   font-family: $bodyFont;
   font-size: 1.7rem;
@@ -286,11 +287,17 @@ a {
   color: $soil;
   font-weight: 600;
   font-family: $bodyFont;
+  cursor: pointer;
 }
 
-li {
+li,
+li > em {
   font-family: $bodyFont;
   font-size: 1.8rem;
+}
+
+strong {
+  font-family: $semibold;
 }
 
 ul {
@@ -359,18 +366,6 @@ hr {
       position: relative;
     }
   }
-}
-
-em {
-  font-family: $bodyFont;
-  font-size: 1.6rem;
-  font-weight: 800;
-}
-
-em {
-  font-family: $bodyFont;
-  font-size: 1.6rem;
-  font-weight: 800;
 }
 
 .start-small {
@@ -1046,6 +1041,9 @@ li.nav-link button {
 }
 
 /***  Buttons  ***/
+button {
+  cursor: pointer;
+}
 
 .btn--primary {
   background-color: $soil;
@@ -1057,7 +1055,7 @@ li.nav-link button {
   font-family: $semibold;
   font-weight: 600;
   font-size: 16px;
-
+  cursor: pointer;
   transition: all 0.25s ease-in;
 
   &:hover {
@@ -1069,6 +1067,7 @@ li.nav-link button {
     color: white;
     font-family: $bodyFont;
     font-size: 16px;
+    cursor: pointer;
   }
 
   text-align: center;
@@ -1190,7 +1189,7 @@ img {
     font-family: $accentFont;
     font-weight: 600;
     font-size: 16px;
-
+    cursor: pointer;
     transition: all 0.25s ease-in;
 
     &:hover {
@@ -1202,6 +1201,7 @@ img {
       color: white;
       font-family: $bodyFont;
       font-size: 16px;
+      cursor: pointer;
     }
 
     text-align: center;
