@@ -35,9 +35,10 @@ export default function CategoryPage({ category, posts, subcategories }) {
 
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
   return (
     <PageWrapper
-      canonicalUrl={`https://asparagusmagazine.com/categories/${category.slug}`}
+      // canonicalUrl={`https://asparagusmagazine.com/categories/${category.slug}`}
       ogImageUrl={
         posts[0]._embedded["wp:featuredmedia"]
           ? posts[0]._embedded["wp:featuredmedia"]["0"].source_url
