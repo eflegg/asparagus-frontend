@@ -85,15 +85,16 @@ export default function Tips({ tips, page }) {
     tips[0].title.rendered
   );
 
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${page.slug}`}
-      ogImageUrl="triplestalk.svg"
+      ogImageUrl={fallbackImage}
       ogType={page.yoast_head_json.og_type}
       ogTwitterImage={page.yoast_head_json.twitter_card}
       SEOtitle="Asparagus Tips Archive"
       metadescription="A newsletter series of quick tips on how to make every part of your life brighter and greener"
-      className=""
     >
       <h1 className="text-center">Asparagus Tips</h1>
       <hr />

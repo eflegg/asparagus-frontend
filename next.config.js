@@ -17,6 +17,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/categories/uncategorized",
+        destination: "/categories/climate-change/",
+        permanent: true,
+      },
+      {
         source: "/test-broken-link",
         destination: "/",
         permanent: true,

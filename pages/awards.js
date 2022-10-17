@@ -24,12 +24,22 @@ const AwardContainer = styled.section`
 
 export default function Awards({ posts }) {
   console.log("awards page posts: ", posts);
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/awards`}
-      ogImageUrl="triplestalk.svg"
-      ogTwitterImage="triplestalk.svg"
+      ogImageUrl={
+        posts[0]._embedded["wp:featuredmedia"]
+          ? posts[0]._embedded["wp:featuredmedia"]["0"].source_url
+          : fallbackImage
+      }
+      ogTwitterImage={
+        posts[0]._embedded["wp:featuredmedia"]
+          ? posts[0]._embedded["wp:featuredmedia"]["0"].source_url
+          : fallbackImage
+      }
       SEOtitle="Awards"
       metadescription="A showcase of all our award-winning and nominated Asparagus Magazine stories"
     >
