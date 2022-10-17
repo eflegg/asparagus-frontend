@@ -64,9 +64,13 @@ function SearchResults(props) {
       return posts;
     }
     return posts.filter((post) => {
-      const eventDescrip = post.acf.description;
+      const eventDescrip = post.acf.description
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9 ]/g, "");
       console.log("event description: ", eventDescrip);
-      return eventDescrip.includes(query);
+      return eventDescrip.includes(
+        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+      );
     });
   };
 
@@ -76,8 +80,12 @@ function SearchResults(props) {
       return posts;
     }
     return posts.filter((post) => {
-      const postContent = post.content.rendered.toLowerCase();
-      return postContent.includes(query.toLowerCase());
+      const postContent = post.content.rendered
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9 ]/g, "");
+      return postContent.includes(
+        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+      );
     });
   };
 
@@ -87,8 +95,12 @@ function SearchResults(props) {
       return posts;
     }
     return posts.filter((post) => {
-      const postContent = post.content.rendered.toLowerCase();
-      return postContent.includes(query.toLowerCase());
+      const postContent = post.content.rendered
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9 ]/g, "");
+      return postContent.includes(
+        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+      );
     });
   };
   //Contributors
@@ -97,8 +109,12 @@ function SearchResults(props) {
       return posts;
     }
     return posts.filter((post) => {
-      const postContent = post.acf.bio.toLowerCase();
-      return postContent.includes(query.toLowerCase());
+      const postContent = post.acf.bio
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9 ]/g, "");
+      return postContent.includes(
+        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+      );
     });
   };
   //Team
@@ -107,8 +123,12 @@ function SearchResults(props) {
       return posts;
     }
     return posts.filter((post) => {
-      const postContent = post.acf.bio.toLowerCase();
-      return postContent.includes(query.toLowerCase());
+      const postContent = post.acf.bio
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9 ]/g, "");
+      return postContent.includes(
+        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+      );
     });
   };
 
@@ -118,8 +138,12 @@ function SearchResults(props) {
       return posts;
     }
     return posts.filter((post) => {
-      const postContent = post.content.rendered.toLowerCase();
-      return postContent.includes(query.toLowerCase());
+      const postContent = post.content.rendered
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9 ]/g, "");
+      return postContent.includes(
+        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+      );
     });
   };
 
