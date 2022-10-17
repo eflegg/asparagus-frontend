@@ -30,16 +30,21 @@ export default function CategoryPage({ category, posts, subcategories }) {
     setSubfilter(null);
   }, [dynamicRoute]);
 
-  // console.log("category: ", category);
+  console.log("category: ", category);
   // console.log("posts: ", posts);
+
+  const fallbackImage =
+    "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
   return (
     <PageWrapper
-      SEOtitle={category.name}
-      metadescription={
-        category.yoast_head_json.description
-          ? category.yoast_head_json.title
-          : "Telling the large and small stories of how we can live more sustainably"
+      canonicalUrl={`https://asparagusmagazine.com/categories/${category.slug}`}
+      ogImageUrl={
+        posts[0]._embedded["wp:featuredmedia"]
+          ? posts[0]._embedded["wp:featuredmedia"]["0"].source_url
+          : fallbackImage
       }
+      SEOtitle={category.name}
+      metadescription={`${category.name} - Telling the large and small stories of how we can live more sustainably`}
     >
       {/* if the category is either start small or voices, show the subcategory filter
       followed by all the articles in the category. no feature article.

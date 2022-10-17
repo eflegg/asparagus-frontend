@@ -346,7 +346,7 @@ export default function ArticlePage({ article, categories }) {
 
   return (
     <PageWrapper
-      canonicalUrl={`https://asparagusmagazine.com/${article.slug}`}
+      canonicalUrl={`https://asparagusmagazine.com/articles/${article.slug}`}
       ogImageUrl={
         article._embedded["wp:featuredmedia"]
           ? article._embedded["wp:featuredmedia"]["0"].source_url
