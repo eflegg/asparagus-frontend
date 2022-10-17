@@ -38,9 +38,9 @@ export default function CategoryPage({ category, posts, subcategories }) {
 
   return (
     <PageWrapper
-      // canonicalUrl={`https://asparagusmagazine.com/categories/${category.slug}`}
+      canonicalUrl={`https://asparagusmagazine.com/categories/${category.slug}`}
       ogImageUrl={
-        posts[0]._embedded["wp:featuredmedia"]
+        posts && posts[0] && posts[0]._embedded["wp:featuredmedia"]
           ? posts[0]._embedded["wp:featuredmedia"]["0"].source_url
           : fallbackImage
       }
