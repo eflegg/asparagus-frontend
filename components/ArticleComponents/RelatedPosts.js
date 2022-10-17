@@ -7,7 +7,6 @@ import fetch from "isomorphic-fetch";
 
 export default function RelatedPosts({ currentArticle }) {
   const [allArticles, setAllArticles] = useState([]);
-  console.log("current article tags: ", currentArticle.tags);
 
   useEffect(() => {
     async function loadLinks() {
@@ -34,7 +33,6 @@ export default function RelatedPosts({ currentArticle }) {
   const maxPosts = 3;
 
   const currentTags = currentArticle.tags;
-  console.log("current tags: ", currentTags);
 
   // rate posts depending on tags
   posts.forEach((post) => {
@@ -42,7 +40,7 @@ export default function RelatedPosts({ currentArticle }) {
     post.tags.forEach((tag) => {
       if (currentTags.includes(tag)) {
         post.relevance++;
-        console.log("related tag name: ", tag);
+        // console.log("related tag name: ", tag);
       }
     });
   });

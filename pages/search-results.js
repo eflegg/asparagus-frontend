@@ -56,7 +56,7 @@ const SearchContainer = styled.div`
 function SearchResults(props) {
   const query = props.router.query.name;
   // const queryPlain = props.router.query.name.toString().toLowerCase();
-  console.log(typeof query);
+  console.log("query: ", query);
 
   //Events
   const filterEvents = (posts, query) => {
@@ -67,7 +67,7 @@ function SearchResults(props) {
       const eventDescrip = post.acf.description
         .toLowerCase()
         .replace(/[^a-zA-Z0-9 ]/g, "");
-      console.log("event description: ", eventDescrip);
+
       return eventDescrip.includes(
         query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
       );

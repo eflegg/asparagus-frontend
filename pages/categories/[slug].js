@@ -30,9 +30,6 @@ export default function CategoryPage({ category, posts, subcategories }) {
     setSubfilter(null);
   }, [dynamicRoute]);
 
-  console.log("category: ", category);
-  // console.log("posts: ", posts);
-
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 

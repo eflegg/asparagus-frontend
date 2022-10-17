@@ -112,7 +112,6 @@ const RuleBox = styled.div`
 `;
 
 export default function EventPage({ event, image }) {
-  console.log("event: ", event);
   const gallery = event.acf.event_images;
 
   const eventDate = event.acf.date;
@@ -122,7 +121,6 @@ export default function EventPage({ event, image }) {
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 
-  console.log("gallery", gallery);
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/${event.slug}`}

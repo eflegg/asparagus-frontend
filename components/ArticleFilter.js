@@ -62,7 +62,7 @@ const StartVoices = styled.div`
 `;
 
 export default function ArticleFilter({ subcategories, subfilter, onClick }) {
-  console.log("subfilter: ", subfilter);
+  // console.log("subfilter: ", subfilter);
 
   return (
     <StartVoices>

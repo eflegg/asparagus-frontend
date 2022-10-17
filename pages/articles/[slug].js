@@ -353,8 +353,6 @@ const SingleHero = styled.div`
 `;
 
 export default function ArticlePage({ article, categories }) {
-  console.log("article: ", article);
-
   let subcategories = categories.filter((newCat) => newCat.parent !== 0);
 
   const postCategories = article._embedded["wp:term"]["0"].map((category) => {
@@ -368,7 +366,6 @@ export default function ArticlePage({ article, categories }) {
       matchingCats.push(subcategory);
     }
   });
-  console.log("matching cats: ", matchingCats);
 
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";

@@ -102,8 +102,6 @@ export default function LeadStoryBlock({ post }) {
     year: "numeric",
   });
 
-  console.log("lead story: ", post);
-
   return (
     <LeadStory>
       <div className="lead-image">

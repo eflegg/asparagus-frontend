@@ -83,9 +83,6 @@ const Issues = styled.div`
 export default function Issue({ issue, posts }) {
   const currentIssue = issue.id;
 
-  console.log("issue posts: ", posts);
-  console.log("issue: ", issue);
-
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 

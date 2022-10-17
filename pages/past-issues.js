@@ -42,8 +42,6 @@ const Issues = styled.div`
 `;
 
 export default function PastIssues({ issues }) {
-  console.log("issues: ", issues);
-
   const currentIssue = issues[0].title.rendered;
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";

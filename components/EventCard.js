@@ -40,7 +40,6 @@ flex-direction: row;
 `;
 
 export default function EventBlock({ event }) {
-  console.log("event: ", event);
   return (
     <EventCard>
       <div className="event--image">

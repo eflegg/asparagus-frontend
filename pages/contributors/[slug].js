@@ -101,7 +101,6 @@ export default function ContributorPage({ contributor, tags }) {
     loadLinks();
   });
 
-  console.log("contrib posts: ", contribPosts);
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 
