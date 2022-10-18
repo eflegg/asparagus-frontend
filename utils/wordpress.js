@@ -3,18 +3,18 @@ const BASE_URL = `${process.env.BASE_URL}`;
 
 /// Posts ///
 
-export async function getPosts() {
-  const postsRes = await fetch(BASE_URL + "/posts?_embed");
-  const posts = await postsRes.json();
-  return posts;
-}
+// export async function getPosts() {
+//   const postsRes = await fetch(BASE_URL + "/posts?_embed");
+//   const posts = await postsRes.json();
+//   return posts;
+// }
 
-export async function getPost(slug) {
-  const posts = await getPosts();
-  const postArray = posts.filter((post) => post.slug == slug);
-  const post = postArray.length > 0 ? postArray[0] : null;
-  return post;
-}
+// export async function getPost(slug) {
+//   const posts = await getPosts();
+//   const postArray = posts.filter((post) => post.slug == slug);
+//   const post = postArray.length > 0 ? postArray[0] : null;
+//   return post;
+// }
 
 /// Events ///
 
@@ -155,9 +155,6 @@ export async function getIssue(slug) {
 export async function getSlugs(type) {
   let elements = [];
   switch (type) {
-    case "posts":
-      elements = await getPosts();
-      break;
     case "events":
       elements = await getEvents();
       break;
