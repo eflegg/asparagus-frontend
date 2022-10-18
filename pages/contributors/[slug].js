@@ -171,21 +171,20 @@ export default function ContributorPage({ contributor, tags }) {
                     />
                   </div>
                 </a>
-              ) : (
-                <a
-                  href={contributor.acf.social_media_link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <div className="icon">
-                    <Image
-                      src="/insta.png"
-                      alt="Instagram logo and link"
-                      layout="fill"
-                    />
-                  </div>
-                </a>
-              )}
+              ) : // <a
+              //   href={contributor.acf.social_media_link}
+              //   target="_blank"
+              //   rel="noreferrer"
+              // >
+              //   <div className="icon">
+              //     <Image
+              //       src="/insta.png"
+              //       alt="Instagram logo and link"
+              //       layout="fill"
+              //     />
+              //   </div>
+              // </a>
+              null}
               <a
                 className="contrib-website"
                 href={`https://${contributor.acf.website}`}

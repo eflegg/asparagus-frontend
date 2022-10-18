@@ -140,31 +140,42 @@ export default function TeamPage({ teamMember }) {
               <p>{teamMember.acf.bio}</p>
             </div>
             <div className="where-to-find">
-              {teamMember.acf.which_social_media_network == "instagram" ? (
-                <div className="icon">
-                  <Image
-                    src="/insta.png"
-                    alt="Instagram logo and link"
-                    layout="fill"
-                  />
-                </div>
-              ) : teamMember.acf.which_social_media_network == "twitter" ? (
-                <div className="icon">
-                  <Image
-                    src="/twitter.png"
-                    alt="Twitter logo and link"
-                    layout="fill"
-                  />
-                </div>
-              ) : (
-                <div className="icon">
-                  <Image
-                    src="/insta.png"
-                    alt="Instagram logo and link"
-                    layout="fill"
-                  />
-                </div>
-              )}
+              {teamMember.acf.which_social_network == "Instagram" ? (
+                <a
+                  href={teamMember.acf.social_media_link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="icon">
+                    <Image
+                      src="/insta.png"
+                      alt="Instagram logo and link"
+                      layout="fill"
+                    />
+                  </div>
+                </a>
+              ) : teamMember.acf.which_social_network == "Twitter" ? (
+                <a
+                  href={teamMember.acf.social_media_link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="icon">
+                    <Image
+                      src="/twitter.png"
+                      alt="Twitter logo and link"
+                      layout="fill"
+                    />
+                  </div>
+                </a>
+              ) : // <div className="icon">
+              //   <Image
+              //     src="/insta.png"
+              //     alt="Instagram logo and link"
+              //     layout="fill"
+              //   />
+              // </div>
+              null}
               <a
                 className="contrib-website"
                 href={`https://www.${teamMember.acf.website}`}
