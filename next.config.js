@@ -1,12 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // apiUrl: "http://asparagus.local",
-  apiUrl: "https://stage.asparagusmagazine.com",
+
+  // apiUrl: "https://stage.asparagusmagazine.com",
+  apiUrl: `${process.env.API_URL}`,
   images: {
     // enter the domain or subdomain where you have WordPress installed
-    // domains: ["asparagus.local"],
-    domains: ["stage.asparagusmagazine.com"],
+
+    // domains: ["stage.asparagusmagazine.com"],
+    domains: [`${process.env.WP_DOMAIN}`],
+  },
+  env: {
+    REVALIDATION_TOKEN: process.env.REVALIDATION_TOKEN,
+    API_URL: process.env.API_URL,
   },
   staticPageGenerationTimeout: 600,
   async redirects() {
