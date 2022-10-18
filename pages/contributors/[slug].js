@@ -76,12 +76,9 @@ margin: initial;
 `;
 
 export default function ContributorPage({ contributor, tags }) {
-  console.log("contributor tags: ", tags);
-
   let contribTag = tags.filter(
     (newTag) => newTag.name == contributor.title.rendered
   );
-  console.log("contrib tag: ", contribTag);
 
   const [contribPosts, setContribPosts] = useState([]);
 
