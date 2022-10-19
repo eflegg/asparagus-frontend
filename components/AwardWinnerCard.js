@@ -137,34 +137,6 @@ export default function AwardWinnerCard({ post }) {
           <div className="award-text--lower">
             <p className="award-title">{post.acf.award_title}</p>
             <Byline article={post} />
-            {/* <div className="article-details">
-                  <div>
-                    <p className="byline--article-card">
-                      {post.acf.writer[0].post_title}
-                    </p>
-                    <p className="date--article-card">
-                      {formattedDate} -{" "}
-                      <span>{post.acf.time_to_read} min read</span>
-                    </p>
-                  </div>
-                  <div className="byline--image">
-                    {post.acf.writer[0].acf.headshot.url ? (
-                      <Image
-                        src={post.acf.writer[0].acf.headshot.url}
-                        layout="fill"
-                        objectFit="cover"
-                        alt="Author headshot"
-                      />
-                    ) : (
-                      <Image
-                        src="/triplestalk.svg"
-                        layout="fill"
-                        objectFit="cover"
-                        alt="Asparagus Magazine logo"
-                      />
-                    )}
-                  </div>
-                </div> */}
           </div>
         </div>
       </div>
