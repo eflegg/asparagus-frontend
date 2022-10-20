@@ -7,6 +7,10 @@
 
 /***  Layout  ***/
 
+* {
+  background: seagreen;
+}
+
 @mixin media-query-min($value, $operator: "min-width", $query: "screen") {
   @media #{$query} and (#{$operator}: #{$value}) {
     @content;
