@@ -55,6 +55,6 @@ export async function getStaticProps({ params }) {
     props: {
       teamMembers,
     },
-    revalidate: 1200,
+    // revalidate: 1200,
   };
 }

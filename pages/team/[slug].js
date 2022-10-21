@@ -232,7 +232,7 @@ export async function getStaticProps({ params }) {
       teamMember,
       // tags,
     },
-    revalidate: 600, // In seconds
+    //revalidate: 600, // In seconds
     notFound,
   };
 }
