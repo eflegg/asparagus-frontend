@@ -7,7 +7,6 @@ const nextConfig = {
   images: {
     // enter the domain or subdomain where you have WordPress installed
 
-    // domains: ["stage.asparagusmagazine.com"],
     domains: [`${process.env.WP_DOMAIN}`],
   },
   env: {
