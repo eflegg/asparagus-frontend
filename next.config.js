@@ -12,6 +12,7 @@ const nextConfig = {
   },
   env: {
     REVALIDATION_TOKEN: process.env.REVALIDATION_TOKEN,
+    REVALIDATE_SECRET_KEY: process.env.REVALIDATE_SECRET_KEY,
     API_URL: process.env.API_URL,
   },
   staticPageGenerationTimeout: 600,
