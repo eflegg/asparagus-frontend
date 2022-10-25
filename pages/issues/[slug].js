@@ -185,7 +185,6 @@ export async function getStaticProps({ params }) {
   const issuePosts = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=10&_embed&per_page=300`
   );
-
   const posts = await issuePosts.json();
   const notFound = !issue;
 

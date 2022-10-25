@@ -6,6 +6,8 @@ import PageWrapper from "../components/Global/PageWrapper";
 import ArticleCard from "../components/ArticleCard";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
+import { Config } from "../config";
+import fetch from "isomorphic-fetch";
 import { v4 as uuidv4 } from "uuid";
 
 const CoverContainer = styled.div`
@@ -168,7 +170,12 @@ export default function CurrentIssue({ issues, articles }) {
 
 export async function getStaticProps({ params }) {
   const issues = await getIssues();
-  const articles = await getArticles();
+  // const articles = await getArticles();
+
+  const issuePosts = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&categories=10&_embed&per_page=300`
+  );
+  const articles = await issuePosts.json();
 
   //could query for only articles in category magazine, and tell staff they have to add category magazine to all print stories
 
