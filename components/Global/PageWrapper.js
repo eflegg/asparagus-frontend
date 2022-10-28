@@ -7,6 +7,8 @@ import AdBanner from "./AdBanner";
 
 const OuterContainer = styled.main`
   width: 100%;
+  position: relative;
+  margin-bottom: 125px;
 `;
 
 export default function PageWrapper({
