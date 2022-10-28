@@ -98,9 +98,7 @@ export default function AdBanner() {
                 alt=""
               />
             </>
-          ) : (
-            <h3>your ad here</h3>
-          )}
+          ) : null}
         </a>
       </div>
     </AdBannerContainer>
