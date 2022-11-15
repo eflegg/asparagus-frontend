@@ -494,7 +494,6 @@ export default function HeaderMenu() {
                       height={98}
                       src={nameplateMobile}
                       alt="Asparagus Magazine logo"
-                      placeholer={blur}
                       priority={true}
                     />
                   ) : (
@@ -504,7 +503,6 @@ export default function HeaderMenu() {
                       height={99}
                       src={nameplateDesktop}
                       alt="Asparagus Magazine logo"
-                      placeholer={blur}
                       priority={true}
                     />
                   )}

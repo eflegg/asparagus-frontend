@@ -3,15 +3,19 @@ import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 
 import styled from "styled-components";
-
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 const AdBannerContainer = styled.div`
-  width: 97%;
-  margin: 60px auto;
+  width: 100%;
+  a {
+    min-width: 300px;
 
-  height: auto;
-  position: relative;
+    width: 90%;
+    margin: 0px auto;
+    display: block;
+    position: relative;
+  }
   img {
     height: 100%;
     width: 100%;
@@ -67,18 +71,24 @@ export default function AdBanner() {
       >
         {ads.length !== 0 ? (
           <>
-            {/* <Image
-              src={ads?.acf?.banner_ads[adIndex]?.banner_image.url}
+            <Image
+              id={`banner-ad--${adIndex}`}
+              src={
+                ads?.acf?.banner_ads[adIndex]?.banner_image.url
+                  ? ads?.acf?.banner_ads[adIndex]?.banner_image.url
+                  : "https://files.asparagusmagazine.com/wp-content/uploads/2022/09/Asparagus_Subscribe_eNewsletter_ad_2jpg-scaled.jpg"
+              }
               layout="responsive"
-              width="97%"
-              height="150px"
+              objectFit="contain"
+              width={2048}
+              height={428}
               alt={ads?.acf?.banner_ads[adIndex]?.advertiser_name}
-            /> */}
-            <img
+            />
+            {/* <img
               id={`banner-ad--${adIndex}`}
               src={ads?.acf?.banner_ads[adIndex]?.banner_image.url}
               alt=""
-            />
+            /> */}
           </>
         ) : (
           <h3>your ad here</h3>

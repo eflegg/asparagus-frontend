@@ -137,14 +137,14 @@ export default function Home({
               <NewsletterSignup
                 title="Sign up for the Asparagus Newsletter"
                 subtitle="Pleasantly infrequent updates from the asparagus patch"
-                image="triplestalk.svg"
+                image="/triplestalk.svg"
               />
             ) : (
               <NewsletterSignup
                 support
                 title="Asparagus relies on readers like you!"
                 subtitle="Support Asparagus Magazine"
-                image="cherryblossoms.jpg"
+                image="/cherryblossoms.jpg"
               />
             )
           ) : null}

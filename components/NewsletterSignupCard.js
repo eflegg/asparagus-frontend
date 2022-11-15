@@ -2,6 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import React, { useState } from "react";
+import Image from "next/image";
 
 const NewsletterBlock = styled.div`
   position: relative;
@@ -137,7 +138,7 @@ const PhotoStyled = styled.div`
   // border: solid hotpink;
   .image-container {
     // border: 2px solid green;
-
+    position: relative;
     object-fit: cover;
     height: 100%;
     // width: 65%;
@@ -298,7 +299,14 @@ u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0"
         {support ? (
           <PhotoStyled>
             <div className="image-container">
-              <img src={image} alt="nature image" />
+              {/* <img src={image} alt="nature image" /> */}
+              <Image
+                // width={457}
+                // height={99}
+                layout="fill"
+                src={image}
+                alt="nature image"
+              />
             </div>
           </PhotoStyled>
         ) : (
