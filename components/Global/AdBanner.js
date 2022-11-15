@@ -82,7 +82,7 @@ export default function AdBanner() {
               objectFit="contain"
               width={2048}
               height={428}
-              alt={ads?.acf?.banner_ads[adIndex]?.advertiser_name}
+              alt={`Banner ad for advertiser ${ads?.acf?.banner_ads[adIndex]?.advertiser_name}`}
             />
             {/* <img
               id={`banner-ad--${adIndex}`}
