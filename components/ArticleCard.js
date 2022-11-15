@@ -32,7 +32,9 @@ export default function ArticleCard({ post }) {
       <div className="card--inner">
         <div>
           <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
-            <a>
+            <a
+              aria-label={`Read the rest of the article ${post.title.rendered} `}
+            >
               <div className="card--image">
                 {post._embedded["wp:featuredmedia"] ? (
                   <Image

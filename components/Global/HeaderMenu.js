@@ -275,13 +275,13 @@ const ConnectMenuNav = styled.nav`
       background: transparent;
       transition: all 0.5s ease-in-out;
     }
-    li {
+    .connect--link {
       position: relative;
       opacity: 1;
       top: 0px;
       width: initial;
       transition: all 0.5s ease-in-out;
-      &:first-of-type {
+      &:nth-of-type(2) {
         width: initial;
       }
       transition: all 0.5s ease-in-out;
@@ -293,12 +293,12 @@ const ConnectMenuNav = styled.nav`
       background: ${theme.colours.darkWheat};
       transition: all 0.5s ease-in-out;
       padding: 10px 10px;
-      li {
+      li.connect--link {
         /* display: none; */
         opacity: 0;
         width: 0px;
         transition: all 0.5s ease-in-out;
-        &:first-of-type {
+        &:nth-of-type(2) {
           /* display: block; */
           position: relative;
           opacity: 1;
@@ -355,7 +355,7 @@ const ConnectMenuNav = styled.nav`
       transition: all 0.25s ease-out;
     }
     &:hover {
-      &:not(:first-of-type) {
+      &:not(:nth-of-type(2)) {
         &::after {
           content: "";
           width: 54%;
@@ -364,7 +364,7 @@ const ConnectMenuNav = styled.nav`
       }
     }
   }
-  li:first-of-type {
+  li.connect--link:nth-of-type(2) {
     background-color: ${theme.colours.gusYellow};
     padding: 3px 5px;
     border-radius: 5px;
@@ -502,7 +502,7 @@ export default function HeaderMenu() {
                       : ""
                   } connect-ul`}
                 >
-                  <div className="mobile--home-stalk">
+                  <li className="mobile--home-stalk">
                     <Link href="/">
                       <Image
                         src="/triplestalk.svg"
@@ -512,7 +512,7 @@ export default function HeaderMenu() {
                         height="56px"
                       />
                     </Link>
-                  </div>
+                  </li>
                   {connectLinks?.items?.map((connectLink, index) => {
                     return (
                       <li className="connect--link" key={uuidv4()}>

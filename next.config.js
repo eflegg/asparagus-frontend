@@ -10,6 +10,10 @@ const nextConfig = {
     // domains: ["stage.asparagusmagazine.com"],
     domains: [`${process.env.WP_DOMAIN}`],
   },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
   env: {
     REVALIDATION_TOKEN: process.env.REVALIDATION_TOKEN,
     API_URL: process.env.API_URL,

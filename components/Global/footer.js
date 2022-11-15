@@ -234,7 +234,7 @@ export default function Footer() {
     <FooterContainer>
       <div className="footer-inner">
         <FooterMenu className="footer--container">
-          <div className="footer-menu--inner">
+          <ul className="footer-menu--inner">
             {footerLinks?.items?.map((link, index) => {
               return (
                 <li className="nav-link" key={uuidv4()}>
@@ -287,7 +287,7 @@ export default function Footer() {
                 </li>
               );
             })}
-          </div>
+          </ul>
           <SocialMediaLogos>
             <a
               className="position-relative"
