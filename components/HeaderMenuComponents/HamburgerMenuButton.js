@@ -72,6 +72,7 @@ export default function HamburgerMenuButton({ navActive, onClick }) {
   return (
     <ButtonContainer>
       <button
+        aria-label="Hmaburger menu button"
         className={`btn-nav ${navActive ? "nav-close" : "nav-open"}`}
         onClick={onClick}
       >
