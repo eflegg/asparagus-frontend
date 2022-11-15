@@ -215,9 +215,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const teamMember = await getTeamMember(params.slug);
 
-  // const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
-  // const tags = await allTagsQuery.json();
-
   const teamPosts = await fetch(
     `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&tags=${teamMember.tags[0]}&per_page=100`
   );
