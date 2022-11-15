@@ -10,15 +10,37 @@ import Loader from "./Loader";
 import Image from "next/image";
 import Search from "./search";
 import HamburgerMenuButton from "../HeaderMenuComponents/HamburgerMenuButton";
+import nameplateMobile from "../../public/Asparagus_Nameplate_notag.png";
+import nameplateDesktop from "../../public/Asparagus_Nameplate_Color.png";
 
 const MenuContainer = styled.div`
+  .logo-tagline--container {
+    min-width: 320px;
+    width: 100%;
+    ${theme.mediaQuery.md`
+   
+
+    `}
+  }
   .nameplate-container {
+    width: 80%;
+    margin: 0 auto;
     position: relative;
     top: 35px;
     ${theme.mediaQuery.md`
+    margin: 0;
+    width: 100%;
     top: 0;
-    `}
+    `} ${theme.mediaQuery.md`
+  max-width: 457px;
+  transition: all .15s ease-in-out;
+  `};
+    ${theme.mediaQuery.lg`
+  max-width: 518px;
+  transition: all .15s ease-in-out;
+  `};
   }
+
   .custom-tagline {
     width: 80%;
     position: relative;
@@ -31,16 +53,7 @@ const MenuContainer = styled.div`
     display: none;
     `}
   }
-  .custom-tagline--desktop {
-    width: 80%;
-    font-size: 1.6rem;
-    line-height: 1.8rem;
-    display: none;
-    font-family: ${theme.type.italic};
-    ${theme.mediaQuery.md`
-    // display: none;
-    `}
-  }
+
   .nameplate {
     ${theme.mediaQuery.md`
   max-width: 457px;
@@ -70,13 +83,13 @@ const MenuContainer = styled.div`
     button {
       cursor: pointer;
       font-family: ${theme.type.medium};
-      /* font-size: 2.4rem; */
+
       color: ${theme.colours.gusGreen};
     }
     &:focus {
       border: 1px solid orange;
     }
-    /* position: relative; */
+
     z-index: 20;
     margin: 0px 10px;
     display: flex;
@@ -158,7 +171,6 @@ const ConnectMenuContainer = styled.div`
 `;
 
 const DesktopNav = styled.nav`
-  //  position: fixed;
   z-index: 1;
   width: 100%;
   ul.desktopnav {
@@ -471,25 +483,33 @@ export default function HeaderMenu() {
             </p>
             <div className="logo-tagline--container">
               <Link href="/">
-                <a className="position-relative d-block nameplate-container">
+                <a
+                  aria-label="Link to go to Home page"
+                  className=" d-block nameplate-container"
+                >
                   {size.width < 1000 ? (
-                    <img
-                      className="nameplate nameplate--desktop"
-                      src="/Asparagus_Nameplate_notag.png"
+                    <Image
+                      layout="responsive"
+                      width={345}
+                      height={98}
+                      src={nameplateMobile}
                       alt="Asparagus Magazine logo"
+                      placeholer={blur}
+                      priority={true}
                     />
                   ) : (
-                    <img
-                      className="nameplate nameplate--desktop"
-                      src="/Asparagus_Nameplate_Color.png"
+                    <Image
+                      layout="responsive"
+                      width={457}
+                      height={99}
+                      src={nameplateDesktop}
                       alt="Asparagus Magazine logo"
+                      placeholer={blur}
+                      priority={true}
                     />
                   )}
                 </a>
               </Link>
-              <p className="custom-tagline--desktop ">
-                Telling large and small stories of how we can live sustainably.
-              </p>
             </div>
             <ConnectMenuContainer>
               <ConnectMenuNav>
