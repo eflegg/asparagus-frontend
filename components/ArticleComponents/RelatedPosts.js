@@ -52,7 +52,7 @@ export default function RelatedPosts({ currentArticle }) {
 
   return (
     <>
-      <h5 className="related--header">Related Stories</h5>
+      <h3 className="related--header h5">Related Stories</h3>
       <hr className="hr--related" />
       <div className="card--grid single-page">
         {sortedPosts.slice(0, maxPosts).map((post, i) => (
