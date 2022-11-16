@@ -57,9 +57,9 @@ export default function SupportCard({}) {
     <SupportBlock>
       <div className="support-text">
         <h1 className="support-title">Asparagus depends on readers.</h1>
-        <h5 className="support-subtitle">
+        <h2 className="support-subtitle h5">
           Support our work by subscribing, donating, or buying sustainable swag.
-        </h5>
+        </h2>
         <a
           href="https://shop.asparagusmagazine.com/donations/"
           rel="noreferrer"

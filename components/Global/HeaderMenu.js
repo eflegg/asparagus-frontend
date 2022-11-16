@@ -548,11 +548,13 @@ export default function HeaderMenu() {
                       </li>
                     );
                   })}
-                  <Search
-                    scrolled={
-                      size.scrollY > 2 && size.width < 1000 ? true : false
-                    }
-                  />
+                  <li>
+                    <Search
+                      scrolled={
+                        size.scrollY > 2 && size.width < 1000 ? true : false
+                      }
+                    />
+                  </li>
                   {size.width < 1000 && (
                     <HamburgerMenuButton
                       navActive={navActive}

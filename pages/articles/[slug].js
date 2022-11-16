@@ -34,6 +34,9 @@ const SingleContainer = styled.div`
         width: 100%;
       }
     } */
+    img {
+      height: auto;
+    }
   }
 
   figcaption {
