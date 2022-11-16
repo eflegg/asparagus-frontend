@@ -367,7 +367,14 @@ const ConnectMenuNav = styled.nav`
       transition: all 0.25s ease-out;
     }
     &:hover {
-      &:not(:nth-of-type(2)) {
+      &:nth-of-type(3) {
+        &::after {
+          content: "";
+          width: 54%;
+          transition: all 0.25s ease-out;
+        }
+      }
+      &:nth-of-type(4) {
         &::after {
           content: "";
           width: 54%;
@@ -556,12 +563,14 @@ export default function HeaderMenu() {
                     />
                   </li>
                   {size.width < 1000 && (
-                    <HamburgerMenuButton
-                      navActive={navActive}
-                      onClick={() => {
-                        setNavActive(!navActive);
-                      }}
-                    />
+                    <li>
+                      <HamburgerMenuButton
+                        navActive={navActive}
+                        onClick={() => {
+                          setNavActive(!navActive);
+                        }}
+                      />
+                    </li>
                   )}
                 </ul>
               </ConnectMenuNav>
