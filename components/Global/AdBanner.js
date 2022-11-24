@@ -40,7 +40,6 @@ const AdBannerContainer = styled.div`
 `;
 
 export default function AdBanner() {
-  // const dynamicRoute = useRouter().asPath;
   const [adIndex, setAdIndex] = useState(1);
   const [ads, setAds] = useState([]);
 
@@ -67,8 +66,6 @@ export default function AdBanner() {
     const length = ads?.acf?.banner_ads?.length;
     setAdIndex(Math.floor(Math.random() * length));
   };
-
-  // console.log("ads: ", ads);
 
   useEffect(() => {
     randomAd();
