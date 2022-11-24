@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 const AdBannerContainer = styled.div`
+<<<<<<< HEAD
   width: 100%;
   a {
     min-width: 300px;
@@ -20,15 +21,41 @@ const AdBannerContainer = styled.div`
     height: 100%;
     width: 100%;
     object-fit: cover;
+=======
+  position: fixed;
+  bottom: -10px;
+  background: white;
+  z-index: 20;
+  width: 100%;
+  .ad-banner--inner {
+    width: 75%;
+    max-width: 728px;
+
+    margin: 5px auto 0;
+    height: auto;
+    position: relative;
+    /* left: 50%;
+    transform: translateX(-50%); */
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    h3 {
+      padding: 20px;
+      text-align: center;
+    }
+>>>>>>> f182f0357bb75091404f2a73b46e04fe863e745f
   }
-  h3 {
-    padding: 20px;
-    text-align: center;
+  .ad-hr {
+    width: 85%;
+    margin: 5px auto;
+    background: black;
+    height: 1px;
   }
 `;
 
 export default function AdBanner() {
-  // const dynamicRoute = useRouter().asPath;
   const [adIndex, setAdIndex] = useState(1);
   const [ads, setAds] = useState([]);
 
@@ -56,14 +83,13 @@ export default function AdBanner() {
     setAdIndex(Math.floor(Math.random() * length));
   };
 
-  // console.log("ads: ", ads);
-
   useEffect(() => {
     randomAd();
   });
 
   return (
     <AdBannerContainer>
+<<<<<<< HEAD
       <a
         href={ads?.acf?.banner_ads[adIndex]?.advertiser_link}
         rel="noreferrer"
@@ -94,6 +120,33 @@ export default function AdBanner() {
           <h3>your ad here</h3>
         )}
       </a>
+=======
+      <hr className="ad-hr" />
+      <div className="ad-banner--inner">
+        <a
+          href={ads?.acf?.banner_ads[adIndex]?.advertiser_link}
+          rel="noreferrer"
+          target="_blank"
+        >
+          {ads.length !== 0 ? (
+            <>
+              {/* <Image
+              src={ads?.acf?.banner_ads[adIndex]?.banner_image.url}
+              layout="responsive"
+              width="97%"
+              height="150px"
+              alt={ads?.acf?.banner_ads[adIndex]?.advertiser_name}
+            /> */}
+              <img
+                id={`banner-ad--${adIndex}`}
+                src={ads?.acf?.banner_ads[adIndex]?.banner_image.url}
+                alt=""
+              />
+            </>
+          ) : null}
+        </a>
+      </div>
+>>>>>>> f182f0357bb75091404f2a73b46e04fe863e745f
     </AdBannerContainer>
   );
 }
