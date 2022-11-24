@@ -16,7 +16,7 @@ const AdBannerContainer = styled.div`
     width: 75%;
     max-width: 728px;
 
-    margin: 10px auto 0;
+    margin: 5px auto 0;
     height: auto;
     position: relative;
     /* left: 50%;
@@ -33,7 +33,7 @@ const AdBannerContainer = styled.div`
   }
   .ad-hr {
     width: 85%;
-    margin: 10px auto;
+    margin: 5px auto;
     background: black;
     height: 1px;
   }
