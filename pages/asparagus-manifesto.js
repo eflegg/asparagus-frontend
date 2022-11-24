@@ -225,6 +225,6 @@ export async function getStaticProps({ params }) {
       contributors,
       page,
     },
-    revalidate: 2000, // In seconds
+    //revalidate: 2000, // In seconds
   };
 }

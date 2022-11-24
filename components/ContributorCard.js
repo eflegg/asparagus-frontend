@@ -70,7 +70,8 @@ const Card = styled.li`
   }
 `;
 
-export default function ContributorCard({ team, contributor }) {
+export default function ContributorCard({ team, contributor, tag }) {
+  console.log("tag: ", tag);
   return (
     <Card className="team--card" team={team}>
       <ContribImage team={team}>
@@ -92,33 +93,29 @@ export default function ContributorCard({ team, contributor }) {
         )}
       </ContribImage>
       {team ? (
-        <Link href={"/team/[slug]"} as={`/team/${contributor.slug}`}>
-          <a className="card-link--container">
-            <div>
-              <h3 className="team-name">
-                {contributor.title.rendered}
-                {""}
-                {contributor.acf.title ? (
-                  <span className="team--title">
-                    <span className="long-dash"> &#8212;</span>{" "}
-                    {contributor.acf.title}
-                  </span>
-                ) : null}
-              </h3>
+        <>
+          <div className="card-link--container">
+            <h3 className="team-name">
+              {contributor.title.rendered}
+              {""}
+              {contributor.acf.title ? (
+                <span className="team--title">
+                  <span className="long-dash"> &#8212;</span>{" "}
+                  {contributor.acf.title}
+                </span>
+              ) : null}
+            </h3>
 
-              <p>{contributor.acf.bio}</p>
-              {/* <a
-                className="social-link"
-                href={socialLink}
-                rel="noreferrer"
-                target="_blank"
-              >
-                <p>{social}</p>
-              </a> */}
-            </div>
-            {/* <button className="btn--primary">Contributor Profile</button> */}
-          </a>
-        </Link>
+            <p>{contributor.acf.bio}</p>
+            {tag !== null ? (
+              <Link href={"/team/[slug]"} as={`/team/${contributor.slug}`}>
+                <a>
+                  <button className="btn--primary">Contributor Profile</button>
+                </a>
+              </Link>
+            ) : null}
+          </div>
+        </>
       ) : (
         <Link
           href={"/contributors/[slug]"}

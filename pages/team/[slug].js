@@ -75,7 +75,7 @@ margin: initial;
   }
 `;
 
-export default function TeamPage({ teamMember }) {
+export default function TeamPage({ teamMember, posts }) {
   // let contribTag = tags.filter(
   //   (newTag) => newTag.name == teamMember.title.rendered
   // );
@@ -103,9 +103,11 @@ export default function TeamPage({ teamMember }) {
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 
+  console.log("team member posts: ", posts);
+
   return (
     <PageWrapper
-      canonicalUrl={`https://asparagusmagazine.com/${teamMember.slug}`}
+      canonicalUrl={`https://asparagusmagazine.com/team/${teamMember.slug}`}
       ogImageUrl={teamMember.yoast_head_json.og_image}
       ogType={teamMember.yoast_head_json.og_type}
       ogTwitterImage={teamMember.yoast_head_json.twitter_card}
@@ -168,14 +170,7 @@ export default function TeamPage({ teamMember }) {
                     />
                   </div>
                 </a>
-              ) : // <div className="icon">
-              //   <Image
-              //     src="/insta.png"
-              //     alt="Instagram logo and link"
-              //     layout="fill"
-              //   />
-              // </div>
-              null}
+              ) : null}
               <a
                 className="contrib-website"
                 href={`https://www.${teamMember.acf.website}`}
@@ -187,9 +182,9 @@ export default function TeamPage({ teamMember }) {
             </div>
           </div>
         </ContribHeader>
-        {/* <ul className="card--grid single-page">
-          {contribPosts.length > 0
-            ? contribPosts.map((post, index) => {
+        <ul className="card--grid single-page">
+          {posts.length > 0
+            ? posts.map((post, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
                     <>
@@ -199,7 +194,7 @@ export default function TeamPage({ teamMember }) {
                 );
               })
             : null}
-        </ul> */}
+        </ul>
       </div>
     </PageWrapper>
   );
@@ -211,8 +206,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    //this option below renders in the server (at request time) pages that were not rendered at build time
-    //e.g when a new blogpost is added to the app
     fallback: "blocking",
   };
 }
@@ -222,17 +215,21 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const teamMember = await getTeamMember(params.slug);
 
-  // const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
-  // const tags = await allTagsQuery.json();
+  const teamPosts = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&tags=${teamMember.tags[0]}&per_page=100`
+  );
+
+  const posts = await teamPosts.json();
 
   const notFound = !teamMember;
 
   return {
     props: {
       teamMember,
+      posts,
       // tags,
     },
-    revalidate: 600, // In seconds
+    //revalidate: 600, // In seconds
     notFound,
   };
 }

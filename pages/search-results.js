@@ -259,6 +259,6 @@ export async function getStaticProps({ params }) {
       team,
       tips,
     },
-    revalidate: 1200, // In seconds
+    //revalidate: 1200, // In seconds
   };
 }

@@ -4,6 +4,8 @@ import ContributorCard from "../components/ContributorCard";
 import React from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+import { Config } from "../config";
+import fetch from "isomorphic-fetch";
 
 const TeamMemberContainer = styled.ul`
   width: 90%;
@@ -13,6 +15,8 @@ const TeamMemberContainer = styled.ul`
 export default function Team({ teamMembers }) {
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
+
+  console.log("team members: ", teamMembers);
 
   return (
     <PageWrapper
@@ -38,23 +42,25 @@ export default function Team({ teamMembers }) {
                 title={member.acf.title}
                 social={member.acf.social_media_handle}
                 socialLink={member.acf.social_media_link}
+                tag={member.tags.length > 0 ? member.tags[0] : null}
               />
             </React.Fragment>
           );
         })}
       </TeamMemberContainer>
-      {/* <h1 className="text-center">Columnists</h1>
-      <hr /> */}
     </PageWrapper>
   );
 }
 
 export async function getStaticProps({ params }) {
   const teamMembers = await getTeamMembers();
+
+  const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
+  const tags = await allTagsQuery.json();
   return {
     props: {
       teamMembers,
     },
-    revalidate: 1200,
+    // revalidate: 1200,
   };
 }
