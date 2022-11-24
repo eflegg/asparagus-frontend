@@ -7,21 +7,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 const AdBannerContainer = styled.div`
-<<<<<<< HEAD
-  width: 100%;
-  a {
-    min-width: 300px;
-
-    width: 90%;
-    margin: 0px auto;
-    display: block;
-    position: relative;
-  }
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-=======
   position: fixed;
   bottom: -10px;
   background: white;
@@ -45,7 +30,6 @@ const AdBannerContainer = styled.div`
       padding: 20px;
       text-align: center;
     }
->>>>>>> f182f0357bb75091404f2a73b46e04fe863e745f
   }
   .ad-hr {
     width: 85%;
@@ -89,38 +73,6 @@ export default function AdBanner() {
 
   return (
     <AdBannerContainer>
-<<<<<<< HEAD
-      <a
-        href={ads?.acf?.banner_ads[adIndex]?.advertiser_link}
-        rel="noreferrer"
-        target="_blank"
-      >
-        {ads.length !== 0 ? (
-          <>
-            <Image
-              id={`banner-ad--${adIndex}`}
-              src={
-                ads?.acf?.banner_ads[adIndex]?.banner_image.url
-                  ? ads?.acf?.banner_ads[adIndex]?.banner_image.url
-                  : "https://files.asparagusmagazine.com/wp-content/uploads/2022/09/Asparagus_Subscribe_eNewsletter_ad_2jpg-scaled.jpg"
-              }
-              layout="responsive"
-              objectFit="contain"
-              width={2048}
-              height={428}
-              alt={`Banner ad for advertiser ${ads?.acf?.banner_ads[adIndex]?.advertiser_name}`}
-            />
-            {/* <img
-              id={`banner-ad--${adIndex}`}
-              src={ads?.acf?.banner_ads[adIndex]?.banner_image.url}
-              alt=""
-            /> */}
-          </>
-        ) : (
-          <h3>your ad here</h3>
-        )}
-      </a>
-=======
       <hr className="ad-hr" />
       <div className="ad-banner--inner">
         <a
@@ -146,7 +98,6 @@ export default function AdBanner() {
           ) : null}
         </a>
       </div>
->>>>>>> f182f0357bb75091404f2a73b46e04fe863e745f
     </AdBannerContainer>
   );
 }
