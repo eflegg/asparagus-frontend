@@ -75,7 +75,9 @@ margin: initial;
   }
 `;
 
-export default function ContributorPage({ contributor, tags }) {
+export default function ContributorPage({ contributor, tags, posts }) {
+  console.log("contributor: ", contributor);
+  console.log("contributor single posts ", posts);
   let contribTag = tags.filter(
     (newTag) => newTag.name == contributor.title.rendered
   );
@@ -96,14 +98,13 @@ export default function ContributorPage({ contributor, tags }) {
     }
 
     loadLinks();
-  });
+  }, []);
 
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 
   return (
     <PageWrapper
-      noAd
       SEOtitle={contributor.title.rendered}
       metadescription={contributor.acf.bio}
       ogImageUrl={
@@ -230,6 +231,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const contributor = await getContributor(params.slug);
 
+  const teamPosts = await fetch(
+    `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&tags=${contributor.tags[0]}&per_page=100`
+  );
+
+  const posts = await teamPosts.json();
+
   const allTagsQuery = await fetch(`${Config.apiUrl}/wp-json/wp/v2/tags`);
   const tags = await allTagsQuery.json();
 
@@ -238,7 +245,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       contributor,
-
+      posts,
       tags,
     },
     //revalidate: 1200, // In seconds

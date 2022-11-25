@@ -71,7 +71,6 @@ const Card = styled.li`
 `;
 
 export default function ContributorCard({ team, contributor, tag }) {
-  console.log("tag: ", tag);
   return (
     <Card className="team--card" team={team}>
       <ContribImage team={team}>
