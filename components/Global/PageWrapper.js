@@ -8,7 +8,7 @@ import AdBanner from "./AdBanner";
 const OuterContainer = styled.main`
   width: 100%;
   position: relative;
-  margin-bottom: 105px;
+  margin-bottom: ${(props) => (props.team ? "105px" : "0px")};
 `;
 
 export default function PageWrapper({
@@ -19,10 +19,11 @@ export default function PageWrapper({
   metadescription,
   SEOtitle,
   ogImageUrl,
+  noAd,
 }) {
   // const TRACKING_ID = "G-CT5R7MCS1Y";
   return (
-    <OuterContainer>
+    <OuterContainer noAd={noAd}>
       <div>
         <Head>
           <title>{SEOtitle}</title>
@@ -51,7 +52,7 @@ export default function PageWrapper({
         {children}
         <Footer />
       </div>
-      <AdBanner />
+      {!noAd ? <AdBanner /> : null}
     </OuterContainer>
   );
 }

@@ -103,6 +103,7 @@ export default function ContributorPage({ contributor, tags }) {
 
   return (
     <PageWrapper
+      noAd
       SEOtitle={contributor.title.rendered}
       metadescription={contributor.acf.bio}
       ogImageUrl={
