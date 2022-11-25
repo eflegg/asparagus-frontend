@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 
 export default function FourOhFour() {
   return (
-    <PageWrapper>
+    <PageWrapper SEOtitle="Page Not Found | Asparagus Magazine">
       <Wrapper className="404-wrapper">
         <h1 className="h5">Hmm, seems there is nothing growing here!</h1>
         <div className="error-image">
