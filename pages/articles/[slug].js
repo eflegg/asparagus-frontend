@@ -133,6 +133,14 @@ const SingleContainer = styled.div`
       ${theme.mediaQuery.sm`
        margin: 25px auto;
     `}
+      em {
+        font-size: 1.7rem;
+        font-weight: 600;
+        font-style: italic;
+        ${theme.mediaQuery.md`
+      font-size: 2rem;
+      `}
+      }
     }
     a {
       letter-spacing: 0;
@@ -140,6 +148,7 @@ const SingleContainer = styled.div`
     em {
       font-size: 1.7rem;
       font-weight: 600;
+      font-style: italic;
       ${theme.mediaQuery.md`
       font-size: 2rem;
       `}
