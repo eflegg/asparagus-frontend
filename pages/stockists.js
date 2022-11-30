@@ -42,8 +42,9 @@ const StockistBlock = styled.div`
   .number-name-wrapper {
     // border: solid teal;
     display: flex;
+    padding-top: 5px;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     p {
       margin-left: 10px;
     }

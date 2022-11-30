@@ -10,6 +10,7 @@ const StockistContainer = styled.div`
 
   p {
     margin: 0;
+    letter-spacing: 0;
   }
   ${theme.mediaQuery.sm`
   padding-left: 60px;
@@ -17,7 +18,6 @@ const StockistContainer = styled.div`
 `;
 
 export default function StockistSingle({ stockist, numeral }) {
-  // console.log("numeral: ", numeral);
   console.log("stockist: ", stockist);
   return (
     <StockistContainer className="stockist--single">
