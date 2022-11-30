@@ -10,7 +10,6 @@ import { v4 as uuidv4 } from "uuid";
 
 const StockistBlock = styled.div`
   border: 2px solid white;
-
   width: 90%;
   max-width: 1000px;
   padding-top: 20px;
@@ -55,7 +54,7 @@ const StockistBlock = styled.div`
   }
   .stockist-info {
     position: relative;
-    left: 40px;
+    padding-left: 40px;
   }
 `;
 const Map = styled.div`
@@ -69,20 +68,6 @@ const Map = styled.div`
     margin: 0 auto;
   }
 `;
-
-// const provinces = [
-//   "British Columbia",
-//   "Alberta",
-//   "Saskatchewan",
-//   "Manitoba",
-//   "Ontario",
-//   "Quebec",
-//   "New Brunswick",
-//   "Newfoundland and Labrador",
-//   "Nova Scotia",
-//   "Prince Edward Island",
-//   "Yukon",
-// ];
 
 export default function Stockists({ stockists, page }) {
   // console.log("stockists: ", stockists);

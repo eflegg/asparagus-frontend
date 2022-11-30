@@ -4,8 +4,10 @@ import styled from "styled-components";
 import theme from "../components/Global/Theme";
 
 const StockistContainer = styled.div`
+  width: 100%;
   padding-left: 30px;
   margin-bottom: 20px;
+
   p {
     margin: 0;
   }
@@ -16,10 +18,11 @@ const StockistContainer = styled.div`
 
 export default function StockistSingle({ stockist, numeral }) {
   // console.log("numeral: ", numeral);
+  console.log("stockist: ", stockist);
   return (
     <StockistContainer className="stockist--single">
       <div className="number-name-wrapper">
-        <div className="circle">{numeral}</div>
+        <div className="circle">{stockist.acf.map_number}</div>
         <p>{stockist.acf.stockist_name}</p>
       </div>
       <div className="stockist-info">
@@ -30,7 +33,7 @@ export default function StockistSingle({ stockist, numeral }) {
           rel="noreferrer"
           href={`https://www.${stockist.acf.stockist_website}`}
         >
-          <h5 className="website">{stockist.acf.stockist_website}</h5>
+          <h5 className="website">Website</h5>
         </a>
       </div>
     </StockistContainer>
