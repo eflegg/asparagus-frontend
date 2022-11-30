@@ -190,8 +190,10 @@ const SingleContainer = styled.div`
       }
       em {
         font-size: 18px;
+        color: ${theme.colours.gusGreen};
+        letter-spacing: 0;
         font-weight: 600;
-        font-family: ${theme.type.italic};
+        font-family: ${theme.type.semiboldItalic};
         ${theme.mediaQuery.md`
         font-size: 2.8rem;
        `}
