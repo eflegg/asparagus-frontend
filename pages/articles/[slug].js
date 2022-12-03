@@ -368,6 +368,7 @@ const SingleHero = styled.div`
 
 export default function ArticlePage({ article, categories }) {
   let subcategories = categories.filter((newCat) => newCat.parent !== 0);
+  console.log("article: ", article);
 
   const postCategories = article._embedded["wp:term"]["0"].map((category) => {
     return category.name;

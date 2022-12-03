@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "next/router";
 import fetch from "isomorphic-fetch";
 import { Config } from "../config";
@@ -19,6 +19,8 @@ import {
 } from "../utils/wordpress";
 import ContributorCard from "../components/ContributorCard";
 import Link from "next/link";
+
+const ResultCard = styled.div``;
 
 const SearchContainer = styled.div`
   h1 {
@@ -54,8 +56,28 @@ const SearchContainer = styled.div`
 `;
 
 function SearchResults(props) {
+  // @erin this will be for later with custom post object endpoint
+  // const [results, setResults] = useState([]);
+  // useEffect(() => {
+  //   async function loadLinks() {
+  //     const response = await fetch(
+  //       `${Config.apiUrl}/wp-json/wp/v2/search/?search=${props.router.query.name}&_embed=self&per_page=100`
+  //     );
+
+  //     if (!response.ok) {
+  //       // oops! something went wrong
+  //       return;
+  //     }
+
+  //     const links = await response.json();
+  //     setResults(links);
+  //   }
+
+  //   loadLinks();
+  // }, [props.router.query.name]);
+
   const query = props.router.query.name;
-  // const queryPlain = props.router.query.name.toString().toLowerCase();
+
   console.log("query: ", query);
 
   //Events
@@ -80,12 +102,32 @@ function SearchResults(props) {
       return posts;
     }
     return posts.filter((post) => {
+      const postTitle = post.title.rendered
+        .toLowerCase()
+        .replace(/[^a-zA-Z0-9 ]/g, "");
       const postContent = post.content.rendered
         .toLowerCase()
         .replace(/[^a-zA-Z0-9 ]/g, "");
-      return postContent.includes(
-        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
-      );
+      const postDek = post.acf.dek.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "");
+      if (
+        postContent.includes(query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ""))
+      ) {
+        return postContent.includes(
+          query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+        );
+      } else if (
+        postTitle.includes(query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ""))
+      ) {
+        return postTitle.includes(
+          query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+        );
+      } else if (
+        postDek.includes(query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ""))
+      ) {
+        return postDek.includes(
+          query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
+        );
+      }
     });
   };
 
