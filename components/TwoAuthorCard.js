@@ -8,6 +8,7 @@ const DoubleAuthor = styled.div`
     display: flex;
     flex-direction: column;
     .byline--single-article {
+      letter-spacing: 0.2rem;
       font-size: 1.6rem;
       font-weight: 700;
       &:first-child {

@@ -59,6 +59,9 @@ const ContentContainer = styled.div`
     letter-spacing: 0;
     list-style: disc;
   }
+  p {
+    letter-spacing: 0;
+  }
   &.body-content {
     p {
       width: 90%;

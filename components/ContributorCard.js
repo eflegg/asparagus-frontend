@@ -66,7 +66,7 @@ const Card = styled.li`
   `}
   }
   p {
-    font-size: ;
+    letter-spacing: 0;
   }
 `;
 

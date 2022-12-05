@@ -109,7 +109,12 @@ export default function Home({
           </CategoryContainer>
 
           <CategoryContainer className="cat-two--container">
-            <h2 className="h5">{page.acf.home_category_two[0].name}</h2>
+            <h2
+              className="h5"
+              dangerouslySetInnerHTML={{
+                __html: page.acf.home_category_two[0].name,
+              }}
+            ></h2>
             <hr />
             <div
               className={`${

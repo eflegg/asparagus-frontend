@@ -353,6 +353,7 @@ const SingleHero = styled.div`
     margin: 0px auto;
   }
   .byline--single-article {
+    letter-spacing: 0.2rem;
     margin: 0px 0 0 0;
     font-size: 1.4rem;
     font-weight: 700;
