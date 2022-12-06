@@ -6,6 +6,7 @@ import Byline from "./ArticleComponents/Byline";
 
 const Card = styled.div`
   // border: 4px solid ${theme.colours.gusGreen};
+  margin-bottom: 30px;
   position: relative;
   width: 100%;
   h3.awards-hed {
