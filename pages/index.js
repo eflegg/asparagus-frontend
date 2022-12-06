@@ -97,7 +97,7 @@ export default function Home({
                 return (
                   <React.Fragment key={uuidv4()}>
                     {page.acf.home_category_one[0].name == "Awards" &&
-                    index <= 5 ? (
+                    index <= 2 ? (
                       <AwardWinnerCard post={catOnePost} />
                     ) : (
                       <ArticleCard post={catOnePost} />
@@ -126,7 +126,8 @@ export default function Home({
               {catTwoPosts.map((catTwoPost, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
-                    {page.acf.home_category_two[0].name == "Awards" ? (
+                    {page.acf.home_category_two[0].name == "Awards" &&
+                    index <= 2 ? (
                       <AwardWinnerCard post={catTwoPost} />
                     ) : (
                       <ArticleCard post={catTwoPost} />
@@ -168,7 +169,7 @@ export default function Home({
                 return (
                   <React.Fragment key={uuidv4()}>
                     {page.acf.home_category_three[0].name == "Awards" &&
-                    index <= 5 ? (
+                    index <= 2 ? (
                       <AwardWinnerCard post={catThreePost} />
                     ) : index <= 5 ? (
                       <ArticleCard post={catThreePost} />
