@@ -135,7 +135,11 @@ export default function AwardWinnerCard({ post }) {
         <div className="award-text">
           <p className="deck--topic-feature">{post.acf.dek}</p>
           <div className="award-text--lower">
-            <p className="award-title">{post.acf.award_title}</p>
+            <p className="award-title">{`${
+              post.acf.award_title
+                ? post.acf.award_title
+                : post.acf.nominated_award_title + " (Finalist)"
+            }`}</p>
             <Byline article={post} />
           </div>
         </div>
