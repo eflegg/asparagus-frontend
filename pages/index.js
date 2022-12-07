@@ -84,7 +84,13 @@ export default function Home({
           </CategoryContainer>
 
           <CategoryContainer className="cat-one--container">
-            <h2 className="h5">{page.acf.home_category_one[0].name}</h2>
+            <h2
+              className="h5"
+              dangerouslySetInnerHTML={{
+                __html: page.acf.home_category_one[0].name,
+              }}
+            ></h2>
+
             <hr />
             <div
               className={`${
@@ -156,7 +162,13 @@ export default function Home({
           ) : null}
 
           <CategoryContainer className="cat-three--container">
-            <h2 className="h5">{page.acf.home_category_three[0].name}</h2>
+            <h2
+              className="h5"
+              dangerouslySetInnerHTML={{
+                __html: page.acf.home_category_three[0].name,
+              }}
+            ></h2>
+
             <hr />
             <div
               className={`${
