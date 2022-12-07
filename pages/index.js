@@ -102,12 +102,12 @@ export default function Home({
               {catOnePosts.map((catOnePost, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
-                    {page.acf.home_category_one[0].name == "Awards" &&
-                    index <= 2 ? (
-                      <AwardWinnerCard post={catOnePost} />
-                    ) : (
+                    {page.acf.home_category_one[0].name !== "Awards" ? (
                       <ArticleCard post={catOnePost} />
-                    )}
+                    ) : page.acf.home_category_one[0].name == "Awards" &&
+                      index <= 2 ? (
+                      <AwardWinnerCard post={catOnePost} />
+                    ) : null}
                   </React.Fragment>
                 );
               })}
@@ -132,12 +132,12 @@ export default function Home({
               {catTwoPosts.map((catTwoPost, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
-                    {page.acf.home_category_two[0].name == "Awards" &&
-                    index <= 2 ? (
-                      <AwardWinnerCard post={catTwoPost} />
-                    ) : (
+                    {page.acf.home_category_two[0].name !== "Awards" ? (
                       <ArticleCard post={catTwoPost} />
-                    )}
+                    ) : page.acf.home_category_two[0].name == "Awards" &&
+                      index <= 2 ? (
+                      <AwardWinnerCard post={catTwoPost} />
+                    ) : null}
                   </React.Fragment>
                 );
               })}
@@ -180,11 +180,11 @@ export default function Home({
               {catThreePosts.map((catThreePost, index) => {
                 return (
                   <React.Fragment key={uuidv4()}>
-                    {page.acf.home_category_three[0].name == "Awards" &&
-                    index <= 2 ? (
-                      <AwardWinnerCard post={catThreePost} />
-                    ) : index <= 5 ? (
+                    {page.acf.home_category_three[0].name !== "Awards" ? (
                       <ArticleCard post={catThreePost} />
+                    ) : page.acf.home_category_three[0].name == "Awards" &&
+                      index <= 2 ? (
+                      <AwardWinnerCard post={catThreePost} />
                     ) : null}
                   </React.Fragment>
                 );
