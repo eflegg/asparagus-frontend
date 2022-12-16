@@ -11,7 +11,7 @@ export default function RelatedPosts({ currentArticle }) {
   useEffect(() => {
     async function loadLinks() {
       const response = await fetch(
-        `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=100`
+        `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=300`
       );
       if (!response.ok) {
         // oops! something went wrong
@@ -32,6 +32,8 @@ export default function RelatedPosts({ currentArticle }) {
   // define maxPosts to display
   const maxPosts = 3;
 
+  const currentCats = currentArticle.categories;
+
   const currentTags = currentArticle.tags;
 
   // rate posts depending on tags
@@ -40,7 +42,11 @@ export default function RelatedPosts({ currentArticle }) {
     post.tags.forEach((tag) => {
       if (currentTags.includes(tag)) {
         post.relevance++;
-        // console.log("related tag name: ", tag);
+      }
+    });
+    post.categories.forEach((category) => {
+      if (currentCats.includes(category)) {
+        post.relevance++;
       }
     });
   });
@@ -50,6 +56,7 @@ export default function RelatedPosts({ currentArticle }) {
     return b.relevance - a.relevance;
   });
 
+  // console.log("sorted post one: ", sortedPosts[0].relevance);
   return (
     <>
       <h3 className="related--header h5">Related Stories</h3>

@@ -386,6 +386,8 @@ export default function ArticlePage({ article, categories }) {
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
 
+  console.log("seo title: ", article.title.rendered);
+
   return (
     <PageWrapper
       canonicalUrl={`https://asparagusmagazine.com/articles/${article.slug}`}
