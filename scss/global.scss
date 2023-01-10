@@ -782,7 +782,7 @@ p.newsletter-subheader--footer {
   }
 }
 
-p.newsletter-header--primary {
+.newsletter-header--primary {
   font-family: $headerFont;
   font-size: 2rem;
   font-weight: 600;
@@ -791,12 +791,13 @@ p.newsletter-header--primary {
   width: 90%;
 
   @include media-query-min($xs) {
-    font-size: calc(20px + 47 * ((100vw - 320px) / 680));
+    font-size: calc(20px + 37 * ((100vw - 320px) / 680));
     line-height: 100%;
   }
 
   @include media-query-min($md) {
-    @include font-size(6.7);
+    @include font-size(5.7);
+    // font-size: 5.7rem !important;
     line-height: 100%;
   }
 }
@@ -815,8 +816,8 @@ p.newsletter-subheader--primary {
   width: 80%;
 
   @include media-query-min($xs) {
-    font-size: calc(14px + 22 * ((100vw - 320px) / 680));
-    line-height: 110%;
+    font-size: calc(14px + 12 * ((100vw - 320px) / 680));
+    line-height: 115%;
   }
 
   @include media-query-min($md) {
@@ -1159,7 +1160,6 @@ img {
 
   @include media-query-min($md) {
     position: relative;
-    left: 40px;
     padding: 40px;
     width: 70%;
   }
