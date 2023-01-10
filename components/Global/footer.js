@@ -49,7 +49,7 @@ const FooterMenu = styled.div`
     padding: 0 12px 20px 12px;
   }
   li {
-    padding: 0 10px 15px 0;
+    padding: 0 10px 5px 0;
     list-style-type: none;
   }
   .nav-link {
