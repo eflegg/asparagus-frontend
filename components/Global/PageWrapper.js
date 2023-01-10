@@ -8,7 +8,7 @@ import AdBanner from "./AdBanner";
 const OuterContainer = styled.main`
   width: 100%;
   position: relative;
-  margin-bottom: ${(props) => (props.team ? "105px" : "0px")};
+  margin-bottom: ${(props) => (props.team ? "0px" : "105px")};
 `;
 
 export default function PageWrapper({
