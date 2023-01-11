@@ -7,14 +7,9 @@ import TagManager from "react-gtm-module";
 import Script from "next/script";
 
 const TRACKING_ID = "G-CT5R7MCS1Y";
-
 ReactGA4.initialize(TRACKING_ID);
 
-const tagManagerArgs = {
-  gtmId: "GTM-WWFDF6N",
-};
-
-TagManager.initialize(tagManagerArgs);
+TagManager.initialize({ gtmId: "GTM-WWFDF6N" });
 
 function MyApp({ Component, pageProps }) {
   // console.log("pageprops: ", pageProps);
