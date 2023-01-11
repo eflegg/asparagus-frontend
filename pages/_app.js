@@ -10,11 +10,17 @@ const TRACKING_ID = "G-CT5R7MCS1Y";
 
 ReactGA4.initialize(TRACKING_ID);
 
+const tagManagerArgs = {
+  gtmId: "GTM-WWFDF6N",
+};
+
+TagManager.initialize(tagManagerArgs);
+
 function MyApp({ Component, pageProps }) {
   // console.log("pageprops: ", pageProps);
-  useEffect(() => {
-    TagManager.initialize({ gtmId: "GTM-WWFDF6N" });
-  }, []);
+  // useEffect(() => {
+  //   TagManager.initialize({ gtmId: "GTM-WWFDF6N" });
+  // }, []);
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
