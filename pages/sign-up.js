@@ -247,7 +247,7 @@ export default function SignUp() {
                   type="text"
                   name="b_48412d1cef9610dca90286de4_4e95f09911"
                   tabIndex="-1"
-                  value=""
+                  value="defaultValue"
                 />
               </div>
               <div className="optionalParent">
