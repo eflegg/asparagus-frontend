@@ -203,6 +203,26 @@ export default function SignUp() {
                   className="helper_text"
                 ></span>
               </div>
+
+              {/* who suggested? */}
+              <div className="mc-field-group">
+                <label htmlFor="mce-SUGGEST">
+                  Who suggested that you sign up?{" "}
+                </label>
+                <input
+                  type="text"
+                  name="SUGGEST"
+                  className=""
+                  id="mce-SUGGEST"
+                  value={suggestedValue}
+                  onChange={(e) => setSuggestedValue(e.target.value)}
+                />
+                <span
+                  id="mce-SUGGEST-HELPERTEXT"
+                  className="helper_text"
+                ></span>
+              </div>
+              {/* who suggested */}
               <div id="mce-responses" className="clear foot">
                 <div
                   className="response"

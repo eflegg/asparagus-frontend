@@ -255,6 +255,7 @@ u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0"
                         className="helper_text"
                       ></span>
                     </div>
+
                     <div id="mce-responses" className="clear foot">
                       <div
                         className="response"
