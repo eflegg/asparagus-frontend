@@ -10,6 +10,12 @@ import React, { useState } from "react";
 import { useFormFields, useMailChimpForm } from "use-mailchimp-form";
 
 const NewsLetter = styled.div`
+  .helper_text {
+    font-size: 16px;
+    position: relative;
+    top: 5px;
+    color: ${theme.colours.soil};
+  }
   width: 100%;
   position: relative;
   padding: 80px 0px;
@@ -198,10 +204,9 @@ export default function SignUp() {
                   </option>
                   <option value="Both newsletters">Both newsletters</option>
                 </select>
-                <span
-                  id="mce-MMERGE7-HELPERTEXT"
-                  className="helper_text"
-                ></span>
+                <span id="mce-MMERGE7-HELPERTEXT" className="helper_text">
+                  Strategies for sustainable living, or updates from the team
+                </span>
               </div>
 
               {/* who suggested? */}
@@ -217,10 +222,9 @@ export default function SignUp() {
                   value={suggestedValue}
                   onChange={(e) => setSuggestedValue(e.target.value)}
                 />
-                <span
-                  id="mce-SUGGEST-HELPERTEXT"
-                  className="helper_text"
-                ></span>
+                <span id="mce-SUGGEST-HELPERTEXT" className="helper_text">
+                  Let us know so we can sign them up for a prize!
+                </span>
               </div>
               {/* who suggested */}
               <div id="mce-responses" className="clear foot">
