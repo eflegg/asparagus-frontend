@@ -22,21 +22,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/categories/awards",
-        destination: "/awards",
-        permanent: true,
-      },
-      {
-        source: "/categories/uncategorized",
-        destination: "/categories/climate-change/",
-        permanent: true,
-      },
-      {
-        source: "/test-broken-link",
-        destination: "/",
-        permanent: true,
-      },
-      {
         source:
           "/cartoonist-bios-satire-environmental-humor-illustration-a9da460990e1",
         destination: "/cartoonist-bios",
@@ -182,13 +167,6 @@ const nextConfig = {
           "/five-ways-to-support-our-kids-through-climate-disasters-d39c9d87b4e4",
         destination:
           "/articles/five-ways-to-support-kids-through-climate-disasters",
-        permanent: true,
-      },
-      {
-        source:
-          "/forest-school-environmentalism-ecological-identity-children-play-nature-climate-change-resilience-b2b559a481f6",
-        destination:
-          "/articles/kids-in-forest-schools-build-ecological-identity-and-resilince-playing-in-nature",
         permanent: true,
       },
       {
@@ -512,13 +490,6 @@ const nextConfig = {
           "/canada-cannabis-marijuana-environmental-footprint-5b356acedb5",
         destination:
           "/articles/environmental-impact-of-energy-used-by-canada-cannabis-boom",
-        permanent: true,
-      },
-      {
-        source:
-          "/gmo-cereal-crops-synthetic-fertilizer-carbon-emissions-climate-change-sustainable-organic-agriculture-40f026971651",
-        destination:
-          "/articles/could-gmo-crops-help-solve-climate-crisis-by-reducing-agrucultures-synthetic-fertilizer-emissions",
         permanent: true,
       },
       {
@@ -963,9 +934,16 @@ const nextConfig = {
       },
       {
         source:
+          "/articles/fighting-the-cycle-of-environmental-abuse-and-fossil-fuel-dependence-during-bc-climate-disasters",
+        destination:
+          "/articles/climate-disasater-project-fighting-the-cycle-of-environmental-abuse-and-fossil-fuel-dependence",
+        permanent: true,
+      },
+      {
+        source:
           "/fighting-the-cycle-of-environmental-abuse-fossil-fuel-dependence-climate-crisis-bc-wildfire-evacuations-8abe076e6828",
         destination:
-          "/articles/fighting-the-cycle-of-environmental-abuse-and-fossil-fuel-dependence-during-bc-climate-disasters",
+          "/articles/climate-disasater-project-fighting-the-cycle-of-environmental-abuse-and-fossil-fuel-dependence",
         permanent: true,
       },
       {
@@ -1005,13 +983,6 @@ const nextConfig = {
       },
       {
         source:
-          "/artist-sharon-kallis-is-reclaiming-a-tradition-of-weaving-and-making-local-clothing-from-stinging-nettle-149bc167b9a4",
-        destination:
-          "/articles/artist-sharon-kallis-is-reclaiming-a-tradition-of-weaving-and-making-clothing-from-local stinging-nettle",
-        permanent: true,
-      },
-      {
-        source:
           "/make-gorgeous-hot-compost-for-gardening-in-just-6-weeks-with-paper-food-scraps-yard-waste-bf25380af6a",
         destination:
           "/articles/make-gorgeous-hot-compost-for-gardening-in-just-6-weeks-from-paper-food-scraps-yard-waste",
@@ -1029,13 +1000,6 @@ const nextConfig = {
           "/goats-eat-invasive-species-in-pittsburgh-parks-to-clear-honeysuckle-for-bird-habitats6c5e0838ea47-6c5e0838ea47",
         destination:
           "/articles/goats-eat-invasive-species-in-pittsburgh-parks-to-clear-honeysuckle-for-bird-habitats",
-        permanent: true,
-      },
-      {
-        source:
-          "/vancouver-affordability-crisis-comedy-real-estate-arts-gentrification-housing-community-eviction-feda08b5456c",
-        destination:
-          "/articles/vancouvers-affordability-crisis-affects-housing-arts-venues like little-mountain-gallery comedy",
         permanent: true,
       },
       {
@@ -1068,13 +1032,6 @@ const nextConfig = {
       },
       {
         source:
-          "/we-need-to-rethink-disaster-relief-hurricane-dorian-bahamas-humanitarian-aid-food-donation-climate-crisis-d2a5542d8788",
-        destination:
-          "/articles/affordability-crisis-affects-housing-arts-venues-like-comedy-community-centre-little-mountain-gallery",
-        permanent: true,
-      },
-      {
-        source:
           "/covid-19-pandemic-care-economy-undervalued-unpaid-childcare-eldercare-gender-equality-26923637cea",
         destination:
           "/articles/the-covid-19-pandemic-is-a-chance-to-rethink-the-gendered-and-undervalued-care-economy",
@@ -1089,23 +1046,9 @@ const nextConfig = {
       },
       {
         source:
-          "/california-2020-wildfire-season-forest-smoke-climate-change-health-effects-covid-19-6f3a9804277f",
-        destination:
-          "/articles/during-californias-2020-wildfires-I-researched-long-term-health-effects-of-living-with-smoke",
-        permanent: true,
-      },
-      {
-        source:
           "/coral-reef-restoration-scuba-diving-koh-tao-thailand-bleaching-climate-change-plastic-pollution-eeeb006b64a1",
         destination:
           "/articles/scuba-divers-in-thailand-restore-coral-reefs-threatened-by-bleaching-climate-change-plastic-pollution",
-        permanent: true,
-      },
-      {
-        source:
-          "/covid-19-climate-finance-article-9-paris-accord-cop21-adaptation-mitigation-81b83749457d",
-        destination:
-          "/articles/covid-19-could-kill-paris-accord-commitments-to-fund-climate adaptation-mitigation-in-poor-countries",
         permanent: true,
       },
       {
@@ -1161,6 +1104,684 @@ const nextConfig = {
           "/textilandia-gentrification-bushwick-brooklyn-new-york-history-taxilandia-interactive-theatre-experience-90bb9cb30280",
         destination:
           "/articles/textilandia-immerses-participants-in-the-history-of-gentrification-in-bushwick-brooklyn-new-york",
+        permanent: true,
+      },
+      {
+        source:
+          "/forest-school-environmentalism-ecological-identity-children-play-nature-climate-change-resilience-b2b559a481f6",
+        destination:
+          "/articles/kids-in-forest-schools-build-ecological-identity-and-resilience-playing-in-nature",
+        permanent: true,
+      },
+      {
+        source:
+          "/gmo-cereal-crops-synthetic-fertilizer-carbon-emissions-climate-change-sustainable-organic-agriculture-40f026971651",
+        destination:
+          "/articles/could-gmo-crops-help-solve-climate-crisis-by-reducing-agricultures-synthetic-fertilizer-emissions",
+        permanent: true,
+      },
+      {
+        source:
+          "/artist-sharon-kallis-is-reclaiming-a-tradition-of-weaving-and-making-local-clothing-from-stinging-nettle-149bc167b9a4",
+        destination:
+          "/articles/artist-sharon-kallis-is-reclaiming-a-tradition-of-weaving-and-making-clothing-from-local-stinging-nettle",
+        permanent: true,
+      },
+      {
+        source:
+          "/vancouver-affordability-crisis-comedy-real-estate-arts-gentrification-housing-community-eviction-feda08b5456c",
+        destination:
+          "/articles/affordability-crisis-affects-housing-arts-venues-like-comedy-community-centre-little-mountain-gallery",
+        permanent: true,
+      },
+      {
+        source:
+          "/we-need-to-rethink-disaster-relief-hurricane-dorian-bahamas-humanitarian-aid-food-donation-climate-crisis-d2a5542d8788",
+        destination:
+          "/articles/we-need-to-rethink-relief-and-humanitarian-food-aid-provided-after-climate-disasters-like-hurricanes",
+        permanent: true,
+      },
+      {
+        source:
+          "/california-2020-wildfire-season-forest-smoke-climate-change-health-effects-covid-19-6f3a9804277f",
+        destination:
+          "/articles/during-californias-2020-wildfires-i-researched-long-term-health-effects-of-living-with-smoke",
+        permanent: true,
+      },
+      {
+        source:
+          "/covid-19-climate-finance-article-9-paris-accord-cop21-adaptation-mitigation-81b83749457d",
+        destination:
+          "/articles/covid-19-could-kill-paris-accord-commitments-to-fund-climate-adaptation-mitigation-in-poor-countries",
+        permanent: true,
+      },
+      {
+        source: "/covid-19-is-a-chance-to-rethink-venice-f8321cd890ce",
+        destination:
+          "/articles/covid-19-pandemic-is-a-chance-to-rethink-travel-tourism-environment-in-venice",
+        permanent: true,
+      },
+      {
+        source:
+          "/urban-apartment-composting-worms-vermicompost-castings-476fdb9053b8",
+        destination:
+          "/articles/apartment-sized-worm-bin-bokashi-composter-vermicomposting-options",
+        permanent: true,
+      },
+      {
+        source:
+          "/when-it-comes-to-tiny-gardens-we-need-to-think-big-balcony-patio-apartment-container-gardening-511647492c7b",
+        destination:
+          "/articles/balcony-patio-apartment-container-gardeners-need-support-from-cities-like-community-gardens",
+        permanent: true,
+      },
+      {
+        source:
+          "/canada-cannabis-industrial-hemp-clothing-textiles-fashion-sustainable-environment-ccd55cbabc0b",
+        destination:
+          "/articles/could-canadas-green-rush-include-environmentally-sustainable-hemp-clothing-textiles-and-fashion",
+        permanent: true,
+      },
+      {
+        source:
+          "/swapping-her-suits-for-boots-a-q-a-with-tzeporah-berman-5602d5f82f70",
+        destination:
+          "/articles/tzeporah-berman-interview-on-trans-mountain-pipeline-fashion-pollution-going-to-jail",
+        permanent: true,
+      },
+      {
+        source: "/in-ecolabels-we-trust-88c2e7ab982d",
+        destination:
+          "/articles/investigations-cast-doubt-on-sustainability-certification-by-fsc-oceanwise-and-other-ecolabels",
+        permanent: true,
+      },
+      {
+        source: "/skip-the-romance-save-the-world-ffc500dfaff7",
+        destination:
+          "/articles/take-inspiration-from-crazy-ex-girlfriend-on-valentines-day-and-skip-the-romance-save-the-world",
+        permanent: true,
+      },
+      {
+        source: "/the-bus-rider-and-cyclist-should-be-friends-49ebacbafa0e",
+        destination:
+          "/articles/a-semi-satirical-plea-for-allyship-between-bus-riders-cyclists-and-other-non-drivers",
+        permanent: true,
+      },
+      {
+        source: "/crossing-the-technology-environment-divide-33e7bc2bbb02",
+        destination:
+          "/articles/beyond-cryptocurrency-blockchain-has-environmental-potential-to-green-supply-chain-prevent-waste",
+        permanent: true,
+      },
+      {
+        source:
+          "/dugongs-seadragons-dungeons-dragons-podcast-marine-ecology-biology-ocean-conservation-606f7a809a17",
+        destination:
+          "/articles/dugongs-and-seadragons-is-a-dungeons-dragons-podcast-about-marine-ecology-biology-ocean-conservation",
+        permanent: true,
+      },
+      {
+        source:
+          "/cattle-farmer-vegan-climate-change-environment-animal-welfare-6ea25bbedbc4",
+        destination:
+          "/articles/former-cattle-farmer-turned-vegan-because-of-climate-change-the-environment-and-animal-welfare",
+        permanent: true,
+      },
+      {
+        source:
+          "/decolonizing-city-ginger-gosnell-myers-urban-indigenous-reconciliation-5c6d8cdc28ce-5c6d8cdc28ce",
+        destination:
+          "/articles/interview-with-ginger-gosnell-myers-about-decolonizing-cities-and-urban-indigenous-reconciliation",
+        permanent: true,
+      },
+      {
+        source:
+          "/housesitting-financial-environmental-savings-community-building-460e5537e413",
+        destination:
+          "/articles/housesitting-can-bring-financial-environmental-savings-and-community-building",
+        permanent: true,
+      },
+      {
+        source:
+          "/global-diet-trends-keep-changing-my-local-food-culture-south-asian-pakistani-food-diet-culture-71159479c00c",
+        destination:
+          "/articles/global-diet-trends-keep-changing-my-local-pakistani-south-asian-food-culture",
+        permanent: true,
+      },
+      {
+        source: "/in-this-game-bangalores-lakes-are-at-stake-d4682f3bd61c",
+        destination:
+          "/articles/chanakya-vyas-theatre-game-once-there-was-a-lake-promotes-conservation-in-bangalore",
+        permanent: true,
+      },
+      {
+        source: "/another-hard-summer-for-special-needs-kids-c46a240b3c53",
+        destination:
+          "/articles/covid-19-impacts-summer-programs-for-children-with-special-needs-autism-cancer",
+        permanent: true,
+      },
+      {
+        source:
+          "/community-fridges-support-neighbours-and-fight-food-insecurity-waste-toronto-cfto-covid-19-pandemic-4b2b2d2e22ce",
+        destination:
+          "/articles/community-fridges-support-neighbours-fight-food-insecurity-waste-in-toronto-during-covid-19-pandemic",
+        permanent: true,
+      },
+      {
+        source:
+          "/hives-for-humanity-vancouver-downtown-eastside-beekeeping-honey-community-43baa2ff9380",
+        destination:
+          "/articles/hives-for-humanity-builds-community-in-vancouver-downtown-eastside-with-beekeeping",
+        permanent: true,
+      },
+      {
+        source:
+          "/san-diego-area-chef-works-to-turn-the-tide-for-local-seafood-69b4ecf0d0b9",
+        destination:
+          "/articles/san-diego-area-hospital-chef-promotes-local-seafood-in-health-care-schools-and-food-service-industry",
+        permanent: true,
+      },
+      {
+        source: "/dignity-healths-environmental-evangelist-3d158104d0d1",
+        destination:
+          "/articles/dignity-health-environmental-leader-mary-ellen-leciejewski-reduced-waste-greened-supply-chain",
+        permanent: true,
+      },
+      {
+        source:
+          "/a-greener-bill-of-health-ucsfs-dr-seema-gandhi-tackles-sleeper-pollutants-in-the-operating-room-651d7089f621",
+        destination:
+          "/articles/ucsf-doctor-seema-gandhi-reducing-anaesthetic-gas-carbon-footprint",
+        permanent: true,
+      },
+      {
+        source:
+          "/growing-the-vines-festival-a-q-a-with-heather-lamoureux-63475034d9e0",
+        destination:
+          "/articles/question-and-answers-with-vines-eco-land-based-arts-festival-founder-heather-lamoureux",
+        permanent: true,
+      },
+      {
+        source:
+          "/vancouver-island-morningstar-farm-little-qualicum-cheeseworks-ecofriendly-dairy-ecosystem-cec759ce91ed",
+        destination:
+          "/articles/vancouver-islands-ecofriendly-dairy-morningstar-farm-and-little-qualicum-cheeseworks",
+        permanent: true,
+      },
+      {
+        source:
+          "/seacology-island-forest-ecosystem-conservation-infrastructure-international-development-microloans-f6eebfefaeb8",
+        destination:
+          "/articles/nonprofit-seacology-promotes-forest-ecosystem-conservation-by-funding-infrastructure-and-microloans",
+        permanent: true,
+      },
+      {
+        source:
+          "/farmers-market-guide-questions-answers-organic-biodynamic-free-range-grass-fed-local-food-cost-fc44704f17fa",
+        destination:
+          "/articles/farmers-market-guide-with-answers-about-organic-biodynamic-free-range-grass-fed-local-food-cost",
+        permanent: true,
+      },
+      {
+        source: "/flaming-out-in-the-kitchen-a9a63d256814",
+        destination:
+          "/articles/time-to-stop-cooking-with-gas-fire-flame-and-move-to-energy-efficient-methods-like-induction",
+        permanent: true,
+      },
+      {
+        source: "/overt-co-operations-139c3c796314",
+        destination:
+          "/articles/could-a-co-op-future-proof-your-favourite-food-business",
+        permanent: true,
+      },
+      {
+        source: "/musical-revolution-a-q-a-with-rebecca-foon-6ec9572705ef",
+        destination:
+          "/articles/q-a-with-musician-rebecca-foon-about-pathway-to-paris-concerts-with-flea-stipe-baez-patti-smith-mckibben",
+        permanent: true,
+      },
+      {
+        source: "/sustainable-by-design-a-q-a-with-todd-barsanti-753767a3c8a2",
+        destination:
+          "/articles/graphic-designer-todd-barsanti-discusses-al-gore-climate-reality-corps-art-and-activism",
+        permanent: true,
+      },
+      {
+        source: "/sharing-her-gifts-a-q-a-with-ocean-hyland-7aab9891bba7",
+        destination:
+          "/articles/tsleil-waututh-artist-activist-ocean-hyland-on-earth-day-pipeline-protests-indigenous-language-reconciliation",
+        permanent: true,
+      },
+      {
+        source: "/when-school-is-on-the-farm-7f069c2f80fa",
+        destination:
+          "/articles/farm-roots-mini-school-in-delta-connects-youth-to-the-food-system",
+        permanent: true,
+      },
+      {
+        source:
+          "/seattle-restaurant-archipelago-filipino-food-local-ingredients-sustainability-b5aad84ac278",
+        destination:
+          "/articles/seattle-restaurant-archipelago-makes-sustainable-filipino-food-from-local-ingredients",
+        permanent: true,
+      },
+      {
+        source:
+          "/line-drying-bedding-sheets-laundry-better-environment-45ecb2808078",
+        destination:
+          "/articles/why-line-drying-sheets-and-other-laundry-is-better-for-you-and-the-environment",
+        permanent: true,
+      },
+      {
+        source:
+          "/china-recycling-ban-national-sword-north-america-waste-disposal-system-contamination-wishcycling-19e945eda2f9",
+        destination:
+          "/articles/china-national-sword-ban-shows-issues-in-north-america-garbage-waste-disposal",
+        permanent: true,
+      },
+      {
+        source:
+          "/open-source-seed-initiative-home-garden-intellectual-property-rights-patent-corporation-7c30e62ac773",
+        destination:
+          "/articles/open-source-seed-initiative-protects-home-gardens-from-corporate-intellectual-property-rights-and-patents",
+        permanent: true,
+      },
+      {
+        source: "/the-sacred-fire-of-standing-rock-still-burns-66e8a279f84a",
+        destination:
+          "/articles/sacred-fire-of-oceti-sakowin-nodapl-water-protector-camp-at-standing-rock-still-burns",
+        permanent: true,
+      },
+      {
+        source: "/paradise-has-many-gates-3b7f79ad94a0",
+        destination:
+          "/articles/ajlan-gharem-public-art-mosque-in-vanier-park-paradise-has-many-gates-spurs-conversation",
+        permanent: true,
+      },
+      {
+        source:
+          "/food-desert-residents-find-relief-at-mobile-markets-1611f3d4a771",
+        destination:
+          "/articles/food-desert-residents-in-ottawa-toronto-halifax-find-relief-at-mobile-markets",
+        permanent: true,
+      },
+      {
+        source:
+          "/five-questions-farmers-market-local-food-spray-organic-fair-trade-dd7a54683a35",
+        destination:
+          "/articles/five-questions-for-farmers-market-vendors-about-spraying-and-local-organic-fair-trade-food",
+        permanent: true,
+      },
+      {
+        source: "/@AliciaWallace",
+        destination: "/contributors/alicia-wallace",
+        permanent: true,
+      },
+      {
+        source: "/@alliespins",
+        destination: "/contributors/alison-tedford-seaweed",
+        permanent: true,
+      },
+      {
+        source: "/@amir.ahmc",
+        destination: "/contributors/amir-aziz",
+        permanent: true,
+      },
+      {
+        source: "/@anne.spice",
+        destination: "/contributors/anne-spice",
+        permanent: true,
+      },
+      {
+        source: "/andre-lariviere/home",
+        destination: "/contributors/andre-lariviere",
+        permanent: true,
+      },
+      {
+        source: "/@canoecanoa",
+        destination: "/contributors/larissa-nez",
+        permanent: true,
+      },
+      {
+        source: "/@crudelykevin",
+        destination: "/contributors/kevin-jiang",
+        permanent: true,
+      },
+      {
+        source: "/@danapoblete",
+        destination: "/contributors/dana-poblete",
+        permanent: true,
+      },
+      {
+        source: "/@ericaeller",
+        destination: "/contributors/erica-eller",
+        permanent: true,
+      },
+      {
+        source: "/@excinit",
+        destination: "/contributors/nithin-coca",
+        permanent: true,
+      },
+      {
+        source: "/@glynisratcliffe",
+        destination: "/contributors/glynis-ratcliffe",
+        permanent: true,
+      },
+      {
+        source: "/@imari-scarbrough",
+        destination: "/contributors/imari-scarbrough",
+        permanent: true,
+      },
+      {
+        source: "/@katyanne",
+        destination: "/contributors/katy-severson",
+        permanent: true,
+      },
+      {
+        source: "/lindsay-anderson/home",
+        destination: "/contributors/lindsay-anderson",
+        permanent: true,
+      },
+      {
+        source: "/@lindsay.kneteman",
+        destination: "/contributors/lindsay-kneteman",
+        permanent: true,
+      },
+      {
+        source: "/@lolaannmendez",
+        destination: "/contributors/lola-mendez",
+        permanent: true,
+      },
+      {
+        source: "/@mariana.zapatah1",
+        destination: "/contributors/mariana-zapata",
+        permanent: true,
+      },
+      {
+        source: "/@rebecca.gao13",
+        destination: "/contributors/rebecca-gao",
+        permanent: true,
+      },
+      {
+        source: "/@ruth-terry",
+        destination: "/contributors/ruth-terry",
+        permanent: true,
+      },
+      {
+        source: "/@sana_kapadia",
+        destination: "/contributors/sana-kapadia",
+        permanent: true,
+      },
+      {
+        source: "/@sarabynoe",
+        destination: "/contributors/sara-bynoe",
+        permanent: true,
+      },
+      {
+        source: "/@sharpe.brianna",
+        destination: "/contributors/brianna-sharpe",
+        permanent: true,
+      },
+      {
+        source: "/@shreyakalra_87650",
+        destination: "/contributors/shreya-kalra",
+        permanent: true,
+      },
+      {
+        source: "/@anianadominguez",
+        destination: "/team",
+        permanent: true,
+      },
+      {
+        source: "/@avvai.kethees",
+        destination: "/team",
+        permanent: true,
+      },
+      {
+        source: "/@zeahaarehman",
+        destination: "/team/zeahaa-rehman",
+        permanent: true,
+      },
+      {
+        source: "/@makennaroneill",
+        destination: "/team",
+        permanent: true,
+      },
+      {
+        source: "/2021-could-be-our-best-year-or-our-last-year-9f6ec71edf01",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/30-days-hath-asparagus-b9ff2bce2b67",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/4-yays-and-an-oops-59b0ce391653",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/a-pandemic-reading-list-c3b2ad3239e6",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/a-peek-behind-the-asparagus-curtain-eeeef629ff30",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/a-very-belated-fundraising-update-a68cd8aa619b",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/and-the-silver-goes-to-64ec1576da24",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/asparagus-last-medium-newsletter-34ff0ea25c7c",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/back-to-school-with-gus-aa92fb837b00",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/birthdays-and-parties-and-maps-oh-my-a0c8152fd5c8",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/choose-your-own-adventure-395e6d19a7c0",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/countdown-to-crowdfunding-a5005ec83dfc",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/counting-down-to-asparagus-season-abe4cfa1960e",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/dont-miss-asparagus-season-a6a63424c127",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/food-for-thought-e9b1a3fa02d4",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/give-the-gift-of-gus-and-save-2604fc5a797b",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/gus-is-on-the-gram-94b160f700e",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/help-fund-our-future-bfc937acceb7",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/how-time-flies-4aa7e352c0bc",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/how-to-wipe-your-tush-sustainably-3c849e3db493",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/its-time-to-help-asparagus-grow-13a61df8b284",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/join-team-gus-f551ba2206b8",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/looking-back-and-moving-forward-304aed33e0b6",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/lucky-friday-the-13th-552452fd5e9a",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/making-room-for-issue-2-acbc28875d34",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/movie-nights-on-gus-a62f8f6a6eae",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/moving-sale-save-on-sustainable-swag-and-win-4c22b6dbdd6c",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/neither-new-nor-normal-16117c112d46",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/new-a5e6c387d824",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/new-beginnings-902a402a276e",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/our-fall-winter-issue-puts-art-in-the-spotlight-ff7153470b8a",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/party-party-party-8267020dfde5",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/seed-planting-time-633920e23185",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/staying-home-wont-cut-it-ba42c25c80f4",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/the-perfect-day-to-read-your-greens-8334cb54dcc7",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/the-summer-of-gus-a73cb0ff9391",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/this-award-winning-eco-mag-is-hiring-334998d9d5c8",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/this-emotional-roller-coaster-were-on-8cd8773aab1c",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source:
+          "/this-giving-tuesday-support-independent-journalism-93603d88c314",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source:
+          "/this-newsletter-is-late-for-so-many-great-reasons-448bf061b975",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/three-cheers-for-issue-3-729216b1d70f",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/three-whole-years-8e0ac096062a",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/time-to-say-hello-and-à-bientôt-451768e1efbe",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/top-tips-for-sustainable-sips-d09d3e187ddb",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/wont-you-be-my-pen-pal-️-a9ff4125bd39",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/you-can-take-gus-over-the-top-3ff9f34d304d",
+        destination: "/sign-up",
+        permanent: true,
+      },
+      {
+        source: "/youre-invited-to-our-first-virtual-event-4984215cba38",
+        destination: "/sign-up",
         permanent: true,
       },
     ];
