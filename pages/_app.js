@@ -6,23 +6,27 @@ import ReactGA4 from "react-ga4";
 import TagManager from "react-gtm-module";
 import Script from "next/script";
 
-const TRACKING_ID = "G-CT5R7MCS1Y";
+// const TRACKING_ID = "G-CT5R7MCS1Y";
+// ReactGA4.initialize(TRACKING_ID);
 
-ReactGA4.initialize(TRACKING_ID);
+// const tagManagerArgs = {
+//   gtmId: "GTM-WWFDF6N",
+// };
 
-const tagManagerArgs = {
-  gtmId: "GTM-WWFDF6N",
-};
+// if (process.browser) {
+//   TagManager.initialize(tagManagerArgs);
+// }
 
-if (process.browser) {
-  TagManager.initialize(tagManagerArgs);
-}
+// dataLayer: {
+//   userId: '001',
+//   userProject: 'project'
+// }
 
 function MyApp({ Component, pageProps }) {
-  // console.log("pageprops: ", pageProps);
-  // useEffect(() => {
-  //   TagManager.initialize({ gtmId: "GTM-WWFDF6N" });
-  // }, []);
+  console.log("pageprops: ", pageProps);
+  useEffect(() => {
+    TagManager.initialize({ gtmId: "GTM-WWFDF6N" });
+  }, []);
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -45,7 +49,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       {/* Global Site Tag (gtag.js) - Google Analytics */}
-      <Script
+      {/* <Script
         strategy="lazyOnload"
         async
         src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
@@ -63,7 +67,7 @@ function MyApp({ Component, pageProps }) {
  });
 `,
         }}
-      />
+      /> */}
 
       {loading ? <Loader /> : <Component {...pageProps} />}
     </>
