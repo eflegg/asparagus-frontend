@@ -192,7 +192,7 @@ export default function NewsletterSignup({ title, subtitle, image, support }) {
           {support ? (
             <button className="btn--primary">
               <a
-                href="https://shop.asparagusmagazine.com/donations/"
+                href="https://shop.asparagusmagazine.com/product/donation/"
                 target="_blank"
                 rel="noreferrer"
               >

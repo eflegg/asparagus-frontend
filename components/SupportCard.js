@@ -61,7 +61,7 @@ export default function SupportCard({}) {
           Support our work by subscribing, donating, or buying sustainable swag.
         </h2>
         <a
-          href="https://shop.asparagusmagazine.com/donations/"
+          href="https://shop.asparagusmagazine.com/product/donation/"
           rel="noreferrer"
           target="_blank"
         >
