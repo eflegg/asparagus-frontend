@@ -136,7 +136,7 @@ export default function CurrentIssue({ issues, articles }) {
           <p>{issues[0].acf.primary_cover_line}</p>
           <p>{issues[0].acf.secondary_cover_line}</p>
           <a
-            href="https://shop.asparagusmagazine.com/current-issue/"
+            href="https://checkout.asparagusmagazine.com/current-issue/"
             rel="noreferrer"
             target="_blank"
           >
