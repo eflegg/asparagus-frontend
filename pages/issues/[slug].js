@@ -138,7 +138,7 @@ export default function Issue({ issue, posts }) {
           <p>{issue.acf.primary_cover_line}</p>
           <p>{issue.acf.secondary_cover_line}</p>
           <a
-            href="https://shop.asparagusmagazine.com/back-issues/"
+            href="https://shop.asparagusmagazine.com/product/back-issues"
             rel="noreferrer"
             target="_blank"
           >
