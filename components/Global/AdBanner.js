@@ -13,7 +13,7 @@ const AdBannerContainer = styled.div`
   z-index: 20;
   width: 100%;
   .ad-banner--inner {
-    width: 75%;
+    width: 95%;
     max-width: 728px;
 
     margin: 5px auto 0;
