@@ -27,6 +27,7 @@ const NewsletterBlock = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    /* justify-content: space-between; */
     /* this is how you use the & in scss */
     &.wrapper--support {
       width: 100%;

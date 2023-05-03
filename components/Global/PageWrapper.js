@@ -23,7 +23,7 @@ export default function PageWrapper({
 }) {
   // const TRACKING_ID = "G-CT5R7MCS1Y";
 
-  console.log("seo title: ", SEOtitle);
+  // console.log("seo title: ", SEOtitle);
   return (
     <OuterContainer noAd={noAd}>
       <div>

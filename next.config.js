@@ -8,6 +8,7 @@ const nextConfig = {
     // enter the domain or subdomain where you have WordPress installed
 
     domains: [`${process.env.WP_DOMAIN}`],
+    // domains: ["stage.asparagusmagazine.com"],
   },
   i18n: {
     locales: ["en"],
@@ -17,6 +18,7 @@ const nextConfig = {
     REVALIDATION_TOKEN: process.env.REVALIDATION_TOKEN,
     REVALIDATE_SECRET_KEY: process.env.REVALIDATE_SECRET_KEY,
     API_URL: process.env.API_URL,
+    // apiUrl: "https://stage.asparagusmagazine.com",
   },
   staticPageGenerationTimeout: 600,
   async redirects() {

@@ -1126,6 +1126,17 @@ img {
 //Custom block styles
 
 .newsletter-block {
+  .newsletter-header--primary {
+    font-size: 38px;
+    margin: 15px auto;
+  }
+  .btn--primary {
+    padding: 10px 15px;
+  }
+  .newsletter-subheader--primary {
+    font-size: 18px;
+    line-height: 120%;
+  }
   position: relative;
   box-sizing: border-box;
   align-items: center;
@@ -1140,7 +1151,7 @@ img {
     display: flex;
     flex-direction: row;
     align-items: center;
-
+    justify-content: space-between;
     &.wrapper--support {
       width: 100%;
     }
@@ -1163,7 +1174,9 @@ img {
     padding: 40px;
     width: 70%;
   }
-
+  input[type="submit"] {
+    width: 125px;
+  }
   input {
     height: 38px;
     max-width: 280px;
@@ -1208,31 +1221,38 @@ img {
 }
 
 .triple-stalk {
+  display: flex;
+  justify-content: center;
   height: 100%;
+  max-height: 255px;
   min-width: 40%;
-
+  // border: 2px solid blue;
+  img {
+    // border: 2px solid goldenrod;
+    max-height: 255px;
+  }
   @include media-query-min($sm) {
     min-width: 30%;
   }
 
   @include media-query-min($md) {
     position: relative;
-    left: -40px;
+
     min-width: 30%;
   }
 
   flex-direction: row;
-  padding: 2%;
 }
 
 .input-container {
   margin-left: 25px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
 
   @include media-query-min($md) {
     flex-direction: row;
+    align-items: center;
   }
 }
 
