@@ -1172,7 +1172,7 @@ img {
 
   @include media-query-min($md) {
     position: relative;
-    padding: 40px;
+    // padding: 40px;
     width: 70%;
   }
   input[type="submit"] {
