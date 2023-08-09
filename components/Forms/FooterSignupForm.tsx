@@ -48,7 +48,7 @@ const FooterForm = styled.form`
     }
   }
   @media ${theme.devices.sm} {
-    .input-container {
+    .form-inner-container {
       display: flex;
       align-items: flex-end;
     }
@@ -112,7 +112,7 @@ const FooterSignupForm = ({ status, message, onValidated }) => {
       )}
       <div className="position-relative">
         {status !== "success" ? (
-          <div className="input-container">
+          <div className="form-inner-container">
             <InputField
               id="footer_email"
               onBlur={testEmail}

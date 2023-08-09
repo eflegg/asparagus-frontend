@@ -162,7 +162,7 @@ const SingleContainer = styled.div`
     a {
       text-decoration: underline;
       text-decoration-skip-ink: auto;
-      font-family: ${theme.type.bodyFont};
+      font-family: ${theme.type.body};
       color: black;
       font-weight: 400;
     }
@@ -430,7 +430,7 @@ export default function ArticlePage({ article, categories }) {
           <div className="hero d-flex">
             <div className="hero--text">
               <h1
-                itempprop="name"
+                itemProp="name"
                 className="article--title"
                 dangerouslySetInnerHTML={{ __html: article.title.rendered }}
               ></h1>

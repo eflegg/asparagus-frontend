@@ -11,7 +11,7 @@ import FooterSignupContainer from "../Forms/FooterSignupContainer";
 const FooterContainer = styled.footer`
   .signupWrapper {
     @media ${theme.devices.sm} {
-      min-width: 310px;
+      min-width: 330px;
     }
   }
   width: 100%;
@@ -42,7 +42,7 @@ const FooterMenu = styled.div`
     padding: 80px;
   }
   @media${theme.devices.md} {
-    padding: 40px 20px 40px 40px;
+    padding: 40px 0px 40px 40px;
     width: 70%;
   }
   flex-direction: column;
