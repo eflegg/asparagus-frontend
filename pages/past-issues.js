@@ -19,9 +19,9 @@ const Issues = styled.div`
   .btn--secondary {
     position: relative;
     font-size: 1.4rem;
-    ${theme.mediaQuery.md`
-  font-size: 2.4rem;
-  `}
+    @media ${theme.devices.md} {
+      font-size: 2.4rem;
+    }
     &::after {
       content: "";
       position: absolute;

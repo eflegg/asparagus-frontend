@@ -20,6 +20,7 @@ const nextConfig = {
     API_URL: process.env.API_URL,
     // apiUrl: "https://stage.asparagusmagazine.com",
   },
+
   staticPageGenerationTimeout: 600,
   async redirects() {
     return [

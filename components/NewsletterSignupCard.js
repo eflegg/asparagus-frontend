@@ -210,7 +210,7 @@ u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0"
                   id="mc-embedded-subscribe-form"
                   name="mc-embedded-subscribe-form"
                   className="validate"
-                  target="_self"
+                  target="_blank"
                 >
                   <div id="mc_embed_signup_scroll">
                     <div className="mc-field-group">
