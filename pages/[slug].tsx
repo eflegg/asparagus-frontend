@@ -79,6 +79,7 @@ const ContentContainer = styled.div`
     em {
       /* font-size: 1.7rem; */
       font-weight: 600;
+      font-family: inherit;
     }
     strong {
       em {
@@ -88,7 +89,7 @@ const ContentContainer = styled.div`
     }
     a {
       text-decoration: underline;
-      text-decoration-skip-ink: auto;
+      text-decoration-skip-link: auto;
       font-family: ${theme.type.body};
       color: black;
       font-weight: 400;

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme from "./Global/Theme";
 
 const StockistContainer = styled.div`
   width: 100%;
@@ -12,9 +12,9 @@ const StockistContainer = styled.div`
     margin: 0;
     letter-spacing: 0;
   }
-  ${theme.mediaQuery.sm`
-  padding-left: 60px;
- `}
+  @media ${theme.devices.sm} {
+    padding-left: 60px;
+  }
 `;
 
 export default function StockistSingle({ stockist, numeral }) {

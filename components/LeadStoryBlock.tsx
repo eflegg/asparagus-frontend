@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme from "./Global/Theme";
 import Link from "next/link";
 import TwoAuthorCard from "./TwoAuthorCard";
 
@@ -11,20 +11,20 @@ const LeadStory = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
-  ${theme.mediaQuery.md`
-  flex-direction: row;
-  margin-bottom: 80px;
-  margin-top: 35px;
-  `}
+  @media ${theme.devices.md} {
+    flex-direction: row;
+    margin-bottom: 80px;
+    margin-top: 35px;
+  }
 
   .lead-image {
     height: 400px;
     width: 100%;
     position: relative;
-    ${theme.mediaQuery.md`
-    width: 60%;
-    height: initial;
-    `}
+    @media ${theme.devices.md} {
+      width: 60%;
+      height: initial;
+    }
   }
   .lead-text {
     padding: 30px;
@@ -32,31 +32,30 @@ const LeadStory = styled.section`
     text-align: left;
     position: relative;
     background: ${theme.colours.darkWheat};
-    ${theme.mediaQuery.md`
-    width: 40%;
-  
-    `}
+    @media ${theme.devices.md} {
+      width: 40%;
+    }
     h1 {
       position: absolute;
       top: 0;
       transform: translateY(-110%);
       color: white;
-      ${theme.mediaQuery.md`
-      transform: translateY(0);
-      position: relative;
-      color: ${theme.colours.gusGreen};
-      `}
+      @media ${theme.devices.md} {
+        transform: translateY(0);
+        position: relative;
+        color: ${theme.colours.gusGreen};
+      }
     }
     hr {
       display: none;
-      ${theme.mediaQuery.md`
+      @media ${theme.devices.md} {
         display: block;
-  
+
         height: 4px;
         border: 0px;
         margin: 20px 0px;
         background-color: ${theme.colours.soil};
-    `}
+      }
     }
     .lead-text--inner {
       .article-details {
@@ -68,10 +67,9 @@ const LeadStory = styled.section`
       }
       display: flex;
       flex-direction: column-reverse;
-      ${theme.mediaQuery.md`
-  
-  flex-direction: column;
-  `}
+      @media ${theme.devices.md} {
+        flex-direction: column;
+      }
     }
     .lead-story--excerpt {
       font-size: 2.4rem;

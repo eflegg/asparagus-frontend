@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme from "./Global/Theme";
 import Image from "next/image";
 
 const SupportBlock = styled.div`
@@ -7,14 +7,14 @@ const SupportBlock = styled.div`
   min-height: 350px;
   height: 30vh;
   margin-bottom: 40px;
-  ${theme.mediaQuery.sm`
-height: 50vh;
-// min-height: 550px;
-`}
-  ${theme.mediaQuery.md`
-height: 80vh;
-min-height: 550px;
-`}
+  @media ${theme.devices.sm} {
+    height: 50vh;
+    // min-height: 550px;
+  }
+  @media ${theme.devices.md} {
+    height: 80vh;
+    min-height: 550px;
+  }
 
   .image-container {
     position: relative;
@@ -25,10 +25,10 @@ min-height: 550px;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      ${theme.mediaQuery.sm`
-      object-fit: cover;
-      object-position: 0px -300px;
-      `}
+      @media ${theme.devices.sm} {
+        object-fit: cover;
+        object-position: 0px -300px;
+      }
     }
   }
   .support-text {

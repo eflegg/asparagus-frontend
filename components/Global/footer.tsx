@@ -9,6 +9,11 @@ import { v4 as uuidv4 } from "uuid";
 import FooterSignupContainer from "../Forms/FooterSignupContainer";
 
 const FooterContainer = styled.footer`
+  .signupWrapper {
+    @media ${theme.devices.sm} {
+      min-width: 310px;
+    }
+  }
   width: 100%;
   max-width: 100%;
   background: ${theme.colours.gusYellow};

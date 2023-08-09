@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme from "./Global/Theme";
 
 const DoubleAuthor = styled.div`
   .article-details {

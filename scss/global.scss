@@ -1243,6 +1243,26 @@ img {
     font-size: 38px;
     margin: 15px auto;
   }
+  .triple-stalk {
+    height: 100%;
+    min-width: 40%;
+    height: 255px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 2%;
+    @include media-query-min($sm) {
+      min-width: 30%;
+    }
+    @include media-query-min($md) {
+      position: relative;
+      left: -40px;
+      min-width: 30%;
+    }
+    img {
+      height: 225px;
+    }
+  }
   .btn--primary {
     padding: 10px 15px;
   }

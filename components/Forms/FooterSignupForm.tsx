@@ -38,12 +38,14 @@ const FooterForm = styled.form`
     }
   }
   .error-message {
-    position: absolute;
     font-size: 1.4rem;
-    color: #f33b1b;
+    color: #f2384a;
     line-height: 100%;
-    transform: translateY(150%);
     font-weight: bold;
+    @media ${theme.devices.sm} {
+      position: absolute;
+      transform: translateY(175%);
+    }
   }
   @media ${theme.devices.sm} {
     .input-container {

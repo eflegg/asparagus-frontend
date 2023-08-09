@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme from "./Global/Theme";
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -13,12 +13,12 @@ const NewsletterBlock = styled.div`
   background-color: ${theme.colours.darkWheat};
   button {
     font-size: 2rem;
-    ${theme.mediaQuery.md`
-  font-size: 2.2rem;
-  `};
-    ${theme.mediaQuery.md`
-  font-size: 2.6rem;
-  `};
+    @media ${theme.devices.md} {
+      font-size: 2.2rem;
+    }
+    @media ${theme.devices.md} {
+      font-size: 2.6rem;
+    }
   }
   .signupWrapper {
     // border: solid red;
@@ -43,16 +43,16 @@ const NewsletterBlock = styled.div`
     color: ${theme.colours.darkWheat};
     width: 80%;
     margin: 0 auto;
-    ${theme.mediaQuery.md`
- width: 90%;
- `}
-    ${theme.mediaQuery.lg`
- width: 70%;
- `}
- font-size: 2.4rem;
-    ${theme.mediaQuery.md`
- font-size: 4.8rem;
-`}
+    @media ${theme.devices.md} {
+      width: 90%;
+    }
+    @media ${theme.devices.lg} {
+      width: 70%;
+    }
+    font-size: 2.4rem;
+    @media ${theme.devices.md} {
+      font-size: 4.8rem;
+    }
   }
   input {
     width: 100%;
@@ -66,11 +66,11 @@ const NewsletterBlock = styled.div`
     font-family: ${theme.type.semibold};
     color: ${theme.colours.soil};
     font-size: 1.6rem;
-    ${theme.mediaQuery.md`
-   font-size: 1.8rem;
- `}
+    @media ${theme.devices.md} {
+      font-size: 1.8rem;
+    }
     // border: solid hotpink;
-   display: flex;
+    display: flex;
     flex-direction: column;
     width: 75%;
     margin-top: 20px;
@@ -83,9 +83,9 @@ const NewsletterBlock = styled.div`
     padding-left: 10px;
     font-family: ${theme.type.accent};
     font-size: 1.6rem;
-    ${theme.mediaQuery.md`
-     font-size: 1.8rem;
-   `}
+    @media ${theme.devices.md} {
+      font-size: 1.8rem;
+    }
   }
   .newsletter-options {
     position: relative;
@@ -95,16 +95,16 @@ const NewsletterBlock = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    ${theme.mediaQuery.md`
-   width: 40%;
-   `}
+    @media ${theme.devices.md} {
+      width: 40%;
+    }
   }
 
   .btn--primary {
     width: 75%;
-    ${theme.mediaQuery.sm`
- width: 35%;
- `}
+    @media ${theme.devices.sm} {
+      width: 35%;
+    }
     a {
       font-family: ${theme.type.semibold};
     }
@@ -121,14 +121,14 @@ const TripleStalk = styled.div`
   height: 100%;
   max-height: 800px;
   min-width: 40%;
-  ${theme.mediaQuery.sm`
-  min-width: 30%;
-  `}
-  ${theme.mediaQuery.md`
-  position: relative;
-  left: -40px;
-  min-width: 30%;
-  `}
+  @media ${theme.devices.sm} {
+    min-width: 30%;
+  }
+  @media ${theme.devices.md} {
+    position: relative;
+    left: -40px;
+    min-width: 30%;
+  }
 
   flex-direction: row;
   padding: 2%;
@@ -158,21 +158,21 @@ const SignUp = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding: 30px 0px 20px 20px;
-  ${theme.mediaQuery.sm`
-   padding: 30px;
-  `}
-  ${theme.mediaQuery.md`
-  position: relative;
-  left: 40px;
-  padding: 40px;
-  `}
+  @media ${theme.devices.sm} {
+    padding: 30px;
+  }
+  @media ${theme.devices.md} {
+    position: relative;
+    left: 40px;
+    padding: 40px;
+  }
   input {
     height: 38px;
     max-width: 280px;
-    ${theme.mediaQuery.xs`
-    width: 200px;
-    margin-right: 20px;
-  `}
+    @media ${theme.devices.xs} {
+      width: 200px;
+      margin-right: 20px;
+    }
   }
   &.text--support {
     padding: 20px;
@@ -276,7 +276,7 @@ u=48412d1cef9610dca90286de4&amp;id=4e95f09911&amp;f_id=00d7abe0f0"
                       <input
                         type="text"
                         name="b_48412d1cef9610dca90286de4_4e95f09911"
-                        tabIndex="-1"
+                        tabIndex={-1}
                         value=""
                       />
                     </div>

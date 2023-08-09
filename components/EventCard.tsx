@@ -1,15 +1,15 @@
 import Link from "next/link";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme from "./Global/Theme";
 import Image from "next/image";
 
 const EventCard = styled.div`
   // border: solid pink;
   display: flex;
   flex-direction: column;
-  ${theme.mediaQuery.sm`
-flex-direction: row;
-`}
+  @media ${theme.devices.sm} {
+    flex-direction: row;
+  }
   width: 75%;
   max-width: 1200px;
   margin: 26px auto;
@@ -17,10 +17,10 @@ flex-direction: row;
     position: relative;
     flex: none;
     // border: solid blue;
-    ${theme.mediaQuery.sm`
-        width: 40%;
-        height: 100%;
-        `}
+    @media ${theme.devices.sm} {
+      width: 40%;
+      height: 100%;
+    }
     img {
       width: 100%;
       height: 100%;
@@ -29,14 +29,14 @@ flex-direction: row;
   }
   .event--info {
     padding: 20px;
-    ${theme.mediaQuery.sm`
-    width: 60%;
-    padding-top: 0px;
-    `}
+    @media ${theme.devices.sm} {
+      width: 60%;
+      padding-top: 0px;
+    }
   }
-  ${theme.mediaQuery.xs`
- width: 90%;
-  `}
+  @media ${theme.devices.xs} {
+    width: 90%;
+  }
 `;
 
 export default function EventBlock({ event }) {

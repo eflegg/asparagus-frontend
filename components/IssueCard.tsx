@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme from "./Global/Theme";
 import Image from "next/image";
 
 const Card = styled.div`

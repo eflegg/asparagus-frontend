@@ -10,10 +10,10 @@ const SearchContainer = styled.form`
   position: relative;
   display: ${(props) => (props.scrolled == true ? "flex" : "none")};
   opacity: ${(props) => (props.scrolled == true ? "1" : "0")};
-  ${theme.mediaQuery.md`
-  display: flex;
-  opacity: 1;
-  `}
+  @media ${theme.devices.md} {
+    display: flex;
+    opacity: 1;
+  }
   .icon {
     position: absolute;
     left: 3px;
@@ -34,23 +34,22 @@ const SearchContainer = styled.form`
 `;
 
 const Input = styled.input`
-  ${theme.mediaQuery.sm`
+  @media ${theme.devices.sm} {
+    width: 100px;
 
-width: 100px;
-
-border: 1px solid black;
-border-radius: 5px;
-`}
+    border: 1px solid black;
+    border-radius: 5px;
+  }
   background: transparent;
   height: 30px;
   /* width: ${(props) => (props.scrolled == true ? "120px" : "0px")};
   border: ${(props) => (props.scrolled == true ? "1px solid black" : "0px")}; */
   display: ${(props) => (props.scrolled == true ? "block" : "none")};
   opacity: ${(props) => (props.scrolled == true ? "1" : "0")};
-  ${theme.mediaQuery.md`
-  display: flex;
-  opacity: 1;
-  `}
+  @media ${theme.devices.md} {
+    display: flex;
+    opacity: 1;
+  }
   transition: all 0.15s ease-in-out;
   width: 120px;
   border: 1px solid black;

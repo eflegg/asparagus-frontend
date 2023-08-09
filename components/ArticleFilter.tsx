@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme from "./Global/Theme";
 import { v4 as uuidv4 } from "uuid";
 
 const StartVoices = styled.div`
@@ -23,9 +23,9 @@ const StartVoices = styled.div`
   .all {
     // border: 3px solid rebeccapurple;
     margin: 10px;
-    ${theme.mediaQuery.md`
-    margin: 20px;
-    `}
+    @media ${theme.devices.md} {
+      margin: 20px;
+    }
     &.toggle-active {
       background-color: ${theme.colours.gusYellow};
       transition: all 0.25s ease-in-out;
@@ -38,9 +38,9 @@ const StartVoices = styled.div`
   .sub-catagories {
     // border: 2px solid goldenrod;
     width: 50%;
-    ${theme.mediaQuery.md`
-    width: 30%;
-    `}
+    @media ${theme.devices.md} {
+      width: 30%;
+    }
 
     p {
       font-family: ${theme.type.medium};
@@ -52,9 +52,9 @@ const StartVoices = styled.div`
     // border: solid yellow;
     width: 75%;
     margin: 10px;
-    ${theme.mediaQuery.md`
-    margin: 20px;
-    `}
+    @media ${theme.devices.md} {
+      margin: 20px;
+    }
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

@@ -1,32 +1,32 @@
 import Link from "next/link";
 import styled from "styled-components";
-import theme from "../components/Global/Theme";
+import theme from "./Global/Theme";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
-import Byline from "./ArticleComponents/Byline";
+
 import TwoAuthorCard from "./TwoAuthorCard";
 const Card = styled.div`
   margin-bottom: 60px;
-  ${theme.mediaQuery.sm`
+  @media ${theme.devices.sm} {
     margin-bottom: 100px;
-    `}
+  }
   .card--image {
     position: relative;
     height: 250px;
     top: 0;
-    ${theme.mediaQuery.sm`
-    height: 315px;
-    `}
+    @media ${theme.devices.sm} {
+      height: 315px;
+    }
     h3 {
       color: white;
       position: absolute;
       bottom: 40px;
       width: 75%;
       left: 36px;
-      ${theme.mediaQuery.sm`
-    width: 60%;
-    left: 110px;
-    `}
+      @media ${theme.devices.sm} {
+        width: 60%;
+        left: 110px;
+      }
     }
   }
   .text-container {
@@ -35,29 +35,29 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    ${theme.mediaQuery.md`
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 35px 100px 58px;
-    `}
+    @media ${theme.devices.md} {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 35px 100px 58px;
+    }
     .article-details {
       align-self: flex-end;
       .byline--image {
         margin-left: 10px;
       }
-      ${theme.mediaQuery.md`
-      margin-left: 20px;
-      align-self: initial;
-      `}
+      @media${theme.devices.md} {
+        margin-left: 20px;
+        align-self: initial;
+      }
     }
     .excerpt {
       width: 80%;
       font-family: ${theme.type.semibold};
       margin-bottom: 30px;
-      ${theme.mediaQuery.md`
-      margin-bottom: 0;
-      width: 70%;
-      `}
+      @media${theme.devices.md} {
+        margin-bottom: 0;
+        width: 70%;
+      }
     }
   }
 `;

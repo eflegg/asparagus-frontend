@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import theme from "../../components/Global/Theme";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+
 import Image from "next/image";
 import { getTeamMember, getSlugs } from "../../utils/wordpress";
 import { Config } from "../../config";
 import fetch from "isomorphic-fetch";
 import ArticleCard from "../../components/ArticleCard";
-import { ContribImage } from "../../components/Global/styles";
+
 import PageWrapper from "../../components/Global/PageWrapper";
 import { v4 as uuidv4 } from "uuid";
 

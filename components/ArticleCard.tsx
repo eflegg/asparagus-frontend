@@ -3,7 +3,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
-import { Card } from "../components/Global/styles/index.tsx";
+import { Card } from "./Global/styles/index";
 import Byline from "./ArticleComponents/Byline";
 
 export default function ArticleCard({ post }) {
