@@ -14,7 +14,6 @@ export default function RelatedPosts({ currentArticle }) {
         `${Config.apiUrl}/wp-json/wp/v2/articles?_embed&per_page=300`
       );
       if (!response.ok) {
-        // oops! something went wrong
         return;
       }
       const links = await response.json();
@@ -56,7 +55,6 @@ export default function RelatedPosts({ currentArticle }) {
     return b.relevance - a.relevance;
   });
 
-  // console.log("sorted post one: ", sortedPosts[0].relevance);
   return (
     <>
       <h3 className="related--header h5">Related Stories</h3>
