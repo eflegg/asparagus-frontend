@@ -67,7 +67,7 @@ export default function Home({
             <LeadStoryBlock post={leadStoryPost[0]} />
           </div>
           <CategoryContainer className="new-from--container">
-            <h2 className="h5">New from Asparagus TEST</h2>
+            <h2 className="h5">New from Asparagus</h2>
             <hr />
             <div className="card--grid">
               {posts.map((post, index) => {
