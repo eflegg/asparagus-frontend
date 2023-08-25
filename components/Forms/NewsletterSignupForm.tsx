@@ -46,7 +46,6 @@ const NewsletterForm = styled.form`
     font-weight: bold;
     @media ${theme.devices.sm} {
       position: absolute;
-      transform: translateY(175%);
     }
   }
   @media ${theme.devices.sm} {
