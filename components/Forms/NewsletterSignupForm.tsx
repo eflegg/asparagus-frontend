@@ -27,14 +27,16 @@ const NewsletterForm = styled.form`
     width: 75%;
     padding: 0;
     margin-top: 10px;
+    font-size: 1.6rem;
     @media ${theme.devices.sm} {
       width: 100px;
       height: 25px;
-      position: absolute;
+      position: relative;
       margin-bottom: 0;
       bottom: 0;
       right: 0;
-      transform: translateX(100%);
+
+      /* transform: translateX(100%); */
     }
   }
   .error-message {
@@ -49,8 +51,8 @@ const NewsletterForm = styled.form`
   }
   @media ${theme.devices.sm} {
     .form-inner-container {
-      display: flex;
-      align-items: flex-end;
+      /* display: flex;
+      align-items: flex-end; */
     }
   }
 `;
@@ -76,7 +78,7 @@ const NewsletterSignupForm = ({ status, message, onValidated }) => {
   };
 
   const handleSubmit = (e: any) => {
-    console.log("footer form submit clicked");
+    console.log("full width form submit clicked");
     e.preventDefault();
     testEmail();
 
@@ -84,6 +86,7 @@ const NewsletterSignupForm = ({ status, message, onValidated }) => {
       email.indexOf("@") > -1 &&
       onValidated({
         EMAIL: email,
+        MERGE7: newsletterValue,
       });
     event("submit_form", {
       category: "FullWidthSignup",
@@ -161,7 +164,7 @@ const NewsletterSignupForm = ({ status, message, onValidated }) => {
             type="submit"
             onClick={handleSubmit}
           >
-            Sign Up
+            Subscribe
           </button>
         )}
       </div>
