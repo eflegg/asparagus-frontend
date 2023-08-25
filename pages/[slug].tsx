@@ -97,6 +97,9 @@ const ContentContainer = styled.div`
 
     a:visited {
       color: ${theme.colours.soil};
+      em {
+        color: ${theme.colours.soil};
+      }
     }
 
     a:hover {
