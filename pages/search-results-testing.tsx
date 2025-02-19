@@ -20,6 +20,8 @@ import {
 import ContributorCard from "../components/ContributorCard";
 import Link from "next/link";
 
+
+
 const ResultCard = styled.div``;
 
 const SearchContainer = styled.div`
@@ -222,64 +224,38 @@ function SearchResults(props) {
         <h2>Search results for: {props.router.query.name}</h2>
 
         <div className="card--grid single-page">
-          {filteredContent.map((post) => (
-            <React.Fragment key={uuidv4()}>
-              <ArticleCard post={post} />
-            </React.Fragment>
-          ))}
-        </div>
-        {filteredEvents.map((post) => (
-          <React.Fragment key={uuidv4()}>
-            <Link href={"/pages/[events]"} as={`/pages/${post.events}`}>
-              <a>
-                <EventCard event={post} />
-              </a>
-            </Link>
-          </React.Fragment>
-        ))}
-
-        <div>
-          {filteredGeneralPages.map((post) => (
-            <React.Fragment key={uuidv4()}>
-              <div className="search-result--content">
-                <Link href={"/[slug]"} as={`/${post.slug}`}>
-                  <a>
-                    <h3 className="search-result--title">
-                      {post.title.rendered}
-                    </h3>
-                    <p>{post.yoast_head_json.description}</p>
-                  </a>
-                </Link>
-              </div>
-            </React.Fragment>
-          ))}
-
-          {filteredTips.map((post) => (
-            <React.Fragment key={uuidv4()}>
-              <div className="search-result--content">
-                <Link href={"/asparagus-tips-archive"}>
-                  <a>
-                    <h3 className="search-result--title">
-                      {post.title.rendered}
-                    </h3>
-                    <p>{post.yoast_head_json.description}</p>
-                    {/* check to make sure the excerpt exists */}
-                  </a>
-                </Link>
-              </div>
-            </React.Fragment>
-          ))}
-
-          {filteredContributors.map((post) => (
-            <React.Fragment key={uuidv4()}>
-              <ContributorCard contributor={post} />
-            </React.Fragment>
-          ))}
-          {filteredTeam.map((post) => (
-            <React.Fragment key={uuidv4()}>
-              <ContributorCard contributor={post} />
-            </React.Fragment>
-          ))}
+          <h2>{results.length}</h2>
+           {results.map((post) => (
+            (post.subtype === "articles" ? (
+              
+           
+                <div className="card--inner">
+                  <div>
+                    <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
+                      <a
+                        aria-label={`Read the rest of the article ${post.title} `}
+                      >
+                        
+                      </a>
+                    </Link>
+                    
+                    <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
+                      <a>
+                        <h3
+                          className="head--article-card"
+                          dangerouslySetInnerHTML={{ __html: post.title }}
+                        ></h3>
+                        <hr className="hr--article-card" />
+                     
+                      </a>
+                    </Link>{" "}
+                  </div>
+                 
+                </div>
+    
+            ): null)
+                      
+                    ))}
         </div>
       </SearchContainer>
     </PageWrapper>
