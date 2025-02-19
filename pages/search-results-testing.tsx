@@ -229,29 +229,7 @@ function SearchResults(props) {
             (post.subtype === "articles" ? (
               
            
-                <div className="card--inner">
-                  <div>
-                    <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
-                      <a
-                        aria-label={`Read the rest of the article ${post.title} `}
-                      >
-                        
-                      </a>
-                    </Link>
-                    
-                    <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
-                      <a>
-                        <h3
-                          className="head--article-card"
-                          dangerouslySetInnerHTML={{ __html: post.title }}
-                        ></h3>
-                        <hr className="hr--article-card" />
-                     
-                      </a>
-                    </Link>{" "}
-                  </div>
-                 
-                </div>
+           <ArticleCard post={post._embedded.self[0]}/>
     
             ): null)
                       
