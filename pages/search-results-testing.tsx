@@ -195,18 +195,7 @@ function SearchResults(props) {
     });
   };
 
-  const filteredEvents = filterEvents(props.events, props.router.query.name);
-  const filteredContent = filterArticles(props.posts, props.router.query.name);
-  const filteredGeneralPages = filterGeneralPages(
-    props.generalPages,
-    props.router.query.name
-  );
-  const filteredContributors = filterContributors(
-    props.contributors,
-    props.router.query.name
-  );
-  const filteredTeam = filterTeam(props.team, props.router.query.name);
-  const filteredTips = filterTips(props.tips, props.router.query.name);
+
 
   const fallbackImage =
     "https://www.asparagusmagazine.com/Asparagus_Tip_Logo.svg";
@@ -242,23 +231,23 @@ function SearchResults(props) {
 
 export default withRouter(SearchResults);
 
-export async function getStaticProps({ params }) {
-  const posts = await getArticles();
-  const events = await getEvents();
-  const generalPages = await getGeneralPages();
-  const contributors = await getContributors();
-  const team = await getTeamMembers();
-  const tips = await getTips();
+// export async function getStaticProps({ params }) {
+//   const posts = await getArticles();
+//   const events = await getEvents();
+//   const generalPages = await getGeneralPages();
+//   const contributors = await getContributors();
+//   const team = await getTeamMembers();
+//   const tips = await getTips();
 
-  return {
-    props: {
-      posts,
-      events,
-      generalPages,
-      contributors,
-      team,
-      tips,
-    },
-    //revalidate: 1200, // In seconds
-  };
-}
+//   return {
+//     props: {
+//       posts,
+//       events,
+//       generalPages,
+//       contributors,
+//       team,
+//       tips,
+//     },
+//     //revalidate: 1200, // In seconds
+//   };
+// }
