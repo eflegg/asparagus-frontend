@@ -57,24 +57,25 @@ const SearchContainer = styled.div`
 
 function SearchResults(props) {
   // @erin this will be for later with custom post object endpoint
-  // const [results, setResults] = useState([]);
-  // useEffect(() => {
-  //   async function loadLinks() {
-  //     const response = await fetch(
-  //       `${Config.apiUrl}/wp-json/wp/v2/search/?search=${props.router.query.name}&_embed=self&per_page=100`
-  //     );
+  const [results, setResults] = useState([]);
+  useEffect(() => {
+    async function loadLinks() {
+      const response = await fetch(
+        `${Config.apiUrl}/wp-json/wp/v2/search/?search=${props.router.query.name}&_embed=self&per_page=100`
+      );
 
-  //     if (!response.ok) {
-  //       // oops! something went wrong
-  //       return;
-  //     }
+      if (!response.ok) {
+        // oops! something went wrong
+        return;
+      }
 
-  //     const links = await response.json();
-  //     setResults(links);
-  //   }
+      const links = await response.json();
+      setResults(links);
+      console.log(results);
+    }
 
-  //   loadLinks();
-  // }, [props.router.query.name]);
+    loadLinks();
+  }, [props.router.query.name]);
 
   const query = props.router.query.name;
 
@@ -99,7 +100,7 @@ function SearchResults(props) {
   //Articles
   const filterArticles = (posts, query) => {
     if (!query) {
-      return posts;
+      return posts.slice(0,3);
     }
     return posts.filter((post) => {
       const postTitle = post.title.rendered
