@@ -7,17 +7,17 @@ import { Card } from "./Global/styles/index";
 import Byline from "./ArticleComponents/Byline";
 
 export default function ArticleCard({ post }) {
-  const categories = post._embedded["wp:term"]["0"];
+  // const categories = post._embedded["wp:term"]["0"];
 
 
-  const subcategories = categories.filter(
-    (subCat) =>
-      subCat.id !== 6 &&
-      subCat.id !== 7 &&
-      subCat.id !== 8 &&
-      subCat.id !== 9 &&
-      subCat.id !== 10
-  );
+  // const subcategories = categories.filter(
+  //   (subCat) =>
+  //     subCat.id !== 6 &&
+  //     subCat.id !== 7 &&
+  //     subCat.id !== 8 &&
+  //     subCat.id !== 9 &&
+  //     subCat.id !== 10
+  // );
 
   let initialDate = post.acf.publication_date;
   // console.log("date: ", initialDate);
@@ -36,25 +36,25 @@ export default function ArticleCard({ post }) {
               aria-label={`Read the rest of the article ${post.title.rendered} `}
             >
               <div className="card--image">
-                {post._embedded["wp:featuredmedia"] ? (
+                {/* {post._embedded["wp:featuredmedia"] ? (
                   <Image
                     src={post._embedded["wp:featuredmedia"]["0"].source_url}
                     layout="fill"
                     objectFit="cover"
                     alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
                   />
-                ) : (
+                ) : ( */}
                   <Image
                     src="/triplestalk.svg"
                     layout="fill"
                     objectFit="cover"
                     alt="Asparagus Magazine logo"
                   />
-                )}
+                {/* )} */}
               </div>
             </a>
           </Link>
-          <div className="categories">
+          {/* <div className="categories">
             {subcategories &&
               subcategories.slice(0, 2).map((category, index) => {
                 return (
@@ -71,7 +71,7 @@ export default function ArticleCard({ post }) {
                   </React.Fragment>
                 );
               })}
-          </div>
+          </div> */}
           <Link href={"/articles/[slug]"} as={`/articles/${post.slug}`}>
             <a>
               <h3

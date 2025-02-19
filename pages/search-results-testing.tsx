@@ -6,7 +6,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import theme from "../components/Global/Theme";
 import PageWrapper from "../components/Global/PageWrapper";
-import ArticleCard from "../components/ArticleCard";
+import ArticleCardSearch from "../components/ArticleCard_search";
 import EventCard from "../components/EventCard";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -76,6 +76,7 @@ function SearchResults(props) {
       const links = await response.json();
       setResults(links);
       console.log("results: ", results);
+    
     }
 
     loadLinks();
@@ -86,114 +87,6 @@ function SearchResults(props) {
 
   console.log("query: ", query);
 
-  //Events
-  const filterEvents = (posts, query) => {
-    if (!query) {
-      return posts;
-    }
-    return posts.filter((post) => {
-      const eventDescrip = post.acf.description
-        .toLowerCase()
-        .replace(/[^a-zA-Z0-9 ]/g, "");
-
-      return eventDescrip.includes(
-        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
-      );
-    });
-  };
-
-  //Articles
-  const filterArticles = (posts, query) => {
-    if (!query) {
-      return posts.slice(0,3);
-    }
-    return posts.filter((post) => {
-      const postTitle = post.title.rendered
-        .toLowerCase()
-        .replace(/[^a-zA-Z0-9 ]/g, "");
-      const postContent = post.content.rendered
-        .toLowerCase()
-        .replace(/[^a-zA-Z0-9 ]/g, "");
-      const postDek = post.acf.dek.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "");
-      if (
-        postContent.includes(query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ""))
-      ) {
-        return postContent.includes(
-          query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
-        );
-      } else if (
-        postTitle.includes(query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ""))
-      ) {
-        return postTitle.includes(
-          query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
-        );
-      } else if (
-        postDek.includes(query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ""))
-      ) {
-        return postDek.includes(
-          query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
-        );
-      }
-    });
-  };
-
-  //General pages
-  const filterGeneralPages = (posts, query) => {
-    if (!query) {
-      return posts;
-    }
-    return posts.filter((post) => {
-      const postContent = post.content.rendered
-        .toLowerCase()
-        .replace(/[^a-zA-Z0-9 ]/g, "");
-      return postContent.includes(
-        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
-      );
-    });
-  };
-  //Contributors
-  const filterContributors = (posts, query) => {
-    if (!query) {
-      return posts;
-    }
-    return posts.filter((post) => {
-      const postContent = post.acf.bio
-        .toLowerCase()
-        .replace(/[^a-zA-Z0-9 ]/g, "");
-      return postContent.includes(
-        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
-      );
-    });
-  };
-  //Team
-  const filterTeam = (posts, query) => {
-    if (!query) {
-      return posts;
-    }
-    return posts.filter((post) => {
-      const postContent = post.acf.bio
-        .toLowerCase()
-        .replace(/[^a-zA-Z0-9 ]/g, "");
-      return postContent.includes(
-        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
-      );
-    });
-  };
-
-  //Asparagus Tips
-  const filterTips = (posts, query) => {
-    if (!query) {
-      return posts;
-    }
-    return posts.filter((post) => {
-      const postContent = post.content.rendered
-        .toLowerCase()
-        .replace(/[^a-zA-Z0-9 ]/g, "");
-      return postContent.includes(
-        query.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, "")
-      );
-    });
-  };
 
 
 
@@ -213,13 +106,14 @@ function SearchResults(props) {
         <h2>Search results for: {props.router.query.name}</h2>
 
         <div className="card--grid single-page">
-          <h2>{results.length}</h2>
+          {/* <h2>{results.length}</h2> */}
            {results.map((post) => (
+       
             (post.subtype === "articles" ? (
-              
-           
-           <ArticleCard post={post._embedded.self[0]}/>
-    
+        
+         <ArticleCardSearch post={post._embedded.self[0]}/>
+     
+     
             ): null)
                       
                     ))}
