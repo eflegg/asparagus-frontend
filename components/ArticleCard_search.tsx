@@ -35,7 +35,7 @@ export default function ArticleCard({ post }) {
             <a
               aria-label={`Read the rest of the article ${post.title.rendered} `}
             >
-              <div className="card--image">
+              {/* <div className="card--image"> */}
                 {/* {post._embedded["wp:featuredmedia"] ? (
                   <Image
                     src={post._embedded["wp:featuredmedia"]["0"].source_url}
@@ -44,14 +44,14 @@ export default function ArticleCard({ post }) {
                     alt={post._embedded["wp:featuredmedia"]["0"].alt_text}
                   />
                 ) : ( */}
-                  <Image
+                  {/* <Image
                     src="/triplestalk.svg"
                     layout="fill"
                     objectFit="cover"
                     alt="Asparagus Magazine logo"
-                  />
+                  /> */}
                 {/* )} */}
-              </div>
+              {/* </div> */}
             </a>
           </Link>
           {/* <div className="categories">

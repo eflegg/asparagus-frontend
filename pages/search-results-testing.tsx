@@ -65,6 +65,9 @@ function SearchResults(props) {
     async function loadLinks() {
       const response = await fetch(
         `${Config.apiUrl}/wp-json/wp/v2/search/?search=${props.router.query.name}&_embed&per_page=100`
+
+
+       
        
       );
 
@@ -105,6 +108,14 @@ function SearchResults(props) {
         <hr />
         <h2>Search results for: {props.router.query.name}</h2>
 
+          {results.map((post) => (
+       
+       (post.subtype === "team_members" ? (
+   
+<ContributorCard contributor={post._embedded.self[0]} />
+
+       ):  null)
+                 ))}
         <div className="card--grid single-page">
           {/* <h2>{results.length}</h2> */}
            {results.map((post) => (
@@ -113,11 +124,11 @@ function SearchResults(props) {
         
          <ArticleCardSearch post={post._embedded.self[0]}/>
      
-     
-            ): null)
-                      
-                    ))}
+            ):  null)
+                      ))}
+
         </div>
+
       </SearchContainer>
     </PageWrapper>
   );
