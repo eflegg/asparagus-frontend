@@ -273,11 +273,12 @@ export default function Footer() {
                       })}
                     </ul>
                   )}
+        
                 </li>
               );
             })}
           </ul>
-          <SocialMediaLogos>
+          {/* <SocialMediaLogos>
             <a
               className="position-relative"
               href="https://twitter.com/asparagusmag"
@@ -314,7 +315,7 @@ export default function Footer() {
                 layout="fill"
               />
             </a>
-          </SocialMediaLogos>
+          </SocialMediaLogos> */}
         </FooterMenu>
         <NewsletterContainer>
           <div className="signupWrapper">

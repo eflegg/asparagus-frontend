@@ -270,6 +270,9 @@ function SearchResults(props) {
             </React.Fragment>
           ))}
 
+
+
+
           {filteredContributors.map((post) => (
             <React.Fragment key={uuidv4()}>
               <ContributorCard contributor={post} />
