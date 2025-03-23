@@ -497,7 +497,7 @@ export default function ArticlePage({ article, categories }) {
             ) : null}
           </div>
         ) : null}
-        <div
+        {/* <div
           itemProp="interactionType"
           content="https://schema.org/ShareAction"
           className="share-block d-flex align-items-center justify-content-center"
@@ -513,7 +513,7 @@ export default function ArticlePage({ article, categories }) {
           >
             <TwitterIcon size={45} round />
           </TwitterShareButton>
-        </div>
+        </div> */}
         <SupportCard />
         <RelatedPosts currentArticle={article} />
       </SingleContainer>
