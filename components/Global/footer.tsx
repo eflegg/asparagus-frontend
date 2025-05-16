@@ -279,18 +279,7 @@ export default function Footer() {
             })}
           </ul>
           {/* <SocialMediaLogos>
-            <a
-              className="position-relative"
-              href="https://twitter.com/asparagusmag"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Image
-                src="/twitter_soil.svg"
-                alt="Twitter logo and link"
-                layout="fill"
-              />
-            </a>
+         
             <a
               className="position-relative"
               href="https://www.instagram.com/asparagus.mag"
