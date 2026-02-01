@@ -26,16 +26,20 @@ export default function Byline({ article }) {
           <TwoAuthorCard post={article} />
         ) : (
           <>
-            {article.acf.writer[0].acf.contributor ? (
+            {article.acf.writer[0] &&
+            article.acf.writer[0].acf.contributor ? (
               <Link
                 href={"/contributors/[slug]"}
-                as={`/contributors/${article.acf.writer[0].post_name}`}
+                as={`/contributors/${article.acf.writer[0] &&
+                  article.acf.writer[0].post_name}`}
               >
                 <a className="d-flex align-items-center">
                   <div className="byline--image">
-                    {article.acf.writer[0].acf.headshot.url ? (
+                    {article.acf.writer[0] &&
+                    article.acf.writer[0].acf.headshot.url ? (
                       <Image
-                        src={article.acf.writer[0].acf.headshot.url}
+                        src={article.acf.writer[0] &&
+                          article.acf.writer[0].acf.headshot.url}
                         layout="fill"
                         objectFit="cover"
                         alt="Author headshot"
@@ -51,7 +55,8 @@ export default function Byline({ article }) {
                   </div>
                   <div>
                     <p itemProp="author" className="byline">
-                      {article.acf.writer[0].post_title}
+                      {article.acf.writer[0] &&
+                      article.acf.writer[0].post_title}
                     </p>
                     <p
                       itemProp="datePublished"
@@ -70,9 +75,11 @@ export default function Byline({ article }) {
               >
                 <a className="d-flex byline-link">
                   <div className="byline--image">
-                    {article.acf.writer[0].acf.headshot.url ? (
+                    {
+                    article.acf.writer[0].acf.headshot.url ? (
                       <Image
-                        src={article.acf.writer[0].acf.headshot.url}
+                        src={article.acf.writer[0] &&
+                          article.acf.writer[0].acf.headshot.url}
                         layout="fill"
                         objectFit="cover"
                         alt="Author headshot"
@@ -88,7 +95,8 @@ export default function Byline({ article }) {
                   </div>
                   <div>
                     <p itemProp="author" className="byline">
-                      {article.acf.writer[0].post_title}
+                      {article.acf.writer[0] &&
+                      article.acf.writer[0].post_title}
                     </p>
                     <p
                       itemProp="datePublished"
