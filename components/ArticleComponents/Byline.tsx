@@ -68,7 +68,9 @@ export default function Byline({ article }) {
                   </div>
                 </a>
               </Link>
-            ) : (
+            ) : 
+           article.acf.writer[0] &&
+           article.acf.writer[0].acf.post_name? (
               <Link
                 href={"/team/[slug]"}
                 as={`/team/${article.acf.writer[0].post_name}`}
@@ -108,7 +110,7 @@ export default function Byline({ article }) {
                   </div>
                 </a>
               </Link>
-            )}
+            ): null}
           </>
         )}
       </BylineContainer>
