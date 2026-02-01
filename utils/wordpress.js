@@ -34,7 +34,7 @@ export async function getCategory(slug) {
 /// Articles ///
 
 export async function getArticles() {
-  const articlesRes = await fetch(BASE_URL + "/articles?_embed&per_page=300");
+  const articlesRes = await fetch(BASE_URL + "/articles?_embed&per_page=260");
   const articles = await articlesRes.json();
   return articles;
 }

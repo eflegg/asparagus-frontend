@@ -76,6 +76,7 @@ const ContribHeader = styled.div`
 `;
 
 export default function ContributorPage({ contributor, tags, posts }) {
+
   console.log("contributor: ", contributor);
   console.log("contributor single posts ", posts);
   let contribTag = tags.filter(
@@ -173,19 +174,7 @@ export default function ContributorPage({ contributor, tags, posts }) {
                     />
                   </div>
                 </a>
-              ) : // <a
-              //   href={contributor.acf.social_media_link}
-              //   target="_blank"
-              //   rel="noreferrer"
-              // >
-              //   <div className="icon">
-              //     <Image
-              //       src="/insta.png"
-              //       alt="Instagram logo and link"
-              //       layout="fill"
-              //     />
-              //   </div>
-              // </a>
+              ) : 
               null}
               <a
                 className="contrib-website"

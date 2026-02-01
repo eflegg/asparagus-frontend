@@ -55,8 +55,7 @@ export default function Byline({ article }) {
                   </div>
                   <div>
                     <p itemProp="author" className="byline">
-                      {article.acf.writer[0] &&
-                      article.acf.writer[0].post_title}
+                      {article.acf.writer[0].post_title}
                     </p>
                     <p
                       itemProp="datePublished"
