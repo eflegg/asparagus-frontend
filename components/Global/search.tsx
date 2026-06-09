@@ -69,7 +69,7 @@ export default function Search({ scrolled }) {
     e.preventDefault();
     router.push(
       {
-        pathname: "/search-results",
+        pathname: "/search-results-testing",
         query: { name: searchQuery },
       },
       "/search-results"
